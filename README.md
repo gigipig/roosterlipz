@@ -1,5 +1,5 @@
 # roosterlipz
 lethaldonuts420
 print rooster
-![kloong](roosterlipz/images/)
+<img src="images/rare.png">
 
