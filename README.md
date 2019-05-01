@@ -1,6 +1,6 @@
 # roosterlipz
 
-<img align="right" width="50" height="50" src="images/55882351_788988708148989_6144011675398832128_n.jpg">
+<img align="right" width="400" height="400" src="images/55882351_788988708148989_6144011675398832128_n.jpg">
 <img src="images/rare.png">
 
 <object width="425" height="350">
