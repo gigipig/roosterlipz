@@ -95,7 +95,7 @@ function loop() {
     context.fillRect(cell.x, cell.y, grid-1, grid-1);  
     // snake ate apple
     if (cell.x === apple.x && cell.y === apple.y) {
-      snake.maxCells++;
+      snake.maxCells = snake.maxCells + 3;
       // canvas is 400x400 which is 25x25 grids 
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
