@@ -102,17 +102,18 @@ function loop() {
     for (var i = index + 1; i < snake.cells.length; i++) {
       
       // snake occupies same space as a body part. reset game
-      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-      }
-    }
+      //if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+//       i
+//         snake.x = 160;
+//         snake.y = 160;
+//         snake.cells = [];
+//         snake.maxCells = 4;
+//         snake.dx = grid;
+//         snake.dy = 0;
+//         apple.x = getRandomInt(0, 25) * grid;
+//         apple.y = getRandomInt(0, 25) * grid;
+//       }
+//     }
   });
 }
 // listen to keyboard events to move the snake
@@ -124,22 +125,22 @@ document.addEventListener('keydown', function(e) {
   
   // left arrow key
   if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -5*grid;
+    snake.dx = -2*grid;
     snake.dy = 0;
   }
   // up arrow key
   else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -5*grid;
+    snake.dy = -2*grid;
     snake.dx = 0;
   }
   // right arrow key
   else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = 5*grid;
+    snake.dx = 2*grid;
     snake.dy = 0;
   }
   // down arrow key
   else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = 5*grid;
+    snake.dy = 2*grid;
     snake.dx = 0;
   }
 });
