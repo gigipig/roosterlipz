@@ -8,7 +8,7 @@
     margin: 0;
   }
   body {
-    background: #18053d;
+    background: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,6 @@
   </style>
 </head>
 <body>
-  <iframe width="1%" height="5" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/275829536&color=%23d427b9&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 <canvas width="400" height="400" id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
@@ -86,8 +85,6 @@ function loop() {
   // draw apple
   context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
-  context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid-1, grid-1);
   // draw snake one cell at a time
   context.fillStyle = 'green';
   snake.cells.forEach(function(cell, index) {
@@ -96,26 +93,27 @@ function loop() {
     context.fillRect(cell.x, cell.y, grid-1, grid-1);  
     // snake ate apple
     if (cell.x === apple.x && cell.y === apple.y) {
-      snake.maxCells = snake.maxCells + 3;
+      snake.maxCells++;
       // canvas is 400x400 which is 25x25 grids 
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
     }
     // check collision with all cells after this one (modified bubble sort)
-    for (var i = index + 1; i < snake.cells.length; i++) {
+    //for (var i = index + 1; i < snake.cells.length; i++) {
       
       // snake occupies same space as a body part. reset game
-      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        snake.dx = grid;
-        snake.dy = 0;
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-      }
-    }
+      //if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+//       i
+//         snake.x = 160;
+//         snake.y = 160;
+//         snake.cells = [];
+//         snake.maxCells = 4;
+//         snake.dx = grid;
+//         snake.dy = 0;
+//         apple.x = getRandomInt(0, 25) * grid;
+//         apple.y = getRandomInt(0, 25) * grid;
+//       }
+//     }
   });
 }
 // listen to keyboard events to move the snake
@@ -127,22 +125,22 @@ document.addEventListener('keydown', function(e) {
   
   // left arrow key
   if (e.which === 37 && snake.dx === 0) {
-    snake.dx = -grid;
+    snake.dx = -2*grid;
     snake.dy = 0;
   }
   // up arrow key
   else if (e.which === 38 && snake.dy === 0) {
-    snake.dy = -grid;
+    snake.dy = -2*grid;
     snake.dx = 0;
   }
   // right arrow key
   else if (e.which === 39 && snake.dx === 0) {
-    snake.dx = grid;
+    snake.dx = 2*grid;
     snake.dy = 0;
   }
   // down arrow key
   else if (e.which === 40 && snake.dy === 0) {
-    snake.dy = grid;
+    snake.dy = 2*grid;
     snake.dx = 0;
   }
 });
