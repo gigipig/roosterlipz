@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Your Website</title>
+    <style>
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Your Website Content</h1>
+
+    <div class="embed-container">
+        <iframe src="https://www.oldschool.gg/clues" frameborder="0" allowfullscreen></iframe>
+    </div>
+</body>
+<style>
+    html {
+        background: url(images/pirates-run.gif) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .title {
+        color: rgb(0, 255, 45);
+        font-family: "Comic Sans MS", "Comic Sans";
+        font-size: 96px;
+        font-weight: 800;
+    }
+
+    .title a {
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+
+        #davyJonesContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #davyJonesImage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s;
+        }
+    }
+</style>
+
+<body>
+
+    <center>
+        <h1 class="title"><a href="locker.html">""Welcome to the crew, lad."
+                "</a></h1>
+    </center>
+
+    <div id="davyJonesContainer">
+        <img src="images/davyjones.gif" alt="Davy Jones" id="davyJonesImage">
+    </div>
+
+    <script>
+        function showDavyJones() {
+            var image = document.getElementById("davyJonesImage");
+            image.style.opacity = "1";
+        }
+
+        function hideDavyJones() {
+            var image = document.getElementById("davyJonesImage");
+            image.style.opacity = "0";
+        }
+
+        setInterval(function () {
+            showDavyJones();
+            setTimeout(hideDavyJones, 1000);
+        }, 15000);
+
+        function playRandomAudio(audioFiles) {
+            var randomIndex = Math.floor(Math.random() * audioFiles.length);
+            var audioElement = new Audio(audioFiles[randomIndex]);
+            audioElement.play();
+        }
+        setInterval(function () {
+            var audioFiles1 = [
+                'sounds/beloved.mp3',
+                'sounds/afterlife.mp3',
+                'sounds/bodice.mp3',
+                'sounds/breathe.mp3',
+                'sounds/dirt.mp3',
+                'sounds/deed.mp3',
+                'sounds/forgot.mp3',
+                'sounds/liar.mp3',
+                'sounds/broken.mp3',
+                'sounds/heart.mp3',
+                // Add more audio files here
+            ];
+            playRandomAudio(audioFiles1);
+        }, 15000);
+        setInterval(function () {
+            var roosterSounds = [
+                'sounds/rooster1.mp3',
+                'sounds/rooster2.mp3',
+                'sounds/rooster23.mp3',
+                // Add more rooster sounds here
+            ];
+            playRandomAudio(roosterSounds);
+        }, 25000);
+
+        setInterval(function () {
+            var osrs = [
+
+
+    </script>
+</body>
+
+</html>

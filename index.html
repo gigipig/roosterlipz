@@ -1,15 +1,16 @@
 <html>
-  <head>
-    <style>
-      html {
-        background: url(images/tumblr_ni13m6YF611u36pzio1_1280.gif) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-      }
-	    
-/* 	html {
+
+<head>
+  <style>
+    html {
+      background: url(images/raloost.gif) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    /* 	html {
 	  display: block;
 	  position: fixed;
 	  background: url(images/tumblr_ni13m6YF611u36pzio1_1280.gif) no-repeat center center;
@@ -18,54 +19,153 @@
 	  -o-background-size: cover;
 	  background-size: cover;
 	} */
-      
-      .title {
-	color: rgb(0,255,45);
-	font-family: "Comic Sans MS", "Comic Sans";		
-	font-size: 96px;
-	font-weight:800;
-      }
-	    
-      .title a {
-	  color: white;
-	  padding: 14px 25px;
-	  text-align: center;
-	  text-decoration: none;
-	}
-     
 
-	    <iframe data-v-66091921="" hidden="" src="https://stream.pollofeed.com?date=1685796981717" height="0" width="0">
-    frame prevents back-frame caching
-  </iframe>
-	    
-	    
-    </style>
-  </head>
-  <body>
-<centre
-    <p class="title">roosterlipz</p>
-	<iframe src="spaceraider.html" height='800px' width='800px'></iframe> 
-	  <br>
-	 <br>
-	<iframe src="snake2.html" height='500px' width='500px'></iframe> 
-	  <br>
-	 <br>
-	  <a href="snake.html" class="title">SNAKE</a>
-	<br>
-	 <br>
-	<img src="images/rare2.jpg">
-	<div>
-    <img align="right" width="150px" height="150px" src="images/55882351_788988708148989_6144011675398832128_n.jpg">
-		
-	</div>
-	<img align="right" width="50px" height="400px" src="https://i.imgur.com/pPYRSLR.gif">
-	<div>
-    <img src="images/rare.png">
-		  <br>
-	 <br>
-	</div>
-	
-    <iframe width="90%" height="400px" src="https://www.youtube.com/embed/D9izSl9euRc?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</centre>
-  </body>
+    .title {
+      color: rgb(0, 255, 45);
+      font-family: "Comic Sans MS", "Comic Sans";
+      font-size: 96px;
+      font-weight: 800;
+    }
+
+    .title a {
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .dosbox-container {
+      width: 320px;
+      height: 200px;
+    }
+
+    .dosbox-container>.dosbox-overlay {
+      background: url(https://js-dos.com/cdn/DOOM.png);
+    }
+  </style>
+</head>
+<style>
+  /* Existing styles */
+
+  .gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .gif-container img {
+    width: 200px;
+    height: auto;
+    margin: 0 10px;
+  }
+</style>
+</head>
+
+<body>
+  <centre>
+    <!-- Existing content -->
+
+    <div class="gif-container">
+      <img src="images/gifs/gvga.gif" alt="GIF 1">
+      <img src="images/gifs/kungfu11.gif" alt="GIF 2">
+      <img src="images/gifs/Dog-03.gif" alt="GIF 3">
+      <img src="images/gifs/dollarspindownd.gif" alt="GIF 4">
+      <img src="images/gifs/llcooljplanet.gif" alt="GIF 5">
+      <img src="images/gifs/macedoniaflag.gif" alt="GIF 6">
+      <img src="images/gifs/aniherb.gif" alt="GIF 7">
+    </div>
+
+    <body>
+      <centre>
+        <div id="dosbox"></div>
+        <br />
+        <button onclick="dosbox.requestFullScreen();">Make fullscreen</button>
+
+        <script type="text/javascript" src="https://js-dos.com/cdn/js-dos-api.js"></script>
+        <script type="text/javascript">
+          var dosbox = new Dosbox({
+            id: "dosbox",
+            onload: function (dosbox) {
+              dosbox.run("https://js-dos.com/cdn/upload/Duke Nukem 3d-@digitalwalt.zip",
+                "./DUKE3D/DUKE3D.EXE"
+              );
+            },
+            onrun: function (dosbox, app) {
+              console.log("App '" + app + "' is runned");
+
+            }
+          });
+        </script>
+        <script>
+          function playSound() {
+            var audioElement = new Audio("sounds/Magic_Tree.ogg");
+            audioElement.play();
+          }
+
+          setInterval(playSound, 30000); // Play sound every 30 seconds
+        </script>
+        <script>
+          function playRandomAudio() {
+            var audioFiles = [
+              'audio1.mp3',
+              'audio2.mp3',
+              'audio3.mp3',
+              // Add more audio files here
+            ];
+
+            var randomIndex = Math.floor(Math.random() * audioFiles.length);
+            var selectedAudio = audioFiles[randomIndex];
+
+            var audioElement = new Audio(selectedAudio);
+            audioElement.play();
+          }
+        </script>
+        <p class="title">roosterlipz</p>
+        <!-- <iframe src="spaceraider.html" height='800px' width='800px'></iframe> -->
+        <br>
+        <br>
+        <iframe src="snake2.html" height='50px' width='50px'></iframe>
+        <br>
+        <a href="locker.html">Go to Locker</a>
+        <br>
+        <a href="snake.html">baloon</a>
+        <br>
+        <iframe data-v-66091921="" hidden="" src="https://stream.pollofeed.com?date=1685796981717" height="5000"
+          width="1000">
+          frame prevents back-frame caching
+        </iframe>
+
+        <br>
+        <img src="images/Magic_tree.gif">
+        <div>
+          <img align="right" width="150px" height="150px"
+            src="images/55882351_788988708148989_6144011675398832128_n.jpg">
+
+        </div>
+        <img align="right" width="50px" height="400px" src="https://i.imgur.com/pPYRSLR.gif">
+        <div>
+          <img src="images/rare.png">
+          <br>
+          <br>
+        </div>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1215909442&color=%232ae62b&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+          </<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1215909442&color=%232ae62b&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+        </iframe>
+        <div
+          style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+          <a href="https://soundcloud.com/buttersessions" title="BUTTER SESSIONS" target="_blank"
+            style="color: #cccccc; text-decoration: none;">BUTTER SESSIONS</a> · <a
+            href="https://soundcloud.com/buttersessions/bsrmix-120-hybrid-man-live"
+            title="BSRMIX #120 - Hybrid Man (live)" target="_blank"
+            style="color: #cccccc; text-decoration: none;">BSRMIX #120 - Hybrid Man (live)</a>
+        </div>
+        <iframe width="90%" height="400px" src="images/unreal_tournament_1999_cover_by_eprog_ddzjq9m-pre.jpg"
+          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </centre>
+    </body>
+
 </html>
