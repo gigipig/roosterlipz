@@ -1,7 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Your Website</title>
     <style>
         .embed-container {
@@ -9,7 +10,7 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .embed-container iframe {
@@ -19,37 +20,28 @@
             width: 100%;
             height: 100%;
         }
-    </style>
-</head>
 
-<body>
-    <h1>Your Website Content</h1>
+        html {
+            background: url(images/pirates-run.gif) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
 
-    <div class="embed-container">
-        <iframe src="https://www.oldschool.gg/clues" frameborder="0" allowfullscreen></iframe>
-    </div>
-</body>
-<style>
-    html {
-        background: url(images/pirates-run.gif) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
+        .title {
+            color: rgb(0, 255, 45);
+            font-family: "Comic Sans MS", "Comic Sans";
+            font-size: 96px;
+            font-weight: 800;
+        }
 
-    .title {
-        color: rgb(0, 255, 45);
-        font-family: "Comic Sans MS", "Comic Sans";
-        font-size: 96px;
-        font-weight: 800;
-    }
-
-    .title a {
-        color: white;
-        padding: 14px 25px;
-        text-align: center;
-        text-decoration: none;
+        .title a {
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+        }
 
         #davyJonesContainer {
             position: relative;
@@ -65,14 +57,30 @@
             opacity: 0;
             transition: opacity 1s;
         }
-    }
-</style>
+    </style>
+</head>
 
 <body>
+    <button onclick="playAudio()">hit the lush button</button>
 
+    <audio id="backgroundMusic" src="sounds/SkywardFire.mp3" loop></audio>
+
+    <script>
+        function playAudio() {
+            document.getElementById("backgroundMusic").play();
+        }
+    </script>
+    <h1>Age of Roostology</h1>
+
+    <div class="embed-container">
+        <iframe src="https://www.oldschool.gg/clues" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="embed-container">
+        <iframe src="https://dan-ball.jp/en/javagame/dust/" frameborder="0" allowfullscreen></iframe>
+    </div>
     <center>
-        <h1 class="title"><a href="locker.html">""Welcome to the crew, lad."
-                "</a></h1>
+        <h1 class="title"><a href="locker.html">Welcome to the crew, lad.</a></h1>
     </center>
 
     <div id="davyJonesContainer">
@@ -80,6 +88,12 @@
     </div>
 
     <script>
+        function playRandomAudio(audioFiles) {
+            var randomIndex = Math.floor(Math.random() * audioFiles.length);
+            var audioElement = new Audio(audioFiles[randomIndex]);
+            audioElement.play();
+        }
+
         function showDavyJones() {
             var image = document.getElementById("davyJonesImage");
             image.style.opacity = "1";
@@ -92,44 +106,42 @@
 
         setInterval(function () {
             showDavyJones();
-            setTimeout(hideDavyJones, 1000);
+            setTimeout(hideDavyJones, 10000);
         }, 15000);
 
-        function playRandomAudio(audioFiles) {
-            var randomIndex = Math.floor(Math.random() * audioFiles.length);
-            var audioElement = new Audio(audioFiles[randomIndex]);
-            audioElement.play();
-        }
-        setInterval(function () {
-            var audioFiles1 = [
-                'sounds/beloved.mp3',
-                'sounds/afterlife.mp3',
-                'sounds/bodice.mp3',
-                'sounds/breathe.mp3',
-                'sounds/dirt.mp3',
-                'sounds/deed.mp3',
-                'sounds/forgot.mp3',
-                'sounds/liar.mp3',
-                'sounds/broken.mp3',
-                'sounds/heart.mp3',
-                // Add more audio files here
+        document.addEventListener("DOMContentLoaded", function () {
+            setInterval(function () {
+                var audioFiles = [
+                    'sounds/beloved.mp3',
+                    'sounds/afterlife.wav',
+                    'sounds/bodice.mp3',
+                    'sounds/breathe.mp3',
+                    'sounds/dirt.mp3',
+                    'sounds/deed.mp3',
+                    'sounds/forgot.mp3',
+                    'sounds/liar.wav',
+                    'sounds/broken.mp3',
+                    'sounds/heart.mp3',
+                ];
+                playRandomAudio(audioFiles);
+            }, 15000);
+
+            setInterval(function () {
+                var roosterSounds = [
+                    'sounds/rooster1.mp3',
+                    'sounds/rooster2.mp3',
+                    'sounds/rooster3.mp3',
+                ];
+                playRandomAudio(roosterSounds);
+            }, 25000);
+
+            var songOptions = [
+                'sounds/SkywardFire.mp3',
+                'sounds/Foregone.mp3',
+                'sounds/Song3.mp3'
             ];
-            playRandomAudio(audioFiles1);
-        }, 15000);
-        setInterval(function () {
-            var roosterSounds = [
-                'sounds/rooster1.mp3',
-                'sounds/rooster2.mp3',
-                'sounds/rooster23.mp3',
-                // Add more rooster sounds here
-            ];
-            playRandomAudio(roosterSounds);
-        }, 25000);
-
-        setInterval(function () {
-            var osrs = [
-
-
+            playRandomAudio(songOptions);
+        });
     </script>
 </body>
 
