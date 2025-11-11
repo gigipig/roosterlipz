@@ -1,0 +1,438 @@
+<html>
+<head>
+  <title>Age of Baloosta</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: "Comic Sans MS", "Comic Sans", Arial, sans-serif;
+    }
+
+    .map-arabia {
+      position: relative;
+      min-height: 100vh;
+      background: url("images/New 2025/Arabia.webp") center center / cover no-repeat fixed;
+    }
+
+    .page-header {
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      padding: 24px 12px 6px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.15), rgba(0,0,0,0));
+      font-weight: 800;
+      font-size: 48px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #e6f7ff;
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+
+    .nav {
+      text-align: center;
+      margin: 12px 0 24px 0;
+    }
+
+    .nav a {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 8px 14px;
+      background: rgba(0,0,0,0.75);
+      color: #87CEFA;
+      text-decoration: none;
+      border: 1px solid #000;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .battlefield {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 180px);
+    }
+
+    .unit, .structure, .landmark, .terrain {
+      position: absolute;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+    }
+
+    /* Left army (Blue) */
+    .side-blue .badge {
+      position: absolute;
+      left: 2%;
+      top: 6%;
+      background: rgba(0, 40, 120, 0.75);
+      color: #e6f7ff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+
+    /* Right army (Red) */
+    .side-red .badge {
+      position: absolute;
+      right: 2%;
+      top: 6%;
+      background: rgba(140, 0, 0, 0.78);
+      color: #ffdddd;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+
+    /* Strategic placements */
+    .villager { left: 6%; top: 56%; width: 80px; }
+    .outpost  { left: 12%; top: 42%; width: 120px; }
+    .ocean    { left: 2%; top: 70%; width: 200px; opacity: 0.9; }
+
+    .teutonic { right: 7%; top: 50%; width: 110px; }
+    .catapult { right: 12%; top: 62%; width: 150px; }
+    .frantic  { right: 4%; top: 35%; width: 90px; }
+    .paladin  { width: 160px; }
+
+    .face-left {
+      transform: scaleX(-1);
+      transform-origin: center center;
+    }
+
+    .temple   { left: 50%; top: 46%; width: 260px; transform: translate(-50%, -50%); }
+
+    .legend {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.65);
+      color: #eaeaea;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+
+    /* Soundscape HUD */
+    .soundscape {
+      position: fixed;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(0,0,0,0.6);
+      color: #d9f0ff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      max-width: 40vw;
+      line-height: 1.4;
+    }
+
+    .soundscape .now {
+      color: #fff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="map-arabia">
+    <div class="page-header">Age of Baloosta</div>
+    <div class="subtitle">Skirmish on Arabia — units muster at dawn</div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="locker.html">Locker</a>
+    </div>
+
+    <div class="battlefield">
+      <div class="side-blue">
+        <div class="badge">Blue Army</div>
+        <img class="unit villager" src="images/New 2025/Villager.gif" alt="Villager">
+        <img class="structure outpost" src="images/New 2025/Outpost.gif" alt="Outpost">
+        <img class="terrain ocean" src="images/New 2025/Ocean.gif" alt="Shoreline">
+      </div>
+
+      <div class="side-red">
+        <div class="badge">Red Army</div>
+        <img class="unit teutonic" src="images/New 2025/Teutonic_Knight_cometh.gif" alt="Teutonic Knight">
+        <img class="unit catapult" src="images/New 2025/Catapault2.gif" alt="Catapult">
+        <img class="unit frantic" src="images/New 2025/Frantic.gif" alt="Frantic">
+      </div>
+
+      <img class="landmark temple" src="images/New 2025/AztecTemple.webp" alt="Aztec Temple">
+
+      <div class="legend">
+        GIFs = animated units and structures · WEBP = elite or landmarks · Map = Arabia
+      </div>
+    </div>
+  </div>
+
+  <div class="soundscape" id="soundscape">
+    <div>Soundscape: goon2025/Sounds</div>
+    <div>Files: <span id="sound-count">0</span></div>
+    <div>Mode: <span id="mode">peaceful</span></div>
+    <div>Now: <span class="now" id="now-playing">—</span></div>
+  </div>
+
+  <script>
+    (function () {
+      var battlefield = document.querySelector('.battlefield');
+      if (!battlefield) return;
+
+      var paladins = [];
+      var lastTs = 0;
+
+      function randomBetween(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function pickNewTarget(p) {
+        var rect = battlefield.getBoundingClientRect();
+        var pad = 20;
+        p.tx = Math.random() * (rect.width - 2 * pad) + pad;
+        p.ty = Math.random() * (rect.height - 2 * pad) + pad;
+        p.timeout = 2000 + Math.random() * 3000;
+      }
+
+      function spawnPaladin(options) {
+        options = options || {};
+        var img = document.createElement('img');
+        img.className = 'unit paladin';
+        img.alt = 'Paladin';
+        img.src = 'images/New 2025/Paladin.webp';
+        img.style.left = '0px';
+        img.style.top = '0px';
+
+        battlefield.appendChild(img);
+
+        var p = {
+          el: img,
+          x: typeof options.x === 'number' ? options.x : battlefield.clientWidth * 0.7,
+          y: typeof options.y === 'number' ? options.y : battlefield.clientHeight * 0.55,
+          speed: typeof options.speed === 'number' ? options.speed : 80,
+          tx: 0,
+          ty: 0,
+          timeout: 0
+        };
+        pickNewTarget(p);
+        paladins.push(p);
+        img.style.position = 'absolute';
+        img.style.left = Math.round(p.x) + 'px';
+        img.style.top = Math.round(p.y) + 'px';
+
+        return p;
+      }
+
+      function update(dt) {
+        for (var i = 0; i < paladins.length; i++) {
+          var p = paladins[i];
+          p.timeout -= dt;
+
+          var dx = p.tx - p.x;
+          var dy = p.ty - p.y;
+          var dist = Math.hypot(dx, dy) || 1;
+
+          var movingLeft = dx < 0;
+          if (movingLeft) {
+            p.el.classList.add('face-left');
+          } else {
+            p.el.classList.remove('face-left');
+          }
+
+          if (dist < 4 || p.timeout <= 0) {
+            pickNewTarget(p);
+          } else {
+            var step = p.speed * (dt / 1000);
+            var nx = p.x + (dx / dist) * step;
+            var ny = p.y + (dy / dist) * step;
+
+            var rect = battlefield.getBoundingClientRect();
+            var w = p.el.width || 160;
+            var h = p.el.height || 160;
+            nx = clamp(nx, 0, rect.width - w);
+            ny = clamp(ny, 0, rect.height - h);
+
+            p.x = nx;
+            p.y = ny;
+            p.el.style.left = Math.round(p.x) + 'px';
+            p.el.style.top = Math.round(p.y) + 'px';
+          }
+        }
+      }
+
+      function loop(ts) {
+        if (!lastTs) lastTs = ts;
+        var dt = ts - lastTs;
+        lastTs = ts;
+        update(dt);
+        requestAnimationFrame(loop);
+      }
+
+      window.spawnPaladin = spawnPaladin;
+      spawnPaladin();
+      requestAnimationFrame(loop);
+    })();
+  </script>
+
+  <script src="sounds/goon2025/soundscape-files.js"></script>
+  <script>
+    (function () {
+      var hudCount = document.getElementById('sound-count');
+      var hudNow = document.getElementById('now-playing');
+      var hudMode = document.getElementById('mode');
+      var basePath = 'sounds/goon2025/Sounds/';
+
+      function uniqueSorted(arr) {
+        var seen = Object.create(null);
+        var out = [];
+        for (var i = 0; i < arr.length; i++) {
+          var k = arr[i];
+          if (!seen[k]) {
+            seen[k] = true;
+            out.push(k);
+          }
+        }
+        out.sort(function (a, b) { return a.toLowerCase() < b.toLowerCase() ? -1 : a.toLowerCase() > b.toLowerCase() ? 1 : 0; });
+        return out;
+      }
+
+      function buildPaths(names) {
+        return names.map(function (n) { return basePath + n; });
+      }
+
+      function makePlayer(filePaths) {
+        function sortByName(arr) {
+          return arr.slice().sort(function (a, b) {
+            var an = String(a).toLowerCase(), bn = String(b).toLowerCase();
+            return an < bn ? -1 : an > bn ? 1 : 0;
+          });
+        }
+        // Build master and categorized lists; prefer precomputed categories if available
+        var all = sortByName(filePaths);
+        var peacefulList = Array.isArray(window.SOUND_FILES_PEACEFUL) ? sortByName(window.SOUND_FILES_PEACEFUL) : all.slice();
+        var warList = Array.isArray(window.SOUND_FILES_NONPEACEFUL) ? sortByName(window.SOUND_FILES_NONPEACEFUL) : all.slice();
+        var ambienceList = Array.isArray(window.SOUND_FILES_AMBIENCE) ? sortByName(window.SOUND_FILES_AMBIENCE) : [];
+
+        var isPeaceful = true;
+        var files = isPeaceful ? peacefulList : warList;
+        var idx = Math.floor(Math.random() * (files.length || 1));
+        var ambIdx = Math.floor(Math.random() * (ambienceList.length || 1));
+
+        function setMode(peace) {
+          isPeaceful = !!peace;
+          files = (isPeaceful ? peacefulList : warList);
+          if (!files.length) files = all;
+          idx = Math.floor(Math.random() * (files.length || 1));
+          if (hudMode) hudMode.textContent = isPeaceful ? 'peaceful' : 'non-peaceful';
+        }
+
+        function scheduleFlip() {
+          var delay = 20000 + Math.random() * 40000; // 20s - 60s
+          setTimeout(function () {
+            setMode(!isPeaceful);
+            scheduleFlip();
+          }, delay);
+        }
+        setMode(true);
+        scheduleFlip();
+
+        function chooseNext() {
+          if (files.length === 0) return idx;
+          var roll = Math.random();
+          // 0.10 repeat same
+          if (roll < 0.10) {
+            return idx;
+          }
+          // Next alphabetical 0.15
+          if (roll < 0.25) {
+            return (idx + 1) % files.length;
+          }
+          // Otherwise random different
+          var next = idx;
+          if (files.length > 1) {
+            while (next === idx) {
+              next = Math.floor(Math.random() * files.length);
+            }
+          }
+          return next;
+        }
+
+        function scheduleNext() {
+          // Much more frequent, randomized cadence: 300ms - 3000ms
+          var delayMs = 300 + Math.random() * 2700;
+          setTimeout(playOnce, delayMs);
+        }
+
+        function playOnce() {
+          // Randomize burst size: mostly 1-3, sometimes 4-5
+          var r = Math.random();
+          var burst = r < 0.6 ? 1 : r < 0.85 ? 2 : r < 0.95 ? 3 : r < 0.985 ? 4 : 5;
+          for (var b = 0; b < burst; b++) {
+            (function (offset) {
+              setTimeout(function () {
+                idx = chooseNext();
+                var src = files[idx];
+                hudNow.textContent = src.replace(basePath, '');
+                var a = new Audio(src);
+                // Slight volume variance to avoid monotony
+                a.volume = 0.6 + Math.random() * 0.35; // 0.6 - 0.95
+                a.play().catch(function () {
+                  // Ignore autoplay errors; continue scheduling
+                });
+              }, offset);
+            })(b * (80 + Math.random() * 220)); // 80-300ms between items in burst
+          }
+          // Schedule the next burst with new randomized interval
+          scheduleNext();
+        }
+
+        // Ambience channel: always-on gentle background, independent of mode
+        function scheduleAmbienceNext() {
+          if (!ambienceList.length) return;
+          var delayMs = 800 + Math.random() * 2600; // 0.8s - 3.4s
+          setTimeout(playAmbienceOnce, delayMs);
+        }
+
+        function playAmbienceOnce() {
+          if (!ambienceList.length) return;
+          // small burst 1-2 layers
+          var layers = Math.random() < 0.75 ? 1 : 2;
+          for (var i = 0; i < layers; i++) {
+            (function (offset) {
+              setTimeout(function () {
+                ambIdx = (ambIdx + 1) % ambienceList.length;
+                var src = ambienceList[ambIdx];
+                // Do not override the HUD with ambience every time; keep battlefield SFX priority
+                var a = new Audio(src);
+                a.volume = 0.25 + Math.random() * 0.2; // 0.25 - 0.45 softer bed
+                a.play().catch(function () {});
+              }, offset);
+            })(i * (200 + Math.random() * 300));
+          }
+          scheduleAmbienceNext();
+        }
+
+        hudCount.textContent = all.length.toString();
+        scheduleNext();
+        scheduleAmbienceNext();
+      }
+
+      var fromFile = Array.isArray(window.SOUND_FILES) ? window.SOUND_FILES.slice() : [];
+      if (fromFile.length) {
+        makePlayer(fromFile);
+      } else {
+        makePlayer([]);
+      }
+    })();
+  </script>
+</body>
+</html>
+
