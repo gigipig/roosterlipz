@@ -88,6 +88,70 @@
       height: 28px;
       object-fit: cover;
     }
+
+    /* Custom cursor */
+    * {
+      cursor: url('images/New 2025/New items/cursor.cur'), auto;
+    }
+
+    /* Animated images container */
+    .animated-items-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      padding: 20px;
+    }
+
+    .animated-items-container img {
+      width: 150px;
+      height: auto;
+      border: 2px solid rgba(0, 255, 45, 0.5);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .animated-items-container img:hover {
+      transform: scale(1.1);
+      border-color: rgb(0, 255, 45);
+    }
+
+    /* Villager control area */
+    #villager-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    #villager {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      pointer-events: auto;
+      transition: transform 0.1s linear;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+
+    .villager-control-info {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: rgb(0, 255, 45);
+      padding: 10px;
+      border-radius: 5px;
+      font-family: "Comic Sans MS", "Comic Sans";
+      font-size: 14px;
+      z-index: 1001;
+      pointer-events: none;
+    }
   </style>
 </head>
 <style>
@@ -122,9 +186,17 @@
       <img src="images/gifs/aniherb.gif" alt="GIF 7">
     </div>
 
-    <body>
-      <centre>
-        <div id="dosbox"></div>
+    <!-- Animated items from New 2025/New items -->
+    <div class="animated-items-container">
+      <img src="images/New 2025/New items/Centurion_stab.webp" alt="Centurion Stab">
+      <img src="images/New 2025/New items/Hawk.webp" alt="Hawk">
+      <img src="images/New 2025/New items/Huskarl.webp" alt="Huskarl">
+      <img src="images/New 2025/New items/Petard.webp" alt="Petard">
+      <img src="images/New 2025/New items/Villager_m_walkanim_aoe2.webp" alt="Villager">
+      <img src="images/New 2025/New items/Wolf_chase.webp" alt="Wolf Chase">
+    </div>
+
+    <div id="dosbox"></div>
         <br />
         <button onclick="dosbox.requestFullScreen();">Make fullscreen</button>
 
@@ -167,6 +239,121 @@
             audioElement.play();
           }
         </script>
+        <!-- Villager Control System -->
+        <div class="villager-control-info">
+          Click anywhere to move the villager!
+        </div>
+        <div id="villager-container">
+          <img id="villager" src="images/New 2025/New items/Villager_m_walkanim_aoe2.webp" alt="Controllable Villager">
+        </div>
+        <script>
+          // Villager Control System
+          (function() {
+            // Wait for DOM to be ready
+            function initVillager() {
+              const villager = document.getElementById('villager');
+              if (!villager) {
+                setTimeout(initVillager, 10);
+                return;
+              }
+
+              const container = document.getElementById('villager-container');
+              let targetX = window.innerWidth / 2;
+              let targetY = window.innerHeight / 2;
+              let currentX = targetX;
+              let currentY = targetY;
+              let isMoving = false;
+
+              // Initialize villager position
+              villager.style.left = targetX - 32 + 'px';
+              villager.style.top = targetY - 32 + 'px';
+
+              // Handle click to move villager
+              document.addEventListener('click', function(e) {
+                targetX = e.clientX;
+                targetY = e.clientY;
+                isMoving = true;
+                moveVillager();
+              });
+
+              // Handle mouse move for smoother following (optional)
+              document.addEventListener('mousemove', function(e) {
+                if (e.buttons === 1) { // Only if mouse button is held down
+                  targetX = e.clientX;
+                  targetY = e.clientY;
+                  if (!isMoving) {
+                    isMoving = true;
+                    moveVillager();
+                  }
+                }
+              });
+
+              // Animation function
+              function moveVillager() {
+                const dx = targetX - currentX;
+                const dy = targetY - currentY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 2) {
+                  isMoving = false;
+                  return;
+                }
+
+                // Move towards target
+                const speed = 5;
+                const moveX = (dx / distance) * speed;
+                const moveY = (dy / distance) * speed;
+
+                currentX += moveX;
+                currentY += moveY;
+
+                // Update villager position
+                villager.style.left = (currentX - 32) + 'px';
+                villager.style.top = (currentY - 32) + 'px';
+
+                // Flip villager based on direction
+                if (dx < 0) {
+                  villager.style.transform = 'scaleX(-1)';
+                } else {
+                  villager.style.transform = 'scaleX(1)';
+                }
+
+                // Continue animation
+                if (isMoving) {
+                  requestAnimationFrame(moveVillager);
+                }
+              }
+
+              // Touch support for mobile
+              document.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                targetX = touch.clientX;
+                targetY = touch.clientY;
+                isMoving = true;
+                moveVillager();
+              });
+
+              document.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                targetX = touch.clientX;
+                targetY = touch.clientY;
+                if (!isMoving) {
+                  isMoving = true;
+                  moveVillager();
+                }
+              });
+            }
+
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', initVillager);
+            } else {
+              initVillager();
+            }
+          })();
+        </script>
+
         <p class="title">roosterlipz</p>
         <!-- <iframe src="spaceraider.html" height='800px' width='800px'></iframe> -->
         <br>
