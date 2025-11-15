@@ -6,14 +6,18 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow-x: hidden;
+      overflow: auto;
       font-family: "Comic Sans MS", "Comic Sans", Arial, sans-serif;
     }
 
     .map-arabia {
       position: relative;
-      min-height: 100vh;
-      background: url("images/New 2025/Arabia.webp") center center / cover no-repeat fixed;
+      min-width: 4000px;
+      min-height: 4000px;
+      background-image: url("images/aoe textures/MAP000.BMP");
+      background-position: top left;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     .page-header {
@@ -66,8 +70,8 @@
     /* Left army (Blue) */
     .side-blue .badge {
       position: absolute;
-      left: 2%;
-      top: 6%;
+      left: 500px;
+      top: 200px;
       background: rgba(0, 40, 120, 0.75);
       color: #e6f7ff;
       padding: 6px 10px;
@@ -79,8 +83,8 @@
     /* Right army (Red) */
     .side-red .badge {
       position: absolute;
-      right: 2%;
-      top: 6%;
+      left: 2900px;
+      top: 200px;
       background: rgba(140, 0, 0, 0.78);
       color: #ffdddd;
       padding: 6px 10px;
@@ -89,14 +93,14 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.6);
     }
 
-    /* Strategic placements */
-    .villager { left: 6%; top: 56%; width: 80px; }
-    .outpost  { left: 12%; top: 42%; width: 120px; }
-    .ocean    { left: 2%; top: 70%; width: 200px; opacity: 0.9; }
+    /* Strategic placements - using pixel coordinates for large map */
+    .villager { left: 800px; top: 1500px; width: 80px; }
+    .outpost  { left: 600px; top: 1200px; width: 120px; }
+    .ocean    { left: 400px; top: 1800px; width: 200px; opacity: 0.9; }
 
-    .teutonic { width: 110px; }
-    .catapult { right: 12%; top: 32%; width: 450px; }
-    .frantic  { right: 4%; top: 35%; width: 90px; }
+    .teutonic { width: 110px; left: 2800px; top: 1400px; }
+    .catapult { left: 3000px; top: 1000px; width: 450px; }
+    .frantic  { left: 3200px; top: 1600px; width: 90px; }
     .paladin  { width: 160px; }
     .paladin-hue { filter: hue-rotate(180deg) saturate(1.5) drop-shadow(0 3px 6px rgba(0,0,0,0.5)); }
 
@@ -105,13 +109,12 @@
       transform-origin: center center;
     }
 
-    .temple   { left: calc(50% + 150px); top: calc(46% - 150px); width: 260px; transform: translate(-50%, -50%); }
+    .temple   { left: 1800px; top: 800px; width: 260px; }
 
     .legend {
       position: absolute;
-      left: 50%;
-      bottom: 16px;
-      transform: translateX(-50%);
+      left: 1600px;
+      bottom: 50px;
       background: rgba(0,0,0,0.65);
       color: #eaeaea;
       padding: 8px 12px;
@@ -137,6 +140,23 @@
     .soundscape .now {
       color: #fff;
       font-weight: 700;
+    }
+
+    .alienmode {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      background: url("images/aoe textures/alienmode.jpg") center center / cover no-repeat;
+    }
+
+    .alienmode.show {
+      opacity: 1;
     }
   </style>
 </head>
@@ -178,6 +198,8 @@
     <div>Mode: <span id="mode">peaceful</span></div>
     <div>Now: <span class="now" id="now-playing">—</span></div>
   </div>
+
+  <div class="alienmode" id="alienmode"></div>
 
   <script>
     (function () {
@@ -226,8 +248,8 @@
 
         var p = {
           el: img,
-          x: typeof options.x === 'number' ? options.x : battlefield.clientWidth * 0.7,
-          y: typeof options.y === 'number' ? options.y : battlefield.clientHeight * 0.55,
+          x: typeof options.x === 'number' ? options.x : 2500,
+          y: typeof options.y === 'number' ? options.y : 1600,
           speed: typeof options.speed === 'number' ? options.speed : 80,
           tx: 0,
           ty: 0,
@@ -359,10 +381,58 @@
       }
 
       window.spawnPaladin = spawnPaladin;
-      spawnPaladin();
-      spawnPaladin({ x: battlefield.clientWidth * 0.3, y: battlefield.clientHeight * 0.3, speed: 100, hueShift: true, followMouse: true });
+      spawnPaladin({ x: 2600, y: 1700 });
+      spawnPaladin({ x: 1200, y: 1100, speed: 100, hueShift: true, followMouse: true });
       initTeutonic();
       requestAnimationFrame(loop);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // Load the map image and set container to native size
+      var mapContainer = document.querySelector('.map-arabia');
+      if (mapContainer) {
+        var mapImg = new Image();
+        mapImg.onload = function() {
+          // Set container to actual image dimensions
+          mapContainer.style.width = mapImg.naturalWidth + 'px';
+          mapContainer.style.height = mapImg.naturalHeight + 'px';
+          mapContainer.style.minWidth = mapImg.naturalWidth + 'px';
+          mapContainer.style.minHeight = mapImg.naturalHeight + 'px';
+        };
+        mapImg.src = 'images/aoe textures/MAP000.BMP';
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var alienmodeEl = document.getElementById('alienmode');
+      if (!alienmodeEl) return;
+
+      function showAlienmode() {
+        // Fade in
+        alienmodeEl.classList.add('show');
+        
+        // After fade in completes (1.5s) + visible time (2s), fade out
+        setTimeout(function () {
+          alienmodeEl.classList.remove('show');
+        }, 3500);
+      }
+
+      // Show after 20 seconds, then schedule next appearance with random delay
+      function scheduleNextAlienmode() {
+        var delay = 20000 + Math.random() * 10000; // 20-30 seconds
+        setTimeout(function () {
+          showAlienmode();
+          // Schedule the next one after this appearance finishes (5 seconds)
+          setTimeout(scheduleNextAlienmode, 5000);
+        }, delay);
+      }
+
+      // Start the first appearance after 20 seconds
+      scheduleNextAlienmode();
     })();
   </script>
 
