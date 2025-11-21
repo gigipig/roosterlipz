@@ -94,13 +94,13 @@
     }
 
     /* Strategic placements - using pixel coordinates for large map */
-    .villager { left: 800px; top: 1500px; width: 80px; }
-    .outpost  { left: 600px; top: 1200px; width: 120px; }
+    .villager { left: 1200px; top: 1200px; width: 80px; }
+    .outpost  { left: 3100px; top: 600px; width: 120px; }
     .ocean    { left: 400px; top: 1800px; width: 200px; opacity: 0.9; }
 
     .teutonic { width: 110px; left: 2800px; top: 1400px; }
-    .catapult { left: 3000px; top: 1000px; width: 450px; }
-    .frantic  { left: 3200px; top: 1600px; width: 90px; }
+    .catapult { left: 2800px; top: 600px; width: 450px; }
+    .frantic  { left: 2500px; top: 720px; width: 90px; }
     .paladin  { width: 160px; }
     .paladin-hue { filter: hue-rotate(180deg) saturate(1.5) drop-shadow(0 3px 6px rgba(0,0,0,0.5)); }
 
@@ -171,24 +171,18 @@
 
     <div class="battlefield">
       <div class="side-blue">
-        <div class="badge">Blue Army</div>
         <img class="unit villager" src="images/New 2025/Villager.gif" alt="Villager">
         <img class="structure outpost" src="images/New 2025/Outpost.gif" alt="Outpost">
         <img class="terrain ocean" src="images/New 2025/Ocean.gif" alt="Shoreline">
       </div>
 
       <div class="side-red">
-        <div class="badge">Red Army</div>
         <img class="unit teutonic" id="teutonic" src="images/New 2025/Teutonic_Knight_cometh.gif" alt="Teutonic Knight">
         <img class="unit catapult" src="images/New 2025/Catapault2.gif" alt="Catapult">
         <img class="unit frantic" src="images/New 2025/Frantic.gif" alt="Frantic">
       </div>
 
       <img class="landmark temple" src="images/New 2025/AztecTemple.webp" alt="Aztec Temple">
-
-      <div class="legend">
-        GIFs = animated units and structures · WEBP = elite or landmarks · Map = Arabia
-      </div>
     </div>
   </div>
 
@@ -206,17 +200,22 @@
       var battlefield = document.querySelector('.battlefield');
       if (!battlefield) return;
 
-      var paladins = [];
-      var teutonics = [];
+      var actors = [];
       var lastTs = 0;
-      var mouseX = 0;
-      var mouseY = 0;
+      var mouse = { x: 0, y: 0 };
+      var battlefieldRect = battlefield.getBoundingClientRect();
 
-      // Track mouse position
+      function refreshRect() {
+        battlefieldRect = battlefield.getBoundingClientRect();
+      }
+
+      window.addEventListener('resize', refreshRect);
+      window.addEventListener('scroll', refreshRect, true);
+
       document.addEventListener('mousemove', function(e) {
         var rect = battlefield.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
       });
 
       function randomBetween(min, max) {
@@ -227,148 +226,193 @@
         return Math.max(min, Math.min(max, value));
       }
 
-      function pickNewTarget(p) {
-        var rect = battlefield.getBoundingClientRect();
-        var pad = 20;
-        p.tx = Math.random() * (rect.width - 2 * pad) + pad;
-        p.ty = Math.random() * (rect.height - 2 * pad) + pad;
-        p.timeout = 2000 + Math.random() * 3000;
+      class BattlefieldActor {
+        constructor(options) {
+          options = options || {};
+          this.type = options.type || 'unit';
+          this.followMouse = !!options.followMouse;
+          this.speed = typeof options.speed === 'number' ? options.speed : 80;
+          this.hue = typeof options.hue === 'number' ? options.hue : null;
+          this.el = options.el || document.createElement('img');
+
+          if (!options.el) {
+            this.el.className = options.className || 'unit';
+            this.el.alt = options.alt || this.type;
+            if (options.src) this.el.src = options.src;
+            battlefield.appendChild(this.el);
+          } else if (!options.keepParent && this.el.parentNode !== battlefield) {
+            battlefield.appendChild(this.el);
+          }
+
+          this.el.style.position = 'absolute';
+
+          this.props = this.buildProps(options.props);
+          this.width = options.width || this.el.width || this.el.naturalWidth || 120;
+          this.height = options.height || this.el.height || this.el.naturalHeight || 120;
+
+          var hasX = typeof options.x === 'number';
+          var hasY = typeof options.y === 'number';
+
+          this.x = hasX ? options.x : randomBetween(0, Math.max(10, battlefieldRect.width - this.width));
+          this.y = hasY ? options.y : randomBetween(0, Math.max(10, battlefieldRect.height - this.height));
+          this.tx = this.x;
+          this.ty = this.y;
+          this.timeout = 0;
+
+          var self = this;
+          this.el.addEventListener('load', function () {
+            self.width = self.el.width || self.el.naturalWidth || self.width;
+            self.height = self.el.height || self.el.naturalHeight || self.height;
+            self.refresh();
+          });
+
+          this.applyHue();
+          this.pickNewTarget();
+          this.refresh();
+        }
+
+        buildProps(extra) {
+          var base = {
+            grit: +randomBetween(0.3, 1).toFixed(2),
+            morale: +randomBetween(0.3, 1).toFixed(2),
+            volatility: +randomBetween(-0.5, 0.5).toFixed(2)
+          };
+          return Object.assign(base, extra || {});
+        }
+
+        applyHue() {
+          var shadow = 'drop-shadow(0 3px 6px rgba(0,0,0,0.5))';
+          this.el.style.filter = this.hue == null ? shadow : 'hue-rotate(' + this.hue + 'deg) saturate(1.4) ' + shadow;
+        }
+
+        pickNewTarget() {
+          if (this.speed <= 0 || this.followMouse) return;
+          this.timeout = 2000 + Math.random() * 3000;
+          var pad = 20;
+          refreshRect();
+          this.tx = randomBetween(pad, Math.max(pad, battlefieldRect.width - pad));
+          this.ty = randomBetween(pad, Math.max(pad, battlefieldRect.height - pad));
+        }
+
+        refresh() {
+          this.el.style.left = Math.round(this.x) + 'px';
+          this.el.style.top = Math.round(this.y) + 'px';
+        }
+
+        update(dt) {
+          if (this.speed <= 0) return;
+          if (this.followMouse) {
+            this.tx = mouse.x;
+            this.ty = mouse.y;
+          } else {
+            this.timeout -= dt;
+          }
+
+          var dx = this.tx - this.x;
+          var dy = this.ty - this.y;
+          var dist = Math.hypot(dx, dy) || 1;
+
+          this.el.classList.toggle('face-left', dx < 0);
+
+          if (!this.followMouse && (dist < 4 || this.timeout <= 0)) {
+            this.pickNewTarget();
+            return;
+          }
+
+          var step = this.speed * (dt / 1000);
+          var nx = this.x + (dx / dist) * step;
+          var ny = this.y + (dy / dist) * step;
+
+          refreshRect();
+          var w = this.el.width || this.width;
+          var h = this.el.height || this.height;
+
+          this.x = clamp(nx, 0, Math.max(0, battlefieldRect.width - w));
+          this.y = clamp(ny, 0, Math.max(0, battlefieldRect.height - h));
+
+          this.refresh();
+        }
+      }
+
+      function spawnActor(config) {
+        var actor = new BattlefieldActor(config);
+        actors.push(actor);
+        return actor;
+      }
+
+      function adoptActor(selector, config) {
+        var el = battlefield.querySelector(selector);
+        if (!el) return null;
+        refreshRect();
+        var rect = el.getBoundingClientRect();
+        return spawnActor(Object.assign({
+          el: el,
+          x: rect.left - battlefieldRect.left,
+          y: rect.top - battlefieldRect.top
+        }, config || {}));
       }
 
       function spawnPaladin(options) {
         options = options || {};
-        var img = document.createElement('img');
-        img.className = 'unit paladin' + (options.hueShift ? ' paladin-hue' : '');
-        img.alt = 'Paladin';
-        img.src = 'images/New 2025/Paladin.webp';
-        img.style.left = '0px';
-        img.style.top = '0px';
-
-        battlefield.appendChild(img);
-
-        var p = {
-          el: img,
-          x: typeof options.x === 'number' ? options.x : 2500,
-          y: typeof options.y === 'number' ? options.y : 1600,
-          speed: typeof options.speed === 'number' ? options.speed : 80,
-          tx: 0,
-          ty: 0,
-          timeout: 0,
-          followMouse: !!options.followMouse
-        };
-        pickNewTarget(p);
-        paladins.push(p);
-        img.style.position = 'absolute';
-        img.style.left = Math.round(p.x) + 'px';
-        img.style.top = Math.round(p.y) + 'px';
-
-        return p;
+        return spawnActor(Object.assign({
+          type: 'paladin',
+          className: 'unit paladin',
+          src: 'images/New 2025/Paladin.webp',
+          alt: 'Paladin'
+        }, options));
       }
 
-      function initTeutonic() {
-        var teuEl = document.getElementById('teutonic');
-        if (!teuEl) return;
-        
-        var rect = teuEl.getBoundingClientRect();
-        var bfRect = battlefield.getBoundingClientRect();
-        
-        var t = {
-          el: teuEl,
-          x: rect.left - bfRect.left,
-          y: rect.top - bfRect.top,
-          speed: 60,
-          tx: 0,
-          ty: 0,
-          timeout: 0
-        };
-        
-        teuEl.style.position = 'absolute';
-        teuEl.style.left = Math.round(t.x) + 'px';
-        teuEl.style.top = Math.round(t.y) + 'px';
-        teuEl.style.right = 'auto';
-        
-        pickNewTarget(t);
-        teutonics.push(t);
-      }
+      window.spawnPaladin = spawnPaladin;
 
-      function update(dt) {
-        // Update paladins
-        for (var i = 0; i < paladins.length; i++) {
-          var p = paladins[i];
-          
-          // If following mouse, set target to mouse position
-          if (p.followMouse) {
-            p.tx = mouseX;
-            p.ty = mouseY;
+      function deployEntries(entries) {
+        for (var i = 0; i < entries.length; i++) {
+          var entry = entries[i];
+          if (entry.mode === 'adopt') {
+            adoptActor(entry.selector, entry.config);
+          } else if (entry.mode === 'paladin') {
+            spawnPaladin(entry.config);
           } else {
-            p.timeout -= dt;
-          }
-
-          var dx = p.tx - p.x;
-          var dy = p.ty - p.y;
-          var dist = Math.hypot(dx, dy) || 1;
-
-          var movingLeft = dx < 0;
-          if (movingLeft) {
-            p.el.classList.add('face-left');
-          } else {
-            p.el.classList.remove('face-left');
-          }
-
-          if (!p.followMouse && (dist < 4 || p.timeout <= 0)) {
-            pickNewTarget(p);
-          } else {
-            var step = p.speed * (dt / 1000);
-            var nx = p.x + (dx / dist) * step;
-            var ny = p.y + (dy / dist) * step;
-
-            var rect = battlefield.getBoundingClientRect();
-            var w = p.el.width || 160;
-            var h = p.el.height || 160;
-            nx = clamp(nx, 0, rect.width - w);
-            ny = clamp(ny, 0, rect.height - h);
-
-            p.x = nx;
-            p.y = ny;
-            p.el.style.left = Math.round(p.x) + 'px';
-            p.el.style.top = Math.round(p.y) + 'px';
+            spawnActor(entry.config);
           }
         }
+      }
 
-        // Update teutonic knights
-        for (var j = 0; j < teutonics.length; j++) {
-          var t = teutonics[j];
-          t.timeout -= dt;
+      var roster = {
+        civilians: [
+          { mode: 'adopt', selector: '.villager', config: { type: 'villager', speed: 35 } }
+        ],
+        buildings: [
+          { mode: 'adopt', selector: '.structure.outpost', config: { type: 'outpost', speed: 0 } },
+          { mode: 'adopt', selector: '.landmark.temple', config: { type: 'temple', speed: 0 } },
+        ],
+        terrain: [
+          { mode: 'adopt', selector: '.terrain.ocean', config: { type: 'ocean', speed: 0 } }
+        ],
+        military: [
+          { mode: 'adopt', selector: '#teutonic', config: { type: 'teutonic', speed: 60 } },
+          { mode: 'adopt', selector: '.frantic', config: { type: 'frantic', speed: 90 } },
+          { mode: 'paladin', config: { x: 2600, y: 1700, speed: 90 } },
+          { mode: 'paladin', config: { x: 1200, y: 1100, speed: 110, followMouse: true } },
+          { mode: 'spawn', config: { type: 'camel', className: 'unit cavalry', src: 'images/New 2025/camel.gif', alt: 'Camel Rider', speed: 120 } },
+          { mode: 'spawn', config: { type: 'cavalry', className: 'unit cavalry', src: 'images/New 2025/cavalry.gif', alt: 'Heavy Cavalry', speed: 135 } },
+          { mode: 'spawn', config: { type: 'lancer', className: 'unit cavalry', src: 'images/New 2025/lancer.gif', alt: 'Lancer', speed: 125 } },
+          { mode: 'spawn', config: { type: 'stoic', className: 'unit infantry', src: 'images/New 2025/stoic.gif', alt: 'Stoic Guard', speed: 70 } },
+          { mode: 'spawn', config: { type: 'wolf', className: 'unit skirmisher', src: 'images/New 2025/wolf.webp', alt: 'War Wolf', speed: 140 } },
+        ],
+        siege: [
+          { mode: 'adopt', selector: '.catapult', config: { type: 'catapult', speed: 20 } },
+          { mode: 'spawn', config: { type: 'trebuchet', className: 'unit siege', src: 'images/New 2025/trebuchet.webp', alt: 'Trebuchet', speed: 15 } },
+          { mode: 'spawn', config: { type: 'roller', className: 'unit siege', src: 'images/New 2025/roller.webp', alt: 'Siege Roller', speed: 18 } }
+        ]
+      };
 
-          var tdx = t.tx - t.x;
-          var tdy = t.ty - t.y;
-          var tdist = Math.hypot(tdx, tdy) || 1;
+      Object.keys(roster).forEach(function (group) {
+        deployEntries(roster[group]);
+      });
 
-          var tMovingLeft = tdx < 0;
-          if (tMovingLeft) {
-            t.el.classList.add('face-left');
-          } else {
-            t.el.classList.remove('face-left');
-          }
-
-          if (tdist < 4 || t.timeout <= 0) {
-            pickNewTarget(t);
-          } else {
-            var tStep = t.speed * (dt / 1000);
-            var tnx = t.x + (tdx / tdist) * tStep;
-            var tny = t.y + (tdy / tdist) * tStep;
-
-            var tRect = battlefield.getBoundingClientRect();
-            var tw = t.el.width || 110;
-            var th = t.el.height || 110;
-            tnx = clamp(tnx, 0, tRect.width - tw);
-            tny = clamp(tny, 0, tRect.height - th);
-
-            t.x = tnx;
-            t.y = tny;
-            t.el.style.left = Math.round(t.x) + 'px';
-            t.el.style.top = Math.round(t.y) + 'px';
-          }
+      function updateAll(dt) {
+        for (var i = 0; i < actors.length; i++) {
+          actors[i].update(dt);
         }
       }
 
@@ -376,14 +420,10 @@
         if (!lastTs) lastTs = ts;
         var dt = ts - lastTs;
         lastTs = ts;
-        update(dt);
+        updateAll(dt);
         requestAnimationFrame(loop);
       }
 
-      window.spawnPaladin = spawnPaladin;
-      spawnPaladin({ x: 2600, y: 1700 });
-      spawnPaladin({ x: 1200, y: 1100, speed: 100, hueShift: true, followMouse: true });
-      initTeutonic();
       requestAnimationFrame(loop);
     })();
   </script>
