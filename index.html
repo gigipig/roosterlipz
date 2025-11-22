@@ -193,13 +193,29 @@
 <body>
     <canvas id="rain"></canvas>
     
+    <audio id="bgMusic" autoplay loop>
+        <source src="sounds/index music/ambience2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <div class="container">
         <h1>★ ROOSTERLIPZ ★</h1>
         <p class="subtitle">◆ CLANK.CZ ◆</p>
 
         <div class="ascii-art">
-
-
+██████╗  ██████╗  ██████╗ ███████╗████████╗███████╗██████╗ 
+██╔══██╗██╔═══██╗██╔═══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗
+██████╔╝██║   ██║██║   ██║███████╗   ██║   ███████╗██████╔╝
+██╔══██╗██║   ██║██║   ██║╚════██║   ██║   ╚════██║██╔══██╗
+██║  ██║╚██████╔╝╚██████╔╝███████║   ██║   ███████║██║  ██║
+╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+                                                            
+██╗      █████╗ ██████╗ ██╗   ██╗██████╗ ██╗███╗   ██╗████████╗██╗  ██╗
+██║     ██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗██║████╗  ██║╚══██╔══╝██║  ██║
+██║     ███████║██████╔╝ ╚████╔╝ ██████╔╝██║██╔██╗ ██║   ██║   ███████║
+██║     ██╔══██║██╔══██╗  ╚██╔╝  ██╔══██╗██║██║╚██╗██║   ██║   ██╔══██║
+███████╗██║  ██║██████╔╝   ██║   ██║  ██║██║██║ ╚████║   ██║   ██║  ██║
+╚══════╝╚═╝  ╚═╝╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝
         </div>
 
         <div class="links">
@@ -317,6 +333,21 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
+    </script>
+    <script>
+        // Attempt to play music on any user interaction
+        const music = document.getElementById('bgMusic');
+        
+        function tryPlayMusic() {
+            music.play().catch(e => {
+                // If autoplay fails, try again on first click
+                document.addEventListener('click', () => {
+                    music.play();
+                }, { once: true });
+            });
+        }
+        
+        tryPlayMusic();
     </script>
 </body>
 </html>
