@@ -21,6 +21,32 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            cursor: none; /* Hide default cursor */
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4ecdc4;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px #4ecdc4, 0 0 30px #4ecdc4;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            box-shadow: 0 0 10px #4ecdc4;
         }
 
         #rain {
@@ -215,9 +241,129 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* Hidden Terminal Styles */
+        .terminal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .terminal-overlay.active {
+            display: flex;
+        }
+
+        .terminal-window {
+            width: 80%;
+            max-width: 800px;
+            height: 500px;
+            background: #0a0a0a;
+            border: 2px solid #4ecdc4;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(78, 205, 196, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 10px 15px;
+            border-bottom: 1px solid #4ecdc4;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .terminal-title {
+            color: #4ecdc4;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .terminal-close {
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 8px;
+            transition: color 0.3s;
+        }
+
+        .terminal-close:hover {
+            color: #ff8787;
+        }
+
+        .terminal-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            color: #4ecdc4;
+        }
+
+        .terminal-output {
+            margin-bottom: 10px;
+        }
+
+        .terminal-prompt {
+            color: #ffe66d;
+            margin-right: 8px;
+        }
+
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #4ecdc4;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .terminal-error {
+            color: #ff6b6b;
+        }
+
+        .terminal-success {
+            color: #95e1d3;
+        }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+
+    <!-- Terminal Overlay -->
+    <div class="terminal-overlay" id="terminalOverlay">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-title">ROOSTERLIPZ TERMINAL v1.0</span>
+                <span class="terminal-close" id="terminalClose">✕</span>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-output">Welcome to ROOSTERLIPZ Terminal</div>
+                <div class="terminal-output">Type 'help' for available commands</div>
+                <div class="terminal-output">Press ESC or click X to close</div>
+                <div class="terminal-output">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+            </div>
+        </div>
+    </div>
+
     <canvas id="rain"></canvas>
     
     <audio id="bgMusic" autoplay crossorigin="anonymous">
@@ -249,7 +395,7 @@
         <div class="visualizer-container">
             <canvas id="canvas" width="800" height="300"></canvas>
         </div>
-        <div class="viz-label">◇ If you ain't got a gooseneck, take your broke ass home. ◇</div>
+        <div class="viz-label">◇ WINAMP AVS VISUALIZER ◇</div>
 
         <div class="links">
             <h2>ENTER THE MAZE</h2>
@@ -291,6 +437,20 @@
         const fontSize = 14;
         const columns = Math.floor(canvas.width / (fontSize * 0.6));
 
+        // Mouse properties for physics
+        const mouse = {
+            x: -1000,
+            y: -1000,
+            radius: 80, // Area of influence
+            repelStrength: 5 // How strongly it pushes raindrops away
+        };
+
+        // Track mouse position
+        document.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
         // Raindrops array
         const raindrops = [];
 
@@ -301,9 +461,29 @@
                 this.speed = Math.random() * 3 + 2;
                 this.length = Math.floor(Math.random() * 15) + 10;
                 this.opacity = Math.random() * 0.5 + 0.3;
+                this.vx = 0; // Horizontal velocity for mouse interaction
             }
 
             update() {
+                // Calculate distance from mouse
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Mouse repulsion physics
+                if (distance < mouse.radius) {
+                    const force = (mouse.radius - distance) / mouse.radius;
+                    const angle = Math.atan2(dy, dx);
+                    this.vx += Math.cos(angle) * force * mouse.repelStrength;
+                    // Also push up slightly when mouse is near
+                    this.y -= force * mouse.repelStrength * 0.5;
+                }
+
+                // Apply horizontal velocity and friction
+                this.x += this.vx;
+                this.vx *= 0.85; // Friction/damping
+
+                // Normal downward movement
                 this.y += this.speed;
                 
                 // Reset raindrop when it goes off screen
@@ -312,7 +492,12 @@
                     this.x = Math.random() * canvas.width;
                     this.speed = Math.random() * 3 + 2;
                     this.length = Math.floor(Math.random() * 15) + 10;
+                    this.vx = 0;
                 }
+
+                // Keep within bounds horizontally
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
             }
 
             draw() {
@@ -349,6 +534,8 @@
             ctx.fillStyle = 'rgba(26, 26, 46, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            // Mouse cursor influence area is now invisible - no visual feedback drawn
+
             // Update and draw raindrops
             raindrops.forEach(drop => {
                 drop.update();
@@ -380,6 +567,9 @@
             'sounds/index music/spyro.mp3'
         ];
         let currentTrack = 0;
+
+        // Set volume to 75% (25% reduction)
+        music.volume = 0.75;
 
         // Handle track ending - play next track
         music.addEventListener('ended', function() {
@@ -489,6 +679,256 @@
         }
         
         tryPlayMusic();
+    </script>
+
+    <!-- Custom Cursor Trail Script -->
+    <script>
+        const cursor = document.getElementById('cursor');
+        const trails = [];
+        const maxTrails = 15;
+
+        // Create trail elements
+        for (let i = 0; i < maxTrails; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            document.body.appendChild(trail);
+            trails.push({
+                element: trail,
+                x: 0,
+                y: 0
+            });
+        }
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentTrail = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Update main cursor
+            cursor.style.left = (mouseX - 10) + 'px';
+            cursor.style.top = (mouseY - 10) + 'px';
+
+            // Create trail effect
+            const trail = trails[currentTrail];
+            trail.x = mouseX;
+            trail.y = mouseY;
+            trail.element.style.left = (mouseX - 4) + 'px';
+            trail.element.style.top = (mouseY - 4) + 'px';
+            trail.element.style.opacity = '0.8';
+
+            // Fade out trail
+            setTimeout(() => {
+                trail.element.style.opacity = '0';
+                trail.element.style.transition = 'opacity 0.5s ease';
+            }, 50);
+
+            currentTrail = (currentTrail + 1) % maxTrails;
+        });
+
+        // Cursor scale on click
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+        });
+    </script>
+
+    <!-- Audio Reactive Background Script -->
+    <script>
+        let audioReactiveEnabled = false;
+
+        // Wait for webvs to be initialized
+        setTimeout(() => {
+            if (analyser) {
+                audioReactiveEnabled = true;
+                const bgDataArray = new Uint8Array(analyser.analyser.frequencyBinCount);
+                
+                function updateBackground() {
+                    if (!audioReactiveEnabled) return;
+                    
+                    analyser.analyser.getByteFrequencyData(bgDataArray);
+                    
+                    // Get average frequency (bass and mid-range)
+                    let sum = 0;
+                    for (let i = 0; i < 32; i++) { // Focus on lower frequencies
+                        sum += bgDataArray[i];
+                    }
+                    const average = sum / 32;
+                    
+                    // Calculate intensity (0 to 1)
+                    const intensity = average / 255;
+                    
+                    // Pulse the background gradient based on audio
+                    const baseHue1 = 234; // #1a1a2e
+                    const baseHue2 = 217; // #16213e
+                    const baseHue3 = 207; // #0f3460
+                    
+                    const pulse = intensity * 20; // Subtle pulse
+                    
+                    document.body.style.background = `linear-gradient(to bottom, 
+                        hsl(${baseHue1}, ${20 + pulse}%, ${12 + pulse}%) 0%, 
+                        hsl(${baseHue2}, ${30 + pulse}%, ${15 + pulse}%) 50%, 
+                        hsl(${baseHue3}, ${60 + pulse}%, ${20 + pulse}%) 100%)`;
+                    
+                    requestAnimationFrame(updateBackground);
+                }
+                
+                updateBackground();
+            }
+        }, 2000);
+    </script>
+
+    <!-- Hidden Terminal Access Script -->
+    <script>
+        const terminalOverlay = document.getElementById('terminalOverlay');
+        const terminalBody = document.getElementById('terminalBody');
+        const terminalClose = document.getElementById('terminalClose');
+        
+        let terminalHistory = [];
+        let currentInput = null;
+
+        // Terminal commands
+        const commands = {
+            help: () => {
+                return `<div class="terminal-success">Available Commands:</div>
+                        <div>• help - Show this help message</div>
+                        <div>• about - About ROOSTERLIPZ</div>
+                        <div>• links - Show all available links</div>
+                        <div>• music - Control music playback</div>
+                        <div>• visualizer - Toggle visualizer effects</div>
+                        <div>• matrix - Enter the Matrix</div>
+                        <div>• clear - Clear terminal</div>
+                        <div>• exit - Close terminal</div>`;
+            },
+            about: () => {
+                return `<div class="terminal-success">ROOSTERLIPZ - LABYRINTH OF LINKS</div>
+                        <div>A cyberpunk portal to digital worlds</div>
+                        <div>Hosted on clank.cz</div>
+                        <div>◆ Where the rain meets the machine ◆</div>`;
+            },
+            links: () => {
+                return `<div class="terminal-success">Available Portals:</div>
+                        <div>→ ambience</div>
+                        <div>→ The Labyrinth</div>
+                        <div>→ LOCKER</div>
+                        <div>→ SNAKE</div>
+                        <div>→ SPACE RAIDER 2</div>
+                        <div>→ birdville</div>`;
+            },
+            music: () => {
+                if (music.paused) {
+                    music.play();
+                    return `<div class="terminal-success">♪ Music resumed</div>`;
+                } else {
+                    music.pause();
+                    return `<div class="terminal-success">♪ Music paused</div>`;
+                }
+            },
+            visualizer: () => {
+                if (webvs) {
+                    const canvas = document.getElementById('canvas');
+                    if (canvas.style.display === 'none') {
+                        canvas.style.display = 'block';
+                        return `<div class="terminal-success">Visualizer enabled</div>`;
+                    } else {
+                        canvas.style.display = 'none';
+                        return `<div class="terminal-success">Visualizer disabled</div>`;
+                    }
+                }
+                return `<div class="terminal-error">Visualizer not available</div>`;
+            },
+            matrix: () => {
+                return `<div class="terminal-success">Wake up, Neo...</div>
+                        <div>The Matrix has you.</div>
+                        <div>Follow the white rabbit.</div>
+                        <div style="color: #4ecdc4;">Knock, knock.</div>`;
+            },
+            clear: () => {
+                terminalBody.innerHTML = '';
+                return '';
+            },
+            exit: () => {
+                closeTerminal();
+                return '';
+            }
+        };
+
+        // Open terminal with backtick key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '`' || e.key === '~') {
+                e.preventDefault();
+                if (!terminalOverlay.classList.contains('active')) {
+                    openTerminal();
+                }
+            } else if (e.key === 'Escape' && terminalOverlay.classList.contains('active')) {
+                closeTerminal();
+            }
+        });
+
+        function openTerminal() {
+            terminalOverlay.classList.add('active');
+            createInputLine();
+        }
+
+        function closeTerminal() {
+            terminalOverlay.classList.remove('active');
+            if (currentInput) {
+                currentInput.remove();
+                currentInput = null;
+            }
+        }
+
+        terminalClose.addEventListener('click', closeTerminal);
+
+        function createInputLine() {
+            const inputLine = document.createElement('div');
+            inputLine.className = 'terminal-input-line';
+            inputLine.innerHTML = `
+                <span class="terminal-prompt">root@roosterlipz:~$</span>
+                <input type="text" class="terminal-input" id="terminalInput" autofocus>
+            `;
+            terminalBody.appendChild(inputLine);
+            
+            const input = document.getElementById('terminalInput');
+            currentInput = inputLine;
+            input.focus();
+            
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const command = input.value.trim().toLowerCase();
+                    input.disabled = true;
+                    
+                    if (command) {
+                        executeCommand(command);
+                    }
+                    
+                    createInputLine();
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                }
+            });
+        }
+
+        function executeCommand(command) {
+            if (commands[command]) {
+                const output = commands[command]();
+                if (output) {
+                    const outputDiv = document.createElement('div');
+                    outputDiv.className = 'terminal-output';
+                    outputDiv.innerHTML = output;
+                    terminalBody.appendChild(outputDiv);
+                }
+            } else if (command) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'terminal-output terminal-error';
+                errorDiv.textContent = `Command not found: ${command}`;
+                terminalBody.appendChild(errorDiv);
+            }
+        }
     </script>
 </body>
 </html>
