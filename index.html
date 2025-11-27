@@ -84,6 +84,33 @@
             50% { color: #ffe66d; text-shadow: 0 0 10px #ffe66d; }
         }
 
+        /* Webvs Visualizer Container */
+        .visualizer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(78, 205, 196, 0.3);
+        }
+
+        #canvas {
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            max-width: 100%;
+        }
+
+        .viz-label {
+            text-align: center;
+            color: #4ecdc4;
+            font-size: 12px;
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
         .links {
             background: #1a1a1a;
             border: 2px solid #4ecdc4;
@@ -193,7 +220,7 @@
 <body>
     <canvas id="rain"></canvas>
     
-    <audio id="bgMusic" autoplay loop>
+    <audio id="bgMusic" autoplay crossorigin="anonymous">
         <source src="sounds/index music/ambience2.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -217,6 +244,12 @@
 ███████╗██║  ██║██████╔╝   ██║   ██║  ██║██║██║ ╚████║   ██║   ██║  ██║
 ╚══════╝╚═╝  ╚═╝╚═════╝    ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝
         </div>
+
+        <!-- Winamp AVS Style Visualizer -->
+        <div class="visualizer-container">
+            <canvas id="canvas" width="800" height="300"></canvas>
+        </div>
+        <div class="viz-label">◇ If you ain't got a gooseneck, take your broke ass home. ◇</div>
 
         <div class="links">
             <h2>ENTER THE MAZE</h2>
@@ -334,15 +367,123 @@
         });
     </script>
 
+    <!-- Load Webvs from CDN -->
+    <script src="https://unpkg.com/webvs/dist/webvs.js"></script>
+
+    <!-- Webvs Visualizer Script -->
     <script>
-        // Attempt to play music on any user interaction
         const music = document.getElementById('bgMusic');
         
+        // Playlist setup
+        const playlist = [
+            'sounds/index music/ambience2.mp3',
+            'sounds/index music/spyro.mp3'
+        ];
+        let currentTrack = 0;
+
+        // Handle track ending - play next track
+        music.addEventListener('ended', function() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            music.src = playlist[currentTrack];
+            music.play();
+        });
+
+        let webvs = null;
+        let analyser = null;
+        let isInitialized = false;
+
+        function initWebvs() {
+            if (isInitialized) return;
+            
+            try {
+                // Create the Webvs analyser
+                analyser = new Webvs.WebAudioAnalyser();
+                
+                // Initialize Webvs with classic AVS preset
+                webvs = new Webvs.Main({
+                    canvas: document.getElementById("canvas"),
+                    analyser: analyser,
+                    showStat: false
+                });
+
+                // Load a classic Winamp-style preset
+                webvs.loadPreset({
+                    "clearFrame": true,
+                    "components": [
+                        {
+                            "type": "EffectList",
+                            "input": "REPLACE",
+                            "output": "REPLACE",
+                            "clearFrame": true,
+                            "components": [
+                                // Oscilloscope waveform
+                                {
+                                    "type": "SuperScope",
+                                    "code": {
+                                        "init": "n=800",
+                                        "perFrame": "",
+                                        "perPoint": "x=i*2-1;y=v*0.5;"
+                                    },
+                                    "source": "WAVEFORM",
+                                    "drawMode": "LINES",
+                                    "colors": ["#4ECDC4", "#FFE66D", "#FF6B6B"]
+                                },
+                                // Moving particles
+                                {
+                                    "type": "MovingParticle",
+                                    "code": {
+                                        "init": "n=50",
+                                        "perFrame": "",
+                                        "perPoint": "x=sin(i*$PI*2)*0.5;y=cos(i*$PI*2+t)*0.5;d=d+0.01;"
+                                    },
+                                    "colors": ["#4ECDC4", "#95E1D3"],
+                                    "size": 2
+                                },
+                                // Starfield effect
+                                {
+                                    "type": "Starfield",
+                                    "maxStars": 100,
+                                    "speed": 1.5,
+                                    "color": "#4ECDC4"
+                                },
+                                // Water effect for that classic AVS look
+                                {
+                                    "type": "Water",
+                                    "enabled": true
+                                },
+                                // Fade to create trails
+                                {
+                                    "type": "FadeOut",
+                                    "speed": 0.95
+                                }
+                            ]
+                        }
+                    ]
+                });
+
+                // Connect to the audio element
+                analyser.load(music);
+                
+                // Start the visualization
+                webvs.start();
+                
+                isInitialized = true;
+                console.log('Webvs initialized successfully!');
+            } catch (e) {
+                console.error('Webvs initialization failed:', e);
+            }
+        }
+
+        // Try to play music and initialize visualizer
         function tryPlayMusic() {
-            music.play().catch(e => {
+            music.play().then(() => {
+                initWebvs();
+            }).catch(e => {
                 // If autoplay fails, try again on first click
                 document.addEventListener('click', () => {
-                    music.play();
+                    music.play().then(() => {
+                        initWebvs();
+                    });
                 }, { once: true });
             });
         }
