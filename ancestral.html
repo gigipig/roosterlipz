@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ancestral Diet Explorer</title>
+  
+  <!-- Mapbox GL JS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
+  
+  <!-- Turf.js for geospatial operations -->
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Control Panel */
+    .control-panel {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      max-width: 320px;
+      max-height: 90vh;
+      overflow-y: auto;
+      z-index: 1;
+    }
+
+    .control-panel h1 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+
+    .control-panel p {
+      font-size: 13px;
+      color: #7f8c8d;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .ancestry-input {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .ancestry-input label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ancestry-input select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #bdc3c7;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .ancestry-input select:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 8px;
+    }
+
+    .btn-primary {
+      background: #3498db;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2980b9;
+    }
+
+    .btn-secondary {
+      background: #95a5a6;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #7f8c8d;
+    }
+
+    .selected-regions {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #ecf0f1;
+    }
+
+    .selected-regions h3 {
+      font-size: 14px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .region-tag {
+      display: inline-block;
+      background: #ecf0f1;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #2c3e50;
+    }
+
+    /* Diet Panel */
+    .diet-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      max-height: 90vh;
+      overflow-y: auto;
+      z-index: 1;
+      display: none;
+    }
+
+    .diet-panel.visible {
+      display: block;
+    }
+
+    .diet-panel h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+
+    .diet-panel .subtitle {
+      font-size: 14px;
+      color: #7f8c8d;
+      margin-bottom: 16px;
+    }
+
+    .diet-section {
+      margin-bottom: 20px;
+    }
+
+    .diet-section h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .diet-section p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #2c3e50;
+    }
+
+    .food-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .food-item {
+      background: #ecf0f1;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      color: #2c3e50;
+    }
+
+    .macro-bar {
+      display: flex;
+      height: 30px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .macro-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .macro-carbs {
+      background: #3498db;
+    }
+
+    .macro-protein {
+      background: #e74c3c;
+    }
+
+    .macro-fat {
+      background: #f39c12;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #7f8c8d;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover {
+      color: #2c3e50;
+    }
+
+    /* Popup styling */
+    .mapboxgl-popup-content {
+      border-radius: 8px;
+      padding: 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Scrollbar styling */
+    .control-panel::-webkit-scrollbar,
+    .diet-panel::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .control-panel::-webkit-scrollbar-track,
+    .diet-panel::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .control-panel::-webkit-scrollbar-thumb,
+    .diet-panel::-webkit-scrollbar-thumb {
+      background: #bdc3c7;
+      border-radius: 10px;
+    }
+
+    .control-panel::-webkit-scrollbar-thumb:hover,
+    .diet-panel::-webkit-scrollbar-thumb:hover {
+      background: #95a5a6;
+    }
+
+    /* Genetic Adaptations Styling */
+    .genetic-section {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 2px solid #e8f4f8;
+    }
+
+    .genetic-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .genetic-section h3::before {
+      content: '🧬';
+      font-size: 20px;
+    }
+
+    .genetic-trait {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+      color: white;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+
+    .genetic-trait h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .genetic-trait .phenotype {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      opacity: 0.95;
+    }
+
+    .genetic-trait .probability {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .genetic-trait .recommendation {
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0.9;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+
+    .genetic-trait .gene-details {
+      font-size: 11px;
+      opacity: 0.75;
+      margin-top: 6px;
+    }
+
+    /* Different colors for different traits */
+    .genetic-trait.dairy {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .genetic-trait.starch {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .genetic-trait.omega3 {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .genetic-trait.alcohol {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .genetic-trait.arctic {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #2c3e50;
+    }
+
+    .genetic-trait.arctic .recommendation {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .genetic-trait.vitamin-d {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      color: #2c3e50;
+    }
+
+    .genetic-trait.vitamin-d .recommendation {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .genetic-trait.energy {
+      background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    }
+
+    .no-genetic-data {
+      background: #f8f9fa;
+      border: 1px dashed #dee2e6;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 13px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h1>ðŸŒ Ancestral Diet Explorer</h1>
+    <p>Discover dietary patterns from your ancestry. Select regions on the map or use the dropdowns below.</p>
+
+
+    <div class="ancestry-input">
+      <label>Parent 1</label>
+      <select id="parent1-region">
+        <option value="">Select a region...</option>
+      </select>
+    </div>
+
+    <div class="ancestry-input">
+      <label>Parent 2</label>
+      <select id="parent2-region">
+        <option value="">Select a region...</option>
+      </select>
+    </div>
+
+    <div class="ancestry-input">
+      <label>Grandparent 1</label>
+      <select id="grandparent1-region">
+        <option value="">Select a region...</option>
+      </select>
+    </div>
+
+    <div class="ancestry-input">
+      <label>Grandparent 2</label>
+      <select id="grandparent2-region">
+        <option value="">Select a region...</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" id="blend-btn">Blend Diet Recommendations</button>
+    <button class="btn btn-secondary" id="clear-btn">Clear Selection</button>
+
+    <div class="selected-regions" id="selected-regions" style="display: none;">
+      <h3>Selected Regions:</h3>
+      <div id="region-tags"></div>
+    </div>
+  </div>
+
+  <!-- Diet Panel -->
+  <div class="diet-panel" id="diet-panel">
+    <button class="close-btn" id="close-diet-panel">&times;</button>
+    <div id="diet-content"></div>
+  </div>
+
+  <script>
+    // Load data files
+    let dietsData, regionsGeoJSON;
+
+    // Initialize on load
+    async function init() {
+      // Load JSON data
+      dietsData = await fetch('./ancestral_diets_geo.json').then(r => r.json());
+      regionsGeoJSON = await fetch('./ancestral_regions.geojson?v=' + Date.now()).then(r => r.json());
+
+      // Populate dropdowns
+      populateDropdowns();
+
+      // Initialize map
+      initializeMap();
+    }
+
+    // Country/region groupings for better UI organization
+    const REGION_GROUPS = {
+      'United States': ['eastern_woodlands', 'southeast_us', 'great_plains', 'southwest_us', 'pacific_nw', 'california_coast'],
+      'Canada': ['subarctic', 'pacific_nw', 'canadian_prairies', 'eastern_woodlands'],
+      'China': ['north_china', 'south_china', 'sichuan_sw_china', 'tibet'],
+      'India': ['north_india', 'south_india', 'west_india', 'bengal', 'nepal'],
+      'Russia': ['eastern_europe', 'siberia'],
+      'Brazil': ['amazon', 'brazilian_coastal', 'gaucho'],
+      'Australia': ['aboriginal_aus', 'australian_coastal']
+    };
+
+    function groupCulturesByLocation() {
+      const grouped = {};
+      const standalone = [];
+
+      // First, collect all cultures into their groups or standalone
+      dietsData.cultures.forEach(culture => {
+        let foundGroup = false;
+        
+        for (const [groupName, cultureIds] of Object.entries(REGION_GROUPS)) {
+          if (cultureIds.includes(culture.id)) {
+            if (!grouped[groupName]) {
+              grouped[groupName] = [];
+            }
+            grouped[groupName].push(culture);
+            foundGroup = true;
+            break;
+          }
+        }
+        
+        if (!foundGroup) {
+          standalone.push(culture);
+        }
+      });
+
+      // Sort within groups
+      for (const groupName in grouped) {
+        grouped[groupName].sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      // Sort standalone
+      standalone.sort((a, b) => a.name.localeCompare(b.name));
+
+      return { grouped, standalone };
+    }
+
+    function populateDropdowns() {
+      const selects = [
+        'parent1-region', 'parent2-region',
+        'grandparent1-region', 'grandparent2-region'
+      ];
+
+      const { grouped, standalone } = groupCulturesByLocation();
+
+      selects.forEach(selectId => {
+        const select = document.getElementById(selectId);
+        
+        // Add grouped options
+        Object.entries(grouped).sort((a, b) => a[0].localeCompare(b[0])).forEach(([groupName, cultures]) => {
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = groupName;
+          
+          cultures.forEach(culture => {
+            const option = document.createElement('option');
+            option.value = culture.id;
+            option.textContent = culture.name;
+            optgroup.appendChild(option);
+          });
+          
+          select.appendChild(optgroup);
+        });
+
+        // Add standalone options
+        standalone.forEach(culture => {
+          const option = document.createElement('option');
+          option.value = culture.id;
+          option.textContent = culture.name;
+          select.appendChild(option);
+        });
+      });
+    }
+
+
+    let map;
+    let hoveredRegionId = null;
+
+    function initializeMap() {
+      mapboxgl.accessToken = 'pk.eyJ1IjoiamFyZGl6emlsIiwiYSI6ImNtaWNhem9oeTFqeXoyanBqdmh4a3hjeW0ifQ.bDV1PwnkFOuvX9rO8hGvuQ';
+
+      map = new mapboxgl.Map({
+        container: 'map',
+        // PERFORMANCE: Use your custom style (lighter than satellite)
+        style: 'mapbox://styles/jardizzil/cmirbb672001p01r72nv0cs12',
+        // PERFORMANCE: Use mercator instead of globe for better performance
+        projection: 'mercator',
+        center: [0, 30],
+        zoom: 1.5,
+        // PERFORMANCE: Reduce max pitch
+        maxPitch: 60
+      });
+
+      // PERFORMANCE: Simplified terrain and fog (remove if still slow)
+      map.on('style.load', () => {
+        // Optional: Add subtle terrain (much lighter than before)
+        // Comment out these lines if you want maximum performance
+        /*
+        map.addSource('mapbox-dem', {
+          type: 'raster-dem',
+          url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          tileSize: 512,
+          maxzoom: 14
+        });
+        map.setTerrain({ source: 'mapbox-dem', exaggeration: 0.5 }); // Reduced from 1.5
+        */
+      });
+
+      map.on('load', () => {
+        // Add regions source
+        map.addSource('ancestral-regions', {
+          type: 'geojson',
+          data: regionsGeoJSON,
+          // PERFORMANCE: Enable data clustering/simplification
+          tolerance: 0.375, // Simplify geometries
+          buffer: 64,
+          promoteId: 'id' 
+        });
+
+        // Add fill layer
+        map.addLayer({
+          id: 'ancestral-regions-fill',
+          type: 'fill',
+          source: 'ancestral-regions',
+          paint: {
+            'fill-color': [
+              'match',
+              ['get', 'region'],
+              'Europe', '#FF6B6B',
+              'Africa', '#FFA500',
+              'Middle East', '#FFD700',
+              'Central Asia', '#9B59B6',
+              'South Asia', '#3498DB',
+              'East Asia', '#2ECC71',
+              'Southeast Asia', '#1ABC9C',
+              'Oceania', '#E74C3C',
+              'The Americas', '#F39C12',
+              '#95A5A6'
+            ],
+            'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              0.6,
+              0.3
+            ]
+          }
+        });
+
+        // Add outline
+        map.addLayer({
+          id: 'ancestral-regions-outline',
+          type: 'line',
+          source: 'ancestral-regions',
+          paint: {
+            'line-color': '#ffffff',
+            'line-width': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              3,
+              1
+            ]
+          }
+        });
+
+        // Add labels
+        map.addLayer({
+          id: 'ancestral-regions-labels',
+          type: 'symbol',
+          source: 'ancestral-regions',
+          layout: {
+            'text-field': ['get', 'name'],
+            'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+            'text-size': 12
+          },
+          paint: {
+            'text-color': '#ffffff',
+            'text-halo-color': '#000000',
+            'text-halo-width': 1.5
+          },
+          minzoom: 2
+        });
+
+        setupMapInteractions();
+      });
+
+      // Add controls
+      map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+    }
+
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    });
+
+    function setupMapInteractions() {
+      // Hover
+      map.on('mousemove', 'ancestral-regions-fill', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
+
+        if (hoveredRegionId !== null) {
+          map.setFeatureState(
+            { source: 'ancestral-regions', id: hoveredRegionId },
+            { hover: false }
+          );
+        }
+
+        hoveredRegionId = e.features[0].id;
+        map.setFeatureState(
+          { source: 'ancestral-regions', id: hoveredRegionId },
+          { hover: true }
+        );
+
+        const props = e.features[0].properties;
+        popup.setLngLat(e.lngLat)
+          .setHTML(`
+            <div style="padding: 8px;">
+              <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold;">
+                ${props.name}
+              </h3>
+              <p style="margin: 4px 0 0 0; font-size: 11px; font-style: italic;">
+                Click to view diet details
+              </p>
+            </div>
+          `)
+          .addTo(map);
+      });
+
+      map.on('mouseleave', 'ancestral-regions-fill', () => {
+        map.getCanvas().style.cursor = '';
+        if (hoveredRegionId !== null) {
+          map.setFeatureState(
+            { source: 'ancestral-regions', id: hoveredRegionId },
+            { hover: false }
+          );
+        }
+        hoveredRegionId = null;
+        popup.remove();
+      });
+
+      // Click
+      map.on('click', 'ancestral-regions-fill', (e) => {
+        const regionId = e.features[0].properties.id;
+        selectRegion(regionId);
+      });
+    }
+
+    let selectedRegions = [];
+
+    function selectRegion(regionId) {
+      const diet = dietsData.cultures.find(c => c.id === regionId);
+      if (!diet) return;
+
+      // Add to selected if not already there
+      if (!selectedRegions.includes(regionId)) {
+        selectedRegions.push(regionId);
+        updateSelectedRegionsDisplay();
+      }
+
+      // Show diet panel
+      showDietPanel(diet);
+
+      // Fly to region
+      map.flyTo({
+        center: [diet.centroid.lon, diet.centroid.lat],
+        zoom: 4,
+        duration: 2000
+      });
+    }
+
+    function updateSelectedRegionsDisplay() {
+      const container = document.getElementById('selected-regions');
+      const tagsContainer = document.getElementById('region-tags');
+
+      if (selectedRegions.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+      tagsContainer.innerHTML = '';
+
+      selectedRegions.forEach(regionId => {
+        const diet = dietsData.cultures.find(c => c.id === regionId);
+        if (diet) {
+          const tag = document.createElement('span');
+          tag.className = 'region-tag';
+          tag.textContent = diet.name;
+          tagsContainer.appendChild(tag);
+        }
+      });
+    }
+
+    function renderGeneticAdaptations(diet) {
+      if (!diet.genetic_adaptations || Object.keys(diet.genetic_adaptations).length === 0) {
+        return `
+          <div class="genetic-section">
+            <h3>Genetic Adaptations</h3>
+            <div class="no-genetic-data">
+              Genetic adaptation data not yet available for this population
+            </div>
+          </div>
+        `;
+      }
+
+      const gen = diet.genetic_adaptations;
+      let html = '<div class="genetic-section"><h3>Genetic Adaptations</h3>';
+
+      // Lactase Persistence
+      if (gen.lactase_persistence) {
+        const lp = gen.lactase_persistence;
+        html += `
+          <div class="genetic-trait dairy">
+            <h4>🥛 Dairy Tolerance</h4>
+            <div class="phenotype">${lp.phenotype_details.name}</div>
+            <div class="probability">${(lp.phenotype_probability * 100).toFixed(0)}% probability</div>
+            <div class="recommendation">${lp.dietary_recommendation.notes}</div>
+            <div class="gene-details">Gene: ${lp.gene} | Inheritance: ${lp.inheritance}</div>
+          </div>
+        `;
+      }
+
+      // Starch Digestion
+      if (gen.starch_digestion) {
+        const sd = gen.starch_digestion;
+        html += `
+          <div class="genetic-trait starch">
+            <h4>🌾 Starch Metabolism</h4>
+            <div class="phenotype">${sd.phenotype_details.name}</div>
+            <div class="probability">AMY1 Copy Number: ${sd.average_copy_number}</div>
+            <div class="recommendation">
+              <strong>Optimal Carbs:</strong> ${sd.dietary_recommendation.carb_percentage}<br>
+              ${sd.dietary_recommendation.notes}
+            </div>
+            <div class="gene-details">Gene: ${sd.gene} | Inheritance: ${sd.inheritance}</div>
+          </div>
+        `;
+      }
+
+      // PUFA Metabolism
+      if (gen.pufa_metabolism) {
+        const pufa = gen.pufa_metabolism;
+        html += `
+          <div class="genetic-trait omega3">
+            <h4>🐟 Omega-3 Conversion</h4>
+            <div class="phenotype">${pufa.phenotype_details.name}</div>
+            <div class="probability">${(pufa.phenotype_probability * 100).toFixed(0)}% efficiency</div>
+            <div class="recommendation">${pufa.dietary_recommendation.notes}</div>
+            <div class="gene-details">Gene: ${pufa.gene} | Inheritance: ${pufa.inheritance}</div>
+          </div>
+        `;
+      }
+
+      // Arctic Fat Metabolism
+      if (gen.arctic_fat_metabolism) {
+        const arctic = gen.arctic_fat_metabolism;
+        html += `
+          <div class="genetic-trait arctic">
+            <h4>🧊 Arctic Fat Adaptation</h4>
+            <div class="phenotype">${arctic.phenotype_details.name}</div>
+            <div class="recommendation">${arctic.dietary_recommendation.notes}</div>
+            <div class="gene-details">Gene: ${arctic.gene} | ${arctic.allele_frequency_percent}% frequency</div>
+          </div>
+        `;
+      }
+
+      // Alcohol Metabolism
+      if (gen.alcohol_metabolism) {
+        const alc = gen.alcohol_metabolism;
+        html += `
+          <div class="genetic-trait alcohol">
+            <h4>🍺 Alcohol Metabolism</h4>
+            <div class="phenotype">${alc.phenotype_details.name}</div>
+            <div class="probability">${(alc.phenotype_probability * 100).toFixed(0)}% probability</div>
+            <div class="recommendation">${alc.dietary_recommendation.recommendation}</div>
+            <div class="gene-details">Genes: ${alc.genes.join(', ')} | Inheritance: ${alc.inheritance}</div>
+          </div>
+        `;
+      }
+
+      // Polynesian Energy Storage
+      if (gen.polynesian_energy_storage) {
+        const energy = gen.polynesian_energy_storage;
+        html += `
+          <div class="genetic-trait energy">
+            <h4>⚡ Energy Metabolism</h4>
+            <div class="phenotype">${energy.phenotype_details.name}</div>
+            <div class="recommendation">${energy.dietary_recommendation.recommendation}</div>
+            <div class="gene-details">Gene: ${energy.gene} | ${energy.allele_frequency_percent}% frequency</div>
+          </div>
+        `;
+      }
+
+      // Vitamin D Metabolism
+      if (gen.vitamin_d_metabolism) {
+        const vitd = gen.vitamin_d_metabolism;
+        html += `
+          <div class="genetic-trait vitamin-d">
+            <h4>☀️ Vitamin D Synthesis</h4>
+            <div class="phenotype">${vitd.phenotype_details.name}</div>
+            <div class="recommendation">${vitd.dietary_recommendation.recommendation}</div>
+            <div class="gene-details">Gene: ${vitd.gene} | ${vitd.allele_frequency_percent}% frequency</div>
+          </div>
+        `;
+      }
+
+      html += '</div>';
+      return html;
+    }
+
+    function blendGeneticAdaptations(diets, weights) {
+      // Calculate weighted averages for genetic traits
+      let lactaseProb = 0;
+      let amy1Copies = 0;
+      let fadsFreq = 0;
+      let hasGenetic = false;
+
+      diets.forEach((diet, idx) => {
+        if (diet.genetic_adaptations) {
+          hasGenetic = true;
+          const gen = diet.genetic_adaptations;
+          const weight = weights[idx];
+
+          if (gen.lactase_persistence) {
+            lactaseProb += gen.lactase_persistence.phenotype_probability * weight;
+          }
+          if (gen.starch_digestion) {
+            amy1Copies += gen.starch_digestion.average_copy_number * weight;
+          }
+          if (gen.pufa_metabolism) {
+            fadsFreq += gen.pufa_metabolism.allele_frequency_percent * weight;
+          }
+        }
+      });
+
+      if (!hasGenetic) return '';
+
+      let html = '<div class="genetic-section"><h3>Blended Genetic Profile</h3>';
+
+      // Lactase Persistence
+      if (lactaseProb > 0) {
+        const phenotype = lactaseProb >= 0.5 ? 'Lactase Persistent' : 'Lactase Non-Persistent';
+        const recommendation = lactaseProb >= 0.5 
+          ? 'Good dairy tolerance - all forms of dairy recommended'
+          : 'Lower dairy tolerance - prefer fermented dairy (yogurt, cheese) or lactose-free options';
+        
+        html += `
+          <div class="genetic-trait dairy">
+            <h4>🥛 Dairy Tolerance (Blended)</h4>
+            <div class="phenotype">${phenotype}</div>
+            <div class="probability">${(lactaseProb * 100).toFixed(0)}% probability</div>
+            <div class="recommendation">${recommendation}</div>
+          </div>
+        `;
+      }
+
+      // Starch Digestion
+      if (amy1Copies > 0) {
+        const copies = amy1Copies.toFixed(1);
+        let phenotype, carbRange;
+        if (copies >= 8) {
+          phenotype = 'High Starch Tolerance';
+          carbRange = '45-60%';
+        } else if (copies >= 6) {
+          phenotype = 'Moderate Starch Tolerance';
+          carbRange = '35-45%';
+        } else {
+          phenotype = 'Lower Starch Tolerance';
+          carbRange = '25-35%';
+        }
+
+        html += `
+          <div class="genetic-trait starch">
+            <h4>🌾 Starch Metabolism (Blended)</h4>
+            <div class="phenotype">${phenotype}</div>
+            <div class="probability">Weighted AMY1: ${copies} copies</div>
+            <div class="recommendation">
+              <strong>Optimal Carbs:</strong> ${carbRange}<br>
+              Your mixed ancestry suggests ${phenotype.toLowerCase()}
+            </div>
+          </div>
+        `;
+      }
+
+      // PUFA Metabolism
+      if (fadsFreq > 0) {
+        const efficiency = fadsFreq >= 70 ? 'Efficient' : fadsFreq >= 50 ? 'Moderate' : 'Lower';
+        const recommendation = efficiency === 'Efficient'
+          ? 'Plant-based omega-3 sources (flax, chia, walnuts) work well'
+          : efficiency === 'Moderate'
+          ? 'Mix of plant and marine omega-3 sources recommended'
+          : 'Prefer direct marine omega-3 (fatty fish, fish oil)';
+
+        html += `
+          <div class="genetic-trait omega3">
+            <h4>🐟 Omega-3 Conversion (Blended)</h4>
+            <div class="phenotype">${efficiency} Converter</div>
+            <div class="probability">${fadsFreq.toFixed(0)}% weighted frequency</div>
+            <div class="recommendation">${recommendation}</div>
+          </div>
+        `;
+      }
+
+      html += '</div>';
+      return html;
+    }
+
+    function showDietPanel(diet) {
+      const panel = document.getElementById('diet-panel');
+      const content = document.getElementById('diet-content');
+
+      content.innerHTML = `
+        <h2>${diet.name}</h2>
+        <div class="subtitle">${diet.culture}</div>
+
+        <div class="diet-section">
+          <p>${diet.diet_signature}</p>
+        </div>
+
+        <div class="diet-section">
+          <h3>Macronutrient Profile</h3>
+          <div class="macro-bar">
+            <div class="macro-segment macro-carbs" style="width: ${diet.macros.carbs_pct}%">
+              ${diet.macros.carbs_pct}% Carbs
+            </div>
+            <div class="macro-segment macro-protein" style="width: ${diet.macros.protein_pct}%">
+              ${diet.macros.protein_pct}% Protein
+            </div>
+            <div class="macro-segment macro-fat" style="width: ${diet.macros.fat_pct}%">
+              ${diet.macros.fat_pct}% Fat
+            </div>
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Staple Foods</h3>
+          <div class="food-list">
+            ${diet.staples.map(s => `<span class="food-item">${s}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Common Foods</h3>
+          <div class="food-list">
+            ${diet.common_foods.slice(0, 8).map(f => `<span class="food-item">${f}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Protein Sources</h3>
+          <div class="food-list">
+            ${diet.proteins.map(p => `<span class="food-item">${p}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Primary Fats</h3>
+          <div class="food-list">
+            ${diet.fats.map(f => `<span class="food-item">${f}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Herbs & Spices</h3>
+          <div class="food-list">
+            ${diet.herbs_spices.map(h => `<span class="food-item">${h}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Cooking Methods</h3>
+          <div class="food-list">
+            ${diet.cooking_methods.map(m => `<span class="food-item">${m}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Typical Dishes</h3>
+          <p>${diet.typical_dishes.join(', ')}</p>
+        </div>
+
+        ${Object.keys(diet.modern_substitutes).length > 0 ? `
+          <div class="diet-section">
+            <h3>Modern Substitutes</h3>
+            ${Object.entries(diet.modern_substitutes).map(([k, v]) => 
+              `<p><strong>${k}:</strong> ${v}</p>`
+            ).join('')}
+          </div>
+        ` : ''}
+
+        ${renderGeneticAdaptations(diet)}
+      `;
+
+      panel.classList.add('visible');
+    }
+
+    // Event handlers
+    document.getElementById('close-diet-panel').addEventListener('click', () => {
+      document.getElementById('diet-panel').classList.remove('visible');
+    });
+
+    document.getElementById('blend-btn').addEventListener('click', () => {
+      const regions = [];
+      const weights = [0.5, 0.5, 0.25, 0.25]; // Parents, grandparents
+
+      const selects = [
+        'parent1-region', 'parent2-region',
+        'grandparent1-region', 'grandparent2-region'
+      ];
+
+      selects.forEach((id, idx) => {
+        const value = document.getElementById(id).value;
+        if (value) {
+          regions.push(value);
+        }
+      });
+
+      if (regions.length === 0) {
+        alert('Please select at least one region');
+        return;
+      }
+
+      const blended = blendDiets(regions, weights.slice(0, regions.length));
+      showBlendedDiet(blended);
+    });
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      selectedRegions = [];
+      updateSelectedRegionsDisplay();
+      document.getElementById('diet-panel').classList.remove('visible');
+
+      // Clear dropdowns
+      ['parent1-region', 'parent2-region',
+       'grandparent1-region', 'grandparent2-region'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    });
+
+    function blendDiets(regionIds, weights) {
+      const normalizedWeights = weights.length === regionIds.length
+        ? normalizeWeights(weights)
+        : Array(regionIds.length).fill(1 / regionIds.length);
+
+      const diets = regionIds.map(id => 
+        dietsData.cultures.find(c => c.id === id)
+      ).filter(d => d !== null);
+
+      if (diets.length === 0) return null;
+
+      // Calculate blended macros
+      const blendedMacros = diets.reduce((acc, diet, idx) => {
+        const weight = normalizedWeights[idx];
+        return {
+          carbs_pct: acc.carbs_pct + diet.macros.carbs_pct * weight,
+          protein_pct: acc.protein_pct + diet.macros.protein_pct * weight,
+          fat_pct: acc.fat_pct + diet.macros.fat_pct * weight
+        };
+      }, { carbs_pct: 0, protein_pct: 0, fat_pct: 0 });
+
+      // Round
+      Object.keys(blendedMacros).forEach(key => {
+        blendedMacros[key] = Math.round(blendedMacros[key]);
+      });
+
+      // Get common foods
+      const foodCounts = {};
+      diets.forEach((diet, idx) => {
+        [...diet.staples, ...diet.common_foods].forEach(food => {
+          foodCounts[food] = (foodCounts[food] || 0) + normalizedWeights[idx];
+        });
+      });
+
+      const commonFoods = Object.entries(foodCounts)
+        .filter(([_, count]) => count >= 0.5)
+        .map(([food]) => food);
+
+      // Collect all proteins, fats, herbs
+      const allProteins = [...new Set(diets.flatMap(d => d.proteins))];
+      const allFats = [...new Set(diets.flatMap(d => d.fats))];
+      const allHerbs = [...new Set(diets.flatMap(d => d.herbs_spices))];
+      const allCooking = [...new Set(diets.flatMap(d => d.cooking_methods))];
+
+      return {
+        diets,
+        weights: normalizedWeights,
+        blendedMacros,
+        commonFoods,
+        allProteins,
+        allFats,
+        allHerbs,
+        allCooking
+      };
+    }
+
+    function normalizeWeights(weights) {
+      const sum = weights.reduce((a, b) => a + b, 0);
+      return sum > 0 ? weights.map(w => w / sum) : weights;
+    }
+
+    function showBlendedDiet(blended) {
+      const panel = document.getElementById('diet-panel');
+      const content = document.getElementById('diet-content');
+
+      const ancestryList = blended.diets.map((d, idx) => 
+        `${d.name} (${Math.round(blended.weights[idx] * 100)}%)`
+      ).join(', ');
+
+      content.innerHTML = `
+        <h2>Blended Ancestral Diet</h2>
+        <div class="subtitle">${ancestryList}</div>
+
+        <div class="diet-section">
+          <p>Your dietary recommendations combine elements from multiple ancestral traditions. Focus on foods common across your lineages while incorporating unique elements from each heritage.</p>
+        </div>
+
+        <div class="diet-section">
+          <h3>Blended Macronutrient Profile</h3>
+          <div class="macro-bar">
+            <div class="macro-segment macro-carbs" style="width: ${blended.blendedMacros.carbs_pct}%">
+              ${blended.blendedMacros.carbs_pct}% Carbs
+            </div>
+            <div class="macro-segment macro-protein" style="width: ${blended.blendedMacros.protein_pct}%">
+              ${blended.blendedMacros.protein_pct}% Protein
+            </div>
+            <div class="macro-segment macro-fat" style="width: ${blended.blendedMacros.fat_pct}%">
+              ${blended.blendedMacros.fat_pct}% Fat
+            </div>
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Common Foods (Across Ancestries)</h3>
+          <div class="food-list">
+            ${blended.commonFoods.slice(0, 12).map(f => 
+              `<span class="food-item">${f}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Recommended Proteins</h3>
+          <div class="food-list">
+            ${blended.allProteins.slice(0, 10).map(p => 
+              `<span class="food-item">${p}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Recommended Fats</h3>
+          <div class="food-list">
+            ${blended.allFats.slice(0, 8).map(f => 
+              `<span class="food-item">${f}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Herbs & Spices</h3>
+          <div class="food-list">
+            ${blended.allHerbs.slice(0, 12).map(h => 
+              `<span class="food-item">${h}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Cooking Methods</h3>
+          <div class="food-list">
+            ${blended.allCooking.map(m => 
+              `<span class="food-item">${m}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Unique Foods by Ancestry</h3>
+          ${blended.diets.map(diet => {
+            const uniqueFoods = [...diet.staples, ...diet.common_foods]
+              .filter(f => !blended.commonFoods.includes(f))
+              .slice(0, 5);
+            return `
+              <p><strong>${diet.name}:</strong> ${uniqueFoods.join(', ')}</p>
+            `;
+          }).join('')}
+        </div>
+
+        ${blendGeneticAdaptations(blended.diets, blended.weights)}
+      `;
+
+      panel.classList.add('visible');
+    }
+
+    // Initialize
+    init();
+  </script>
+</body>
+</html>
