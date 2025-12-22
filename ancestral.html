@@ -75,8 +75,14 @@
       letter-spacing: 0.5px;
     }
 
+    .ancestry-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
     .ancestry-input select {
-      width: 100%;
+      flex: 1;
       padding: 10px;
       border: 1px solid #bdc3c7;
       border-radius: 6px;
@@ -88,6 +94,181 @@
     .ancestry-input select:focus {
       outline: none;
       border-color: #3498db;
+    }
+
+    .ancestry-input input[type="number"] {
+      width: 70px;
+      padding: 10px;
+      border: 1px solid #bdc3c7;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .ancestry-input input[type="number"]:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    .percent-label {
+      font-weight: 600;
+      color: #7f8c8d;
+      font-size: 14px;
+    }
+
+    .percentage-total {
+      background: #ecf0f1;
+      padding: 12px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border: 2px solid #bdc3c7;
+    }
+
+    .percentage-total.valid {
+      background: #d5f4e6;
+      border-color: #27ae60;
+      color: #27ae60;
+    }
+
+    .percentage-total.invalid {
+      background: #fadbd8;
+      border-color: #e74c3c;
+      color: #e74c3c;
+    }
+
+    .instructions {
+      background: #e8f4f8;
+      border-left: 4px solid #3498db;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #2c3e50;
+    }
+
+    /* Mode Toggle */
+    .mode-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      background: #ecf0f1;
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .mode-toggle button {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+      color: #7f8c8d;
+      transition: all 0.2s;
+    }
+
+    .mode-toggle button:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .mode-toggle button.active {
+      background: white;
+      color: #2c3e50;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Mode Panels */
+    .mode-panel {
+      display: none;
+    }
+
+    .mode-panel.active {
+      display: block;
+    }
+
+    /* Family Tree Specific Styles */
+    .family-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .family-section h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .family-section h3::before {
+      font-size: 18px;
+    }
+
+    .family-section.maternal h3::before {
+      content: '👩';
+    }
+
+    .family-section.paternal h3::before {
+      content: '👨';
+    }
+
+    .grandparent-input {
+      margin-bottom: 12px;
+    }
+
+    .grandparent-input:last-child {
+      margin-bottom: 0;
+    }
+
+    .grandparent-input label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 6px;
+    }
+
+    .grandparent-input select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #bdc3c7;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .grandparent-input select:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    .genetics-info {
+      background: #e8f4f8;
+      border-left: 4px solid #3498db;
+      padding: 10px 12px;
+      margin-top: 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .genetics-info::before {
+      content: 'ℹ️';
+      font-size: 16px;
     }
 
     .btn {
@@ -351,6 +532,14 @@
       margin-top: 8px;
     }
 
+    .genetic-trait .gene-info {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-bottom: 8px;
+      font-style: italic;
+      line-height: 1.3;
+    }
+
     .genetic-trait .gene-details {
       font-size: 11px;
       opacity: 0.75;
@@ -383,17 +572,34 @@
       background: rgba(0, 0, 0, 0.08);
     }
 
-    .genetic-trait.vitamin-d {
+    .genetic-trait.vitamind {
       background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
       color: #2c3e50;
     }
 
-    .genetic-trait.vitamin-d .recommendation {
+    .genetic-trait.vitamind .recommendation {
       background: rgba(0, 0, 0, 0.08);
     }
 
     .genetic-trait.energy {
       background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    }
+
+    .genetic-trait.edar {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      color: #2c3e50;
+    }
+
+    .genetic-trait.edar .recommendation {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .genetic-trait.altitude {
+      background: linear-gradient(135deg, #c471f5 0%, #fa71cd 100%);
+    }
+
+    .genetic-trait.generic {
+      background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
     }
 
     .no-genetic-data {
@@ -413,46 +619,127 @@
 
   <!-- Control Panel -->
   <div class="control-panel">
-    <h1>ðŸŒ Ancestral Diet Explorer</h1>
-    <p>Discover dietary patterns from your ancestry. Select regions on the map or use the dropdowns below.</p>
+    <h1>🌍 Ancestral Diet Explorer</h1>
+    <p>Discover dietary patterns from your ancestry and genetics.</p>
 
-
-    <div class="ancestry-input">
-      <label>Parent 1</label>
-      <select id="parent1-region">
-        <option value="">Select a region...</option>
-      </select>
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+      <button id="family-mode-btn" class="active">👪 Family Tree</button>
+      <button id="dna-mode-btn">🧬 DNA Test Results</button>
     </div>
 
-    <div class="ancestry-input">
-      <label>Parent 2</label>
-      <select id="parent2-region">
-        <option value="">Select a region...</option>
-      </select>
+    <!-- Family Tree Mode (Default) -->
+    <div id="family-tree-panel" class="mode-panel active">
+      <div class="instructions">
+        💡 <strong>How to use:</strong> Select the ancestry of your 4 grandparents. Each contributes 25% of your genetics. Don't know all 4? Enter what you know!
+      </div>
+
+      <div class="family-section maternal">
+        <h3>Your Mother's Side</h3>
+        <div class="grandparent-input">
+          <label>Maternal Grandmother</label>
+          <select id="mgm-region">
+            <option value="">Select ancestry...</option>
+          </select>
+        </div>
+        <div class="grandparent-input">
+          <label>Maternal Grandfather</label>
+          <select id="mgf-region">
+            <option value="">Select ancestry...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="family-section paternal">
+        <h3>Your Father's Side</h3>
+        <div class="grandparent-input">
+          <label>Paternal Grandmother</label>
+          <select id="pgm-region">
+            <option value="">Select ancestry...</option>
+          </select>
+        </div>
+        <div class="grandparent-input">
+          <label>Paternal Grandfather</label>
+          <select id="pgf-region">
+            <option value="">Select ancestry...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="genetics-info">
+        Each grandparent contributes 25% of your genetics
+      </div>
+
+      <button class="btn btn-primary" id="family-calculate-btn">Calculate My Genetic Diet</button>
+      <button class="btn btn-secondary" id="family-clear-btn">Clear All</button>
     </div>
 
-    <div class="ancestry-input">
-      <label>Grandparent 1</label>
-      <select id="grandparent1-region">
-        <option value="">Select a region...</option>
-      </select>
-    </div>
+    <!-- DNA Test Results Mode -->
+    <div id="dna-test-panel" class="mode-panel">
+      <div class="instructions">
+        💡 <strong>How to use:</strong> Enter your ancestry breakdown from DNA test results (e.g., 50% Italian, 25% Japanese, 25% Irish). Percentages must total 100%.
+      </div>
 
-    <div class="ancestry-input">
-      <label>Grandparent 2</label>
-      <select id="grandparent2-region">
-        <option value="">Select a region...</option>
-      </select>
-    </div>
+      <div class="ancestry-input">
+        <label>Ancestry 1 (Primary)</label>
+        <div class="ancestry-row">
+          <select id="ancestry1-region">
+            <option value="">Select a region...</option>
+          </select>
+          <input type="number" id="ancestry1-percent" min="0" max="100" value="0" step="1">
+          <span class="percent-label">%</span>
+        </div>
+      </div>
 
-    <button class="btn btn-primary" id="blend-btn">Blend Diet Recommendations</button>
-    <button class="btn btn-secondary" id="clear-btn">Clear Selection</button>
+      <div class="ancestry-input">
+        <label>Ancestry 2</label>
+        <div class="ancestry-row">
+          <select id="ancestry2-region">
+            <option value="">Select a region...</option>
+          </select>
+          <input type="number" id="ancestry2-percent" min="0" max="100" value="0" step="1">
+          <span class="percent-label">%</span>
+        </div>
+      </div>
+
+      <div class="ancestry-input">
+        <label>Ancestry 3 (Optional)</label>
+        <div class="ancestry-row">
+          <select id="ancestry3-region">
+            <option value="">Select a region...</option>
+          </select>
+          <input type="number" id="ancestry3-percent" min="0" max="100" value="0" step="1">
+          <span class="percent-label">%</span>
+        </div>
+      </div>
+
+      <div class="ancestry-input">
+        <label>Ancestry 4 (Optional)</label>
+        <div class="ancestry-row">
+          <select id="ancestry4-region">
+            <option value="">Select a region...</option>
+          </select>
+          <input type="number" id="ancestry4-percent" min="0" max="100" value="0" step="1">
+          <span class="percent-label">%</span>
+        </div>
+      </div>
+
+      <div class="percentage-total" id="percentage-total">
+        Total: <span id="total-percent">0</span>% 
+        <span id="percent-status"></span>
+      </div>
+
+      <button class="btn btn-primary" id="dna-calculate-btn" disabled>Calculate Ancestry-Based Diet</button>
+      <button class="btn btn-secondary" id="dna-clear-btn">Clear All</button>
+    </div>
 
     <div class="selected-regions" id="selected-regions" style="display: none;">
       <h3>Selected Regions:</h3>
       <div id="region-tags"></div>
     </div>
   </div>
+
+
 
   <!-- Diet Panel -->
   <div class="diet-panel" id="diet-panel">
@@ -525,14 +812,18 @@
 
     function populateDropdowns() {
       const selects = [
-        'parent1-region', 'parent2-region',
-        'grandparent1-region', 'grandparent2-region'
+        // Family tree mode
+        'mgm-region', 'mgf-region', 'pgm-region', 'pgf-region',
+        // DNA test mode
+        'ancestry1-region', 'ancestry2-region',
+        'ancestry3-region', 'ancestry4-region'
       ];
 
       const { grouped, standalone } = groupCulturesByLocation();
 
       selects.forEach(selectId => {
         const select = document.getElementById(selectId);
+        if (!select) return; // Skip if element doesn't exist
         
         // Add grouped options
         Object.entries(grouped).sort((a, b) => a[0].localeCompare(b[0])).forEach(([groupName, cultures]) => {
@@ -895,6 +1186,482 @@
       return html;
     }
 
+    // ============================================================================
+    // MENDELIAN GENETICS MODULE
+    // Implements proper gene-by-gene inheritance logic instead of averaging
+    // ============================================================================
+
+    /**
+     * Calculate genotype probabilities from allele frequency using Hardy-Weinberg
+     * @param {number} freq - Derived allele frequency (0-100)
+     * @returns {object} Genotype probabilities {AA, Aa, aa}
+     */
+    function hardyWeinberg(freq) {
+      const p = freq / 100;  // Derived allele frequency
+      const q = 1 - p;        // Ancestral allele frequency
+      
+      return {
+        homozygous_derived: p * p,      // AA (e.g., T/T for LCT)
+        heterozygous: 2 * p * q,        // Aa (e.g., T/C for LCT)
+        homozygous_ancestral: q * q     // aa (e.g., C/C for LCT)
+      };
+    }
+
+    /**
+     * Calculate offspring genotype from two parent genotype distributions
+     * Uses Punnett square logic
+     */
+    function mendelianOffspring(parent1_gt, parent2_gt) {
+      // Punnett square: multiply all combinations
+      const prob_AA = 
+        parent1_gt.homozygous_derived * parent2_gt.homozygous_derived +
+        0.5 * parent1_gt.homozygous_derived * parent2_gt.heterozygous +
+        0.5 * parent2_gt.homozygous_derived * parent1_gt.heterozygous +
+        0.25 * parent1_gt.heterozygous * parent2_gt.heterozygous;
+      
+      const prob_aa = 
+        parent1_gt.homozygous_ancestral * parent2_gt.homozygous_ancestral +
+        0.5 * parent1_gt.homozygous_ancestral * parent2_gt.heterozygous +
+        0.5 * parent2_gt.homozygous_ancestral * parent1_gt.heterozygous +
+        0.25 * parent1_gt.heterozygous * parent2_gt.heterozygous;
+      
+      const prob_Aa = 1 - prob_AA - prob_aa;
+      
+      return {
+        homozygous_derived: prob_AA,
+        heterozygous: prob_Aa,
+        homozygous_ancestral: prob_aa
+      };
+    }
+
+    /**
+     * Calculate lactase persistence phenotype (DOMINANT trait)
+     * Heterozygotes (T/C) ARE lactase persistent
+     */
+    function calculateLactasePersistence(grandparents) {
+      // Step 1: Get allele frequencies for each grandparent population
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        return gen?.lactase_persistence?.allele_frequency_percent || 0;
+      });
+
+      // Step 2: Calculate parent genotypes
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2); // MGM + MGF
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);  // PGM + PGF
+
+      // Step 3: Calculate offspring genotype
+      const offspring_gt = mendelianOffspring(mother_gt, father_gt);
+
+      // Step 4: Determine phenotype (DOMINANT - T/T or T/C = persistent)
+      const prob_persistent = offspring_gt.homozygous_derived + offspring_gt.heterozygous;
+      const is_persistent = prob_persistent >= 0.5;
+
+      return {
+        phenotype: is_persistent ? 'Lactase Persistent' : 'Lactase Non-Persistent',
+        probability: prob_persistent,
+        genotype: offspring_gt,
+        inheritance: 'dominant',
+        explanation: is_persistent 
+          ? 'You likely inherited at least one lactase persistence allele'
+          : 'You likely inherited no lactase persistence alleles',
+        recommendation: is_persistent
+          ? '✓ Good dairy tolerance expected - all forms of dairy should be well-tolerated'
+          : '⚠ Lower dairy tolerance likely - prefer fermented dairy (yogurt, kefir, aged cheese) or lactose-free alternatives'
+      };
+    }
+
+    /**
+     * Calculate AMY1 copy number (ADDITIVE trait)
+     * Copy numbers add up from parents
+     */
+    function calculateAMY1(grandparents) {
+      const gp_copies = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        return gen?.starch_digestion?.average_copy_number || 5;
+      });
+
+      // Parents get average of their parents
+      const mother_copies = (gp_copies[0] + gp_copies[1]) / 2;
+      const father_copies = (gp_copies[2] + gp_copies[3]) / 2;
+
+      // Offspring gets average of parents (additive inheritance)
+      const offspring_copies = (mother_copies + father_copies) / 2;
+
+      let phenotype, carb_range, efficiency;
+      if (offspring_copies >= 8) {
+        phenotype = 'High Starch Tolerance';
+        carb_range = '45-60%';
+        efficiency = 'Excellent';
+      } else if (offspring_copies >= 6.5) {
+        phenotype = 'Good Starch Tolerance';
+        carb_range = '40-50%';
+        efficiency = 'Good';
+      } else if (offspring_copies >= 5) {
+        phenotype = 'Moderate Starch Tolerance';
+        carb_range = '35-45%';
+        efficiency = 'Moderate';
+      } else {
+        phenotype = 'Lower Starch Tolerance';
+        carb_range = '25-35%';
+        efficiency = 'Lower';
+      }
+
+      return {
+        phenotype,
+        copies: offspring_copies,
+        inheritance: 'additive',
+        explanation: `Inherited ~${offspring_copies.toFixed(1)} AMY1 copies through additive inheritance`,
+        recommendation: `<strong>Optimal Carbs:</strong> ${carb_range} of calories<br>` +
+                       `<strong>Efficiency:</strong> ${efficiency} starch digestion capacity`
+      };
+    }
+
+    /**
+     * Calculate FADS1 (ADDITIVE trait with population-specific effects)
+     */
+    function calculateFADS(grandparents) {
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        return gen?.pufa_metabolism?.allele_frequency_percent || 50;
+      });
+
+      // Average through parents (additive)
+      const mother_freq = (gp_freqs[0] + gp_freqs[1]) / 2;
+      const father_freq = (gp_freqs[2] + gp_freqs[3]) / 2;
+      const offspring_freq = (mother_freq + father_freq) / 2;
+
+      // Genotype distribution
+      const gt = hardyWeinberg(offspring_freq);
+      
+      // Additive effect: GG > GT > TT
+      const conversion_efficiency = 
+        gt.homozygous_derived * 100 +      // GG: 100% efficiency
+        gt.heterozygous * 70 +              // GT: 70% efficiency  
+        gt.homozygous_ancestral * 40;      // TT: 40% efficiency
+
+      let phenotype, recommendation;
+      if (conversion_efficiency >= 80) {
+        phenotype = 'Efficient Converter';
+        recommendation = '✓ Plant-based omega-3 (flax, chia, walnuts) work well for you';
+      } else if (conversion_efficiency >= 60) {
+        phenotype = 'Moderate Converter';
+        recommendation = '◐ Balanced approach: Mix plant sources with some fatty fish';
+      } else {
+        phenotype = 'Lower Efficiency';
+        recommendation = '⚠ Focus on direct marine omega-3 (salmon, sardines, fish oil)';
+      }
+
+      return {
+        phenotype,
+        efficiency: conversion_efficiency,
+        inheritance: 'additive',
+        explanation: `${conversion_efficiency.toFixed(0)}% conversion efficiency from intermediate genotype`,
+        recommendation
+      };
+    }
+
+    /**
+     * Calculate ALDH2 (DOMINANT-NEGATIVE - one copy = alcohol flush)
+     * Only relevant for East Asian ancestry
+     */
+    function calculateALDH2(grandparents) {
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        return gen?.alcohol_metabolism?.ALDH2?.allele_frequency_percent || 0;
+      });
+
+      const avg_freq = gp_freqs.reduce((a, b) => a + b, 0) / gp_freqs.length;
+
+      // If very low frequency (<5%), skip this trait
+      if (avg_freq < 5) return null;
+
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2);
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);
+      const offspring_gt = mendelianOffspring(mother_gt, father_gt);
+
+      // DOMINANT-NEGATIVE: even one A allele = flush (25-40% enzyme activity)
+      const prob_flush = offspring_gt.homozygous_derived + offspring_gt.heterozygous;
+      const has_flush = prob_flush >= 0.20;  // Lowered from 0.5 to show for East Asian ancestry
+
+      if (has_flush) {
+        return {
+          phenotype: 'Alcohol Flush Response',
+          probability: prob_flush,
+          inheritance: 'dominant-negative',
+          explanation: 'Likely carry ALDH2*2 variant - causes facial flushing with alcohol',
+          recommendation: '⚠ <strong>Reduced alcohol tolerance:</strong> Even small amounts may cause flushing, rapid heartbeat, nausea. This is a protective mechanism - reduces alcoholism risk but increases cancer risk if alcohol consumed regularly.'
+        };
+      }
+
+      return null;
+    }
+
+    /**
+     * Calculate CREBRF (Polynesian thrifty gene - ADDITIVE)
+     */
+    function calculateCREBRF(grandparents) {
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        // Look for polynesian_energy_storage or crebrf_adaptation
+        const crebrf = gen?.polynesian_energy_storage || gen?.crebrf_adaptation;
+        return crebrf?.allele_frequency_percent || 0;
+      });
+
+      const avg_freq = gp_freqs.reduce((a, b) => a + b, 0) / gp_freqs.length;
+      
+      // Skip if no meaningful frequency
+      if (avg_freq < 5) return null;
+
+      const mother_freq = (gp_freqs[0] + gp_freqs[1]) / 2;
+      const father_freq = (gp_freqs[2] + gp_freqs[3]) / 2;
+      const offspring_freq = (mother_freq + father_freq) / 2;
+
+      const gt = hardyWeinberg(offspring_freq);
+      
+      // Additive: AA > AG > GG (A is risk allele)
+      const prob_variant = gt.homozygous_derived + gt.heterozygous;
+      const has_variant = prob_variant >= 0.15;  // Lowered from 0.3 to show mixed ancestry
+
+      if (has_variant) {
+        return {
+          phenotype: 'Enhanced Energy Storage',
+          probability: prob_variant,
+          inheritance: 'additive',
+          explanation: `Likely inherited CREBRF variant (${(prob_variant*100).toFixed(0)}% probability) - "thrifty gene" adaptation`,
+          recommendation: '⚡ <strong>Metabolic adaptation:</strong> Your body efficiently stores energy. Consider lower-carb, nutrient-dense foods and monitor portion sizes to manage weight.'
+        };
+      }
+
+      return null;
+    }
+
+    /**
+     * Calculate SLC24A5 (Skin pigmentation/Vitamin D - ADDITIVE)
+     */
+    function calculateSLC24A5(grandparents) {
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        const slc = gen?.vitamin_d_metabolism;
+        return slc?.allele_frequency_percent || 0;
+      });
+
+      const mother_freq = (gp_freqs[0] + gp_freqs[1]) / 2;
+      const father_freq = (gp_freqs[2] + gp_freqs[3]) / 2;
+      const offspring_freq = (mother_freq + father_freq) / 2;
+
+      const gt = hardyWeinberg(offspring_freq);
+      
+      // Determine skin type and vitamin D needs
+      let phenotype, vitd_needs, recommendation;
+      if (offspring_freq < 30) {
+        phenotype = 'Darker Pigmentation';
+        vitd_needs = 'Higher';
+        recommendation = '☀️ <strong>Higher vitamin D needs:</strong> Emphasize fatty fish, egg yolks, fortified foods, or consider supplementation';
+      } else if (offspring_freq < 70) {
+        phenotype = 'Intermediate Pigmentation';
+        vitd_needs = 'Moderate';
+        recommendation = '☀️ <strong>Moderate vitamin D needs:</strong> Include vitamin D-rich foods regularly';
+      } else {
+        phenotype = 'Lighter Pigmentation';
+        vitd_needs = 'Lower';
+        recommendation = '☀️ <strong>Efficient vitamin D synthesis:</strong> Moderate sun exposure adequate, dietary needs lower';
+      }
+
+      return {
+        phenotype,
+        probability: null,
+        inheritance: 'additive',
+        explanation: `Predicted ${phenotype.toLowerCase()} with ${vitd_needs.toLowerCase()} dietary vitamin D needs`,
+        recommendation,
+        vitd_needs
+      };
+    }
+
+    /**
+     * Calculate CPT1A (Arctic fat metabolism - RECESSIVE)
+     */
+    function calculateCPT1A(grandparents) {
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        const cpt1a = gen?.arctic_fat_metabolism;
+        return cpt1a?.allele_frequency_percent || 0;
+      });
+
+      const avg_freq = gp_freqs.reduce((a, b) => a + b, 0) / gp_freqs.length;
+      
+      // Skip if no Arctic ancestry
+      if (avg_freq < 10) return null;
+
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2);
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);
+      const offspring_gt = mendelianOffspring(mother_gt, father_gt);
+
+      // RECESSIVE: need two copies for phenotype
+      const prob_arctic = offspring_gt.homozygous_derived;
+      const has_arctic = prob_arctic >= 0.25;
+
+      if (has_arctic) {
+        return {
+          phenotype: 'Arctic Fat Adaptation',
+          probability: prob_arctic,
+          inheritance: 'recessive',
+          explanation: 'Possible CPT1A P479L variant - optimized for very high-fat ketogenic metabolism',
+          recommendation: '🧊 <strong>Arctic adaptation:</strong> Your metabolism may thrive on very high-fat, low-carb diets (ketogenic-style)'
+        };
+      }
+
+      return null;
+    }
+
+    /**
+     * Calculate EDAR (East Asian variant - DOMINANT)
+     */
+    function calculateEDAR(grandparents) {
+      const gp_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        const edar = gen?.edar_adaptation;
+        return edar?.allele_frequency_percent || 0;
+      });
+
+      const avg_freq = gp_freqs.reduce((a, b) => a + b, 0) / gp_freqs.length;
+      
+      // Skip if no East Asian ancestry
+      if (avg_freq < 10) return null;
+
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2);
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);
+      const offspring_gt = mendelianOffspring(mother_gt, father_gt);
+
+      const prob_variant = offspring_gt.homozygous_derived + offspring_gt.heterozygous;
+      
+      return {
+        phenotype: 'EDAR Variant Present',
+        probability: prob_variant,
+        inheritance: 'dominant',
+        explanation: `${(prob_variant*100).toFixed(0)}% probability of East Asian EDAR variant affecting sweat glands and thermoregulation`,
+        recommendation: '🌡️ Note: This variant has indirect effects on metabolism but limited direct dietary impact'
+      };
+    }
+
+    /**
+     * Calculate EPAS1/EGLN1 (Tibetan altitude adaptation - ADDITIVE)
+     */
+    function calculateAltitude(grandparents) {
+      const epas1_freqs = grandparents.map(gp => {
+        const gen = gp.genetic_adaptations;
+        const epas1 = gen?.altitude_adaptation_epas1;
+        return epas1?.allele_frequency_percent || 0;
+      });
+
+      const avg_freq = epas1_freqs.reduce((a, b) => a + b, 0) / epas1_freqs.length;
+      
+      // Skip if no Tibetan ancestry
+      if (avg_freq < 10) return null;
+
+      const mother_freq = (epas1_freqs[0] + epas1_freqs[1]) / 2;
+      const father_freq = (epas1_freqs[2] + epas1_freqs[3]) / 2;
+      const offspring_freq = (mother_freq + father_freq) / 2;
+
+      const gt = hardyWeinberg(offspring_freq);
+      const prob_variant = gt.homozygous_derived + gt.heterozygous;
+
+      if (prob_variant >= 0.20) {  // Lowered from 0.3 to show mixed ancestry
+        return {
+          phenotype: 'High-Altitude Adaptation',
+          probability: prob_variant,
+          inheritance: 'additive',
+          explanation: `Likely inherited Denisovan-derived EPAS1 variant - prevents polycythemia at altitude`,
+          recommendation: '🏔️ <strong>Altitude adaptation:</strong> Your body is adapted for efficient oxygen metabolism at high altitudes'
+        };
+      }
+
+      return null;
+    }
+
+    /**
+     * Main function: Calculate ALL relevant genetic traits dynamically
+     */
+    function calculateMendelianGenetics(grandparents) {
+      if (!grandparents || grandparents.length !== 4) {
+        return null;
+      }
+
+      const hasGenetic = grandparents.some(gp => gp.genetic_adaptations);
+      if (!hasGenetic) return null;
+
+      // Calculate all possible traits
+      const results = {
+        lactase: calculateLactasePersistence(grandparents),
+        amy1: calculateAMY1(grandparents),
+        fads: calculateFADS(grandparents),
+        aldh2: calculateALDH2(grandparents),
+        crebrf: calculateCREBRF(grandparents),
+        slc24a5: calculateSLC24A5(grandparents),
+        cpt1a: calculateCPT1A(grandparents),
+        edar: calculateEDAR(grandparents),
+        altitude: calculateAltitude(grandparents)
+      };
+
+      // Remove null results (genes not present in this mix)
+      Object.keys(results).forEach(key => {
+        if (results[key] === null) delete results[key];
+      });
+
+      return results;
+    }
+
+    /**
+     * Render Mendelian genetics results as HTML - DYNAMIC for all genes
+     */
+    function renderMendelianGenetics(genetics) {
+      if (!genetics || Object.keys(genetics).length === 0) return '';
+
+      let html = '<div class="genetic-section">';
+      html += '<h3>🧬 Your Predicted Genetic Profile</h3>';
+      html += '<p style="font-size: 12px; color: #7f8c8d; margin-bottom: 16px; line-height: 1.5;">Based on Mendelian inheritance from your grandparents\' populations. These are probability-based predictions, not diagnostic results.</p>';
+
+      // Define trait metadata
+      const traitMeta = {
+        lactase: { icon: '🥛', title: 'Dairy Tolerance', class: 'dairy' },
+        amy1: { icon: '🌾', title: 'Starch Metabolism', class: 'starch' },
+        fads: { icon: '🐟', title: 'Omega-3 Conversion', class: 'omega3' },
+        aldh2: { icon: '🍺', title: 'Alcohol Metabolism', class: 'alcohol' },
+        crebrf: { icon: '⚡', title: 'Energy Storage', class: 'energy' },
+        slc24a5: { icon: '☀️', title: 'Vitamin D Synthesis', class: 'vitamind' },
+        cpt1a: { icon: '🧊', title: 'Arctic Fat Metabolism', class: 'arctic' },
+        edar: { icon: '🌡️', title: 'East Asian Variant', class: 'edar' },
+        altitude: { icon: '🏔️', title: 'Altitude Adaptation', class: 'altitude' }
+      };
+
+      // Render each gene present in results
+      Object.keys(genetics).forEach(key => {
+        const trait = genetics[key];
+        const meta = traitMeta[key] || { icon: '🧬', title: key.toUpperCase(), class: 'generic' };
+        
+        let probabilityText = '';
+        if (key === 'amy1') {
+          probabilityText = `${trait.copies.toFixed(1)} AMY1 copies predicted`;
+        } else if (trait.probability !== null && trait.probability !== undefined) {
+          probabilityText = `${(trait.probability * 100).toFixed(0)}% probability`;
+        } else if (key === 'fads') {
+          probabilityText = `${trait.efficiency.toFixed(0)}% conversion efficiency`;
+        }
+
+        html += `
+          <div class="genetic-trait ${meta.class}">
+            <h4>${meta.icon} ${meta.title} (${trait.inheritance})</h4>
+            <div class="phenotype">${trait.phenotype}</div>
+            ${probabilityText ? `<div class="probability">${probabilityText}</div>` : ''}
+            <div class="gene-info">${trait.explanation}</div>
+            <div class="recommendation">${trait.recommendation}</div>
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      return html;
+    }
+
     function blendGeneticAdaptations(diets, weights) {
       // Calculate weighted averages for genetic traits
       let lactaseProb = 0;
@@ -1081,46 +1848,157 @@
       panel.classList.add('visible');
     }
 
+    // Mode Switching
+    document.getElementById('family-mode-btn').addEventListener('click', () => {
+      document.getElementById('family-mode-btn').classList.add('active');
+      document.getElementById('dna-mode-btn').classList.remove('active');
+      document.getElementById('family-tree-panel').classList.add('active');
+      document.getElementById('dna-test-panel').classList.remove('active');
+    });
+
+    document.getElementById('dna-mode-btn').addEventListener('click', () => {
+      document.getElementById('dna-mode-btn').classList.add('active');
+      document.getElementById('family-mode-btn').classList.remove('active');
+      document.getElementById('dna-test-panel').classList.add('active');
+      document.getElementById('family-tree-panel').classList.remove('active');
+    });
+
+    // Family Tree Mode - Calculate button
+    document.getElementById('family-calculate-btn').addEventListener('click', () => {
+      const grandparentIds = ['mgm-region', 'mgf-region', 'pgm-region', 'pgf-region'];
+      const selectedIds = grandparentIds.map(id => document.getElementById(id).value);
+      
+      // Check how many grandparents selected
+      const numSelected = selectedIds.filter(id => id !== '').length;
+      
+      if (numSelected === 0) {
+        alert('Please select at least one grandparent ancestry');
+        return;
+      }
+
+      // Get full diet objects for selected grandparents
+      const grandparentDiets = selectedIds.map(id => {
+        if (!id) return null;
+        return dietsData.cultures.find(c => c.id === id);
+      });
+
+      // For Mendelian genetics, we need exactly 4 grandparents
+      // If fewer selected, we'll use fallback weighted averaging
+      if (numSelected === 4) {
+        // Use Mendelian genetics!
+        const mendelianGenetics = calculateMendelianGenetics(grandparentDiets);
+        
+        // Still show blended diet for foods
+        const regions = selectedIds.filter(id => id !== '');
+        const weights = [0.25, 0.25, 0.25, 0.25];
+        const blended = blendDiets(regions, weights);
+        
+        // Show diet panel with Mendelian genetics
+        showBlendedDietWithMendelian(blended, mendelianGenetics);
+      } else {
+        // Fallback: use weighted averaging for incomplete data
+        const confirm = window.confirm(
+          `You've selected ${numSelected} out of 4 grandparents.\n\n` +
+          `For the most accurate genetic predictions, we recommend selecting all 4 grandparents.\n\n` +
+          `Continue with ${numSelected} grandparent${numSelected > 1 ? 's' : ''}?`
+        );
+        if (!confirm) return;
+        
+        const regions = selectedIds.filter(id => id !== '');
+        const weight = 1.0 / numSelected;
+        const weights = new Array(numSelected).fill(weight);
+        const blended = blendDiets(regions, weights);
+        showBlendedDiet(blended);
+      }
+    });
+
+    // Family Tree Mode - Clear button
+    document.getElementById('family-clear-btn').addEventListener('click', () => {
+      ['mgm-region', 'mgf-region', 'pgm-region', 'pgf-region'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      document.getElementById('diet-panel').classList.remove('visible');
+    });
+
     // Event handlers
     document.getElementById('close-diet-panel').addEventListener('click', () => {
       document.getElementById('diet-panel').classList.remove('visible');
     });
 
-    document.getElementById('blend-btn').addEventListener('click', () => {
+    // Update percentage total when inputs change
+    function updatePercentageTotal() {
+      const percents = [1, 2, 3, 4].map(i => 
+        parseFloat(document.getElementById(`ancestry${i}-percent`).value) || 0
+      );
+      const total = percents.reduce((sum, p) => sum + p, 0);
+      
+      document.getElementById('total-percent').textContent = total;
+      const totalEl = document.getElementById('percentage-total');
+      const statusEl = document.getElementById('percent-status');
+      const blendBtn = document.getElementById('dna-calculate-btn');
+      
+      if (total === 100) {
+        totalEl.className = 'percentage-total valid';
+        statusEl.textContent = '✓ Ready';
+        blendBtn.disabled = false;
+      } else if (total === 0) {
+        totalEl.className = 'percentage-total';
+        statusEl.textContent = '';
+        blendBtn.disabled = true;
+      } else {
+        totalEl.className = 'percentage-total invalid';
+        statusEl.textContent = `✗ Must equal 100%`;
+        blendBtn.disabled = true;
+      }
+    }
+
+    // Add event listeners to all percentage inputs
+    [1, 2, 3, 4].forEach(i => {
+      document.getElementById(`ancestry${i}-percent`).addEventListener('input', updatePercentageTotal);
+    });
+
+    document.getElementById('dna-calculate-btn').addEventListener('click', () => {
       const regions = [];
-      const weights = [0.5, 0.5, 0.25, 0.25]; // Parents, grandparents
+      const weights = [];
 
-      const selects = [
-        'parent1-region', 'parent2-region',
-        'grandparent1-region', 'grandparent2-region'
-      ];
-
-      selects.forEach((id, idx) => {
-        const value = document.getElementById(id).value;
-        if (value) {
-          regions.push(value);
+      // Collect selected ancestries and their percentages
+      [1, 2, 3, 4].forEach(i => {
+        const region = document.getElementById(`ancestry${i}-region`).value;
+        const percent = parseFloat(document.getElementById(`ancestry${i}-percent`).value) || 0;
+        
+        if (region && percent > 0) {
+          regions.push(region);
+          weights.push(percent / 100); // Convert to decimal
         }
       });
 
       if (regions.length === 0) {
-        alert('Please select at least one region');
+        alert('Please select at least one ancestry and enter percentages');
         return;
       }
 
-      const blended = blendDiets(regions, weights.slice(0, regions.length));
+      const total = weights.reduce((sum, w) => sum + w, 0);
+      if (Math.abs(total - 1.0) > 0.01) {
+        alert('Percentages must total 100%');
+        return;
+      }
+
+      const blended = blendDiets(regions, weights);
       showBlendedDiet(blended);
     });
 
-    document.getElementById('clear-btn').addEventListener('click', () => {
+    document.getElementById('dna-clear-btn').addEventListener('click', () => {
       selectedRegions = [];
       updateSelectedRegionsDisplay();
       document.getElementById('diet-panel').classList.remove('visible');
 
-      // Clear dropdowns
-      ['parent1-region', 'parent2-region',
-       'grandparent1-region', 'grandparent2-region'].forEach(id => {
-        document.getElementById(id).value = '';
+      // Clear all ancestry inputs
+      [1, 2, 3, 4].forEach(i => {
+        document.getElementById(`ancestry${i}-region`).value = '';
+        document.getElementById(`ancestry${i}-percent`).value = 0;
       });
+      
+      updatePercentageTotal();
     });
 
     function blendDiets(regionIds, weights) {
@@ -1182,6 +2060,100 @@
     function normalizeWeights(weights) {
       const sum = weights.reduce((a, b) => a + b, 0);
       return sum > 0 ? weights.map(w => w / sum) : weights;
+    }
+
+    function showBlendedDietWithMendelian(blended, mendelianGenetics) {
+      const panel = document.getElementById('diet-panel');
+      const content = document.getElementById('diet-content');
+
+      const ancestryList = blended.diets.map((d, idx) => 
+        `${d.name} (${Math.round(blended.weights[idx] * 100)}%)`
+      ).join(', ');
+
+      content.innerHTML = `
+        <h2>Your Personalized Diet</h2>
+        <div class="subtitle">${ancestryList}</div>
+
+        <div class="diet-section">
+          <p>Your dietary recommendations are based on <strong>Mendelian genetics</strong> calculated from your grandparents' populations, plus dietary traditions from your ancestral lineages.</p>
+        </div>
+
+        ${renderMendelianGenetics(mendelianGenetics)}
+
+        <div class="diet-section">
+          <h3>Blended Macronutrient Profile</h3>
+          <div class="macro-bar">
+            <div class="macro-segment macro-carbs" style="width: ${blended.blendedMacros.carbs_pct}%">
+              ${blended.blendedMacros.carbs_pct}% Carbs
+            </div>
+            <div class="macro-segment macro-protein" style="width: ${blended.blendedMacros.protein_pct}%">
+              ${blended.blendedMacros.protein_pct}% Protein
+            </div>
+            <div class="macro-segment macro-fat" style="width: ${blended.blendedMacros.fat_pct}%">
+              ${blended.blendedMacros.fat_pct}% Fat
+            </div>
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Common Foods (Across Ancestries)</h3>
+          <div class="food-list">
+            ${blended.commonFoods.slice(0, 12).map(f => 
+              `<span class="food-item">${f}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Recommended Proteins</h3>
+          <div class="food-list">
+            ${blended.allProteins.slice(0, 10).map(p => 
+              `<span class="food-item">${p}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Recommended Fats</h3>
+          <div class="food-list">
+            ${blended.allFats.slice(0, 8).map(f => 
+              `<span class="food-item">${f}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Herbs & Spices</h3>
+          <div class="food-list">
+            ${blended.allHerbs.slice(0, 12).map(h => 
+              `<span class="food-item">${h}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Cooking Methods</h3>
+          <div class="food-list">
+            ${blended.allCooking.map(m => 
+              `<span class="food-item">${m}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="diet-section">
+          <h3>Unique Foods by Ancestry</h3>
+          ${blended.diets.map(diet => {
+            const uniqueFoods = [...diet.staples, ...diet.common_foods]
+              .filter(f => !blended.commonFoods.includes(f))
+              .slice(0, 5);
+            return `
+              <p><strong>${diet.name}:</strong> ${uniqueFoods.join(', ')}</p>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      panel.classList.add('visible');
     }
 
     function showBlendedDiet(blended) {

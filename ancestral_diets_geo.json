@@ -91,7 +91,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 5,
+          "average_copy_number": 5.0,
           "inheritance": "additive",
           "inferred_phenotype": "low",
           "phenotype_confidence": 1.0,
@@ -134,7 +134,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -195,9 +195,10 @@
         "min_lon": -75.0,
         "max_lon": -45.0
       },
-      "diet_signature": "Rainforest diet featuring cassava, river fish, and wild game. Emphasizes fermented beverages, insects, and diverse tropical fruits with slash-and-burn agriculture.",
+      "diet_signature": "Rainforest diet featuring cassava, river fish, and wild game. Archaeological evidence shows significant maize agriculture from 700 CE alongside cassava cultivation. Emphasizes fermented beverages, insects, and diverse tropical fruits with slash-and-burn agriculture.",
       "staples": [
         "cassava",
+        "maize",
         "plantains",
         "roots"
       ],
@@ -312,7 +313,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -478,7 +479,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "vitamin_d_metabolism": {
@@ -517,7 +518,7 @@
         "min_lon": -76.0,
         "max_lon": -68.0
       },
-      "diet_signature": "High-altitude agriculture featuring diverse potato varieties, quinoa, and camelid herding. Includes freeze-dried chuÃ±o, guinea pig, and adaptations to low-oxygen conditions.",
+      "diet_signature": "High-altitude agriculture featuring diverse potato varieties, quinoa, and camelid herding. Includes freeze-dried chu\u00c3\u00b1o, guinea pig, and adaptations to low-oxygen conditions.",
       "staples": [
         "potatoes",
         "quinoa",
@@ -527,7 +528,7 @@
         "llama/alpaca",
         "guinea_pig",
         "beans",
-        "chuÃ±o"
+        "chu\u00c3\u00b1o"
       ],
       "proteins": [
         "guinea pig",
@@ -555,7 +556,7 @@
       ],
       "modern_substitutes": {
         "quinoa": "amaranth",
-        "chuÃ±o": "dehydrated_potato"
+        "chu\u00c3\u00b1o": "dehydrated_potato"
       },
       "macros": {
         "carbs_pct": 60,
@@ -638,7 +639,23 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
+          }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 85,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "Indirect thermoregulation effects"
           }
         }
       }
@@ -815,7 +832,7 @@
         "min_lon": -160.0,
         "max_lon": -40.0
       },
-      "diet_signature": "Extreme cold-adapted diet nearly exclusive to animal products from marine mammals and fish. Features raw and fermented preparations with extremely high fat content for thermal regulation.",
+      "diet_signature": "Extreme cold-adapted marine mammal-based diet with 50-75% fat from blubber. Contrary to popular belief, NOT ketogenic\u2014marine glycogen, fermented foods, kelp, and seasonal plants provided 15-20% carbohydrates. Features raw and fermented preparations with protein limited to 25-35% to avoid protein toxicity (rabbit starvation). Vitamin C obtained from raw organ meats (muktuk/whale skin, liver) and kelp.",
       "staples": [
         "marine mammals",
         "fish",
@@ -824,7 +841,12 @@
       "common_foods": [
         "seal blubber",
         "whale meat",
-        "oily fish"
+        "oily fish",
+        "muktuk (whale skin)",
+        "fermented seal oil",
+        "kelp",
+        "seasonal berries",
+        "caribou"
       ],
       "proteins": [
         "seal",
@@ -854,9 +876,9 @@
         "oily_fish": "mackerel/salmon"
       },
       "macros": {
-        "carbs_pct": 2,
-        "protein_pct": 30,
-        "fat_pct": 68
+        "carbs_pct": 18,
+        "protein_pct": 28,
+        "fat_pct": 54
       },
       "genetic_adaptations": {
         "lactase_persistence": {
@@ -888,7 +910,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 5,
+          "average_copy_number": 5.0,
           "inheritance": "additive",
           "inferred_phenotype": "low",
           "phenotype_confidence": 1.0,
@@ -914,24 +936,24 @@
           "variant": "rs7115739",
           "allele_frequency_percent": 98,
           "inheritance": "additive",
-          "inferred_phenotype": "efficient",
+          "inferred_phenotype": "reduced",
           "phenotype_probability": 1.0,
           "phenotype_details": {
-            "name": "Efficient PUFA Converter",
-            "description": "Enhanced omega-3/omega-6 conversion",
-            "dietary_impact": "Efficient conversion of plant ALA to EPA/DHA; plant-based omega-3 sources adequate"
+            "name": "Reduced PUFA Synthesis",
+            "description": "Down-regulated omega-3/6 synthesis (unnecessary with marine diet)",
+            "dietary_impact": "REQUIRES preformed EPA/DHA from marine sources; plant omega-3 conversion inefficient"
           },
           "dietary_recommendation": {
-            "omega3_conversion": "efficient",
+            "omega3_conversion": "reduced",
             "recommended_sources": [
-              "flaxseed",
-              "chia seeds",
-              "walnuts",
-              "hemp seeds",
-              "algae oil",
-              "fish (optional)"
+              "fatty fish (salmon, mackerel, sardines)",
+              "fish oil",
+              "marine sources REQUIRED"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "avoid": [
+              "relying on plant omega-3 (flax, chia) alone"
+            ],
+            "notes": "Down-regulated FADS variants\u2014inefficient at converting plant ALA to EPA/DHA. Must obtain preformed omega-3 from marine sources."
           }
         },
         "arctic_fat_metabolism": {
@@ -1083,7 +1105,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -1197,7 +1219,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 10,
+          "average_copy_number": 8.0,
           "inheritance": "additive",
           "inferred_phenotype": "high",
           "phenotype_confidence": 1.0,
@@ -1224,7 +1246,7 @@
         "pufa_metabolism": {
           "gene": "FADS1",
           "variant": "rs174537",
-          "allele_frequency_percent": 60,
+          "allele_frequency_percent": 70,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_probability": 0.48,
@@ -1242,7 +1264,7 @@
               "fish oil",
               "algae oil"
             ],
-            "notes": "Moderate conversion efficiency; mix of plant and marine sources optimal"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion (70% insertion variant frequency). CAUTION: Modern mismatch\u2014excess omega-6 vegetable oils (sunflower, corn) may be over-converted to pro-inflammatory compounds. Emphasize omega-3 sources, limit omega-6."
           }
         },
         "vitamin_d_metabolism": {
@@ -1268,12 +1290,12 @@
     {
       "id": "brazilian_coastal",
       "name": "Brazilian Coastal",
-      "culture": "Afro-Brazilian fusion with dendÃª oil, cassava, and seafood",
+      "culture": "Afro-Brazilian fusion with dend\u00c3\u00aa oil, cassava, and seafood",
       "centroid": {
         "lat": -15.8,
         "lon": -47.9
       },
-      "diet_signature": "Brazilian coastal cuisine, especially from Bahia, represents a vibrant fusion of African, Indigenous, and Portuguese influences. Characterized by dendÃª (red palm oil), coconut milk, cassava/manioc, and abundant seafood. The African influence is strong in cooking techniques and ingredient combinations, creating distinctive dishes unlike other South American cuisines.",
+      "diet_signature": "Brazilian coastal cuisine, especially from Bahia, represents a vibrant fusion of African, Indigenous, and Portuguese influences. Characterized by dend\u00c3\u00aa (red palm oil), coconut milk, cassava/manioc, and abundant seafood. The African influence is strong in cooking techniques and ingredient combinations, creating distinctive dishes unlike other South American cuisines.",
       "macros": {
         "carbs_pct": 55,
         "protein_pct": 18,
@@ -1284,7 +1306,7 @@
         "Rice",
         "Black beans",
         "Coconut",
-        "DendÃª oil"
+        "Dend\u00c3\u00aa oil"
       ],
       "common_foods": [
         "Okra",
@@ -1305,7 +1327,7 @@
         "Codfish"
       ],
       "fats": [
-        "DendÃª (red palm oil)",
+        "Dend\u00c3\u00aa (red palm oil)",
         "Coconut oil",
         "Coconut milk"
       ],
@@ -1327,16 +1349,16 @@
       ],
       "typical_dishes": [
         "Moqueca (fish stew)",
-        "AcarajÃ© (black-eyed pea fritters)",
-        "VatapÃ¡",
+        "Acaraj\u00c3\u00a9 (black-eyed pea fritters)",
+        "Vatap\u00c3\u00a1",
         "Feijoada",
-        "BobÃ³ de camarÃ£o",
+        "Bob\u00c3\u00b3 de camar\u00c3\u00a3o",
         "Farofa",
         "Tapioca crepes",
         "Brigadeiro"
       ],
       "modern_substitutes": {
-        "DendÃª oil": "Combination of palm oil and paprika for color",
+        "Dend\u00c3\u00aa oil": "Combination of palm oil and paprika for color",
         "Malagueta pepper": "Cayenne or bird's eye chili"
       },
       "genetic_adaptations": {
@@ -1412,7 +1434,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         }
       }
@@ -1565,7 +1587,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         }
       }
@@ -1721,7 +1743,7 @@
     },
     {
       "id": "caribbean_taino",
-      "name": "Caribbean TaÃ­no",
+      "name": "Caribbean Ta\u00c3\u00adno",
       "region": "The Americas",
       "subregion": "Caribbean",
       "culture": "Taino",
@@ -1735,11 +1757,11 @@
         "min_lon": -80.0,
         "max_lon": -60.0
       },
-      "diet_signature": "Island tropical diet centered on cassava, sweet potato, and abundant seafood. Features cassava bread, tropical fruits, and simple preparations adapted to warm climate.",
+      "diet_signature": "Island tropical diet centered on maize, cassava, and sweet potato with abundant seafood. Archaeological starch grain assemblages show maize was more prominent than previously assumed, with cassava showing minimal presence in some contexts. Features cassava bread, tropical fruits, and simple preparations adapted to island resources.",
       "staples": [
+        "maize",
         "cassava",
-        "sweet_potato",
-        "maize"
+        "sweet_potato"
       ],
       "common_foods": [
         "fish",
@@ -1944,7 +1966,7 @@
               "ice cream",
               "cream"
             ],
-            "notes": "Better tolerance with fermented dairy; lactose-free alternatives preferred"
+            "notes": "Better tolerance with fermented dairy; lactose-free alternatives preferred Lactase persistence first appeared in Ukraine ~5,960 BP; selection coefficient s=0.01-0.09 represents among strongest positive selection signals in human genome. Dairy consumption preceded genetic adaptation by millennia via fermentation."
           }
         },
         "starch_digestion": {
@@ -2169,7 +2191,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -2297,7 +2319,7 @@
               "ice cream",
               "cream"
             ],
-            "notes": "Better tolerance with fermented dairy; lactose-free alternatives preferred"
+            "notes": "Central Asian paradox: Only 12-32% lactase persistence despite ~35% energy from dairy. Fermentation (reducing lactose) and gut microbiome adaptation compensate for low genetic tolerance."
           }
         },
         "starch_digestion": {
@@ -2366,15 +2388,19 @@
         "min_lon": 34.0,
         "max_lon": 39.0
       },
-      "diet_signature": "Traditional pastoralist diet centered on milk, meat, and blood from cattle. Very low carbohydrate with high fat content from dairy and minimal plant foods except during drought.",
+      "diet_signature": "Traditional pastoralist diet centered on meat, fat, and blood from cattle with fermented dairy. Archaeological ceramic analysis reveals LOW milk residues in pottery (milk was stored in gourds/wooden vessels that don't preserve); ceramics show meat, bones, marrow, and fat processing. Ancient DNA shows only 1 in 8 East African pastoralists carried lactase persistence, suggesting fermented dairy (yogurt) was primary form. Plant foods in stews/soups consistently present in archaeological record.",
       "staples": [
-        "milk",
+        "meat",
         "blood",
-        "meat"
+        "fermented milk"
       ],
       "common_foods": [
-        "fermented milk",
-        "meat"
+        "meat stews",
+        "bone marrow",
+        "fat",
+        "blood",
+        "fermented milk (yogurt)",
+        "plant foods in stews"
       ],
       "proteins": [
         "beef",
@@ -2426,7 +2452,7 @@
               "kefir",
               "all dairy products"
             ],
-            "notes": "Full dairy tolerance; all forms of dairy well-tolerated"
+            "notes": "Only ~12% of modern East African pastoralists show lactase persistence. Archaeological evidence: only 1 in 8 ancient samples (2000 BP Tanzania) carried the variant. Fermented dairy (reducing lactose) was primary consumption method, not fresh milk."
           }
         },
         "pufa_metabolism": {
@@ -2451,7 +2477,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "vitamin_d_metabolism": {
@@ -2562,12 +2588,12 @@
               "kefir",
               "all dairy products"
             ],
-            "notes": "Full dairy tolerance; all forms of dairy well-tolerated"
+            "notes": "Full dairy tolerance; all forms of dairy well-tolerated Lactase persistence first appeared in Ukraine ~5,960 BP; selection coefficient s=0.01-0.09 represents among strongest positive selection signals in human genome. Dairy consumption preceded genetic adaptation by millennia via fermentation."
           }
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 6.5,
+          "average_copy_number": 7.0,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_confidence": 1.0,
@@ -2745,7 +2771,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         }
       }
@@ -2883,7 +2909,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -3084,14 +3110,17 @@
         "min_lon": -110.0,
         "max_lon": -95.0
       },
-      "diet_signature": "Bison-centered nomadic diet with high protein and fat content. Features pemmican for preservation, minimal plant foods, and complete utilization of buffalo resources.",
+      "diet_signature": "Bison-centered nomadic diet with high fat content. Protein limited to ~35% of calories due to protein toxicity ceiling (rabbit starvation)\u2014required substantial fat supplementation and plant foods (roots, berries, prairie turnips) for nutritional balance. Features pemmican (dried meat + fat) for preservation and complete utilization of buffalo.",
       "staples": [
         "bison",
         "berries"
       ],
       "common_foods": [
         "bison meat",
+        "bison fat/pemmican",
+        "prairie turnips",
         "roots",
+        "berries",
         "maize (post-contact)"
       ],
       "proteins": [
@@ -3120,9 +3149,9 @@
         "bison": "beef (lean)"
       },
       "macros": {
-        "carbs_pct": 10,
-        "protein_pct": 45,
-        "fat_pct": 45
+        "carbs_pct": 15,
+        "protein_pct": 35,
+        "fat_pct": 50
       },
       "genetic_adaptations": {
         "lactase_persistence": {
@@ -3198,7 +3227,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         }
       }
@@ -3492,7 +3521,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -3795,7 +3824,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 7.0,
+          "average_copy_number": 8.5,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_confidence": 1.0,
@@ -3866,6 +3895,22 @@
           "ALDH2": {
             "variant": "rs671",
             "allele_frequency_percent": 19
+          }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 78,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "Thermoregulation and lipid metabolism"
           }
         }
       }
@@ -3962,7 +4007,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 7.2,
+          "average_copy_number": 8.0,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_confidence": 1.0,
@@ -4033,6 +4078,22 @@
           "ALDH2": {
             "variant": "rs671",
             "allele_frequency_percent": 16
+          }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 87,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "Lipid metabolism effects"
           }
         }
       }
@@ -4483,7 +4544,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -4873,23 +4934,6 @@
             "variant": "rs671",
             "allele_frequency_percent": 2
           }
-        },
-        "polynesian_energy_storage": {
-          "gene": "CREBRF",
-          "variant": "rs373863828",
-          "allele_frequency_percent": 3,
-          "inheritance": "additive",
-          "inferred_phenotype": "absent",
-          "phenotype_details": {
-            "name": "Standard Energy Metabolism",
-            "description": "Typical metabolic efficiency",
-            "dietary_impact": "Standard macronutrient balance appropriate"
-          },
-          "dietary_recommendation": {
-            "metabolic_type": "standard",
-            "recommendation": "Standard macronutrient balance appropriate",
-            "notes": "Typical metabolic efficiency"
-          }
         }
       }
     },
@@ -4909,7 +4953,7 @@
         "min_lon": -100.0,
         "max_lon": -80.0
       },
-      "diet_signature": "Advanced agricultural civilization diet centered on nixtamalized corn, beans, and squash. Features sophisticated use of chiles, cacao, and amaranth with insect protein and minimal dairy.",
+      "diet_signature": "Advanced agricultural civilization diet centered on nixtamalized corn, beans, and squash. Features sophisticated use of chiles, cacao, and amaranth with insect protein and minimal dairy. Stable isotope analysis confirms C4 maize consumption comprised 50-70% of dietary carbon (\u03b413C values -13.4\u2030 to -6.9\u2030). Recent ceramic residue analysis revolutionized understanding of cacao: 56% of ALL vessels (including commoner households) contained cacao residues, overturning the elite-only assumption.",
       "staples": [
         "maize",
         "beans",
@@ -5032,6 +5076,22 @@
               "algae oil (DHA/EPA direct)"
             ],
             "notes": "Lower conversion efficiency; direct EPA/DHA from marine sources preferred"
+          }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 85,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "Indirect thermoregulation"
           }
         }
       }
@@ -5185,23 +5245,6 @@
             "variant": "rs671",
             "allele_frequency_percent": 5
           }
-        },
-        "polynesian_energy_storage": {
-          "gene": "CREBRF",
-          "variant": "rs373863828",
-          "allele_frequency_percent": 4,
-          "inheritance": "additive",
-          "inferred_phenotype": "absent",
-          "phenotype_details": {
-            "name": "Standard Energy Metabolism",
-            "description": "Typical metabolic efficiency",
-            "dietary_impact": "Standard macronutrient balance appropriate"
-          },
-          "dietary_recommendation": {
-            "metabolic_type": "standard",
-            "recommendation": "Standard macronutrient balance appropriate",
-            "notes": "Typical metabolic efficiency"
-          }
         }
       }
     },
@@ -5288,12 +5331,12 @@
               "ice cream",
               "cream"
             ],
-            "notes": "Better tolerance with fermented dairy; lactose-free alternatives preferred"
+            "notes": "Central Asian paradox: Only 12-32% lactase persistence despite ~35% energy from dairy. Fermentation (reducing lactose) and gut microbiome adaptation compensate for low genetic tolerance."
           }
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 6.5,
+          "average_copy_number": 5.5,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_confidence": 1.0,
@@ -5370,10 +5413,10 @@
     },
     {
       "id": "maori",
-      "name": "MÄori",
+      "name": "M\u00c4\u0081ori",
       "region": "Oceania",
       "subregion": "Maori",
-      "culture": "MÄori (Aotearoa/New Zealand)",
+      "culture": "M\u00c4\u0081ori (Aotearoa/New Zealand)",
       "centroid": {
         "lat": -36.8,
         "lon": 174.7
@@ -5384,16 +5427,20 @@
         "min_lon": 171.0,
         "max_lon": 179.0
       },
-      "diet_signature": "Temperate Polynesian diet adapted to cooler climate featuring kumara, fern root, and seafood. Includes traditional earth-oven cooking with later incorporation of introduced species.",
+      "diet_signature": "Temperate Polynesian diet adapted to cooler climate featuring kumara, fern root, and seafood. Moa hunting caused extinction within ~100 years of arrival (~1280-1320 CE); kumara agriculture intensified as compensation. Important: pigs and chickens were NOT prehistoric in New Zealand\u2014ancient DNA dates all specimens to 18th century European introduction. Features traditional hangi (earth-oven) cooking.",
       "staples": [
         "kumara",
         "fern_root"
       ],
       "common_foods": [
         "fish",
-        "birds (historic)",
+        "moa (extinct ~1320 CE)",
         "eels",
-        "pork (post-contact)"
+        "seafood",
+        "fern root",
+        "kumara",
+        "pork (18th c. European)",
+        "chicken (18th c. European)"
       ],
       "proteins": [
         "fish",
@@ -5409,12 +5456,12 @@
         "minimal"
       ],
       "cooking_methods": [
-        "hÄngi (earth oven)",
+        "h\u00c4\u0081ngi (earth oven)",
         "steaming",
         "boiling"
       ],
       "typical_dishes": [
-        "hÄngi cooked meats and roots"
+        "h\u00c4\u0081ngi cooked meats and roots"
       ],
       "modern_substitutes": {
         "fern_root": "kumara/sweet potato"
@@ -5612,7 +5659,7 @@
         "pufa_metabolism": {
           "gene": "FADS1",
           "variant": "rs174537",
-          "allele_frequency_percent": 75,
+          "allele_frequency_percent": 70,
           "inheritance": "additive",
           "inferred_phenotype": "efficient",
           "phenotype_probability": 0.938,
@@ -5631,7 +5678,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion (70% insertion variant frequency). CAUTION: Modern mismatch\u2014excess omega-6 vegetable oils (sunflower, corn) may be over-converted to pro-inflammatory compounds. Emphasize omega-3 sources, limit omega-6."
           }
         }
       }
@@ -5722,7 +5769,7 @@
               "kefir",
               "all dairy products"
             ],
-            "notes": "Full dairy tolerance; all forms of dairy well-tolerated"
+            "notes": "Full dairy tolerance; all forms of dairy well-tolerated Lactase persistence first appeared in Ukraine ~5,960 BP; selection coefficient s=0.01-0.09 represents among strongest positive selection signals in human genome. Dairy consumption preceded genetic adaptation by millennia via fermentation."
           }
         },
         "starch_digestion": {
@@ -6021,7 +6068,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 8,
+          "average_copy_number": 8.0,
           "inheritance": "additive",
           "inferred_phenotype": "high",
           "phenotype_confidence": 1.0,
@@ -6066,6 +6113,22 @@
           "ALDH2": {
             "variant": "rs671",
             "allele_frequency_percent": 18
+          }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 90,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "Thermoregulation effects"
           }
         }
       }
@@ -6164,7 +6227,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 10,
+          "average_copy_number": 8.0,
           "inheritance": "additive",
           "inferred_phenotype": "high",
           "phenotype_confidence": 1.0,
@@ -6191,7 +6254,7 @@
         "pufa_metabolism": {
           "gene": "FADS1",
           "variant": "rs174537",
-          "allele_frequency_percent": 65,
+          "allele_frequency_percent": 70,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_probability": 0.455,
@@ -6209,7 +6272,7 @@
               "fish oil",
               "algae oil"
             ],
-            "notes": "Moderate conversion efficiency; mix of plant and marine sources optimal"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion (70% insertion variant frequency). CAUTION: Modern mismatch\u2014excess omega-6 vegetable oils (sunflower, corn) may be over-converted to pro-inflammatory compounds. Emphasize omega-3 sources, limit omega-6."
           }
         },
         "vitamin_d_metabolism": {
@@ -6363,31 +6426,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
-          }
-        },
-        "arctic_fat_metabolism": {
-          "gene": "CPT1A",
-          "variant": "rs80356779",
-          "allele_frequency_percent": 20,
-          "inheritance": "additive",
-          "inferred_phenotype": "absent",
-          "phenotype_details": {
-            "name": "Standard Fat Metabolism",
-            "description": "Typical fatty acid metabolism",
-            "dietary_impact": "Standard fat metabolism suited to mixed macronutrient ratios"
-          },
-          "dietary_recommendation": {
-            "fat_metabolism": "standard",
-            "recommended_fats": [
-              "mixed fat sources",
-              "olive oil",
-              "nuts",
-              "fish",
-              "moderate animal fats"
-            ],
-            "fat_percentage": "25-35%",
-            "notes": "Standard fat metabolism; balanced macronutrient intake appropriate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         }
       }
@@ -6541,10 +6580,11 @@
         "min_lon": 44.0,
         "max_lon": 63.0
       },
-      "diet_signature": "Refined rice-based cuisine with complex herb combinations, nuts, and fruits. Features slow-cooked stews, pomegranate, and saffron with sweet-and-sour flavor profiles.",
+      "diet_signature": "Traditional Persian cuisine historically based on wheat and barley (rice virtually absent in archaeobotanical records until 1st millennium CE). Modern heavy rice consumption is a 20th century development. Features complex herb combinations, nuts, fruits, slow-cooked stews, pomegranate, and saffron with characteristic sweet-and-sour flavor profiles.",
       "staples": [
-        "rice",
-        "wheat"
+        "wheat",
+        "barley",
+        "rice (modern, 20th century)"
       ],
       "common_foods": [
         "lamb",
@@ -6972,7 +7012,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -7165,7 +7205,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "arctic_fat_metabolism": {
@@ -7369,6 +7409,22 @@
             "variant": "rs671",
             "allele_frequency_percent": 18
           }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 90,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "May affect vitamin D/fatty acid metabolism in breast milk"
+          }
         }
       }
     },
@@ -7461,7 +7517,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 7.8,
+          "average_copy_number": 7.5,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_confidence": 1.0,
@@ -7532,6 +7588,22 @@
           "ALDH2": {
             "variant": "rs671",
             "allele_frequency_percent": 17
+          }
+        },
+        "edar_adaptation": {
+          "gene": "EDAR",
+          "variant": "rs3827760",
+          "allele_frequency_percent": 90,
+          "inheritance": "dominant",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Enhanced Ectodysplasin Signaling",
+            "description": "Affects sweat glands, hair thickness, tooth shape",
+            "dietary_impact": "Indirect effects on thermoregulation and potentially breast milk composition"
+          },
+          "dietary_recommendation": {
+            "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation",
+            "population_note": "May affect vitamin D/fatty acid metabolism in breast milk"
           }
         }
       }
@@ -7627,7 +7699,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 10,
+          "average_copy_number": 8.0,
           "inheritance": "additive",
           "inferred_phenotype": "high",
           "phenotype_confidence": 1.0,
@@ -7654,7 +7726,7 @@
         "pufa_metabolism": {
           "gene": "FADS1",
           "variant": "rs174537",
-          "allele_frequency_percent": 60,
+          "allele_frequency_percent": 70,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_probability": 0.48,
@@ -7672,7 +7744,7 @@
               "fish oil",
               "algae oil"
             ],
-            "notes": "Moderate conversion efficiency; mix of plant and marine sources optimal"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion (70% insertion variant frequency). CAUTION: Modern mismatch\u2014excess omega-6 vegetable oils (sunflower, corn) may be over-converted to pro-inflammatory compounds. Emphasize omega-3 sources, limit omega-6."
           }
         },
         "vitamin_d_metabolism": {
@@ -7956,7 +8028,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -8134,7 +8206,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         }
       }
@@ -8227,7 +8299,7 @@
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 4,
+          "average_copy_number": 5.0,
           "inheritance": "additive",
           "inferred_phenotype": "low",
           "phenotype_confidence": 1.0,
@@ -8270,7 +8342,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "arctic_fat_metabolism": {
@@ -8455,6 +8527,38 @@
             "variant": "rs671",
             "allele_frequency_percent": 10
           }
+        },
+        "altitude_adaptation_epas1": {
+          "gene": "EPAS1",
+          "variant": "Denisovan-derived haplotype",
+          "allele_frequency_percent": 76,
+          "inheritance": "additive",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "High-Altitude Adaptation",
+            "description": "Denisovan-derived adaptation preventing polycythemia at altitude",
+            "dietary_impact": "Enables efficient oxygen metabolism at low oxygen; supports traditional high-altitude diet"
+          },
+          "dietary_recommendation": {
+            "notes": "Tibetan-specific Denisovan introgression; supports barley and dairy-based high-altitude diet",
+            "population_note": "Enables efficient metabolism at low oxygen"
+          }
+        },
+        "altitude_adaptation_egln1": {
+          "gene": "EGLN1",
+          "variant": "rs186996510",
+          "allele_frequency_percent": 70,
+          "inheritance": "additive",
+          "inferred_phenotype": "present",
+          "phenotype_details": {
+            "name": "Oxygen Sensor Adaptation",
+            "description": "PHD2 variant preventing excessive hemoglobin at altitude",
+            "dietary_impact": "Works with EPAS1 for altitude adaptation"
+          },
+          "dietary_recommendation": {
+            "notes": "Complementary to EPAS1; Tibetan-specific adaptation",
+            "population_note": "Prevents polycythemia at altitude"
+          }
         }
       }
     },
@@ -8603,7 +8707,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion; plant-based omega-3 sources adequate"
           }
         },
         "alcohol_metabolism": {
@@ -8739,12 +8843,12 @@
               "kefir",
               "all dairy products"
             ],
-            "notes": "Full dairy tolerance; all forms of dairy well-tolerated"
+            "notes": "Full dairy tolerance; all forms of dairy well-tolerated Lactase persistence first appeared in Ukraine ~5,960 BP; selection coefficient s=0.01-0.09 represents among strongest positive selection signals in human genome. Dairy consumption preceded genetic adaptation by millennia via fermentation."
           }
         },
         "starch_digestion": {
           "gene": "AMY1",
-          "average_copy_number": 6.5,
+          "average_copy_number": 7.5,
           "inheritance": "additive",
           "inferred_phenotype": "moderate",
           "phenotype_confidence": 1.0,
@@ -8922,7 +9026,7 @@
         "pufa_metabolism": {
           "gene": "FADS1",
           "variant": "rs174537",
-          "allele_frequency_percent": 72,
+          "allele_frequency_percent": 70,
           "inheritance": "additive",
           "inferred_phenotype": "efficient",
           "phenotype_probability": 0.922,
@@ -8941,7 +9045,7 @@
               "algae oil",
               "fish (optional)"
             ],
-            "notes": "Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate"
+            "notes": "Efficient ALA\u2192EPA/DHA conversion (70% insertion variant frequency). CAUTION: Modern mismatch\u2014excess omega-6 vegetable oils (sunflower, corn) may be over-converted to pro-inflammatory compounds. Emphasize omega-3 sources, limit omega-6."
           }
         },
         "alcohol_metabolism": {
