@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ancestral Diet Explorer</title>
   
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Mapbox GL JS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
   
+  <!-- Turf.js for geospatial operations -->
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
   
   <style>
     * {
@@ -42,7 +44,7 @@
       max-width: 320px;
       max-height: 90vh;
       overflow-y: auto;
-      z-index: 1000;
+      z-index: 1;
     }
 
     .control-panel h1 {
@@ -333,7 +335,7 @@
       max-width: 400px;
       max-height: 90vh;
       overflow-y: auto;
-      z-index: 1000;
+      z-index: 1;
       display: none;
     }
 
@@ -437,31 +439,10 @@
     }
 
     /* Popup styling */
-    .leaflet-popup-content {
+    .mapboxgl-popup-content {
       border-radius: 8px;
       padding: 0;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Tooltip styling for hover */
-    .region-tooltip {
-      background: white;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      padding: 8px 12px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      pointer-events: none;
-      transition: none !important;
-      opacity: 1 !important;
-    }
-    
-    .region-tooltip::before {
-      border-top-color: white;
-    }
-    
-    .leaflet-tooltip {
-      transition: none !important;
     }
 
     /* Scrollbar styling */
@@ -871,322 +852,175 @@
 
 
     let map;
-    let geojsonLayer;
+    let hoveredRegionId = null;
 
     function initializeMap() {
-      // Initialize Leaflet map
-      map = L.map('map', {
-        center: [30, 0],
-        zoom: 2,
-        minZoom: 3,
-        maxZoom: 10
+      mapboxgl.accessToken = 'pk.eyJ1IjoiamFyZGl6emlsIiwiYSI6ImNtaWNhem9oeTFqeXoyanBqdmh4a3hjeW0ifQ.bDV1PwnkFOuvX9rO8hGvuQ';
+
+      map = new mapboxgl.Map({
+        container: 'map',
+        // PERFORMANCE: Use your custom style (lighter than satellite)
+        style: 'mapbox://styles/jardizzil/cmirbb672001p01r72nv0cs12',
+        // PERFORMANCE: Use mercator instead of globe for better performance
+        projection: 'mercator',
+        center: [0, 30],
+        zoom: 1.5,
+        // PERFORMANCE: Reduce max pitch
+        maxPitch: 60
       });
 
-      // Add base map - OpenStreetMap
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 19
-      }).addTo(map);
-
-      // Load and add GeoJSON regions
-      geojsonLayer = L.geoJSON(regionsGeoJSON, {
-        style: styleFeature,
-        onEachFeature: onEachFeature
-      }).addTo(map);
-      
-      // Setup map-level hover detection
-      setupMapHover();
-    }
-
-    // Styling function for regions
-    function styleFeature(feature) {
-      return {
-        fillColor: '#000000',
-        weight: 0,           // No border
-        opacity: 0,          // Border invisible
-        color: 'transparent',
-        fillOpacity: 0       // Fill invisible
-      };
-    }
-
-    let hoverTooltip = null;
-    let lastHighlightedLayer = null;
-    let currentRegionId = null;
-
-    function onEachFeature(feature, layer) {
-      // Only handle clicks on individual layers
-      layer.on({
-        click: clickFeature
-      });
-    }
-    
-    // Use map-level mousemove for accurate hover detection
-    let lastRegionCheck = 0;
-    let lastCheckLatlng = null;
-    const REGION_CHECK_THROTTLE = 25; // Check regions every 25ms
-    
-    function setupMapHover() {
-      map.on('mousemove', function(e) {
-        const latlng = e.latlng;
-        
-        // Always update tooltip position immediately (no lag)
-        if (hoverTooltip) {
-          hoverTooltip.setLatLng(latlng);
-        }
-        
-        // Determine if we need immediate check
-        let needsImmediateCheck = false;
-        
-        // Check: Are we still inside the current region's ACTUAL polygon?
-        if (lastHighlightedLayer && currentRegionId) {
-          // Quick bounds check first
-          const currentBounds = lastHighlightedLayer.getBounds();
-          if (!currentBounds.contains(latlng)) {
-            // Definitely left - need immediate update
-            needsImmediateCheck = true;
-          } else {
-            // Inside bounds but check actual polygon
-            if (!isPointInLayer(latlng, lastHighlightedLayer)) {
-              needsImmediateCheck = true;
-            }
-          }
-        } else {
-          // No region selected - check immediately
-          needsImmediateCheck = true;
-        }
-        
-        // Throttle unless we need immediate check
-        const now = Date.now();
-        if (!needsImmediateCheck && now - lastRegionCheck < REGION_CHECK_THROTTLE) {
-          return;
-        }
-        lastRegionCheck = now;
-        
-        checkRegionAtPoint(latlng);
-      });
-      
-      // Clear on mouseout from map
-      map.on('mouseout', clearHover);
-    }
-    
-    function checkRegionAtPoint(latlng) {
-      // Find all regions containing this point
-      const overlappingLayers = [];
-      geojsonLayer.eachLayer(function(l) {
-        if (l.feature && l.getBounds) {
-          const bounds = l.getBounds();
-          if (bounds.contains(latlng)) {
-            if (isPointInLayer(latlng, l)) {
-              overlappingLayers.push({
-                layer: l,
-                area: calculateLayerArea(l),
-                props: l.feature.properties
-              });
-            }
-          }
-        }
-      });
-      
-      // No regions found - clear everything
-      if (overlappingLayers.length === 0) {
-        clearHover();
-        return;
-      }
-      
-      // Sort by area and get smallest (most specific region)
-      overlappingLayers.sort((a, b) => a.area - b.area);
-      const targetRegion = overlappingLayers[0];
-      
-      // Update highlight if region changed
-      if (currentRegionId !== targetRegion.props.id) {
-        // Reset previous highlight
-        if (lastHighlightedLayer) {
-          geojsonLayer.resetStyle(lastHighlightedLayer);
-        }
-        
-        // Highlight new region (subtle highlight on hover)
-        targetRegion.layer.setStyle({
-          weight: 2,
-          opacity: 0.7,
-          color: '#3498db',
-          fillOpacity: 0.1
+      // PERFORMANCE: Simplified terrain and fog (remove if still slow)
+      map.on('style.load', () => {
+        // Optional: Add subtle terrain (much lighter than before)
+        // Comment out these lines if you want maximum performance
+        /*
+        map.addSource('mapbox-dem', {
+          type: 'raster-dem',
+          url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          tileSize: 512,
+          maxzoom: 14
         });
-        lastHighlightedLayer = targetRegion.layer;
-        currentRegionId = targetRegion.props.id;
-        
-        // Update tooltip content
-        updateTooltip(latlng, targetRegion.props.name);
-      }
-    }
-    
-    function updateTooltip(latlng, name) {
-      const content = `<strong>${name}</strong><br><span style="font-size: 11px; color: #666;">Click to view diet</span>`;
-      
-      if (hoverTooltip) {
-        // Reuse existing tooltip - just update content and position
-        hoverTooltip.setContent(content);
-        hoverTooltip.setLatLng(latlng);
-      } else {
-        // Create new tooltip
-        hoverTooltip = L.tooltip({
-          permanent: true,
-          direction: 'top',
-          offset: [0, -10],
-          className: 'region-tooltip'
-        })
-        .setLatLng(latlng)
-        .setContent(content)
-        .addTo(map);
-      }
-    }
-    
-    function clearHover() {
-      if (lastHighlightedLayer) {
-        geojsonLayer.resetStyle(lastHighlightedLayer);
-        lastHighlightedLayer = null;
-      }
-      if (hoverTooltip) {
-        map.removeLayer(hoverTooltip);
-        hoverTooltip = null;
-      }
-      currentRegionId = null;
-    }
-
-    function handleMouseMove(e) {
-      // Deprecated - using map-level handler instead
-    }
-
-    function resetHighlight(e) {
-      // Deprecated - using clearHover() via map-level handler
-    }
-
-    function clickFeature(e) {
-      // Find all regions containing this click point and select the smallest one
-      const clickLatLng = e.latlng;
-      const clickedLayers = [];
-      
-      geojsonLayer.eachLayer(function(layer) {
-        if (layer.feature && layer.getBounds) {
-          const bounds = layer.getBounds();
-          if (bounds.contains(clickLatLng)) {
-            // More precise check using point-in-polygon
-            if (isPointInLayer(clickLatLng, layer)) {
-              const area = calculateLayerArea(layer);
-              clickedLayers.push({
-                layer: layer,
-                area: area,
-                id: layer.feature.properties.id
-              });
-            }
-          }
-        }
+        map.setTerrain({ source: 'mapbox-dem', exaggeration: 0.5 }); // Reduced from 1.5
+        */
       });
-      
-      if (clickedLayers.length > 0) {
-        // Sort by area (smallest first) and select the smallest region
-        clickedLayers.sort((a, b) => a.area - b.area);
-        const smallestRegion = clickedLayers[0];
-        selectRegion(smallestRegion.id);
-      }
-    }
-    
-    // Check if point is inside a polygon layer
-    function isPointInLayer(latlng, layer) {
-      // For GeoJSON layers, iterate through all sub-layers
-      if (layer.getLayers) {
-        const subLayers = layer.getLayers();
-        for (const subLayer of subLayers) {
-          if (isPointInLayer(latlng, subLayer)) {
-            return true;
+
+      map.on('load', () => {
+        // Add regions source
+        map.addSource('ancestral-regions', {
+          type: 'geojson',
+          data: regionsGeoJSON,
+          // PERFORMANCE: Enable data clustering/simplification
+          tolerance: 0.375, // Simplify geometries
+          buffer: 64,
+          promoteId: 'id' 
+        });
+
+        // Add fill layer
+        map.addLayer({
+          id: 'ancestral-regions-fill',
+          type: 'fill',
+          source: 'ancestral-regions',
+          paint: {
+            'fill-color': [
+              'match',
+              ['get', 'region'],
+              'Europe', '#FF6B6B',
+              'Africa', '#FFA500',
+              'Middle East', '#FFD700',
+              'Central Asia', '#9B59B6',
+              'South Asia', '#3498DB',
+              'East Asia', '#2ECC71',
+              'Southeast Asia', '#1ABC9C',
+              'Oceania', '#E74C3C',
+              'The Americas', '#F39C12',
+              '#95A5A6'
+            ],
+            'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              0.6,
+              0.3
+            ]
           }
-        }
-        return false;
-      }
-      
-      // For individual polygon layers, use getLatLngs
-      if (layer.getLatLngs) {
-        const latLngs = layer.getLatLngs();
-        return checkPointInLatLngs(latlng, latLngs);
-      }
-      
-      return false;
-    }
-    
-    // Recursively check point against LatLngs structure
-    function checkPointInLatLngs(point, latLngs) {
-      if (!latLngs || latLngs.length === 0) return false;
-      
-      // Check if this is an array of LatLng objects (a ring)
-      if (latLngs[0] && latLngs[0].lat !== undefined) {
-        return isPointInRing(point, latLngs);
-      }
-      
-      // Check if this is an array of rings (polygon with holes) or multi-polygon
-      if (Array.isArray(latLngs[0])) {
-        // For polygon with holes, only check outer ring (first element)
-        // For multi-polygon, check each polygon
-        for (const ring of latLngs) {
-          if (Array.isArray(ring) && ring.length > 0) {
-            if (ring[0] && ring[0].lat !== undefined) {
-              // This is a ring of LatLng objects
-              if (isPointInRing(point, ring)) {
-                return true;
-              }
-            } else if (Array.isArray(ring[0])) {
-              // This is nested further (multi-polygon)
-              if (checkPointInLatLngs(point, ring)) {
-                return true;
-              }
-            }
+        });
+
+        // Add outline
+        map.addLayer({
+          id: 'ancestral-regions-outline',
+          type: 'line',
+          source: 'ancestral-regions',
+          paint: {
+            'line-color': '#ffffff',
+            'line-width': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              3,
+              1
+            ]
           }
+        });
+
+        // Add labels
+        map.addLayer({
+          id: 'ancestral-regions-labels',
+          type: 'symbol',
+          source: 'ancestral-regions',
+          layout: {
+            'text-field': ['get', 'name'],
+            'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+            'text-size': 12
+          },
+          paint: {
+            'text-color': '#ffffff',
+            'text-halo-color': '#000000',
+            'text-halo-width': 1.5
+          },
+          minzoom: 2
+        });
+
+        setupMapInteractions();
+      });
+
+      // Add controls
+      map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+    }
+
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    });
+
+    function setupMapInteractions() {
+      // Hover
+      map.on('mousemove', 'ancestral-regions-fill', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
+
+        if (hoveredRegionId !== null) {
+          map.setFeatureState(
+            { source: 'ancestral-regions', id: hoveredRegionId },
+            { hover: false }
+          );
         }
-      }
-      
-      return false;
-    }
-    
-    // Ray casting point-in-polygon algorithm
-    function isPointInRing(point, ring) {
-      if (!ring || ring.length < 3) return false;
-      
-      let inside = false;
-      const x = point.lng, y = point.lat;
-      
-      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-        const xi = ring[i].lng, yi = ring[i].lat;
-        const xj = ring[j].lng, yj = ring[j].lat;
-        
-        if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
-          inside = !inside;
+
+        hoveredRegionId = e.features[0].id;
+        map.setFeatureState(
+          { source: 'ancestral-regions', id: hoveredRegionId },
+          { hover: true }
+        );
+
+        const props = e.features[0].properties;
+        popup.setLngLat(e.lngLat)
+          .setHTML(`
+            <div style="padding: 8px;">
+              <h3 style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold;">
+                ${props.name}
+              </h3>
+              <p style="margin: 4px 0 0 0; font-size: 11px; font-style: italic;">
+                Click to view diet details
+              </p>
+            </div>
+          `)
+          .addTo(map);
+      });
+
+      map.on('mouseleave', 'ancestral-regions-fill', () => {
+        map.getCanvas().style.cursor = '';
+        if (hoveredRegionId !== null) {
+          map.setFeatureState(
+            { source: 'ancestral-regions', id: hoveredRegionId },
+            { hover: false }
+          );
         }
-      }
-      
-      return inside;
-    }
-    
-    // Deprecated - keeping for backwards compatibility
-    function isPointInPolygon(point, polygon) {
-      return checkPointInLatLngs(point, polygon);
-    }
-    
-    // Calculate approximate area of a layer's bounding box
-    const layerAreaCache = new WeakMap();
-    
-    function calculateLayerArea(layer) {
-      if (layerAreaCache.has(layer)) {
-        return layerAreaCache.get(layer);
-      }
-      
-      let area = Infinity;
-      if (layer.getBounds) {
-        const bounds = layer.getBounds();
-        const width = bounds.getEast() - bounds.getWest();
-        const height = bounds.getNorth() - bounds.getSouth();
-        area = width * height;
-      }
-      
-      layerAreaCache.set(layer, area);
-      return area;
+        hoveredRegionId = null;
+        popup.remove();
+      });
+
+      // Click
+      map.on('click', 'ancestral-regions-fill', (e) => {
+        const regionId = e.features[0].properties.id;
+        selectRegion(regionId);
+      });
     }
 
     let selectedRegions = [];
@@ -1205,9 +1039,10 @@
       showDietPanel(diet);
 
       // Fly to region
-      map.setView([diet.centroid.lat, diet.centroid.lon], 4, {
-        animate: true,
-        duration: 2
+      map.flyTo({
+        center: [diet.centroid.lon, diet.centroid.lat],
+        zoom: 4,
+        duration: 2000
       });
     }
 
@@ -1400,17 +1235,6 @@
     }
 
     /**
-     * Calculate F1 parent genotype from two grandparent frequencies
-     * CRITICAL: This properly models F1 hybrid inheritance
-     * Do NOT average frequencies before applying Hardy-Weinberg!
-     */
-    function calculateF1Parent(gp1_freq, gp2_freq) {
-      const gp1_gt = hardyWeinberg(gp1_freq);
-      const gp2_gt = hardyWeinberg(gp2_freq);
-      return mendelianOffspring(gp1_gt, gp2_gt);
-    }
-
-    /**
      * Calculate lactase persistence phenotype (DOMINANT trait)
      * Heterozygotes (T/C) ARE lactase persistent
      */
@@ -1421,9 +1245,9 @@
         return gen?.lactase_persistence?.allele_frequency_percent || 0;
       });
 
-      // Step 2: Calculate F1 parent genotypes properly (NOT averaged frequencies!)
-      const mother_gt = calculateF1Parent(gp_freqs[0], gp_freqs[1]); // MGM + MGF
-      const father_gt = calculateF1Parent(gp_freqs[2], gp_freqs[3]);  // PGM + PGF
+      // Step 2: Calculate parent genotypes
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2); // MGM + MGF
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);  // PGM + PGF
 
       // Step 3: Calculate offspring genotype
       const offspring_gt = mendelianOffspring(mother_gt, father_gt);
@@ -1431,29 +1255,24 @@
       // Step 4: Determine phenotype (DOMINANT - T/T or T/C = persistent)
       const prob_persistent = offspring_gt.homozygous_derived + offspring_gt.heterozygous;
       const is_persistent = prob_persistent >= 0.5;
-      
-      // Add confidence interval (±15% for population-level uncertainty)
-      const prob_min = Math.max(0, prob_persistent - 0.15);
-      const prob_max = Math.min(1, prob_persistent + 0.15);
 
       return {
         phenotype: is_persistent ? 'Lactase Persistent' : 'Lactase Non-Persistent',
         probability: prob_persistent,
-        prob_range: { min: prob_min, max: prob_max },
         genotype: offspring_gt,
         inheritance: 'dominant',
         explanation: is_persistent 
           ? 'You likely inherited at least one lactase persistence allele'
           : 'You likely inherited no lactase persistence alleles',
         recommendation: is_persistent
-          ? '🥛 High dairy tolerance - can consume milk and dairy products freely'
+          ? '✓ Good dairy tolerance expected - all forms of dairy should be well-tolerated'
           : '⚠ Lower dairy tolerance likely - prefer fermented dairy (yogurt, kefir, aged cheese) or lactose-free alternatives'
       };
     }
 
     /**
      * Calculate AMY1 copy number (ADDITIVE trait)
-     * Copy numbers add up from parents with variance
+     * Copy numbers add up from parents
      */
     function calculateAMY1(grandparents) {
       const gp_copies = grandparents.map(gp => {
@@ -1465,18 +1284,8 @@
       const mother_copies = (gp_copies[0] + gp_copies[1]) / 2;
       const father_copies = (gp_copies[2] + gp_copies[3]) / 2;
 
-      // Calculate all possible offspring outcomes (4 combinations)
-      const possibleOutcomes = [];
-      for (let m of [gp_copies[0], gp_copies[1]]) {
-        for (let f of [gp_copies[2], gp_copies[3]]) {
-          possibleOutcomes.push((m + f) / 2);
-        }
-      }
-      
-      // Mean, min, max
+      // Offspring gets average of parents (additive inheritance)
       const offspring_copies = (mother_copies + father_copies) / 2;
-      const min_copies = Math.min(...possibleOutcomes);
-      const max_copies = Math.max(...possibleOutcomes);
 
       let phenotype, carb_range, efficiency;
       if (offspring_copies >= 8) {
@@ -1500,11 +1309,10 @@
       return {
         phenotype,
         copies: offspring_copies,
-        copy_range: { min: min_copies, max: max_copies },
         inheritance: 'additive',
         explanation: `Inherited ~${offspring_copies.toFixed(1)} AMY1 copies through additive inheritance`,
         recommendation: `<strong>Optimal Carbs:</strong> ${carb_range} of calories<br>` +
-                       `<strong>Efficiency:</strong> ${efficiency} starch digestion - can handle ${carb_range} carbs well`
+                       `<strong>Efficiency:</strong> ${efficiency} starch digestion capacity`
       };
     }
 
@@ -1567,8 +1375,8 @@
       // If very low frequency (<5%), skip this trait
       if (avg_freq < 5) return null;
 
-      const mother_gt = calculateF1Parent(gp_freqs[0], gp_freqs[1]);
-      const father_gt = calculateF1Parent(gp_freqs[2], gp_freqs[3]);
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2);
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);
       const offspring_gt = mendelianOffspring(mother_gt, father_gt);
 
       // DOMINANT-NEGATIVE: even one A allele = flush (25-40% enzyme activity)
@@ -1684,8 +1492,8 @@
       // Skip if no Arctic ancestry
       if (avg_freq < 10) return null;
 
-      const mother_gt = calculateF1Parent(gp_freqs[0], gp_freqs[1]);
-      const father_gt = calculateF1Parent(gp_freqs[2], gp_freqs[3]);
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2);
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);
       const offspring_gt = mendelianOffspring(mother_gt, father_gt);
 
       // RECESSIVE: need two copies for phenotype
@@ -1720,8 +1528,8 @@
       // Skip if no East Asian ancestry
       if (avg_freq < 10) return null;
 
-      const mother_gt = calculateF1Parent(gp_freqs[0], gp_freqs[1]);
-      const father_gt = calculateF1Parent(gp_freqs[2], gp_freqs[3]);
+      const mother_gt = hardyWeinberg((gp_freqs[0] + gp_freqs[1]) / 2);
+      const father_gt = hardyWeinberg((gp_freqs[2] + gp_freqs[3]) / 2);
       const offspring_gt = mendelianOffspring(mother_gt, father_gt);
 
       const prob_variant = offspring_gt.homozygous_derived + offspring_gt.heterozygous;
@@ -1832,12 +1640,7 @@
         
         let probabilityText = '';
         if (key === 'amy1') {
-          const range = trait.copy_range ? 
-            `(likely range: ${trait.copy_range.min.toFixed(1)}-${trait.copy_range.max.toFixed(1)})` : '';
-          probabilityText = `${trait.copies.toFixed(1)} copies ${range}`;
-        } else if (key === 'lactase' && trait.prob_range) {
-          const rangeText = `${(trait.prob_range.min * 100).toFixed(0)}-${(trait.prob_range.max * 100).toFixed(0)}%`;
-          probabilityText = `${(trait.probability * 100).toFixed(0)}% likely (range: ${rangeText})`;
+          probabilityText = `${trait.copies.toFixed(1)} AMY1 copies predicted`;
         } else if (trait.probability !== null && trait.probability !== undefined) {
           probabilityText = `${(trait.probability * 100).toFixed(0)}% probability`;
         } else if (key === 'fads') {
