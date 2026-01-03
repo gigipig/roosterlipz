@@ -30,7 +30,7 @@ function initializeMap() {
   });
 
   // Add base map - Alidade Smooth Dark
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
     attribution: '© Stadia Maps, © OpenStreetMap',
     maxZoom: 19
   }).addTo(map);
