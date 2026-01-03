@@ -878,8 +878,8 @@
       map = L.map('map', {
         center: [30, 0],
         zoom: 2,
-        minZoom: 3,
-        maxZoom: 10
+        minZoom: 1,
+        maxZoom: 19
       });
 
       // Add base map - OpenStreetMap
@@ -894,18 +894,32 @@
         onEachFeature: onEachFeature
       }).addTo(map);
       
-      // Setup map-level hover detection
-      setupMapHover();
+      // Clear tooltip when mouse leaves the map
+      map.on('mouseout', function() {
+        resetHighlight();
+      });
     }
 
     // Styling function for regions
     function styleFeature(feature) {
+      const regionColors = {
+        'Europe': '#FF6B6B',
+        'Africa': '#FFA500',
+        'Middle East': '#FFD700',
+        'Central Asia': '#9B59B6',
+        'South Asia': '#3498DB',
+        'East Asia': '#2ECC71',
+        'Southeast Asia': '#1ABC9C',
+        'Oceania': '#E74C3C',
+        'The Americas': '#F39C12'
+      };
+
       return {
-        fillColor: '#000000',
-        weight: 0,           // No border
-        opacity: 0,          // Border invisible
-        color: 'transparent',
-        fillOpacity: 0       // Fill invisible
+        fillColor: regionColors[feature.properties.region] || '#95A5A6',
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        fillOpacity: 0.3
       };
     }
 
@@ -914,63 +928,17 @@
     let currentRegionId = null;
 
     function onEachFeature(feature, layer) {
-      // Only handle clicks on individual layers
       layer.on({
+        mousemove: handleMouseMove,
+        mouseout: resetHighlight,
         click: clickFeature
       });
     }
-    
-    // Use map-level mousemove for accurate hover detection
-    let lastRegionCheck = 0;
-    let lastCheckLatlng = null;
-    const REGION_CHECK_THROTTLE = 25; // Check regions every 25ms
-    
-    function setupMapHover() {
-      map.on('mousemove', function(e) {
-        const latlng = e.latlng;
-        
-        // Always update tooltip position immediately (no lag)
-        if (hoverTooltip) {
-          hoverTooltip.setLatLng(latlng);
-        }
-        
-        // Determine if we need immediate check
-        let needsImmediateCheck = false;
-        
-        // Check: Are we still inside the current region's ACTUAL polygon?
-        if (lastHighlightedLayer && currentRegionId) {
-          // Quick bounds check first
-          const currentBounds = lastHighlightedLayer.getBounds();
-          if (!currentBounds.contains(latlng)) {
-            // Definitely left - need immediate update
-            needsImmediateCheck = true;
-          } else {
-            // Inside bounds but check actual polygon
-            if (!isPointInLayer(latlng, lastHighlightedLayer)) {
-              needsImmediateCheck = true;
-            }
-          }
-        } else {
-          // No region selected - check immediately
-          needsImmediateCheck = true;
-        }
-        
-        // Throttle unless we need immediate check
-        const now = Date.now();
-        if (!needsImmediateCheck && now - lastRegionCheck < REGION_CHECK_THROTTLE) {
-          return;
-        }
-        lastRegionCheck = now;
-        
-        checkRegionAtPoint(latlng);
-      });
+
+    function handleMouseMove(e) {
+      const latlng = e.latlng;
       
-      // Clear on mouseout from map
-      map.on('mouseout', clearHover);
-    }
-    
-    function checkRegionAtPoint(latlng) {
-      // Find all regions containing this point
+      // Find the smallest region at this point
       const overlappingLayers = [];
       geojsonLayer.eachLayer(function(l) {
         if (l.feature && l.getBounds) {
@@ -987,77 +955,63 @@
         }
       });
       
-      // No regions found - clear everything
       if (overlappingLayers.length === 0) {
-        clearHover();
+        resetHighlight();
         return;
       }
       
-      // Sort by area and get smallest (most specific region)
+      // Sort by area and get smallest
       overlappingLayers.sort((a, b) => a.area - b.area);
       const targetRegion = overlappingLayers[0];
       
-      // Update highlight if region changed
+      // Only update if region changed
       if (currentRegionId !== targetRegion.props.id) {
         // Reset previous highlight
         if (lastHighlightedLayer) {
           geojsonLayer.resetStyle(lastHighlightedLayer);
         }
         
-        // Highlight new region (subtle highlight on hover)
+        // Highlight new region
         targetRegion.layer.setStyle({
-          weight: 2,
-          opacity: 0.7,
-          color: '#3498db',
-          fillOpacity: 0.1
+          weight: 3,
+          fillOpacity: 0.6
         });
         lastHighlightedLayer = targetRegion.layer;
         currentRegionId = targetRegion.props.id;
-        
-        // Update tooltip content
-        updateTooltip(latlng, targetRegion.props.name);
       }
-    }
-    
-    function updateTooltip(latlng, name) {
-      const content = `<strong>${name}</strong><br><span style="font-size: 11px; color: #666;">Click to view diet</span>`;
+
+      const props = targetRegion.props;
       
+      // Remove old tooltip and create new one at cursor
       if (hoverTooltip) {
-        // Reuse existing tooltip - just update content and position
-        hoverTooltip.setContent(content);
-        hoverTooltip.setLatLng(latlng);
-      } else {
-        // Create new tooltip
-        hoverTooltip = L.tooltip({
-          permanent: true,
-          direction: 'top',
-          offset: [0, -10],
-          className: 'region-tooltip'
-        })
-        .setLatLng(latlng)
-        .setContent(content)
-        .addTo(map);
+        map.removeLayer(hoverTooltip);
       }
+      
+      hoverTooltip = L.tooltip({
+        permanent: true,
+        direction: 'top',
+        offset: [0, -10],
+        className: 'region-tooltip'
+      })
+      .setLatLng(latlng)
+      .setContent(`<strong>${props.name}</strong><br><span style="font-size: 11px; color: #666;">Click to view diet</span>`)
+      .addTo(map);
     }
-    
-    function clearHover() {
+
+    function resetHighlight(e) {
+      // Reset highlighted layer
       if (lastHighlightedLayer) {
         geojsonLayer.resetStyle(lastHighlightedLayer);
         lastHighlightedLayer = null;
       }
+      
+      // Remove tooltip
       if (hoverTooltip) {
         map.removeLayer(hoverTooltip);
         hoverTooltip = null;
       }
+      
       currentRegionId = null;
-    }
-
-    function handleMouseMove(e) {
-      // Deprecated - using map-level handler instead
-    }
-
-    function resetHighlight(e) {
-      // Deprecated - using clearHover() via map-level handler
     }
 
     function clickFeature(e) {
@@ -1092,60 +1046,45 @@
     
     // Check if point is inside a polygon layer
     function isPointInLayer(latlng, layer) {
-      // For GeoJSON layers, iterate through all sub-layers
-      if (layer.getLayers) {
-        const subLayers = layer.getLayers();
-        for (const subLayer of subLayers) {
-          if (isPointInLayer(latlng, subLayer)) {
+      // Use ray casting algorithm for point-in-polygon
+      const layers = layer.getLayers ? layer.getLayers() : [layer];
+      
+      for (const subLayer of layers) {
+        if (subLayer.getLatLngs) {
+          const latLngs = subLayer.getLatLngs();
+          if (isPointInPolygon(latlng, latLngs)) {
             return true;
           }
         }
-        return false;
       }
       
-      // For individual polygon layers, use getLatLngs
-      if (layer.getLatLngs) {
-        const latLngs = layer.getLatLngs();
-        return checkPointInLatLngs(latlng, latLngs);
+      // Fallback to bounds check
+      if (layer.getBounds) {
+        return layer.getBounds().contains(latlng);
       }
-      
-      return false;
-    }
-    
-    // Recursively check point against LatLngs structure
-    function checkPointInLatLngs(point, latLngs) {
-      if (!latLngs || latLngs.length === 0) return false;
-      
-      // Check if this is an array of LatLng objects (a ring)
-      if (latLngs[0] && latLngs[0].lat !== undefined) {
-        return isPointInRing(point, latLngs);
-      }
-      
-      // Check if this is an array of rings (polygon with holes) or multi-polygon
-      if (Array.isArray(latLngs[0])) {
-        // For polygon with holes, only check outer ring (first element)
-        // For multi-polygon, check each polygon
-        for (const ring of latLngs) {
-          if (Array.isArray(ring) && ring.length > 0) {
-            if (ring[0] && ring[0].lat !== undefined) {
-              // This is a ring of LatLng objects
-              if (isPointInRing(point, ring)) {
-                return true;
-              }
-            } else if (Array.isArray(ring[0])) {
-              // This is nested further (multi-polygon)
-              if (checkPointInLatLngs(point, ring)) {
-                return true;
-              }
-            }
-          }
-        }
-      }
-      
       return false;
     }
     
     // Ray casting point-in-polygon algorithm
+    function isPointInPolygon(point, polygon) {
+      // Handle nested arrays (MultiPolygon, Polygon with holes)
+      if (!polygon || polygon.length === 0) return false;
+      
+      // If first element is also an array of arrays, it's multi-ring
+      if (Array.isArray(polygon[0]) && Array.isArray(polygon[0][0])) {
+        // Check outer ring of first polygon
+        return isPointInRing(point, polygon[0]);
+      } else if (Array.isArray(polygon[0]) && polygon[0].lat !== undefined) {
+        // Array of LatLng objects
+        return isPointInRing(point, polygon);
+      } else if (Array.isArray(polygon[0])) {
+        // Nested rings - check outer ring
+        return isPointInRing(point, polygon[0]);
+      }
+      
+      return isPointInRing(point, polygon);
+    }
+    
     function isPointInRing(point, ring) {
       if (!ring || ring.length < 3) return false;
       
@@ -1153,8 +1092,8 @@
       const x = point.lng, y = point.lat;
       
       for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-        const xi = ring[i].lng, yi = ring[i].lat;
-        const xj = ring[j].lng, yj = ring[j].lat;
+        const xi = ring[i].lng || ring[i][1], yi = ring[i].lat || ring[i][0];
+        const xj = ring[j].lng || ring[j][1], yj = ring[j].lat || ring[j][0];
         
         if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
           inside = !inside;
@@ -1164,29 +1103,15 @@
       return inside;
     }
     
-    // Deprecated - keeping for backwards compatibility
-    function isPointInPolygon(point, polygon) {
-      return checkPointInLatLngs(point, polygon);
-    }
-    
     // Calculate approximate area of a layer's bounding box
-    const layerAreaCache = new WeakMap();
-    
     function calculateLayerArea(layer) {
-      if (layerAreaCache.has(layer)) {
-        return layerAreaCache.get(layer);
-      }
-      
-      let area = Infinity;
       if (layer.getBounds) {
         const bounds = layer.getBounds();
         const width = bounds.getEast() - bounds.getWest();
         const height = bounds.getNorth() - bounds.getSouth();
-        area = width * height;
+        return width * height;
       }
-      
-      layerAreaCache.set(layer, area);
-      return area;
+      return Infinity;
     }
 
     let selectedRegions = [];

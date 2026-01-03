@@ -4,20 +4,6 @@
   "cultures": [
     {
       "id": "aboriginal_aus",
-      "name": "Aboriginal Australian",
-      "region": "Oceania",
-      "subregion": "Australian First Nations",
-      "culture": "Aboriginal Australian (varied)",
-      "centroid": {
-        "lat": -23.7,
-        "lon": 133.9
-      },
-      "bbox": {
-        "min_lat": -44.0,
-        "max_lat": -10.0,
-        "min_lon": 112.0,
-        "max_lon": 154.0
-      },
       "diet_signature": "Hunter-gatherer diet featuring native seeds, bush fruits, and game adapted to arid conditions. Emphasizes seasonal availability, fire-stick farming, and diverse protein from land and sea.",
       "staples": [
         "native tubers",
@@ -193,20 +179,6 @@
     },
     {
       "id": "amazon",
-      "name": "Amazonian",
-      "region": "The Americas",
-      "subregion": "South America - Amazonian",
-      "culture": "Amazonian indigenous",
-      "centroid": {
-        "lat": -3.0,
-        "lon": -60.0
-      },
-      "bbox": {
-        "min_lat": -10.0,
-        "max_lat": 3.0,
-        "min_lon": -75.0,
-        "max_lon": -45.0
-      },
       "diet_signature": "Rainforest diet featuring cassava, river fish, and wild game. Archaeological evidence shows significant maize agriculture from 700 CE alongside cassava cultivation. Emphasizes fermented beverages, insects, and diverse tropical fruits with slash-and-burn agriculture.",
       "staples": [
         "cassava",
@@ -355,20 +327,6 @@
     },
     {
       "id": "anatolian",
-      "name": "Anatolian/Turkish",
-      "region": "Middle East",
-      "subregion": "Anatolian/Turkish",
-      "culture": "Turkey/Anatolia",
-      "centroid": {
-        "lat": 39.9,
-        "lon": 32.9
-      },
-      "bbox": {
-        "min_lat": 36.0,
-        "max_lat": 42.0,
-        "min_lon": 26.0,
-        "max_lon": 45.0
-      },
       "diet_signature": "Bridge between Mediterranean and Central Asian cuisines featuring grilled meats, yogurt, and stuffed vegetables. Emphasizes olive oil, bulgur, and mezze traditions.",
       "staples": [
         "wheat",
@@ -516,20 +474,6 @@
     },
     {
       "id": "andean",
-      "name": "Andean",
-      "region": "The Americas",
-      "subregion": "South America - Andean Highlands",
-      "culture": "Quechua/Aymara",
-      "centroid": {
-        "lat": -13.2,
-        "lon": -72.5
-      },
-      "bbox": {
-        "min_lat": -18.0,
-        "max_lat": -8.0,
-        "min_lon": -76.0,
-        "max_lon": -68.0
-      },
       "diet_signature": "High-altitude agriculture featuring diverse potato varieties, quinoa, and camelid herding. Includes freeze-dried chuÃ±o, guinea pig, and adaptations to low-oxygen conditions.",
       "staples": [
         "potatoes",
@@ -675,20 +619,6 @@
     },
     {
       "id": "arabian",
-      "name": "Arabian Peninsula",
-      "region": "Middle East",
-      "subregion": "Arabian Peninsula",
-      "culture": "Bedouin/Arabian Peninsula",
-      "centroid": {
-        "lat": 24.7,
-        "lon": 46.7
-      },
-      "bbox": {
-        "min_lat": 15.0,
-        "max_lat": 28.0,
-        "min_lon": 30.0,
-        "max_lon": 60.0
-      },
       "diet_signature": "Desert-adapted diet centered on dates, camel products, and preserved foods. Features rice dishes with lamb, minimal vegetables, and hospitality-focused preparation.",
       "staples": [
         "dates",
@@ -831,20 +761,6 @@
     },
     {
       "id": "inuit",
-      "name": "Arctic Inuit",
-      "region": "The Americas",
-      "subregion": "North America - Arctic/ Inuit",
-      "culture": "Inuit/Yupik",
-      "centroid": {
-        "lat": 69.0,
-        "lon": -75.0
-      },
-      "bbox": {
-        "min_lat": 60.0,
-        "max_lat": 75.0,
-        "min_lon": -160.0,
-        "max_lon": -40.0
-      },
       "diet_signature": "Extreme cold-adapted marine mammal-based diet with 50-75% fat from blubber. Contrary to popular belief, NOT ketogenic—marine glycogen, fermented foods, kelp, and seasonal plants provided 15-20% carbohydrates. Features raw and fermented preparations with protein limited to 25-35% to avoid protein toxicity (rabbit starvation). Vitamin C obtained from raw organ meats (muktuk/whale skin, liver) and kelp.",
       "staples": [
         "marine mammals",
@@ -996,12 +912,6 @@
     },
     {
       "id": "australian_coastal",
-      "name": "Australian Coastal",
-      "culture": "Coastal Aboriginal diet with oysters, fish, and estuarine resources",
-      "centroid": {
-        "lat": -33.9,
-        "lon": 151.2
-      },
       "diet_signature": "Australian coastal Aboriginal peoples developed sophisticated marine harvesting practices over 65,000 years. Rock oysters, fish, shellfish, and estuarine resources formed the protein base, complemented by coastal plants, seeds, and seasonal inland game. The diet was sustainable, seasonal, and highly nutritious with excellent omega-3 fatty acid profiles from marine foods.",
       "macros": {
         "carbs_pct": 35,
@@ -1148,20 +1058,6 @@
     },
     {
       "id": "bengal",
-      "name": "Bengali",
-      "region": "South Asia",
-      "subregion": "Bengali Delta",
-      "culture": "Bengal (Bangladesh/West Bengal)",
-      "centroid": {
-        "lat": 23.8,
-        "lon": 90.4
-      },
-      "bbox": {
-        "min_lat": 21.0,
-        "max_lat": 24.5,
-        "min_lon": 88.0,
-        "max_lon": 92.0
-      },
       "diet_signature": "Delta cuisine centered on freshwater fish, rice, and mustard oil. Features five-spice blends, minimal heat spicing, and delicate fish preparations with mustard paste.",
       "staples": [
         "rice",
@@ -1303,12 +1199,6 @@
     },
     {
       "id": "brazilian_coastal",
-      "name": "Brazilian Coastal",
-      "culture": "Afro-Brazilian fusion with dendÃª oil, cassava, and seafood",
-      "centroid": {
-        "lat": -15.8,
-        "lon": -47.9
-      },
       "diet_signature": "Brazilian coastal cuisine, especially from Bahia, represents a vibrant fusion of African, Indigenous, and Portuguese influences. Characterized by dendÃª (red palm oil), coconut milk, cassava/manioc, and abundant seafood. The African influence is strong in cooking techniques and ingredient combinations, creating distinctive dishes unlike other South American cuisines.",
       "macros": {
         "carbs_pct": 55,
@@ -1455,12 +1345,6 @@
     },
     {
       "id": "california_coast",
-      "name": "California Coastal",
-      "culture": "Acorn-based indigenous diet with salmon, shellfish, and seeds",
-      "centroid": {
-        "lat": 36.0,
-        "lon": -121.0
-      },
       "diet_signature": "California coastal indigenous peoples developed sophisticated food systems centered on acorn processing, salmon runs, and marine resources. Acorns were leached and ground into flour, complemented by abundant shellfish, salmon, seeds, and game. The diet was remarkably diverse with seasonal variation and included extensive use of native plant foods.",
       "macros": {
         "carbs_pct": 45,
@@ -1608,12 +1492,6 @@
     },
     {
       "id": "canadian_prairies",
-      "name": "Canadian Prairies",
-      "culture": "Plains and Subarctic fusion with bison, pemmican, and wild rice",
-      "centroid": {
-        "lat": 52.0,
-        "lon": -106.0
-      },
       "diet_signature": "The Canadian Prairies diet represents a fusion of Plains indigenous foodways and Subarctic influences. Bison was the primary protein source, preserved as pemmican for winter survival. Wild rice harvested from lakes, berries, and root vegetables supplemented the meat-heavy diet. The harsh climate required high-fat, nutrient-dense foods that could be stored long-term.",
       "macros": {
         "carbs_pct": 20,
@@ -1757,20 +1635,6 @@
     },
     {
       "id": "caribbean_taino",
-      "name": "Caribbean TaÃ­no",
-      "region": "The Americas",
-      "subregion": "Caribbean",
-      "culture": "Taino",
-      "centroid": {
-        "lat": 18.0,
-        "lon": -66.5
-      },
-      "bbox": {
-        "min_lat": 10.0,
-        "max_lat": 22.0,
-        "min_lon": -80.0,
-        "max_lon": -60.0
-      },
       "diet_signature": "Island tropical diet centered on maize, cassava, and sweet potato with abundant seafood. Archaeological starch grain assemblages show maize was more prominent than previously assumed, with cassava showing minimal presence in some contexts. Features cassava bread, tropical fruits, and simple preparations adapted to island resources.",
       "staples": [
         "maize",
@@ -1890,20 +1754,6 @@
     },
     {
       "id": "caucasus",
-      "name": "Caucasian",
-      "region": "Europe/Asia",
-      "subregion": "Caucasus",
-      "culture": "Georgia/Armenia/Azerbaijan",
-      "centroid": {
-        "lat": 41.7,
-        "lon": 44.8
-      },
-      "bbox": {
-        "min_lat": 38.0,
-        "max_lat": 42.5,
-        "min_lon": 43.0,
-        "max_lon": 47.0
-      },
       "diet_signature": "Mountain cuisine featuring walnuts, herbs, fermented dairy, and grilled meats. Emphasizes fresh cheeses, wild greens, and stone-baked breads with liberal use of aromatic herbs.",
       "staples": [
         "wheat",
@@ -2075,20 +1925,6 @@
     },
     {
       "id": "central_africa",
-      "name": "Central African Rainforest",
-      "region": "Africa",
-      "subregion": "Central African Rainforest",
-      "culture": "Mbuti/Aka/Baka",
-      "centroid": {
-        "lat": 0.5,
-        "lon": 20.0
-      },
-      "bbox": {
-        "min_lat": -6.0,
-        "max_lat": 9.0,
-        "min_lon": 7.0,
-        "max_lon": 32
-      },
       "diet_signature": "Hunter-gatherer diet from rainforest resources including wild yams, fish, insects, and game. Seasonal variety with minimal processing and high biodiversity.",
       "staples": [
         "wild yams",
@@ -2267,20 +2103,6 @@
     },
     {
       "id": "central_asia",
-      "name": "Central Asian Steppe",
-      "region": "Central Asia",
-      "subregion": "Steppe Nomadic",
-      "culture": "Kazakh/Kyrgyz/Steppe",
-      "centroid": {
-        "lat": 48.0,
-        "lon": 66.0
-      },
-      "bbox": {
-        "min_lat": 40.0,
-        "max_lat": 52.0,
-        "min_lon": 50.0,
-        "max_lon": 90.0
-      },
       "diet_signature": "Nomadic pastoralist diet dominated by meat and dairy with minimal plant foods. Features fermented horse milk, boiled meats, and preserved dairy products for winter survival.",
       "staples": [
         "barley",
@@ -2403,20 +2225,6 @@
     },
     {
       "id": "maasai",
-      "name": "East African Pastoralist",
-      "region": "Africa",
-      "subregion": "East Africa Pastoralist",
-      "culture": "Maasai/Samburu",
-      "centroid": {
-        "lat": -1.0,
-        "lon": 36.5
-      },
-      "bbox": {
-        "min_lat": -3.5,
-        "max_lat": 3.0,
-        "min_lon": 34.0,
-        "max_lon": 39.0
-      },
       "diet_signature": "Traditional pastoralist diet centered on meat, fat, and blood from cattle with fermented dairy. Archaeological ceramic analysis reveals LOW milk residues in pottery (milk was stored in gourds/wooden vessels that don't preserve); ceramics show meat, bones, marrow, and fat processing. Ancient DNA shows only 1 in 8 East African pastoralists carried lactase persistence, suggesting fermented dairy (yogurt) was primary form. Plant foods in stews/soups consistently present in archaeological record.",
       "staples": [
         "meat",
@@ -2531,20 +2339,6 @@
     },
     {
       "id": "eastern_europe",
-      "name": "Eastern European",
-      "region": "Europe",
-      "subregion": "Eastern Europe",
-      "culture": "Poland/Ukraine/Russia",
-      "centroid": {
-        "lat": 50.0,
-        "lon": 30.0
-      },
-      "bbox": {
-        "min_lat": 44.0,
-        "max_lat": 55.0,
-        "min_lon": 19.0,
-        "max_lon": 40.0
-      },
       "diet_signature": "Robust fermented foods, hearty root vegetables, and preserved preparations for long winters. Rich in sour cream, buckwheat, and wild mushrooms with minimal refined ingredients.",
       "staples": [
         "rye",
@@ -2666,20 +2460,6 @@
     },
     {
       "id": "eastern_woodlands",
-      "name": "Eastern Woodlands",
-      "region": "The Americas",
-      "subregion": "North America - Eastern Woodlands",
-      "culture": "Iroquois/Algonquin",
-      "centroid": {
-        "lat": 43.0,
-        "lon": -75.0
-      },
-      "bbox": {
-        "min_lat": 40.0,
-        "max_lat": 47.0,
-        "min_lon": -85.0,
-        "max_lon": -70.0
-      },
       "diet_signature": "Three Sisters agriculture supplemented by hunting, fishing, and foraging. Features maize, beans, and squash with maple, wild rice, and abundant game in forested regions.",
       "staples": [
         "maize",
@@ -2807,20 +2587,6 @@
     },
     {
       "id": "ethiopia",
-      "name": "Ethiopian Highland",
-      "region": "Africa",
-      "subregion": "East Africa Highlands",
-      "culture": "Ethiopia/Eritrea",
-      "centroid": {
-        "lat": 9.0,
-        "lon": 39.7
-      },
-      "bbox": {
-        "min_lat": 5.0,
-        "max_lat": 15.0,
-        "min_lon": 33.0,
-        "max_lon": 45.0
-      },
       "diet_signature": "Injera-based meals featuring complex spice blends, lentils, and fermented preparations. Rich in teff, berbere spice, and communal eating traditions with substantial plant-based options.",
       "staples": [
         "teff",
@@ -2985,12 +2751,6 @@
     },
     {
       "id": "gaucho",
-      "name": "Gaucho (Pampas)",
-      "culture": "Grassland pastoralist diet centered on grass-fed beef and yerba mate",
-      "centroid": {
-        "lat": -32.0,
-        "lon": -60.0
-      },
       "diet_signature": "The Gaucho diet of the South American pampas is one of the world's most meat-centric, built around grass-fed cattle raised on vast grasslands. Beef is consumed in large quantities with minimal processing, often simply salted and grilled. Yerba mate provides vitamins and caffeine. Vegetables are minimal, with the diet historically very high in protein and fat.",
       "macros": {
         "carbs_pct": 15,
@@ -3125,20 +2885,6 @@
     },
     {
       "id": "great_plains",
-      "name": "Great Plains",
-      "region": "The Americas",
-      "subregion": "North America - Great Plains",
-      "culture": "Lakota/Cheyenne",
-      "centroid": {
-        "lat": 44.5,
-        "lon": -100.0
-      },
-      "bbox": {
-        "min_lat": 43.0,
-        "max_lat": 49.0,
-        "min_lon": -110.0,
-        "max_lon": -95.0
-      },
       "diet_signature": "Bison-centered nomadic diet with high fat content. Protein limited to ~35% of calories due to protein toxicity ceiling (rabbit starvation)—required substantial fat supplementation and plant foods (roots, berries, prairie turnips) for nutritional balance. Features pemmican (dried meat + fat) for preservation and complete utilization of buffalo.",
       "staples": [
         "bison",
@@ -3263,20 +3009,6 @@
     },
     {
       "id": "highland_se_asia",
-      "name": "Highland Southeast Asian",
-      "region": "Southeast Asia",
-      "subregion": "Highland SE Asia",
-      "culture": "Hmong/Karen/Shan",
-      "centroid": {
-        "lat": 20.5,
-        "lon": 101.0
-      },
-      "bbox": {
-        "min_lat": 15.0,
-        "max_lat": 23.5,
-        "min_lon": 98.0,
-        "max_lon": 106.0
-      },
       "diet_signature": "Mountain agricultural diet featuring upland rice, foraged greens, and simple preparations. Emphasizes sticky rice, fermented foods, and limited spicing with pork as primary meat.",
       "staples": [
         "upland_rice",
@@ -3422,20 +3154,6 @@
     },
     {
       "id": "horn_somalia",
-      "name": "Horn of Africa",
-      "region": "Africa",
-      "subregion": "Horn of Africa",
-      "culture": "Somali",
-      "centroid": {
-        "lat": 9.4,
-        "lon": 48.0
-      },
-      "bbox": {
-        "min_lat": -2.0,
-        "max_lat": 18.0,
-        "min_lon": 28.0,
-        "max_lon": 52.0
-      },
       "diet_signature": "Nomadic and coastal diet featuring camel products, sorghum flatbreads, and fresh seafood. Incorporates dates, spices from trade routes, and minimal vegetable content.",
       "staples": [
         "sorghum",
@@ -3597,20 +3315,6 @@
     },
     {
       "id": "se_asia_island",
-      "name": "Island Southeast Asian",
-      "region": "Southeast Asia",
-      "subregion": "Island SE Asia",
-      "culture": "Indonesia/Philippines",
-      "centroid": {
-        "lat": -2.5,
-        "lon": 118.0
-      },
-      "bbox": {
-        "min_lat": -10.0,
-        "max_lat": 6.0,
-        "min_lon": 95.0,
-        "max_lon": 140.0
-      },
       "diet_signature": "Archipelago cuisine featuring coconut, tropical fruits, and seafood diversity. Emphasizes rice, fermented preparations, and regional spice variations across thousands of islands.",
       "staples": [
         "rice",
@@ -3761,20 +3465,6 @@
     },
     {
       "id": "japan",
-      "name": "Japanese",
-      "region": "East Asia",
-      "subregion": "Japan",
-      "culture": "Japan (Washoku)",
-      "centroid": {
-        "lat": 36.0,
-        "lon": 138.0
-      },
-      "bbox": {
-        "min_lat": 30.0,
-        "max_lat": 45.0,
-        "min_lon": 129.0,
-        "max_lon": 145.0
-      },
       "diet_signature": "Minimalist cuisine emphasizing seasonal ingredients, fermentation, and umami. Features rice, seafood, seaweed, and soy with meticulous preparation and presentation.",
       "staples": [
         "rice",
@@ -3999,20 +3689,6 @@
     },
     {
       "id": "korea",
-      "name": "Korean",
-      "region": "East Asia",
-      "subregion": "Korean",
-      "culture": "Korea",
-      "centroid": {
-        "lat": 37.6,
-        "lon": 126.9
-      },
-      "bbox": {
-        "min_lat": 33.0,
-        "max_lat": 43.0,
-        "min_lon": 124.0,
-        "max_lon": 132.0
-      },
       "diet_signature": "Fermentation-focused cuisine featuring kimchi, doenjang, and gochugaru. Emphasizes banchan diversity, communal eating, and balanced flavors with substantial seafood.",
       "staples": [
         "rice",
@@ -4212,20 +3888,6 @@
     },
     {
       "id": "kurdish",
-      "name": "Kurdish Highland",
-      "region": "Middle East",
-      "subregion": "Kurdish Highlands",
-      "culture": "Kurdistan regions",
-      "centroid": {
-        "lat": 36.2,
-        "lon": 44.0
-      },
-      "bbox": {
-        "min_lat": 34.0,
-        "max_lat": 38.0,
-        "min_lon": 41.0,
-        "max_lon": 46.0
-      },
       "diet_signature": "Mountain cuisine featuring wild greens, yogurt, and grilled meats. Emphasizes simple preparations, bulgur, and seasonal foraging with pastoral dairy traditions.",
       "staples": [
         "wheat",
@@ -4345,20 +4007,6 @@
     },
     {
       "id": "se_asia_main",
-      "name": "Mainland Southeast Asian",
-      "region": "Southeast Asia",
-      "subregion": "Mainland SE Asia",
-      "culture": "Thailand/Cambodia/Laos/Myanmar",
-      "centroid": {
-        "lat": 13.7,
-        "lon": 100.5
-      },
-      "bbox": {
-        "min_lat": 5.0,
-        "max_lat": 22.0,
-        "min_lon": 92.0,
-        "max_lon": 110.0
-      },
       "diet_signature": "Tropical cuisine balancing sweet, sour, salty, and spicy with fish sauce, lemongrass, and coconut. Features sticky rice, fresh herbs, and abundant seafood with complex flavor layering.",
       "staples": [
         "rice",
@@ -4512,20 +4160,6 @@
     },
     {
       "id": "med_levant",
-      "name": "Mediterranean - Levantine",
-      "region": "Europe",
-      "subregion": "Mediterranean - Levant",
-      "culture": "Levant (Lebanon, Palestine, Syria)",
-      "centroid": {
-        "lat": 33.9,
-        "lon": 35.5
-      },
-      "bbox": {
-        "min_lat": 30.0,
-        "max_lat": 36.0,
-        "min_lon": 34.0,
-        "max_lon": 38.0
-      },
       "diet_signature": "A mezze-based tradition featuring tahini, yogurt, chickpeas, and abundant fresh herbs. Combines grains with vegetables and moderate amounts of lamb or fish.",
       "staples": [
         "wheat",
@@ -4703,20 +4337,6 @@
     },
     {
       "id": "med_southern",
-      "name": "Mediterranean - Southern European",
-      "region": "Europe",
-      "subregion": "Mediterranean - Southern European",
-      "culture": "Italy/Greece/Spain",
-      "centroid": {
-        "lat": 41.0,
-        "lon": 15.0
-      },
-      "bbox": {
-        "min_lat": 35.0,
-        "max_lat": 45.0,
-        "min_lon": -10.0,
-        "max_lon": 25.0
-      },
       "diet_signature": "A sun-drenched cuisine centered on olive oil, seasonal vegetables, fresh fish, and whole grains. Emphasizes fermented dairy, legumes, and minimal red meat with abundant herbs and aromatic plants.",
       "staples": [
         "wheat",
@@ -4895,20 +4515,6 @@
     },
     {
       "id": "melanesia",
-      "name": "Melanesian",
-      "region": "Oceania",
-      "subregion": "Melanesia",
-      "culture": "PNG/Fiji/Solomon Islands",
-      "centroid": {
-        "lat": -8.6,
-        "lon": 147.0
-      },
-      "bbox": {
-        "min_lat": -12.0,
-        "max_lat": -4.0,
-        "min_lon": 140.0,
-        "max_lon": 160.0
-      },
       "diet_signature": "Tropical island diet featuring sago, root vegetables, and diverse seafood. Emphasizes earth-oven cooking, coconut preparations, and foraged greens with high carbohydrate content.",
       "staples": [
         "sago",
@@ -5063,20 +4669,6 @@
     },
     {
       "id": "mesoamerica",
-      "name": "Mesoamerican",
-      "region": "The Americas",
-      "subregion": "Central America - Mesoamerican",
-      "culture": "Maya/Aztec",
-      "centroid": {
-        "lat": 16.5,
-        "lon": -89.0
-      },
-      "bbox": {
-        "min_lat": 8.0,
-        "max_lat": 23.0,
-        "min_lon": -100.0,
-        "max_lon": -80.0
-      },
       "diet_signature": "Advanced agricultural civilization diet centered on nixtamalized corn, beans, and squash. Features sophisticated use of chiles, cacao, and amaranth with insect protein and minimal dairy. Stable isotope analysis confirms C4 maize consumption comprised 50-70% of dietary carbon (δ13C values -13.4‰ to -6.9‰). Recent ceramic residue analysis revolutionized understanding of cacao: 56% of ALL vessels (including commoner households) contained cacao residues, overturning the elite-only assumption.",
       "staples": [
         "maize",
@@ -5256,20 +4848,6 @@
     },
     {
       "id": "micronesia",
-      "name": "Micronesian",
-      "region": "Oceania",
-      "subregion": "Micronesia",
-      "culture": "Micronesian Islands",
-      "centroid": {
-        "lat": 7.1,
-        "lon": 171.4
-      },
-      "bbox": {
-        "min_lat": 1.0,
-        "max_lat": 10.5,
-        "min_lon": 153.0,
-        "max_lon": 175.0
-      },
       "diet_signature": "Small-island diet relying on breadfruit, coconut, and marine resources. Features simple preparations adapted to limited agricultural land with heavy dependence on the sea.",
       "staples": [
         "breadfruit",
@@ -5408,20 +4986,6 @@
     },
     {
       "id": "mongolia",
-      "name": "Mongolian Steppe",
-      "region": "Central Asia",
-      "subregion": "Mongolian Steppe",
-      "culture": "Mongolia",
-      "centroid": {
-        "lat": 47.9,
-        "lon": 106.9
-      },
-      "bbox": {
-        "min_lat": 42.0,
-        "max_lat": 52.0,
-        "min_lon": 88.0,
-        "max_lon": 122.0
-      },
       "diet_signature": "Extreme climate adaptation with near-exclusive reliance on animal products. Features fermented dairy, boiled meats, and milk tea with minimal grain consumption.",
       "staples": [
         "dairy",
@@ -5571,20 +5135,6 @@
     },
     {
       "id": "maori",
-      "name": "MÄori",
-      "region": "Oceania",
-      "subregion": "Maori",
-      "culture": "MÄori (Aotearoa/New Zealand)",
-      "centroid": {
-        "lat": -36.8,
-        "lon": 174.7
-      },
-      "bbox": {
-        "min_lat": -40.0,
-        "max_lat": -34.0,
-        "min_lon": 171.0,
-        "max_lon": 179.0
-      },
       "diet_signature": "Temperate Polynesian diet adapted to cooler climate featuring kumara, fern root, and seafood. Moa hunting caused extinction within ~100 years of arrival (~1280-1320 CE); kumara agriculture intensified as compensation. Important: pigs and chickens were NOT prehistoric in New Zealand—ancient DNA dates all specimens to 18th century European introduction. Features traditional hangi (earth-oven) cooking.",
       "staples": [
         "kumara",
@@ -5719,20 +5269,6 @@
     },
     {
       "id": "nepal",
-      "name": "Nepali Himalayan",
-      "region": "South Asia",
-      "subregion": "Nepali Hill & Mountain",
-      "culture": "Nepal/Himalayan",
-      "centroid": {
-        "lat": 27.7,
-        "lon": 85.3
-      },
-      "bbox": {
-        "min_lat": 26.0,
-        "max_lat": 30.0,
-        "min_lon": 80.0,
-        "max_lon": 88.0
-      },
       "diet_signature": "Mountain diet adapted across altitudes featuring millet, buckwheat, and dairy. Combines Tibetan and Indian influences with substantial yak products and hearty lentil preparations.",
       "staples": [
         "millet",
@@ -5875,20 +5411,6 @@
     },
     {
       "id": "nordic",
-      "name": "Nordic - Scandinavian",
-      "region": "Europe",
-      "subregion": "Nordic",
-      "culture": "Scandinavia",
-      "centroid": {
-        "lat": 60.0,
-        "lon": 18.0
-      },
-      "bbox": {
-        "min_lat": 55.0,
-        "max_lat": 71.0,
-        "min_lon": 5.0,
-        "max_lon": 30.0
-      },
       "diet_signature": "Cold-climate cuisine emphasizing preserved fish, dense rye breads, and foraged berries. Features fermented and pickled preparations with minimal processing and high omega-3 content.",
       "staples": [
         "rye",
@@ -6087,20 +5609,6 @@
     },
     {
       "id": "maghreb",
-      "name": "North African - Maghreb",
-      "region": "Europe",
-      "subregion": "Mediterranean - North Africa",
-      "culture": "Maghreb (Morocco, Algeria, Tunisia)",
-      "centroid": {
-        "lat": 31.0,
-        "lon": -6.0
-      },
-      "bbox": {
-        "min_lat": 20.0,
-        "max_lat": 36.0,
-        "min_lon": -12.0,
-        "max_lon": 10.0
-      },
       "diet_signature": "Aromatic slow-cooked dishes featuring preserved ingredients, warming spices, and semolina-based staples. Balances sweet and savory with dates, nuts, and complex spice blends.",
       "staples": [
         "semolina",
@@ -6203,20 +5711,6 @@
     },
     {
       "id": "north_china",
-      "name": "North Chinese",
-      "region": "East Asia",
-      "subregion": "North China",
-      "culture": "Northern China/Manchuria",
-      "centroid": {
-        "lat": 39.9,
-        "lon": 116.4
-      },
-      "bbox": {
-        "min_lat": 35.0,
-        "max_lat": 45.0,
-        "min_lon": 100.0,
-        "max_lon": 125.0
-      },
       "diet_signature": "Wheat-based northern cuisine featuring noodles, dumplings, and preserved vegetables. Emphasizes lamb, cabbage, and hearty flavors adapted to cold winters.",
       "staples": [
         "wheat",
@@ -6383,20 +5877,6 @@
     },
     {
       "id": "north_india",
-      "name": "North Indian",
-      "region": "South Asia",
-      "subregion": "North India",
-      "culture": "Punjab/Hindi belt",
-      "centroid": {
-        "lat": 28.6,
-        "lon": 77.2
-      },
-      "bbox": {
-        "min_lat": 25.0,
-        "max_lat": 31.5,
-        "min_lon": 72.0,
-        "max_lon": 88.0
-      },
       "diet_signature": "Wheat-based cuisine with complex spice combinations, dairy, and legumes. Features tandoor cooking, ghee, and substantial vegetarian options with aromatic masalas.",
       "staples": [
         "wheat",
@@ -6545,20 +6025,6 @@
     },
     {
       "id": "pacific_nw",
-      "name": "Pacific Northwest",
-      "region": "The Americas",
-      "subregion": "North America - Pacific Northwest",
-      "culture": "Haida/Tlingit/Salish",
-      "centroid": {
-        "lat": 55.4,
-        "lon": -131.7
-      },
-      "bbox": {
-        "min_lat": 47.0,
-        "max_lat": 60.0,
-        "min_lon": -135.0,
-        "max_lon": -120.0
-      },
       "diet_signature": "Salmon-rich coastal diet with abundant seafood, berries, and camas root. Features sophisticated smoking and preserving techniques with seasonal fishing traditions.",
       "staples": [
         "salmon",
@@ -6681,20 +6147,6 @@
     },
     {
       "id": "patagonia",
-      "name": "Patagonian",
-      "region": "The Americas",
-      "subregion": "South America - Patagonia",
-      "culture": "Mapuche/Patagonian",
-      "centroid": {
-        "lat": -41.5,
-        "lon": -71.5
-      },
-      "bbox": {
-        "min_lat": -52.0,
-        "max_lat": -38.0,
-        "min_lon": -74.0,
-        "max_lon": -66.0
-      },
       "diet_signature": "Temperate southern hemisphere diet featuring guanaco, potatoes, and coastal resources. Adapted to cool climate with seafood, wild game, and native berries.",
       "staples": [
         "potatoes",
@@ -6814,20 +6266,6 @@
     },
     {
       "id": "persian",
-      "name": "Persian",
-      "region": "Middle East",
-      "subregion": "Persian Plateau",
-      "culture": "Iran/Persia",
-      "centroid": {
-        "lat": 35.7,
-        "lon": 51.4
-      },
-      "bbox": {
-        "min_lat": 25.0,
-        "max_lat": 40.0,
-        "min_lon": 44.0,
-        "max_lon": 63.0
-      },
       "diet_signature": "Traditional Persian cuisine historically based on wheat and barley (rice virtually absent in archaeobotanical records until 1st millennium CE). Modern heavy rice consumption is a 20th century development. Features complex herb combinations, nuts, fruits, slow-cooked stews, pomegranate, and saffron with characteristic sweet-and-sour flavor profiles.",
       "staples": [
         "wheat",
@@ -6951,20 +6389,6 @@
     },
     {
       "id": "polynesia",
-      "name": "Polynesian",
-      "region": "Oceania",
-      "subregion": "Polynesia",
-      "culture": "Samoa/Tonga/Hawaii",
-      "centroid": {
-        "lat": -14.0,
-        "lon": -170.0
-      },
-      "bbox": {
-        "min_lat": -20.0,
-        "max_lat": -8.0,
-        "min_lon": -180.0,
-        "max_lon": -150.0
-      },
       "diet_signature": "Island cuisine centered on starchy tubers, coconut, and seafood. Features earth-oven cooking, raw fish preparations, and substantial carbohydrate content from root vegetables.",
       "staples": [
         "taro",
@@ -7147,20 +6571,6 @@
     },
     {
       "id": "sahel",
-      "name": "Sahel",
-      "region": "Africa",
-      "subregion": "Sahel",
-      "culture": "Sahel belt (Mali, Niger, Chad)",
-      "centroid": {
-        "lat": 15.0,
-        "lon": -1.0
-      },
-      "bbox": {
-        "min_lat": 10.0,
-        "max_lat": 20.0,
-        "min_lon": -15.0,
-        "max_lon": 30.0
-      },
       "diet_signature": "Drought-adapted cuisine based on millet, sorghum, and groundnuts. Features shea butter, dried ingredients, and pastoralist elements with high carbohydrate content.",
       "staples": [
         "millet",
@@ -7325,12 +6735,6 @@
     },
     {
       "id": "siberia",
-      "name": "Siberian",
-      "culture": "Extreme cold-adapted diet with reindeer, horse, and preserved foods",
-      "centroid": {
-        "lat": 64.0,
-        "lon": 100.0
-      },
       "diet_signature": "Siberian diets evolved for extreme cold survival, featuring preserved and fermented foods that could last through brutal winters. Reindeer provides meat, fat, and organs while horse meat is prized. Fish is frozen raw (stroganina) or fermented. The diet is very high in fat and protein with minimal carbohydrates, supplemented by wild berries in summer.",
       "macros": {
         "carbs_pct": 5,
@@ -7496,12 +6900,6 @@
     },
     {
       "id": "sichuan_sw_china",
-      "name": "Sichuan/Southwest China",
-      "culture": "Bold, numbing flavors with Sichuan peppercorn, chili, and preserved vegetables",
-      "centroid": {
-        "lat": 30.7,
-        "lon": 104.0
-      },
       "diet_signature": "Sichuan cuisine is defined by its bold, complex flavors featuring the distinctive numbing heat of Sichuan peppercorns combined with chili peppers. The humid climate led to extensive preservation techniques including pickling, fermenting, and drying. Rice is the staple grain with frequent use of pork, tofu, and seasonal vegetables in intensely flavored sauces.",
       "macros": {
         "carbs_pct": 55,
@@ -7692,20 +7090,6 @@
     },
     {
       "id": "south_china",
-      "name": "South Chinese",
-      "region": "East Asia",
-      "subregion": "South China",
-      "culture": "Southern China (Cantonese/Fujian)",
-      "centroid": {
-        "lat": 23.1,
-        "lon": 113.3
-      },
-      "bbox": {
-        "min_lat": 20.0,
-        "max_lat": 25.5,
-        "min_lon": 108.0,
-        "max_lon": 116.0
-      },
       "diet_signature": "Rice-based southern cuisine with abundant seafood, vegetables, and stir-frying. Emphasizes fresh ingredients, quick cooking, and subtle seasoning with ginger and soy.",
       "staples": [
         "rice",
@@ -7888,20 +7272,6 @@
     },
     {
       "id": "south_india",
-      "name": "South Indian",
-      "region": "South Asia",
-      "subregion": "South India",
-      "culture": "Tamil Nadu/Kerala",
-      "centroid": {
-        "lat": 10.8,
-        "lon": 78.7
-      },
-      "bbox": {
-        "min_lat": 8.0,
-        "max_lat": 13.5,
-        "min_lon": 76.0,
-        "max_lon": 80.0
-      },
       "diet_signature": "Rice-based cuisine with coconut, tamarind, and fermented preparations. Emphasizes seafood, lentils, and complex vegetarian dishes with distinctive spice blends and curry leaves.",
       "staples": [
         "rice",
@@ -8047,12 +7417,6 @@
     },
     {
       "id": "southeast_us",
-      "name": "Southeastern US",
-      "culture": "African-influenced Southern cooking with rice cultivation, pork, and okra",
-      "centroid": {
-        "lat": 33.5,
-        "lon": -84.0
-      },
       "diet_signature": "The Southeastern US diet emerged from the fusion of African, Native American, and European culinary traditions. Characterized by rice cultivation from West African knowledge, heavy use of okra, black-eyed peas, and pork, with a preference for slow-cooked, richly flavored dishes. Cornbread, greens, and sweet potatoes are staples alongside various seafood from coastal areas.",
       "macros": {
         "carbs_pct": 50,
@@ -8178,20 +7542,6 @@
     },
     {
       "id": "southern_africa",
-      "name": "Southern African",
-      "region": "Africa",
-      "subregion": "Southern Africa",
-      "culture": "Bantu/Khoisan influenced",
-      "centroid": {
-        "lat": -22.0,
-        "lon": 24.0
-      },
-      "bbox": {
-        "min_lat": -35.0,
-        "max_lat": -18.0,
-        "min_lon": 16.0,
-        "max_lon": 34.0
-      },
       "diet_signature": "Maize-based porridges with wild game, insects, and indigenous plants. Combines agricultural and hunter-gatherer traditions with fermented beverages.",
       "staples": [
         "sorghum",
@@ -8365,20 +7715,6 @@
     },
     {
       "id": "southwest_us",
-      "name": "Southwest US",
-      "region": "The Americas",
-      "subregion": "North America - Southwest",
-      "culture": "Pueblo/Navajo",
-      "centroid": {
-        "lat": 35.5,
-        "lon": -106.0
-      },
-      "bbox": {
-        "min_lat": 31.0,
-        "max_lat": 38.0,
-        "min_lon": -114.0,
-        "max_lon": -103.0
-      },
       "diet_signature": "Desert-adapted Three Sisters agriculture with corn as centerpiece. Features blue corn, beans, squash, and chili peppers with minimal meat and sophisticated water management.",
       "staples": [
         "maize",
@@ -8503,20 +7839,6 @@
     },
     {
       "id": "subarctic",
-      "name": "Subarctic",
-      "region": "The Americas",
-      "subregion": "North America - Subarctic",
-      "culture": "Dene/Cree",
-      "centroid": {
-        "lat": 60.0,
-        "lon": -100.0
-      },
-      "bbox": {
-        "min_lat": 52.0,
-        "max_lat": 66.0,
-        "min_lon": -125.0,
-        "max_lon": -90.0
-      },
       "diet_signature": "Boreal forest hunter-gatherer diet featuring caribou, moose, and fish. Adapted to long winters with preserved meats, berries, and roots with high protein and fat content.",
       "staples": [
         "roots",
@@ -8661,20 +7983,6 @@
     },
     {
       "id": "tibet",
-      "name": "Tibetan Plateau",
-      "region": "East Asia",
-      "subregion": "Tibetan Plateau",
-      "culture": "Tibet",
-      "centroid": {
-        "lat": 29.6,
-        "lon": 91.1
-      },
-      "bbox": {
-        "min_lat": 26.0,
-        "max_lat": 31.5,
-        "min_lon": 85.0,
-        "max_lon": 95.0
-      },
       "diet_signature": "High-altitude diet centered on yak products and barley. Features butter tea, roasted flour, and preserved preparations for extreme climate with minimal vegetables.",
       "staples": [
         "barley",
@@ -8871,20 +8179,6 @@
     },
     {
       "id": "west_africa",
-      "name": "West African",
-      "region": "Africa",
-      "subregion": "West Africa",
-      "culture": "Nigeria/Ghana/Senegal",
-      "centroid": {
-        "lat": 7.5,
-        "lon": -1.5
-      },
-      "bbox": {
-        "min_lat": 4.0,
-        "max_lat": 14.0,
-        "min_lon": -17.0,
-        "max_lon": 8.0
-      },
       "diet_signature": "Starchy tubers and grains paired with rich nut-based sauces and palm oil. Features fermented preparations, okra, and fish with minimal dairy and abundant plant diversity.",
       "staples": [
         "yam",
@@ -9119,20 +8413,6 @@
     },
     {
       "id": "western_europe",
-      "name": "Western European",
-      "region": "Europe",
-      "subregion": "Western Europe",
-      "culture": "UK/Ireland/France North/Benelux",
-      "centroid": {
-        "lat": 50.8,
-        "lon": 0.0
-      },
-      "bbox": {
-        "min_lat": 49.0,
-        "max_lat": 55.0,
-        "min_lon": -8.0,
-        "max_lon": 10.0
-      },
       "diet_signature": "Hearty fare built on dairy, root vegetables, and grains adapted to cool climates. Features slow-cooked stews, fermented dairy, and preserved meats with minimal spices.",
       "staples": [
         "wheat",
@@ -9288,12 +8568,6 @@
     },
     {
       "id": "west_india",
-      "name": "Western Indian",
-      "culture": "Vegetarian traditions with millet, lentils, and coastal coconut influences",
-      "centroid": {
-        "lat": 23.0,
-        "lon": 72.6
-      },
       "diet_signature": "Western Indian cuisine spans from the vegetarian Gujarati and Rajasthani traditions to coastal Goan and Maharashtrian influences. The diet emphasizes millet and lentil combinations, extensive use of yogurt and ghee, and distinctive sweet-savory flavor profiles. Coastal areas incorporate more seafood and coconut, while interior regions favor millet-based flatbreads and preserved foods.",
       "macros": {
         "carbs_pct": 60,
@@ -9470,20 +8744,6 @@
     },
     {
       "id": "central_europe",
-      "name": "Central European",
-      "region": "Europe",
-      "subregion": "Central Europe",
-      "culture": "Germany/Austria/Switzerland/Czech",
-      "centroid": {
-        "lat": 50.0,
-        "lon": 13.0
-      },
-      "bbox": {
-        "min_lat": 47.0,
-        "max_lat": 55.0,
-        "min_lon": 10.0,
-        "max_lon": 19.0
-      },
       "diet_signature": "Robust grain and dairy-based cuisine featuring rye bread, beer, pork, and preserved foods. Highest lactase persistence in Europe with intense dairy traditions including fresh milk, quark, and aged cheeses. Beer culture from grain fermentation.",
       "staples": [
         "rye",
@@ -9638,20 +8898,6 @@
     },
     {
       "id": "nilotic",
-      "name": "Nilotic & Great Lakes",
-      "region": "Africa",
-      "subregion": "East African Highlands & Lakes",
-      "culture": "Nilotic/Interlacustrine/Great Lakes",
-      "centroid": {
-        "lat": 4.0,
-        "lon": 32.0
-      },
-      "bbox": {
-        "min_lat": -2.0,
-        "max_lat": 12.0,
-        "min_lon": 28.0,
-        "max_lon": 36.0
-      },
       "diet_signature": "Highland agriculture and lake fishing traditions featuring plantains, millet, sorghum, and freshwater fish. Diverse diet from altitude gradients with cattle herding, fishing, and highland crops. Fermented beverages and limited dairy use.",
       "staples": [
         "plantains",
@@ -9803,20 +9049,6 @@
     },
     {
       "id": "sudanian",
-      "name": "Sudanian Savanna",
-      "region": "Africa",
-      "subregion": "Central African Savanna",
-      "culture": "Sudanian transition zone",
-      "centroid": {
-        "lat": 6.5,
-        "lon": 20.0
-      },
-      "bbox": {
-        "min_lat": 2.0,
-        "max_lat": 11.0,
-        "min_lon": 14.0,
-        "max_lon": 27.0
-      },
       "diet_signature": "Savanna transition zone diet between Sahel and rainforest. Features sorghum, millet, cassava, and wild game with seasonal variation. Mix of pastoral and agricultural traditions with foraged foods.",
       "staples": [
         "sorghum",
@@ -9964,20 +9196,6 @@
     },
     {
       "id": "balkan",
-      "name": "Balkan",
-      "region": "Europe",
-      "subregion": "Balkans",
-      "culture": "Balkan Peninsula - Slavic/Ottoman/Mediterranean fusion",
-      "centroid": {
-        "lat": 44.0,
-        "lon": 21.0
-      },
-      "bbox": {
-        "min_lat": 39.0,
-        "max_lat": 48.0,
-        "min_lon": 13.0,
-        "max_lon": 29.0
-      },
       "diet_signature": "Unique fusion of Ottoman, Mediterranean, and Slavic culinary traditions. Features grilled meats, yogurt-based dishes, phyllo pastries, fermented vegetables, and coastal seafood. Strong emphasis on fresh vegetables, dairy, and slow-cooked stews.",
       "staples": [
         "wheat",
@@ -10160,37 +9378,5 @@
         }
       }
     }
-  ],
-  "genetic_variants_summary": {
-    "core_diet_genes": {
-      "LCT": "Lactase persistence - 5 independent variants",
-      "AMY1": "Salivary amylase copy number (2-20 diploid copies)",
-      "FADS1": "Fatty acid desaturase - PUFA metabolism",
-      "CPT1A": "Arctic fat metabolism adaptation",
-      "ADH1B": "Alcohol dehydrogenase - fast metabolism",
-      "ALDH2": "Aldehyde dehydrogenase - Asian flush variant",
-      "SLC24A5": "Skin pigmentation / vitamin D synthesis"
-    },
-    "expanded_variants_dec2025": {
-      "CYP1A2": "Caffeine metabolism (rs762551)",
-      "HLA-DQ2/DQ8": "Celiac disease risk",
-      "APOE": "Cholesterol metabolism (ε4 allele)",
-      "PCSK9": "Natural cardioprotective variants (African-specific)",
-      "MTHFR": "Folate metabolism (C677T)",
-      "BCMO1": "Vitamin A conversion (rs7501331)",
-      "FUT2": "B12 metabolism / secretor status (rs601338)",
-      "HFE": "Iron metabolism / hemochromatosis (C282Y)",
-      "TAS2R38": "Bitter taste perception (PAV/AVI haplotypes)",
-      "EGLN1": "High-altitude adaptation (Tibetan-specific)",
-      "CREBRF": "Polynesian thrifty gene (rs373863828)",
-      "EDAR": "East Asian pleiotropic variant (rs3827760)"
-    },
-    "data_sources": [
-      "1000 Genomes Phase 3 (2,504 individuals, 26 populations)",
-      "gnomAD v4 (>800,000 exomes)",
-      "ALFRED database",
-      "Bolognini et al. 2024 Nature (AMY1 structural haplotypes)",
-      "Perry et al. 2007 Nature Genetics (adjusted for qPCR underestimation)"
-    ]
-  }
+  ]
 }
