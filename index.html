@@ -374,6 +374,54 @@
             justify-content: center;
         }
 
+        /* ASCII Art Grid */
+        .ascii-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 800px) {
+            .ascii-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ascii-panel {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #4ecdc4;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(78, 205, 196, 0.2);
+        }
+
+        .ascii-panel h3 {
+            color: #ffe66d;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .ascii-canvas {
+            font-family: monospace;
+            font-size: 8px;
+            line-height: 1.0;
+            color: #4ecdc4;
+            white-space: pre;
+            text-align: center;
+            height: 180px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #creatures-canvas { color: #95e1d3; }
+        #tree-canvas { color: #7bed9f; }
+        #life-canvas { color: #ff6b6b; }
+
         /* Hidden Terminal Styles */
         .terminal-overlay {
             position: fixed;
@@ -556,8 +604,28 @@
         <div class="donut-container">
             <pre id="donut"></pre>
         </div>
-    
+
         <script src="donut.js"></script>
+
+        <div class="divider">
+            ═══════════════════════════════════
+        </div>
+
+        <!-- ASCII Art Grid -->
+        <div class="ascii-grid">
+            <div class="ascii-panel">
+                <h3>◇ WANDERERS ◇</h3>
+                <div class="ascii-canvas" id="creatures-canvas"></div>
+            </div>
+            <div class="ascii-panel">
+                <h3>◇ FRACTAL TREE ◇</h3>
+                <div class="ascii-canvas" id="tree-canvas"></div>
+            </div>
+            <div class="ascii-panel">
+                <h3>◇ LIFE ◇</h3>
+                <div class="ascii-canvas" id="life-canvas"></div>
+            </div>
+        </div>
 
         <div class="footer">
             <p>CHOOSE WISELY</p>
@@ -1134,6 +1202,239 @@
                 terminalBody.appendChild(errorDiv);
             }
         }
+    </script>
+
+    <!-- ASCII Art: Wandering Creatures -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('creatures-canvas');
+            const W = 40, H = 20;
+            const creatures = [
+                { chars: ['o', 'ö', 'ô', 'õ'], name: 'blob' },
+                { chars: ['>', '<', '^', 'v'], name: 'arrow' },
+                { chars: ['@', 'Q', 'Ø', '¤'], name: 'eye' },
+                { chars: ['*', '+', '×', '·'], name: 'star' },
+                { chars: ['♦', '◊', '♦', '◊'], name: 'gem' }
+            ];
+
+            const entities = [];
+            for (let i = 0; i < 8; i++) {
+                entities.push({
+                    x: Math.random() * (W - 2) + 1,
+                    y: Math.random() * (H - 2) + 1,
+                    vx: (Math.random() - 0.5) * 0.8,
+                    vy: (Math.random() - 0.5) * 0.8,
+                    type: creatures[Math.floor(Math.random() * creatures.length)],
+                    frame: 0,
+                    changeDir: Math.random() * 100
+                });
+            }
+
+            function render() {
+                const grid = Array(H).fill(null).map(() => Array(W).fill(' '));
+
+                // Draw border
+                for (let x = 0; x < W; x++) {
+                    grid[0][x] = '─';
+                    grid[H-1][x] = '─';
+                }
+                for (let y = 0; y < H; y++) {
+                    grid[y][0] = '│';
+                    grid[y][W-1] = '│';
+                }
+                grid[0][0] = '┌'; grid[0][W-1] = '┐';
+                grid[H-1][0] = '└'; grid[H-1][W-1] = '┘';
+
+                // Update and draw creatures
+                entities.forEach(e => {
+                    e.changeDir--;
+                    if (e.changeDir <= 0) {
+                        e.vx = (Math.random() - 0.5) * 0.8;
+                        e.vy = (Math.random() - 0.5) * 0.8;
+                        e.changeDir = 50 + Math.random() * 100;
+                    }
+
+                    e.x += e.vx;
+                    e.y += e.vy;
+
+                    // Bounce off walls
+                    if (e.x <= 1 || e.x >= W - 2) { e.vx *= -1; e.x = Math.max(1, Math.min(W-2, e.x)); }
+                    if (e.y <= 1 || e.y >= H - 2) { e.vy *= -1; e.y = Math.max(1, Math.min(H-2, e.y)); }
+
+                    e.frame = (e.frame + 0.1) % e.type.chars.length;
+                    const char = e.type.chars[Math.floor(e.frame)];
+                    const px = Math.floor(e.x);
+                    const py = Math.floor(e.y);
+                    if (py > 0 && py < H-1 && px > 0 && px < W-1) {
+                        grid[py][px] = char;
+                    }
+                });
+
+                canvas.textContent = grid.map(row => row.join('')).join('\n');
+            }
+
+            setInterval(render, 80);
+        })();
+    </script>
+
+    <!-- ASCII Art: Fractal Tree -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('tree-canvas');
+            const W = 45, H = 22;
+            let grid;
+            let time = 0;
+
+            function plot(x, y, char) {
+                const px = Math.round(x);
+                const py = Math.round(y);
+                if (px >= 0 && px < W && py >= 0 && py < H) {
+                    grid[py][px] = char;
+                }
+            }
+
+            function drawBranch(x, y, angle, length, depth) {
+                if (depth <= 0 || length < 1) return;
+
+                const endX = x + Math.cos(angle) * length;
+                const endY = y - Math.sin(angle) * length;
+
+                // Draw line
+                const steps = Math.ceil(length);
+                for (let i = 0; i <= steps; i++) {
+                    const t = i / steps;
+                    const px = x + (endX - x) * t;
+                    const py = y + (endY - y) * t;
+                    const char = depth > 3 ? '│' : (depth > 1 ? '╎' : '·');
+                    plot(px, py, char);
+                }
+
+                // Wind sway
+                const sway = Math.sin(time * 0.05 + depth) * 0.15;
+
+                // Branch out
+                const spread = 0.4 + Math.sin(time * 0.02) * 0.1;
+                drawBranch(endX, endY, angle + spread + sway, length * 0.7, depth - 1);
+                drawBranch(endX, endY, angle - spread + sway, length * 0.7, depth - 1);
+
+                // Sometimes add a middle branch
+                if (depth > 2 && depth % 2 === 0) {
+                    drawBranch(endX, endY, angle + sway, length * 0.5, depth - 2);
+                }
+            }
+
+            function render() {
+                time++;
+                grid = Array(H).fill(null).map(() => Array(W).fill(' '));
+
+                // Ground
+                for (let x = 0; x < W; x++) {
+                    grid[H-1][x] = '═';
+                    if (Math.random() < 0.1) grid[H-2][x] = ',';
+                }
+
+                // Draw tree from bottom center
+                const startX = W / 2;
+                const startY = H - 2;
+                drawBranch(startX, startY, Math.PI / 2, 6, 6);
+
+                // Add some leaves
+                for (let y = 0; y < H - 5; y++) {
+                    for (let x = 0; x < W; x++) {
+                        if (grid[y][x] !== ' ' && Math.random() < 0.3) {
+                            const leafChars = ['✦', '❋', '✿', '✾', '°'];
+                            if (grid[y][x] === '·') {
+                                grid[y][x] = leafChars[Math.floor(Math.random() * leafChars.length)];
+                            }
+                        }
+                    }
+                }
+
+                canvas.textContent = grid.map(row => row.join('')).join('\n');
+            }
+
+            setInterval(render, 150);
+        })();
+    </script>
+
+    <!-- ASCII Art: Conway's Game of Life -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('life-canvas');
+            const W = 50, H = 20;
+            let cells = Array(H).fill(null).map(() =>
+                Array(W).fill(null).map(() => Math.random() < 0.3)
+            );
+
+            function countNeighbors(x, y) {
+                let count = 0;
+                for (let dy = -1; dy <= 1; dy++) {
+                    for (let dx = -1; dx <= 1; dx++) {
+                        if (dx === 0 && dy === 0) continue;
+                        const nx = (x + dx + W) % W;
+                        const ny = (y + dy + H) % H;
+                        if (cells[ny][nx]) count++;
+                    }
+                }
+                return count;
+            }
+
+            function step() {
+                const next = Array(H).fill(null).map(() => Array(W).fill(false));
+                let alive = 0;
+
+                for (let y = 0; y < H; y++) {
+                    for (let x = 0; x < W; x++) {
+                        const n = countNeighbors(x, y);
+                        if (cells[y][x]) {
+                            next[y][x] = n === 2 || n === 3;
+                        } else {
+                            next[y][x] = n === 3;
+                        }
+                        if (next[y][x]) alive++;
+                    }
+                }
+
+                // Respawn if too few cells
+                if (alive < 30) {
+                    for (let i = 0; i < 50; i++) {
+                        const x = Math.floor(Math.random() * W);
+                        const y = Math.floor(Math.random() * H);
+                        next[y][x] = true;
+                    }
+                }
+
+                cells = next;
+            }
+
+            function render() {
+                step();
+
+                const charMap = [' ', '░', '▒', '▓', '█'];
+                const output = [];
+
+                for (let y = 0; y < H; y++) {
+                    let row = '';
+                    for (let x = 0; x < W; x++) {
+                        if (cells[y][x]) {
+                            // Count neighbors for intensity
+                            const n = countNeighbors(x, y);
+                            const char = n >= 4 ? '█' : n >= 3 ? '▓' : n >= 2 ? '▒' : '░';
+                            row += char;
+                        } else {
+                            // Occasional ghost cells
+                            const n = countNeighbors(x, y);
+                            row += n >= 2 ? '·' : ' ';
+                        }
+                    }
+                    output.push(row);
+                }
+
+                canvas.textContent = output.join('\n');
+            }
+
+            setInterval(render, 120);
+        })();
     </script>
 </body>
 </html>
