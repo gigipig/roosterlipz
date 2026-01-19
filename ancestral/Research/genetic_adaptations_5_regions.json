@@ -1,0 +1,728 @@
+{
+  "generated_date": "2026-01-17",
+  "data_sources": [
+    "1000 Genomes Project",
+    "gnomAD (Genome Aggregation Database)",
+    "Published population genetics studies",
+    "Weighted calculations for admixed populations"
+  ],
+  "regions": {
+    "caribbean_creole": {
+      "ancestry_composition": {
+        "west_african": "60-70%",
+        "european": "20-30%",
+        "indigenous_taino": "5-10%"
+      },
+      "genetic_adaptations": {
+        "lactase_persistence": {
+          "gene": "LCT",
+          "variant": "rs4988235 (European) / rs145946881 (African)",
+          "allele_frequency_percent": 22,
+          "inheritance": "dominant",
+          "inferred_phenotype": "mostly_absent",
+          "phenotype_probability": 0.40,
+          "phenotype_details": {
+            "name": "Variable Lactase Persistence",
+            "description": "Mixed LP from European ancestry (~25-30% carriers) combined with low African LP rates",
+            "dietary_impact": "Moderate dairy tolerance; fermented dairy generally well-tolerated"
+          },
+          "dietary_recommendation": {
+            "dairy_tolerance": "low_to_moderate",
+            "recommended_dairy": [
+              "fermented dairy (yogurt, kefir, aged cheese)",
+              "lactose-free milk",
+              "small portions of fresh dairy"
+            ],
+            "avoid": [
+              "large amounts of fresh milk",
+              "ice cream in large quantities"
+            ],
+            "notes": "Admixed population with ~22% LP allele frequency from European ancestry contribution. Fermented dairy and small portions generally tolerated."
+          }
+        },
+        "starch_digestion": {
+          "gene": "AMY1",
+          "average_copy_number": 9.5,
+          "inheritance": "additive",
+          "inferred_phenotype": "high",
+          "phenotype_confidence": 1.0,
+          "phenotype_details": {
+            "name": "High Starch Tolerance",
+            "threshold": 8,
+            "description": "High AMY1 copy number inherited from West African agricultural ancestry",
+            "dietary_impact": "Excellent tolerance for high-starch foods"
+          },
+          "dietary_recommendation": {
+            "starch_tolerance": "high",
+            "recommended_carbs": [
+              "rice and peas",
+              "plantains",
+              "cassava",
+              "breadfruit",
+              "yams",
+              "cornmeal"
+            ],
+            "carb_percentage": "45-55%",
+            "notes": "High AMY1 copy number from West African ancestry (~10.5) with slight European influence. Traditional Caribbean staples well-suited."
+          }
+        },
+        "pufa_metabolism": {
+          "gene": "FADS1",
+          "variant": "rs174537",
+          "allele_frequency_percent": 87,
+          "inheritance": "additive",
+          "inferred_phenotype": "efficient",
+          "phenotype_probability": 0.97,
+          "phenotype_details": {
+            "name": "Efficient PUFA Converter",
+            "description": "High frequency of derived G allele from African ancestry (near-fixation in Africa)",
+            "dietary_impact": "Efficient conversion of plant ALA to EPA/DHA"
+          },
+          "dietary_recommendation": {
+            "omega3_conversion": "efficient",
+            "recommended_sources": [
+              "flaxseed",
+              "chia seeds",
+              "walnuts",
+              "hemp seeds",
+              "coconut",
+              "fish (abundant in Caribbean diet)"
+            ],
+            "notes": "CAUTION: Efficient converters may over-produce arachidonic acid from omega-6. Limit vegetable oils high in omega-6 (corn, soybean). Traditional Caribbean fish consumption beneficial."
+          }
+        },
+        "alcohol_metabolism": {
+          "genes": [
+            "ADH1B"
+          ],
+          "inheritance": "complex",
+          "inferred_phenotype": "standard",
+          "phenotype_probability": 0.85,
+          "phenotype_details": {
+            "name": "Standard Alcohol Metabolism",
+            "description": "Typical ethanol metabolism with some ADH1B*3 from African ancestry",
+            "dietary_impact": "Normal alcohol tolerance; fermented beverages traditionally consumed"
+          },
+          "dietary_recommendation": {
+            "alcohol_tolerance": "moderate",
+            "recommendation": "Standard alcohol tolerance; moderation advised",
+            "notes": "~15% carry ADH1B*3 (rs2066702) African variant; fermented rum traditions"
+          },
+          "ADH1B": {
+            "variant": "rs2066702 (ADH1B*3)",
+            "allele_frequency_percent": 12
+          }
+        },
+        "vitamin_d_metabolism": {
+          "gene": "SLC24A5",
+          "variant": "rs1426654",
+          "allele_frequency_percent": 28,
+          "inheritance": "additive",
+          "inferred_phenotype": "medium_to_dark",
+          "phenotype_details": {
+            "name": "Medium to Dark Pigmentation",
+            "description": "Mixed pigmentation genetics; majority darker-skinned with European admixture",
+            "dietary_impact": "Moderate to higher vitamin D needs depending on individual pigmentation"
+          },
+          "dietary_recommendation": {
+            "skin_type": "medium_to_dark_pigmentation",
+            "vitamin_d_needs": "moderate_to_higher",
+            "recommendation": "Emphasize vitamin D-rich foods; sun exposure helps",
+            "notes": "Caribbean sunlight generally adequate; dietary vitamin D important for darker-skinned individuals"
+          }
+        },
+        "cholesterol_metabolism": {
+          "gene": "APOE",
+          "variant": "ε4 allele",
+          "allele_frequency_percent": 22,
+          "inheritance": "codominant",
+          "inferred_phenotype": "elevated_apoe4",
+          "phenotype_details": {
+            "name": "APOE ε4 Status",
+            "description": "Moderately elevated ε4 from African ancestry",
+            "dietary_impact": "Traditional diet may provide protection; monitor cholesterol"
+          },
+          "dietary_recommendation": {
+            "cholesterol_response": "variable",
+            "recommendation": "Traditional Caribbean diet with fish and plant foods may be protective",
+            "notes": "ε4 frequency ~22% from African ancestry contribution"
+          }
+        }
+      }
+    },
+    "malagasy": {
+      "ancestry_composition": {
+        "austronesian_indonesian": "33-50%",
+        "east_african_bantu": "50-67%"
+      },
+      "genetic_adaptations": {
+        "lactase_persistence": {
+          "gene": "LCT",
+          "variant": "rs4988235 / rs145946881",
+          "allele_frequency_percent": 5,
+          "inheritance": "dominant",
+          "inferred_phenotype": "absent",
+          "phenotype_probability": 0.90,
+          "phenotype_details": {
+            "name": "Lactase Non-Persistent",
+            "description": "Very low LP from both Austronesian (near 0%) and Bantu (low %) ancestries",
+            "dietary_impact": "Best with fermented dairy or lactose-free alternatives"
+          },
+          "dietary_recommendation": {
+            "dairy_tolerance": "low",
+            "recommended_dairy": [
+              "fermented dairy (yogurt, kefir)",
+              "aged cheese",
+              "lactose-free products",
+              "small portions"
+            ],
+            "avoid": [
+              "large amounts of fresh milk",
+              "ice cream",
+              "cream"
+            ],
+            "notes": "Both Austronesian and Bantu source populations have low LP; zebu cattle used primarily for meat, not dairy"
+          }
+        },
+        "starch_digestion": {
+          "gene": "AMY1",
+          "average_copy_number": 9.0,
+          "inheritance": "additive",
+          "inferred_phenotype": "high",
+          "phenotype_confidence": 1.0,
+          "phenotype_details": {
+            "name": "High Starch Tolerance",
+            "threshold": 8,
+            "description": "High AMY1 from both rice-cultivating Austronesian and African agricultural ancestry",
+            "dietary_impact": "Excellent tolerance for rice and starchy tubers"
+          },
+          "dietary_recommendation": {
+            "starch_tolerance": "high",
+            "recommended_carbs": [
+              "rice (vary) - central to every meal",
+              "cassava",
+              "sweet potato",
+              "taro"
+            ],
+            "carb_percentage": "55-65%",
+            "notes": "Austronesian rice agriculture tradition combined with African tuber cultivation. Rice-dominant diet well-suited genetically."
+          }
+        },
+        "pufa_metabolism": {
+          "gene": "FADS1",
+          "variant": "rs174537",
+          "allele_frequency_percent": 75,
+          "inheritance": "additive",
+          "inferred_phenotype": "efficient",
+          "phenotype_probability": 0.94,
+          "phenotype_details": {
+            "name": "Efficient PUFA Converter",
+            "description": "High derived allele frequency from African ancestry; moderate from Austronesian",
+            "dietary_impact": "Efficient ALA to EPA/DHA conversion"
+          },
+          "dietary_recommendation": {
+            "omega3_conversion": "efficient",
+            "recommended_sources": [
+              "fish and seafood",
+              "coconut",
+              "peanuts",
+              "plant-based omega-3 sources"
+            ],
+            "notes": "Coastal populations have abundant fish access. Efficient converters benefit from traditional diet but should limit omega-6 oils."
+          }
+        },
+        "alcohol_metabolism": {
+          "genes": [
+            "ADH1B"
+          ],
+          "inheritance": "complex",
+          "inferred_phenotype": "mixed",
+          "phenotype_probability": 0.75,
+          "phenotype_details": {
+            "name": "Mixed Alcohol Metabolism",
+            "description": "Combination of Austronesian (higher ADH1B*2) and African patterns",
+            "dietary_impact": "Variable alcohol tolerance across population"
+          },
+          "dietary_recommendation": {
+            "alcohol_tolerance": "moderate_to_low",
+            "recommendation": "Variable tolerance; moderation advised",
+            "notes": "Some Austronesian ADH1B*2 (~20% from Asian ancestry) provides faster metabolism in portion of population"
+          },
+          "ADH1B": {
+            "variant": "rs1229984",
+            "allele_frequency_percent": 12
+          }
+        },
+        "vitamin_d_metabolism": {
+          "gene": "SLC24A5",
+          "variant": "rs1426654",
+          "allele_frequency_percent": 18,
+          "inheritance": "additive",
+          "inferred_phenotype": "medium_to_dark",
+          "phenotype_details": {
+            "name": "Medium to Dark Pigmentation",
+            "description": "Primarily African pigmentation genetics with some lighter Asian admixture",
+            "dietary_impact": "Higher vitamin D dietary needs"
+          },
+          "dietary_recommendation": {
+            "skin_type": "medium_to_dark_pigmentation",
+            "vitamin_d_needs": "higher",
+            "recommendation": "Emphasize fatty fish and sun exposure",
+            "notes": "Tropical latitude provides adequate sun; fish-rich coastal diet helps meet vitamin D needs"
+          }
+        },
+        "malaria_resistance": {
+          "gene": "DARC (Duffy)",
+          "variant": "Duffy-null (FY*0)",
+          "allele_frequency_percent": 50,
+          "inheritance": "recessive",
+          "inferred_phenotype": "partial_malaria_resistance",
+          "phenotype_details": {
+            "name": "Plasmodium vivax Resistance",
+            "description": "Strong positive selection for African-derived Duffy-null allele post-admixture",
+            "dietary_impact": "No direct dietary impact; important adaptive trait"
+          },
+          "dietary_recommendation": {
+            "notes": "Duffy-null provides resistance to P. vivax malaria. Strong selection signal in Malagasy suggests ongoing malaria pressure."
+          }
+        }
+      }
+    },
+    "mesopotamian": {
+      "ancestry_composition": {
+        "ancient_near_eastern": "~85-95%",
+        "arabian_peninsula": "5-15%"
+      },
+      "genetic_adaptations": {
+        "lactase_persistence": {
+          "gene": "LCT",
+          "variant": "rs4988235 / rs41380347 (-13915*G)",
+          "allele_frequency_percent": 35,
+          "inheritance": "dominant",
+          "inferred_phenotype": "moderate_presence",
+          "phenotype_probability": 0.58,
+          "phenotype_details": {
+            "name": "Variable Lactase Persistence",
+            "description": "Intermediate LP from Middle Eastern variants; pastoral traditions present",
+            "dietary_impact": "Moderate dairy tolerance; fermented dairy traditionally emphasized"
+          },
+          "dietary_recommendation": {
+            "dairy_tolerance": "moderate",
+            "recommended_dairy": [
+              "yogurt (laban)",
+              "aged cheese",
+              "ghee",
+              "fermented milk products",
+              "small amounts of fresh dairy"
+            ],
+            "notes": "Middle Eastern LP allele (-13915*G) contributes ~15-20%. Traditional fermentation practices accommodate variable tolerance."
+          }
+        },
+        "starch_digestion": {
+          "gene": "AMY1",
+          "average_copy_number": 10.0,
+          "inheritance": "additive",
+          "inferred_phenotype": "high",
+          "phenotype_confidence": 1.0,
+          "phenotype_details": {
+            "name": "High Starch Tolerance",
+            "threshold": 8,
+            "description": "Very high AMY1 from ~10,000 years of wheat and barley agriculture in Fertile Crescent",
+            "dietary_impact": "Excellent adaptation to grain-based diet"
+          },
+          "dietary_recommendation": {
+            "starch_tolerance": "high",
+            "recommended_carbs": [
+              "wheat bread (samoon, khubz)",
+              "rice (timman)",
+              "barley",
+              "bulgur",
+              "lentils",
+              "chickpeas"
+            ],
+            "carb_percentage": "50-60%",
+            "notes": "Birthplace of agriculture; among highest AMY1 copy numbers globally. Traditional grain and legume diet highly appropriate."
+          }
+        },
+        "pufa_metabolism": {
+          "gene": "FADS1",
+          "variant": "rs174537",
+          "allele_frequency_percent": 58,
+          "inheritance": "additive",
+          "inferred_phenotype": "moderate",
+          "phenotype_probability": 0.66,
+          "phenotype_details": {
+            "name": "Moderate PUFA Converter",
+            "description": "Intermediate derived allele frequency typical of Middle Eastern populations",
+            "dietary_impact": "Moderate ALA conversion; benefits from both plant and preformed omega-3"
+          },
+          "dietary_recommendation": {
+            "omega3_conversion": "moderate",
+            "recommended_sources": [
+              "Tigris river fish (mazgouf)",
+              "walnuts",
+              "flaxseed",
+              "sesame",
+              "olive oil"
+            ],
+            "notes": "Moderate conversion efficiency; traditional Tigris fish consumption provides preformed EPA/DHA"
+          }
+        },
+        "alcohol_metabolism": {
+          "genes": [
+            "ADH1B"
+          ],
+          "inheritance": "complex",
+          "inferred_phenotype": "standard",
+          "phenotype_probability": 0.90,
+          "phenotype_details": {
+            "name": "Standard Alcohol Metabolism",
+            "description": "Typical metabolism; cultural rather than genetic alcohol restriction",
+            "dietary_impact": "Normal alcohol tolerance"
+          },
+          "dietary_recommendation": {
+            "alcohol_tolerance": "moderate",
+            "recommendation": "Standard metabolism; cultural/religious factors more relevant than genetics",
+            "notes": "Low ADH1B*2 frequency (~8%); Islamic cultural practices more influential than genetic factors"
+          },
+          "ADH1B": {
+            "variant": "rs1229984",
+            "allele_frequency_percent": 8
+          }
+        },
+        "vitamin_d_metabolism": {
+          "gene": "SLC24A5",
+          "variant": "rs1426654",
+          "allele_frequency_percent": 85,
+          "inheritance": "additive",
+          "inferred_phenotype": "light_to_medium",
+          "phenotype_details": {
+            "name": "Light to Medium Pigmentation",
+            "description": "High frequency of light-skin allele, typical of Middle Eastern populations",
+            "dietary_impact": "Moderate vitamin D synthesis capacity"
+          },
+          "dietary_recommendation": {
+            "skin_type": "light_to_medium_pigmentation",
+            "vitamin_d_needs": "moderate",
+            "recommendation": "Adequate sun exposure with traditional outdoor lifestyle; dietary sources supplement",
+            "notes": "Traditional lifestyle with sun exposure adequate; modern indoor lifestyles may require dietary attention"
+          }
+        },
+        "celiac_risk": {
+          "gene": "HLA-DQ",
+          "variant": "HLA-DQ2.5/DQ8",
+          "allele_frequency_percent": 30,
+          "inheritance": "complex",
+          "inferred_phenotype": "elevated_risk",
+          "phenotype_details": {
+            "name": "Elevated Celiac Risk Genotype",
+            "description": "HLA-DQ2/DQ8 common in wheat-origin populations",
+            "dietary_impact": "Higher genetic susceptibility to celiac disease"
+          },
+          "dietary_recommendation": {
+            "gluten_sensitivity": "monitor",
+            "notes": "Paradoxically, populations with longest wheat consumption have elevated celiac risk alleles. Individual monitoring recommended for symptoms."
+          }
+        }
+      }
+    },
+    "mestizo_mesoamerican": {
+      "ancestry_composition": {
+        "indigenous_mesoamerican": "50-60%",
+        "european_spanish": "35-45%",
+        "african": "~5%"
+      },
+      "genetic_adaptations": {
+        "lactase_persistence": {
+          "gene": "LCT",
+          "variant": "rs4988235",
+          "allele_frequency_percent": 28,
+          "inheritance": "dominant",
+          "inferred_phenotype": "mostly_absent",
+          "phenotype_probability": 0.48,
+          "phenotype_details": {
+            "name": "Variable Lactase Persistence",
+            "description": "LP primarily from European ancestry; Indigenous component has near-zero LP",
+            "dietary_impact": "Low to moderate dairy tolerance; fermented dairy preferable"
+          },
+          "dietary_recommendation": {
+            "dairy_tolerance": "low_to_moderate",
+            "recommended_dairy": [
+              "queso fresco (small amounts)",
+              "aged cheese",
+              "crema (small portions)",
+              "fermented dairy"
+            ],
+            "avoid": [
+              "large amounts of fresh milk"
+            ],
+            "notes": "~28% LP allele from European ancestry. Traditional Mexican cuisine uses cheese/crema in moderate portions. Indigenous ancestors had no dairy."
+          }
+        },
+        "starch_digestion": {
+          "gene": "AMY1",
+          "average_copy_number": 8.5,
+          "inheritance": "additive",
+          "inferred_phenotype": "moderate_to_high",
+          "phenotype_confidence": 1.0,
+          "phenotype_details": {
+            "name": "Moderate to High Starch Tolerance",
+            "threshold": 6,
+            "description": "Indigenous maize agriculture ancestry combined with European wheat tradition",
+            "dietary_impact": "Good tolerance for corn and grain-based diet"
+          },
+          "dietary_recommendation": {
+            "starch_tolerance": "moderate_to_high",
+            "recommended_carbs": [
+              "nixtamalized corn tortillas",
+              "beans",
+              "rice",
+              "wheat bread (bolillo)",
+              "squash"
+            ],
+            "carb_percentage": "45-55%",
+            "notes": "Indigenous ~3,000 year maize agriculture tradition. European wheat addition. Nixtamalization improves corn nutrition."
+          }
+        },
+        "pufa_metabolism": {
+          "gene": "FADS1",
+          "variant": "rs174537",
+          "allele_frequency_percent": 45,
+          "inheritance": "additive",
+          "inferred_phenotype": "moderate_to_reduced",
+          "phenotype_probability": 0.55,
+          "phenotype_details": {
+            "name": "Reduced to Moderate PUFA Converter",
+            "description": "Indigenous American ancestry has low derived allele (ancestral T predominates); European moderate",
+            "dietary_impact": "Reduced ALA conversion; preformed EPA/DHA more important"
+          },
+          "dietary_recommendation": {
+            "omega3_conversion": "reduced_to_moderate",
+            "recommended_sources": [
+              "fish (coastal regions)",
+              "chia seeds (traditional)",
+              "direct EPA/DHA sources"
+            ],
+            "notes": "IMPORTANT: Indigenous ancestry associated with ancestral FADS haplotype and lower omega-3 conversion. Preformed EPA/DHA from fish more important. Traditional chia use historically significant."
+          }
+        },
+        "alcohol_metabolism": {
+          "genes": [
+            "ADH1B",
+            "ALDH2"
+          ],
+          "inheritance": "complex",
+          "inferred_phenotype": "standard_slow",
+          "phenotype_probability": 0.95,
+          "phenotype_details": {
+            "name": "Standard Alcohol Metabolism",
+            "description": "Very low protective ADH1B*2 allele; ALDH2*2 virtually absent",
+            "dietary_impact": "Standard alcohol tolerance; no protective variants common"
+          },
+          "dietary_recommendation": {
+            "alcohol_tolerance": "moderate",
+            "recommendation": "Standard metabolism; moderation advised",
+            "notes": "ADH1B*2 only ~3-5% (from European ancestry). Indigenous populations lack protective variants found in Asian populations."
+          },
+          "ADH1B": {
+            "variant": "rs1229984",
+            "allele_frequency_percent": 5
+          },
+          "ALDH2": {
+            "variant": "rs671",
+            "allele_frequency_percent": 0,
+            "notes": "ALDH2*2 virtually absent in Mestizo populations"
+          }
+        },
+        "vitamin_d_metabolism": {
+          "gene": "SLC24A5",
+          "variant": "rs1426654",
+          "allele_frequency_percent": 45,
+          "inheritance": "additive",
+          "inferred_phenotype": "medium",
+          "phenotype_details": {
+            "name": "Medium Pigmentation",
+            "description": "Admixed pigmentation; variable skin tones",
+            "dietary_impact": "Variable vitamin D synthesis"
+          },
+          "dietary_recommendation": {
+            "skin_type": "medium_variable_pigmentation",
+            "vitamin_d_needs": "moderate",
+            "recommendation": "Sun exposure typically adequate in Mexico; darker individuals may need dietary supplementation",
+            "notes": "Wide variation in pigmentation; individual needs vary"
+          }
+        },
+        "folate_metabolism": {
+          "gene": "MTHFR",
+          "variant": "rs1801133 (C677T)",
+          "allele_frequency_percent": 55,
+          "inheritance": "recessive",
+          "inferred_phenotype": "reduced_folate_metabolism",
+          "phenotype_details": {
+            "name": "Elevated MTHFR 677T",
+            "description": "Unusually high frequency in Mexican/Indigenous populations",
+            "dietary_impact": "Increased folate needs; neural tube defect prevention important"
+          },
+          "dietary_recommendation": {
+            "folate_needs": "elevated",
+            "recommendation": "Emphasize folate-rich foods; fortified corn flour important",
+            "notes": "Mexican populations have among highest MTHFR 677T frequencies globally (~55%). Traditional nixtamalized corn provides bioavailable nutrients. Folate fortification beneficial."
+          }
+        }
+      }
+    },
+    "nile_valley": {
+      "ancestry_composition": {
+        "ancient_egyptian_nubian": "~70-80%",
+        "arabian_peninsula": "~10-20%",
+        "sub_saharan_african": "~5-15%"
+      },
+      "genetic_adaptations": {
+        "lactase_persistence": {
+          "gene": "LCT",
+          "variant": "rs4988235 / rs145946881 / rs41380347",
+          "allele_frequency_percent": 25,
+          "inheritance": "dominant",
+          "inferred_phenotype": "variable",
+          "phenotype_probability": 0.44,
+          "phenotype_details": {
+            "name": "Variable Lactase Persistence",
+            "description": "Intermediate LP from multiple variants; pastoral Nile traditions",
+            "dietary_impact": "Low to moderate dairy tolerance"
+          },
+          "dietary_recommendation": {
+            "dairy_tolerance": "low_to_moderate",
+            "recommended_dairy": [
+              "gibna (feta-style cheese)",
+              "laban (yogurt)",
+              "ghee (samna)",
+              "fermented dairy"
+            ],
+            "notes": "Multiple LP alleles present: European rs4988235 (~15%), Middle Eastern -13915*G (~8%), and trace East African variants. Traditional fermentation practices."
+          }
+        },
+        "starch_digestion": {
+          "gene": "AMY1",
+          "average_copy_number": 9.5,
+          "inheritance": "additive",
+          "inferred_phenotype": "high",
+          "phenotype_confidence": 1.0,
+          "phenotype_details": {
+            "name": "High Starch Tolerance",
+            "threshold": 8,
+            "description": "Ancient agricultural adaptation; bread and beer production from ~4000 BCE",
+            "dietary_impact": "Excellent tolerance for grain and legume-based diet"
+          },
+          "dietary_recommendation": {
+            "starch_tolerance": "high",
+            "recommended_carbs": [
+              "wheat bread (aish baladi)",
+              "fava beans (ful)",
+              "lentils",
+              "rice",
+              "sorghum"
+            ],
+            "carb_percentage": "50-60%",
+            "notes": "Among earliest agricultural populations. Traditional ful medames and bread diet genetically well-suited."
+          }
+        },
+        "pufa_metabolism": {
+          "gene": "FADS1",
+          "variant": "rs174537",
+          "allele_frequency_percent": 72,
+          "inheritance": "additive",
+          "inferred_phenotype": "efficient",
+          "phenotype_probability": 0.92,
+          "phenotype_details": {
+            "name": "Efficient PUFA Converter",
+            "description": "Higher derived allele from Sub-Saharan genetic flow; intermediate position geographically",
+            "dietary_impact": "Efficient ALA to EPA/DHA conversion"
+          },
+          "dietary_recommendation": {
+            "omega3_conversion": "efficient",
+            "recommended_sources": [
+              "Nile fish (tilapia, perch)",
+              "flaxseed",
+              "tahini (sesame)",
+              "walnuts"
+            ],
+            "notes": "Efficient converters; traditional Nile fish consumption provides excellent omega-3. Limit excess omega-6 vegetable oils."
+          }
+        },
+        "alcohol_metabolism": {
+          "genes": [
+            "ADH1B"
+          ],
+          "inheritance": "complex",
+          "inferred_phenotype": "standard",
+          "phenotype_probability": 0.88,
+          "phenotype_details": {
+            "name": "Standard Alcohol Metabolism",
+            "description": "Standard metabolism; ancient beer traditions before Islamic period",
+            "dietary_impact": "Normal alcohol tolerance"
+          },
+          "dietary_recommendation": {
+            "alcohol_tolerance": "moderate",
+            "recommendation": "Standard metabolism; cultural factors more relevant",
+            "notes": "Ancient Egyptian beer tradition; modern Islamic practices vary. ADH1B*2 ~10% from some Middle Eastern/Sub-Saharan admixture."
+          },
+          "ADH1B": {
+            "variant": "rs1229984",
+            "allele_frequency_percent": 10
+          }
+        },
+        "vitamin_d_metabolism": {
+          "gene": "SLC24A5",
+          "variant": "rs1426654",
+          "allele_frequency_percent": 65,
+          "inheritance": "additive",
+          "inferred_phenotype": "medium",
+          "phenotype_details": {
+            "name": "Medium Pigmentation",
+            "description": "Intermediate pigmentation; lighter than Sub-Saharan, darker than European",
+            "dietary_impact": "Moderate vitamin D needs"
+          },
+          "dietary_recommendation": {
+            "skin_type": "medium_pigmentation",
+            "vitamin_d_needs": "moderate",
+            "recommendation": "Abundant Egyptian sun typically adequate; dietary sources supplement",
+            "notes": "Geographic and genetic intermediate position. Traditional outdoor lifestyle with sun exposure adequate."
+          }
+        },
+        "g6pd_deficiency": {
+          "gene": "G6PD",
+          "variant": "Multiple African/Mediterranean variants",
+          "allele_frequency_percent": 8,
+          "inheritance": "X-linked",
+          "inferred_phenotype": "variable_deficiency",
+          "phenotype_details": {
+            "name": "G6PD Deficiency",
+            "description": "Mediterranean and African G6PD variants present; provides malaria resistance",
+            "dietary_impact": "Avoid fava beans (favism) in affected individuals"
+          },
+          "dietary_recommendation": {
+            "fava_bean_caution": "required_for_carriers",
+            "notes": "IMPORTANT: G6PD deficiency (~8% males) can cause hemolytic anemia from fava beans (ful). Paradoxically, ful is dietary staple. Screening recommended; affected individuals must avoid fava."
+          }
+        },
+        "cholesterol_metabolism": {
+          "gene": "APOE",
+          "variant": "ε4 allele",
+          "allele_frequency_percent": 18,
+          "inheritance": "codominant",
+          "inferred_phenotype": "moderate_apoe4",
+          "phenotype_details": {
+            "name": "APOE ε4 Status",
+            "description": "Moderate ε4 frequency; intermediate between European and African",
+            "dietary_impact": "Traditional plant-heavy diet may be protective"
+          },
+          "dietary_recommendation": {
+            "cholesterol_response": "variable",
+            "recommendation": "Traditional legume and vegetable-heavy diet protective",
+            "notes": "ε4 ~18%; traditional ful and vegetable-based diet associated with cardiovascular protection"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,484 @@
+// server.js - Optional Node.js backend for ancestral diet API
+const express = require('express');
+const cors = require('cors');
+const turf = require('@turf/turf');
+const fs = require('fs').promises;
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
+
+// Load data - separated by purpose
+let geoData, dietData, regionsGeoJSON;
+
+async function loadData() {
+  try {
+    const geoPath = path.join(__dirname, 'ancestral_geo.json');
+    const dietPath = path.join(__dirname, 'ancestral_diet_genetics.json');
+    const regionsPath = path.join(__dirname, 'ancestral_regions.geojson');
+
+    geoData = JSON.parse(await fs.readFile(geoPath, 'utf8'));
+    dietData = JSON.parse(await fs.readFile(dietPath, 'utf8'));
+    regionsGeoJSON = JSON.parse(await fs.readFile(regionsPath, 'utf8'));
+
+    console.log(`Loaded ${geoData.cultures.length} cultures (geo)`);
+    console.log(`Loaded ${dietData.cultures.length} cultures (diet/genetics)`);
+    console.log(`Loaded ${regionsGeoJSON.features.length} regions`);
+  } catch (error) {
+    console.error('Error loading data:', error);
+    process.exit(1);
+  }
+}
+
+// Helper functions to look up by id
+function getGeoById(id) {
+  return geoData.cultures.find(c => c.id === id);
+}
+
+function getDietById(id) {
+  return dietData.cultures.find(c => c.id === id);
+}
+
+// API Routes
+
+/**
+ * GET /api/regions
+ * Get all regions GeoJSON
+ */
+app.get('/api/regions', (req, res) => {
+  res.json(regionsGeoJSON);
+});
+
+/**
+ * GET /api/diets
+ * Get all diet data
+ */
+app.get('/api/diets', (req, res) => {
+  res.json(dietsData);
+});
+
+/**
+ * GET /api/diet/:regionId
+ * Get diet data for a specific region
+ */
+app.get('/api/diet/:regionId', (req, res) => {
+  const { regionId } = req.params;
+  const diet = dietsData.cultures.find(c => c.id === regionId);
+  
+  if (!diet) {
+    return res.status(404).json({ error: 'Region not found' });
+  }
+  
+  res.json(diet);
+});
+
+/**
+ * POST /api/locate
+ * Find region from coordinates
+ * Body: { lng: number, lat: number }
+ */
+app.post('/api/locate', (req, res) => {
+  const { lng, lat } = req.body;
+  
+  if (typeof lng !== 'number' || typeof lat !== 'number') {
+    return res.status(400).json({ error: 'Invalid coordinates' });
+  }
+  
+  const point = turf.point([lng, lat]);
+  
+  // Try point-in-polygon first
+  for (const feature of regionsGeoJSON.features) {
+    if (turf.booleanPointInPolygon(point, feature)) {
+      const diet = dietsData.cultures.find(c => c.id === feature.properties.id);
+      return res.json({
+        regionId: feature.properties.id,
+        method: 'point-in-polygon',
+        diet
+      });
+    }
+  }
+  
+  // Fallback to closest centroid
+  let closestRegion = null;
+  let minDistance = Infinity;
+  
+  for (const culture of dietsData.cultures) {
+    const centroid = turf.point([culture.centroid.lon, culture.centroid.lat]);
+    const distance = turf.distance(point, centroid, { units: 'kilometers' });
+    
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestRegion = culture;
+    }
+  }
+  
+  if (closestRegion) {
+    res.json({
+      regionId: closestRegion.id,
+      method: 'nearest-centroid',
+      distance: Math.round(minDistance),
+      diet: closestRegion
+    });
+  } else {
+    res.status(404).json({ error: 'No region found' });
+  }
+});
+
+/**
+ * POST /api/blend
+ * Blend multiple ancestral diets
+ * Body: {
+ *   regions: [{ id: string, weight?: number }],
+ *   options?: { generation_weights?: boolean }
+ * }
+ */
+app.post('/api/blend', (req, res) => {
+  const { regions, options = {} } = req.body;
+  
+  if (!Array.isArray(regions) || regions.length === 0) {
+    return res.status(400).json({ error: 'Invalid regions array' });
+  }
+  
+  // Extract region IDs and weights
+  const regionIds = regions.map(r => typeof r === 'string' ? r : r.id);
+  let weights = regions.map(r => typeof r === 'object' && r.weight ? r.weight : 1);
+  
+  // Apply generation-based weights if requested
+  if (options.generation_weights && regions.length <= 5) {
+    // Assume order: self, parent1, parent2, grandparent1, grandparent2
+    weights = [1, 0.5, 0.5, 0.25, 0.25].slice(0, regions.length);
+  }
+  
+  // Normalize weights
+  const sum = weights.reduce((a, b) => a + b, 0);
+  const normalizedWeights = weights.map(w => w / sum);
+  
+  // Get diet data
+  const diets = regionIds
+    .map(id => dietsData.cultures.find(c => c.id === id))
+    .filter(d => d !== null);
+  
+  if (diets.length === 0) {
+    return res.status(404).json({ error: 'No valid regions found' });
+  }
+  
+  // Calculate blended diet
+  const blended = blendDiets(diets, normalizedWeights);
+  
+  res.json(blended);
+});
+
+/**
+ * GET /api/similarity/:region1/:region2
+ * Calculate similarity between two regions
+ */
+app.get('/api/similarity/:region1/:region2', (req, res) => {
+  const { region1, region2 } = req.params;
+  
+  const diet1 = dietsData.cultures.find(c => c.id === region1);
+  const diet2 = dietsData.cultures.find(c => c.id === region2);
+  
+  if (!diet1 || !diet2) {
+    return res.status(404).json({ error: 'One or both regions not found' });
+  }
+  
+  const similarity = calculateSimilarity(diet1, diet2);
+  
+  res.json({
+    region1: { id: diet1.id, name: diet1.name },
+    region2: { id: diet2.id, name: diet2.name },
+    similarity,
+    interpretation: interpretSimilarity(similarity)
+  });
+});
+
+/**
+ * POST /api/transition
+ * Get recommendations for transitioning between diets
+ * Body: { from: regionId, to: regionId }
+ */
+app.post('/api/transition', (req, res) => {
+  const { from, to } = req.body;
+  
+  const fromDiet = dietsData.cultures.find(c => c.id === from);
+  const toDiet = dietsData.cultures.find(c => c.id === to);
+  
+  if (!fromDiet || !toDiet) {
+    return res.status(404).json({ error: 'One or both regions not found' });
+  }
+  
+  const recommendations = getTransitionRecommendations(fromDiet, toDiet);
+  
+  res.json({
+    from: { id: fromDiet.id, name: fromDiet.name },
+    to: { id: toDiet.id, name: toDiet.name },
+    recommendations,
+    timeline: generateTransitionTimeline(fromDiet, toDiet)
+  });
+});
+
+// Helper Functions
+
+function blendDiets(diets, weights) {
+  // Calculate blended macros
+  const blendedMacros = diets.reduce((acc, diet, idx) => {
+    const weight = weights[idx];
+    return {
+      carbs_pct: acc.carbs_pct + diet.macros.carbs_pct * weight,
+      protein_pct: acc.protein_pct + diet.macros.protein_pct * weight,
+      fat_pct: acc.fat_pct + diet.macros.fat_pct * weight
+    };
+  }, { carbs_pct: 0, protein_pct: 0, fat_pct: 0 });
+  
+  // Round macros
+  Object.keys(blendedMacros).forEach(key => {
+    blendedMacros[key] = Math.round(blendedMacros[key]);
+  });
+  
+  // Count food occurrences
+  const foodCounts = {};
+  const proteinCounts = {};
+  const fatCounts = {};
+  const herbCounts = {};
+  
+  diets.forEach((diet, idx) => {
+    const weight = weights[idx];
+    
+    [...diet.staples, ...diet.common_foods].forEach(food => {
+      foodCounts[food] = (foodCounts[food] || 0) + weight;
+    });
+    
+    diet.proteins.forEach(p => {
+      proteinCounts[p] = (proteinCounts[p] || 0) + weight;
+    });
+    
+    diet.fats.forEach(f => {
+      fatCounts[f] = (fatCounts[f] || 0) + weight;
+    });
+    
+    diet.herbs_spices.forEach(h => {
+      herbCounts[h] = (herbCounts[h] || 0) + weight;
+    });
+  });
+  
+  // Get top items
+  const getTopItems = (counts, limit) => {
+    return Object.entries(counts)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, limit)
+      .map(([item, score]) => ({ item, score: Math.round(score * 100) }));
+  };
+  
+  // Common foods (>50% threshold)
+  const commonFoods = Object.entries(foodCounts)
+    .filter(([, count]) => count >= 0.5)
+    .map(([food]) => food);
+  
+  // Unique foods per region
+  const uniqueFoods = {};
+  diets.forEach(diet => {
+    const unique = [...diet.staples, ...diet.common_foods]
+      .filter(food => !commonFoods.includes(food))
+      .slice(0, 5);
+    if (unique.length > 0) {
+      uniqueFoods[diet.name] = unique;
+    }
+  });
+  
+  // Collect cooking methods
+  const allCookingMethods = [...new Set(diets.flatMap(d => d.cooking_methods))];
+  
+  // Collect substitutes
+  const allSubstitutes = {};
+  diets.forEach(diet => {
+    Object.assign(allSubstitutes, diet.modern_substitutes);
+  });
+  
+  return {
+    ancestry_regions: diets.map((d, idx) => ({
+      id: d.id,
+      name: d.name,
+      culture: d.culture,
+      weight: Math.round(weights[idx] * 100)
+    })),
+    blended_macros: blendedMacros,
+    common_foods: commonFoods,
+    unique_foods: uniqueFoods,
+    recommended_proteins: getTopItems(proteinCounts, 10),
+    recommended_fats: getTopItems(fatCounts, 8),
+    recommended_herbs: getTopItems(herbCounts, 12),
+    cooking_methods: allCookingMethods,
+    modern_substitutes: allSubstitutes,
+    diet_summary: generateDietSummary(diets, weights)
+  };
+}
+
+function calculateSimilarity(diet1, diet2) {
+  const foods1 = new Set([...diet1.staples, ...diet1.common_foods]);
+  const foods2 = new Set([...diet2.staples, ...diet2.common_foods]);
+  
+  const intersection = new Set([...foods1].filter(f => foods2.has(f)));
+  const union = new Set([...foods1, ...foods2]);
+  
+  // Jaccard similarity
+  const foodSimilarity = intersection.size / union.size;
+  
+  // Macro similarity (inverse of normalized distance)
+  const macroDistance = Math.sqrt(
+    Math.pow(diet1.macros.carbs_pct - diet2.macros.carbs_pct, 2) +
+    Math.pow(diet1.macros.protein_pct - diet2.macros.protein_pct, 2) +
+    Math.pow(diet1.macros.fat_pct - diet2.macros.fat_pct, 2)
+  ) / 100;
+  
+  const macroSimilarity = 1 - macroDistance;
+  
+  // Combined similarity
+  return Math.round((foodSimilarity * 0.6 + macroSimilarity * 0.4) * 100);
+}
+
+function interpretSimilarity(score) {
+  if (score >= 80) return 'Very similar - minimal dietary adaptation needed';
+  if (score >= 60) return 'Moderately similar - some common foods and patterns';
+  if (score >= 40) return 'Somewhat different - significant adaptation required';
+  return 'Very different - major dietary pattern shift needed';
+}
+
+function generateDietSummary(diets, weights) {
+  const primaryDiet = diets[0];
+  
+  if (diets.length === 1) {
+    return primaryDiet.diet_signature;
+  }
+  
+  const ancestryNames = diets.map((d, idx) => 
+    `${d.name}${weights[idx] > 0.4 ? ' (primary)' : ''}`
+  ).join(', ');
+  
+  const macroTypes = diets.map(d => {
+    if (d.macros.carbs_pct > 50) return 'carbohydrate-rich';
+    if (d.macros.protein_pct > 25) return 'protein-focused';
+    if (d.macros.fat_pct > 40) return 'fat-adapted';
+    return 'balanced';
+  });
+  
+  const uniqueMacros = [...new Set(macroTypes)];
+  
+  return `Your blended ancestry combines ${ancestryNames}. This creates a ${uniqueMacros.join(' and ')} dietary pattern. Focus on foods common across these traditions while incorporating unique elements from each lineage.`;
+}
+
+function getTransitionRecommendations(fromDiet, toDiet) {
+  const recommendations = [];
+  
+  // Macro transitions
+  const carbsDiff = toDiet.macros.carbs_pct - fromDiet.macros.carbs_pct;
+  const proteinDiff = toDiet.macros.protein_pct - fromDiet.macros.protein_pct;
+  const fatDiff = toDiet.macros.fat_pct - fromDiet.macros.fat_pct;
+  
+  if (Math.abs(carbsDiff) > 10) {
+    recommendations.push({
+      category: 'macros',
+      priority: 'high',
+      change: carbsDiff > 0 ? 'increase_carbs' : 'decrease_carbs',
+      description: carbsDiff > 0
+        ? `Gradually increase carbohydrates by adding more ${toDiet.staples[0]}`
+        : `Reduce carbohydrate intake, replacing with ${toDiet.proteins[0]}`
+    });
+  }
+  
+  if (Math.abs(proteinDiff) > 5) {
+    recommendations.push({
+      category: 'macros',
+      priority: 'medium',
+      change: proteinDiff > 0 ? 'increase_protein' : 'decrease_protein',
+      description: proteinDiff > 0
+        ? `Increase protein sources like ${toDiet.proteins.slice(0, 2).join(' and ')}`
+        : `Moderate protein intake while maintaining ${toDiet.staples[0]} as a staple`
+    });
+  }
+  
+  // New foods to introduce
+  const fromFoods = new Set([...fromDiet.staples, ...fromDiet.common_foods]);
+  const newFoods = toDiet.common_foods.filter(f => !fromFoods.has(f)).slice(0, 5);
+  
+  if (newFoods.length > 0) {
+    recommendations.push({
+      category: 'foods',
+      priority: 'medium',
+      change: 'introduce_foods',
+      description: `Introduce: ${newFoods.join(', ')}`,
+      items: newFoods
+    });
+  }
+  
+  // Foods to reduce
+  const toFoods = new Set([...toDiet.staples, ...toDiet.common_foods]);
+  const reduceFoods = fromDiet.common_foods.filter(f => !toFoods.has(f)).slice(0, 3);
+  
+  if (reduceFoods.length > 0) {
+    recommendations.push({
+      category: 'foods',
+      priority: 'low',
+      change: 'reduce_foods',
+      description: `Consider reducing: ${reduceFoods.join(', ')}`,
+      items: reduceFoods
+    });
+  }
+  
+  // Cooking methods
+  const newMethods = toDiet.cooking_methods.filter(
+    m => !fromDiet.cooking_methods.includes(m)
+  ).slice(0, 3);
+  
+  if (newMethods.length > 0) {
+    recommendations.push({
+      category: 'cooking',
+      priority: 'low',
+      change: 'new_methods',
+      description: `Try cooking methods: ${newMethods.join(', ')}`,
+      items: newMethods
+    });
+  }
+  
+  return recommendations;
+}
+
+function generateTransitionTimeline(fromDiet, toDiet) {
+  return {
+    week_1_2: 'Introduce one new staple food and one new protein source',
+    week_3_4: 'Adjust macro ratios by 25% toward target',
+    week_5_6: 'Add new herbs, spices, and cooking methods',
+    week_7_8: 'Reach 50% transition, continue gradual adjustment',
+    week_9_12: 'Complete transition to target dietary pattern'
+  };
+}
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Start server
+async function start() {
+  await loadData();
+  
+  app.listen(PORT, () => {
+    console.log(`Ancestral Diet API server running on port ${PORT}`);
+    console.log(`API endpoints:`);
+    console.log(`  GET  /api/regions`);
+    console.log(`  GET  /api/diets`);
+    console.log(`  GET  /api/diet/:regionId`);
+    console.log(`  POST /api/locate`);
+    console.log(`  POST /api/blend`);
+    console.log(`  GET  /api/similarity/:region1/:region2`);
+    console.log(`  POST /api/transition`);
+  });
+}
+
+start().catch(console.error);
+
+module.exports = app;

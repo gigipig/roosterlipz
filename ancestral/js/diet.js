@@ -70,7 +70,6 @@ function blendDiets(regionIds, weights) {
  * @param {Object} geo - Geographic data
  */
 function showDietPanel(diet, geo) {
-  const panel = document.getElementById('diet-panel');
   const content = document.getElementById('diet-content');
 
   content.innerHTML = `
@@ -154,8 +153,6 @@ function showDietPanel(diet, geo) {
 
     ${renderGeneticAdaptations(diet)}
   `;
-
-  panel.classList.add('visible');
 }
 
 /**
@@ -164,7 +161,6 @@ function showDietPanel(diet, geo) {
  * @param {Object} mendelianGenetics - Mendelian genetics results
  */
 function showBlendedDietWithMendelian(blended, mendelianGenetics) {
-  const panel = document.getElementById('diet-panel');
   const content = document.getElementById('diet-content');
 
   const ancestryList = blended.geos.map((g, idx) =>
@@ -253,8 +249,6 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
       }).join('')}
     </div>
   `;
-
-  panel.classList.add('visible');
 }
 
 /**
@@ -262,7 +256,6 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
  * @param {Object} blended - Blended diet data
  */
 function showBlendedDiet(blended) {
-  const panel = document.getElementById('diet-panel');
   const content = document.getElementById('diet-content');
 
   const ancestryList = blended.geos.map((g, idx) =>
@@ -351,6 +344,4 @@ function showBlendedDiet(blended) {
 
     ${blendGeneticAdaptations(blended.diets, blended.weights)}
   `;
-
-  panel.classList.add('visible');
 }

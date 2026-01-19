@@ -3,969 +3,413 @@
   "note": "Geographic/location data extracted from ancestral_diets_geo.json",
   "cultures": [
     {
-      "centroid": {
-        "lat": -23.7,
-        "lon": 133.9
-      },
       "region": "Oceania",
       "id": "aboriginal_aus",
       "culture": "Aboriginal Australian (varied)",
       "subregion": "Australian First Nations",
-      "name": "Aboriginal Australian",
-      "bbox": {
-        "min_lat": -44.0,
-        "max_lat": -10.0,
-        "min_lon": 112.0,
-        "max_lon": 154.0
-      }
+      "name": "Aboriginal Australian"
     },
     {
-      "centroid": {
-        "lat": -3.0,
-        "lon": -60.0
-      },
       "region": "The Americas",
       "id": "amazon",
       "culture": "Amazonian indigenous",
       "subregion": "South America - Amazonian",
-      "name": "Amazonian",
-      "bbox": {
-        "min_lat": -10.0,
-        "max_lat": 3.0,
-        "min_lon": -75.0,
-        "max_lon": -45.0
-      }
+      "name": "Amazonian"
     },
     {
-      "centroid": {
-        "lat": 39.9,
-        "lon": 32.9
-      },
       "region": "Middle East",
       "id": "anatolian",
       "culture": "Turkey/Anatolia",
       "subregion": "Anatolian/Turkish",
-      "name": "Anatolian/Turkish",
-      "bbox": {
-        "min_lat": 36.0,
-        "max_lat": 42.0,
-        "min_lon": 26.0,
-        "max_lon": 45.0
-      }
+      "name": "Anatolian/Turkish"
     },
     {
-      "centroid": {
-        "lat": -13.2,
-        "lon": -72.5
-      },
       "region": "The Americas",
       "id": "andean",
       "culture": "Quechua/Aymara",
       "subregion": "South America - Andean Highlands",
-      "name": "Andean",
-      "bbox": {
-        "min_lat": -18.0,
-        "max_lat": -8.0,
-        "min_lon": -76.0,
-        "max_lon": -68.0
-      }
+      "name": "Andean"
     },
     {
-      "centroid": {
-        "lat": 24.7,
-        "lon": 46.7
-      },
       "region": "Middle East",
       "id": "arabian",
       "culture": "Bedouin/Arabian Peninsula",
       "subregion": "Arabian Peninsula",
-      "name": "Arabian Peninsula",
-      "bbox": {
-        "min_lat": 15.0,
-        "max_lat": 28.0,
-        "min_lon": 30.0,
-        "max_lon": 60.0
-      }
+      "name": "Arabian Peninsula"
     },
     {
-      "centroid": {
-        "lat": 69.0,
-        "lon": -75.0
-      },
       "region": "The Americas",
       "id": "inuit",
       "culture": "Inuit/Yupik",
-      "subregion": "North America - Arctic/ Inuit",
-      "name": "Arctic Inuit",
-      "bbox": {
-        "min_lat": 60.0,
-        "max_lat": 75.0,
-        "min_lon": -160.0,
-        "max_lon": -40.0
-      }
+      "subregion": "North America - Arctic/Inuit",
+      "name": "Arctic Inuit"
     },
     {
-      "centroid": {
-        "lat": -33.9,
-        "lon": 151.2
-      },
       "id": "australian_coastal",
       "culture": "Coastal Aboriginal diet with oysters, fish, and estuarine resources",
       "name": "Australian Coastal"
     },
     {
-      "centroid": {
-        "lat": 23.8,
-        "lon": 90.4
-      },
       "region": "South Asia",
       "id": "bengal",
       "culture": "Bengal (Bangladesh/West Bengal)",
       "subregion": "Bengali Delta",
-      "name": "Bengali",
-      "bbox": {
-        "min_lat": 21.0,
-        "max_lat": 24.5,
-        "min_lon": 88.0,
-        "max_lon": 92.0
-      }
+      "name": "Bengali"
     },
     {
-      "centroid": {
-        "lat": -15.8,
-        "lon": -47.9
-      },
       "id": "brazilian_coastal",
-      "culture": "Afro-Brazilian fusion with dendÃª oil, cassava, and seafood",
+      "culture": "Afro-Brazilian fusion with dendê oil, cassava, and seafood",
       "name": "Brazilian Coastal"
     },
     {
-      "centroid": {
-        "lat": 36.0,
-        "lon": -121.0
-      },
       "id": "california_coast",
       "culture": "Acorn-based indigenous diet with salmon, shellfish, and seeds",
       "name": "California Coastal"
     },
     {
-      "centroid": {
-        "lat": 52.0,
-        "lon": -106.0
-      },
       "id": "canadian_prairies",
       "culture": "Plains and Subarctic fusion with bison, pemmican, and wild rice",
       "name": "Canadian Prairies"
     },
     {
-      "centroid": {
-        "lat": 18.0,
-        "lon": -66.5
-      },
       "region": "The Americas",
       "id": "caribbean_taino",
       "culture": "Taino",
       "subregion": "Caribbean",
-      "name": "Caribbean TaÃ­no",
-      "bbox": {
-        "min_lat": 10.0,
-        "max_lat": 22.0,
-        "min_lon": -80.0,
-        "max_lon": -60.0
-      }
+      "name": "Caribbean Taíno"
     },
     {
-      "centroid": {
-        "lat": 41.7,
-        "lon": 44.8
-      },
       "region": "Europe/Asia",
       "id": "caucasus",
       "culture": "Georgia/Armenia/Azerbaijan",
       "subregion": "Caucasus",
-      "name": "Caucasian",
-      "bbox": {
-        "min_lat": 38.0,
-        "max_lat": 42.5,
-        "min_lon": 43.0,
-        "max_lon": 47.0
-      }
+      "name": "Caucasian"
     },
     {
-      "centroid": {
-        "lat": 0.5,
-        "lon": 20.0
-      },
       "region": "Africa",
       "id": "central_africa",
       "culture": "Mbuti/Aka/Baka",
       "subregion": "Central African Rainforest",
-      "name": "Central African Rainforest",
-      "bbox": {
-        "min_lat": -6.0,
-        "max_lat": 9.0,
-        "min_lon": 7.0,
-        "max_lon": 32
-      }
+      "name": "Central African Rainforest"
     },
     {
-      "centroid": {
-        "lat": 48.0,
-        "lon": 66.0
-      },
       "region": "Central Asia",
       "id": "central_asia",
       "culture": "Kazakh/Kyrgyz/Steppe",
       "subregion": "Steppe Nomadic",
-      "name": "Central Asian Steppe",
-      "bbox": {
-        "min_lat": 40.0,
-        "max_lat": 52.0,
-        "min_lon": 50.0,
-        "max_lon": 90.0
-      }
+      "name": "Central Asian Steppe"
     },
     {
-      "centroid": {
-        "lat": -1.0,
-        "lon": 36.5
-      },
       "region": "Africa",
       "id": "maasai",
       "culture": "Maasai/Samburu",
       "subregion": "East Africa Pastoralist",
-      "name": "East African Pastoralist",
-      "bbox": {
-        "min_lat": -3.5,
-        "max_lat": 3.0,
-        "min_lon": 34.0,
-        "max_lon": 39.0
-      }
+      "name": "East African Pastoralist"
     },
     {
-      "centroid": {
-        "lat": 50.0,
-        "lon": 30.0
-      },
       "region": "Europe",
       "id": "eastern_europe",
       "culture": "Poland/Ukraine/Russia",
       "subregion": "Eastern Europe",
-      "name": "Eastern European",
-      "bbox": {
-        "min_lat": 44.0,
-        "max_lat": 55.0,
-        "min_lon": 19.0,
-        "max_lon": 40.0
-      }
+      "name": "Eastern European"
     },
     {
-      "centroid": {
-        "lat": 43.0,
-        "lon": -75.0
-      },
       "region": "The Americas",
       "id": "eastern_woodlands",
       "culture": "Iroquois/Algonquin",
       "subregion": "North America - Eastern Woodlands",
-      "name": "Eastern Woodlands",
-      "bbox": {
-        "min_lat": 40.0,
-        "max_lat": 47.0,
-        "min_lon": -85.0,
-        "max_lon": -70.0
-      }
+      "name": "Eastern Woodlands"
     },
     {
-      "centroid": {
-        "lat": 9.0,
-        "lon": 39.7
-      },
       "region": "Africa",
       "id": "ethiopia",
       "culture": "Ethiopia/Eritrea",
       "subregion": "East Africa Highlands",
-      "name": "Ethiopian Highland",
-      "bbox": {
-        "min_lat": 5.0,
-        "max_lat": 15.0,
-        "min_lon": 33.0,
-        "max_lon": 45.0
-      }
+      "name": "Ethiopian Highland"
     },
     {
-      "centroid": {
-        "lat": -32.0,
-        "lon": -60.0
-      },
       "id": "gaucho",
       "culture": "Grassland pastoralist diet centered on grass-fed beef and yerba mate",
       "name": "Gaucho (Pampas)"
     },
     {
-      "centroid": {
-        "lat": 44.5,
-        "lon": -100.0
-      },
       "region": "The Americas",
       "id": "great_plains",
       "culture": "Lakota/Cheyenne",
       "subregion": "North America - Great Plains",
-      "name": "Great Plains",
-      "bbox": {
-        "min_lat": 43.0,
-        "max_lat": 49.0,
-        "min_lon": -110.0,
-        "max_lon": -95.0
-      }
+      "name": "Great Plains"
     },
     {
-      "centroid": {
-        "lat": 20.5,
-        "lon": 101.0
-      },
       "region": "Southeast Asia",
       "id": "highland_se_asia",
       "culture": "Hmong/Karen/Shan",
       "subregion": "Highland SE Asia",
-      "name": "Highland Southeast Asian",
-      "bbox": {
-        "min_lat": 15.0,
-        "max_lat": 23.5,
-        "min_lon": 98.0,
-        "max_lon": 106.0
-      }
+      "name": "Highland Southeast Asian"
     },
     {
-      "centroid": {
-        "lat": 9.4,
-        "lon": 48.0
-      },
       "region": "Africa",
       "id": "horn_somalia",
       "culture": "Somali",
       "subregion": "Horn of Africa",
-      "name": "Horn of Africa",
-      "bbox": {
-        "min_lat": -2.0,
-        "max_lat": 18.0,
-        "min_lon": 28.0,
-        "max_lon": 52.0
-      }
+      "name": "Horn of Africa"
     },
     {
-      "centroid": {
-        "lat": -2.5,
-        "lon": 118.0
-      },
       "region": "Southeast Asia",
       "id": "se_asia_island",
       "culture": "Indonesia/Philippines",
       "subregion": "Island SE Asia",
-      "name": "Island Southeast Asian",
-      "bbox": {
-        "min_lat": -10.0,
-        "max_lat": 6.0,
-        "min_lon": 95.0,
-        "max_lon": 140.0
-      }
+      "name": "Island Southeast Asian"
     },
     {
-      "centroid": {
-        "lat": 36.0,
-        "lon": 138.0
-      },
       "region": "East Asia",
       "id": "japan",
       "culture": "Japan (Washoku)",
       "subregion": "Japan",
-      "name": "Japanese",
-      "bbox": {
-        "min_lat": 30.0,
-        "max_lat": 45.0,
-        "min_lon": 129.0,
-        "max_lon": 145.0
-      }
+      "name": "Japanese"
     },
     {
-      "centroid": {
-        "lat": 37.6,
-        "lon": 126.9
-      },
       "region": "East Asia",
       "id": "korea",
       "culture": "Korea",
       "subregion": "Korean",
-      "name": "Korean",
-      "bbox": {
-        "min_lat": 33.0,
-        "max_lat": 43.0,
-        "min_lon": 124.0,
-        "max_lon": 132.0
-      }
+      "name": "Korean"
     },
     {
-      "centroid": {
-        "lat": 36.2,
-        "lon": 44.0
-      },
       "region": "Middle East",
       "id": "kurdish",
       "culture": "Kurdistan regions",
       "subregion": "Kurdish Highlands",
-      "name": "Kurdish Highland",
-      "bbox": {
-        "min_lat": 34.0,
-        "max_lat": 38.0,
-        "min_lon": 41.0,
-        "max_lon": 46.0
-      }
+      "name": "Kurdish Highland"
     },
     {
-      "centroid": {
-        "lat": 13.7,
-        "lon": 100.5
-      },
       "region": "Southeast Asia",
       "id": "se_asia_main",
       "culture": "Thailand/Cambodia/Laos/Myanmar",
       "subregion": "Mainland SE Asia",
-      "name": "Mainland Southeast Asian",
-      "bbox": {
-        "min_lat": 5.0,
-        "max_lat": 22.0,
-        "min_lon": 92.0,
-        "max_lon": 110.0
-      }
+      "name": "Mainland Southeast Asian"
     },
     {
-      "centroid": {
-        "lat": 33.9,
-        "lon": 35.5
-      },
       "region": "Europe",
       "id": "med_levant",
       "culture": "Levant (Lebanon, Palestine, Syria)",
       "subregion": "Mediterranean - Levant",
-      "name": "Mediterranean - Levantine",
-      "bbox": {
-        "min_lat": 30.0,
-        "max_lat": 36.0,
-        "min_lon": 34.0,
-        "max_lon": 38.0
-      }
+      "name": "Mediterranean - Levantine"
     },
     {
-      "centroid": {
-        "lat": 41.0,
-        "lon": 15.0
-      },
       "region": "Europe",
       "id": "med_southern",
       "culture": "Italy/Greece/Spain",
       "subregion": "Mediterranean - Southern European",
-      "name": "Mediterranean - Southern European",
-      "bbox": {
-        "min_lat": 35.0,
-        "max_lat": 45.0,
-        "min_lon": -10.0,
-        "max_lon": 25.0
-      }
+      "name": "Mediterranean - Southern European"
     },
     {
-      "centroid": {
-        "lat": -8.6,
-        "lon": 147.0
-      },
       "region": "Oceania",
       "id": "melanesia",
       "culture": "PNG/Fiji/Solomon Islands",
       "subregion": "Melanesia",
-      "name": "Melanesian",
-      "bbox": {
-        "min_lat": -12.0,
-        "max_lat": -4.0,
-        "min_lon": 140.0,
-        "max_lon": 160.0
-      }
+      "name": "Melanesian"
     },
     {
-      "centroid": {
-        "lat": 16.5,
-        "lon": -89.0
-      },
       "region": "The Americas",
       "id": "mesoamerica",
       "culture": "Maya/Aztec",
       "subregion": "Central America - Mesoamerican",
-      "name": "Mesoamerican",
-      "bbox": {
-        "min_lat": 8.0,
-        "max_lat": 23.0,
-        "min_lon": -100.0,
-        "max_lon": -80.0
-      }
+      "name": "Mesoamerican"
     },
     {
-      "centroid": {
-        "lat": 7.1,
-        "lon": 171.4
-      },
       "region": "Oceania",
       "id": "micronesia",
       "culture": "Micronesian Islands",
       "subregion": "Micronesia",
-      "name": "Micronesian",
-      "bbox": {
-        "min_lat": 1.0,
-        "max_lat": 10.5,
-        "min_lon": 153.0,
-        "max_lon": 175.0
-      }
+      "name": "Micronesian"
     },
     {
-      "centroid": {
-        "lat": 47.9,
-        "lon": 106.9
-      },
       "region": "Central Asia",
       "id": "mongolia",
       "culture": "Mongolia",
       "subregion": "Mongolian Steppe",
-      "name": "Mongolian Steppe",
-      "bbox": {
-        "min_lat": 42.0,
-        "max_lat": 52.0,
-        "min_lon": 88.0,
-        "max_lon": 122.0
-      }
+      "name": "Mongolian Steppe"
     },
     {
-      "centroid": {
-        "lat": -36.8,
-        "lon": 174.7
-      },
       "region": "Oceania",
       "id": "maori",
-      "culture": "MÄori (Aotearoa/New Zealand)",
+      "culture": "Māori (Aotearoa/New Zealand)",
       "subregion": "Maori",
-      "name": "MÄori",
-      "bbox": {
-        "min_lat": -40.0,
-        "max_lat": -34.0,
-        "min_lon": 171.0,
-        "max_lon": 179.0
-      }
+      "name": "Māori"
     },
     {
-      "centroid": {
-        "lat": 27.7,
-        "lon": 85.3
-      },
       "region": "South Asia",
       "id": "nepal",
       "culture": "Nepal/Himalayan",
       "subregion": "Nepali Hill & Mountain",
-      "name": "Nepali Himalayan",
-      "bbox": {
-        "min_lat": 26.0,
-        "max_lat": 30.0,
-        "min_lon": 80.0,
-        "max_lon": 88.0
-      }
+      "name": "Nepali Himalayan"
     },
     {
-      "centroid": {
-        "lat": 60.0,
-        "lon": 18.0
-      },
       "region": "Europe",
       "id": "nordic",
       "culture": "Scandinavia",
       "subregion": "Nordic",
-      "name": "Nordic - Scandinavian",
-      "bbox": {
-        "min_lat": 55.0,
-        "max_lat": 71.0,
-        "min_lon": 5.0,
-        "max_lon": 30.0
-      }
+      "name": "Nordic - Scandinavian"
     },
     {
-      "centroid": {
-        "lat": 31.0,
-        "lon": -6.0
-      },
       "region": "Europe",
       "id": "maghreb",
       "culture": "Maghreb (Morocco, Algeria, Tunisia)",
       "subregion": "Mediterranean - North Africa",
-      "name": "North African - Maghreb",
-      "bbox": {
-        "min_lat": 20.0,
-        "max_lat": 36.0,
-        "min_lon": -12.0,
-        "max_lon": 10.0
-      }
+      "name": "North African - Maghreb"
     },
     {
-      "centroid": {
-        "lat": 39.9,
-        "lon": 116.4
-      },
       "region": "East Asia",
       "id": "north_china",
       "culture": "Northern China/Manchuria",
       "subregion": "North China",
-      "name": "North Chinese",
-      "bbox": {
-        "min_lat": 35.0,
-        "max_lat": 45.0,
-        "min_lon": 100.0,
-        "max_lon": 125.0
-      }
+      "name": "North Chinese"
     },
     {
-      "centroid": {
-        "lat": 28.6,
-        "lon": 77.2
-      },
       "region": "South Asia",
       "id": "north_india",
       "culture": "Punjab/Hindi belt",
       "subregion": "North India",
-      "name": "North Indian",
-      "bbox": {
-        "min_lat": 25.0,
-        "max_lat": 31.5,
-        "min_lon": 72.0,
-        "max_lon": 88.0
-      }
+      "name": "North Indian"
     },
     {
-      "centroid": {
-        "lat": 55.4,
-        "lon": -131.7
-      },
       "region": "The Americas",
       "id": "pacific_nw",
       "culture": "Haida/Tlingit/Salish",
       "subregion": "North America - Pacific Northwest",
-      "name": "Pacific Northwest",
-      "bbox": {
-        "min_lat": 47.0,
-        "max_lat": 60.0,
-        "min_lon": -135.0,
-        "max_lon": -120.0
-      }
+      "name": "Pacific Northwest"
     },
     {
-      "centroid": {
-        "lat": -41.5,
-        "lon": -71.5
-      },
       "region": "The Americas",
       "id": "patagonia",
       "culture": "Mapuche/Patagonian",
       "subregion": "South America - Patagonia",
-      "name": "Patagonian",
-      "bbox": {
-        "min_lat": -52.0,
-        "max_lat": -38.0,
-        "min_lon": -74.0,
-        "max_lon": -66.0
-      }
+      "name": "Patagonian"
     },
     {
-      "centroid": {
-        "lat": 35.7,
-        "lon": 51.4
-      },
       "region": "Middle East",
       "id": "persian",
       "culture": "Iran/Persia",
       "subregion": "Persian Plateau",
-      "name": "Persian",
-      "bbox": {
-        "min_lat": 25.0,
-        "max_lat": 40.0,
-        "min_lon": 44.0,
-        "max_lon": 63.0
-      }
+      "name": "Persian"
     },
     {
-      "centroid": {
-        "lat": -14.0,
-        "lon": -170.0
-      },
       "region": "Oceania",
       "id": "polynesia",
       "culture": "Samoa/Tonga/Hawaii",
       "subregion": "Polynesia",
-      "name": "Polynesian",
-      "bbox": {
-        "min_lat": -20.0,
-        "max_lat": -8.0,
-        "min_lon": -180.0,
-        "max_lon": -150.0
-      }
+      "name": "Polynesian"
     },
     {
-      "centroid": {
-        "lat": 15.0,
-        "lon": -1.0
-      },
       "region": "Africa",
       "id": "sahel",
       "culture": "Sahel belt (Mali, Niger, Chad)",
       "subregion": "Sahel",
-      "name": "Sahel",
-      "bbox": {
-        "min_lat": 10.0,
-        "max_lat": 20.0,
-        "min_lon": -15.0,
-        "max_lon": 30.0
-      }
+      "name": "Sahel"
     },
     {
-      "centroid": {
-        "lat": 64.0,
-        "lon": 100.0
-      },
       "id": "siberia",
       "culture": "Extreme cold-adapted diet with reindeer, horse, and preserved foods",
       "name": "Siberian"
     },
     {
-      "centroid": {
-        "lat": 30.7,
-        "lon": 104.0
-      },
       "id": "sichuan_sw_china",
       "culture": "Bold, numbing flavors with Sichuan peppercorn, chili, and preserved vegetables",
       "name": "Sichuan/Southwest China"
     },
     {
-      "centroid": {
-        "lat": 23.1,
-        "lon": 113.3
-      },
       "region": "East Asia",
       "id": "south_china",
       "culture": "Southern China (Cantonese/Fujian)",
       "subregion": "South China",
-      "name": "South Chinese",
-      "bbox": {
-        "min_lat": 20.0,
-        "max_lat": 25.5,
-        "min_lon": 108.0,
-        "max_lon": 116.0
-      }
+      "name": "South Chinese"
     },
     {
-      "centroid": {
-        "lat": 10.8,
-        "lon": 78.7
-      },
       "region": "South Asia",
       "id": "south_india",
       "culture": "Tamil Nadu/Kerala",
       "subregion": "South India",
-      "name": "South Indian",
-      "bbox": {
-        "min_lat": 8.0,
-        "max_lat": 13.5,
-        "min_lon": 76.0,
-        "max_lon": 80.0
-      }
+      "name": "South Indian"
     },
     {
-      "centroid": {
-        "lat": 33.5,
-        "lon": -84.0
-      },
       "id": "southeast_us",
       "culture": "African-influenced Southern cooking with rice cultivation, pork, and okra",
       "name": "Southeastern US"
     },
     {
-      "centroid": {
-        "lat": -22.0,
-        "lon": 24.0
-      },
       "region": "Africa",
       "id": "southern_africa",
       "culture": "Bantu/Khoisan influenced",
       "subregion": "Southern Africa",
-      "name": "Southern African",
-      "bbox": {
-        "min_lat": -35.0,
-        "max_lat": -18.0,
-        "min_lon": 16.0,
-        "max_lon": 34.0
-      }
+      "name": "Southern African"
     },
     {
-      "centroid": {
-        "lat": 35.5,
-        "lon": -106.0
-      },
       "region": "The Americas",
       "id": "southwest_us",
       "culture": "Pueblo/Navajo",
       "subregion": "North America - Southwest",
-      "name": "Southwest US",
-      "bbox": {
-        "min_lat": 31.0,
-        "max_lat": 38.0,
-        "min_lon": -114.0,
-        "max_lon": -103.0
-      }
+      "name": "Southwest US"
     },
     {
-      "centroid": {
-        "lat": 60.0,
-        "lon": -100.0
-      },
       "region": "The Americas",
       "id": "subarctic",
       "culture": "Dene/Cree",
       "subregion": "North America - Subarctic",
-      "name": "Subarctic",
-      "bbox": {
-        "min_lat": 52.0,
-        "max_lat": 66.0,
-        "min_lon": -125.0,
-        "max_lon": -90.0
-      }
+      "name": "Subarctic"
     },
     {
-      "centroid": {
-        "lat": 29.6,
-        "lon": 91.1
-      },
       "region": "East Asia",
       "id": "tibet",
       "culture": "Tibet",
       "subregion": "Tibetan Plateau",
-      "name": "Tibetan Plateau",
-      "bbox": {
-        "min_lat": 26.0,
-        "max_lat": 31.5,
-        "min_lon": 85.0,
-        "max_lon": 95.0
-      }
+      "name": "Tibetan Plateau"
     },
     {
-      "centroid": {
-        "lat": 7.5,
-        "lon": -1.5
-      },
       "region": "Africa",
       "id": "west_africa",
       "culture": "Nigeria/Ghana/Senegal",
       "subregion": "West Africa",
-      "name": "West African",
-      "bbox": {
-        "min_lat": 4.0,
-        "max_lat": 14.0,
-        "min_lon": -17.0,
-        "max_lon": 8.0
-      }
+      "name": "West African"
     },
     {
-      "centroid": {
-        "lat": 50.8,
-        "lon": 0.0
-      },
       "region": "Europe",
       "id": "western_europe",
       "culture": "UK/Ireland/France North/Benelux",
       "subregion": "Western Europe",
-      "name": "Western European",
-      "bbox": {
-        "min_lat": 49.0,
-        "max_lat": 55.0,
-        "min_lon": -8.0,
-        "max_lon": 10.0
-      }
+      "name": "Western European"
     },
     {
-      "centroid": {
-        "lat": 23.0,
-        "lon": 72.6
-      },
       "id": "west_india",
       "culture": "Vegetarian traditions with millet, lentils, and coastal coconut influences",
       "name": "Western Indian"
     },
     {
-      "centroid": {
-        "lat": 50.0,
-        "lon": 13.0
-      },
       "region": "Europe",
       "id": "central_europe",
       "culture": "Germany/Austria/Switzerland/Czech",
       "subregion": "Central Europe",
-      "name": "Central European",
-      "bbox": {
-        "min_lat": 47.0,
-        "max_lat": 55.0,
-        "min_lon": 10.0,
-        "max_lon": 19.0
-      }
+      "name": "Central European"
     },
     {
-      "centroid": {
-        "lat": 4.0,
-        "lon": 32.0
-      },
       "region": "Africa",
       "id": "nilotic",
       "culture": "Nilotic/Interlacustrine/Great Lakes",
       "subregion": "East African Highlands & Lakes",
-      "name": "Nilotic & Great Lakes",
-      "bbox": {
-        "min_lat": -2.0,
-        "max_lat": 12.0,
-        "min_lon": 28.0,
-        "max_lon": 36.0
-      }
+      "name": "Nilotic & Great Lakes"
     },
     {
-      "centroid": {
-        "lat": 6.5,
-        "lon": 20.0
-      },
       "region": "Africa",
       "id": "sudanian",
       "culture": "Sudanian transition zone",
       "subregion": "Central African Savanna",
-      "name": "Sudanian Savanna",
-      "bbox": {
-        "min_lat": 2.0,
-        "max_lat": 11.0,
-        "min_lon": 14.0,
-        "max_lon": 27.0
-      }
+      "name": "Sudanian Savanna"
     },
     {
-      "centroid": {
-        "lat": 44.0,
-        "lon": 21.0
-      },
       "region": "Europe",
       "id": "balkan",
       "culture": "Balkan Peninsula - Slavic/Ottoman/Mediterranean fusion",
       "subregion": "Balkans",
-      "name": "Balkan",
-      "bbox": {
-        "min_lat": 39.0,
-        "max_lat": 48.0,
-        "min_lon": 13.0,
-        "max_lon": 29.0
-      }
+      "name": "Balkan"
     }
   ]
 }

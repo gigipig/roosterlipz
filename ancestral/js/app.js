@@ -12,23 +12,70 @@ async function init() {
   // Populate dropdowns
   populateDropdowns();
 
-  // Initialize map
-  initializeMap();
-
   // Setup event handlers
   setupEventHandlers();
+
+  // Setup user profile handlers
+  setupProfileEventHandlers();
+
+  // Ensure user has a username (for existing users)
+  ensureUsername();
+
+  // Display username and update profile UI
+  displayUsername();
+  updateProfileUI();
+
+  // Initialize onboarding (will skip if user has saved data)
+  initOnboarding();
+
+  // Restore user selections from cache
+  if (userHasSavedData()) {
+    restoreUserSelections();
+  }
 }
 
 /**
  * Setup all event handlers
  */
 function setupEventHandlers() {
+  // Sidebar toggle (mobile)
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+  sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    sidebarOverlay.classList.toggle('visible');
+  });
+
+  sidebarOverlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    sidebarOverlay.classList.remove('visible');
+  });
+
+  // Sidebar collapse (desktop)
+  const sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
+  sidebarCollapseBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    // Update button icon
+    sidebarCollapseBtn.innerHTML = sidebar.classList.contains('collapsed') ? '&#9654;' : '&#9664;';
+  });
+
+  // Collapsible sections
+  document.querySelectorAll('.collapsible-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const section = header.parentElement;
+      section.classList.toggle('open');
+    });
+  });
+
   // Mode switching
   document.getElementById('family-mode-btn').addEventListener('click', () => {
     document.getElementById('family-mode-btn').classList.add('active');
     document.getElementById('dna-mode-btn').classList.remove('active');
     document.getElementById('family-tree-panel').classList.add('active');
     document.getElementById('dna-test-panel').classList.remove('active');
+    setUserAncestryMode('family');
   });
 
   document.getElementById('dna-mode-btn').addEventListener('click', () => {
@@ -36,6 +83,7 @@ function setupEventHandlers() {
     document.getElementById('family-mode-btn').classList.remove('active');
     document.getElementById('dna-test-panel').classList.add('active');
     document.getElementById('family-tree-panel').classList.remove('active');
+    setUserAncestryMode('dna');
   });
 
   // Family Tree Mode - Calculate button
@@ -46,13 +94,9 @@ function setupEventHandlers() {
     ['mgm-region', 'mgf-region', 'pgm-region', 'pgf-region'].forEach(id => {
       document.getElementById(id).value = '';
     });
-    clearAllMapSelections();
-    document.getElementById('diet-panel').classList.remove('visible');
-  });
-
-  // Close diet panel
-  document.getElementById('close-diet-panel').addEventListener('click', () => {
-    document.getElementById('diet-panel').classList.remove('visible');
+    hideResults();
+    saveUserFamilyTree({ mgm: null, mgf: null, pgm: null, pgf: null });
+    clearUserDiet();
   });
 
   // DNA Test Mode - percentage input handlers
@@ -65,10 +109,7 @@ function setupEventHandlers() {
 
   // DNA Test Mode - Clear button
   document.getElementById('dna-clear-btn').addEventListener('click', () => {
-    selectedRegions = [];
-    updateSelectedRegionsDisplay();
-    clearAllMapSelections();
-    document.getElementById('diet-panel').classList.remove('visible');
+    hideResults();
 
     [1, 2, 3, 4].forEach(i => {
       document.getElementById(`ancestry${i}-region`).value = '';
@@ -76,7 +117,30 @@ function setupEventHandlers() {
     });
 
     updatePercentageTotal();
+    saveUserDNATest([
+      { regionId: null, percent: 0 },
+      { regionId: null, percent: 0 },
+      { regionId: null, percent: 0 },
+      { regionId: null, percent: 0 }
+    ]);
+    clearUserDiet();
   });
+}
+
+/**
+ * Show results in the content area
+ */
+function showResults() {
+  document.getElementById('results-placeholder').style.display = 'none';
+  document.getElementById('results-content').style.display = 'block';
+}
+
+/**
+ * Hide results and show placeholder
+ */
+function hideResults() {
+  document.getElementById('results-placeholder').style.display = 'flex';
+  document.getElementById('results-content').style.display = 'none';
 }
 
 /**
@@ -84,35 +148,50 @@ function setupEventHandlers() {
  */
 function handleFamilyCalculate() {
   const grandparentIds = ['mgm-region', 'mgf-region', 'pgm-region', 'pgf-region'];
-  const selectedIds = grandparentIds.map(id => document.getElementById(id).value);
+  // These are nationality IDs (e.g., 'polish') from the dropdowns
+  const selectedNationalityIds = grandparentIds.map(id => document.getElementById(id).value);
 
-  const numSelected = selectedIds.filter(id => id !== '').length;
+  const numSelected = selectedNationalityIds.filter(id => id !== '').length;
 
   if (numSelected === 0) {
     alert('Please select at least one grandparent ancestry');
     return;
   }
 
-  const grandparentDiets = selectedIds.map(id => {
+  // Convert nationality IDs to region IDs for diet lookup
+  const grandparentDiets = selectedNationalityIds.map(id => {
     if (!id) return null;
-    return getDietById(id);
+    const regionId = getRegionIdFromNationality(id);
+    return regionId ? getDietById(regionId) : null;
   });
 
-  const regions = selectedIds.filter(id => id !== '');
+  // Get region IDs for diet blending
+  const regionIds = selectedNationalityIds
+    .filter(id => id !== '')
+    .map(id => getRegionIdFromNationality(id))
+    .filter(id => id !== null);
 
-  // Clear previous selections and highlight new ones
-  clearAllMapSelections();
-  regions.forEach(id => highlightRegionOnMap(id));
+  // Save user's family tree selections (using nationality IDs for proper restoration)
+  saveUserFamilyTree({
+    mgm: selectedNationalityIds[0] || null,
+    mgf: selectedNationalityIds[1] || null,
+    pgm: selectedNationalityIds[2] || null,
+    pgf: selectedNationalityIds[3] || null
+  });
 
-  // Fly to show all selected regions
-  flyToRegions(regions);
+  // Show results area
+  showResults();
 
   if (numSelected === 4) {
     // Use Mendelian genetics
     const mendelianGenetics = calculateMendelianGenetics(grandparentDiets);
     const weights = [0.25, 0.25, 0.25, 0.25];
-    const blended = blendDiets(regions, weights);
+    const blended = blendDiets(regionIds, weights);
     showBlendedDietWithMendelian(blended, mendelianGenetics);
+
+    // Save calculated diet and update profile
+    saveUserDiet({ type: 'mendelian', blended, mendelianGenetics });
+    updateProfileUI();
   } else {
     // Fallback: weighted averaging
     const confirm = window.confirm(
@@ -124,8 +203,12 @@ function handleFamilyCalculate() {
 
     const weight = 1.0 / numSelected;
     const weights = new Array(numSelected).fill(weight);
-    const blended = blendDiets(regions, weights);
+    const blended = blendDiets(regionIds, weights);
     showBlendedDiet(blended);
+
+    // Save calculated diet and update profile
+    saveUserDiet({ type: 'blended', blended });
+    updateProfileUI();
   }
 }
 
@@ -133,20 +216,29 @@ function handleFamilyCalculate() {
  * Handle DNA Test calculate button click
  */
 function handleDNACalculate() {
-  const regions = [];
+  const regionIds = [];
   const weights = [];
+  const dnaSelections = [];
 
   [1, 2, 3, 4].forEach(i => {
-    const region = document.getElementById(`ancestry${i}-region`).value;
+    // These are nationality IDs (e.g., 'polish') from the dropdowns
+    const nationalityId = document.getElementById(`ancestry${i}-region`).value;
     const percent = parseFloat(document.getElementById(`ancestry${i}-percent`).value) || 0;
 
-    if (region && percent > 0) {
-      regions.push(region);
-      weights.push(percent / 100);
+    // Save nationality ID for proper restoration
+    dnaSelections.push({ regionId: nationalityId || null, percent });
+
+    if (nationalityId && percent > 0) {
+      // Convert to region ID for diet calculations
+      const regionId = getRegionIdFromNationality(nationalityId);
+      if (regionId) {
+        regionIds.push(regionId);
+        weights.push(percent / 100);
+      }
     }
   });
 
-  if (regions.length === 0) {
+  if (regionIds.length === 0) {
     alert('Please select at least one ancestry and enter percentages');
     return;
   }
@@ -157,15 +249,18 @@ function handleDNACalculate() {
     return;
   }
 
-  // Clear previous selections and highlight new ones
-  clearAllMapSelections();
-  regions.forEach(id => highlightRegionOnMap(id));
+  // Save user's DNA test selections (using nationality IDs for proper restoration)
+  saveUserDNATest(dnaSelections);
 
-  // Fly to show all selected regions
-  flyToRegions(regions);
+  // Show results area
+  showResults();
 
-  const blended = blendDiets(regions, weights);
+  const blended = blendDiets(regionIds, weights);
   showBlendedDiet(blended);
+
+  // Save calculated diet and update profile
+  saveUserDiet({ type: 'dna', blended });
+  updateProfileUI();
 }
 
 // Initialize on load

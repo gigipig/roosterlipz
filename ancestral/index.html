@@ -5,14 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ancestral Diet Explorer</title>
 
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <!-- App Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Onboarding Wizard -->
+  <div class="onboarding" id="onboarding">
+    <div class="onboarding-container">
+      <div class="onboarding-header">
+        <h1>Ancestral Diet Explorer</h1>
+        <p>Discover dietary patterns based on your ancestry</p>
+      </div>
+
+      <!-- Progress indicator -->
+      <div class="onboarding-progress">
+        <div class="progress-step active" data-step="1">1</div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">2</div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">3</div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="4">4</div>
+      </div>
+
+      <!-- Step 1: Maternal Grandmother -->
+      <div class="onboarding-step active" data-step="1">
+        <div class="step-icon">&#128105;</div>
+        <h2>Maternal Grandmother</h2>
+        <p>Where did your mother's mother come from?</p>
+        <select id="onboard-mgm" class="onboard-select">
+          <option value="">Select a region...</option>
+        </select>
+      </div>
+
+      <!-- Step 2: Maternal Grandfather -->
+      <div class="onboarding-step" data-step="2">
+        <div class="step-icon">&#128104;</div>
+        <h2>Maternal Grandfather</h2>
+        <p>Where did your mother's father come from?</p>
+        <select id="onboard-mgf" class="onboard-select">
+          <option value="">Select a region...</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Paternal Grandmother -->
+      <div class="onboarding-step" data-step="3">
+        <div class="step-icon">&#128105;</div>
+        <h2>Paternal Grandmother</h2>
+        <p>Where did your father's mother come from?</p>
+        <select id="onboard-pgm" class="onboard-select">
+          <option value="">Select a region...</option>
+        </select>
+      </div>
+
+      <!-- Step 4: Paternal Grandfather -->
+      <div class="onboarding-step" data-step="4">
+        <div class="step-icon">&#128104;</div>
+        <h2>Paternal Grandfather</h2>
+        <p>Where did your father's father come from?</p>
+        <select id="onboard-pgf" class="onboard-select">
+          <option value="">Select a region...</option>
+        </select>
+      </div>
+
+      <!-- Navigation -->
+      <div class="onboarding-nav">
+        <button class="onboard-btn onboard-btn-back" id="onboard-back">Back</button>
+        <button class="onboard-btn onboard-btn-skip" id="onboard-skip">Skip</button>
+        <button class="onboard-btn onboard-btn-next" id="onboard-next">Next</button>
+      </div>
+
+      <div class="onboarding-footer">
+        <button class="onboard-link" id="onboard-skip-all">Skip setup and explore diets</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="header">
     <button class="sidebar-toggle" id="sidebar-toggle">&#9776;</button>
@@ -29,133 +97,192 @@
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-      <!-- Mode Toggle -->
-      <div class="mode-toggle">
-        <button id="family-mode-btn" class="active">Family Tree</button>
-        <button id="dna-mode-btn">DNA Test Results</button>
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <h2>Calculator</h2>
+        <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" title="Collapse sidebar">&#9664;</button>
       </div>
 
-      <!-- Family Tree Mode (Default) -->
-      <div id="family-tree-panel" class="mode-panel active">
-        <div class="instructions">
-          <strong>How to use:</strong> Select the ancestry of your 4 grandparents. Each contributes 25% of your genetics. Don't know all 4? Enter what you know!
+      <!-- Sidebar Content -->
+      <div class="sidebar-content">
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+          <button id="family-mode-btn" class="active">Family Tree</button>
+          <button id="dna-mode-btn">DNA Test</button>
         </div>
 
-        <div class="family-section maternal">
-          <h3>Your Mother's Side</h3>
-          <div class="grandparent-input">
-            <label>Maternal Grandmother</label>
-            <select id="mgm-region">
-              <option value="">Select ancestry...</option>
-            </select>
+        <!-- Search Bar -->
+        <div class="ancestry-search-container">
+          <input type="text" id="ancestry-search" class="ancestry-search" placeholder="🔍 Search ancestries..." autocomplete="off">
+          <button class="search-clear-btn" id="search-clear-btn" style="display: none;" title="Clear search">&times;</button>
+        </div>
+
+        <!-- Family Tree Mode (Default) -->
+        <div id="family-tree-panel" class="mode-panel active">
+          <!-- Maternal Section - Collapsible -->
+          <div class="collapsible-section open" data-section="maternal">
+            <div class="collapsible-header">
+              <h3>Mother's Side</h3>
+              <span class="collapsible-icon">&#9660;</span>
+            </div>
+            <div class="collapsible-content">
+              <div class="collapsible-inner">
+                <div class="grandparent-input">
+                  <label>Maternal Grandmother</label>
+                  <select id="mgm-region">
+                    <option value="">Select ancestry...</option>
+                  </select>
+                </div>
+                <div class="grandparent-input">
+                  <label>Maternal Grandfather</label>
+                  <select id="mgf-region">
+                    <option value="">Select ancestry...</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="grandparent-input">
-            <label>Maternal Grandfather</label>
-            <select id="mgf-region">
-              <option value="">Select ancestry...</option>
-            </select>
+
+          <!-- Paternal Section - Collapsible -->
+          <div class="collapsible-section open" data-section="paternal">
+            <div class="collapsible-header">
+              <h3>Father's Side</h3>
+              <span class="collapsible-icon">&#9660;</span>
+            </div>
+            <div class="collapsible-content">
+              <div class="collapsible-inner">
+                <div class="grandparent-input">
+                  <label>Paternal Grandmother</label>
+                  <select id="pgm-region">
+                    <option value="">Select ancestry...</option>
+                  </select>
+                </div>
+                <div class="grandparent-input">
+                  <label>Paternal Grandfather</label>
+                  <select id="pgf-region">
+                    <option value="">Select ancestry...</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="family-calculate-btn">Calculate Diet</button>
+          <button class="btn btn-secondary" id="family-clear-btn">Clear</button>
+        </div>
+
+        <!-- DNA Test Results Mode -->
+        <div id="dna-test-panel" class="mode-panel">
+          <!-- Ancestry Inputs - Collapsible -->
+          <div class="collapsible-section open" data-section="ancestry">
+            <div class="collapsible-header">
+              <h3>Ancestry Breakdown</h3>
+              <span class="collapsible-icon">&#9660;</span>
+            </div>
+            <div class="collapsible-content">
+              <div class="collapsible-inner">
+                <div class="ancestry-input">
+                  <label>Ancestry 1</label>
+                  <div class="ancestry-row">
+                    <select id="ancestry1-region">
+                      <option value="">Select...</option>
+                    </select>
+                    <input type="number" id="ancestry1-percent" min="0" max="100" value="0" step="1">
+                    <span class="percent-label">%</span>
+                  </div>
+                </div>
+
+                <div class="ancestry-input">
+                  <label>Ancestry 2</label>
+                  <div class="ancestry-row">
+                    <select id="ancestry2-region">
+                      <option value="">Select...</option>
+                    </select>
+                    <input type="number" id="ancestry2-percent" min="0" max="100" value="0" step="1">
+                    <span class="percent-label">%</span>
+                  </div>
+                </div>
+
+                <div class="ancestry-input">
+                  <label>Ancestry 3</label>
+                  <div class="ancestry-row">
+                    <select id="ancestry3-region">
+                      <option value="">Select...</option>
+                    </select>
+                    <input type="number" id="ancestry3-percent" min="0" max="100" value="0" step="1">
+                    <span class="percent-label">%</span>
+                  </div>
+                </div>
+
+                <div class="ancestry-input">
+                  <label>Ancestry 4</label>
+                  <div class="ancestry-row">
+                    <select id="ancestry4-region">
+                      <option value="">Select...</option>
+                    </select>
+                    <input type="number" id="ancestry4-percent" min="0" max="100" value="0" step="1">
+                    <span class="percent-label">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="percentage-total" id="percentage-total">
+            Total: <span id="total-percent">0</span>%
+            <span id="percent-status"></span>
+          </div>
+
+          <button class="btn btn-primary" id="dna-calculate-btn" disabled>Calculate Diet</button>
+          <button class="btn btn-secondary" id="dna-clear-btn">Clear</button>
+        </div>
+
+        <div class="selected-regions" id="selected-regions" style="display: none;">
+          <h3>Selected:</h3>
+          <div id="region-tags"></div>
+        </div>
+
+        <!-- User Profile Section -->
+        <div class="user-profile-section" id="user-profile-section">
+          <div class="collapsible-section open" data-section="profile">
+            <div class="collapsible-header">
+              <h3>Your Profile</h3>
+              <span class="collapsible-icon">&#9660;</span>
+            </div>
+            <div class="collapsible-content">
+              <div class="collapsible-inner">
+                <div class="profile-username">
+                  <span class="username-label">Welcome,</span>
+                  <span class="username-value" id="user-username">Guest</span>
+                </div>
+                <div class="profile-summary" id="profile-summary">
+                  <p class="no-saved-data">No saved diet yet. Calculate your diet to save results.</p>
+                </div>
+                <button class="btn btn-profile" id="view-saved-diet-btn" style="display: none;">
+                  View Saved Diet
+                </button>
+                <button class="btn btn-secondary btn-small" id="clear-profile-btn" style="display: none;">
+                  Clear Profile
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="family-section paternal">
-          <h3>Your Father's Side</h3>
-          <div class="grandparent-input">
-            <label>Paternal Grandmother</label>
-            <select id="pgm-region">
-              <option value="">Select ancestry...</option>
-            </select>
-          </div>
-          <div class="grandparent-input">
-            <label>Paternal Grandfather</label>
-            <select id="pgf-region">
-              <option value="">Select ancestry...</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="genetics-info">
-          Each grandparent contributes 25% of your genetics
-        </div>
-
-        <button class="btn btn-primary" id="family-calculate-btn">Calculate My Genetic Diet</button>
-        <button class="btn btn-secondary" id="family-clear-btn">Clear All</button>
-      </div>
-
-      <!-- DNA Test Results Mode -->
-      <div id="dna-test-panel" class="mode-panel">
-        <div class="instructions">
-          <strong>How to use:</strong> Enter your ancestry breakdown from DNA test results (e.g., 50% Italian, 25% Japanese, 25% Irish). Percentages must total 100%.
-        </div>
-
-        <div class="ancestry-input">
-          <label>Ancestry 1 (Primary)</label>
-          <div class="ancestry-row">
-            <select id="ancestry1-region">
-              <option value="">Select a region...</option>
-            </select>
-            <input type="number" id="ancestry1-percent" min="0" max="100" value="0" step="1">
-            <span class="percent-label">%</span>
-          </div>
-        </div>
-
-        <div class="ancestry-input">
-          <label>Ancestry 2</label>
-          <div class="ancestry-row">
-            <select id="ancestry2-region">
-              <option value="">Select a region...</option>
-            </select>
-            <input type="number" id="ancestry2-percent" min="0" max="100" value="0" step="1">
-            <span class="percent-label">%</span>
-          </div>
-        </div>
-
-        <div class="ancestry-input">
-          <label>Ancestry 3 (Optional)</label>
-          <div class="ancestry-row">
-            <select id="ancestry3-region">
-              <option value="">Select a region...</option>
-            </select>
-            <input type="number" id="ancestry3-percent" min="0" max="100" value="0" step="1">
-            <span class="percent-label">%</span>
-          </div>
-        </div>
-
-        <div class="ancestry-input">
-          <label>Ancestry 4 (Optional)</label>
-          <div class="ancestry-row">
-            <select id="ancestry4-region">
-              <option value="">Select a region...</option>
-            </select>
-            <input type="number" id="ancestry4-percent" min="0" max="100" value="0" step="1">
-            <span class="percent-label">%</span>
-          </div>
-        </div>
-
-        <div class="percentage-total" id="percentage-total">
-          Total: <span id="total-percent">0</span>%
-          <span id="percent-status"></span>
-        </div>
-
-        <button class="btn btn-primary" id="dna-calculate-btn" disabled>Calculate Ancestry-Based Diet</button>
-        <button class="btn btn-secondary" id="dna-clear-btn">Clear All</button>
-      </div>
-
-      <div class="selected-regions" id="selected-regions" style="display: none;">
-        <h3>Selected Regions:</h3>
-        <div id="region-tags"></div>
       </div>
     </aside>
 
     <!-- Content Area -->
     <div class="content-area">
-      <div class="map-container">
-        <div id="map"></div>
-      </div>
-
-      <!-- Diet Panel -->
-      <div class="diet-panel" id="diet-panel">
-        <button class="close-btn" id="close-diet-panel">&times;</button>
-        <div id="diet-content"></div>
+      <!-- Diet Results Area (replaces map) -->
+      <div class="results-container" id="results-container">
+        <div class="results-placeholder" id="results-placeholder">
+          <div class="placeholder-icon">🍽️</div>
+          <h2>Discover Your Ancestral Diet</h2>
+          <p>Select your grandparents' origins in the sidebar to calculate your personalized ancestral diet recommendations.</p>
+        </div>
+        <div class="results-content" id="results-content" style="display: none;">
+          <div id="diet-content"></div>
+        </div>
       </div>
     </div>
   </main>
@@ -165,7 +292,8 @@
   <script src="js/genetics.js"></script>
   <script src="js/diet.js"></script>
   <script src="js/ui.js"></script>
-  <script src="js/map.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/onboarding.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
