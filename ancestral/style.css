@@ -1005,6 +1005,47 @@ body {
   color: #000000;
 }
 
+/* New nutrient metabolism traits */
+.genetic-trait.caffeine {
+  background: linear-gradient(135deg, #6f4e37 0%, #a67b5b 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.folate {
+  background: linear-gradient(135deg, #228b22 0%, #32cd32 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.iron {
+  background: linear-gradient(135deg, #8b0000 0%, #b22222 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.glucose {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.obesity {
+  background: linear-gradient(135deg, #708090 0%, #778899 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.celiac {
+  background: linear-gradient(135deg, #daa520 0%, #ffd700 100%);
+  color: #000000;
+}
+
+.genetic-trait.salt {
+  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+  color: #000000;
+}
+
+.genetic-trait.bitter {
+  background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+  color: #ffffff;
+}
+
 .no-genetic-data {
   background: #1a1a1a;
   border: 1px dashed #333333;

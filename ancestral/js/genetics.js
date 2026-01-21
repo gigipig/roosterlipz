@@ -3,6 +3,238 @@
  */
 
 // ============================================================================
+// GENE CONFIGURATION - Add new genes here for automatic support
+// ============================================================================
+
+/**
+ * Gene metadata for display - add new genes here
+ * When you add a gene to genetics.json, add its metadata here to enable display
+ */
+const GENE_META = {
+  // Core metabolic traits (custom calculation)
+  lactase_persistence: { icon: '🥛', title: 'Dairy Tolerance', cssClass: 'dairy' },
+  starch_digestion: { icon: '🌾', title: 'Starch Metabolism', cssClass: 'starch' },
+  pufa_metabolism: { icon: '🐟', title: 'Omega-3 Conversion', cssClass: 'omega3' },
+  vitamin_d_metabolism: { icon: '☀️', title: 'Vitamin D Synthesis', cssClass: 'vitamind' },
+
+  // Nutrient metabolism (generic additive)
+  caffeine_metabolism: { icon: '☕', title: 'Caffeine Metabolism', cssClass: 'caffeine' },
+  saturated_fat_response: { icon: '🥓', title: 'Saturated Fat Response', cssClass: 'sat-fat' },
+  folate_metabolism: { icon: '🥬', title: 'Folate Metabolism', cssClass: 'folate' },
+  iron_metabolism: { icon: '🩸', title: 'Iron Metabolism', cssClass: 'iron' },
+  glucose_metabolism: { icon: '🍬', title: 'Glucose Metabolism', cssClass: 'glucose' },
+  obesity_risk: { icon: '⚖️', title: 'Obesity Risk', cssClass: 'obesity' },
+  beta_carotene_conversion: { icon: '🥕', title: 'Vitamin A Conversion', cssClass: 'beta-carotene' },
+  vitamin_d_transport: { icon: '💊', title: 'Vitamin D Transport', cssClass: 'vit-d-transport' },
+  salt_sensitivity: { icon: '🧂', title: 'Salt Sensitivity', cssClass: 'salt' },
+  salt_sensitive_hypertension: { icon: '💓', title: 'Salt & Blood Pressure', cssClass: 'salt-bp' },
+  bitter_taste_perception: { icon: '🥦', title: 'Bitter Taste Perception', cssClass: 'bitter' },
+  vitamin_b12_absorption: { icon: '🔴', title: 'Vitamin B12 Absorption', cssClass: 'b12' },
+  appetite_regulation: { icon: '🍽️', title: 'Appetite Regulation', cssClass: 'appetite' },
+  celiac_susceptibility: { icon: '🌾', title: 'Celiac Susceptibility', cssClass: 'celiac' },
+  hdl_metabolism: { icon: '❤️', title: 'HDL Cholesterol', cssClass: 'hdl' },
+  insulin_sensitivity: { icon: '💉', title: 'Insulin Sensitivity', cssClass: 'insulin' },
+  antioxidant_capacity: { icon: '🫐', title: 'Antioxidant Capacity', cssClass: 'antioxidant' },
+  cruciferous_metabolism_gstm1: { icon: '🥗', title: 'Detox Enzyme (GSTM1)', cssClass: 'detox' },
+  cruciferous_metabolism_gstt1: { icon: '🥗', title: 'Detox Enzyme (GSTT1)', cssClass: 'detox' },
+
+  // Population-specific adaptations
+  alcohol_metabolism: { icon: '🍺', title: 'Alcohol Metabolism', cssClass: 'alcohol' },
+  arctic_fat_metabolism: { icon: '🧊', title: 'Arctic Fat Metabolism', cssClass: 'arctic' },
+  polynesian_energy_storage: { icon: '⚡', title: 'Energy Storage', cssClass: 'energy' },
+  altitude_adaptation_epas1: { icon: '🏔️', title: 'Altitude Adaptation', cssClass: 'altitude' },
+  edar_adaptation: { icon: '🌡️', title: 'East Asian Variant', cssClass: 'edar' }
+};
+
+/**
+ * Configuration for generic additive gene calculations
+ * Keys that are NOT in this list use custom calculation functions
+ * Add new genes here to enable automatic Mendelian calculation
+ */
+const GENERIC_GENE_CONFIG = {
+  caffeine_metabolism: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 50, phenotype: 'Slow Caffeine Metabolizer', rec: '☕ <strong>Slow metabolizer:</strong> Limit caffeine to 200mg/day, avoid after noon' },
+      { min: 30, phenotype: 'Moderate Caffeine Metabolizer', rec: '☕ <strong>Moderate metabolizer:</strong> Up to 300mg/day typically well-tolerated' },
+      { min: 0, phenotype: 'Fast Caffeine Metabolizer', rec: '☕ <strong>Fast metabolizer:</strong> Standard intake up to 400mg/day typically fine' }
+    ]
+  },
+  saturated_fat_response: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'High Saturated Fat Sensitivity', rec: '🥓 <strong>High sensitivity:</strong> Limit saturated fat to <6% of calories, emphasize olive oil and fish' },
+      { min: 25, phenotype: 'Moderate Saturated Fat Sensitivity', rec: '🥓 <strong>Moderate sensitivity:</strong> Keep saturated fat <8% of calories' },
+      { min: 0, phenotype: 'Lower Saturated Fat Sensitivity', rec: '🥓 <strong>Lower sensitivity:</strong> Standard saturated fat guidelines apply' }
+    ]
+  },
+  folate_metabolism: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Reduced Folate Metabolism', rec: '🥬 <strong>Higher folate needs:</strong> Emphasize leafy greens, consider methylfolate supplements (600+ mcg/day)' },
+      { min: 20, phenotype: 'Moderate Folate Metabolism', rec: '🥬 <strong>Moderate folate needs:</strong> Ensure adequate leafy greens and fortified foods (500 mcg/day)' },
+      { min: 0, phenotype: 'Normal Folate Metabolism', rec: '🥬 <strong>Standard folate needs:</strong> RDA of 400 mcg/day typically sufficient' }
+    ]
+  },
+  iron_metabolism: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 8, phenotype: 'Elevated Iron Storage Risk', rec: '🩸 <strong>Hemochromatosis risk:</strong> Monitor ferritin levels, avoid iron supplements unless deficient, limit red meat' },
+      { min: 3, phenotype: 'Moderate Iron Storage Risk', rec: '🩸 <strong>Moderate iron risk:</strong> Standard iron intake, periodic ferritin monitoring recommended' },
+      { min: 0, phenotype: 'Normal Iron Metabolism', rec: '🩸 <strong>Standard iron metabolism:</strong> Normal dietary iron guidelines apply' }
+    ]
+  },
+  glucose_metabolism: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 35, phenotype: 'Higher T2DM Risk', rec: '🍬 <strong>Elevated diabetes risk:</strong> Prioritize low glycemic foods, limit refined carbs, emphasize fiber and regular exercise' },
+      { min: 25, phenotype: 'Moderate T2DM Risk', rec: '🍬 <strong>Moderate diabetes risk:</strong> Emphasize low glycemic index carbohydrates, regular physical activity' },
+      { min: 0, phenotype: 'Lower T2DM Risk', rec: '🍬 <strong>Lower diabetes risk:</strong> Standard carbohydrate guidelines apply' }
+    ]
+  },
+  obesity_risk: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 45, phenotype: 'Higher Obesity Risk', rec: '⚖️ <strong>Higher FTO-related risk:</strong> Focus on protein-rich meals for satiety, mindful eating, avoid calorie-dense snacks' },
+      { min: 30, phenotype: 'Moderate Obesity Risk', rec: '⚖️ <strong>Moderate FTO-related risk:</strong> Standard portion control, regular physical activity recommended' },
+      { min: 0, phenotype: 'Lower Obesity Risk', rec: '⚖️ <strong>Lower FTO-related risk:</strong> Standard caloric guidelines apply' }
+    ]
+  },
+  beta_carotene_conversion: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 45, phenotype: 'Poor Vitamin A Converter', rec: '🥕 <strong>Poor converter:</strong> Include preformed vitamin A (eggs, dairy, liver) rather than relying solely on beta-carotene' },
+      { min: 25, phenotype: 'Moderate Vitamin A Converter', rec: '🥕 <strong>Moderate converter:</strong> Mix of beta-carotene and preformed vitamin A sources recommended' },
+      { min: 0, phenotype: 'Good Vitamin A Converter', rec: '🥕 <strong>Good converter:</strong> Beta-carotene from vegetables converts efficiently to vitamin A' }
+    ]
+  },
+  vitamin_d_transport: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Reduced Vitamin D Transport', rec: '💊 <strong>Lower vitamin D binding:</strong> May need higher vitamin D intake or supplementation' },
+      { min: 20, phenotype: 'Moderate Vitamin D Transport', rec: '💊 <strong>Moderate vitamin D transport:</strong> Standard vitamin D recommendations apply' },
+      { min: 0, phenotype: 'Normal Vitamin D Transport', rec: '💊 <strong>Normal vitamin D transport:</strong> Efficient vitamin D utilization' }
+    ]
+  },
+  salt_sensitivity: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 50, phenotype: 'Salt Sensitive', rec: '🧂 <strong>Salt sensitive:</strong> Limit sodium to <1500mg/day, emphasize potassium-rich foods' },
+      { min: 30, phenotype: 'Moderate Salt Sensitivity', rec: '🧂 <strong>Moderate salt sensitivity:</strong> Keep sodium moderate (<2000mg/day)' },
+      { min: 0, phenotype: 'Lower Salt Sensitivity', rec: '🧂 <strong>Lower salt sensitivity:</strong> Standard sodium guidelines apply' }
+    ]
+  },
+  salt_sensitive_hypertension: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 30, phenotype: 'Higher Hypertension Risk', rec: '💓 <strong>Salt-sensitive BP:</strong> Strict sodium limits, DASH diet recommended' },
+      { min: 15, phenotype: 'Moderate Hypertension Risk', rec: '💓 <strong>Moderate BP sensitivity:</strong> Monitor sodium intake' },
+      { min: 0, phenotype: 'Lower Hypertension Risk', rec: '💓 <strong>Lower BP sensitivity:</strong> Standard guidelines apply' }
+    ]
+  },
+  bitter_taste_perception: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 50, phenotype: 'Supertaster', rec: '🥦 <strong>Supertaster:</strong> May find cruciferous vegetables bitter - try roasting, sautéing with garlic, or pairing with cheese' },
+      { min: 25, phenotype: 'Medium Taster', rec: '🥦 <strong>Medium taster:</strong> Moderate sensitivity to bitter compounds in vegetables' },
+      { min: 0, phenotype: 'Non-Taster', rec: '🥦 <strong>Non-taster:</strong> Less sensitive to bitter compounds - cruciferous vegetables taste milder' }
+    ]
+  },
+  vitamin_b12_absorption: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 50, phenotype: 'Reduced B12 Status', rec: '🔴 <strong>Lower B12 levels:</strong> Emphasize B12-rich foods (meat, fish, eggs) or consider supplementation' },
+      { min: 30, phenotype: 'Moderate B12 Status', rec: '🔴 <strong>Moderate B12 needs:</strong> Ensure regular B12 intake' },
+      { min: 0, phenotype: 'Normal B12 Status', rec: '🔴 <strong>Normal B12:</strong> Standard dietary intake typically sufficient' }
+    ]
+  },
+  appetite_regulation: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 30, phenotype: 'Increased Appetite Tendency', rec: '🍽️ <strong>Higher appetite drive:</strong> Focus on protein and fiber for satiety, structured meal times' },
+      { min: 15, phenotype: 'Moderate Appetite', rec: '🍽️ <strong>Moderate appetite:</strong> Standard portion control strategies' },
+      { min: 0, phenotype: 'Normal Appetite Regulation', rec: '🍽️ <strong>Normal appetite:</strong> Standard dietary guidelines apply' }
+    ]
+  },
+  celiac_susceptibility: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 25, phenotype: 'Higher Celiac Risk', rec: '🌾 <strong>Elevated celiac susceptibility:</strong> Monitor for gluten sensitivity symptoms, consider testing if GI issues arise' },
+      { min: 15, phenotype: 'Moderate Celiac Risk', rec: '🌾 <strong>Moderate celiac susceptibility:</strong> Be aware of potential gluten sensitivity' },
+      { min: 0, phenotype: 'Lower Celiac Risk', rec: '🌾 <strong>Lower celiac risk:</strong> Standard gluten intake typically fine' }
+    ]
+  },
+  hdl_metabolism: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Lower HDL Tendency', rec: '❤️ <strong>HDL support needed:</strong> Emphasize olive oil, fatty fish, nuts, and regular exercise' },
+      { min: 20, phenotype: 'Moderate HDL Levels', rec: '❤️ <strong>Moderate HDL:</strong> Heart-healthy fats and exercise beneficial' },
+      { min: 0, phenotype: 'Normal HDL Metabolism', rec: '❤️ <strong>Normal HDL:</strong> Standard cardiovascular guidelines apply' }
+    ]
+  },
+  insulin_sensitivity: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Reduced Insulin Sensitivity', rec: '💉 <strong>Insulin resistance risk:</strong> Emphasize fiber, limit refined carbs, regular exercise crucial' },
+      { min: 25, phenotype: 'Moderate Insulin Sensitivity', rec: '💉 <strong>Moderate sensitivity:</strong> Balanced macros, regular activity recommended' },
+      { min: 0, phenotype: 'Normal Insulin Sensitivity', rec: '💉 <strong>Normal sensitivity:</strong> Standard dietary guidelines apply' }
+    ]
+  },
+  antioxidant_capacity: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Lower Antioxidant Capacity', rec: '🫐 <strong>Higher antioxidant needs:</strong> Emphasize colorful fruits, vegetables, and antioxidant-rich foods' },
+      { min: 20, phenotype: 'Moderate Antioxidant Capacity', rec: '🫐 <strong>Moderate capacity:</strong> Regular intake of antioxidant foods recommended' },
+      { min: 0, phenotype: 'Normal Antioxidant Capacity', rec: '🫐 <strong>Normal capacity:</strong> Standard recommendations apply' }
+    ]
+  },
+  cruciferous_metabolism_gstm1: {
+    freqPath: 'null_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 50, phenotype: 'GSTM1 Null (No Enzyme)', rec: '🥗 <strong>Missing GSTM1:</strong> Higher cruciferous intake may be especially beneficial for detoxification support' },
+      { min: 0, phenotype: 'GSTM1 Present', rec: '🥗 <strong>GSTM1 present:</strong> Normal detoxification enzyme activity' }
+    ]
+  },
+  cruciferous_metabolism_gstt1: {
+    freqPath: 'null_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 50, phenotype: 'GSTT1 Null (No Enzyme)', rec: '🥗 <strong>Missing GSTT1:</strong> Cruciferous vegetables may provide enhanced benefit' },
+      { min: 0, phenotype: 'GSTT1 Present', rec: '🥗 <strong>GSTT1 present:</strong> Normal detoxification enzyme activity' }
+    ]
+  }
+};
+
+/**
+ * Population-specific genes that require minimum frequency thresholds to display
+ */
+const POPULATION_SPECIFIC_GENES = {
+  alcohol_metabolism: { minFreq: 5, freqPath: 'ALDH2.allele_frequency_percent' },
+  arctic_fat_metabolism: { minFreq: 10, freqPath: 'allele_frequency_percent' },
+  polynesian_energy_storage: { minFreq: 5, freqPath: 'allele_frequency_percent' },
+  altitude_adaptation_epas1: { minFreq: 10, freqPath: 'allele_frequency_percent' },
+  edar_adaptation: { minFreq: 10, freqPath: 'allele_frequency_percent' }
+};
+
+// ============================================================================
 // HARDY-WEINBERG AND MENDELIAN CALCULATIONS
 // ============================================================================
 
@@ -57,8 +289,66 @@ function calculateF1Parent(gp1_freq, gp2_freq) {
   return mendelianOffspring(gp1_gt, gp2_gt);
 }
 
+/**
+ * Helper to get nested property value using dot notation path
+ */
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((current, key) => current?.[key], obj);
+}
+
+/**
+ * Generic calculation function for additive genes using GENERIC_GENE_CONFIG
+ * @param {Array} grandparents - Array of 4 grandparent diet objects
+ * @param {string} geneKey - Key in genetic_adaptations (e.g., 'caffeine_metabolism')
+ * @returns {Object|null} Calculated trait result or null if no data
+ */
+function calculateGenericGene(grandparents, geneKey) {
+  const config = GENERIC_GENE_CONFIG[geneKey];
+  if (!config) return null;
+
+  const gp_freqs = grandparents.map(gp => {
+    const gen = gp?.genetic_adaptations?.[geneKey];
+    if (!gen) return null;
+    return getNestedValue(gen, config.freqPath);
+  });
+
+  // Skip if no data available
+  if (gp_freqs.every(f => f === null || f === undefined)) return null;
+
+  const validFreqs = gp_freqs.filter(f => f !== null && f !== undefined);
+  if (validFreqs.length === 0) return null;
+
+  // Calculate average frequency across grandparents
+  const avg_freq = validFreqs.reduce((a, b) => a + b, 0) / validFreqs.length;
+
+  // Find matching threshold
+  let result = null;
+  for (const threshold of config.thresholds) {
+    if (avg_freq >= threshold.min) {
+      result = {
+        phenotype: threshold.phenotype,
+        recommendation: threshold.rec
+      };
+      break;
+    }
+  }
+
+  if (!result) return null;
+
+  const meta = GENE_META[geneKey] || { icon: '🧬', title: geneKey };
+
+  return {
+    phenotype: result.phenotype,
+    frequency: avg_freq,
+    inheritance: config.inheritance,
+    explanation: `${avg_freq.toFixed(0)}% allele frequency across ancestry`,
+    recommendation: result.recommendation,
+    _meta: meta
+  };
+}
+
 // ============================================================================
-// TRAIT CALCULATIONS
+// TRAIT CALCULATIONS (Custom functions for complex inheritance patterns)
 // ============================================================================
 
 /**
@@ -390,27 +680,41 @@ function calculateAltitude(grandparents) {
 
 /**
  * Calculate ALL relevant genetic traits
+ * Uses data-driven approach - add genes to GENERIC_GENE_CONFIG for automatic support
  */
 function calculateMendelianGenetics(grandparents) {
   if (!grandparents || grandparents.length !== 4) {
     return null;
   }
 
-  const hasGenetic = grandparents.some(gp => gp.genetic_adaptations);
+  const hasGenetic = grandparents.some(gp => gp?.genetic_adaptations);
   if (!hasGenetic) return null;
 
-  const results = {
-    lactase: calculateLactasePersistence(grandparents),
-    amy1: calculateAMY1(grandparents),
-    fads: calculateFADS(grandparents),
-    aldh2: calculateALDH2(grandparents),
-    crebrf: calculateCREBRF(grandparents),
-    slc24a5: calculateSLC24A5(grandparents),
-    cpt1a: calculateCPT1A(grandparents),
-    edar: calculateEDAR(grandparents),
-    altitude: calculateAltitude(grandparents)
-  };
+  const results = {};
 
+  // Core metabolic traits with custom calculation logic
+  results.lactase = calculateLactasePersistence(grandparents);
+  results.amy1 = calculateAMY1(grandparents);
+  results.fads = calculateFADS(grandparents);
+  results.slc24a5 = calculateSLC24A5(grandparents);
+
+  // Population-specific traits with custom threshold logic
+  results.aldh2 = calculateALDH2(grandparents);
+  results.crebrf = calculateCREBRF(grandparents);
+  results.cpt1a = calculateCPT1A(grandparents);
+  results.edar = calculateEDAR(grandparents);
+  results.altitude = calculateAltitude(grandparents);
+
+  // Generic additive genes from GENERIC_GENE_CONFIG (data-driven)
+  // Add new genes to GENERIC_GENE_CONFIG - they will automatically appear here
+  Object.keys(GENERIC_GENE_CONFIG).forEach(geneKey => {
+    const result = calculateGenericGene(grandparents, geneKey);
+    if (result) {
+      results[geneKey] = result;
+    }
+  });
+
+  // Remove null results
   Object.keys(results).forEach(key => {
     if (results[key] === null) delete results[key];
   });
@@ -531,12 +835,50 @@ function renderGeneticAdaptations(diet) {
     `;
   }
 
+  // Generic renderer for genes using shared GENE_META config
+  // Keys already rendered by custom blocks above
+  const customRenderedKeys = [
+    'lactase_persistence', 'starch_digestion', 'pufa_metabolism',
+    'arctic_fat_metabolism', 'alcohol_metabolism', 'polynesian_energy_storage',
+    'vitamin_d_metabolism', 'cholesterol_metabolism', 'altitude_adaptation_epas1',
+    'altitude_adaptation_egln1', 'edar_adaptation', 'crebrf_adaptation'
+  ];
+
+  Object.keys(gen).forEach(key => {
+    if (customRenderedKeys.includes(key)) return;
+
+    const trait = gen[key];
+    const meta = GENE_META[key];
+    if (!meta || !trait) return;
+
+    // Skip if no meaningful data
+    if (trait.allele_frequency_percent === null && trait.null_frequency_percent === null) return;
+
+    const freq = trait.allele_frequency_percent ?? trait.null_frequency_percent;
+    const freqDisplay = freq !== null ? `${freq}%` : 'unknown';
+    const phenotype = trait.phenotype_details?.name || trait.inferred_phenotype || 'Standard';
+    const recommendation = trait.dietary_recommendation?.recommendation ||
+                          trait.dietary_recommendation?.notes ||
+                          trait.phenotype_details?.dietary_impact || '';
+
+    html += `
+      <div class="genetic-trait ${key.replace(/_/g, '-')}">
+        <h4>${meta.icon} ${meta.title}</h4>
+        <div class="phenotype">${phenotype}</div>
+        <div class="probability">${freqDisplay} frequency</div>
+        ${recommendation ? `<div class="recommendation">${recommendation}</div>` : ''}
+        <div class="gene-details">Gene: ${trait.gene} | Variant: ${trait.variant || 'N/A'}</div>
+      </div>
+    `;
+  });
+
   html += '</div>';
   return html;
 }
 
 /**
  * Render Mendelian genetics results
+ * Uses GENE_META for display - add new genes there for automatic support
  */
 function renderMendelianGenetics(genetics) {
   if (!genetics || Object.keys(genetics).length === 0) return '';
@@ -545,21 +887,31 @@ function renderMendelianGenetics(genetics) {
   html += '<h3>🧬 Your Predicted Genetic Profile</h3>';
   html += '<p style="font-size: 12px; color: #7f8c8d; margin-bottom: 16px; line-height: 1.5;">Based on Mendelian inheritance from your grandparents\' populations. These are probability-based predictions, not diagnostic results.</p>';
 
-  const traitMeta = {
-    lactase: { icon: '🥛', title: 'Dairy Tolerance', class: 'dairy' },
-    amy1: { icon: '🌾', title: 'Starch Metabolism', class: 'starch' },
-    fads: { icon: '🐟', title: 'Omega-3 Conversion', class: 'omega3' },
-    aldh2: { icon: '🍺', title: 'Alcohol Metabolism', class: 'alcohol' },
-    crebrf: { icon: '⚡', title: 'Energy Storage', class: 'energy' },
-    slc24a5: { icon: '☀️', title: 'Vitamin D Synthesis', class: 'vitamind' },
-    cpt1a: { icon: '🧊', title: 'Arctic Fat Metabolism', class: 'arctic' },
-    edar: { icon: '🌡️', title: 'East Asian Variant', class: 'edar' },
-    altitude: { icon: '🏔️', title: 'Altitude Adaptation', class: 'altitude' }
+  // Legacy key mappings for custom-calculated traits (key in results -> key in GENE_META)
+  const legacyKeyMap = {
+    lactase: 'lactase_persistence',
+    amy1: 'starch_digestion',
+    fads: 'pufa_metabolism',
+    slc24a5: 'vitamin_d_metabolism',
+    aldh2: 'alcohol_metabolism',
+    crebrf: 'polynesian_energy_storage',
+    cpt1a: 'arctic_fat_metabolism',
+    edar: 'edar_adaptation',
+    altitude: 'altitude_adaptation_epas1'
   };
 
   Object.keys(genetics).forEach(key => {
     const trait = genetics[key];
-    const meta = traitMeta[key] || { icon: '🧬', title: key.toUpperCase(), class: 'generic' };
+
+    // Get metadata: check trait._meta first (from generic calc), then GENE_META, then legacy mapping
+    let meta = trait._meta;
+    if (!meta) {
+      const metaKey = legacyKeyMap[key] || key;
+      meta = GENE_META[metaKey];
+    }
+    if (!meta) {
+      meta = { icon: '🧬', title: key.replace(/_/g, ' ').toUpperCase(), cssClass: 'generic' };
+    }
 
     let probabilityText = '';
     if (key === 'amy1') {
@@ -573,10 +925,14 @@ function renderMendelianGenetics(genetics) {
       probabilityText = `${(trait.probability * 100).toFixed(0)}% probability`;
     } else if (key === 'fads') {
       probabilityText = `${trait.efficiency.toFixed(0)}% conversion efficiency`;
+    } else if (trait.frequency !== null && trait.frequency !== undefined) {
+      probabilityText = `${trait.frequency.toFixed(0)}% allele frequency`;
     }
 
+    const cssClass = meta.cssClass || meta.class || 'generic';
+
     html += `
-      <div class="genetic-trait ${meta.class}">
+      <div class="genetic-trait ${cssClass}">
         <h4>${meta.icon} ${meta.title} (${trait.inheritance})</h4>
         <div class="phenotype">${trait.phenotype}</div>
         ${probabilityText ? `<div class="probability">${probabilityText}</div>` : ''}
