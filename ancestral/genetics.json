@@ -868,7 +868,7 @@
           "phenotype_details": {
             "name": "celiac disease risk (encodes DQ2.5 haplotype)",
             "description": "T allele frequency: 5% in this population",
-            "dietary_impact": "Low HLA-DQ2/DQ8 frequency. Celiac risk is lower but not absent."
+            "dietary_impact": "Low HLA-DQ2 frequency, but HLA-DQ8 is elevated in this population."
           },
           "dietary_recommendation": {
             "celiac_risk": "low",
@@ -967,6 +967,25 @@
             "detox_capacity": "high",
             "recommendation": "GST enzymes present. Efficient cruciferous vegetable metabolism.",
             "crucifers": "Regular cruciferous intake beneficial"
+          }
+        },
+        "celiac_susceptibility_dq8": {
+          "gene": "HLA-DQ8",
+          "variant": "DQ8 haplotype",
+          "allele_frequency_percent": 55,
+          "inheritance": "complex",
+          "inferred_phenotype": "elevated_celiac_genetic_risk",
+          "phenotype_probability": 0.55,
+          "phenotype_details": {
+            "name": "Celiac Risk Haplotype (DQ8)",
+            "description": "Elevated HLA-DQ8 in Amazonian populations. Cassava-based diet historically gluten-free.",
+            "dietary_impact": "Genetic susceptibility present but historically protected by traditional gluten-free diet."
+          },
+          "dietary_recommendation": {
+            "celiac_risk": "elevated_genetic",
+            "gluten_sensitivity": "monitor",
+            "recommendation": "Elevated HLA-DQ8 celiac risk. Traditional diet was gluten-free; modern wheat consumption may unmask susceptibility.",
+            "notes": "Elevated HLA-DQ8 in Amazonian populations. Cassava-based diet historically gluten-free."
           }
         }
       }
@@ -1827,7 +1846,7 @@
           "phenotype_details": {
             "name": "celiac disease risk (encodes DQ2.5 haplotype)",
             "description": "T allele frequency: 5% in this population",
-            "dietary_impact": "Low HLA-DQ2/DQ8 frequency. Celiac risk is lower but not absent."
+            "dietary_impact": "Low HLA-DQ2 frequency, but HLA-DQ8 is elevated in this population."
           },
           "dietary_recommendation": {
             "celiac_risk": "low",
@@ -1926,6 +1945,25 @@
             "detox_capacity": "high",
             "recommendation": "GST enzymes present. Efficient cruciferous vegetable metabolism.",
             "crucifers": "Regular cruciferous intake beneficial"
+          }
+        },
+        "celiac_susceptibility_dq8": {
+          "gene": "HLA-DQ8",
+          "variant": "DQ8 haplotype",
+          "allele_frequency_percent": 65,
+          "inheritance": "complex",
+          "inferred_phenotype": "elevated_celiac_genetic_risk",
+          "phenotype_probability": 0.65,
+          "phenotype_details": {
+            "name": "Celiac Risk Haplotype (DQ8)",
+            "description": "High HLA-DQ8 in Andean populations (60-70%). Potato-based diet historically protected.",
+            "dietary_impact": "Genetic susceptibility present but historically protected by traditional gluten-free diet."
+          },
+          "dietary_recommendation": {
+            "celiac_risk": "elevated_genetic",
+            "gluten_sensitivity": "monitor",
+            "recommendation": "Elevated HLA-DQ8 celiac risk. Traditional diet was gluten-free; modern wheat consumption may unmask susceptibility.",
+            "notes": "High HLA-DQ8 in Andean populations (60-70%). Potato-based diet historically protected."
           }
         }
       }
@@ -15053,6 +15091,24 @@
           "dietary_recommendation": {
             "notes": "Insufficient population data for specific recommendations"
           }
+        },
+        "polynesian_energy_storage": {
+          "gene": "CREBRF",
+          "variant": "rs373863828",
+          "allele_frequency_percent": 25,
+          "inheritance": "additive",
+          "inferred_phenotype": "present",
+          "phenotype_probability": 0.25,
+          "phenotype_details": {
+            "name": "Polynesian Thrifty Gene",
+            "description": "Energy-conserving metabolism from long ocean voyage adaptation. The CREBRF variant increases BMI but paradoxically protects against type 2 diabetes.",
+            "dietary_impact": "May gain weight easily but with some metabolic protection. Benefits from nutrient-dense, lower-carb foods."
+          },
+          "dietary_recommendation": {
+            "metabolic_type": "energy_conserving",
+            "recommendation": "Focus on nutrient-dense whole foods, moderate portions, regular physical activity",
+            "notes": "15-25% frequency in Māori. This 'thrifty gene' variant was advantageous for long Pacific voyages but may contribute to obesity risk in modern food environments."
+          }
         }
       }
     },
@@ -16847,11 +16903,11 @@
           "phenotype_details": {
             "name": "celiac disease risk (encodes DQ2.5 haplotype)",
             "description": "T allele frequency: 5% in this population",
-            "dietary_impact": "Low HLA-DQ2/DQ8 frequency. Celiac risk is lower but not absent."
+            "dietary_impact": "Low HLA-DQ2 frequency, but HLA-DQ8 is elevated in this population."
           },
           "dietary_recommendation": {
-            "celiac_risk": "low",
-            "recommendation": "Low HLA-DQ2/DQ8 frequency. Celiac risk is lower but not absent.",
+            "celiac_risk": "low_dq2",
+            "recommendation": "Low HLA-DQ2 frequency. See HLA-DQ8 for primary celiac risk in this population.",
             "gluten": "Standard gluten consumption unless symptomatic"
           }
         },
@@ -16946,6 +17002,25 @@
             "detox_capacity": "high",
             "recommendation": "GST enzymes present. Efficient cruciferous vegetable metabolism.",
             "crucifers": "Regular cruciferous intake beneficial"
+          }
+        },
+        "celiac_susceptibility_dq8": {
+          "gene": "HLA-DQ8",
+          "variant": "DQ8 haplotype",
+          "allele_frequency_percent": 70,
+          "inheritance": "complex",
+          "inferred_phenotype": "elevated_celiac_genetic_risk",
+          "phenotype_probability": 0.7,
+          "phenotype_details": {
+            "name": "Celiac Risk Haplotype (DQ8)",
+            "description": "High HLA-DQ8 frequency (up to 77% in some Indigenous groups). This is the primary celiac risk allele in Indigenous American populations, unlike Europeans who carry HLA-DQ2.",
+            "dietary_impact": "Genetic susceptibility present but historically protected by corn-based diet without gluten exposure."
+          },
+          "dietary_recommendation": {
+            "celiac_risk": "elevated_genetic",
+            "gluten_sensitivity": "monitor",
+            "recommendation": "High genetic celiac risk via HLA-DQ8, but historically protected by maize-based diet. Modern wheat consumption may unmask susceptibility.",
+            "notes": "High genetic risk but historically protected by corn-based diet. Monitor for symptoms if consuming wheat/gluten."
           }
         }
       }
@@ -17812,7 +17887,7 @@
           "phenotype_details": {
             "name": "celiac disease risk (encodes DQ2.5 haplotype)",
             "description": "T allele frequency: 5% in this population",
-            "dietary_impact": "Low HLA-DQ2/DQ8 frequency. Celiac risk is lower but not absent."
+            "dietary_impact": "Low HLA-DQ2 frequency, but HLA-DQ8 is elevated in this population."
           },
           "dietary_recommendation": {
             "celiac_risk": "low",
@@ -17911,6 +17986,25 @@
             "detox_capacity": "high",
             "recommendation": "GST enzymes present. Efficient cruciferous vegetable metabolism.",
             "crucifers": "Regular cruciferous intake beneficial"
+          }
+        },
+        "celiac_susceptibility_dq8": {
+          "gene": "HLA-DQ8",
+          "variant": "DQ8 haplotype",
+          "allele_frequency_percent": 50,
+          "inheritance": "complex",
+          "inferred_phenotype": "elevated_celiac_genetic_risk",
+          "phenotype_probability": 0.5,
+          "phenotype_details": {
+            "name": "Celiac Risk Haplotype (DQ8)",
+            "description": "Moderate HLA-DQ8 (40-60%) reflecting mixed Indigenous/European ancestry. Indigenous DQ8 partially diluted by European DQ2.",
+            "dietary_impact": "Genetic susceptibility present but historically protected by traditional gluten-free diet."
+          },
+          "dietary_recommendation": {
+            "celiac_risk": "elevated_genetic",
+            "gluten_sensitivity": "monitor",
+            "recommendation": "Elevated HLA-DQ8 celiac risk. Traditional diet was gluten-free; modern wheat consumption may unmask susceptibility.",
+            "notes": "Moderate HLA-DQ8 (40-60%) reflecting mixed Indigenous/European ancestry. Indigenous DQ8 partially diluted by European DQ2."
           }
         }
       }
@@ -23528,6 +23622,24 @@
           },
           "dietary_recommendation": {
             "notes": "Insufficient population data for specific recommendations"
+          }
+        },
+        "polynesian_energy_storage": {
+          "gene": "CREBRF",
+          "variant": "rs373863828",
+          "allele_frequency_percent": 26,
+          "inheritance": "additive",
+          "inferred_phenotype": "present",
+          "phenotype_probability": 0.26,
+          "phenotype_details": {
+            "name": "Polynesian Thrifty Gene",
+            "description": "Energy-conserving metabolism from long ocean voyage adaptation. The CREBRF variant increases BMI but paradoxically protects against type 2 diabetes.",
+            "dietary_impact": "May gain weight easily but with some metabolic protection. Benefits from nutrient-dense, lower-carb foods."
+          },
+          "dietary_recommendation": {
+            "metabolic_type": "energy_conserving",
+            "recommendation": "Focus on nutrient-dense whole foods, moderate portions, regular physical activity",
+            "notes": "25-30% frequency in Polynesian populations (Samoans, Tongans). This 'thrifty gene' variant was advantageous for long Pacific voyages but may contribute to obesity risk in modern food environments."
           }
         }
       }
