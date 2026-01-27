@@ -7,6 +7,9 @@
 
   <!-- App Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- html2canvas for results export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </head>
 <body>
   <!-- Onboarding Wizard -->
@@ -273,6 +276,17 @@
 
     <!-- Content Area -->
     <div class="content-area">
+      <!-- Loading Overlay -->
+      <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-text">
+            <span class="loading-title">Calculating Genetics</span>
+            <span class="loading-subtitle" id="loading-subtitle">Analyzing Mendelian inheritance...</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Diet Results Area (replaces map) -->
       <div class="results-container" id="results-container">
         <div class="results-placeholder" id="results-placeholder">
@@ -281,11 +295,151 @@
           <p>Select your grandparents' origins in the sidebar to calculate your personalized ancestral diet recommendations.</p>
         </div>
         <div class="results-content" id="results-content" style="display: none;">
+          <!-- Disclaimer Banner -->
+          <div class="disclaimer-banner">
+            <span class="disclaimer-icon">ℹ️</span>
+            <span class="disclaimer-text">
+              <strong>Educational Tool</strong> — Results are based on population-level genetic data and ancestral dietary patterns.
+              This is not medical advice. Consult a healthcare provider for personalized nutrition guidance.
+            </span>
+          </div>
+
+          <div class="results-actions">
+            <button class="btn-methodology" id="methodology-btn" title="Learn how we calculate">
+              <span class="methodology-icon">🧬</span>
+              <span class="methodology-text">How We Calculate</span>
+            </button>
+            <button class="btn-export" id="export-results-btn" title="Save as image">
+              <span class="export-icon">📷</span>
+              <span class="export-text">Save Results</span>
+            </button>
+          </div>
           <div id="diet-content"></div>
+
+          <!-- Footer Disclaimer -->
+          <div class="results-footer">
+            <p class="footer-disclaimer">
+              Ancestral Diet Explorer provides educational insights based on published genetic research and anthropological data.
+              Individual genetic testing results may vary. This tool does not diagnose, treat, or prevent any disease.
+            </p>
+            <p class="footer-links">
+              <button class="link-btn" id="methodology-footer-btn">How We Calculate</button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Methodology Modal -->
+  <div class="modal-overlay" id="methodology-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>🧬 How We Calculate Your Results</h2>
+        <button class="modal-close" id="methodology-close">&times;</button>
+      </div>
+      <div class="modal-content">
+        <section class="methodology-section">
+          <h3>Overview</h3>
+          <p>
+            Your results are calculated using two well-established principles from population genetics:
+            <strong>Hardy-Weinberg equilibrium</strong> and <strong>Mendelian inheritance</strong>.
+            These methods let us estimate your likely genetic traits based on your grandparents' ancestral populations.
+          </p>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Hardy-Weinberg Equilibrium</h3>
+          <p>
+            When we know how common a genetic variant is in a population (e.g., "89% of Nordic people carry
+            the lactase persistence allele"), Hardy-Weinberg equilibrium helps us calculate the probability
+            of different genotypes (two copies, one copy, or no copies of the variant).
+          </p>
+          <div class="methodology-formula">
+            <p>If <strong>p</strong> = frequency of variant allele, and <strong>q</strong> = 1 - p:</p>
+            <ul>
+              <li><strong>p²</strong> = probability of two copies (homozygous)</li>
+              <li><strong>2pq</strong> = probability of one copy (heterozygous)</li>
+              <li><strong>q²</strong> = probability of no copies</li>
+            </ul>
+          </div>
+          <p>
+            This assumes random mating within a population, which is a reasonable approximation for
+            estimating genotype frequencies from allele frequencies.
+          </p>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Mendelian Inheritance</h3>
+          <p>
+            Once we have genotype probabilities for your grandparents (from their populations), we simulate
+            inheritance using Mendelian genetics — the same principles Gregor Mendel discovered with pea plants.
+          </p>
+          <div class="methodology-steps">
+            <div class="step">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <strong>Grandparents → Parents</strong>
+                <p>Each parent inherits one allele from each of their parents (your grandparents).</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <strong>Parents → You</strong>
+                <p>You inherit one allele from your mother and one from your father.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <strong>Probability Calculation</strong>
+                <p>We calculate the probability of each possible genotype you could have inherited.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Inheritance Patterns</h3>
+          <p>Different traits follow different inheritance patterns:</p>
+          <div class="inheritance-types">
+            <div class="inheritance-type">
+              <strong>Dominant</strong>
+              <p>One copy is enough to express the trait (e.g., lactase persistence). If either parent passes the variant, you likely have the trait.</p>
+            </div>
+            <div class="inheritance-type">
+              <strong>Recessive</strong>
+              <p>Two copies needed to express the trait (e.g., some Arctic adaptations). Both parents must pass the variant.</p>
+            </div>
+            <div class="inheritance-type">
+              <strong>Additive</strong>
+              <p>Effect scales with copies (e.g., AMY1 starch digestion). More copies = stronger effect. We average across your ancestry.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Important Limitations</h3>
+          <ul class="limitations-list">
+            <li><strong>Population-level data:</strong> We use average allele frequencies for populations, not your actual DNA.</li>
+            <li><strong>Probabilistic results:</strong> Results show likelihood, not certainty. Your actual genetics may differ.</li>
+            <li><strong>Simplified model:</strong> Real inheritance involves many genes, environmental factors, and gene interactions we don't model.</li>
+            <li><strong>Historical populations:</strong> Our data represents traditional/historical populations, which may differ from modern populations.</li>
+          </ul>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Data Sources</h3>
+          <p>
+            Our genetic data comes from peer-reviewed studies on population genetics, including research on
+            lactase persistence, AMY1 copy number variation, FADS fatty acid metabolism, and population-specific
+            adaptations. Dietary information is based on anthropological and archaeological research.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
 
   <!-- App Scripts (order matters - dependencies first) -->
   <script src="js/data.js"></script>

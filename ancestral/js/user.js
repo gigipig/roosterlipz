@@ -338,7 +338,7 @@ function getAncestryNamesFromSavedDiet(savedDiet) {
 function displaySavedDiet() {
   const savedDiet = getUserSavedDiet();
   if (!savedDiet || !savedDiet.data) {
-    alert('No saved diet found. Please calculate your diet first.');
+    showToast('No saved diet found. Please calculate your diet first.', 'info');
     return;
   }
 

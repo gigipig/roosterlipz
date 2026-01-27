@@ -3,6 +3,47 @@
  */
 
 /**
+ * Render a food item with genetic tooltip
+ * @param {string} food - Food name
+ * @param {Object} mendelianGenetics - User's genetic profile (optional)
+ * @returns {string} HTML for the food item
+ */
+function renderFoodItem(food, mendelianGenetics) {
+  if (!mendelianGenetics) {
+    return `<span class="food-item">${food}</span>`;
+  }
+
+  const explanations = getFoodExplanations(food, mendelianGenetics);
+
+  if (explanations.length === 0) {
+    return `<span class="food-item">${food}</span>`;
+  }
+
+  // Build tooltip content
+  const tooltipLines = explanations.map(exp =>
+    `${exp.icon} ${exp.title}: ${exp.phenotype}${exp.percentage ? ` (${exp.percentage})` : ''} - ${exp.shortReason}`
+  ).join('&#10;');
+
+  // Add visual indicator that this food has genetic info
+  const topTrait = explanations[0];
+
+  return `<span class="food-item has-genetic-info" data-tooltip="${tooltipLines}" title="${tooltipLines}">
+    <span class="food-genetic-indicator">${topTrait.icon}</span>${food}
+  </span>`;
+}
+
+/**
+ * Render a list of food items with genetic tooltips
+ * @param {string[]} foods - Array of food names
+ * @param {Object} mendelianGenetics - User's genetic profile (optional)
+ * @param {number} limit - Max number of items to show
+ * @returns {string} HTML for the food list
+ */
+function renderFoodList(foods, mendelianGenetics, limit = 12) {
+  return foods.slice(0, limit).map(f => renderFoodItem(f, mendelianGenetics)).join('');
+}
+
+/**
  * Blend diets from multiple regions
  * @param {string[]} regionIds - Array of region IDs
  * @param {number[]} weights - Array of weights for each region
@@ -175,6 +216,8 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
       <p>Your dietary recommendations are based on <strong>Mendelian genetics</strong> calculated from your grandparents' populations, plus dietary traditions from your ancestral lineages.</p>
     </div>
 
+    ${renderKeyTakeaways(mendelianGenetics)}
+
     ${renderMendelianGenetics(mendelianGenetics)}
 
     <div class="diet-section">
@@ -194,37 +237,30 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
 
     <div class="diet-section">
       <h3>Common Foods (Across Ancestries)</h3>
+      <p class="food-tooltip-hint">Hover over foods with icons to see why they're recommended for your genetics</p>
       <div class="food-list">
-        ${blended.commonFoods.slice(0, 12).map(f =>
-          `<span class="food-item">${f}</span>`
-        ).join('')}
+        ${renderFoodList(blended.commonFoods, mendelianGenetics, 12)}
       </div>
     </div>
 
     <div class="diet-section">
       <h3>Recommended Proteins</h3>
       <div class="food-list">
-        ${blended.allProteins.slice(0, 10).map(p =>
-          `<span class="food-item">${p}</span>`
-        ).join('')}
+        ${renderFoodList(blended.allProteins, mendelianGenetics, 10)}
       </div>
     </div>
 
     <div class="diet-section">
       <h3>Recommended Fats</h3>
       <div class="food-list">
-        ${blended.allFats.slice(0, 8).map(f =>
-          `<span class="food-item">${f}</span>`
-        ).join('')}
+        ${renderFoodList(blended.allFats, mendelianGenetics, 8)}
       </div>
     </div>
 
     <div class="diet-section">
       <h3>Herbs & Spices</h3>
       <div class="food-list">
-        ${blended.allHerbs.slice(0, 12).map(h =>
-          `<span class="food-item">${h}</span>`
-        ).join('')}
+        ${renderFoodList(blended.allHerbs, mendelianGenetics, 12)}
       </div>
     </div>
 
@@ -248,6 +284,8 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
         `;
       }).join('')}
     </div>
+
+    ${renderSourcesSection(mendelianGenetics)}
   `;
 }
 

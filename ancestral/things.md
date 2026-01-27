@@ -56,39 +56,39 @@ CHANGES
   ┌───────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
   │            Feature            │                                                                                          Why It Matters                                                                                          │
   ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Genetic trait explanations    │ Users see "Lactase Persistence: 72%" but may not understand what to do with that. Add actionable tooltips: "You likely tolerate dairy well. Consider including yogurt, kefir, and aged cheeses." │ -->
+  <!-- │ *****Genetic trait explanations    │ Users see "Lactase Persistence: 72%" but may not understand what to do with that. Add actionable tooltips: "You likely tolerate dairy well. Consider including yogurt, kefir, and aged cheeses." │ -->
   ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Food sensitivity warnings     │ Highlight potential issues: "Your ancestry suggests lower alcohol metabolism (ALDH2) - you may experience flush response"                                                                        │ -->
+  <!-- │ *****Food sensitivity warnings     │ Highlight potential issues: "Your ancestry suggests lower alcohol metabolism (ALDH2) - you may experience flush response"                                                                        │ -->
   ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ Meal plan generator           │ Translate recommendations into concrete weekly meal examples combining recommended proteins, staples, and cooking methods                                                                        │
   ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ Nutrient gap analysis         │ Compare their ancestral diet profile against modern nutritional guidelines - show where traditional diets excel vs. where supplementation might help                                             │
   ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ ******"Why this food?" explanations │ For each recommended food, show why it appears - "Fermented dairy appears because your Nordic ancestry has 89% lactase persistence"                                                              │ -->
+  │ ✅ DONE "Why this food?" explanations │ For each recommended food, show why it appears - "Fermented dairy appears because your Nordic ancestry has 89% lactase persistence"                                                              │
   └───────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
   Engagement & Discovery
   ┌────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
   │                Feature                 │                                                      Why It Matters                                                       │
   ├────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Comparison mode                        │ Let users compare two ancestry profiles side-by-side (e.g., their profile vs. a partner's, or two historical populations) │
+  │ *****Comparison mode                   │ Let users compare two ancestry profiles side-by-side (e.g., their profile vs. a partner's, or two historical populations) │
   ├────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ "What if" scenarios                    │ "What if one grandparent was X instead?" - helps users explore sensitivity of results                                     │
   ├────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Ancestry deep-dives                    │ Expandable sections for each ancestry showing historical context, migration patterns, and how the diet evolved            │ -->
+  <!-- │ *****Ancestry deep-dives                    │ Expandable sections for each ancestry showing historical context, migration patterns, and how the diet evolved            │ -->
   <!-- ├────────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Genetic trait breakdown by grandparent │ Show which grandparent contributed which traits - makes inheritance tangible                                              │ -->
+  │ *****Genetic trait breakdown by grandparent │ Show which grandparent contributed which traits - makes inheritance tangible                                              │ -->
   └────────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
   Usability Improvements
   ┌───────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────┐
   │                Feature                │                                    Why It Matters                                     │
   ├───────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Progress indicator during calculation │ The genetics calculations are complex - show users something is happening             │ -->
+  │ ✅ DONE Progress indicator during calculation │ The genetics calculations are complex - show users something is happening        │
   ├───────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Results export (PDF/image)            │ Users want to save/share their results                                                │ -->
+  │ ✅ DONE Results export (PDF/image)            │ Users want to save/share their results                                          │
   ├───────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Simplified "key takeaways" summary    │ Before the detailed breakdown: "Your top 3 dietary strengths" and "3 things to watch" │ -->
+  │ *****Simplified "key takeaways" summary       │ Before the detailed breakdown: "Your top 3 dietary strengths" and "3 things to watch" │
   ├───────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Glossary/education section            │ Define terms like "lactase persistence", "AMY1 copy number" for lay audiences         │ -->
+  │ ✅ DONE Glossary/education section            │ Define terms like "lactase persistence", "AMY1 copy number" for lay audiences   │
   └───────────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────┘
   ---
   2. Features to Make This Shippable
@@ -99,11 +99,11 @@ CHANGES
   ├──────────────────────────────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────┤
   <!-- │ Mobile-first responsive redesign │ High     │ Current CSS has responsive elements but needs polish for thumb-friendly mobile use │ -->
   ├──────────────────────────────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────┤
-  │ Loading states & error handling  │ High     │ Graceful fallbacks if JSON fails to load, clear error messages                     │
+  │ *****Loading states & error handling  │ High     │ Graceful fallbacks if JSON fails to load, clear error messages                │
   ├──────────────────────────────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────┤
-  │ Accessibility (a11y)             │ High     │ ARIA labels, keyboard navigation, screen reader support, color contrast            │
+  │ *****Accessibility (a11y)             │ High     │ ARIA labels, keyboard navigation, screen reader support, color contrast       │
   ├──────────────────────────────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Privacy policy & disclaimers     │ High     │ "This is educational, not medical advice" - legally necessary                      │ -->
+  │ ✅ DONE Privacy policy & disclaimers  │ High     │ "This is educational, not medical advice" - legally necessary                 │
   ├──────────────────────────────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────┤
   │ SEO & meta tags                  │ Medium   │ Open Graph tags for social sharing, proper meta descriptions                       │
   ├──────────────────────────────────┼──────────┼────────────────────────────────────────────────────────────────────────────────────┤
@@ -115,19 +115,19 @@ CHANGES
   ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ DNA test import            │ Let users upload 23andMe/AncestryDNA raw data or paste ethnicity percentages directly - removes friction │
   ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Shareable results URLs     │ Generate unique links like yourapp.com/results/abc123 - viral potential                                  │ -->
+  <!-- │ *****Shareable results URLs     │ Generate unique links like yourapp.com/results/abc123 - viral potential                                  │ -->
   ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
   │ Email capture with results │ "Get your full report emailed" - builds user list for future features                                    │
   ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  <!-- │ Printable report           │ Clean, formatted PDF that looks professional                                                             │ -->
+  <!-- │ *****Printable report           │ Clean, formatted PDF that looks professional                                                             │ -->
   └────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────┘
   Trust & Credibility
   ┌──────────────────────────────┬───────────────────────────────────────────────────────────────────────┐
   │           Feature            │                            Why It Matters                             │
   ├──────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
-  <!-- │ Sources & citations          │ Link genetic traits to actual studies (you have good data - cite it)  │ -->
+  │ *****Sources & citations          │ Link genetic traits to actual studies (you have good data - cite it)  │
   ├──────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
-  <!-- │ "How we calculate this" page │ Transparency about Hardy-Weinberg, Mendelian inheritance methodology  │ -->
+  │ ✅ DONE "How we calculate this" page │ Transparency about Hardy-Weinberg, Mendelian inheritance methodology  │
   ├──────────────────────────────┼───────────────────────────────────────────────────────────────────────┤
   │ Expert review badge          │ If reviewed by a geneticist or nutritionist, display that prominently │
   ├──────────────────────────────┼───────────────────────────────────────────────────────────────────────┤

@@ -3,8 +3,1024 @@
  */
 
 // ============================================================================
+// FOOD-GENETICS MAPPING - Links foods to relevant genetic traits
+// ============================================================================
+
+/**
+ * Maps food names/categories to relevant genetic traits
+ * Used to generate "Why this food?" explanations
+ */
+const FOOD_GENETICS_MAP = {
+  // Dairy products → Lactase persistence
+  dairy: ['lactase_persistence'],
+  milk: ['lactase_persistence'],
+  yogurt: ['lactase_persistence'],
+  cheese: ['lactase_persistence'],
+  butter: ['lactase_persistence', 'saturated_fat_response'],
+  cream: ['lactase_persistence', 'saturated_fat_response'],
+  kefir: ['lactase_persistence'],
+  'fermented dairy': ['lactase_persistence'],
+  ghee: ['saturated_fat_response'],
+
+  // Grains/Starches → AMY1 starch digestion
+  wheat: ['starch_digestion'],
+  rice: ['starch_digestion'],
+  barley: ['starch_digestion'],
+  oats: ['starch_digestion'],
+  rye: ['starch_digestion'],
+  millet: ['starch_digestion'],
+  sorghum: ['starch_digestion'],
+  teff: ['starch_digestion'],
+  bulgur: ['starch_digestion'],
+  bread: ['starch_digestion', 'celiac_susceptibility'],
+  grains: ['starch_digestion'],
+  cereals: ['starch_digestion'],
+  pasta: ['starch_digestion', 'celiac_susceptibility'],
+  noodles: ['starch_digestion'],
+  potatoes: ['starch_digestion'],
+  'sweet potatoes': ['starch_digestion', 'beta_carotene_conversion'],
+  cassava: ['starch_digestion'],
+  yams: ['starch_digestion'],
+  taro: ['starch_digestion'],
+  maize: ['starch_digestion'],
+  corn: ['starch_digestion'],
+
+  // Fatty fish → PUFA/Omega-3 metabolism + Vitamin D
+  fish: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  salmon: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  sardines: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  herring: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  mackerel: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  anchovies: ['pufa_metabolism'],
+  'fatty fish': ['pufa_metabolism', 'vitamin_d_metabolism'],
+  'fish oil': ['pufa_metabolism'],
+  'fermented fish': ['pufa_metabolism'],
+
+  // Plant omega-3 sources
+  flax: ['pufa_metabolism'],
+  chia: ['pufa_metabolism'],
+  walnuts: ['pufa_metabolism'],
+  'hemp seeds': ['pufa_metabolism'],
+
+  // Fats and oils
+  'olive oil': ['saturated_fat_response', 'hdl_metabolism'],
+  lard: ['saturated_fat_response'],
+  tallow: ['saturated_fat_response'],
+  'animal fats': ['saturated_fat_response'],
+  'coconut oil': ['saturated_fat_response'],
+  'palm oil': ['saturated_fat_response'],
+
+  // Red meat → Iron metabolism
+  beef: ['iron_metabolism', 'saturated_fat_response'],
+  lamb: ['iron_metabolism', 'saturated_fat_response'],
+  goat: ['iron_metabolism'],
+  venison: ['iron_metabolism'],
+  'red meat': ['iron_metabolism', 'saturated_fat_response'],
+  game: ['iron_metabolism'],
+
+  // Organ meats
+  liver: ['iron_metabolism', 'vitamin_b12_absorption', 'beta_carotene_conversion'],
+  'organ meats': ['iron_metabolism', 'vitamin_b12_absorption'],
+
+  // Cruciferous vegetables
+  broccoli: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1', 'bitter_taste_perception'],
+  cabbage: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1', 'bitter_taste_perception'],
+  kale: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1', 'bitter_taste_perception', 'beta_carotene_conversion'],
+  'brussels sprouts': ['cruciferous_metabolism_gstm1', 'bitter_taste_perception'],
+  cauliflower: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1'],
+
+  // Leafy greens → Folate
+  spinach: ['folate_metabolism', 'iron_metabolism'],
+  'leafy greens': ['folate_metabolism', 'beta_carotene_conversion'],
+  greens: ['folate_metabolism'],
+  chard: ['folate_metabolism'],
+
+  // Beta-carotene rich foods
+  carrots: ['beta_carotene_conversion'],
+  'sweet potato': ['beta_carotene_conversion', 'starch_digestion'],
+  pumpkin: ['beta_carotene_conversion'],
+  squash: ['beta_carotene_conversion'],
+
+  // Caffeine
+  coffee: ['caffeine_metabolism'],
+  tea: ['caffeine_metabolism'],
+
+  // Alcohol-related
+  wine: ['alcohol_metabolism'],
+  beer: ['alcohol_metabolism'],
+  'fermented beverages': ['alcohol_metabolism'],
+
+  // Salt-rich/preserved foods
+  'preserved fish': ['salt_sensitivity'],
+  'salted fish': ['salt_sensitivity'],
+  'fermented vegetables': ['salt_sensitivity'],
+  'pickled foods': ['salt_sensitivity'],
+
+  // Eggs → multiple nutrients
+  eggs: ['vitamin_d_metabolism', 'vitamin_b12_absorption', 'beta_carotene_conversion'],
+
+  // Legumes
+  legumes: ['starch_digestion', 'folate_metabolism'],
+  lentils: ['folate_metabolism', 'iron_metabolism'],
+  beans: ['starch_digestion', 'folate_metabolism'],
+  chickpeas: ['starch_digestion', 'folate_metabolism'],
+
+  // Nuts (general)
+  nuts: ['pufa_metabolism'],
+  almonds: ['vitamin_d_transport'],
+
+  // Berries and antioxidant-rich foods
+  berries: ['antioxidant_capacity'],
+  'dark berries': ['antioxidant_capacity'],
+  blueberries: ['antioxidant_capacity'],
+
+  // Seafood (shellfish)
+  shellfish: ['vitamin_b12_absorption', 'iron_metabolism'],
+  oysters: ['iron_metabolism', 'vitamin_b12_absorption'],
+  mussels: ['iron_metabolism', 'vitamin_b12_absorption'],
+  crab: ['vitamin_b12_absorption', 'pufa_metabolism'],
+  shrimp: ['vitamin_b12_absorption', 'pufa_metabolism'],
+  abalone: ['vitamin_b12_absorption', 'iron_metabolism'],
+
+  // Game meats
+  kangaroo: ['iron_metabolism'],
+  emu: ['iron_metabolism'],
+  'wild game': ['iron_metabolism'],
+  venison: ['iron_metabolism'],
+  bison: ['iron_metabolism'],
+  'guinea pig': ['iron_metabolism'],
+  rabbit: ['iron_metabolism'],
+  duck: ['iron_metabolism', 'pufa_metabolism'],
+  goose: ['iron_metabolism', 'saturated_fat_response'],
+
+  // Poultry
+  chicken: ['vitamin_b12_absorption'],
+  turkey: ['vitamin_b12_absorption'],
+  poultry: ['vitamin_b12_absorption'],
+
+  // Camelids and specialty meats
+  camel: ['iron_metabolism'],
+  'camel meat': ['iron_metabolism'],
+  llama: ['iron_metabolism'],
+  alpaca: ['iron_metabolism'],
+
+  // Additional dairy variations
+  'camel milk': ['lactase_persistence'],
+  'goat milk': ['lactase_persistence'],
+  'sheep milk': ['lactase_persistence'],
+  'fermented milk': ['lactase_persistence'],
+  skyr: ['lactase_persistence'],
+  lassi: ['lactase_persistence'],
+  ayran: ['lactase_persistence'],
+  'white cheese': ['lactase_persistence'],
+  feta: ['lactase_persistence'],
+  'clotted cream': ['lactase_persistence', 'saturated_fat_response'],
+  kajmak: ['lactase_persistence', 'saturated_fat_response'],
+
+  // Additional grains and starches
+  quinoa: ['starch_digestion'],
+  amaranth: ['starch_digestion'],
+  buckwheat: ['starch_digestion'],
+  spelt: ['starch_digestion', 'celiac_susceptibility'],
+  farro: ['starch_digestion', 'celiac_susceptibility'],
+  couscous: ['starch_digestion'],
+  plantains: ['starch_digestion'],
+  breadfruit: ['starch_digestion'],
+  sago: ['starch_digestion'],
+  tapioca: ['starch_digestion'],
+  roots: ['starch_digestion'],
+  tubers: ['starch_digestion'],
+  'native tubers': ['starch_digestion'],
+
+  // Additional vegetables
+  eggplant: ['antioxidant_capacity'],
+  peppers: ['beta_carotene_conversion', 'antioxidant_capacity'],
+  'bell peppers': ['beta_carotene_conversion'],
+  tomatoes: ['antioxidant_capacity'],
+  okra: ['folate_metabolism'],
+  'collard greens': ['folate_metabolism', 'cruciferous_metabolism_gstm1'],
+  'mustard greens': ['folate_metabolism', 'cruciferous_metabolism_gstm1'],
+  seaweed: ['iron_metabolism', 'vitamin_b12_absorption'],
+  kelp: ['iron_metabolism'],
+  nori: ['vitamin_b12_absorption'],
+
+  // Fermented foods
+  'fermented vegetables': ['salt_sensitivity'],
+  kimchi: ['salt_sensitivity', 'cruciferous_metabolism_gstm1'],
+  sauerkraut: ['cruciferous_metabolism_gstm1', 'salt_sensitivity'],
+  miso: ['salt_sensitivity'],
+  tempeh: ['vitamin_b12_absorption'],
+  natto: ['vitamin_b12_absorption'],
+
+  // Oils and fats
+  'mustard oil': ['pufa_metabolism'],
+  'sesame oil': ['pufa_metabolism'],
+  'fish oils': ['pufa_metabolism', 'vitamin_d_metabolism'],
+  'palm oil': ['saturated_fat_response', 'beta_carotene_conversion'],
+  'dende oil': ['saturated_fat_response', 'beta_carotene_conversion'],
+  'emu fat': ['saturated_fat_response'],
+  'camel fat': ['saturated_fat_response'],
+
+  // Fruits
+  dates: ['starch_digestion', 'glucose_metabolism'],
+  'dried fruits': ['glucose_metabolism'],
+  figs: ['glucose_metabolism'],
+  mango: ['beta_carotene_conversion'],
+  papaya: ['beta_carotene_conversion'],
+  'tropical fruits': ['antioxidant_capacity'],
+  'bush fruits': ['antioxidant_capacity'],
+  coconut: ['saturated_fat_response'],
+  'coconut milk': ['saturated_fat_response'],
+  'coconut oil': ['saturated_fat_response'],
+
+  // Insects (protein source)
+  insects: ['iron_metabolism'],
+  'witchetty grubs': ['iron_metabolism'],
+
+  // Seeds
+  seeds: ['pufa_metabolism'],
+  'pumpkin seeds': ['iron_metabolism'],
+  'sunflower seeds': ['pufa_metabolism'],
+  sesame: ['iron_metabolism'],
+  'native seeds': ['starch_digestion'],
+
+  // Additional fish varieties
+  cod: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  codfish: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  tuna: ['pufa_metabolism', 'vitamin_b12_absorption'],
+  trout: ['pufa_metabolism', 'vitamin_d_metabolism'],
+  carp: ['pufa_metabolism'],
+  catfish: ['pufa_metabolism'],
+  tilapia: ['pufa_metabolism'],
+  hilsa: ['pufa_metabolism'],
+  mullet: ['pufa_metabolism'],
+  bream: ['pufa_metabolism'],
+  snapper: ['pufa_metabolism'],
+
+  // Organ meats and specialty
+  'bone marrow': ['iron_metabolism', 'saturated_fat_response'],
+  'blood sausage': ['iron_metabolism'],
+  'dried meat': ['iron_metabolism', 'salt_sensitivity'],
+  jerky: ['iron_metabolism', 'salt_sensitivity'],
+  pemmican: ['iron_metabolism', 'saturated_fat_response']
+};
+
+/**
+ * Normalize food name for matching (handles underscores, spaces, case)
+ * @param {string} food - Raw food name
+ * @returns {string} Normalized food name
+ */
+function normalizeFood(food) {
+  return food.toLowerCase().trim().replace(/_/g, ' ');
+}
+
+/**
+ * Get genetic explanations for a food item
+ * @param {string} food - The food name
+ * @param {Object} mendelianGenetics - The user's calculated genetic profile
+ * @returns {Array} Array of explanation objects with trait info
+ */
+function getFoodExplanations(food, mendelianGenetics) {
+  if (!food || !mendelianGenetics) return [];
+
+  const normalizedFood = normalizeFood(food);
+
+  // Find matching genetic traits for this food
+  let matchedTraits = [];
+
+  // Direct match (check both original and normalized versions)
+  if (FOOD_GENETICS_MAP[normalizedFood]) {
+    matchedTraits = FOOD_GENETICS_MAP[normalizedFood];
+  } else {
+    // Check all map keys with normalization
+    for (const [foodKey, traits] of Object.entries(FOOD_GENETICS_MAP)) {
+      const normalizedKey = normalizeFood(foodKey);
+      if (normalizedFood === normalizedKey) {
+        matchedTraits = traits;
+        break;
+      }
+    }
+  }
+
+  // If no direct match, try partial matching
+  if (matchedTraits.length === 0) {
+    for (const [foodKey, traits] of Object.entries(FOOD_GENETICS_MAP)) {
+      const normalizedKey = normalizeFood(foodKey);
+      if (normalizedFood.includes(normalizedKey) || normalizedKey.includes(normalizedFood)) {
+        matchedTraits = [...new Set([...matchedTraits, ...traits])];
+      }
+    }
+  }
+
+  if (matchedTraits.length === 0) return [];
+
+  // Build explanations from user's genetic profile
+  const explanations = [];
+
+  // Map of genetics result keys to their trait keys
+  const keyMap = {
+    lactase: 'lactase_persistence',
+    amy1: 'starch_digestion',
+    fads: 'pufa_metabolism',
+    slc24a5: 'vitamin_d_metabolism',
+    aldh2: 'alcohol_metabolism',
+    crebrf: 'polynesian_energy_storage',
+    cpt1a: 'arctic_fat_metabolism'
+  };
+
+  // Reverse map for lookup
+  const reverseKeyMap = {};
+  for (const [k, v] of Object.entries(keyMap)) {
+    reverseKeyMap[v] = k;
+  }
+
+  for (const traitKey of matchedTraits) {
+    // Find the trait in user's genetics (check both direct key and mapped key)
+    const lookupKey = reverseKeyMap[traitKey] || traitKey;
+    const trait = mendelianGenetics[lookupKey] || mendelianGenetics[traitKey];
+
+    if (trait) {
+      const meta = GENE_META[traitKey] || GENE_META[lookupKey] || { icon: '🧬', title: traitKey };
+
+      let percentage = '';
+      if (trait.probability !== null && trait.probability !== undefined) {
+        percentage = `${(trait.probability * 100).toFixed(0)}%`;
+      } else if (trait.frequency !== null && trait.frequency !== undefined) {
+        percentage = `${trait.frequency.toFixed(0)}%`;
+      } else if (trait.efficiency !== null && trait.efficiency !== undefined) {
+        percentage = `${trait.efficiency.toFixed(0)}%`;
+      } else if (trait.copies) {
+        percentage = `${trait.copies.toFixed(1)} copies`;
+      }
+
+      explanations.push({
+        traitKey,
+        icon: meta.icon,
+        title: meta.title,
+        phenotype: trait.phenotype,
+        percentage,
+        shortReason: getShortReason(traitKey, trait)
+      });
+    }
+  }
+
+  return explanations;
+}
+
+/**
+ * Get a short reason explaining why a food relates to a genetic trait
+ */
+function getShortReason(traitKey, trait) {
+  const reasons = {
+    lactase_persistence: trait.phenotype === 'Lactase Persistent'
+      ? 'You digest lactose well'
+      : 'Consider fermented forms',
+    starch_digestion: trait.copies >= 7
+      ? 'High starch tolerance'
+      : 'Moderate starch digestion',
+    pufa_metabolism: trait.efficiency >= 70
+      ? 'Good omega-3 conversion'
+      : 'Direct omega-3 sources help',
+    vitamin_d_metabolism: 'Supports vitamin D needs',
+    saturated_fat_response: 'Matches fat metabolism',
+    iron_metabolism: 'Supports iron balance',
+    folate_metabolism: 'Supports folate needs',
+    caffeine_metabolism: trait.phenotype?.includes('Slow')
+      ? 'Metabolize slowly - limit intake'
+      : 'Normal caffeine processing',
+    alcohol_metabolism: 'Related to alcohol processing',
+    beta_carotene_conversion: 'Vitamin A source',
+    celiac_susceptibility: 'Monitor gluten response',
+    bitter_taste_perception: trait.phenotype === 'Supertaster'
+      ? 'May taste bitter to you'
+      : 'Tastes milder for you',
+    cruciferous_metabolism_gstm1: 'Detox enzyme support',
+    cruciferous_metabolism_gstt1: 'Detox enzyme support',
+    hdl_metabolism: 'Heart-healthy fats',
+    vitamin_b12_absorption: 'B12 source',
+    antioxidant_capacity: 'Antioxidant support',
+    salt_sensitivity: 'Watch sodium intake'
+  };
+
+  return reasons[traitKey] || 'Genetically relevant';
+}
+
+// ============================================================================
 // GENE CONFIGURATION - Add new genes here for automatic support
 // ============================================================================
+
+/**
+ * Glossary definitions for genetic terms - shown as tooltips for education
+ */
+const GENE_GLOSSARY = {
+  // Core metabolic traits
+  lactase_persistence: {
+    term: 'Lactase Persistence',
+    definition: 'The ability to digest lactose (milk sugar) into adulthood. Most mammals lose this ability after weaning, but some human populations evolved to keep producing lactase enzyme throughout life.',
+    gene: 'LCT gene',
+    inheritance: 'Dominant - one copy of the variant is enough to digest lactose'
+  },
+  starch_digestion: {
+    term: 'AMY1 Copy Number',
+    definition: 'AMY1 genes produce salivary amylase, which breaks down starches. People can have 2-15+ copies of this gene. More copies = better starch digestion and higher carb tolerance.',
+    gene: 'AMY1 gene',
+    inheritance: 'Additive - more copies means more enzyme production'
+  },
+  pufa_metabolism: {
+    term: 'Omega-3 Conversion (FADS1)',
+    definition: 'Your ability to convert plant omega-3s (ALA from flax, chia) into the active forms (EPA/DHA) your body needs. Some people convert efficiently; others need direct marine sources.',
+    gene: 'FADS1/FADS2 genes',
+    inheritance: 'Additive - efficiency varies with genotype'
+  },
+  vitamin_d_metabolism: {
+    term: 'Vitamin D Synthesis',
+    definition: 'Related to skin pigmentation. Lighter skin produces vitamin D more efficiently from sunlight but burns easily. Darker skin is protective but may need more dietary vitamin D.',
+    gene: 'SLC24A5 gene',
+    inheritance: 'Additive - affects pigmentation level'
+  },
+
+  // Nutrient metabolism
+  caffeine_metabolism: {
+    term: 'Caffeine Metabolism',
+    definition: 'How quickly your liver breaks down caffeine. Slow metabolizers feel effects longer and may experience anxiety or sleep issues. Fast metabolizers clear caffeine quickly.',
+    gene: 'CYP1A2 gene',
+    inheritance: 'Additive - determines enzyme activity level'
+  },
+  saturated_fat_response: {
+    term: 'Saturated Fat Response',
+    definition: 'How your cholesterol levels respond to dietary saturated fat. Some people show large increases in LDL cholesterol; others are less affected.',
+    gene: 'APOE gene',
+    inheritance: 'Varies by variant'
+  },
+  folate_metabolism: {
+    term: 'Folate Metabolism (MTHFR)',
+    definition: 'Your ability to convert folate (B9) into its active form. Reduced function may increase homocysteine levels and affect pregnancy health.',
+    gene: 'MTHFR gene',
+    inheritance: 'Additive - two copies cause greater reduction'
+  },
+  iron_metabolism: {
+    term: 'Iron Metabolism (HFE)',
+    definition: 'Related to hemochromatosis, where the body absorbs too much iron. Excess iron can damage organs over time.',
+    gene: 'HFE gene',
+    inheritance: 'Recessive - usually need two copies for clinical effect'
+  },
+  glucose_metabolism: {
+    term: 'Glucose Metabolism (TCF7L2)',
+    definition: 'Affects insulin secretion and blood sugar regulation. The risk variant is associated with higher Type 2 diabetes risk.',
+    gene: 'TCF7L2 gene',
+    inheritance: 'Additive - each copy increases risk slightly'
+  },
+  celiac_susceptibility: {
+    term: 'Celiac Susceptibility',
+    definition: 'Having HLA-DQ2 or HLA-DQ8 is necessary but not sufficient for celiac disease. About 30% of people carry these genes, but only 1-3% develop celiac.',
+    gene: 'HLA-DQ genes',
+    inheritance: 'Genetic predisposition, not deterministic'
+  },
+  bitter_taste_perception: {
+    term: 'Bitter Taste Perception',
+    definition: '"Supertasters" perceive bitter compounds in cruciferous vegetables, coffee, and grapefruit more intensely. This may affect food preferences.',
+    gene: 'TAS2R38 gene',
+    inheritance: 'Dominant - one copy creates supertaster phenotype'
+  },
+
+  // Population-specific
+  alcohol_metabolism: {
+    term: 'Alcohol Flush Response (ALDH2)',
+    definition: 'Common in East Asian populations. Causes facial flushing, rapid heartbeat, and nausea with alcohol due to acetaldehyde buildup.',
+    gene: 'ALDH2 gene',
+    inheritance: 'Dominant-negative - one copy causes the flush response'
+  },
+  arctic_fat_metabolism: {
+    term: 'Arctic Fat Metabolism (CPT1A)',
+    definition: 'Found in Inuit and some Siberian populations. Optimizes fat metabolism for very high-fat, low-carb diets traditional to Arctic regions.',
+    gene: 'CPT1A gene',
+    inheritance: 'Recessive - two copies for full adaptation'
+  },
+  polynesian_energy_storage: {
+    term: 'Thrifty Gene (CREBRF)',
+    definition: 'Found in Polynesian populations. Promotes efficient energy storage, which was beneficial for long ocean voyages but may increase obesity risk with modern diets.',
+    gene: 'CREBRF gene',
+    inheritance: 'Additive'
+  },
+  altitude_adaptation_epas1: {
+    term: 'High-Altitude Adaptation',
+    definition: 'Found in Tibetan populations (inherited from Denisovans). Prevents excessive red blood cell production at high altitude, reducing blood thickness.',
+    gene: 'EPAS1 gene',
+    inheritance: 'Additive'
+  }
+};
+
+// ============================================================================
+// GENE SOURCES - Scientific citations for each genetic trait
+// ============================================================================
+
+/**
+ * Maps genetic traits to their scientific sources and citations
+ * Used to generate the Sources section at the bottom of results
+ */
+const GENE_SOURCES = {
+  // Core metabolic traits
+  lactase_persistence: {
+    snp: 'rs4988235',
+    studies: [
+      'Enattah et al. (2002) Nature Genetics - Identification of lactase persistence variant in MCM6 regulatory region',
+      'Ingram et al. (2009) European Journal of Human Genetics - Global distribution of lactase persistence alleles'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  starch_digestion: {
+    gene: 'AMY1',
+    studies: [
+      'Perry et al. (2007) Nature Genetics - Diet and evolution of human amylase gene copy number variation',
+      'Mandel et al. (2010) Journal of Nutrition - AMY1 copy number correlates with salivary amylase activity'
+    ],
+    databases: ['Population-specific studies']
+  },
+
+  pufa_metabolism: {
+    snp: 'rs174537',
+    studies: [
+      'Mathias et al. (2012) PLoS ONE - FADS genetic variants and omega-6 polyunsaturated fatty acid metabolism',
+      'Ameur et al. (2012) Genome Biology - Genetic adaptation of fatty acid metabolism in European populations'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  vitamin_d_metabolism: {
+    snp: 'rs1426654 (SLC24A5), rs4588 (GC)',
+    studies: [
+      'Lamason et al. (2005) Science - SLC24A5 affects pigmentation and vitamin D synthesis',
+      'Wang et al. (2010) Lancet - GC genetic variants affect vitamin D status and supplementation response'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3', 'GWAS Catalog']
+  },
+
+  // Nutrient metabolism
+  caffeine_metabolism: {
+    snp: 'rs762551',
+    studies: [
+      'Cornelis et al. (2006) JAMA - CYP1A2 genotype modifies coffee-associated myocardial infarction risk (n=4,028)',
+      'Palatini et al. (2009) Journal of Hypertension - HARVEST study: CYP1A2 and hypertension risk with coffee (7.5-year follow-up)'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  saturated_fat_response: {
+    snp: 'rs5082 (APOA2)',
+    studies: [
+      'Corella et al. (2009) Archives of Internal Medicine - APOA2 gene-saturated fat interaction and obesity (replicated across 3 US populations)',
+      'Smith et al. (2013) Molecular Nutrition & Food Research - 20-year follow-up confirmation of APOA2-saturated fat interaction'
+    ],
+    databases: ['gnomAD v4', 'Framingham Offspring Study', 'GOLDN Study']
+  },
+
+  folate_metabolism: {
+    snp: 'rs1801133 (C677T)',
+    studies: [
+      'Frosst et al. (1995) Nature Genetics - Original identification of MTHFR C677T variant',
+      'Tanaka et al. (2009) American Journal of Human Genetics - GWAS meta-analysis confirming MTHFR as strongest folate modifier (P = 1.26 × 10⁻¹⁹)'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3', 'ClinVar']
+  },
+
+  iron_metabolism: {
+    snp: 'rs1800562 (C282Y), rs1799945 (H63D)',
+    studies: [
+      'Feder et al. (1996) Nature Genetics - HFE gene identification in hereditary hemochromatosis',
+      'Allen et al. (2008) New England Journal of Medicine - Population screening for hemochromatosis'
+    ],
+    databases: ['gnomAD v4', 'ClinVar', 'OMIM']
+  },
+
+  glucose_metabolism: {
+    snp: 'rs7903146',
+    studies: [
+      'Grant et al. (2006) Nature Genetics - TCF7L2 as strongest genetic contributor to T2D risk (OR 1.4-1.5)',
+      'Cornelis et al. (2009) Diabetologia - TCF7L2 modifies response to whole grain dietary interventions'
+    ],
+    databases: ['gnomAD v4', 'GWAS Catalog', 'DIAGRAM Consortium']
+  },
+
+  obesity_risk: {
+    snp: 'rs9939609',
+    studies: [
+      'Frayling et al. (2007) Science - FTO gene identified as first GWAS obesity locus',
+      'Kilpeläinen et al. (2011) PLoS Medicine - Meta-analysis: physical activity attenuates FTO effect by 30%'
+    ],
+    databases: ['gnomAD v4', 'GIANT Consortium', 'UK Biobank']
+  },
+
+  beta_carotene_conversion: {
+    snp: 'rs12934922, rs7501331, rs6564851',
+    studies: [
+      'Leung et al. (2009) FASEB Journal - BCO1 variants reduce beta-carotene conversion by up to 69%',
+      'Ferrucci et al. (2009) American Journal of Clinical Nutrition - GWAS for plasma carotenoids (P = 1.6 × 10⁻²⁴)'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  vitamin_d_transport: {
+    snp: 'rs4588, rs7041',
+    studies: [
+      'Powe et al. (2013) New England Journal of Medicine - GC haplotypes determine vitamin D binding protein levels',
+      'Barry et al. (2014) American Journal of Clinical Nutrition - GC variants affect supplementation response (2.9-4.1x non-responder risk)'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  salt_sensitivity: {
+    snp: 'rs699 (M235T)',
+    studies: [
+      'Jeunemaitre et al. (1992) Cell - AGT gene linkage to essential hypertension',
+      'Gu et al. (2007) Hypertension - AGT genotype and blood pressure response to sodium restriction'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  salt_sensitive_hypertension: {
+    snp: 'rs4961 (G460W)',
+    studies: [
+      'Cusi et al. (1997) Lancet - ADD1 polymorphism and salt-sensitive hypertension',
+      'Barlassina et al. (2001) Hypertension - ADD1 460W shows 12-fold increased sodium sensitivity'
+    ],
+    databases: ['gnomAD v4', 'Literature meta-analyses']
+  },
+
+  bitter_taste_perception: {
+    snp: 'rs713598, rs1726866, rs10246939',
+    studies: [
+      'Kim et al. (2003) Science - TAS2R38 haplotypes explain 85% of bitter taste variance',
+      'Lipchock et al. (2017) UK Biobank - Food preference associations in 445,779 participants'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3', 'UK Biobank']
+  },
+
+  vitamin_b12_absorption: {
+    snp: 'rs601338',
+    studies: [
+      'Hazra et al. (2008) Nature Genetics - FUT2 as strongest genetic determinant of B12 status (P = 5.36 × 10⁻¹⁷)',
+      'Tanwar et al. (2013) PLoS ONE - Secretor status and gut microbiome interactions'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  appetite_regulation: {
+    snp: 'rs17782313',
+    studies: [
+      'Loos et al. (2008) Nature Genetics - MC4R association with appetite and obesity risk',
+      'Qi et al. (2014) Diabetes - High-protein diets reduce cravings in MC4R risk carriers'
+    ],
+    databases: ['gnomAD v4', 'GIANT Consortium']
+  },
+
+  celiac_susceptibility: {
+    snp: 'rs2187668 (HLA-DQ2.5), rs7454108 (HLA-DQ8)',
+    studies: [
+      'Sollid et al. (1989) Journal of Experimental Medicine - HLA-DQ association with celiac disease',
+      'Romanos et al. (2009) PLoS ONE - Tag SNPs for celiac risk stratification'
+    ],
+    databases: ['gnomAD v4', 'ClinVar', 'HLA databases']
+  },
+
+  hdl_metabolism: {
+    snp: 'rs1800588',
+    studies: [
+      'Ordovas et al. (2002) American Journal of Clinical Nutrition - LIPC promoter variant and HDL-C levels',
+      'Raitakari et al. (2005) Cardiovascular Diabetology - Young Finns Study: LIPC and lipid response to diet'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  insulin_sensitivity: {
+    snp: 'rs1801282 (Pro12Ala)',
+    studies: [
+      'Altshuler et al. (2000) Nature Genetics - PPARG Pro12Ala and T2D risk',
+      'Luan et al. (2001) BMJ - PPARG interaction with dietary fat ratio'
+    ],
+    databases: ['gnomAD v4', 'DIAGRAM Consortium']
+  },
+
+  antioxidant_capacity: {
+    snp: 'rs4880 (Ala16Val)',
+    studies: [
+      'Sutton et al. (2003) Pharmacogenetics - SOD2 polymorphism and mitochondrial targeting',
+      'Huang et al. (2005) Cancer Research - SOD2 genotype and antioxidant interactions'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  // Population-specific adaptations
+  alcohol_metabolism: {
+    snp: 'rs1229984 (ADH1B), rs671 (ALDH2)',
+    studies: [
+      'Li et al. (2009) PLoS Genetics - ADH1B selection and alcohol metabolism in East Asia',
+      'Eng et al. (2007) Gastroenterology - ALDH2 deficiency and esophageal cancer risk'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  },
+
+  arctic_fat_metabolism: {
+    snp: 'rs80356779 (P479L)',
+    studies: [
+      'Clemente et al. (2014) AJHG - CPT1A P479L Arctic adaptation for high-fat diet',
+      'Lemas et al. (2012) Molecular Genetics and Metabolism - CPT1A variant in Inuit populations'
+    ],
+    databases: ['gnomAD v4', 'Population-specific studies']
+  },
+
+  polynesian_energy_storage: {
+    snp: 'rs373863828',
+    studies: [
+      'Minster et al. (2016) Nature Genetics - CREBRF missense variant in Samoans (1.4x obesity risk)',
+      'Krishnan et al. (2018) Nature Communications - CREBRF affects adipocyte energy storage'
+    ],
+    databases: ['gnomAD v4', 'PAGE Study']
+  },
+
+  altitude_adaptation_epas1: {
+    gene: 'EPAS1',
+    studies: [
+      'Yi et al. (2010) Science - EPAS1 Tibetan adaptation from Denisovan introgression',
+      'Huerta-Sánchez et al. (2014) Nature - EPAS1 haplotype and high-altitude adaptation'
+    ],
+    databases: ['gnomAD v4', 'Archaic hominin genome databases']
+  },
+
+  // Detoxification enzymes (gene deletions)
+  cruciferous_metabolism_gstm1: {
+    gene: 'GSTM1 (deletion polymorphism)',
+    studies: [
+      'Strange et al. (2001) Mutation Research - GSTM1 null polymorphism and cancer susceptibility meta-analysis',
+      'Gasper et al. (2005) American Journal of Clinical Nutrition - GSTM1 genotype modifies isothiocyanate metabolism from cruciferous vegetables'
+    ],
+    databases: ['Population meta-analyses', 'Literature compilations']
+  },
+
+  cruciferous_metabolism_gstt1: {
+    gene: 'GSTT1 (deletion polymorphism)',
+    studies: [
+      'Seow et al. (2005) Carcinogenesis - GSTT1-functional individuals show 30% reduced MI risk from cruciferous vegetable intake',
+      'Lampe et al. (2000) Cancer Epidemiology Biomarkers - GST genotypes modify cruciferous vegetable associations with cancer risk'
+    ],
+    databases: ['Population meta-analyses', 'Literature compilations']
+  },
+
+  // East Asian adaptation
+  edar_adaptation: {
+    snp: 'rs3827760 (V370A)',
+    studies: [
+      'Kamberov et al. (2013) Cell - EDAR V370A increases eccrine gland density and affects hair/tooth morphology',
+      'Tan et al. (2013) Molecular Biology and Evolution - EDAR selection in East Asian populations ~30,000 years ago'
+    ],
+    databases: ['gnomAD v4', '1000 Genomes Phase 3']
+  }
+};
+
+/**
+ * Get sources for a specific gene
+ * @param {string} geneKey - The gene key
+ * @returns {Object|null} Source entry or null
+ */
+function getGeneSources(geneKey) {
+  return GENE_SOURCES[geneKey] || null;
+}
+
+/**
+ * Render the Sources & References section
+ * @param {Object} mendelianGenetics - The calculated genetic data (to know which traits to cite)
+ * @returns {string} HTML for the sources section
+ */
+function renderSourcesSection(mendelianGenetics) {
+  if (!mendelianGenetics) return '';
+
+  // Collect all genes that were displayed in results
+  const displayedGenes = new Set();
+
+  // Core traits that are always calculated
+  displayedGenes.add('lactase_persistence');
+  displayedGenes.add('starch_digestion');
+  displayedGenes.add('pufa_metabolism');
+  displayedGenes.add('vitamin_d_metabolism');
+
+  // Add any generic genes that were calculated
+  if (mendelianGenetics.generic) {
+    Object.keys(mendelianGenetics.generic).forEach(gene => {
+      displayedGenes.add(gene);
+    });
+  }
+
+  // Add population-specific adaptations
+  if (mendelianGenetics.populationSpecific) {
+    mendelianGenetics.populationSpecific.forEach(adaptation => {
+      if (adaptation.gene) {
+        displayedGenes.add(adaptation.gene);
+      }
+    });
+  }
+
+  // Build citations HTML
+  const citations = [];
+  const databases = new Set();
+
+  displayedGenes.forEach(geneKey => {
+    const sources = GENE_SOURCES[geneKey];
+    if (sources) {
+      const meta = GENE_META[geneKey];
+      const glossary = GENE_GLOSSARY[geneKey];
+      const title = meta?.title || glossary?.term || geneKey;
+
+      if (sources.studies) {
+        sources.studies.forEach(study => {
+          citations.push({ gene: title, citation: study });
+        });
+      }
+
+      if (sources.databases) {
+        sources.databases.forEach(db => databases.add(db));
+      }
+    }
+  });
+
+  if (citations.length === 0) return '';
+
+  // Group citations by first author's last name for cleaner display
+  const sortedCitations = citations.sort((a, b) =>
+    a.citation.localeCompare(b.citation)
+  );
+
+  let html = `
+    <div class="sources-section collapsible">
+      <div class="sources-header" onclick="toggleSourcesSection(this)">
+        <h3>Sources & References</h3>
+        <span class="sources-count">${sortedCitations.length} citations</span>
+        <span class="sources-expand-icon">▼</span>
+      </div>
+      <div class="sources-content">
+        <p class="sources-intro">The genetic traits shown above are based on peer-reviewed research and population genetics databases.</p>
+
+        <div class="sources-list">
+          <h4>Key Studies</h4>
+          <ul class="citation-list">
+            ${sortedCitations.map(c => `<li><span class="citation-gene">${c.gene}:</span> ${c.citation}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="sources-databases">
+          <h4>Population Data Sources</h4>
+          <p>${Array.from(databases).sort().join(', ')}</p>
+        </div>
+
+        <p class="sources-note">
+          Population allele frequencies used in calculations are derived from these databases and may not reflect individual genetic variation.
+          For personal genetic information, consult a certified genetic counselor or healthcare provider.
+        </p>
+      </div>
+    </div>
+  `;
+
+  return html;
+}
+
+/**
+ * Get glossary entry for a gene
+ * @param {string} geneKey - The gene key
+ * @returns {Object|null} Glossary entry or null
+ */
+function getGlossaryEntry(geneKey) {
+  // Map legacy keys to glossary keys
+  const keyMap = {
+    lactase: 'lactase_persistence',
+    amy1: 'starch_digestion',
+    fads: 'pufa_metabolism',
+    slc24a5: 'vitamin_d_metabolism',
+    aldh2: 'alcohol_metabolism',
+    crebrf: 'polynesian_energy_storage',
+    cpt1a: 'arctic_fat_metabolism',
+    altitude: 'altitude_adaptation_epas1'
+  };
+
+  const lookupKey = keyMap[geneKey] || geneKey;
+  return GENE_GLOSSARY[lookupKey] || null;
+}
+
+/**
+ * Render a glossary info icon with click-to-open popover
+ * @param {string} geneKey - The gene key
+ * @returns {string} HTML for the info icon
+ */
+function renderGlossaryIcon(geneKey) {
+  const entry = getGlossaryEntry(geneKey);
+  if (!entry) return '';
+
+  // Escape quotes for data attributes
+  const escapedDef = entry.definition.replace(/"/g, '&quot;');
+  const escapedTerm = entry.term.replace(/"/g, '&quot;');
+
+  return `<span class="glossary-icon"
+    data-gene-key="${geneKey}"
+    data-term="${escapedTerm}"
+    data-definition="${escapedDef}"
+    data-gene="${entry.gene}"
+    data-inheritance="${entry.inheritance}"
+    onclick="showGenePopover(event, this)">ℹ️</span>`;
+}
+
+/**
+ * Show gene info popover
+ */
+function showGenePopover(event, iconElement) {
+  event.stopPropagation();
+
+  // Remove any existing popover
+  closeGenePopover();
+
+  const term = iconElement.dataset.term;
+  const definition = iconElement.dataset.definition;
+  const gene = iconElement.dataset.gene;
+  const inheritance = iconElement.dataset.inheritance;
+
+  // Create popover element
+  const popover = document.createElement('div');
+  popover.className = 'gene-popover';
+  popover.innerHTML = `
+    <div class="gene-popover-header">
+      <span class="gene-popover-title">${term}</span>
+      <button class="gene-popover-close" onclick="closeGenePopover()">&times;</button>
+    </div>
+    <div class="gene-popover-body">
+      <p class="gene-popover-definition">${definition}</p>
+      <div class="gene-popover-details">
+        <div class="gene-popover-detail">
+          <span class="detail-label">Gene:</span>
+          <span class="detail-value">${gene}</span>
+        </div>
+        <div class="gene-popover-detail">
+          <span class="detail-label">Inheritance:</span>
+          <span class="detail-value">${inheritance}</span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(popover);
+
+  // Position the popover near the icon
+  const iconRect = iconElement.getBoundingClientRect();
+  const popoverRect = popover.getBoundingClientRect();
+
+  let top = iconRect.bottom + 8 + window.scrollY;
+  let left = iconRect.left + (iconRect.width / 2) - (popoverRect.width / 2) + window.scrollX;
+
+  // Keep within viewport
+  if (left < 10) left = 10;
+  if (left + popoverRect.width > window.innerWidth - 10) {
+    left = window.innerWidth - popoverRect.width - 10;
+  }
+
+  // If would go below viewport, show above instead
+  if (top + popoverRect.height > window.innerHeight + window.scrollY - 10) {
+    top = iconRect.top - popoverRect.height - 8 + window.scrollY;
+  }
+
+  popover.style.top = `${top}px`;
+  popover.style.left = `${left}px`;
+
+  // Mark icon as active
+  iconElement.classList.add('active');
+
+  // Close on click outside (after a brief delay to prevent immediate close)
+  setTimeout(() => {
+    document.addEventListener('click', closeGenePopoverOnClickOutside);
+  }, 10);
+}
+
+/**
+ * Close gene popover
+ */
+function closeGenePopover() {
+  const existingPopover = document.querySelector('.gene-popover');
+  if (existingPopover) {
+    existingPopover.remove();
+  }
+
+  // Remove active state from icons
+  document.querySelectorAll('.glossary-icon.active').forEach(icon => {
+    icon.classList.remove('active');
+  });
+
+  document.removeEventListener('click', closeGenePopoverOnClickOutside);
+}
+
+/**
+ * Close popover when clicking outside
+ */
+function closeGenePopoverOnClickOutside(event) {
+  const popover = document.querySelector('.gene-popover');
+  if (popover && !popover.contains(event.target) && !event.target.classList.contains('glossary-icon')) {
+    closeGenePopover();
+  }
+}
 
 /**
  * Gene metadata for display - add new genes here
@@ -877,15 +1893,391 @@ function renderGeneticAdaptations(diet) {
 }
 
 /**
+ * Analyze genetic traits and categorize as strengths or things to watch
+ * @param {Object} genetics - The Mendelian genetics results
+ * @returns {Object} { strengths: [], watchItems: [] }
+ */
+function analyzeGeneticTraits(genetics) {
+  if (!genetics) return { strengths: [], watchItems: [] };
+
+  const strengths = [];
+  const watchItems = [];
+
+  // Legacy key mappings
+  const legacyKeyMap = {
+    lactase: 'lactase_persistence',
+    amy1: 'starch_digestion',
+    fads: 'pufa_metabolism',
+    slc24a5: 'vitamin_d_metabolism',
+    aldh2: 'alcohol_metabolism',
+    crebrf: 'polynesian_energy_storage',
+    cpt1a: 'arctic_fat_metabolism'
+  };
+
+  Object.keys(genetics).forEach(key => {
+    const trait = genetics[key];
+    const metaKey = legacyKeyMap[key] || key;
+    const meta = trait._meta || GENE_META[metaKey] || { icon: '🧬', title: key };
+
+    // Analyze each trait type
+    if (key === 'lactase') {
+      if (trait.probability >= 0.7) {
+        strengths.push({
+          icon: '🥛',
+          title: 'Strong Dairy Tolerance',
+          detail: `${(trait.probability * 100).toFixed(0)}% lactase persistence - dairy is well-suited to your genetics`
+        });
+      } else if (trait.probability < 0.4) {
+        watchItems.push({
+          icon: '🥛',
+          title: 'Dairy Sensitivity Likely',
+          detail: 'Consider fermented dairy (yogurt, kefir) or lactose-free options'
+        });
+      }
+    }
+
+    else if (key === 'amy1') {
+      if (trait.copies >= 8) {
+        strengths.push({
+          icon: '🌾',
+          title: 'Excellent Starch Digestion',
+          detail: `${trait.copies.toFixed(0)} AMY1 copies - you digest starches efficiently`
+        });
+      } else if (trait.copies < 5) {
+        watchItems.push({
+          icon: '🌾',
+          title: 'Lower Starch Tolerance',
+          detail: 'Consider moderating refined carbohydrates and grains'
+        });
+      }
+    }
+
+    else if (key === 'fads') {
+      if (trait.efficiency >= 70) {
+        strengths.push({
+          icon: '🐟',
+          title: 'Efficient Omega-3 Conversion',
+          detail: 'Plant omega-3s (flax, chia, walnuts) convert well for you'
+        });
+      } else if (trait.efficiency < 40) {
+        watchItems.push({
+          icon: '🐟',
+          title: 'Limited Omega-3 Conversion',
+          detail: 'Prioritize direct marine sources (fatty fish, fish oil) over plant sources'
+        });
+      }
+    }
+
+    else if (key === 'caffeine_metabolism') {
+      const freq = trait.frequency || 0;
+      if (freq < 30) {
+        strengths.push({
+          icon: '☕',
+          title: 'Fast Caffeine Metabolizer',
+          detail: 'You clear caffeine quickly - moderate coffee intake is fine'
+        });
+      } else if (freq >= 50) {
+        watchItems.push({
+          icon: '☕',
+          title: 'Slow Caffeine Metabolizer',
+          detail: 'Limit caffeine to mornings; may affect sleep and blood pressure'
+        });
+      }
+    }
+
+    else if (key === 'saturated_fat_response') {
+      const freq = trait.frequency || 0;
+      if (freq >= 35) {
+        watchItems.push({
+          icon: '🥓',
+          title: 'Saturated Fat Sensitivity',
+          detail: 'Your genetics suggest keeping saturated fat below 22g/day'
+        });
+      }
+    }
+
+    else if (key === 'folate_metabolism') {
+      const freq = trait.frequency || 0;
+      if (freq >= 40) {
+        watchItems.push({
+          icon: '🥬',
+          title: 'Reduced Folate Processing',
+          detail: 'Consider methylfolate supplements and folate-rich foods (leafy greens, legumes)'
+        });
+      }
+    }
+
+    else if (key === 'iron_metabolism') {
+      const freq = trait.frequency || 0;
+      if (freq >= 5) {
+        watchItems.push({
+          icon: '🩸',
+          title: 'Iron Accumulation Risk',
+          detail: 'Monitor iron intake; limit red meat and avoid iron supplements unless prescribed'
+        });
+      }
+    }
+
+    else if (key === 'glucose_metabolism') {
+      const freq = trait.frequency || 0;
+      if (freq >= 25) {
+        watchItems.push({
+          icon: '🍬',
+          title: 'Blood Sugar Sensitivity',
+          detail: 'Focus on weight management and Mediterranean-style eating'
+        });
+      }
+    }
+
+    else if (key === 'obesity_risk') {
+      const freq = trait.frequency || 0;
+      if (freq >= 40) {
+        watchItems.push({
+          icon: '⚖️',
+          title: 'Higher Obesity Risk',
+          detail: 'Physical activity is especially important for your genetics'
+        });
+      }
+    }
+
+    else if (key === 'salt_sensitivity' || key === 'salt_sensitive_hypertension') {
+      const freq = trait.frequency || 0;
+      if (freq >= 60) {
+        watchItems.push({
+          icon: '🧂',
+          title: 'Salt Sensitive',
+          detail: 'Keep sodium under 2,000mg/day; increase potassium-rich foods'
+        });
+      }
+    }
+
+    else if (key === 'beta_carotene_conversion') {
+      const freq = trait.frequency || 0;
+      if (freq >= 40) {
+        watchItems.push({
+          icon: '🥕',
+          title: 'Poor Vitamin A Conversion',
+          detail: 'Don\'t rely solely on carrots/sweet potatoes; include eggs, fish, or liver'
+        });
+      }
+    }
+
+    else if (key === 'bitter_taste_perception') {
+      const freq = trait.frequency || 0;
+      if (freq >= 55) {
+        watchItems.push({
+          icon: '🥦',
+          title: 'Supertaster',
+          detail: 'Bitter vegetables (broccoli, kale) may taste intense - try roasting or adding fats'
+        });
+      }
+    }
+
+    else if (key === 'celiac_susceptibility') {
+      const freq = trait.frequency || 0;
+      if (freq >= 15) {
+        watchItems.push({
+          icon: '🌾',
+          title: 'Celiac Susceptibility',
+          detail: 'If you have GI symptoms, consider celiac testing'
+        });
+      }
+    }
+
+    else if (key === 'aldh2' || key === 'alcohol_metabolism') {
+      if (trait.probability !== undefined && trait.probability < 0.5) {
+        watchItems.push({
+          icon: '🍺',
+          title: 'Alcohol Flush Response',
+          detail: 'Likely to experience facial flushing with alcohol; increased health risks with heavy drinking'
+        });
+      }
+    }
+
+    else if (key === 'vitamin_d_transport') {
+      const freq = trait.frequency || 0;
+      if (freq >= 25) {
+        watchItems.push({
+          icon: '💊',
+          title: 'Vitamin D Non-Responder Risk',
+          detail: 'May need higher vitamin D doses; monitor levels when supplementing'
+        });
+      }
+    }
+
+    // Check for population-specific adaptations as strengths
+    else if (key === 'cpt1a' || key === 'arctic_fat_metabolism') {
+      if (trait.probability && trait.probability > 0.3) {
+        strengths.push({
+          icon: '🧊',
+          title: 'Arctic Fat Adaptation',
+          detail: 'Your metabolism is optimized for high-fat, low-carb diets'
+        });
+      }
+    }
+
+    else if (key === 'altitude' || key === 'altitude_adaptation_epas1') {
+      if (trait.probability && trait.probability > 0.3) {
+        strengths.push({
+          icon: '🏔️',
+          title: 'High-Altitude Adaptation',
+          detail: 'Better oxygen efficiency at high elevations'
+        });
+      }
+    }
+  });
+
+  // Limit to top 3 each
+  return {
+    strengths: strengths.slice(0, 3),
+    watchItems: watchItems.slice(0, 3)
+  };
+}
+
+/**
+ * Render the Key Takeaways summary section
+ * @param {Object} genetics - The Mendelian genetics results
+ * @returns {string} HTML for the key takeaways section
+ */
+function renderKeyTakeaways(genetics) {
+  if (!genetics) return '';
+
+  const { strengths, watchItems } = analyzeGeneticTraits(genetics);
+
+  // Need at least one item to show the section
+  if (strengths.length === 0 && watchItems.length === 0) return '';
+
+  let html = `
+    <div class="key-takeaways">
+      <h3>📋 Key Takeaways</h3>
+      <div class="takeaways-grid">
+  `;
+
+  if (strengths.length > 0) {
+    html += `
+        <div class="takeaways-column strengths">
+          <h4>✅ Your Genetic Strengths</h4>
+          <ul>
+            ${strengths.map(s => `
+              <li>
+                <span class="takeaway-icon">${s.icon}</span>
+                <div class="takeaway-content">
+                  <strong>${s.title}</strong>
+                  <span>${s.detail}</span>
+                </div>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+    `;
+  }
+
+  if (watchItems.length > 0) {
+    html += `
+        <div class="takeaways-column watch-items">
+          <h4>⚠️ Things to Watch</h4>
+          <ul>
+            ${watchItems.map(w => `
+              <li>
+                <span class="takeaway-icon">${w.icon}</span>
+                <div class="takeaway-content">
+                  <strong>${w.title}</strong>
+                  <span>${w.detail}</span>
+                </div>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+    `;
+  }
+
+  html += `
+      </div>
+    </div>
+  `;
+
+  return html;
+}
+
+/**
+ * Get meter value and status label for a genetic trait
+ */
+function getTraitMeterInfo(key, trait) {
+  let value = 0;
+  let statusLabel = '';
+  let statusClass = '';
+
+  if (key === 'amy1') {
+    // AMY1 copies: 2-16 range, 6 is average
+    value = Math.min(100, (trait.copies / 10) * 100);
+    if (trait.copies >= 7) {
+      statusLabel = 'High';
+      statusClass = 'high';
+    } else if (trait.copies >= 4) {
+      statusLabel = 'Moderate';
+      statusClass = 'moderate';
+    } else {
+      statusLabel = 'Low';
+      statusClass = 'low';
+    }
+  } else if (key === 'fads') {
+    value = trait.efficiency;
+    if (trait.efficiency >= 70) {
+      statusLabel = 'Efficient';
+      statusClass = 'high';
+    } else if (trait.efficiency >= 40) {
+      statusLabel = 'Moderate';
+      statusClass = 'moderate';
+    } else {
+      statusLabel = 'Limited';
+      statusClass = 'low';
+    }
+  } else if (trait.probability !== null && trait.probability !== undefined) {
+    value = trait.probability * 100;
+    if (value >= 70) {
+      statusLabel = 'Likely';
+      statusClass = 'high';
+    } else if (value >= 30) {
+      statusLabel = 'Possible';
+      statusClass = 'moderate';
+    } else {
+      statusLabel = 'Unlikely';
+      statusClass = 'low';
+    }
+  } else if (trait.frequency !== null && trait.frequency !== undefined) {
+    value = trait.frequency;
+    if (value >= 50) {
+      statusLabel = 'Common';
+      statusClass = 'high';
+    } else if (value >= 20) {
+      statusLabel = 'Moderate';
+      statusClass = 'moderate';
+    } else {
+      statusLabel = 'Rare';
+      statusClass = 'low';
+    }
+  } else {
+    value = 50;
+    statusLabel = 'Variable';
+    statusClass = 'moderate';
+  }
+
+  return { value: Math.round(value), statusLabel, statusClass };
+}
+
+/**
  * Render Mendelian genetics results
  * Uses GENE_META for display - add new genes there for automatic support
+ * Displays as compact visual meters with expandable details
  */
 function renderMendelianGenetics(genetics) {
   if (!genetics || Object.keys(genetics).length === 0) return '';
 
   let html = '<div class="genetic-section">';
-  html += '<h3>🧬 Your Predicted Genetic Profile</h3>';
-  html += '<p style="font-size: 12px; color: #7f8c8d; margin-bottom: 16px; line-height: 1.5;">Based on Mendelian inheritance from your grandparents\' populations. These are probability-based predictions, not diagnostic results.</p>';
+  html += '<h3>Your Predicted Genetic Profile</h3>';
+  html += '<p style="font-size: 12px; color: #7f8c8d; margin-bottom: 16px; line-height: 1.5;">Based on Mendelian inheritance from your grandparents\' populations. Click any trait to see details.</p>';
+
+  html += '<div class="genetic-meters">';
 
   // Legacy key mappings for custom-calculated traits (key in results -> key in GENE_META)
   const legacyKeyMap = {
@@ -900,7 +2292,7 @@ function renderMendelianGenetics(genetics) {
     altitude: 'altitude_adaptation_epas1'
   };
 
-  Object.keys(genetics).forEach(key => {
+  Object.keys(genetics).forEach((key, index) => {
     const trait = genetics[key];
 
     // Get metadata: check trait._meta first (from generic calc), then GENE_META, then legacy mapping
@@ -913,6 +2305,11 @@ function renderMendelianGenetics(genetics) {
       meta = { icon: '🧬', title: key.replace(/_/g, ' ').toUpperCase(), cssClass: 'generic' };
     }
 
+    const { value, statusLabel, statusClass } = getTraitMeterInfo(key, trait);
+    const cssClass = meta.cssClass || meta.class || 'generic';
+    const glossaryIcon = renderGlossaryIcon(key);
+
+    // Build detailed probability text for expanded view
     let probabilityText = '';
     if (key === 'amy1') {
       const range = trait.copy_range ?
@@ -929,21 +2326,64 @@ function renderMendelianGenetics(genetics) {
       probabilityText = `${trait.frequency.toFixed(0)}% allele frequency`;
     }
 
-    const cssClass = meta.cssClass || meta.class || 'generic';
-
     html += `
-      <div class="genetic-trait ${cssClass}">
-        <h4>${meta.icon} ${meta.title} (${trait.inheritance})</h4>
-        <div class="phenotype">${trait.phenotype}</div>
-        ${probabilityText ? `<div class="probability">${probabilityText}</div>` : ''}
-        <div class="gene-info">${trait.explanation}</div>
-        <div class="recommendation">${trait.recommendation}</div>
+      <div class="genetic-meter-item ${cssClass}" data-trait-index="${index}">
+        <div class="meter-header" onclick="toggleTraitDetails(this)">
+          <div class="meter-info">
+            <span class="meter-icon">${meta.icon}</span>
+            <span class="meter-title">${meta.title}</span>
+          </div>
+          <div class="meter-visual">
+            <div class="meter-bar">
+              <div class="meter-fill ${statusClass}" style="width: ${value}%"></div>
+            </div>
+            <span class="meter-status ${statusClass}">${statusLabel}</span>
+          </div>
+          <span class="meter-expand-icon">▼</span>
+        </div>
+        <div class="meter-details">
+          <div class="detail-row">
+            <span class="detail-label">Result:</span>
+            <span class="detail-value">${trait.phenotype}</span>
+          </div>
+          ${probabilityText ? `
+          <div class="detail-row">
+            <span class="detail-label">Probability:</span>
+            <span class="detail-value">${probabilityText}</span>
+          </div>
+          ` : ''}
+          <div class="detail-row">
+            <span class="detail-label">Inheritance:</span>
+            <span class="detail-value">${trait.inheritance} ${glossaryIcon}</span>
+          </div>
+          <div class="detail-explanation">${trait.explanation}</div>
+          <div class="detail-recommendation">
+            <strong>Recommendation:</strong> ${trait.recommendation}
+          </div>
+        </div>
       </div>
     `;
   });
 
-  html += '</div>';
+  html += '</div>'; // .genetic-meters
+  html += '</div>'; // .genetic-section
   return html;
+}
+
+/**
+ * Toggle expanded details for a genetic trait meter
+ */
+function toggleTraitDetails(headerElement) {
+  const meterItem = headerElement.closest('.genetic-meter-item');
+  meterItem.classList.toggle('expanded');
+}
+
+/**
+ * Toggle the Sources & References section
+ */
+function toggleSourcesSection(headerElement) {
+  const sourcesSection = headerElement.closest('.sources-section');
+  sourcesSection.classList.toggle('expanded');
 }
 
 /**

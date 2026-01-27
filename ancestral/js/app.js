@@ -3,6 +3,156 @@
  */
 
 /**
+ * Toast Notification System
+ * Usage: showToast('Message here', 'success') - types: success, error, warning, info
+ */
+const ToastSystem = {
+  container: null,
+
+  init() {
+    if (this.container) return;
+    this.container = document.createElement('div');
+    this.container.id = 'toast-container';
+    document.body.appendChild(this.container);
+  },
+
+  show(message, type = 'info', duration = 3500) {
+    this.init();
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+
+    const icons = {
+      success: '✓',
+      error: '✕',
+      warning: '⚠',
+      info: 'ℹ'
+    };
+
+    toast.innerHTML = `
+      <span class="toast-icon">${icons[type] || icons.info}</span>
+      <span class="toast-message">${message}</span>
+    `;
+
+    this.container.appendChild(toast);
+
+    // Trigger animation
+    requestAnimationFrame(() => {
+      toast.classList.add('toast-visible');
+    });
+
+    // Auto-dismiss
+    setTimeout(() => {
+      toast.classList.remove('toast-visible');
+      toast.classList.add('toast-hiding');
+      setTimeout(() => toast.remove(), 300);
+    }, duration);
+
+    return toast;
+  }
+};
+
+// Convenience function
+function showToast(message, type = 'info', duration = 3500) {
+  return ToastSystem.show(message, type, duration);
+}
+
+/**
+ * Show loading overlay with optional custom message
+ * @param {string} subtitle - Optional subtitle text
+ */
+function showLoading(subtitle = 'Analyzing Mendelian inheritance...') {
+  const overlay = document.getElementById('loading-overlay');
+  const subtitleEl = document.getElementById('loading-subtitle');
+  subtitleEl.textContent = subtitle;
+  overlay.classList.add('visible');
+}
+
+/**
+ * Hide loading overlay
+ */
+function hideLoading() {
+  const overlay = document.getElementById('loading-overlay');
+  overlay.classList.remove('visible');
+}
+
+/**
+ * Update loading subtitle text
+ * @param {string} text - New subtitle text
+ */
+function updateLoadingText(text) {
+  const subtitleEl = document.getElementById('loading-subtitle');
+  subtitleEl.textContent = text;
+}
+
+/**
+ * Show methodology modal
+ */
+function showMethodologyModal() {
+  const modal = document.getElementById('methodology-modal');
+  modal.classList.add('visible');
+  document.body.style.overflow = 'hidden'; // Prevent background scroll
+}
+
+/**
+ * Hide methodology modal
+ */
+function hideMethodologyModal() {
+  const modal = document.getElementById('methodology-modal');
+  modal.classList.remove('visible');
+  document.body.style.overflow = ''; // Restore scroll
+}
+
+/**
+ * Export results as an image
+ */
+async function exportResultsAsImage() {
+  const btn = document.getElementById('export-results-btn');
+  const content = document.getElementById('diet-content');
+
+  if (!content || !window.html2canvas) {
+    showToast('Export not available. Please try again.', 'error');
+    return;
+  }
+
+  // Update button state
+  btn.classList.add('exporting');
+  const originalText = btn.querySelector('.export-text').textContent;
+  btn.querySelector('.export-text').textContent = 'Saving...';
+
+  try {
+    // Create canvas from content
+    const canvas = await html2canvas(content, {
+      backgroundColor: '#000000',
+      scale: 2, // Higher quality
+      logging: false,
+      useCORS: true,
+      allowTaint: true
+    });
+
+    // Convert to blob and download
+    canvas.toBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = `ancestral-diet-${new Date().toISOString().slice(0, 10)}.png`;
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+
+      // Reset button
+      btn.classList.remove('exporting');
+      btn.querySelector('.export-text').textContent = originalText;
+      showToast('Image saved to downloads!', 'success');
+    }, 'image/png');
+  } catch (error) {
+    console.error('Export failed:', error);
+    showToast('Failed to export results. Please try again.', 'error');
+    btn.classList.remove('exporting');
+    btn.querySelector('.export-text').textContent = originalText;
+  }
+}
+
+/**
  * Initialize the application
  */
 async function init() {
@@ -125,6 +275,28 @@ function setupEventHandlers() {
     ]);
     clearUserDiet();
   });
+
+  // Export results button
+  document.getElementById('export-results-btn').addEventListener('click', exportResultsAsImage);
+
+  // Methodology modal buttons
+  document.getElementById('methodology-btn').addEventListener('click', showMethodologyModal);
+  document.getElementById('methodology-footer-btn').addEventListener('click', showMethodologyModal);
+  document.getElementById('methodology-close').addEventListener('click', hideMethodologyModal);
+
+  // Close modal on overlay click
+  document.getElementById('methodology-modal').addEventListener('click', (e) => {
+    if (e.target.id === 'methodology-modal') {
+      hideMethodologyModal();
+    }
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      hideMethodologyModal();
+    }
+  });
 }
 
 /**
@@ -154,62 +326,86 @@ function handleFamilyCalculate() {
   const numSelected = selectedNationalityIds.filter(id => id !== '').length;
 
   if (numSelected === 0) {
-    alert('Please select at least one grandparent ancestry');
+    showToast('Please select at least one grandparent ancestry', 'warning');
     return;
   }
 
-  // Convert nationality IDs to region IDs for diet lookup
-  const grandparentDiets = selectedNationalityIds.map(id => {
-    if (!id) return null;
-    const regionId = getRegionIdFromNationality(id);
-    return regionId ? getDietById(regionId) : null;
-  });
-
-  // Get region IDs for diet blending
-  const regionIds = selectedNationalityIds
-    .filter(id => id !== '')
-    .map(id => getRegionIdFromNationality(id))
-    .filter(id => id !== null);
-
-  // Save user's family tree selections (using nationality IDs for proper restoration)
-  saveUserFamilyTree({
-    mgm: selectedNationalityIds[0] || null,
-    mgf: selectedNationalityIds[1] || null,
-    pgm: selectedNationalityIds[2] || null,
-    pgf: selectedNationalityIds[3] || null
-  });
-
-  // Show results area
-  showResults();
-
-  if (numSelected === 4) {
-    // Use Mendelian genetics
-    const mendelianGenetics = calculateMendelianGenetics(grandparentDiets);
-    const weights = [0.25, 0.25, 0.25, 0.25];
-    const blended = blendDiets(regionIds, weights);
-    showBlendedDietWithMendelian(blended, mendelianGenetics);
-
-    // Save calculated diet and update profile
-    saveUserDiet({ type: 'mendelian', blended, mendelianGenetics });
-    updateProfileUI();
-  } else {
-    // Fallback: weighted averaging
+  // For partial selection, confirm first before showing loading
+  if (numSelected !== 4) {
     const confirm = window.confirm(
       `You've selected ${numSelected} out of 4 grandparents.\n\n` +
       `For the most accurate genetic predictions, we recommend selecting all 4 grandparents.\n\n` +
       `Continue with ${numSelected} grandparent${numSelected > 1 ? 's' : ''}?`
     );
     if (!confirm) return;
-
-    const weight = 1.0 / numSelected;
-    const weights = new Array(numSelected).fill(weight);
-    const blended = blendDiets(regionIds, weights);
-    showBlendedDiet(blended);
-
-    // Save calculated diet and update profile
-    saveUserDiet({ type: 'blended', blended });
-    updateProfileUI();
   }
+
+  // Show loading overlay
+  showLoading(numSelected === 4 ? 'Calculating Mendelian inheritance...' : 'Blending dietary traditions...');
+
+  // Use setTimeout to allow the loading overlay to render
+  setTimeout(() => {
+    // Convert nationality IDs to region IDs for diet lookup
+    const grandparentDiets = selectedNationalityIds.map(id => {
+      if (!id) return null;
+      const regionId = getRegionIdFromNationality(id);
+      return regionId ? getDietById(regionId) : null;
+    });
+
+    // Get region IDs for diet blending
+    const regionIds = selectedNationalityIds
+      .filter(id => id !== '')
+      .map(id => getRegionIdFromNationality(id))
+      .filter(id => id !== null);
+
+    // Save user's family tree selections (using nationality IDs for proper restoration)
+    saveUserFamilyTree({
+      mgm: selectedNationalityIds[0] || null,
+      mgf: selectedNationalityIds[1] || null,
+      pgm: selectedNationalityIds[2] || null,
+      pgf: selectedNationalityIds[3] || null
+    });
+
+    // Update loading text
+    updateLoadingText('Analyzing genetic traits...');
+
+    setTimeout(() => {
+      if (numSelected === 4) {
+        // Use Mendelian genetics
+        const mendelianGenetics = calculateMendelianGenetics(grandparentDiets);
+
+        updateLoadingText('Building personalized recommendations...');
+
+        setTimeout(() => {
+          const weights = [0.25, 0.25, 0.25, 0.25];
+          const blended = blendDiets(regionIds, weights);
+
+          // Show results area and hide loading
+          showResults();
+          showBlendedDietWithMendelian(blended, mendelianGenetics);
+          hideLoading();
+
+          // Save calculated diet and update profile
+          saveUserDiet({ type: 'mendelian', blended, mendelianGenetics });
+          updateProfileUI();
+        }, 200);
+      } else {
+        // Fallback: weighted averaging
+        const weight = 1.0 / numSelected;
+        const weights = new Array(numSelected).fill(weight);
+        const blended = blendDiets(regionIds, weights);
+
+        // Show results area and hide loading
+        showResults();
+        showBlendedDiet(blended);
+        hideLoading();
+
+        // Save calculated diet and update profile
+        saveUserDiet({ type: 'blended', blended });
+        updateProfileUI();
+      }
+    }, 300);
+  }, 100);
 }
 
 /**
@@ -239,28 +435,39 @@ function handleDNACalculate() {
   });
 
   if (regionIds.length === 0) {
-    alert('Please select at least one ancestry and enter percentages');
+    showToast('Please select at least one ancestry and enter percentages', 'warning');
     return;
   }
 
   const total = weights.reduce((sum, w) => sum + w, 0);
   if (Math.abs(total - 1.0) > 0.01) {
-    alert('Percentages must total 100%');
+    showToast('Percentages must total 100%', 'warning');
     return;
   }
 
-  // Save user's DNA test selections (using nationality IDs for proper restoration)
-  saveUserDNATest(dnaSelections);
+  // Show loading overlay
+  showLoading('Blending dietary traditions...');
 
-  // Show results area
-  showResults();
+  // Use setTimeout to allow the loading overlay to render
+  setTimeout(() => {
+    // Save user's DNA test selections (using nationality IDs for proper restoration)
+    saveUserDNATest(dnaSelections);
 
-  const blended = blendDiets(regionIds, weights);
-  showBlendedDiet(blended);
+    updateLoadingText('Building personalized recommendations...');
 
-  // Save calculated diet and update profile
-  saveUserDiet({ type: 'dna', blended });
-  updateProfileUI();
+    setTimeout(() => {
+      const blended = blendDiets(regionIds, weights);
+
+      // Show results area and hide loading
+      showResults();
+      showBlendedDiet(blended);
+      hideLoading();
+
+      // Save calculated diet and update profile
+      saveUserDiet({ type: 'dna', blended });
+      updateProfileUI();
+    }, 300);
+  }, 100);
 }
 
 // Initialize on load
