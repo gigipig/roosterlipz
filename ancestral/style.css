@@ -182,6 +182,113 @@ body {
   color: #b3b3b3;
 }
 
+/* Header Menu Dropdown */
+.header-menu {
+  position: relative;
+  margin-left: auto;
+}
+
+.header-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #444;
+}
+
+.header-menu-btn.active {
+  background: rgba(29, 185, 84, 0.1);
+  border-color: #1db954;
+}
+
+.menu-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.header-menu-btn.active .menu-arrow {
+  transform: rotate(180deg);
+}
+
+.header-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 6px;
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.header-dropdown.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.dropdown-item:active {
+  background: rgba(29, 185, 84, 0.15);
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .header-menu-btn span:first-child {
+    font-size: 18px;
+  }
+
+  .header-menu-btn .menu-arrow {
+    display: none;
+  }
+
+  .header-menu-btn {
+    padding: 8px 10px;
+  }
+}
+
 /* Main Content Layout */
 .main-content {
   flex: 1;
@@ -2715,4 +2822,264 @@ body {
     padding: 10px 20px;
     font-size: 13px;
   }
+}
+
+/* ============================================================================
+   Nutrient Gap Analysis Section
+   ============================================================================ */
+.nutrient-gap-section {
+  margin: 24px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid #2a3a5a;
+}
+
+.nutrient-gap-section h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.nutrient-gap-intro {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.nutrient-gap-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nutrient-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.nutrient-row-header {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: #888;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nutrient-name {
+  flex: 0 0 180px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nutrient-row-header .nutrient-name {
+  color: #888;
+  font-weight: 600;
+}
+
+.nutrient-standard {
+  flex: 0 0 90px;
+  color: #888;
+  text-align: center;
+}
+
+.nutrient-arrow-col {
+  flex: 0 0 30px;
+  text-align: center;
+}
+
+.nutrient-arrow {
+  flex: 0 0 30px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.nutrient-arrow.increase {
+  color: #1db954;
+}
+
+.nutrient-arrow.decrease {
+  color: #ff6b6b;
+}
+
+.nutrient-arrow.change {
+  color: #ffd93d;
+}
+
+.nutrient-modified {
+  flex: 0 0 120px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.nutrient-arrow.increase + .nutrient-modified,
+.nutrient-row:has(.nutrient-arrow.increase) .nutrient-modified {
+  color: #1db954;
+}
+
+.nutrient-row:has(.nutrient-arrow.decrease) .nutrient-modified {
+  color: #ff6b6b;
+}
+
+.nutrient-row:has(.nutrient-arrow.change) .nutrient-modified {
+  color: #ffd93d;
+}
+
+.nutrient-reason {
+  flex: 1;
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .nutrient-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nutrient-name {
+    flex: 1 1 100%;
+  }
+
+  .nutrient-standard,
+  .nutrient-modified {
+    flex: 0 0 auto;
+  }
+
+  .nutrient-reason {
+    flex: 1 1 100%;
+    margin-top: 4px;
+  }
+}
+
+/* ============================================================================
+   Daily Guidelines Section
+   ============================================================================ */
+.daily-guidelines {
+  margin: 24px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #1a2a1a 0%, #162316 100%);
+  border-radius: 12px;
+  border: 1px solid #2d5a2d;
+}
+
+.daily-guidelines h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.daily-guidelines-intro {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.daily-guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .daily-guidelines-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.meal-period-card {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.meal-period-card h4 {
+  font-size: 15px;
+  color: #fff;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timing-notes {
+  margin-bottom: 10px;
+}
+
+.timing-icon {
+  margin-right: 4px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+.prefer-label {
+  background: rgba(29, 185, 84, 0.2);
+  color: #1db954;
+}
+
+.limit-label {
+  background: rgba(240, 173, 78, 0.2);
+  color: #f0ad4e;
+}
+
+.prefer-section,
+.limit-section {
+  margin-bottom: 10px;
+}
+
+.prefer-list,
+.limit-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.guideline-food {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.guideline-food.prefer {
+  background: rgba(29, 185, 84, 0.15);
+  color: #1db954;
+  border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+.guideline-food.limit {
+  background: rgba(240, 173, 78, 0.15);
+  color: #f0ad4e;
+  border: 1px solid rgba(240, 173, 78, 0.3);
+}
+
+.guideline-note {
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 4px;
 }

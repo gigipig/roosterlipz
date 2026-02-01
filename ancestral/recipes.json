@@ -1,0 +1,348 @@
+{
+  "version": "1.0",
+  "note": "Ancestral recipe database. Each entry is keyed by culture ID (matching diets.json). Recipes emphasize traditional, whole-food preparation methods aligned with ancestral dietary patterns and genetic adaptations.",
+  "schema": {
+    "id": "Unique recipe identifier: {culture_id}_{index}",
+    "culture_id": "References diets.json culture ID",
+    "name": "Recipe name",
+    "description": "Brief description of the dish and its ancestral significance",
+    "category": "One of: staple | protein | side | soup_stew | fermented | snack | beverage",
+    "ingredients": [
+      {
+        "item": "Ingredient name (should match diets.json food items where possible)",
+        "amount": "Quantity string, e.g. '2 cups', '500g'",
+        "note": "Optional: substitution or sourcing tip"
+      }
+    ],
+    "instructions": ["Step-by-step preparation as array of strings"],
+    "prep_time_min": "Estimated prep time in minutes",
+    "cook_time_min": "Estimated cook time in minutes",
+    "servings": "Number of servings",
+    "genetic_tags": ["Array of genetic trait IDs from genetics.json, e.g. 'lactase_persistence', 'starch_digestion', 'pufa_metabolism'"],
+    "dietary_flags": ["Array: 'dairy-free', 'gluten-free', 'high-protein', 'high-fiber', 'fermented', 'anti-inflammatory', 'low-carb'"],
+    "health_benefits": "Short note on nutritional/health relevance tied to ancestral adaptation",
+    "modern_substitutes": { "traditional_ingredient": "modern alternative" },
+    "source_tradition": "Brief anthropological context for the dish"
+  },
+  "cultures": [
+    {
+      "culture_id": "aboriginal_aus",
+      "recipes": [
+        {
+          "id": "aboriginal_aus_1",
+          "name": "Roasted Kangaroo with Native Herbs",
+          "description": "Lean game roasted with bush herbs — a staple protein of Aboriginal Australian diets for tens of thousands of years.",
+          "category": "protein",
+          "ingredients": [
+            { "item": "kangaroo loin", "amount": "500g", "note": "Substitute: venison or grass-fed beef" },
+            { "item": "native pepperberry", "amount": "1 tsp", "note": "Substitute: black pepper + juniper" },
+            { "item": "lemon myrtle", "amount": "1 tsp", "note": "Substitute: lemongrass" },
+            { "item": "macadamia oil", "amount": "2 tbsp" },
+            { "item": "native tubers", "amount": "300g", "note": "Substitute: sweet potato" }
+          ],
+          "instructions": [
+            "Season kangaroo loin with pepperberry and lemon myrtle.",
+            "Sear in macadamia oil over high heat, 2 minutes per side.",
+            "Roast at 200°C (400°F) for 12-15 minutes for medium-rare.",
+            "Rest for 5 minutes before slicing.",
+            "Serve with roasted native tubers."
+          ],
+          "prep_time_min": 15,
+          "cook_time_min": 20,
+          "servings": 4,
+          "genetic_tags": ["iron_metabolism", "vitamin_d_metabolism"],
+          "dietary_flags": ["dairy-free", "gluten-free", "high-protein", "anti-inflammatory"],
+          "health_benefits": "Kangaroo is extremely lean (2% fat) and high in iron, zinc, and conjugated linoleic acid. Aligns with hunter-gatherer metabolic adaptations.",
+          "modern_substitutes": { "kangaroo": "venison or grass-fed beef", "native tubers": "sweet potato or parsnip" },
+          "source_tradition": "Aboriginal Australians have hunted kangaroo for over 50,000 years. Traditionally cooked in ground ovens or over open coals."
+        },
+        {
+          "id": "aboriginal_aus_2",
+          "name": "Smoked Fish with Bush Tomato",
+          "description": "Coastal Aboriginal preparation of smoked fish with native fruits and seeds.",
+          "category": "protein",
+          "ingredients": [
+            { "item": "fish", "amount": "4 fillets", "note": "Barramundi, snapper, or any firm white fish" },
+            { "item": "bush tomato", "amount": "2 tbsp ground", "note": "Substitute: sun-dried tomato + smoked paprika" },
+            { "item": "wattleseed", "amount": "1 tbsp", "note": "Substitute: roasted hazelnut meal" },
+            { "item": "sea salt", "amount": "1 tsp" },
+            { "item": "eucalyptus leaves", "amount": "handful", "note": "For smoking; substitute: hickory chips" }
+          ],
+          "instructions": [
+            "Rub fish fillets with ground bush tomato, wattleseed, and salt.",
+            "Cold-smoke over eucalyptus or wood chips for 20 minutes, or oven-roast at 180°C (350°F) for 15 minutes.",
+            "Serve with foraged greens or a simple salad."
+          ],
+          "prep_time_min": 10,
+          "cook_time_min": 20,
+          "servings": 4,
+          "genetic_tags": ["pufa_metabolism", "vitamin_d_metabolism"],
+          "dietary_flags": ["dairy-free", "gluten-free", "high-protein"],
+          "health_benefits": "Rich in omega-3 fatty acids and vitamin D. Smoking is one of the oldest preservation methods, retaining nutrients while adding bioavailable compounds.",
+          "modern_substitutes": { "bush tomato": "sun-dried tomato + smoked paprika", "wattleseed": "hazelnut meal" },
+          "source_tradition": "Coastal Aboriginal groups smoked fish to preserve it for inland trade and seasonal travel."
+        }
+      ]
+    },
+    {
+      "culture_id": "amazon",
+      "recipes": []
+    },
+    {
+      "culture_id": "anatolian",
+      "recipes": []
+    },
+    {
+      "culture_id": "andean",
+      "recipes": []
+    },
+    {
+      "culture_id": "arabian",
+      "recipes": []
+    },
+    {
+      "culture_id": "australian_coastal",
+      "recipes": []
+    },
+    {
+      "culture_id": "balkan",
+      "recipes": []
+    },
+    {
+      "culture_id": "bengal",
+      "recipes": []
+    },
+    {
+      "culture_id": "brazilian_coastal",
+      "recipes": []
+    },
+    {
+      "culture_id": "california_coast",
+      "recipes": []
+    },
+    {
+      "culture_id": "canadian_prairies",
+      "recipes": []
+    },
+    {
+      "culture_id": "caribbean_creole",
+      "recipes": []
+    },
+    {
+      "culture_id": "caribbean_taino",
+      "recipes": []
+    },
+    {
+      "culture_id": "caucasus",
+      "recipes": []
+    },
+    {
+      "culture_id": "central_africa",
+      "recipes": []
+    },
+    {
+      "culture_id": "central_asia",
+      "recipes": []
+    },
+    {
+      "culture_id": "central_europe",
+      "recipes": []
+    },
+    {
+      "culture_id": "eastern_europe",
+      "recipes": []
+    },
+    {
+      "culture_id": "eastern_woodlands",
+      "recipes": []
+    },
+    {
+      "culture_id": "ethiopia",
+      "recipes": []
+    },
+    {
+      "culture_id": "gaucho",
+      "recipes": []
+    },
+    {
+      "culture_id": "great_plains",
+      "recipes": []
+    },
+    {
+      "culture_id": "highland_se_asia",
+      "recipes": []
+    },
+    {
+      "culture_id": "horn_somalia",
+      "recipes": []
+    },
+    {
+      "culture_id": "inuit",
+      "recipes": []
+    },
+    {
+      "culture_id": "japan",
+      "recipes": []
+    },
+    {
+      "culture_id": "korea",
+      "recipes": []
+    },
+    {
+      "culture_id": "kurdish",
+      "recipes": []
+    },
+    {
+      "culture_id": "maasai",
+      "recipes": []
+    },
+    {
+      "culture_id": "maghreb",
+      "recipes": []
+    },
+    {
+      "culture_id": "malagasy",
+      "recipes": []
+    },
+    {
+      "culture_id": "maori",
+      "recipes": []
+    },
+    {
+      "culture_id": "med_levant",
+      "recipes": []
+    },
+    {
+      "culture_id": "med_southern",
+      "recipes": []
+    },
+    {
+      "culture_id": "melanesia",
+      "recipes": []
+    },
+    {
+      "culture_id": "mesoamerica",
+      "recipes": []
+    },
+    {
+      "culture_id": "mesopotamian",
+      "recipes": []
+    },
+    {
+      "culture_id": "mestizo_mesoamerican",
+      "recipes": []
+    },
+    {
+      "culture_id": "micronesia",
+      "recipes": []
+    },
+    {
+      "culture_id": "mongolia",
+      "recipes": []
+    },
+    {
+      "culture_id": "nepal",
+      "recipes": []
+    },
+    {
+      "culture_id": "nile_valley",
+      "recipes": []
+    },
+    {
+      "culture_id": "nilotic",
+      "recipes": []
+    },
+    {
+      "culture_id": "nordic",
+      "recipes": []
+    },
+    {
+      "culture_id": "north_china",
+      "recipes": []
+    },
+    {
+      "culture_id": "north_india",
+      "recipes": []
+    },
+    {
+      "culture_id": "pacific_nw",
+      "recipes": []
+    },
+    {
+      "culture_id": "patagonia",
+      "recipes": []
+    },
+    {
+      "culture_id": "persian",
+      "recipes": []
+    },
+    {
+      "culture_id": "polynesia",
+      "recipes": []
+    },
+    {
+      "culture_id": "sahel",
+      "recipes": []
+    },
+    {
+      "culture_id": "se_asia_island",
+      "recipes": []
+    },
+    {
+      "culture_id": "se_asia_main",
+      "recipes": []
+    },
+    {
+      "culture_id": "siberia",
+      "recipes": []
+    },
+    {
+      "culture_id": "sichuan_sw_china",
+      "recipes": []
+    },
+    {
+      "culture_id": "south_china",
+      "recipes": []
+    },
+    {
+      "culture_id": "south_india",
+      "recipes": []
+    },
+    {
+      "culture_id": "southeast_us",
+      "recipes": []
+    },
+    {
+      "culture_id": "southern_africa",
+      "recipes": []
+    },
+    {
+      "culture_id": "southwest_us",
+      "recipes": []
+    },
+    {
+      "culture_id": "subarctic",
+      "recipes": []
+    },
+    {
+      "culture_id": "sudanian",
+      "recipes": []
+    },
+    {
+      "culture_id": "tibet",
+      "recipes": []
+    },
+    {
+      "culture_id": "west_africa",
+      "recipes": []
+    },
+    {
+      "culture_id": "west_india",
+      "recipes": []
+    },
+    {
+      "culture_id": "western_europe",
+      "recipes": []
+    }
+  ]
+}

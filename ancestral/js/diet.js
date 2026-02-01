@@ -218,6 +218,10 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
 
     ${renderKeyTakeaways(mendelianGenetics)}
 
+    ${renderNutrientGapAnalysis(mendelianGenetics)}
+
+    ${renderDailyGuidelines(mendelianGenetics, blended)}
+
     ${renderMendelianGenetics(mendelianGenetics)}
 
     <div class="diet-section">

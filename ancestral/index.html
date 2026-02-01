@@ -91,6 +91,30 @@
       <h1>Ancestral Diet Explorer</h1>
       <p>Discover dietary patterns from your ancestry and genetics</p>
     </div>
+    <div class="header-menu">
+      <button class="header-menu-btn" id="header-menu-btn" title="Help & Info">
+        <span>ℹ</span>
+        <span class="menu-arrow">▼</span>
+      </button>
+      <div class="header-dropdown" id="header-dropdown">
+        <button class="dropdown-item" data-modal="about">
+          <span class="dropdown-icon">📖</span>
+          About
+        </button>
+        <button class="dropdown-item" data-modal="faq">
+          <span class="dropdown-icon">❓</span>
+          FAQ
+        </button>
+        <button class="dropdown-item" data-modal="methodology">
+          <span class="dropdown-icon">🧬</span>
+          How It Works
+        </button>
+        <button class="dropdown-item" data-modal="privacy">
+          <span class="dropdown-icon">🔒</span>
+          Privacy
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Main Content -->
@@ -435,6 +459,165 @@
             Our genetic data comes from peer-reviewed studies on population genetics, including research on
             lactase persistence, AMY1 copy number variation, FADS fatty acid metabolism, and population-specific
             adaptations. Dietary information is based on anthropological and archaeological research.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div class="modal-overlay" id="about-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>📖 About Ancestral Diet Explorer</h2>
+        <button class="modal-close" onclick="hideModal('about-modal')">&times;</button>
+      </div>
+      <div class="modal-content">
+        <section class="methodology-section">
+          <h3>What is this?</h3>
+          <p>
+            Ancestral Diet Explorer helps you discover dietary patterns that may align with your genetic heritage.
+            By entering your grandparents' ancestral backgrounds, we estimate genetic traits related to food
+            metabolism and suggest traditional foods from your lineage.
+          </p>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Why Grandparents?</h3>
+          <p>
+            We use grandparent ancestry because it captures genetic diversity while remaining simple.
+            Your four grandparents represent four distinct genetic lineages, allowing us to model
+            Mendelian inheritance patterns more accurately than a single "ethnicity percentage."
+          </p>
+        </section>
+
+        <section class="methodology-section">
+          <h3>What You Get</h3>
+          <ul class="limitations-list">
+            <li><strong>Genetic trait predictions:</strong> Likelihood of traits like lactose tolerance, starch digestion efficiency, and caffeine metabolism</li>
+            <li><strong>Traditional foods:</strong> Foods historically consumed by your ancestral populations</li>
+            <li><strong>Dietary insights:</strong> Personalized recommendations based on your predicted genetic profile</li>
+            <li><strong>Educational content:</strong> Learn about the science behind nutrigenomics</li>
+          </ul>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Important Note</h3>
+          <p>
+            This tool is for <strong>educational purposes only</strong>. Results are probabilistic estimates
+            based on population-level data, not actual DNA testing. For medical or dietary advice,
+            consult a healthcare professional or registered dietitian.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Modal -->
+  <div class="modal-overlay" id="faq-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>❓ Frequently Asked Questions</h2>
+        <button class="modal-close" onclick="hideModal('faq-modal')">&times;</button>
+      </div>
+      <div class="modal-content">
+        <section class="methodology-section faq-item">
+          <h3>Is this the same as a DNA test?</h3>
+          <p>
+            No. DNA tests like 23andMe analyze your actual genetic material. We use population-level
+            statistics to <em>estimate</em> what traits you might have based on where your grandparents
+            came from. Think of it as "genetic probability" rather than "genetic certainty."
+          </p>
+        </section>
+
+        <section class="methodology-section faq-item">
+          <h3>How accurate are the results?</h3>
+          <p>
+            Results reflect population averages and Mendelian inheritance probabilities. If we say
+            "75% likely lactose tolerant," it means 3 out of 4 people with your ancestral mix would
+            have this trait. Your individual genetics may differ.
+          </p>
+        </section>
+
+        <section class="methodology-section faq-item">
+          <h3>Why can't I find my specific ethnicity?</h3>
+          <p>
+            We group populations by genetic similarity and available research data. If your specific
+            group isn't listed, try selecting a geographically or culturally related population.
+            We're continuously adding more populations as research becomes available.
+          </p>
+        </section>
+
+        <section class="methodology-section faq-item">
+          <h3>Should I change my diet based on these results?</h3>
+          <p>
+            This tool is for exploration and education, not medical advice. If you're considering
+            dietary changes, especially for health conditions, consult a registered dietitian or
+            healthcare provider who can consider your complete health picture.
+          </p>
+        </section>
+
+        <section class="methodology-section faq-item">
+          <h3>Is my data saved or shared?</h3>
+          <p>
+            All calculations happen in your browser. Your ancestry selections are saved locally
+            on your device (localStorage) so you don't have to re-enter them. We don't collect,
+            store, or share any personal information.
+          </p>
+        </section>
+
+        <section class="methodology-section faq-item">
+          <h3>Can I use this if I'm adopted or don't know my ancestry?</h3>
+          <p>
+            You can explore different ancestries to learn about various dietary traditions and
+            genetic adaptations. The "DNA Test" mode also lets you enter percentages if you have
+            results from an ancestry service.
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div class="modal-overlay" id="privacy-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>🔒 Privacy</h2>
+        <button class="modal-close" onclick="hideModal('privacy-modal')">&times;</button>
+      </div>
+      <div class="modal-content">
+        <section class="methodology-section">
+          <h3>Your Privacy Matters</h3>
+          <p>
+            Ancestral Diet Explorer is designed with privacy as a core principle. We believe your
+            genetic and ancestral information is deeply personal and should stay that way.
+          </p>
+        </section>
+
+        <section class="methodology-section">
+          <h3>What We Don't Do</h3>
+          <ul class="limitations-list">
+            <li><strong>No data collection:</strong> We don't collect, store, or transmit your ancestry selections to any server</li>
+            <li><strong>No tracking:</strong> We don't use analytics, cookies, or tracking pixels</li>
+            <li><strong>No accounts:</strong> No sign-up required, no email collection</li>
+            <li><strong>No third parties:</strong> Your data is never shared with advertisers or data brokers</li>
+          </ul>
+        </section>
+
+        <section class="methodology-section">
+          <h3>How It Works</h3>
+          <p>
+            Everything runs locally in your web browser. When you select ancestries and calculate
+            results, the computation happens on your device using JavaScript. The only data stored
+            is in your browser's localStorage, which you can clear at any time through your browser settings.
+          </p>
+        </section>
+
+        <section class="methodology-section">
+          <h3>Open Source</h3>
+          <p>
+            The complete source code is available for review. You can verify exactly what the
+            application does with your data — which is nothing beyond displaying results on your screen.
           </p>
         </section>
       </div>

@@ -104,6 +104,128 @@ function hideMethodologyModal() {
 }
 
 /**
+ * Show any modal by ID
+ */
+function showModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+/**
+ * Hide any modal by ID
+ */
+function hideModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+}
+
+/**
+ * Hide all visible modals
+ */
+function hideAllModals() {
+  document.querySelectorAll('.modal-overlay.visible').forEach(modal => {
+    modal.classList.remove('visible');
+  });
+  document.body.style.overflow = '';
+}
+
+/**
+ * Setup modal close handlers (click overlay, press Escape)
+ */
+function initModalHandlers() {
+  // Close modal when clicking the overlay (outside modal-container)
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      hideAllModals();
+    }
+  });
+}
+
+/**
+ * Toggle header dropdown menu
+ */
+function toggleHeaderDropdown() {
+  const btn = document.getElementById('header-menu-btn');
+  const dropdown = document.getElementById('header-dropdown');
+
+  btn.classList.toggle('active');
+  dropdown.classList.toggle('visible');
+
+  if (dropdown.classList.contains('visible')) {
+    // Close dropdown when clicking outside
+    setTimeout(() => {
+      document.addEventListener('click', closeDropdownOnClickOutside);
+    }, 10);
+  } else {
+    document.removeEventListener('click', closeDropdownOnClickOutside);
+  }
+}
+
+/**
+ * Close dropdown when clicking outside
+ */
+function closeDropdownOnClickOutside(event) {
+  const menu = document.querySelector('.header-menu');
+  if (!menu.contains(event.target)) {
+    const btn = document.getElementById('header-menu-btn');
+    const dropdown = document.getElementById('header-dropdown');
+    btn.classList.remove('active');
+    dropdown.classList.remove('visible');
+    document.removeEventListener('click', closeDropdownOnClickOutside);
+  }
+}
+
+/**
+ * Initialize header menu
+ */
+function initHeaderMenu() {
+  const menuBtn = document.getElementById('header-menu-btn');
+  const dropdown = document.getElementById('header-dropdown');
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleHeaderDropdown();
+    });
+  }
+
+  if (dropdown) {
+    dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const modalType = item.dataset.modal;
+        // Close dropdown
+        document.getElementById('header-menu-btn').classList.remove('active');
+        dropdown.classList.remove('visible');
+        document.removeEventListener('click', closeDropdownOnClickOutside);
+
+        // Open the appropriate modal
+        if (modalType === 'methodology') {
+          showMethodologyModal();
+        } else {
+          showModal(`${modalType}-modal`);
+        }
+      });
+    });
+  }
+}
+
+/**
  * Export results as an image
  */
 async function exportResultsAsImage() {
@@ -164,6 +286,12 @@ async function init() {
 
   // Setup event handlers
   setupEventHandlers();
+
+  // Setup header menu dropdown
+  initHeaderMenu();
+
+  // Setup modal close handlers
+  initModalHandlers();
 
   // Setup user profile handlers
   setupProfileEventHandlers();
