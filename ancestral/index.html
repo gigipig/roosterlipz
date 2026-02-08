@@ -12,77 +12,201 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </head>
 <body>
-  <!-- Onboarding Wizard -->
-  <div class="onboarding" id="onboarding">
-    <div class="onboarding-container">
-      <div class="onboarding-header">
-        <h1>Ancestral Diet Explorer</h1>
-        <p>Discover dietary patterns based on your ancestry</p>
-      </div>
+  <!-- Landing Page -->
+  <div class="landing-page" id="landing-page">
 
-      <!-- Progress indicator -->
-      <div class="onboarding-progress">
-        <div class="progress-step active" data-step="1">1</div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="2">2</div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="3">3</div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="4">4</div>
+    <!-- Navigation Bar -->
+    <nav class="landing-nav">
+      <div class="landing-nav-inner">
+        <span class="landing-logo">Ancestral Diet Explorer</span>
+        <div class="landing-nav-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#faq-section">FAQ</a>
+          <button class="landing-nav-cta" id="nav-get-started">Get Started</button>
+        </div>
       </div>
+    </nav>
 
-      <!-- Step 1: Maternal Grandmother -->
-      <div class="onboarding-step active" data-step="1">
-        <div class="step-icon">&#128105;</div>
-        <h2>Maternal Grandmother</h2>
-        <p>Where did your mother's mother come from?</p>
-        <select id="onboard-mgm" class="onboard-select">
-          <option value="">Select a region...</option>
-        </select>
+    <!-- Hero Section -->
+    <section class="landing-hero">
+      <div class="hero-content">
+        <div class="hero-badge">Population Genetics + Ancestral Nutrition</div>
+        <h1>Unlock Your<br><span class="hero-accent">Ancestral Diet</span></h1>
+        <p class="hero-subtitle">
+          Discover what your genetics say about how you process food.
+          Enter your grandparents' origins and get personalized dietary insights
+          grounded in peer-reviewed research on 34+ genetic traits.
+        </p>
+        <div class="hero-actions">
+          <button class="hero-cta" id="hero-get-started">Get Your Free Report</button>
+          <a href="#how-it-works" class="hero-secondary">See how it works</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-number">34+</span>
+            <span class="trust-label">Genetic Traits</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-number">60+</span>
+            <span class="trust-label">Ancestral Regions</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-number">40+</span>
+            <span class="trust-label">Cited Studies</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-number">100%</span>
+            <span class="trust-label">Private &amp; Local</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Step 2: Maternal Grandfather -->
-      <div class="onboarding-step" data-step="2">
-        <div class="step-icon">&#128104;</div>
-        <h2>Maternal Grandfather</h2>
-        <p>Where did your mother's father come from?</p>
-        <select id="onboard-mgf" class="onboard-select">
-          <option value="">Select a region...</option>
-        </select>
+    <!-- How It Works -->
+    <section class="landing-section" id="how-it-works">
+      <div class="section-inner">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Three steps to your personalized ancestral diet profile</p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-card-number">1</div>
+            <div class="step-card-icon">&#127758;</div>
+            <h3>Enter Your Ancestry</h3>
+            <p>Select your four grandparents' origins, or enter percentages from a DNA test like 23andMe or AncestryDNA.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-card-number">2</div>
+            <div class="step-card-icon">&#129516;</div>
+            <h3>Get Genetic Insights</h3>
+            <p>We calculate your likely genetic traits using Mendelian inheritance and Hardy-Weinberg equilibrium from population-level data.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-card-number">3</div>
+            <div class="step-card-icon">&#127860;</div>
+            <h3>Receive Your Diet Plan</h3>
+            <p>Get a personalized ancestral diet with foods, macros, and recommendations tailored to your predicted genetic profile.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Step 3: Paternal Grandmother -->
-      <div class="onboarding-step" data-step="3">
-        <div class="step-icon">&#128105;</div>
-        <h2>Paternal Grandmother</h2>
-        <p>Where did your father's mother come from?</p>
-        <select id="onboard-pgm" class="onboard-select">
-          <option value="">Select a region...</option>
-        </select>
+    <!-- Features Section -->
+    <section class="landing-section landing-section-alt" id="features">
+      <div class="section-inner">
+        <h2 class="section-title">What You'll Discover</h2>
+        <p class="section-subtitle">A comprehensive look at your genetic relationship with food</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">&#129516;</div>
+            <h3>Genetic Trait Predictions</h3>
+            <p>Lactose tolerance, caffeine metabolism, starch digestion, vitamin absorption, and 30+ more traits with probability scores.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#127869;</div>
+            <h3>Ancestral Food Lists</h3>
+            <p>Traditional foods from your lineage, with each item linked to specific genetic traits that affect how your body processes it.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#128202;</div>
+            <h3>Nutrient Gap Analysis</h3>
+            <p>See how your genetics shift your nutritional needs away from standard recommendations, with specific adjustments explained.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#128218;</div>
+            <h3>Daily Diet Guidelines</h3>
+            <p>Meal-by-meal guidance on what to prioritize and limit, personalized by your genetic strengths and sensitivities.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#128300;</div>
+            <h3>Scientific Citations</h3>
+            <p>Every genetic trait is backed by peer-reviewed studies. Full citations included so you can verify the science yourself.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">&#128274;</div>
+            <h3>Completely Private</h3>
+            <p>Everything runs locally in your browser. No data is sent to any server. No accounts, no tracking, no third parties.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Step 4: Paternal Grandfather -->
-      <div class="onboarding-step" data-step="4">
-        <div class="step-icon">&#128104;</div>
-        <h2>Paternal Grandfather</h2>
-        <p>Where did your father's father come from?</p>
-        <select id="onboard-pgf" class="onboard-select">
-          <option value="">Select a region...</option>
-        </select>
+    <!-- FAQ Section -->
+    <section class="landing-section" id="faq-section">
+      <div class="section-inner section-inner-narrow">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item-landing">
+            <button class="faq-question">Is this the same as a DNA test?</button>
+            <div class="faq-answer">
+              <p>No. DNA tests like 23andMe analyze your actual genetic material. We use population-level statistics to <em>estimate</em> what traits you might have based on where your grandparents came from. Think of it as "genetic probability" rather than "genetic certainty."</p>
+            </div>
+          </div>
+          <div class="faq-item-landing">
+            <button class="faq-question">How accurate are the results?</button>
+            <div class="faq-answer">
+              <p>Results reflect population averages and Mendelian inheritance probabilities. If we say "75% likely lactose tolerant," it means 3 out of 4 people with your ancestral mix would have this trait. Your individual genetics may differ.</p>
+            </div>
+          </div>
+          <div class="faq-item-landing">
+            <button class="faq-question">Should I change my diet based on these results?</button>
+            <div class="faq-answer">
+              <p>This tool is for exploration and education, not medical advice. If you're considering dietary changes, especially for health conditions, consult a registered dietitian or healthcare provider who can consider your complete health picture.</p>
+            </div>
+          </div>
+          <div class="faq-item-landing">
+            <button class="faq-question">Is my data saved or shared?</button>
+            <div class="faq-answer">
+              <p>All calculations happen in your browser. Your ancestry selections are saved locally on your device (localStorage) so you don't have to re-enter them. We don't collect, store, or share any personal information.</p>
+            </div>
+          </div>
+          <div class="faq-item-landing">
+            <button class="faq-question">Can I use this if I'm adopted or don't know my ancestry?</button>
+            <div class="faq-answer">
+              <p>You can explore different ancestries to learn about various dietary traditions and genetic adaptations. The "DNA Test" mode also lets you enter percentages if you have results from an ancestry service.</p>
+            </div>
+          </div>
+          <div class="faq-item-landing">
+            <button class="faq-question">Why grandparents instead of just my ethnicity?</button>
+            <div class="faq-answer">
+              <p>Your four grandparents represent four distinct genetic lineages. This lets us model Mendelian inheritance patterns more accurately than a single ethnicity label, capturing the genetic diversity that actually shapes your traits.</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Navigation -->
-      <div class="onboarding-nav">
-        <button class="onboard-btn onboard-btn-back" id="onboard-back">Back</button>
-        <button class="onboard-btn onboard-btn-skip" id="onboard-skip">Skip</button>
-        <button class="onboard-btn onboard-btn-next" id="onboard-next">Next</button>
+    <!-- Landing Footer -->
+    <footer class="landing-footer">
+      <div class="section-inner">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Ancestral Diet Explorer</h4>
+            <p>Personalized dietary insights grounded in population genetics and ancestral nutrition research.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <button class="footer-link" data-modal="methodology">How We Calculate</button>
+            <button class="footer-link" data-modal="about">About</button>
+            <button class="footer-link" data-modal="privacy">Privacy</button>
+          </div>
+          <div class="footer-col">
+            <h4>Disclaimer</h4>
+            <p>This tool provides educational insights based on published genetic research. It is not medical advice. Consult a healthcare professional for personalized guidance.</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Built with population genetics data from peer-reviewed studies. All processing happens locally in your browser.</p>
+        </div>
       </div>
-
-      <div class="onboarding-footer">
-        <button class="onboard-link" id="onboard-skip-all">Skip setup and explore diets</button>
-      </div>
-    </div>
+    </footer>
   </div>
+
+  <!-- App (hidden until user clicks Get Started) -->
+  <div class="app-container" id="app-container" style="display: none;">
 
   <!-- Header -->
   <header class="header">
@@ -355,6 +479,8 @@
     </div>
   </main>
 
+  </div><!-- end .app-container -->
+
   <!-- Methodology Modal -->
   <div class="modal-overlay" id="methodology-modal">
     <div class="modal-container">
@@ -624,12 +750,24 @@
     </div>
   </div>
 
+  <!-- Recipe Modal -->
+  <div class="modal-overlay" id="recipe-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Recipe</h2>
+        <button class="modal-close" onclick="hideModal('recipe-modal')">&times;</button>
+      </div>
+      <div class="modal-content" id="recipe-modal-body"></div>
+    </div>
+  </div>
+
   <!-- App Scripts (order matters - dependencies first) -->
   <script src="js/data.js"></script>
   <script src="js/genetics.js"></script>
   <script src="js/diet.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/user.js"></script>
+  <script src="js/recipes.js"></script>
   <script src="js/onboarding.js"></script>
   <script src="js/app.js"></script>
 </body>

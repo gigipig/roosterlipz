@@ -197,6 +197,58 @@ function showDietPanel(diet, geo) {
 }
 
 /**
+ * Render profile summary card with top trait badges
+ * @param {Object} mendelianGenetics - Mendelian genetics results
+ * @param {string} ancestryList - Formatted ancestry string
+ * @returns {string} HTML for the profile summary card
+ */
+function renderProfileSummary(mendelianGenetics, ancestryList) {
+  const legacyKeyMap = {
+    lactase: 'lactase_persistence',
+    amy1: 'starch_digestion',
+    fads: 'pufa_metabolism',
+    slc24a5: 'vitamin_d_metabolism',
+    aldh2: 'alcohol_metabolism',
+    crebrf: 'polynesian_energy_storage',
+    cpt1a: 'arctic_fat_metabolism',
+    edar: 'edar_adaptation',
+    altitude: 'altitude_adaptation_epas1'
+  };
+
+  // Gather traits with their meter info and sort by value descending
+  const traits = [];
+  if (mendelianGenetics) {
+    Object.keys(mendelianGenetics).forEach(key => {
+      const trait = mendelianGenetics[key];
+      let meta = trait._meta;
+      if (!meta) {
+        const metaKey = legacyKeyMap[key] || key;
+        meta = (typeof GENE_META !== 'undefined') ? GENE_META[metaKey] : null;
+      }
+      if (!meta) return;
+      const { value, statusLabel, statusClass } = getTraitMeterInfo(key, trait);
+      traits.push({ icon: meta.icon || '🧬', title: meta.title || key, statusLabel, statusClass, value });
+    });
+  }
+
+  // Pick top 4 by highest value
+  traits.sort((a, b) => b.value - a.value);
+  const topTraits = traits.slice(0, 4);
+
+  const badgesHtml = topTraits.map(t =>
+    `<span class="profile-stat-badge ${t.statusClass}">${t.icon} ${t.statusLabel} ${t.title}</span>`
+  ).join('');
+
+  return `
+    <div class="profile-summary-card">
+      <h2>Your Personalized Diet</h2>
+      <div class="subtitle">${ancestryList}</div>
+      ${badgesHtml ? `<div class="profile-stat-badges">${badgesHtml}</div>` : ''}
+    </div>
+  `;
+}
+
+/**
  * Show blended diet with Mendelian genetics
  * @param {Object} blended - Blended diet data
  * @param {Object} mendelianGenetics - Mendelian genetics results
@@ -209,88 +261,104 @@ function showBlendedDietWithMendelian(blended, mendelianGenetics) {
   ).join(', ');
 
   content.innerHTML = `
-    <h2>Your Personalized Diet</h2>
-    <div class="subtitle">${ancestryList}</div>
+    ${renderProfileSummary(mendelianGenetics, ancestryList)}
 
-    <div class="diet-section">
-      <p>Your dietary recommendations are based on <strong>Mendelian genetics</strong> calculated from your grandparents' populations, plus dietary traditions from your ancestral lineages.</p>
+    <div class="results-tabs">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="genetics">Genetics</button>
+      <button data-tab="diet">Diet</button>
+      <button data-tab="foods">Foods</button>
     </div>
 
-    ${renderKeyTakeaways(mendelianGenetics)}
+    <div class="results-tab-panel active" data-tab-panel="overview">
+      <div class="diet-section">
+        <p>Your dietary recommendations are based on <strong>Mendelian genetics</strong> calculated from your grandparents' populations, plus dietary traditions from your ancestral lineages.</p>
+      </div>
+      ${renderKeyTakeaways(mendelianGenetics)}
+    </div>
 
-    ${renderNutrientGapAnalysis(mendelianGenetics)}
+    <div class="results-tab-panel" data-tab-panel="genetics">
+      ${renderMendelianGenetics(mendelianGenetics)}
+      ${renderNutrientGapAnalysis(mendelianGenetics)}
+    </div>
 
-    ${renderDailyGuidelines(mendelianGenetics, blended)}
-
-    ${renderMendelianGenetics(mendelianGenetics)}
-
-    <div class="diet-section">
-      <h3>Blended Macronutrient Profile</h3>
-      <div class="macro-bar">
-        <div class="macro-segment macro-carbs" style="width: ${blended.blendedMacros.carbs_pct}%">
-          ${blended.blendedMacros.carbs_pct}% Carbs
+    <div class="results-tab-panel" data-tab-panel="diet">
+      <div class="diet-section">
+        <h3>Blended Macronutrient Profile</h3>
+        <div class="macro-bar">
+          <div class="macro-segment macro-carbs" style="width: ${blended.blendedMacros.carbs_pct}%">
+            ${blended.blendedMacros.carbs_pct}% Carbs
+          </div>
+          <div class="macro-segment macro-protein" style="width: ${blended.blendedMacros.protein_pct}%">
+            ${blended.blendedMacros.protein_pct}% Protein
+          </div>
+          <div class="macro-segment macro-fat" style="width: ${blended.blendedMacros.fat_pct}%">
+            ${blended.blendedMacros.fat_pct}% Fat
+          </div>
         </div>
-        <div class="macro-segment macro-protein" style="width: ${blended.blendedMacros.protein_pct}%">
-          ${blended.blendedMacros.protein_pct}% Protein
+      </div>
+      ${renderDailyGuidelines(mendelianGenetics, blended)}
+    </div>
+
+    <div class="results-tab-panel" data-tab-panel="foods">
+      <div class="diet-section">
+        <h3>Common Foods (Across Ancestries)</h3>
+        <p class="food-tooltip-hint">Hover over foods with icons to see why they're recommended for your genetics</p>
+        <div class="food-list">
+          ${renderFoodList(blended.commonFoods, mendelianGenetics, 12)}
         </div>
-        <div class="macro-segment macro-fat" style="width: ${blended.blendedMacros.fat_pct}%">
-          ${blended.blendedMacros.fat_pct}% Fat
+      </div>
+
+      <div class="diet-section">
+        <h3>Recommended Proteins</h3>
+        <div class="food-list">
+          ${renderFoodList(blended.allProteins, mendelianGenetics, 10)}
         </div>
       </div>
-    </div>
 
-    <div class="diet-section">
-      <h3>Common Foods (Across Ancestries)</h3>
-      <p class="food-tooltip-hint">Hover over foods with icons to see why they're recommended for your genetics</p>
-      <div class="food-list">
-        ${renderFoodList(blended.commonFoods, mendelianGenetics, 12)}
+      <div class="diet-section">
+        <h3>Recommended Fats</h3>
+        <div class="food-list">
+          ${renderFoodList(blended.allFats, mendelianGenetics, 8)}
+        </div>
       </div>
-    </div>
 
-    <div class="diet-section">
-      <h3>Recommended Proteins</h3>
-      <div class="food-list">
-        ${renderFoodList(blended.allProteins, mendelianGenetics, 10)}
+      <div class="diet-section">
+        <h3>Herbs & Spices</h3>
+        <div class="food-list">
+          ${renderFoodList(blended.allHerbs, mendelianGenetics, 12)}
+        </div>
       </div>
-    </div>
 
-    <div class="diet-section">
-      <h3>Recommended Fats</h3>
-      <div class="food-list">
-        ${renderFoodList(blended.allFats, mendelianGenetics, 8)}
+      <div class="diet-section">
+        <h3>Cooking Methods</h3>
+        <div class="food-list">
+          ${blended.allCooking.map(m =>
+            `<span class="food-item">${m}</span>`
+          ).join('')}
+        </div>
       </div>
-    </div>
 
-    <div class="diet-section">
-      <h3>Herbs & Spices</h3>
-      <div class="food-list">
-        ${renderFoodList(blended.allHerbs, mendelianGenetics, 12)}
+      <div class="diet-section">
+        <h3>Unique Foods by Ancestry</h3>
+        ${blended.diets.map((diet, idx) => {
+          const uniqueFoods = [...diet.staples, ...diet.common_foods]
+            .filter(f => !blended.commonFoods.includes(f))
+            .slice(0, 5);
+          return `
+            <p><strong>${blended.geos[idx].name}:</strong> ${uniqueFoods.join(', ')}</p>
+          `;
+        }).join('')}
       </div>
-    </div>
-
-    <div class="diet-section">
-      <h3>Cooking Methods</h3>
-      <div class="food-list">
-        ${blended.allCooking.map(m =>
-          `<span class="food-item">${m}</span>`
-        ).join('')}
-      </div>
-    </div>
-
-    <div class="diet-section">
-      <h3>Unique Foods by Ancestry</h3>
-      ${blended.diets.map((diet, idx) => {
-        const uniqueFoods = [...diet.staples, ...diet.common_foods]
-          .filter(f => !blended.commonFoods.includes(f))
-          .slice(0, 5);
-        return `
-          <p><strong>${blended.geos[idx].name}:</strong> ${uniqueFoods.join(', ')}</p>
-        `;
-      }).join('')}
     </div>
 
     ${renderSourcesSection(mendelianGenetics)}
   `;
+
+  // Load and render recipes asynchronously
+  if (typeof initRecipeSection === 'function') {
+    initRecipeSection(blended, mendelianGenetics);
+  }
 }
 
 /**
@@ -305,85 +373,103 @@ function showBlendedDiet(blended) {
   ).join(', ');
 
   content.innerHTML = `
-    <h2>Blended Ancestral Diet</h2>
-    <div class="subtitle">${ancestryList}</div>
-
-    <div class="diet-section">
-      <p>Your dietary recommendations combine elements from multiple ancestral traditions. Focus on foods common across your lineages while incorporating unique elements from each heritage.</p>
+    <div class="profile-summary-card">
+      <h2>Blended Ancestral Diet</h2>
+      <div class="subtitle">${ancestryList}</div>
     </div>
 
-    <div class="diet-section">
-      <h3>Blended Macronutrient Profile</h3>
-      <div class="macro-bar">
-        <div class="macro-segment macro-carbs" style="width: ${blended.blendedMacros.carbs_pct}%">
-          ${blended.blendedMacros.carbs_pct}% Carbs
+    <div class="results-tabs">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="diet">Diet</button>
+      <button data-tab="foods">Foods</button>
+    </div>
+
+    <div class="results-tab-panel active" data-tab-panel="overview">
+      <div class="diet-section">
+        <p>Your dietary recommendations combine elements from multiple ancestral traditions. Focus on foods common across your lineages while incorporating unique elements from each heritage.</p>
+      </div>
+      ${blendGeneticAdaptations(blended.diets, blended.weights)}
+    </div>
+
+    <div class="results-tab-panel" data-tab-panel="diet">
+      <div class="diet-section">
+        <h3>Blended Macronutrient Profile</h3>
+        <div class="macro-bar">
+          <div class="macro-segment macro-carbs" style="width: ${blended.blendedMacros.carbs_pct}%">
+            ${blended.blendedMacros.carbs_pct}% Carbs
+          </div>
+          <div class="macro-segment macro-protein" style="width: ${blended.blendedMacros.protein_pct}%">
+            ${blended.blendedMacros.protein_pct}% Protein
+          </div>
+          <div class="macro-segment macro-fat" style="width: ${blended.blendedMacros.fat_pct}%">
+            ${blended.blendedMacros.fat_pct}% Fat
+          </div>
         </div>
-        <div class="macro-segment macro-protein" style="width: ${blended.blendedMacros.protein_pct}%">
-          ${blended.blendedMacros.protein_pct}% Protein
+      </div>
+    </div>
+
+    <div class="results-tab-panel" data-tab-panel="foods">
+      <div class="diet-section">
+        <h3>Common Foods (Across Ancestries)</h3>
+        <div class="food-list">
+          ${blended.commonFoods.slice(0, 12).map(f =>
+            `<span class="food-item">${f}</span>`
+          ).join('')}
         </div>
-        <div class="macro-segment macro-fat" style="width: ${blended.blendedMacros.fat_pct}%">
-          ${blended.blendedMacros.fat_pct}% Fat
+      </div>
+
+      <div class="diet-section">
+        <h3>Recommended Proteins</h3>
+        <div class="food-list">
+          ${blended.allProteins.slice(0, 10).map(p =>
+            `<span class="food-item">${p}</span>`
+          ).join('')}
         </div>
       </div>
-    </div>
 
-    <div class="diet-section">
-      <h3>Common Foods (Across Ancestries)</h3>
-      <div class="food-list">
-        ${blended.commonFoods.slice(0, 12).map(f =>
-          `<span class="food-item">${f}</span>`
-        ).join('')}
+      <div class="diet-section">
+        <h3>Recommended Fats</h3>
+        <div class="food-list">
+          ${blended.allFats.slice(0, 8).map(f =>
+            `<span class="food-item">${f}</span>`
+          ).join('')}
+        </div>
+      </div>
+
+      <div class="diet-section">
+        <h3>Herbs & Spices</h3>
+        <div class="food-list">
+          ${blended.allHerbs.slice(0, 12).map(h =>
+            `<span class="food-item">${h}</span>`
+          ).join('')}
+        </div>
+      </div>
+
+      <div class="diet-section">
+        <h3>Cooking Methods</h3>
+        <div class="food-list">
+          ${blended.allCooking.map(m =>
+            `<span class="food-item">${m}</span>`
+          ).join('')}
+        </div>
+      </div>
+
+      <div class="diet-section">
+        <h3>Unique Foods by Ancestry</h3>
+        ${blended.diets.map((diet, idx) => {
+          const uniqueFoods = [...diet.staples, ...diet.common_foods]
+            .filter(f => !blended.commonFoods.includes(f))
+            .slice(0, 5);
+          return `
+            <p><strong>${blended.geos[idx].name}:</strong> ${uniqueFoods.join(', ')}</p>
+          `;
+        }).join('')}
       </div>
     </div>
-
-    <div class="diet-section">
-      <h3>Recommended Proteins</h3>
-      <div class="food-list">
-        ${blended.allProteins.slice(0, 10).map(p =>
-          `<span class="food-item">${p}</span>`
-        ).join('')}
-      </div>
-    </div>
-
-    <div class="diet-section">
-      <h3>Recommended Fats</h3>
-      <div class="food-list">
-        ${blended.allFats.slice(0, 8).map(f =>
-          `<span class="food-item">${f}</span>`
-        ).join('')}
-      </div>
-    </div>
-
-    <div class="diet-section">
-      <h3>Herbs & Spices</h3>
-      <div class="food-list">
-        ${blended.allHerbs.slice(0, 12).map(h =>
-          `<span class="food-item">${h}</span>`
-        ).join('')}
-      </div>
-    </div>
-
-    <div class="diet-section">
-      <h3>Cooking Methods</h3>
-      <div class="food-list">
-        ${blended.allCooking.map(m =>
-          `<span class="food-item">${m}</span>`
-        ).join('')}
-      </div>
-    </div>
-
-    <div class="diet-section">
-      <h3>Unique Foods by Ancestry</h3>
-      ${blended.diets.map((diet, idx) => {
-        const uniqueFoods = [...diet.staples, ...diet.common_foods]
-          .filter(f => !blended.commonFoods.includes(f))
-          .slice(0, 5);
-        return `
-          <p><strong>${blended.geos[idx].name}:</strong> ${uniqueFoods.join(', ')}</p>
-        `;
-      }).join('')}
-    </div>
-
-    ${blendGeneticAdaptations(blended.diets, blended.weights)}
   `;
+
+  // Load and render recipes asynchronously (no genetics in DNA mode)
+  if (typeof initRecipeSection === 'function') {
+    initRecipeSection(blended, null);
+  }
 }

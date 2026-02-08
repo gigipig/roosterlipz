@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(python:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "WebFetch(domain:magicui.design)",
+      "Bash(dir /s /b)",
+      "Bash(findstr:*)",
+      "Bash(ls:*)"
     ]
   }
 }

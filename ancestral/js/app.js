@@ -407,6 +407,19 @@ function setupEventHandlers() {
   // Export results button
   document.getElementById('export-results-btn').addEventListener('click', exportResultsAsImage);
 
+  // Results tab switching (event delegation)
+  document.getElementById('diet-content').addEventListener('click', (e) => {
+    const btn = e.target.closest('.results-tabs button[data-tab]');
+    if (!btn) return;
+    const container = document.getElementById('diet-content');
+    const tabName = btn.dataset.tab;
+    container.querySelectorAll('.results-tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    container.querySelectorAll('.results-tab-panel').forEach(p => p.classList.remove('active'));
+    const panel = container.querySelector(`.results-tab-panel[data-tab-panel="${tabName}"]`);
+    if (panel) panel.classList.add('active');
+  });
+
   // Methodology modal buttons
   document.getElementById('methodology-btn').addEventListener('click', showMethodologyModal);
   document.getElementById('methodology-footer-btn').addEventListener('click', showMethodologyModal);

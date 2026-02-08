@@ -68,7 +68,10 @@ function createDefaultUser() {
     },
 
     // Saved diet results
-    savedDiet: null
+    savedDiet: null,
+
+    // Bookmarked recipes
+    bookmarkedRecipes: []
   };
 }
 
@@ -377,6 +380,39 @@ function ensureUsername() {
     user.username = generateRandomUsername();
     saveUser(user);
   }
+}
+
+/**
+ * Get user's bookmarked recipes
+ * @returns {string[]} Array of recipe IDs
+ */
+function getUserBookmarkedRecipes() {
+  const user = getUser();
+  return user.bookmarkedRecipes || [];
+}
+
+/**
+ * Save a recipe bookmark
+ * @param {string} recipeId - Recipe ID to bookmark
+ */
+function saveRecipeBookmark(recipeId) {
+  const user = getUser();
+  if (!user.bookmarkedRecipes) user.bookmarkedRecipes = [];
+  if (!user.bookmarkedRecipes.includes(recipeId)) {
+    user.bookmarkedRecipes.push(recipeId);
+    saveUser(user);
+  }
+}
+
+/**
+ * Remove a recipe bookmark
+ * @param {string} recipeId - Recipe ID to remove
+ */
+function removeRecipeBookmark(recipeId) {
+  const user = getUser();
+  if (!user.bookmarkedRecipes) return;
+  user.bookmarkedRecipes = user.bookmarkedRecipes.filter(id => id !== recipeId);
+  saveUser(user);
 }
 
 /**

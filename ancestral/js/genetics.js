@@ -1536,12 +1536,18 @@ const TRAIT_ANALYSIS_CONFIG = {
   },
   saturated_fat_response: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 20, strengthTitle: 'Resilient to Saturated Fat',
+    strengthDetail: () => 'Lower genetic sensitivity — standard saturated fat guidelines are fine for you',
+    strengthIcon: '🥓',
     watchMin: 35, watchTitle: 'Saturated Fat Sensitivity',
     watchDetail: () => 'Your genetics suggest keeping saturated fat below 22g/day',
     watchIcon: '🥓'
   },
   folate_metabolism: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 20, strengthTitle: 'Efficient Folate Processing',
+    strengthDetail: () => 'Your MTHFR variants are low-risk — standard folate from diet is sufficient',
+    strengthIcon: '🥬',
     watchMin: 40, watchTitle: 'Reduced Folate Processing',
     watchDetail: () => 'Consider methylfolate supplements and folate-rich foods (leafy greens, legumes)',
     watchIcon: '🥬'
@@ -1554,18 +1560,27 @@ const TRAIT_ANALYSIS_CONFIG = {
   },
   glucose_metabolism: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Stable Blood Sugar Genetics',
+    strengthDetail: () => 'Lower genetic risk for type 2 diabetes — standard carbohydrate guidelines apply',
+    strengthIcon: '🍬',
     watchMin: 25, watchTitle: 'Blood Sugar Sensitivity',
     watchDetail: () => 'Focus on weight management and Mediterranean-style eating',
     watchIcon: '🍬'
   },
   obesity_risk: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 25, strengthTitle: 'Lower Obesity Risk',
+    strengthDetail: () => 'Your FTO variants suggest lower genetic predisposition to weight gain',
+    strengthIcon: '⚖️',
     watchMin: 40, watchTitle: 'Higher Obesity Risk',
     watchDetail: () => 'Physical activity is especially important for your genetics',
     watchIcon: '⚖️'
   },
   salt_sensitivity: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 30, strengthTitle: 'Salt Tolerant',
+    strengthDetail: () => 'Lower genetic salt sensitivity — standard sodium guidelines apply',
+    strengthIcon: '🧂',
     watchMin: 60, watchTitle: 'Salt Sensitive',
     watchDetail: () => 'Keep sodium under 2,000mg/day; increase potassium-rich foods',
     watchIcon: '🧂'
@@ -1578,6 +1593,9 @@ const TRAIT_ANALYSIS_CONFIG = {
   },
   beta_carotene_conversion: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 20, strengthTitle: 'Good Vitamin A Conversion',
+    strengthDetail: () => 'Your BCO1 gene converts beta-carotene efficiently — plant sources of vitamin A work well',
+    strengthIcon: '🥕',
     watchMin: 40, watchTitle: 'Poor Vitamin A Conversion',
     watchDetail: () => "Don't rely solely on carrots/sweet potatoes; include eggs, fish, or liver",
     watchIcon: '🥕'
@@ -1590,24 +1608,36 @@ const TRAIT_ANALYSIS_CONFIG = {
   },
   celiac_susceptibility: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 5, strengthTitle: 'Low Celiac Risk',
+    strengthDetail: () => 'Very low HLA-DQ2/DQ8 frequency — gluten is unlikely to be a problem',
+    strengthIcon: '🌾',
     watchMin: 15, watchTitle: 'Celiac Susceptibility',
     watchDetail: () => 'If you have GI symptoms, consider celiac testing',
     watchIcon: '🌾'
   },
   alcohol_metabolism: {
     valueGetter: t => t.probability !== undefined ? (1 - t.probability) * 100 : 0,
+    strengthMax: 15, strengthTitle: 'Efficient Alcohol Metabolism',
+    strengthDetail: () => 'Low ALDH2 deficiency risk — your body clears alcohol normally',
+    strengthIcon: '🍺',
     watchMin: 50, watchTitle: 'Alcohol Flush Response',
     watchDetail: () => 'Likely to experience facial flushing with alcohol; increased health risks with heavy drinking',
     watchIcon: '🍺'
   },
   aldh2: {
     valueGetter: t => t.probability !== undefined ? (1 - t.probability) * 100 : 0,
+    strengthMax: 15, strengthTitle: 'Efficient Alcohol Metabolism',
+    strengthDetail: () => 'Low ALDH2 deficiency risk — your body clears alcohol normally',
+    strengthIcon: '🍺',
     watchMin: 50, watchTitle: 'Alcohol Flush Response',
     watchDetail: () => 'Likely to experience facial flushing with alcohol; increased health risks with heavy drinking',
     watchIcon: '🍺'
   },
   vitamin_d_transport: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 10, strengthTitle: 'Good Vitamin D Transport',
+    strengthDetail: () => 'Your GC gene transports vitamin D effectively — standard supplementation works well',
+    strengthIcon: '💊',
     watchMin: 25, watchTitle: 'Vitamin D Non-Responder Risk',
     watchDetail: () => 'May need higher vitamin D doses; monitor levels when supplementing',
     watchIcon: '💊'
@@ -1666,18 +1696,27 @@ const TRAIT_ANALYSIS_CONFIG = {
   // Batch 3: Vitamin D & Methylation
   cyp2r1_vitamin_d: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 20, strengthTitle: 'Good Vitamin D Activation',
+    strengthDetail: () => 'Your CYP2R1 enzyme activates vitamin D efficiently — standard doses work well',
+    strengthIcon: '☀️',
     watchMin: 40, watchTitle: 'Needs Higher Vitamin D',
     watchDetail: () => 'Impaired vitamin D activation — may need 2000-4000 IU/day',
     watchIcon: '☀️'
   },
   vdr_response: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Strong Vitamin D Response',
+    strengthDetail: () => 'Your vitamin D receptors respond well — bones and immunity benefit efficiently',
+    strengthIcon: '🦴',
     watchMin: 35, watchTitle: 'Reduced Vitamin D Response',
     watchDetail: () => 'May need >2000 IU/day vitamin D; prioritize calcium-rich foods',
     watchIcon: '🦴'
   },
   mtr_b12_methylation: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Efficient B12 Recycling',
+    strengthDetail: () => 'Your MTR gene recycles B12 well — standard dietary intake is sufficient',
+    strengthIcon: '🔄',
     watchMin: 30, watchTitle: 'B12 Recycling Impaired',
     watchDetail: () => 'Consider methylcobalamin form of B12; monitor homocysteine',
     watchIcon: '🔄'
@@ -1690,6 +1729,9 @@ const TRAIT_ANALYSIS_CONFIG = {
   },
   comt_methylation: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Fast COMT Activity',
+    strengthDetail: () => 'Efficient catechol metabolism — good estrogen clearance and stress resilience',
+    strengthIcon: '🥦',
     watchMin: 35, watchTitle: 'Slow COMT — Eat Cruciferous',
     watchDetail: () => 'Increase cruciferous vegetables for estrogen clearance; may be caffeine-sensitive',
     watchIcon: '🥦'
@@ -1712,18 +1754,27 @@ const TRAIT_ANALYSIS_CONFIG = {
   // Batch 4: Appetite/Behavior
   lepr_satiety: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Good Satiety Signaling',
+    strengthDetail: () => 'Your leptin receptors signal fullness effectively — natural appetite regulation works well',
+    strengthIcon: '🍽️',
     watchMin: 35, watchTitle: 'Structured Eating Needed',
     watchDetail: () => 'Reduced leptin sensitivity — strict portion control and protein-rich meals help',
     watchIcon: '🍽️'
   },
   bdnf_fat_appetite: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Balanced Fat Appetite',
+    strengthDetail: () => 'Normal BDNF signaling — you regulate fat cravings well without special effort',
+    strengthIcon: '🧠',
     watchMin: 30, watchTitle: 'Limit Dietary Fat',
     watchDetail: () => 'Fat-specific hyperphagia risk — low-fat diet more effective than general calorie restriction',
     watchIcon: '🧠'
   },
   cd36_fat_taste: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Sensitive Fat Taste',
+    strengthDetail: () => 'Good CD36 fat taste perception — you naturally detect and moderate fat intake',
+    strengthIcon: '👅',
     watchMin: 35, watchTitle: 'Mindful Eating for Fat',
     watchDetail: () => 'Reduced fat taste sensitivity — track fat intake, use texture cues for satiety',
     watchIcon: '👅'
@@ -1738,6 +1789,9 @@ const TRAIT_ANALYSIS_CONFIG = {
   // Batch 5: Chrononutrition & Sensitivity
   clock_chronotype: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 12, strengthTitle: 'Morning Chronotype',
+    strengthDetail: () => 'Your CLOCK gene favors morning activity — natural meal timing aligns with circadian rhythm',
+    strengthIcon: '🕐',
     watchMin: 25, watchTitle: 'Eat Earlier in the Day',
     watchDetail: () => 'Evening chronotype risk — front-load calories to morning/afternoon',
     watchIcon: '🕐'
@@ -1750,12 +1804,18 @@ const TRAIT_ANALYSIS_CONFIG = {
   },
   dao_histamine: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 10, strengthTitle: 'Good Histamine Tolerance',
+    strengthDetail: () => 'Your DAO enzyme clears histamine well — aged cheese, wine, and fermented foods are fine',
+    strengthIcon: '🧀',
     watchMin: 25, watchTitle: 'Histamine Sensitivity',
     watchDetail: () => 'Avoid aged cheese, wine, cured meats; consider DAO supplements',
     watchIcon: '🧀'
   },
   adora2a_caffeine_anxiety: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 15, strengthTitle: 'Caffeine-Resilient',
+    strengthDetail: () => 'Low adenosine receptor sensitivity — caffeine is unlikely to cause anxiety for you',
+    strengthIcon: '☕',
     watchMin: 35, watchTitle: 'Caffeine Anxiety Risk',
     watchDetail: () => 'Limit caffeine to <100mg/day or consider decaf — sensitivity is separate from metabolism speed',
     watchIcon: '😰'
