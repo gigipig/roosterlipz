@@ -1,0 +1,2586 @@
+{
+  "populations": {
+    "nordic": {
+      "lactase_persistence": {
+        "f": 90,
+        "p": 0.988,
+        "t": "present",
+        "af1": 0,
+        "me": 0,
+        "af2": 0
+      },
+      "starch_digestion": {
+        "cn": 6.5,
+        "t": "moderate",
+        "pc": 1,
+        "notes": "AMY1 copies: 6.5 (2024 pangenome study). Agricultural ancestry pattern."
+      },
+      "pufa_metabolism": {
+        "f": 52,
+        "p": 0.52,
+        "t": "moderate",
+        "desc": "Moderate G allele (~52%). Mixed conversion efficiency.",
+        "notes": "Moderate conversion efficiency; mix of plant and marine sources optimal"
+      },
+      "alcohol_metabolism": {
+        "p": 0.97,
+        "t": "standard",
+        "ADH1B": {
+          "f": 3,
+          "v": "rs1229984"
+        },
+        "notes": "Normal alcohol metabolism; no specific restrictions"
+      },
+      "vitamin_d_metabolism": {
+        "f": 100,
+        "t": "light",
+        "desc": "Light skin pigmentation for high-latitude adaptation",
+        "notes": "Light skin maximizes vitamin D production; dietary needs lower in adequate sun"
+      },
+      "iron_metabolism": {
+        "f": 8,
+        "p": 0.07,
+        "t": "elevated_risk",
+        "desc": "C282Y allele: 8% (elevated in Celtic populations). Monitor ferritin."
+      },
+      "caffeine_metabolism": {
+        "f": 30,
+        "p": 0.3,
+        "t": "intermediate"
+      },
+      "saturated_fat_response": {
+        "f": 40,
+        "p": 0.4,
+        "t": "high_sensitivity"
+      },
+      "folate_metabolism": {
+        "f": 30,
+        "p": 0.3,
+        "t": "reduced"
+      },
+      "glucose_metabolism": {
+        "f": 28,
+        "p": 0.28,
+        "t": "elevated_risk",
+        "desc": "Higher T allele (28%). Elevated genetic T2DM risk. Prioritize glycemic control."
+      },
+      "obesity_risk": {
+        "f": 41,
+        "p": 0.41,
+        "t": "elevated_risk"
+      },
+      "beta_carotene_conversion": {
+        "f": 26,
+        "p": 0.26,
+        "t": "reduced",
+        "desc": "Higher T allele (26%). May benefit from preformed vitamin A (retinol) sources."
+      },
+      "vitamin_d_transport": {
+        "f": 28,
+        "p": 0.28,
+        "t": "moderate"
+      },
+      "salt_sensitivity": {
+        "f": 41,
+        "p": 0.41,
+        "t": "normal"
+      },
+      "salt_sensitive_hypertension": {
+        "f": 19,
+        "p": 0.19,
+        "t": "standard"
+      },
+      "bitter_taste_perception": {
+        "f": 49,
+        "p": 0.49,
+        "t": "standard"
+      },
+      "vitamin_b12_absorption": {
+        "f": 49,
+        "p": 0.49,
+        "t": "standard"
+      },
+      "appetite_regulation": {
+        "f": 26,
+        "p": 0.26,
+        "t": "high_appetite_drive"
+      },
+      "celiac_susceptibility": {
+        "f": 20,
+        "p": 0.2,
+        "t": "elevated_risk"
+      },
+      "hdl_metabolism": {
+        "f": 22,
+        "p": 0.22,
+        "t": "standard"
+      },
+      "insulin_sensitivity": {
+        "f": 88,
+        "p": 0.88,
+        "t": "moderate"
+      },
+      "antioxidant_capacity": {
+        "f": 47,
+        "p": 0.47,
+        "t": "context_dependent"
+      },
+      "cruciferous_metabolism_gstm1": {
+        "p": 0.55,
+        "nf": 55,
+        "t": "reduced"
+      },
+      "cruciferous_metabolism_gstt1": {
+        "p": 0.18,
+        "nf": 18,
+        "t": "efficient"
+      },
+      "g6pd_deficiency": {
+        "f": 0.5,
+        "p": 0.005,
+        "t": "low_risk",
+        "desc": "G6PD deficiency allele frequency: 0.5% in this population",
+        "notes": "G6PD deficiency causes hemolytic anemia when exposed to oxidative triggers. HbA1c readings may be artificially low."
+      },
+      "abca1_r230c": {
+        "f": 0,
+        "p": 0,
+        "t": "absent",
+        "desc": "R230C allele frequency: 0% (Indigenous American exclusive variant)"
+      },
+      "slc16a11_diabetes": {
+        "f": 0,
+        "p": 0,
+        "t": "low_risk",
+        "desc": "SLC16A11 risk haplotype: 0% (Neanderthal-introgressed, alters hepatic lipid metabolism)",
+        "notes": "SLC16A11 affects liver lipid metabolism. Effect is strongest in younger, leaner individuals - early intervention important."
+      },
+      "tbc1d4_diabetes": {
+        "f": 0,
+        "p": 0,
+        "t": "absent",
+        "desc": "TBC1D4 p.Arg684Ter frequency: 0% (Arctic-specific variant)",
+        "notes": "Exercise is especially critical for carriers - preserves glucose uptake despite insulin resistance. Traditional high-fat marine diet is metabolically optimal."
+      },
+      "polynesian_energy_storage": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency",
+        "desc": "CREBRF 'thrifty gene' frequency: 0% (Pacific Islander variant)"
+      },
+      "arctic_fat_metabolism": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency"
+      },
+      "cyp2r1_vitamin_d": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate_activation",
+        "desc": "CYP2R1 A allele frequency: 45%. Affects liver 25-hydroxylation of vitamin D.",
+        "notes": "AG/GG genotypes are 3.7x more likely to be vitamin D insufficient despite sun exposure."
+      },
+      "vdr_response": {
+        "f": 42,
+        "p": 0.42,
+        "t": "moderate_response",
+        "desc": "VDR TaqI C allele frequency: 42%. Affects vitamin D receptor sensitivity.",
+        "notes": "CC genotype may require >2000 IU/day for optimal bone health and immune function."
+      },
+      "mtr_b12_methylation": {
+        "f": 18,
+        "p": 0.18,
+        "t": "normal",
+        "desc": "MTR A2756G G allele frequency: 18%. Affects B12-dependent homocysteine remethylation.",
+        "notes": "MTR requires B12 as cofactor. Impaired function increases homocysteine."
+      },
+      "mtrr_methylation": {
+        "f": 52,
+        "p": 0.52,
+        "t": "impaired",
+        "desc": "MTRR A66G G allele frequency: 52%. Affects MTR regeneration and B12 recycling.",
+        "notes": "MTRR regenerates MTR enzyme. GG genotype has high methylmalonic acid - monitor in pregnancy."
+      },
+      "comt_methylation": {
+        "f": 48,
+        "p": 0.48,
+        "t": "slow",
+        "desc": "COMT Met allele frequency: 48%. Affects catecholamine and estrogen metabolism.",
+        "notes": "Slow COMT benefits from cruciferous vegetables (broccoli, kale) which support estrogen clearance via alternative pathways."
+      },
+      "cyp11b2_hypertension": {
+        "f": 32,
+        "p": 0.32,
+        "t": "normal_aldosterone",
+        "desc": "CYP11B2 T allele frequency: 32%. Affects aldosterone synthase and sodium retention.",
+        "notes": "CYP11B2 regulates aldosterone production. T allele increases salt sensitivity and hypertension risk."
+      },
+      "agtr1_hypertension": {
+        "f": 42,
+        "p": 0.42,
+        "t": "moderate_angiotensin",
+        "desc": "AGTR1 T allele frequency: 42%. Affects angiotensin II receptor type 1 activity.",
+        "notes": "AGTR1 mediates vasoconstriction. High activity benefits from potassium-rich foods (bananas, leafy greens, potatoes)."
+      },
+      "lepr_satiety": {
+        "f": 45,
+        "p": 0.45,
+        "t": "reduced_satiety",
+        "desc": "LEPR Q223R G allele frequency: 45%. Affects leptin receptor function and satiety signaling.",
+        "notes": "GG homozygotes have impaired leptin signaling, leading to reduced satiety. Regular meal timing and protein-rich foods may help."
+      },
+      "bdnf_fat_appetite": {
+        "f": 18,
+        "p": 0.18,
+        "t": "moderate_fat_response",
+        "desc": "BDNF Val66Met Met allele frequency: 18%. Affects appetite regulation specifically in response to dietary fat.",
+        "notes": "BDNF Met carriers do NOT show hyperphagia on low-fat or high-sucrose diets - the effect is FAT-SPECIFIC. Low-fat diet is the targeted intervention."
+      },
+      "cd36_fat_taste": {
+        "f": 52,
+        "p": 0.52,
+        "t": "reduced_fat_taste",
+        "desc": "CD36 A allele frequency: 52%. Affects oral fat taste receptor sensitivity.",
+        "notes": "AA genotype (~25% Europeans) have higher fat detection thresholds. They may need to consciously track fat intake rather than relying on taste satisfaction."
+      },
+      "fads2_vegetarian": {
+        "f": 15,
+        "p": 0.15,
+        "t": "low_conversion",
+        "desc": "FADS2 insertion allele frequency: 15%. Represents positive selection for plant-to-animal fatty acid conversion in populations with long vegetarian traditions.",
+        "notes": "High converters efficiently make EPA/DHA from plants but also convert omega-6 to inflammatory arachidonic acid. Traditional South Asian diets with mustard oil and ghee are more compatible than Western vegetable oil-heavy diets."
+      },
+      "clock_chronotype": {
+        "f": 32,
+        "p": 0.32,
+        "t": "evening_chronotype",
+        "desc": "CLOCK 3111C allele frequency: 32%. Affects circadian rhythm and meal timing response.",
+        "notes": "Evening chronotypes gain more weight from late eating. Eating the same calories earlier in the day produces better metabolic outcomes."
+      },
+      "per1_meal_timing": {
+        "f": 38,
+        "p": 0.38,
+        "t": "high_timing_response",
+        "desc": "PER1 rs2735611 frequency: 38%. Affects response to meal timing consistency.",
+        "notes": "PER1 regulates circadian rhythms. High responders benefit significantly from eating at the same times daily."
+      },
+      "dao_histamine": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate_dao",
+        "desc": "DAO rs2052129 T allele frequency: 25%. Affects diamine oxidase activity and histamine breakdown.",
+        "notes": "DAO enzyme breaks down dietary histamine. Low activity causes headaches, flushing, GI symptoms after high-histamine foods. Fresh foods are safer than aged/fermented."
+      },
+      "adora2a_caffeine_anxiety": {
+        "f": 45,
+        "p": 0.45,
+        "t": "caffeine_sensitive",
+        "desc": "ADORA2A rs5751876 frequency: 45%. Affects adenosine receptor sensitivity to caffeine (separate from metabolism speed).",
+        "notes": "ADORA2A affects how caffeine FEELS, not how fast you metabolize it. Even fast CYP1A2 metabolizers can be ADORA2A-sensitive and experience anxiety or insomnia from caffeine."
+      },
+      "abcg2_gout": {
+        "f": 10,
+        "p": 0.1,
+        "t": "moderate_gout_risk",
+        "desc": "ABCG2 rs2231142 T allele frequency: 10%. Affects uric acid transport - dysfunction leads to hyperuricemia and gout.",
+        "notes": "ABCG2 is a urate transporter. Dysfunction causes uric acid accumulation. Pacific Islanders and Filipinos have highest frequencies globally."
+      },
+      "slc2a9_urate": {
+        "f": 76,
+        "p": 0.76,
+        "t": "high_frequency",
+        "desc": "SLC2A9 rs734553 frequency: 76%. Affects renal urate handling. Near-fixed in Pacific Islanders (98-100%).",
+        "notes": "SLC2A9 affects how kidneys handle uric acid. Combined with ABCG2 variants, explains extremely high gout rates in Pacific Islander populations."
+      },
+      "ashkenazi_ldlr_fh": {
+        "f": 0.2,
+        "p": 0.002,
+        "t": "population_carrier_rate",
+        "desc": "LDLR G197del carrier frequency: 0.2%. Causes familial hypercholesterolemia (FH).",
+        "notes": "FH causes very high LDL from birth. Heterozygotes have 2-3x normal LDL. Early statin therapy dramatically reduces cardiovascular events. Diet alone is usually insufficient for FH."
+      },
+      "mthfr_folate": {
+        "f": 34,
+        "p": 0.34,
+        "t": "moderate_risk",
+        "desc": "MTHFR 677T allele frequency: 34%. Moderate prevalence of reduced enzyme activity.",
+        "notes": "MTHFR C677T T allele: 34%. TT genotype (~11% of population) has significantly reduced enzyme function."
+      },
+      "fto_obesity": {
+        "f": 42,
+        "p": 0.42,
+        "t": "higher_obesity_risk",
+        "desc": "FTO rs9939609 A allele frequency: 42%. Higher frequency of reduced satiety signaling.",
+        "notes": "FTO rs9939609 A allele: 42%. The POUNDS LOST trial confirmed protein-satiety interaction."
+      },
+      "hfe_iron_overload": {
+        "f": 5.8,
+        "p": 0.057999999999999996,
+        "t": "elevated_risk",
+        "desc": "HFE C282Y allele frequency: 5.8%. Elevated risk of hereditary hemochromatosis in this population.",
+        "notes": "HFE C282Y: 5.8%. This variant is largely European-specific. ~5-10% of European-descent homozygotes develop clinical hemochromatosis."
+      },
+      "tas2r38_bitter": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate_taster_population",
+        "desc": "TAS2R38 PAV taster haplotype frequency: 45%. Balanced distribution of tasters and non-tasters.",
+        "notes": "TAS2R38 PAV frequency: 45%. PAV/PAV supertasters (~20%) perceive PROP/PTC as intensely bitter."
+      },
+      "tcf7l2_diabetes": {
+        "f": 30,
+        "p": 0.3,
+        "t": "higher_t2dm_risk",
+        "desc": "TCF7L2 rs7903146 T allele frequency: 30%. Elevated genetic risk for type 2 diabetes in this population.",
+        "notes": "TCF7L2 rs7903146 T allele: 30%. Strongest common genetic predictor of T2DM risk. Diet-gene interaction well-documented."
+      },
+      "bco1_vitamin_a": {
+        "f": 42,
+        "p": 0.42,
+        "t": "poor_converter_population",
+        "desc": "BCO1 rs12934922 T allele frequency: 42%. Higher proportion of poor beta-carotene converters.",
+        "notes": "BCO1 rs12934922 T allele: 42%. Up to 45% of population may be poor converters. Especially important for plant-based diets."
+      },
+      "mc4r_appetite": {
+        "f": 24,
+        "p": 0.24,
+        "t": "moderate_appetite_drive",
+        "desc": "MC4R rs17782313 C allele frequency: 24%. Moderate prevalence of appetite-affecting variants.",
+        "notes": "MC4R rs17782313 C allele: 24%. Second strongest obesity GWAS signal after FTO. Meta-analysis of 48,560 participants confirms appetite association."
+      },
+      "ace_salt_sensitivity": {
+        "f": 54,
+        "p": 0.54,
+        "t": "moderate_salt_sensitivity",
+        "desc": "ACE I/D D allele frequency: 54%. Mixed distribution of salt sensitivity genotypes.",
+        "notes": "ACE D allele: 54%. The I/D polymorphism is a 287bp Alu insertion/deletion. Strongest single-gene predictor of salt-sensitive blood pressure response."
+      },
+      "nat2_acetylator": {
+        "f": 58,
+        "p": 0.58,
+        "t": "high_slow_acetylator",
+        "desc": "NAT2 slow acetylator phenotype frequency: 58%. Majority are slow acetylators.",
+        "notes": "NAT2 slow acetylator frequency: 58%. Phenotype frequency used (not single SNP). East Asians have lowest slow acetylator rates (~10-25%); Europeans/Africans highest (~50-70%)."
+      },
+      "lipc_hdl": {
+        "f": 21,
+        "p": 0.21,
+        "t": "low_t_allele",
+        "desc": "LIPC rs1800588 T allele: 21%. Higher hepatic lipase activity common.",
+        "notes": "LIPC T allele: 21%. Framingham Study showed strong gene-diet interaction with dietary fat."
+      },
+      "ppara_pufa": {
+        "f": 6,
+        "p": 0.06,
+        "t": "val_carrier_population",
+        "desc": "PPARA rs1800206 Val162 allele: 6%. Some individuals need higher PUFA.",
+        "notes": "PPARA Val162: 6%. Rare but highly actionable. STOP-NIDDM trial showed 1.9x diabetes risk is diet-modifiable."
+      },
+      "drd2_food_reward": {
+        "f": 19,
+        "p": 0.19,
+        "t": "lower_a1_frequency",
+        "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
+        "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
+      },
+      "fut2_b12": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate_secretor_population",
+        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
+        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
+      },
+      "gc_vitamin_d": {
+        "f": 27,
+        "p": 0.27,
+        "t": "higher_risk_allele",
+        "desc": "GC rs2282679 C allele: 27%. More individuals with lower vitamin D binding.",
+        "notes": "GC C allele: 27%. Encodes vitamin D binding protein. Combined with CYP2R1 for vitamin D genetic risk score."
+      },
+      "pemt_choline": {
+        "f": 75,
+        "p": 0.75,
+        "t": "high_c_allele",
+        "desc": "PEMT rs12325817 C allele: 75%. Reduced endogenous choline synthesis common.",
+        "notes": "PEMT C allele: 75%. ~75% carry at least one C allele. Sex-specific effect - women more vulnerable to deficiency."
+      },
+      "fabp2_fat_absorption": {
+        "f": 29,
+        "p": 0.29,
+        "t": "moderate_thr54_frequency",
+        "desc": "FABP2 rs1799883 Thr54 allele: 29%. Mixed fat absorption genetics.",
+        "notes": "FABP2 Thr54: 29%. Well-replicated from Pima Indians through Finnish and Japanese populations."
+      },
+      "tmprss6_iron": {
+        "f": 55,
+        "p": 0.55,
+        "t": "high_t_allele",
+        "desc": "TMPRSS6 rs855791 T allele: 55%. Lower iron absorption common.",
+        "notes": "TMPRSS6 T allele: 55%. Modulates hepcidin regulation. TT individuals absorb 30% less iron than CC."
+      },
+      "agt_salt": {
+        "f": 42,
+        "p": 0.42,
+        "t": "lower_t_allele",
+        "desc": "AGT rs699 T allele: 42%. Lower prevalence of salt-sensitive variant.",
+        "notes": "AGT T allele: 42%. T is ancestral allele (high in African populations). Over 300 epidemiological studies support salt-BP link."
+      },
+      "adrb2_weight_loss": {
+        "f": 43,
+        "p": 0.43,
+        "t": "high_glu27",
+        "desc": "ADRB2 rs1042714 Glu27 allele: 43%. Many respond well to energy restriction.",
+        "notes": "ADRB2 Glu27: 43%. Meta-analysis of 18 studies (n=9,995) confirms obesity association."
+      },
+      "tas1r2_sweet": {
+        "f": 65,
+        "p": 0.65,
+        "t": "high_t_allele",
+        "desc": "TAS1R2 rs35874116 T allele: 65%. ~42% TT with reduced sweet discrimination.",
+        "notes": "TAS1R2 T allele: 65%. Sweet taste receptor gene. Effect strongest in those with BMI≥25."
+      },
+      "oprm1_food_reward": {
+        "f": 16,
+        "p": 0.16,
+        "t": "moderate_g_allele",
+        "desc": "OPRM1 rs1799971 G allele: 16%. Some enhanced food reward genetics.",
+        "notes": "OPRM1 G allele: 16%. Dramatic population variation (2% African to 40% East Asian). Combined with DRD2 predicts binge eating."
+      },
+      "adrb3_thermogenesis": {
+        "f": 8,
+        "p": 0.08,
+        "t": "lower_arg64",
+        "desc": "ADRB3 rs4994 Arg64 allele: 8%. Most have normal thermogenesis.",
+        "notes": "ADRB3 Arg64: 8%. Meta-analyses confirm childhood obesity association, especially in East Asians."
+      },
+      "irs1_insulin": {
+        "f": 63,
+        "p": 0.63,
+        "t": "moderate_c_allele",
+        "desc": "IRS1 rs2943641 C allele: 63%. Mixed insulin signaling genetics.",
+        "notes": "IRS1 C allele: 63%. POUNDS LOST trial (n=738) validated diet-gene interaction across European and Puerto Rican populations."
+      },
+      "pparg_adipocyte": {
+        "f": 12,
+        "p": 0.12,
+        "t": "ala12_present",
+        "desc": "PPARG rs1801282 Ala12 allele: 12%. Some have T2DM protection variant.",
+        "notes": "PPARG Ala12: 12%. Meta-analysis of 73 studies (131,863 subjects) confirms T2DM association. Nearly absent in African populations."
+      },
+      "ugt1a1_fasting": {
+        "f": 32,
+        "p": 0.32,
+        "t": "moderate_28_allele",
+        "desc": "UGT1A1 *28 allele: 32%. Some Gilbert's syndrome genetics.",
+        "notes": "UGT1A1 *28: 32%. Gilbert's affects ~5-10% of population. Fasting, infection, stress trigger mild jaundice."
+      },
+      "sirt1_fasting": {
+        "f": 79,
+        "t": "enhanced"
+      },
+      "ppargc1a_metabolic_flex": {
+        "f": 66,
+        "t": "moderate_flex"
+      },
+      "foxo3_longevity_fasting": {
+        "f": 40,
+        "t": "moderate"
+      },
+      "sod2_antioxidant": {
+        "f": 46,
+        "t": "strong"
+      },
+      "cat_antioxidant": {
+        "f": 26,
+        "t": "enhanced"
+      },
+      "gpx1_selenium": {
+        "f": 65,
+        "t": "standard"
+      },
+      "nrf2_detox": {
+        "f": 83,
+        "t": "standard"
+      },
+      "gstp1_antioxidant": {
+        "f": 72,
+        "t": "efficient"
+      },
+      "ucp1_brown_fat": {
+        "f": 77,
+        "t": "enhanced"
+      },
+      "ucp2_metabolic_rate": {
+        "f": 38,
+        "t": "standard"
+      },
+      "ucp3_muscle_thermogenesis": {
+        "f": 21,
+        "t": "standard"
+      },
+      "dio2_thyroid": {
+        "f": 58,
+        "t": "standard"
+      },
+      "trpm8_cold_tolerance": {
+        "f": 87,
+        "t": "enhanced"
+      },
+      "actn3_power": {
+        "f": 55,
+        "t": "balanced_type"
+      },
+      "il6_recovery": {
+        "f": 49,
+        "t": "fast_recovery"
+      },
+      "igf1_growth": {
+        "f": 15,
+        "t": "standard"
+      },
+      "vegf_circulation": {
+        "f": 73,
+        "t": "enhanced"
+      },
+      "fut2_secretor": {
+        "f": 17,
+        "t": "non_secretor"
+      },
+      "muc2_gut_barrier": {
+        "f": 24,
+        "t": "strong_barrier"
+      },
+      "tlr4_gut_immunity": {
+        "f": 13,
+        "t": "balanced_tolerance"
+      },
+      "tert_telomere": {
+        "f": 53,
+        "t": "enhanced_maintenance"
+      },
+      "klotho_aging": {
+        "f": 15,
+        "t": "longevity_variant"
+      },
+      "cetp_longevity": {
+        "f": 12,
+        "t": "longevity_lipids"
+      },
+      "apoe_brain_health": {
+        "f_e2": 8,
+        "f_e4": 19,
+        "t": "efficient_absorption"
+      },
+      "slc23a1_vitamin_c": {
+        "f": 96,
+        "t": "high",
+        "notes": "1000G FIN A=4.0%; lower than other EUR"
+      },
+      "tcn2_b12_transport": {
+        "f": 60,
+        "t": "moderate",
+        "notes": "FIN C=59.1%; Northern Sweden C=62.2%"
+      },
+      "slc30a8_zinc": {
+        "f": 32,
+        "t": "moderate",
+        "notes": "FIN T=33.8%; notably elevated vs other Europeans due to Finnish founder effects"
+      },
+      "atp7a_copper": {
+        "f": 38,
+        "t": "moderate",
+        "notes": "FINRISK T=39.1%; Northern Sweden T=37.2%"
+      },
+      "pcsk9_ldl": {
+        "f": 1.5,
+        "t": "high",
+        "notes": "1000G FIN; Northern Sweden 1.2%; Estonian 1.52%"
+      },
+      "apoa1_hdl": {
+        "f": 16,
+        "t": "moderate",
+        "notes": "Northern Sweden 14.8%, Estonian 20%; Finnish ~16%"
+      },
+      "ldlr_cholesterol": {
+        "f": 66,
+        "t": "moderate",
+        "notes": "1000G FIN T allele ~34%, C allele ~66%"
+      },
+      "lpl_triglycerides": {
+        "f": 8,
+        "t": "moderate",
+        "notes": "1000G FIN 7.1%; Estonian 6.7%; Northern Sweden 8.5%"
+      },
+      "trpv1_spice": {
+        "f": 42,
+        "t": "high",
+        "notes": "1000G FIN population"
+      },
+      "crhr1_stress_eating": {
+        "f": 54,
+        "t": "moderate",
+        "notes": "N. Sweden = 54.5%, Estonian = 53%; notable north-south European gradient"
+      },
+      "pomc_satiety": {
+        "f": 87,
+        "t": "moderate",
+        "notes": "N. Sweden T allele = 13.3%; higher C allele than Western/Southern Europe"
+      },
+      "npy_appetite": {
+        "f": 49,
+        "t": "moderate",
+        "notes": "N. Sweden = 49%, Estonian = 49.3%"
+      }
+    },
+    "japan": {
+      "lactase_persistence": {
+        "f": 0,
+        "p": 1,
+        "t": "absent",
+        "af1": 0,
+        "me": 0,
+        "af2": 0,
+        "notes": "Better tolerance with fermented dairy; lactose-free alternatives preferred"
+      },
+      "starch_digestion": {
+        "cn": 7,
+        "t": "high",
+        "pc": 1,
+        "notes": "AMY1 copies: 7.0 (2024 pangenome study). Agricultural ancestry pattern."
+      },
+      "pufa_metabolism": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate",
+        "desc": "Moderate G allele (~45%). Mixed conversion efficiency.",
+        "notes": "Moderate conversion efficiency; mix of plant and marine sources optimal"
+      },
+      "alcohol_metabolism": {
+        "p": 0.344,
+        "t": "aldh2_deficient",
+        "ADH1B": {
+          "f": 94,
+          "v": "rs1229984"
+        },
+        "ALDH2": {
+          "f": 19,
+          "v": "rs671"
+        },
+        "notes": "ALDH2 deficiency causes acetaldehyde buildup; increased cancer risk with alcohol"
+      },
+      "edar_adaptation": {
+        "f": 78,
+        "t": "present",
+        "notes": "East Asian-specific variant with effects on sweat glands and thermoregulation"
+      },
+      "aldh2_metabolism": {
+        "f": 45,
+        "p": 0.45,
+        "t": "flush_prone",
+        "desc": "Reduced acetaldehyde clearance causing flush response",
+        "notes": "45% carry at least one *2 allele; provides protection against alcoholism but increases cancer risk"
+      },
+      "caffeine_metabolism": {
+        "f": 35,
+        "p": 0.35,
+        "t": "intermediate"
+      },
+      "bitter_taste": {
+        "f": 65,
+        "p": 0.65,
+        "t": "taster",
+        "notes": "64-66% PAV (taster) haplotype in East Asian populations"
+      },
+      "saturated_fat_response": {
+        "f": 7,
+        "p": 0.07,
+        "t": "normal_response"
+      },
+      "folate_metabolism": {
+        "f": 36,
+        "p": 0.36,
+        "t": "significantly_reduced"
+      },
+      "iron_metabolism": {
+        "f": 0.02,
+        "p": 0.0002,
+        "t": "normal"
+      },
+      "glucose_metabolism": {
+        "f": 3,
+        "p": 0.03,
+        "t": "lower_risk",
+        "desc": "Very low T allele (3%). Lower genetic T2DM risk from this variant."
+      },
+      "obesity_risk": {
+        "f": 16,
+        "p": 0.16,
+        "t": "normal"
+      },
+      "beta_carotene_conversion": {
+        "f": 18,
+        "p": 0.18,
+        "t": "efficient"
+      },
+      "vitamin_d_transport": {
+        "f": 12,
+        "p": 0.12,
+        "t": "efficient"
+      },
+      "salt_sensitivity": {
+        "f": 83,
+        "p": 0.83,
+        "t": "highly_sensitive"
+      },
+      "salt_sensitive_hypertension": {
+        "f": 55,
+        "p": 0.55,
+        "t": "standard"
+      },
+      "bitter_taste_perception": {
+        "f": 66,
+        "p": 0.66,
+        "t": "standard"
+      },
+      "vitamin_b12_absorption": {
+        "f": 99.8,
+        "p": 0.998,
+        "t": "standard"
+      },
+      "appetite_regulation": {
+        "f": 18,
+        "p": 0.18,
+        "t": "elevated_appetite"
+      },
+      "celiac_susceptibility": {
+        "f": 2,
+        "p": 0.02,
+        "t": "low_risk"
+      },
+      "hdl_metabolism": {
+        "f": 45,
+        "p": 0.45,
+        "t": "enhanced_response"
+      },
+      "insulin_sensitivity": {
+        "f": 96,
+        "p": 0.96,
+        "t": "reduced"
+      },
+      "antioxidant_capacity": {
+        "f": 15,
+        "p": 0.15,
+        "t": "standard"
+      },
+      "cruciferous_metabolism_gstm1": {
+        "p": 0.6,
+        "nf": 60,
+        "t": "reduced"
+      },
+      "cruciferous_metabolism_gstt1": {
+        "p": 0.5,
+        "nf": 50,
+        "t": "reduced"
+      },
+      "g6pd_deficiency": {
+        "f": 1,
+        "p": 0.01,
+        "t": "low_risk",
+        "desc": "G6PD deficiency allele frequency: 1% in this population",
+        "notes": "G6PD deficiency causes hemolytic anemia when exposed to oxidative triggers. HbA1c readings may be artificially low."
+      },
+      "abca1_r230c": {
+        "f": 0,
+        "p": 0,
+        "t": "absent",
+        "desc": "R230C allele frequency: 0% (Indigenous American exclusive variant)"
+      },
+      "slc16a11_diabetes": {
+        "f": 0,
+        "p": 0,
+        "t": "low_risk",
+        "desc": "SLC16A11 risk haplotype: 0% (Neanderthal-introgressed, alters hepatic lipid metabolism)",
+        "notes": "SLC16A11 affects liver lipid metabolism. Effect is strongest in younger, leaner individuals - early intervention important."
+      },
+      "tbc1d4_diabetes": {
+        "f": 0,
+        "p": 0,
+        "t": "absent",
+        "desc": "TBC1D4 p.Arg684Ter frequency: 0% (Arctic-specific variant)",
+        "notes": "Exercise is especially critical for carriers - preserves glucose uptake despite insulin resistance. Traditional high-fat marine diet is metabolically optimal."
+      },
+      "polynesian_energy_storage": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency",
+        "desc": "CREBRF 'thrifty gene' frequency: 0% (Pacific Islander variant)"
+      },
+      "arctic_fat_metabolism": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency"
+      },
+      "cyp2r1_vitamin_d": {
+        "f": 22,
+        "p": 0.22,
+        "t": "normal_activation",
+        "desc": "CYP2R1 A allele frequency: 22%. Affects liver 25-hydroxylation of vitamin D.",
+        "notes": "AG/GG genotypes are 3.7x more likely to be vitamin D insufficient despite sun exposure."
+      },
+      "vdr_response": {
+        "f": 35,
+        "p": 0.35,
+        "t": "moderate_response",
+        "desc": "VDR TaqI C allele frequency: 35%. Affects vitamin D receptor sensitivity.",
+        "notes": "CC genotype may require >2000 IU/day for optimal bone health and immune function."
+      },
+      "mtr_b12_methylation": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate",
+        "desc": "MTR A2756G G allele frequency: 25%. Affects B12-dependent homocysteine remethylation.",
+        "notes": "MTR requires B12 as cofactor. Impaired function increases homocysteine."
+      },
+      "mtrr_methylation": {
+        "f": 42,
+        "p": 0.42,
+        "t": "moderate",
+        "desc": "MTRR A66G G allele frequency: 42%. Affects MTR regeneration and B12 recycling.",
+        "notes": "MTRR regenerates MTR enzyme. GG genotype has high methylmalonic acid - monitor in pregnancy."
+      },
+      "comt_methylation": {
+        "f": 38,
+        "p": 0.38,
+        "t": "intermediate",
+        "desc": "COMT Met allele frequency: 38%. Affects catecholamine and estrogen metabolism.",
+        "notes": "Slow COMT benefits from cruciferous vegetables (broccoli, kale) which support estrogen clearance via alternative pathways."
+      },
+      "cyp11b2_hypertension": {
+        "f": 28,
+        "p": 0.28,
+        "t": "normal_aldosterone",
+        "desc": "CYP11B2 T allele frequency: 28%. Affects aldosterone synthase and sodium retention.",
+        "notes": "CYP11B2 regulates aldosterone production. T allele increases salt sensitivity and hypertension risk."
+      },
+      "agtr1_hypertension": {
+        "f": 25,
+        "p": 0.25,
+        "t": "normal_angiotensin",
+        "desc": "AGTR1 T allele frequency: 25%. Affects angiotensin II receptor type 1 activity.",
+        "notes": "AGTR1 mediates vasoconstriction. High activity benefits from potassium-rich foods (bananas, leafy greens, potatoes)."
+      },
+      "lepr_satiety": {
+        "f": 35,
+        "p": 0.35,
+        "t": "moderate_satiety",
+        "desc": "LEPR Q223R G allele frequency: 35%. Affects leptin receptor function and satiety signaling.",
+        "notes": "GG homozygotes have impaired leptin signaling, leading to reduced satiety. Regular meal timing and protein-rich foods may help."
+      },
+      "bdnf_fat_appetite": {
+        "f": 45,
+        "p": 0.45,
+        "t": "fat_hyperphagia",
+        "desc": "BDNF Val66Met Met allele frequency: 45%. Affects appetite regulation specifically in response to dietary fat.",
+        "notes": "BDNF Met carriers do NOT show hyperphagia on low-fat or high-sucrose diets - the effect is FAT-SPECIFIC. Low-fat diet is the targeted intervention."
+      },
+      "cd36_fat_taste": {
+        "f": 35,
+        "p": 0.35,
+        "t": "moderate_fat_taste",
+        "desc": "CD36 A allele frequency: 35%. Affects oral fat taste receptor sensitivity.",
+        "notes": "AA genotype (~25% Europeans) have higher fat detection thresholds. They may need to consciously track fat intake rather than relying on taste satisfaction."
+      },
+      "fads2_vegetarian": {
+        "f": 35,
+        "p": 0.35,
+        "t": "moderate_conversion",
+        "desc": "FADS2 insertion allele frequency: 35%. Represents positive selection for plant-to-animal fatty acid conversion in populations with long vegetarian traditions.",
+        "notes": "High converters efficiently make EPA/DHA from plants but also convert omega-6 to inflammatory arachidonic acid. Traditional South Asian diets with mustard oil and ghee are more compatible than Western vegetable oil-heavy diets."
+      },
+      "clock_chronotype": {
+        "f": 28,
+        "p": 0.28,
+        "t": "moderate_chronotype",
+        "desc": "CLOCK 3111C allele frequency: 28%. Affects circadian rhythm and meal timing response.",
+        "notes": "Evening chronotypes gain more weight from late eating. Eating the same calories earlier in the day produces better metabolic outcomes."
+      },
+      "per1_meal_timing": {
+        "f": 42,
+        "p": 0.42,
+        "t": "high_timing_response",
+        "desc": "PER1 rs2735611 frequency: 42%. Affects response to meal timing consistency.",
+        "notes": "PER1 regulates circadian rhythms. High responders benefit significantly from eating at the same times daily."
+      },
+      "dao_histamine": {
+        "f": 22,
+        "p": 0.22,
+        "t": "moderate_dao",
+        "desc": "DAO rs2052129 T allele frequency: 22%. Affects diamine oxidase activity and histamine breakdown.",
+        "notes": "DAO enzyme breaks down dietary histamine. Low activity causes headaches, flushing, GI symptoms after high-histamine foods. Fresh foods are safer than aged/fermented."
+      },
+      "adora2a_caffeine_anxiety": {
+        "f": 42,
+        "p": 0.42,
+        "t": "caffeine_sensitive",
+        "desc": "ADORA2A rs5751876 frequency: 42%. Affects adenosine receptor sensitivity to caffeine (separate from metabolism speed).",
+        "notes": "ADORA2A affects how caffeine FEELS, not how fast you metabolize it. Even fast CYP1A2 metabolizers can be ADORA2A-sensitive and experience anxiety or insomnia from caffeine."
+      },
+      "abcg2_gout": {
+        "f": 32,
+        "p": 0.32,
+        "t": "elevated_gout_risk",
+        "desc": "ABCG2 rs2231142 T allele frequency: 32%. Affects uric acid transport - dysfunction leads to hyperuricemia and gout.",
+        "notes": "ABCG2 is a urate transporter. Dysfunction causes uric acid accumulation. Pacific Islanders and Filipinos have highest frequencies globally."
+      },
+      "slc2a9_urate": {
+        "f": 92,
+        "p": 0.92,
+        "t": "near_universal",
+        "desc": "SLC2A9 rs734553 frequency: 92%. Affects renal urate handling. Near-fixed in Pacific Islanders (98-100%).",
+        "notes": "SLC2A9 affects how kidneys handle uric acid. Combined with ABCG2 variants, explains extremely high gout rates in Pacific Islander populations."
+      },
+      "ashkenazi_ldlr_fh": {
+        "f": 0,
+        "p": 0,
+        "t": "minimal_fh_risk",
+        "desc": "LDLR G197del carrier frequency: 0%. Causes familial hypercholesterolemia (FH).",
+        "notes": "FH causes very high LDL from birth. Heterozygotes have 2-3x normal LDL. Early statin therapy dramatically reduces cardiovascular events. Diet alone is usually insufficient for FH."
+      },
+      "mthfr_folate": {
+        "f": 30,
+        "p": 0.3,
+        "t": "moderate_risk",
+        "desc": "MTHFR 677T allele frequency: 30%. Moderate prevalence of reduced enzyme activity.",
+        "notes": "MTHFR C677T T allele: 30%. TT genotype (~9% of population) has significantly reduced enzyme function."
+      },
+      "fto_obesity": {
+        "f": 12,
+        "p": 0.12,
+        "t": "lower_obesity_risk",
+        "desc": "FTO rs9939609 A allele frequency: 12%. Lower frequency of FTO risk variants.",
+        "notes": "FTO rs9939609 A allele: 12%. The POUNDS LOST trial confirmed protein-satiety interaction."
+      },
+      "hfe_iron_overload": {
+        "f": 0.01,
+        "p": 0.0001,
+        "t": "minimal_risk",
+        "desc": "HFE C282Y allele frequency: 0.01%. Variant virtually absent in this population.",
+        "notes": "HFE C282Y: 0.01%. This variant is largely European-specific. ~5-10% of European-descent homozygotes develop clinical hemochromatosis."
+      },
+      "tas2r38_bitter": {
+        "f": 40,
+        "p": 0.4,
+        "t": "moderate_taster_population",
+        "desc": "TAS2R38 PAV taster haplotype frequency: 40%. Balanced distribution of tasters and non-tasters.",
+        "notes": "TAS2R38 PAV frequency: 40%. PAV/PAV supertasters (~16%) perceive PROP/PTC as intensely bitter."
+      },
+      "tcf7l2_diabetes": {
+        "f": 3,
+        "p": 0.03,
+        "t": "lower_t2dm_risk",
+        "desc": "TCF7L2 rs7903146 T allele frequency: 3%. Lower frequency of this diabetes risk variant.",
+        "notes": "TCF7L2 rs7903146 T allele: 3%. Strongest common genetic predictor of T2DM risk. Diet-gene interaction well-documented."
+      },
+      "bco1_vitamin_a": {
+        "f": 48,
+        "p": 0.48,
+        "t": "poor_converter_population",
+        "desc": "BCO1 rs12934922 T allele frequency: 48%. Higher proportion of poor beta-carotene converters.",
+        "notes": "BCO1 rs12934922 T allele: 48%. Up to 45% of population may be poor converters. Especially important for plant-based diets."
+      },
+      "mc4r_appetite": {
+        "f": 19,
+        "p": 0.19,
+        "t": "moderate_appetite_drive",
+        "desc": "MC4R rs17782313 C allele frequency: 19%. Moderate prevalence of appetite-affecting variants.",
+        "notes": "MC4R rs17782313 C allele: 19%. Second strongest obesity GWAS signal after FTO. Meta-analysis of 48,560 participants confirms appetite association."
+      },
+      "ace_salt_sensitivity": {
+        "f": 39,
+        "p": 0.39,
+        "t": "lower_dd_frequency",
+        "desc": "ACE I/D D allele frequency: 39%. Higher II genotype frequency - more salt-sensitive individuals.",
+        "notes": "ACE D allele: 39%. The I/D polymorphism is a 287bp Alu insertion/deletion. Strongest single-gene predictor of salt-sensitive blood pressure response."
+      },
+      "nat2_acetylator": {
+        "f": 15,
+        "p": 0.15,
+        "t": "low_slow_acetylator",
+        "desc": "NAT2 slow acetylator phenotype frequency: 15%. Most are rapid acetylators.",
+        "notes": "NAT2 slow acetylator frequency: 15%. Phenotype frequency used (not single SNP). East Asians have lowest slow acetylator rates (~10-25%); Europeans/Africans highest (~50-70%)."
+      },
+      "lipc_hdl": {
+        "f": 45,
+        "p": 0.45,
+        "t": "high_t_allele",
+        "desc": "LIPC rs1800588 T allele: 45%. Lower hepatic lipase activity common.",
+        "notes": "LIPC T allele: 45%. Framingham Study showed strong gene-diet interaction with dietary fat."
+      },
+      "ppara_pufa": {
+        "f": 1,
+        "p": 0.01,
+        "t": "low_val_frequency",
+        "desc": "PPARA rs1800206 Val162 allele: 1%. Variant is rare.",
+        "notes": "PPARA Val162: 1%. Rare but highly actionable. STOP-NIDDM trial showed 1.9x diabetes risk is diet-modifiable."
+      },
+      "drd2_food_reward": {
+        "f": 40,
+        "p": 0.4,
+        "t": "high_a1_frequency",
+        "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
+        "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
+      },
+      "fut2_b12": {
+        "f": 35,
+        "p": 0.35,
+        "t": "high_secretor_population",
+        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
+        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
+      },
+      "gc_vitamin_d": {
+        "f": 15,
+        "p": 0.15,
+        "t": "moderate_risk_allele",
+        "desc": "GC rs2282679 C allele: 15%. Mixed vitamin D transport genetics.",
+        "notes": "GC C allele: 15%. Encodes vitamin D binding protein. Combined with CYP2R1 for vitamin D genetic risk score."
+      },
+      "pemt_choline": {
+        "f": 80,
+        "p": 0.8,
+        "t": "high_c_allele",
+        "desc": "PEMT rs12325817 C allele: 80%. Reduced endogenous choline synthesis common.",
+        "notes": "PEMT C allele: 80%. ~75% carry at least one C allele. Sex-specific effect - women more vulnerable to deficiency."
+      },
+      "fabp2_fat_absorption": {
+        "f": 32,
+        "p": 0.32,
+        "t": "moderate_thr54_frequency",
+        "desc": "FABP2 rs1799883 Thr54 allele: 32%. Mixed fat absorption genetics.",
+        "notes": "FABP2 Thr54: 32%. Well-replicated from Pima Indians through Finnish and Japanese populations."
+      },
+      "tmprss6_iron": {
+        "f": 60,
+        "p": 0.6,
+        "t": "high_t_allele",
+        "desc": "TMPRSS6 rs855791 T allele: 60%. Lower iron absorption common.",
+        "notes": "TMPRSS6 T allele: 60%. Modulates hepcidin regulation. TT individuals absorb 30% less iron than CC."
+      },
+      "agt_salt": {
+        "f": 75,
+        "p": 0.75,
+        "t": "high_t_allele",
+        "desc": "AGT rs699 T allele: 75%. Most carry salt-sensitive variant.",
+        "notes": "AGT T allele: 75%. T is ancestral allele (high in African populations). Over 300 epidemiological studies support salt-BP link."
+      },
+      "adrb2_weight_loss": {
+        "f": 18,
+        "p": 0.18,
+        "t": "lower_glu27",
+        "desc": "ADRB2 rs1042714 Glu27 allele: 18%. Gln27 predominates.",
+        "notes": "ADRB2 Glu27: 18%. Meta-analysis of 18 studies (n=9,995) confirms obesity association."
+      },
+      "tas1r2_sweet": {
+        "f": 55,
+        "p": 0.55,
+        "t": "moderate_t_allele",
+        "desc": "TAS1R2 rs35874116 T allele: 55%. Variable sweet taste genetics.",
+        "notes": "TAS1R2 T allele: 55%. Sweet taste receptor gene. Effect strongest in those with BMI≥25."
+      },
+      "oprm1_food_reward": {
+        "f": 40,
+        "p": 0.4,
+        "t": "high_g_allele",
+        "desc": "OPRM1 rs1799971 G allele: 40%. Many have enhanced food pleasure response.",
+        "notes": "OPRM1 G allele: 40%. Dramatic population variation (2% African to 40% East Asian). Combined with DRD2 predicts binge eating."
+      },
+      "adrb3_thermogenesis": {
+        "f": 20,
+        "p": 0.2,
+        "t": "higher_arg64",
+        "desc": "ADRB3 rs4994 Arg64 allele: 20%. Reduced thermogenesis more common.",
+        "notes": "ADRB3 Arg64: 20%. Meta-analyses confirm childhood obesity association, especially in East Asians."
+      },
+      "irs1_insulin": {
+        "f": 70,
+        "p": 0.7,
+        "t": "high_c_allele",
+        "desc": "IRS1 rs2943641 C allele: 70%. ~49% CC respond well to high-carb/low-fat.",
+        "notes": "IRS1 C allele: 70%. POUNDS LOST trial (n=738) validated diet-gene interaction across European and Puerto Rican populations."
+      },
+      "pparg_adipocyte": {
+        "f": 4,
+        "p": 0.04,
+        "t": "rare_ala12",
+        "desc": "PPARG rs1801282 Ala12 allele: 4%. Ala12 variant rare in this population.",
+        "notes": "PPARG Ala12: 4%. Meta-analysis of 73 studies (131,863 subjects) confirms T2DM association. Nearly absent in African populations."
+      },
+      "ugt1a1_fasting": {
+        "f": 15,
+        "p": 0.15,
+        "t": "lower_28_allele",
+        "desc": "UGT1A1 *28 allele: 15%. Gilbert's syndrome less common.",
+        "notes": "UGT1A1 *28: 15%. Gilbert's affects ~5-10% of population. Fasting, infection, stress trigger mild jaundice."
+      },
+      "sirt1_fasting": {
+        "f": 29,
+        "t": "standard"
+      },
+      "ppargc1a_metabolic_flex": {
+        "f": 52,
+        "t": "low_flex"
+      },
+      "foxo3_longevity_fasting": {
+        "f": 27,
+        "t": "standard"
+      },
+      "sod2_antioxidant": {
+        "f": 12,
+        "t": "standard"
+      },
+      "cat_antioxidant": {
+        "f": 3,
+        "t": "standard"
+      },
+      "gpx1_selenium": {
+        "f": 93,
+        "t": "high"
+      },
+      "nrf2_detox": {
+        "f": 74,
+        "t": "standard"
+      },
+      "gstp1_antioxidant": {
+        "f": 86,
+        "t": "efficient"
+      },
+      "ucp1_brown_fat": {
+        "f": 51,
+        "t": "standard"
+      },
+      "ucp2_metabolic_rate": {
+        "f": 54,
+        "t": "enhanced"
+      },
+      "ucp3_muscle_thermogenesis": {
+        "f": 24,
+        "t": "enhanced"
+      },
+      "dio2_thyroid": {
+        "f": 86,
+        "t": "efficient"
+      },
+      "trpm8_cold_tolerance": {
+        "f": 45,
+        "t": "standard"
+      },
+      "actn3_power": {
+        "f": 47,
+        "t": "balanced_type"
+      },
+      "il6_recovery": {
+        "f": 0,
+        "t": "standard_recovery"
+      },
+      "igf1_growth": {
+        "f": 36,
+        "t": "optimized"
+      },
+      "vegf_circulation": {
+        "f": 57,
+        "t": "standard"
+      },
+      "fut2_secretor": {
+        "f": 18,
+        "t": "non_secretor"
+      },
+      "muc2_gut_barrier": {
+        "f": 72,
+        "t": "strong_barrier"
+      },
+      "tlr4_gut_immunity": {
+        "f": 0,
+        "t": "balanced_tolerance"
+      },
+      "tert_telomere": {
+        "f": 43,
+        "t": "enhanced_maintenance"
+      },
+      "klotho_aging": {
+        "f": 0,
+        "t": "standard_klotho"
+      },
+      "cetp_longevity": {
+        "f": 9,
+        "t": "standard_lipids"
+      },
+      "apoe_brain_health": {
+        "f_e2": 4,
+        "f_e4": 10,
+        "t": "balanced_metabolism"
+      },
+      "slc23a1_vitamin_c": {
+        "f": 100,
+        "t": "high",
+        "notes": "1000G JPT; monomorphic for G allele"
+      },
+      "tcn2_b12_transport": {
+        "f": 43,
+        "t": "moderate",
+        "notes": "1000G JPT C=43.3%"
+      },
+      "slc30a8_zinc": {
+        "f": 42,
+        "t": "high",
+        "notes": "38KJPN T=41.6% (N=77,444 alleles); 1000G JPT T=48.1%; biobank value preferred"
+      },
+      "atp7a_copper": {
+        "f": 58,
+        "t": "high",
+        "notes": "EAS proxy; Korean data supports high frequency"
+      },
+      "pcsk9_ldl": {
+        "f": 0,
+        "t": "low",
+        "notes": "Confirmed 0% in gnomAD East Asian (n=37,878 exomes) and 1000G JPT"
+      },
+      "apoa1_hdl": {
+        "f": 17,
+        "t": "moderate",
+        "notes": "38KJPN: 16.5% (n=77,444 alleles); notably lower than other East Asian populations"
+      },
+      "ldlr_cholesterol": {
+        "f": 57,
+        "t": "low",
+        "notes": "1000G JPT T allele ~43%, C allele ~57%"
+      },
+      "lpl_triglycerides": {
+        "f": 13,
+        "t": "high",
+        "notes": "38KJPN: 13.1% (n=77,444); 1000G JPT ~14.4%"
+      },
+      "trpv1_spice": {
+        "f": 47,
+        "t": "high",
+        "notes": "1000G JPT; confirmed in Okamoto 2018 capsaicin sensitivity study"
+      },
+      "crhr1_stress_eating": {
+        "f": 85,
+        "t": "high",
+        "notes": "38KJPN A allele = 84.6% (n=77,444)"
+      },
+      "pomc_satiety": {
+        "f": 99,
+        "t": "high",
+        "notes": "38KJPN T allele = 0.3%; beneficial allele near fixation"
+      },
+      "npy_appetite": {
+        "f": 65,
+        "t": "high",
+        "notes": "1000G JPT population"
+      }
+    },
+    "west_africa": {
+      "lactase_persistence": {
+        "f": 2,
+        "p": 0.96,
+        "t": "absent",
+        "af1": 0,
+        "me": 0,
+        "af2": 0,
+        "notes": "Better tolerance with fermented dairy; lactose-free alternatives preferred"
+      },
+      "starch_digestion": {
+        "cn": 10.5,
+        "t": "high",
+        "pc": 1,
+        "notes": "Excellent starch digestion (AMY1 copies: 9.0); high-carb diet well-suited"
+      },
+      "pufa_metabolism": {
+        "f": 96,
+        "p": 0.998,
+        "t": "efficient",
+        "notes": "Efficient ALAâ†’EPA/DHA conversion; plant-based omega-3 sources adequate"
+      },
+      "alcohol_metabolism": {
+        "p": 0.82,
+        "t": "standard",
+        "ADH1B": {
+          "f": 18,
+          "v": "rs2066702"
+        },
+        "notes": "Normal alcohol metabolism; no specific restrictions"
+      },
+      "vitamin_d_metabolism": {
+        "f": 1,
+        "t": "dark",
+        "notes": "Dark skin reduces vitamin D synthesis; higher dietary intake important"
+      },
+      "pcsk9_protective": {
+        "f": 2,
+        "p": 0.02,
+        "t": "cardioprotective",
+        "desc": "Loss-of-function variants providing 40% LDL reduction and 88% CHD risk reduction",
+        "notes": "2-2.3% combined frequency in African Americans; virtually absent in Europeans"
+      },
+      "cholesterol_metabolism": {
+        "f": 25,
+        "t": "elevated_apoe4",
+        "snps": {
+          "rs429358": {
+            "f": 22,
+            "r": "C"
+          },
+          "rs7412": {
+            "f": 9,
+            "r": "T"
+          }
+        },
+        "desc": "Higher Îµ4 frequency but with dietary-dependent Alzheimer's risk",
+        "notes": "Higher Îµ4 but low Alzheimer's in traditional diet contexts"
+      },
+      "bitter_taste": {
+        "f": 45,
+        "t": "diverse",
+        "desc": "Highest haplotype diversity globally; unique AAI intermediate haplotype at 19-23%",
+        "notes": "African populations show greatest TAS2R38 diversity with AAI at 19-23%"
+      },
+      "adh1b_african": {
+        "f": 12
+      },
+      "caffeine_metabolism": {
+        "f": 46,
+        "p": 0.46,
+        "t": "slow_metabolizer"
+      },
+      "saturated_fat_response": {
+        "f": 17,
+        "p": 0.17,
+        "t": "moderate_sensitivity"
+      },
+      "folate_metabolism": {
+        "f": 10,
+        "p": 0.1,
+        "t": "normal"
+      },
+      "iron_metabolism": {
+        "f": 0.5,
+        "p": 0.005,
+        "t": "normal"
+      },
+      "glucose_metabolism": {
+        "f": 30,
+        "p": 0.3,
+        "t": "elevated_risk"
+      },
+      "obesity_risk": {
+        "f": 50,
+        "p": 0.5,
+        "t": "elevated_risk"
+      },
+      "beta_carotene_conversion": {
+        "f": 28,
+        "p": 0.28,
+        "t": "moderate"
+      },
+      "vitamin_d_transport": {
+        "f": 8,
+        "p": 0.08,
+        "t": "efficient"
+      },
+      "salt_sensitivity": {
+        "f": 88,
+        "p": 0.88,
+        "t": "highly_sensitive"
+      },
+      "salt_sensitive_hypertension": {
+        "f": 35,
+        "p": 0.35,
+        "t": "standard"
+      },
+      "bitter_taste_perception": {
+        "f": 40,
+        "p": 0.4,
+        "t": "standard"
+      },
+      "vitamin_b12_absorption": {
+        "f": 50,
+        "p": 0.5,
+        "t": "standard"
+      },
+      "appetite_regulation": {
+        "f": 29,
+        "p": 0.29,
+        "t": "high_appetite_drive"
+      },
+      "celiac_susceptibility": {
+        "f": 10,
+        "p": 0.1,
+        "t": "moderate_risk"
+      },
+      "hdl_metabolism": {
+        "f": 35,
+        "p": 0.35,
+        "t": "enhanced_response"
+      },
+      "insulin_sensitivity": {
+        "f": 97,
+        "p": 0.97,
+        "t": "reduced"
+      },
+      "antioxidant_capacity": {
+        "f": 35,
+        "p": 0.35,
+        "t": "variable"
+      },
+      "cruciferous_metabolism_gstm1": {
+        "p": 0.3,
+        "nf": 30,
+        "t": "efficient"
+      },
+      "cruciferous_metabolism_gstt1": {
+        "p": 0.26,
+        "nf": 26,
+        "t": "efficient"
+      },
+      "g6pd_deficiency": {
+        "f": 0.5,
+        "p": 0.005,
+        "t": "low_risk",
+        "desc": "G6PD deficiency allele frequency: 0.5% in this population",
+        "notes": "G6PD deficiency causes hemolytic anemia when exposed to oxidative triggers. HbA1c readings may be artificially low."
+      },
+      "abca1_r230c": {
+        "f": 0,
+        "p": 0,
+        "t": "absent",
+        "desc": "R230C allele frequency: 0% (Indigenous American exclusive variant)"
+      },
+      "slc16a11_diabetes": {
+        "f": 0,
+        "p": 0,
+        "t": "low_risk",
+        "desc": "SLC16A11 risk haplotype: 0% (Neanderthal-introgressed, alters hepatic lipid metabolism)",
+        "notes": "SLC16A11 affects liver lipid metabolism. Effect is strongest in younger, leaner individuals - early intervention important."
+      },
+      "tbc1d4_diabetes": {
+        "f": 0,
+        "p": 0,
+        "t": "absent",
+        "desc": "TBC1D4 p.Arg684Ter frequency: 0% (Arctic-specific variant)",
+        "notes": "Exercise is especially critical for carriers - preserves glucose uptake despite insulin resistance. Traditional high-fat marine diet is metabolically optimal."
+      },
+      "polynesian_energy_storage": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency",
+        "desc": "CREBRF 'thrifty gene' frequency: 0% (Pacific Islander variant)"
+      },
+      "arctic_fat_metabolism": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency"
+      },
+      "cyp2r1_vitamin_d": {
+        "f": 40,
+        "p": 0.4,
+        "t": "moderate_activation",
+        "desc": "CYP2R1 A allele frequency: 40%. Affects liver 25-hydroxylation of vitamin D.",
+        "notes": "AG/GG genotypes are 3.7x more likely to be vitamin D insufficient despite sun exposure."
+      },
+      "vdr_response": {
+        "f": 38,
+        "p": 0.38,
+        "t": "moderate_response",
+        "desc": "VDR TaqI C allele frequency: 38%. Affects vitamin D receptor sensitivity.",
+        "notes": "CC genotype may require >2000 IU/day for optimal bone health and immune function."
+      },
+      "mtr_b12_methylation": {
+        "f": 18,
+        "p": 0.18,
+        "t": "normal",
+        "desc": "MTR A2756G G allele frequency: 18%. Affects B12-dependent homocysteine remethylation.",
+        "notes": "MTR requires B12 as cofactor. Impaired function increases homocysteine."
+      },
+      "mtrr_methylation": {
+        "f": 42,
+        "p": 0.42,
+        "t": "moderate",
+        "desc": "MTRR A66G G allele frequency: 42%. Affects MTR regeneration and B12 recycling.",
+        "notes": "MTRR regenerates MTR enzyme. GG genotype has high methylmalonic acid - monitor in pregnancy."
+      },
+      "comt_methylation": {
+        "f": 40,
+        "p": 0.4,
+        "t": "intermediate",
+        "desc": "COMT Met allele frequency: 40%. Affects catecholamine and estrogen metabolism.",
+        "notes": "Slow COMT benefits from cruciferous vegetables (broccoli, kale) which support estrogen clearance via alternative pathways."
+      },
+      "cyp11b2_hypertension": {
+        "f": 40,
+        "p": 0.4,
+        "t": "moderate_aldosterone",
+        "desc": "CYP11B2 T allele frequency: 40%. Affects aldosterone synthase and sodium retention.",
+        "notes": "CYP11B2 regulates aldosterone production. T allele increases salt sensitivity and hypertension risk."
+      },
+      "agtr1_hypertension": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate_angiotensin",
+        "desc": "AGTR1 T allele frequency: 45%. Affects angiotensin II receptor type 1 activity.",
+        "notes": "AGTR1 mediates vasoconstriction. High activity benefits from potassium-rich foods (bananas, leafy greens, potatoes)."
+      },
+      "lepr_satiety": {
+        "f": 40,
+        "p": 0.4,
+        "t": "reduced_satiety",
+        "desc": "LEPR Q223R G allele frequency: 40%. Affects leptin receptor function and satiety signaling.",
+        "notes": "GG homozygotes have impaired leptin signaling, leading to reduced satiety. Regular meal timing and protein-rich foods may help."
+      },
+      "bdnf_fat_appetite": {
+        "f": 20,
+        "p": 0.2,
+        "t": "moderate_fat_response",
+        "desc": "BDNF Val66Met Met allele frequency: 20%. Affects appetite regulation specifically in response to dietary fat.",
+        "notes": "BDNF Met carriers do NOT show hyperphagia on low-fat or high-sucrose diets - the effect is FAT-SPECIFIC. Low-fat diet is the targeted intervention."
+      },
+      "cd36_fat_taste": {
+        "f": 42,
+        "p": 0.42,
+        "t": "reduced_fat_taste",
+        "desc": "CD36 A allele frequency: 42%. Affects oral fat taste receptor sensitivity.",
+        "notes": "AA genotype (~25% Europeans) have higher fat detection thresholds. They may need to consciously track fat intake rather than relying on taste satisfaction."
+      },
+      "fads2_vegetarian": {
+        "f": 30,
+        "p": 0.3,
+        "t": "moderate_conversion",
+        "desc": "FADS2 insertion allele frequency: 30%. Represents positive selection for plant-to-animal fatty acid conversion in populations with long vegetarian traditions.",
+        "notes": "High converters efficiently make EPA/DHA from plants but also convert omega-6 to inflammatory arachidonic acid. Traditional South Asian diets with mustard oil and ghee are more compatible than Western vegetable oil-heavy diets."
+      },
+      "clock_chronotype": {
+        "f": 26,
+        "p": 0.26,
+        "t": "moderate_chronotype",
+        "desc": "CLOCK 3111C allele frequency: 26%. Affects circadian rhythm and meal timing response.",
+        "notes": "Evening chronotypes gain more weight from late eating. Eating the same calories earlier in the day produces better metabolic outcomes."
+      },
+      "per1_meal_timing": {
+        "f": 32,
+        "p": 0.32,
+        "t": "moderate_timing_response",
+        "desc": "PER1 rs2735611 frequency: 32%. Affects response to meal timing consistency.",
+        "notes": "PER1 regulates circadian rhythms. High responders benefit significantly from eating at the same times daily."
+      },
+      "dao_histamine": {
+        "f": 20,
+        "p": 0.2,
+        "t": "moderate_dao",
+        "desc": "DAO rs2052129 T allele frequency: 20%. Affects diamine oxidase activity and histamine breakdown.",
+        "notes": "DAO enzyme breaks down dietary histamine. Low activity causes headaches, flushing, GI symptoms after high-histamine foods. Fresh foods are safer than aged/fermented."
+      },
+      "adora2a_caffeine_anxiety": {
+        "f": 38,
+        "p": 0.38,
+        "t": "moderate_caffeine_sensitivity",
+        "desc": "ADORA2A rs5751876 frequency: 38%. Affects adenosine receptor sensitivity to caffeine (separate from metabolism speed).",
+        "notes": "ADORA2A affects how caffeine FEELS, not how fast you metabolize it. Even fast CYP1A2 metabolizers can be ADORA2A-sensitive and experience anxiety or insomnia from caffeine."
+      },
+      "abcg2_gout": {
+        "f": 10,
+        "p": 0.1,
+        "t": "moderate_gout_risk",
+        "desc": "ABCG2 rs2231142 T allele frequency: 10%. Affects uric acid transport - dysfunction leads to hyperuricemia and gout.",
+        "notes": "ABCG2 is a urate transporter. Dysfunction causes uric acid accumulation. Pacific Islanders and Filipinos have highest frequencies globally."
+      },
+      "slc2a9_urate": {
+        "f": 78,
+        "p": 0.78,
+        "t": "high_frequency",
+        "desc": "SLC2A9 rs734553 frequency: 78%. Affects renal urate handling. Near-fixed in Pacific Islanders (98-100%).",
+        "notes": "SLC2A9 affects how kidneys handle uric acid. Combined with ABCG2 variants, explains extremely high gout rates in Pacific Islander populations."
+      },
+      "ashkenazi_ldlr_fh": {
+        "f": 0,
+        "p": 0,
+        "t": "minimal_fh_risk",
+        "desc": "LDLR G197del carrier frequency: 0%. Causes familial hypercholesterolemia (FH).",
+        "notes": "FH causes very high LDL from birth. Heterozygotes have 2-3x normal LDL. Early statin therapy dramatically reduces cardiovascular events. Diet alone is usually insufficient for FH."
+      },
+      "mthfr_folate": {
+        "f": 9,
+        "p": 0.09,
+        "t": "lower_risk",
+        "desc": "MTHFR 677T allele frequency: 9%. Lower prevalence of MTHFR variants.",
+        "notes": "MTHFR C677T T allele: 9%. TT genotype (~0% of population) has significantly reduced enzyme function."
+      },
+      "fto_obesity": {
+        "f": 49,
+        "p": 0.49,
+        "t": "higher_obesity_risk",
+        "desc": "FTO rs9939609 A allele frequency: 49%. Higher frequency of reduced satiety signaling.",
+        "notes": "FTO rs9939609 A allele: 49%. The POUNDS LOST trial confirmed protein-satiety interaction."
+      },
+      "hfe_iron_overload": {
+        "f": 0.01,
+        "p": 0.0001,
+        "t": "minimal_risk",
+        "desc": "HFE C282Y allele frequency: 0.01%. Variant virtually absent in this population.",
+        "notes": "HFE C282Y: 0.01%. This variant is largely European-specific. ~5-10% of European-descent homozygotes develop clinical hemochromatosis."
+      },
+      "tas2r38_bitter": {
+        "f": 65,
+        "p": 0.65,
+        "t": "high_taster_population",
+        "desc": "TAS2R38 PAV taster haplotype frequency: 65%. Higher proportion of supertasters who perceive intense bitterness.",
+        "notes": "TAS2R38 PAV frequency: 65%. PAV/PAV supertasters (~42%) perceive PROP/PTC as intensely bitter."
+      },
+      "tcf7l2_diabetes": {
+        "f": 30,
+        "p": 0.3,
+        "t": "higher_t2dm_risk",
+        "desc": "TCF7L2 rs7903146 T allele frequency: 30%. Elevated genetic risk for type 2 diabetes in this population.",
+        "notes": "TCF7L2 rs7903146 T allele: 30%. Strongest common genetic predictor of T2DM risk. Diet-gene interaction well-documented."
+      },
+      "bco1_vitamin_a": {
+        "f": 30,
+        "p": 0.3,
+        "t": "good_converter_population",
+        "desc": "BCO1 rs12934922 T allele frequency: 30%. Higher proportion with efficient beta-carotene conversion.",
+        "notes": "BCO1 rs12934922 T allele: 30%. Up to 45% of population may be poor converters. Especially important for plant-based diets."
+      },
+      "mc4r_appetite": {
+        "f": 29,
+        "p": 0.29,
+        "t": "higher_appetite_drive",
+        "desc": "MC4R rs17782313 C allele frequency: 29%. Higher genetic appetite drive in this population.",
+        "notes": "MC4R rs17782313 C allele: 29%. Second strongest obesity GWAS signal after FTO. Meta-analysis of 48,560 participants confirms appetite association."
+      },
+      "ace_salt_sensitivity": {
+        "f": 60,
+        "p": 0.6,
+        "t": "higher_salt_sensitivity",
+        "desc": "ACE I/D D allele frequency: 60%. DD genotype common; II genotype (~16%) is salt-sensitive.",
+        "notes": "ACE D allele: 60%. The I/D polymorphism is a 287bp Alu insertion/deletion. Strongest single-gene predictor of salt-sensitive blood pressure response."
+      },
+      "nat2_acetylator": {
+        "f": 52,
+        "p": 0.52,
+        "t": "high_slow_acetylator",
+        "desc": "NAT2 slow acetylator phenotype frequency: 52%. Majority are slow acetylators.",
+        "notes": "NAT2 slow acetylator frequency: 52%. Phenotype frequency used (not single SNP). East Asians have lowest slow acetylator rates (~10-25%); Europeans/Africans highest (~50-70%)."
+      },
+      "lipc_hdl": {
+        "f": 53,
+        "p": 0.53,
+        "t": "high_t_allele",
+        "desc": "LIPC rs1800588 T allele: 53%. Lower hepatic lipase activity common.",
+        "notes": "LIPC T allele: 53%. Framingham Study showed strong gene-diet interaction with dietary fat."
+      },
+      "ppara_pufa": {
+        "f": 1,
+        "p": 0.01,
+        "t": "low_val_frequency",
+        "desc": "PPARA rs1800206 Val162 allele: 1%. Variant is rare.",
+        "notes": "PPARA Val162: 1%. Rare but highly actionable. STOP-NIDDM trial showed 1.9x diabetes risk is diet-modifiable."
+      },
+      "drd2_food_reward": {
+        "f": 38,
+        "p": 0.38,
+        "t": "high_a1_frequency",
+        "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
+        "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
+      },
+      "fut2_b12": {
+        "f": 48,
+        "p": 0.48,
+        "t": "moderate_secretor_population",
+        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
+        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
+      },
+      "gc_vitamin_d": {
+        "f": 8,
+        "p": 0.08,
+        "t": "lower_risk_allele",
+        "desc": "GC rs2282679 C allele: 8%. Most have efficient vitamin D binding.",
+        "notes": "GC C allele: 8%. Encodes vitamin D binding protein. Combined with CYP2R1 for vitamin D genetic risk score."
+      },
+      "pemt_choline": {
+        "f": 65,
+        "p": 0.65,
+        "t": "moderate_c_allele",
+        "desc": "PEMT rs12325817 C allele: 65%. Mixed choline synthesis capacity.",
+        "notes": "PEMT C allele: 65%. ~75% carry at least one C allele. Sex-specific effect - women more vulnerable to deficiency."
+      },
+      "fabp2_fat_absorption": {
+        "f": 25,
+        "p": 0.25,
+        "t": "lower_thr54_frequency",
+        "desc": "FABP2 rs1799883 Thr54 allele: 25%. Standard fat absorption predominates.",
+        "notes": "FABP2 Thr54: 25%. Well-replicated from Pima Indians through Finnish and Japanese populations."
+      },
+      "tmprss6_iron": {
+        "f": 15,
+        "p": 0.15,
+        "t": "lower_t_allele",
+        "desc": "TMPRSS6 rs855791 T allele: 15%. Higher iron absorption predominates.",
+        "notes": "TMPRSS6 T allele: 15%. Modulates hepcidin regulation. TT individuals absorb 30% less iron than CC."
+      },
+      "agt_salt": {
+        "f": 90,
+        "p": 0.9,
+        "t": "high_t_allele",
+        "desc": "AGT rs699 T allele: 90%. Most carry salt-sensitive variant.",
+        "notes": "AGT T allele: 90%. T is ancestral allele (high in African populations). Over 300 epidemiological studies support salt-BP link."
+      },
+      "adrb2_weight_loss": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate_glu27",
+        "desc": "ADRB2 rs1042714 Glu27 allele: 25%. Mixed weight loss genetics.",
+        "notes": "ADRB2 Glu27: 25%. Meta-analysis of 18 studies (n=9,995) confirms obesity association."
+      },
+      "tas1r2_sweet": {
+        "f": 50,
+        "p": 0.5,
+        "t": "moderate_t_allele",
+        "desc": "TAS1R2 rs35874116 T allele: 50%. Variable sweet taste genetics.",
+        "notes": "TAS1R2 T allele: 50%. Sweet taste receptor gene. Effect strongest in those with BMI≥25."
+      },
+      "oprm1_food_reward": {
+        "f": 2,
+        "p": 0.02,
+        "t": "lower_g_allele",
+        "desc": "OPRM1 rs1799971 G allele: 2%. Most have standard food pleasure response.",
+        "notes": "OPRM1 G allele: 2%. Dramatic population variation (2% African to 40% East Asian). Combined with DRD2 predicts binge eating."
+      },
+      "adrb3_thermogenesis": {
+        "f": 10,
+        "p": 0.1,
+        "t": "moderate_arg64",
+        "desc": "ADRB3 rs4994 Arg64 allele: 10%. Some reduced thermogenesis genetics.",
+        "notes": "ADRB3 Arg64: 10%. Meta-analyses confirm childhood obesity association, especially in East Asians."
+      },
+      "irs1_insulin": {
+        "f": 55,
+        "p": 0.55,
+        "t": "moderate_c_allele",
+        "desc": "IRS1 rs2943641 C allele: 55%. Mixed insulin signaling genetics.",
+        "notes": "IRS1 C allele: 55%. POUNDS LOST trial (n=738) validated diet-gene interaction across European and Puerto Rican populations."
+      },
+      "pparg_adipocyte": {
+        "f": 2,
+        "p": 0.02,
+        "t": "rare_ala12",
+        "desc": "PPARG rs1801282 Ala12 allele: 2%. Ala12 variant rare in this population.",
+        "notes": "PPARG Ala12: 2%. Meta-analysis of 73 studies (131,863 subjects) confirms T2DM association. Nearly absent in African populations."
+      },
+      "ugt1a1_fasting": {
+        "f": 45,
+        "p": 0.45,
+        "t": "high_28_allele",
+        "desc": "UGT1A1 *28 allele: 45%. ~20% *28/*28 (Gilbert's syndrome).",
+        "notes": "UGT1A1 *28: 45%. Gilbert's affects ~5-10% of population. Fasting, infection, stress trigger mild jaundice."
+      },
+      "sirt1_fasting": {
+        "f": 80,
+        "t": "enhanced"
+      },
+      "ppargc1a_metabolic_flex": {
+        "f": 96,
+        "t": "high_flex"
+      },
+      "foxo3_longevity_fasting": {
+        "f": 73,
+        "t": "enhanced"
+      },
+      "sod2_antioxidant": {
+        "f": 43,
+        "t": "standard"
+      },
+      "cat_antioxidant": {
+        "f": 8,
+        "t": "standard"
+      },
+      "gpx1_selenium": {
+        "f": 71,
+        "t": "standard"
+      },
+      "nrf2_detox": {
+        "f": 94,
+        "t": "enhanced"
+      },
+      "gstp1_antioxidant": {
+        "f": 50,
+        "t": "standard"
+      },
+      "ucp1_brown_fat": {
+        "f": 24,
+        "t": "standard"
+      },
+      "ucp2_metabolic_rate": {
+        "f": 35,
+        "t": "standard"
+      },
+      "ucp3_muscle_thermogenesis": {
+        "f": 10,
+        "t": "standard"
+      },
+      "dio2_thyroid": {
+        "f": 49,
+        "t": "standard"
+      },
+      "trpm8_cold_tolerance": {
+        "f": 5,
+        "t": "standard"
+      },
+      "actn3_power": {
+        "f": 93,
+        "t": "power_type"
+      },
+      "il6_recovery": {
+        "f": 2,
+        "t": "standard_recovery"
+      },
+      "igf1_growth": {
+        "f": 45,
+        "t": "optimized"
+      },
+      "vegf_circulation": {
+        "f": 68,
+        "t": "enhanced"
+      },
+      "fut2_secretor": {
+        "f": 25,
+        "t": "non_secretor"
+      },
+      "muc2_gut_barrier": {
+        "f": 62,
+        "t": "strong_barrier"
+      },
+      "tlr4_gut_immunity": {
+        "f": 15,
+        "t": "balanced_tolerance"
+      },
+      "tert_telomere": {
+        "f": 47,
+        "t": "enhanced_maintenance"
+      },
+      "klotho_aging": {
+        "f": 8,
+        "t": "longevity_variant"
+      },
+      "cetp_longevity": {
+        "f": 13,
+        "t": "longevity_lipids"
+      },
+      "apoe_brain_health": {
+        "f_e2": 11,
+        "f_e4": 22,
+        "t": "efficient_absorption"
+      },
+      "slc23a1_vitamin_c": {
+        "f": 100,
+        "t": "high",
+        "notes": "1000G YRI/GWD/MSL/ESN; monomorphic for G. Note: separate African-specific variant rs35817838 reduces SVCT1 by 75% but is not tracked here"
+      },
+      "tcn2_b12_transport": {
+        "f": 80,
+        "t": "high",
+        "notes": "YRI C=78.7%, GWD C=80.5%, MSL C=81.8%, ESN C=77.3%; ancestral allele highly conserved"
+      },
+      "slc30a8_zinc": {
+        "f": 6,
+        "t": "low",
+        "notes": "YRI T=6.9%, GWD T=5.3%, MSL T=5.9%, ESN T=6.1%; lowest protective allele globally"
+      },
+      "atp7a_copper": {
+        "f": 53,
+        "t": "high"
+      },
+      "pcsk9_ldl": {
+        "f": 0,
+        "t": "low",
+        "notes": "Confirmed 0% in 1000G YRI/GWD/MSL/ESN. IMPORTANT: West Africans carry alternative PCSK9 LOF variants — C679X at 1.4-3.7% (Yoruba 1.4%, Zimbabwe 3.7%, Burkina Faso/Benin up to 6.9% in some ethnic groups) providing equivalent cardioprotection"
+      },
+      "apoa1_hdl": {
+        "f": 16,
+        "t": "moderate",
+        "notes": "1000G AFR ~16%"
+      },
+      "ldlr_cholesterol": {
+        "f": 90,
+        "t": "high",
+        "notes": "1000G YRI C allele ~91%, GWD ~90%. Highest LDLR efficiency globally"
+      },
+      "lpl_triglycerides": {
+        "f": 2,
+        "t": "low",
+        "notes": "1000G YRI ~2.8%, GWD ~2.2%, MSL ~1.8%. Lowest S447X frequency globally"
+      },
+      "trpv1_spice": {
+        "f": 15,
+        "t": "low",
+        "notes": "1000G YRI/GWD/MSL/ESN; lowest Val585 frequency globally"
+      },
+      "crhr1_stress_eating": {
+        "f": 29,
+        "t": "low",
+        "notes": "1000G AFR = 28.9%, ALFA AFR = 30.3%"
+      },
+      "pomc_satiety": {
+        "f": 88,
+        "t": "moderate",
+        "notes": "gnomAD AFR T allele = 12.1%"
+      },
+      "npy_appetite": {
+        "f": 36,
+        "t": "low",
+        "notes": "Ancestral T allele predominates; may reflect historical selection for robust appetite drive"
+      }
+    },
+    "inuit": {
+      "lactase_persistence": {
+        "f": 2,
+        "p": 0.049,
+        "t": "absent",
+        "af1": 0,
+        "me": 0,
+        "af2": 0,
+        "desc": "LP ABSENT in traditional Inuit. Any LP derives from European admixture. Traditional diet had no dairy - entirely marine mammal and fish based.",
+        "notes": "LP ABSENT in traditional Inuit. Any LP derives from European admixture. Traditional diet had no dairy - entirely marine mammal and fish based."
+      },
+      "starch_digestion": {
+        "cn": 4.5,
+        "t": "low",
+        "pc": 1,
+        "desc": "Lower amylase production - hunter-gatherer/pastoral ancestry (2024 pangenome data)",
+        "notes": "AMY1 copies: 4.5 (2024 pangenome study). Hunter-gatherer/pastoral ancestry pattern."
+      },
+      "pufa_metabolism": {
+        "f": 8,
+        "p": 0.08,
+        "t": "reduced",
+        "desc": "Very low G allele (~8%). Limited ability to convert plant ALA to EPA/DHA. Requires preformed long-chain omega-3s.",
+        "notes": "Low FADS1 efficiency. Preformed DHA/EPA from fish or algae strongly recommended over plant sources."
+      },
+      "alcohol_metabolism": {
+        "p": 0.85,
+        "t": "standard",
+        "ADH1B": {
+          "f": 8,
+          "v": "rs1229984"
+        }
+      },
+      "vitamin_d_metabolism": {
+        "f": 20,
+        "t": "dark",
+        "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
+        "notes": "Low-moderate. Arctic has extreme UV variation. Traditional diet very high in vitamin D from marine mammal fat and fish liver - critical dietary source in low-UV environment."
+      },
+      "cholesterol_metabolism": {
+        "f": 24,
+        "t": "elevated_apoe4",
+        "snps": {
+          "rs429358": {
+            "f": 11,
+            "r": "C"
+          },
+          "rs7412": {
+            "f": 5,
+            "r": "T"
+          }
+        },
+        "notes": "Elevated e4, absent e2. High-fat diet context. Traditional diet was 50-75% fat from marine mammals."
+      },
+      "arctic_fat_metabolism": {
+        "f": 76,
+        "p": 0.76,
+        "t": "arctic_adapted",
+        "notes": "Strong positive selection in Arctic populations. Traditional high-fat marine diet is optimal for carriers."
+      },
+      "caffeine_metabolism": {
+        "f": 26,
+        "p": 0.26,
+        "t": "intermediate"
+      },
+      "saturated_fat_response": {
+        "f": 24,
+        "p": 0.24,
+        "t": "moderate_sensitivity"
+      },
+      "folate_metabolism": {
+        "f": 54,
+        "p": 0.54,
+        "t": "significantly_reduced"
+      },
+      "iron_metabolism": {
+        "f": 0,
+        "p": 0,
+        "t": "normal"
+      },
+      "glucose_metabolism": {
+        "f": 17,
+        "p": 0.17,
+        "t": "moderate_risk"
+      },
+      "obesity_risk": {
+        "f": 8,
+        "p": 0.08,
+        "t": "normal"
+      },
+      "beta_carotene_conversion": {
+        "f": 32,
+        "p": 0.32,
+        "t": "moderate"
+      },
+      "vitamin_d_transport": {
+        "f": 18,
+        "p": 0.18,
+        "t": "efficient"
+      },
+      "salt_sensitivity": {
+        "f": 60,
+        "p": 0.6,
+        "t": "sensitive"
+      },
+      "salt_sensitive_hypertension": {
+        "f": 30,
+        "p": 0.3,
+        "t": "standard"
+      },
+      "bitter_taste_perception": {
+        "f": 50,
+        "p": 0.5,
+        "t": "standard"
+      },
+      "vitamin_b12_absorption": {
+        "f": 85,
+        "p": 0.85,
+        "t": "standard"
+      },
+      "appetite_regulation": {
+        "f": 10,
+        "p": 0.1,
+        "t": "normal"
+      },
+      "celiac_susceptibility": {
+        "f": 5,
+        "p": 0.05,
+        "t": "low_risk"
+      },
+      "hdl_metabolism": {
+        "f": 20,
+        "p": 0.2,
+        "t": "standard"
+      },
+      "insulin_sensitivity": {
+        "f": 85,
+        "p": 0.85,
+        "t": "protected"
+      },
+      "antioxidant_capacity": {
+        "f": 40,
+        "p": 0.4,
+        "t": "variable"
+      },
+      "cruciferous_metabolism_gstm1": {
+        "p": 0.45,
+        "nf": 45,
+        "t": "moderate"
+      },
+      "cruciferous_metabolism_gstt1": {
+        "p": 0.12,
+        "nf": 12,
+        "t": "efficient"
+      },
+      "g6pd_deficiency": {
+        "f": 0,
+        "p": 0,
+        "t": "low_risk",
+        "desc": "G6PD deficiency allele frequency: 0% in this population",
+        "notes": "G6PD deficiency causes hemolytic anemia when exposed to oxidative triggers. HbA1c readings may be artificially low."
+      },
+      "abca1_r230c": {
+        "f": 3,
+        "p": 0.03,
+        "t": "low_frequency",
+        "desc": "R230C allele frequency: 3% (Indigenous American exclusive variant)"
+      },
+      "slc16a11_diabetes": {
+        "f": 10,
+        "p": 0.1,
+        "t": "moderate_risk",
+        "desc": "SLC16A11 risk haplotype: 10% (Neanderthal-introgressed, alters hepatic lipid metabolism)",
+        "notes": "SLC16A11 affects liver lipid metabolism. Effect is strongest in younger, leaner individuals - early intervention important."
+      },
+      "tbc1d4_diabetes": {
+        "f": 17,
+        "p": 0.17,
+        "t": "elevated_risk",
+        "desc": "TBC1D4 p.Arg684Ter frequency: 17% (Arctic-specific variant)",
+        "notes": "Exercise is especially critical for carriers - preserves glucose uptake despite insulin resistance. Traditional high-fat marine diet is metabolically optimal."
+      },
+      "polynesian_energy_storage": {
+        "f": 0,
+        "p": 0,
+        "t": "low_frequency",
+        "desc": "CREBRF 'thrifty gene' frequency: 0% (Pacific Islander variant)"
+      },
+      "cyp2r1_vitamin_d": {
+        "f": 32,
+        "p": 0.32,
+        "t": "moderate_activation",
+        "desc": "CYP2R1 A allele frequency: 32%. Affects liver 25-hydroxylation of vitamin D.",
+        "notes": "AG/GG genotypes are 3.7x more likely to be vitamin D insufficient despite sun exposure."
+      },
+      "vdr_response": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate_response",
+        "desc": "VDR TaqI C allele frequency: 25%. Affects vitamin D receptor sensitivity.",
+        "notes": "CC genotype may require >2000 IU/day for optimal bone health and immune function."
+      },
+      "mtr_b12_methylation": {
+        "f": 18,
+        "p": 0.18,
+        "t": "normal",
+        "desc": "MTR A2756G G allele frequency: 18%. Affects B12-dependent homocysteine remethylation.",
+        "notes": "MTR requires B12 as cofactor. Impaired function increases homocysteine."
+      },
+      "mtrr_methylation": {
+        "f": 42,
+        "p": 0.42,
+        "t": "moderate",
+        "desc": "MTRR A66G G allele frequency: 42%. Affects MTR regeneration and B12 recycling.",
+        "notes": "MTRR regenerates MTR enzyme. GG genotype has high methylmalonic acid - monitor in pregnancy."
+      },
+      "comt_methylation": {
+        "f": 40,
+        "p": 0.4,
+        "t": "intermediate",
+        "desc": "COMT Met allele frequency: 40%. Affects catecholamine and estrogen metabolism.",
+        "notes": "Slow COMT benefits from cruciferous vegetables (broccoli, kale) which support estrogen clearance via alternative pathways."
+      },
+      "cyp11b2_hypertension": {
+        "f": 40,
+        "p": 0.4,
+        "t": "moderate_aldosterone",
+        "desc": "CYP11B2 T allele frequency: 40%. Affects aldosterone synthase and sodium retention.",
+        "notes": "CYP11B2 regulates aldosterone production. T allele increases salt sensitivity and hypertension risk."
+      },
+      "agtr1_hypertension": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate_angiotensin",
+        "desc": "AGTR1 T allele frequency: 45%. Affects angiotensin II receptor type 1 activity.",
+        "notes": "AGTR1 mediates vasoconstriction. High activity benefits from potassium-rich foods (bananas, leafy greens, potatoes)."
+      },
+      "lepr_satiety": {
+        "f": 30,
+        "p": 0.3,
+        "t": "moderate_satiety",
+        "desc": "LEPR Q223R G allele frequency: 30%. Affects leptin receptor function and satiety signaling.",
+        "notes": "GG homozygotes have impaired leptin signaling, leading to reduced satiety. Regular meal timing and protein-rich foods may help."
+      },
+      "bdnf_fat_appetite": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate_fat_response",
+        "desc": "BDNF Val66Met Met allele frequency: 25%. Affects appetite regulation specifically in response to dietary fat.",
+        "notes": "BDNF Met carriers do NOT show hyperphagia on low-fat or high-sucrose diets - the effect is FAT-SPECIFIC. Low-fat diet is the targeted intervention."
+      },
+      "cd36_fat_taste": {
+        "f": 42,
+        "p": 0.42,
+        "t": "reduced_fat_taste",
+        "desc": "CD36 A allele frequency: 42%. Affects oral fat taste receptor sensitivity.",
+        "notes": "AA genotype (~25% Europeans) have higher fat detection thresholds. They may need to consciously track fat intake rather than relying on taste satisfaction."
+      },
+      "fads2_vegetarian": {
+        "f": 8,
+        "p": 0.08,
+        "t": "low_conversion",
+        "desc": "FADS2 insertion allele frequency: 8%. Represents positive selection for plant-to-animal fatty acid conversion in populations with long vegetarian traditions.",
+        "notes": "High converters efficiently make EPA/DHA from plants but also convert omega-6 to inflammatory arachidonic acid. Traditional South Asian diets with mustard oil and ghee are more compatible than Western vegetable oil-heavy diets."
+      },
+      "clock_chronotype": {
+        "f": 18,
+        "p": 0.18,
+        "t": "moderate_chronotype",
+        "desc": "CLOCK 3111C allele frequency: 18%. Affects circadian rhythm and meal timing response.",
+        "notes": "Evening chronotypes gain more weight from late eating. Eating the same calories earlier in the day produces better metabolic outcomes."
+      },
+      "per1_meal_timing": {
+        "f": 35,
+        "p": 0.35,
+        "t": "high_timing_response",
+        "desc": "PER1 rs2735611 frequency: 35%. Affects response to meal timing consistency.",
+        "notes": "PER1 regulates circadian rhythms. High responders benefit significantly from eating at the same times daily."
+      },
+      "dao_histamine": {
+        "f": 20,
+        "p": 0.2,
+        "t": "moderate_dao",
+        "desc": "DAO rs2052129 T allele frequency: 20%. Affects diamine oxidase activity and histamine breakdown.",
+        "notes": "DAO enzyme breaks down dietary histamine. Low activity causes headaches, flushing, GI symptoms after high-histamine foods. Fresh foods are safer than aged/fermented."
+      },
+      "adora2a_caffeine_anxiety": {
+        "f": 40,
+        "p": 0.4,
+        "t": "caffeine_sensitive",
+        "desc": "ADORA2A rs5751876 frequency: 40%. Affects adenosine receptor sensitivity to caffeine (separate from metabolism speed).",
+        "notes": "ADORA2A affects how caffeine FEELS, not how fast you metabolize it. Even fast CYP1A2 metabolizers can be ADORA2A-sensitive and experience anxiety or insomnia from caffeine."
+      },
+      "abcg2_gout": {
+        "f": 18,
+        "p": 0.18,
+        "t": "moderate_gout_risk",
+        "desc": "ABCG2 rs2231142 T allele frequency: 18%. Affects uric acid transport - dysfunction leads to hyperuricemia and gout.",
+        "notes": "ABCG2 is a urate transporter. Dysfunction causes uric acid accumulation. Pacific Islanders and Filipinos have highest frequencies globally."
+      },
+      "slc2a9_urate": {
+        "f": 92,
+        "p": 0.92,
+        "t": "near_universal",
+        "desc": "SLC2A9 rs734553 frequency: 92%. Affects renal urate handling. Near-fixed in Pacific Islanders (98-100%).",
+        "notes": "SLC2A9 affects how kidneys handle uric acid. Combined with ABCG2 variants, explains extremely high gout rates in Pacific Islander populations."
+      },
+      "ashkenazi_ldlr_fh": {
+        "f": 0,
+        "p": 0,
+        "t": "minimal_fh_risk",
+        "desc": "LDLR G197del carrier frequency: 0%. Causes familial hypercholesterolemia (FH).",
+        "notes": "FH causes very high LDL from birth. Heterozygotes have 2-3x normal LDL. Early statin therapy dramatically reduces cardiovascular events. Diet alone is usually insufficient for FH."
+      },
+      "mthfr_folate": {
+        "f": 20,
+        "p": 0.2,
+        "t": "lower_risk",
+        "desc": "MTHFR 677T allele frequency: 20%. Lower prevalence of MTHFR variants.",
+        "notes": "MTHFR C677T T allele: 20%. TT genotype (~4% of population) has significantly reduced enzyme function."
+      },
+      "fto_obesity": {
+        "f": 18,
+        "p": 0.18,
+        "t": "lower_obesity_risk",
+        "desc": "FTO rs9939609 A allele frequency: 18%. Lower frequency of FTO risk variants.",
+        "notes": "FTO rs9939609 A allele: 18%. The POUNDS LOST trial confirmed protein-satiety interaction."
+      },
+      "hfe_iron_overload": {
+        "f": 0.1,
+        "p": 0.001,
+        "t": "minimal_risk",
+        "desc": "HFE C282Y allele frequency: 0.1%. Variant virtually absent in this population.",
+        "notes": "HFE C282Y: 0.1%. This variant is largely European-specific. ~5-10% of European-descent homozygotes develop clinical hemochromatosis."
+      },
+      "tas2r38_bitter": {
+        "f": 35,
+        "p": 0.35,
+        "t": "lower_taster_population",
+        "desc": "TAS2R38 PAV taster haplotype frequency: 35%. Higher proportion of non-tasters.",
+        "notes": "TAS2R38 PAV frequency: 35%. PAV/PAV supertasters (~12%) perceive PROP/PTC as intensely bitter."
+      },
+      "tcf7l2_diabetes": {
+        "f": 10,
+        "p": 0.1,
+        "t": "lower_t2dm_risk",
+        "desc": "TCF7L2 rs7903146 T allele frequency: 10%. Lower frequency of this diabetes risk variant.",
+        "notes": "TCF7L2 rs7903146 T allele: 10%. Strongest common genetic predictor of T2DM risk. Diet-gene interaction well-documented."
+      },
+      "bco1_vitamin_a": {
+        "f": 45,
+        "p": 0.45,
+        "t": "poor_converter_population",
+        "desc": "BCO1 rs12934922 T allele frequency: 45%. Higher proportion of poor beta-carotene converters.",
+        "notes": "BCO1 rs12934922 T allele: 45%. Up to 45% of population may be poor converters. Especially important for plant-based diets."
+      },
+      "mc4r_appetite": {
+        "f": 16,
+        "p": 0.16,
+        "t": "lower_appetite_drive",
+        "desc": "MC4R rs17782313 C allele frequency: 16%. Lower frequency of MC4R risk variants.",
+        "notes": "MC4R rs17782313 C allele: 16%. Second strongest obesity GWAS signal after FTO. Meta-analysis of 48,560 participants confirms appetite association."
+      },
+      "ace_salt_sensitivity": {
+        "f": 45,
+        "p": 0.45,
+        "t": "moderate_salt_sensitivity",
+        "desc": "ACE I/D D allele frequency: 45%. Mixed distribution of salt sensitivity genotypes.",
+        "notes": "ACE D allele: 45%. The I/D polymorphism is a 287bp Alu insertion/deletion. Strongest single-gene predictor of salt-sensitive blood pressure response."
+      },
+      "nat2_acetylator": {
+        "f": 35,
+        "p": 0.35,
+        "t": "moderate_slow_acetylator",
+        "desc": "NAT2 slow acetylator phenotype frequency: 35%. Mixed distribution of acetylator status.",
+        "notes": "NAT2 slow acetylator frequency: 35%. Phenotype frequency used (not single SNP). East Asians have lowest slow acetylator rates (~10-25%); Europeans/Africans highest (~50-70%)."
+      },
+      "lipc_hdl": {
+        "f": 38,
+        "p": 0.38,
+        "t": "moderate_t_allele",
+        "desc": "LIPC rs1800588 T allele: 38%. Mixed hepatic lipase activity.",
+        "notes": "LIPC T allele: 38%. Framingham Study showed strong gene-diet interaction with dietary fat."
+      },
+      "ppara_pufa": {
+        "f": 2,
+        "p": 0.02,
+        "t": "low_val_frequency",
+        "desc": "PPARA rs1800206 Val162 allele: 2%. Variant is rare.",
+        "notes": "PPARA Val162: 2%. Rare but highly actionable. STOP-NIDDM trial showed 1.9x diabetes risk is diet-modifiable."
+      },
+      "drd2_food_reward": {
+        "f": 40,
+        "p": 0.4,
+        "t": "high_a1_frequency",
+        "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
+        "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
+      },
+      "fut2_b12": {
+        "f": 35,
+        "p": 0.35,
+        "t": "high_secretor_population",
+        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
+        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
+      },
+      "gc_vitamin_d": {
+        "f": 20,
+        "p": 0.2,
+        "t": "moderate_risk_allele",
+        "desc": "GC rs2282679 C allele: 20%. Mixed vitamin D transport genetics.",
+        "notes": "GC C allele: 20%. Encodes vitamin D binding protein. Combined with CYP2R1 for vitamin D genetic risk score."
+      },
+      "pemt_choline": {
+        "f": 70,
+        "p": 0.7,
+        "t": "high_c_allele",
+        "desc": "PEMT rs12325817 C allele: 70%. Reduced endogenous choline synthesis common.",
+        "notes": "PEMT C allele: 70%. ~75% carry at least one C allele. Sex-specific effect - women more vulnerable to deficiency."
+      },
+      "fabp2_fat_absorption": {
+        "f": 28,
+        "p": 0.28,
+        "t": "moderate_thr54_frequency",
+        "desc": "FABP2 rs1799883 Thr54 allele: 28%. Mixed fat absorption genetics.",
+        "notes": "FABP2 Thr54: 28%. Well-replicated from Pima Indians through Finnish and Japanese populations."
+      },
+      "tmprss6_iron": {
+        "f": 55,
+        "p": 0.55,
+        "t": "high_t_allele",
+        "desc": "TMPRSS6 rs855791 T allele: 55%. Lower iron absorption common.",
+        "notes": "TMPRSS6 T allele: 55%. Modulates hepcidin regulation. TT individuals absorb 30% less iron than CC."
+      },
+      "agt_salt": {
+        "f": 65,
+        "p": 0.65,
+        "t": "moderate_t_allele",
+        "desc": "AGT rs699 T allele: 65%. Many carry salt-sensitive variant.",
+        "notes": "AGT T allele: 65%. T is ancestral allele (high in African populations). Over 300 epidemiological studies support salt-BP link."
+      },
+      "adrb2_weight_loss": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate_glu27",
+        "desc": "ADRB2 rs1042714 Glu27 allele: 25%. Mixed weight loss genetics.",
+        "notes": "ADRB2 Glu27: 25%. Meta-analysis of 18 studies (n=9,995) confirms obesity association."
+      },
+      "tas1r2_sweet": {
+        "f": 55,
+        "p": 0.55,
+        "t": "moderate_t_allele",
+        "desc": "TAS1R2 rs35874116 T allele: 55%. Variable sweet taste genetics.",
+        "notes": "TAS1R2 T allele: 55%. Sweet taste receptor gene. Effect strongest in those with BMI≥25."
+      },
+      "oprm1_food_reward": {
+        "f": 35,
+        "p": 0.35,
+        "t": "high_g_allele",
+        "desc": "OPRM1 rs1799971 G allele: 35%. Many have enhanced food pleasure response.",
+        "notes": "OPRM1 G allele: 35%. Dramatic population variation (2% African to 40% East Asian). Combined with DRD2 predicts binge eating."
+      },
+      "adrb3_thermogenesis": {
+        "f": 22,
+        "p": 0.22,
+        "t": "higher_arg64",
+        "desc": "ADRB3 rs4994 Arg64 allele: 22%. Reduced thermogenesis more common.",
+        "notes": "ADRB3 Arg64: 22%. Meta-analyses confirm childhood obesity association, especially in East Asians."
+      },
+      "irs1_insulin": {
+        "f": 60,
+        "p": 0.6,
+        "t": "moderate_c_allele",
+        "desc": "IRS1 rs2943641 C allele: 60%. Mixed insulin signaling genetics.",
+        "notes": "IRS1 C allele: 60%. POUNDS LOST trial (n=738) validated diet-gene interaction across European and Puerto Rican populations."
+      },
+      "pparg_adipocyte": {
+        "f": 6,
+        "p": 0.06,
+        "t": "low_ala12",
+        "desc": "PPARG rs1801282 Ala12 allele: 6%. Ala12 variant uncommon.",
+        "notes": "PPARG Ala12: 6%. Meta-analysis of 73 studies (131,863 subjects) confirms T2DM association. Nearly absent in African populations."
+      },
+      "ugt1a1_fasting": {
+        "f": 25,
+        "p": 0.25,
+        "t": "moderate_28_allele",
+        "desc": "UGT1A1 *28 allele: 25%. Some Gilbert's syndrome genetics.",
+        "notes": "UGT1A1 *28: 25%. Gilbert's affects ~5-10% of population. Fasting, infection, stress trigger mild jaundice."
+      },
+      "sirt1_fasting": {
+        "f": 55,
+        "t": "standard"
+      },
+      "ppargc1a_metabolic_flex": {
+        "f": 58,
+        "t": "low_flex"
+      },
+      "foxo3_longevity_fasting": {
+        "f": 25,
+        "t": "standard"
+      },
+      "sod2_antioxidant": {
+        "f": 25,
+        "t": "standard"
+      },
+      "cat_antioxidant": {
+        "f": 5,
+        "t": "standard"
+      },
+      "gpx1_selenium": {
+        "f": 90,
+        "t": "high"
+      },
+      "nrf2_detox": {
+        "f": 78,
+        "t": "standard"
+      },
+      "gstp1_antioxidant": {
+        "f": 70,
+        "t": "efficient"
+      },
+      "ucp1_brown_fat": {
+        "f": 52,
+        "t": "standard"
+      },
+      "ucp2_metabolic_rate": {
+        "f": 49,
+        "t": "enhanced"
+      },
+      "ucp3_muscle_thermogenesis": {
+        "f": 37,
+        "t": "enhanced"
+      },
+      "dio2_thyroid": {
+        "f": 76,
+        "t": "efficient"
+      },
+      "trpm8_cold_tolerance": {
+        "f": 58,
+        "t": "enhanced"
+      },
+      "actn3_power": {
+        "f": 35,
+        "t": "endurance_type"
+      },
+      "il6_recovery": {
+        "f": 20,
+        "t": "standard_recovery"
+      },
+      "igf1_growth": {
+        "f": 18,
+        "t": "standard"
+      },
+      "vegf_circulation": {
+        "f": 62,
+        "t": "standard"
+      },
+      "fut2_secretor": {
+        "f": 1,
+        "t": "non_secretor"
+      },
+      "muc2_gut_barrier": {
+        "f": 58,
+        "t": "strong_barrier"
+      },
+      "tlr4_gut_immunity": {
+        "f": 0,
+        "t": "balanced_tolerance"
+      },
+      "tert_telomere": {
+        "f": 40,
+        "t": "standard_maintenance"
+      },
+      "klotho_aging": {
+        "f": 0,
+        "t": "standard_klotho"
+      },
+      "cetp_longevity": {
+        "f": 7,
+        "t": "standard_lipids"
+      },
+      "apoe_brain_health": {
+        "f_e2": 0,
+        "f_e4": 22,
+        "t": "efficient_absorption"
+      },
+      "slc23a1_vitamin_c": {
+        "f": 100,
+        "t": "high",
+        "notes": "EAS-derived Arctic population; A allele absent"
+      },
+      "tcn2_b12_transport": {
+        "f": 52,
+        "t": "moderate",
+        "notes": "Unique Arctic genetic profile; traditional high-B12 marine diet"
+      },
+      "slc30a8_zinc": {
+        "f": 35,
+        "t": "high",
+        "notes": "EAS-derived ancestry; higher than continental AMR"
+      },
+      "atp7a_copper": {
+        "f": 48,
+        "t": "moderate"
+      },
+      "pcsk9_ldl": {
+        "f": 0,
+        "t": "low",
+        "notes": "Confirmed 0% R46L in Inuit ancestry (EJHG 2023); independent PCSK9 variant rs12117661 associated with lower LDL in Greenlandic Inuit"
+      },
+      "apoa1_hdl": {
+        "f": 18,
+        "t": "moderate",
+        "notes": "Rudkowska 2013 studied APOA1 gene-diet interaction in Canadian Inuit"
+      },
+      "ldlr_cholesterol": {
+        "f": 65,
+        "t": "moderate"
+      },
+      "lpl_triglycerides": {
+        "f": 10,
+        "t": "moderate",
+        "notes": "Arctic diet adaptations may influence lipid metabolism independently of LPL genotype"
+      },
+      "trpv1_spice": {
+        "f": 44,
+        "t": "high",
+        "notes": "Elevated frequency reflects Northeast Asian/Siberian ancestry"
+      },
+      "crhr1_stress_eating": {
+        "f": 72,
+        "t": "high",
+        "notes": "Estimated from Siberian (78%) and NE Asian ancestry"
+      },
+      "pomc_satiety": {
+        "f": 93,
+        "t": "high"
+      },
+      "npy_appetite": {
+        "f": 72,
+        "t": "high",
+        "notes": "Elevated C allele consistent with Arctic metabolic adaptation"
+      }
+    }
+  }
+}

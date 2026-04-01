@@ -1,0 +1,614 @@
+{
+  "ancient_roots_data": [
+    {
+      "id": "aboriginal_aus",
+      "ancient_roots": {
+        "peoples": ["Aboriginal Australians (250+ distinct language groups)"],
+        "era": "~50,000 BCE – present",
+        "environment": "Extreme ecological diversity — scorched desert interior, tropical monsoon north, temperate south coast — demanding metabolic flexibility across all biomes.",
+        "subsistence": "One of the broadest hunter-gatherer diets on record: kangaroo, emu, witchetty grubs, shellfish, fish, bush tomatoes, wattle seeds, and yams. Near-zero simple carbohydrates; the diet was high protein, moderate fat, and very low glycemic index year-round.",
+        "genetic_legacy": "Very low AMY1 copy number (minimal starch adaptation); highly efficient fat metabolism shaped by feast-famine cycles; among the strongest candidates for a thrifty genotype in the dataset."
+      }
+    },
+    {
+      "id": "amazon",
+      "ancient_roots": {
+        "peoples": ["Paleo-Indians", "Early Amazonian cultivators"],
+        "era": "~11,000 BCE – 1500 CE",
+        "environment": "Dense tropical rainforest with nutrient-poor soils, extreme biodiversity, year-round humidity, and extensive river systems providing aquatic resources.",
+        "subsistence": "Fish, river turtles, and forest game provided protein; wild fruits, palm hearts, and gathered plants dominated. Manioc (cassava) cultivation emerged ~8,000 BCE, requiring processing to remove cyanide. Limited large game meant reliance on diverse small fauna.",
+        "genetic_legacy": "Low AMY1 copy number reflecting protein-heavy diet with processed rather than raw starches; possible selection for efficient cyanide detoxification pathways from chronic cassava consumption."
+      }
+    },
+    {
+      "id": "anatolian",
+      "ancient_roots": {
+        "peoples": ["Neolithic farmers of Çatalhöyük", "Hittites"],
+        "era": "~9,500 BCE – 1200 BCE",
+        "environment": "Fertile river valleys and plateaus between Mediterranean and continental climates — one of the earliest centers of plant and animal domestication.",
+        "subsistence": "Einkorn wheat, emmer, barley, and lentils formed the agricultural base; sheep, goats, and cattle provided meat and early dairy. Çatalhöyük shows intensive grain processing and storage from ~7,500 BCE.",
+        "genetic_legacy": "High AMY1 copy numbers from millennia of grain-dominant agriculture; partial lactase persistence from early cattle domestication; this region exported the Neolithic agricultural package to Europe."
+      }
+    },
+    {
+      "id": "andean",
+      "ancient_roots": {
+        "peoples": ["Chinchorro", "Caral-Supe", "Pre-Inca highland cultures"],
+        "era": "~9,000 BCE – 1500 CE",
+        "environment": "Extreme altitude (3,000–4,500m) with thin air, intense UV radiation, and dramatic temperature swings; terraced mountain agriculture and coastal fishing zones.",
+        "subsistence": "Potatoes (hundreds of varieties), quinoa, and maize were staples; llama and guinea pig provided protein. Coastal populations relied heavily on anchovies and shellfish. Freeze-drying (chuño) preserved tubers through harsh winters.",
+        "genetic_legacy": "Moderate AMY1 expansion from tuber-dominant diet; possible EPAS1-independent altitude adaptations; efficient carbohydrate metabolism suited to high-altitude energy demands."
+      }
+    },
+    {
+      "id": "arabian",
+      "ancient_roots": {
+        "peoples": ["Pre-Islamic Arabian pastoralists", "Bedouin ancestors"],
+        "era": "~8,000 BCE – 600 CE",
+        "environment": "Hyperarid desert with extreme heat, scarce water, and sparse vegetation; oases provided focal points for settlement and trade.",
+        "subsistence": "Camel, goat, and sheep herding dominated inland areas; dates, locusts, and occasional game supplemented the diet. Camel milk and blood were critical survival foods during drought. Coastal populations added fish.",
+        "genetic_legacy": "G-13915 lactase persistence variant arose independently in Arabian populations; efficient fat metabolism and water conservation adaptations to desert survival; low AMY1 reflecting pastoral rather than agricultural subsistence."
+      }
+    },
+    {
+      "id": "inuit",
+      "ancient_roots": {
+        "peoples": ["Paleo-Eskimo (Dorset)", "Thule Inuit"],
+        "era": "~2,500 BCE – present (Thule ~1,000 CE)",
+        "environment": "Arctic tundra and sea ice with extreme cold, months of darkness, and virtually no plant foods; marine mammal hunting essential for survival.",
+        "subsistence": "Almost exclusively marine mammals (seal, walrus, whale) and fish; virtually zero carbohydrates. The diet was ~50-75% fat, ~25-35% protein, with blubber providing essential calories and vitamins. Fermented meat preserved nutrients.",
+        "genetic_legacy": "Near-universal FADS gene cluster variants reducing omega-3/omega-6 fatty acid synthesis (since dietary intake was extremely high); CPT1A Arctic variant affecting fatty acid oxidation; among the lowest AMY1 copy numbers globally."
+      }
+    },
+    {
+      "id": "australian_coastal",
+      "ancient_roots": {
+        "peoples": ["Coastal Aboriginal groups (Yolngu, Koori, and others)"],
+        "era": "~50,000 BCE – present",
+        "environment": "Extensive coastlines with rich estuarine, reef, and open-ocean resources; seasonal monsoon patterns in the north, temperate in the south.",
+        "subsistence": "Shellfish middens document millennia of oyster, mussel, and cockle harvesting; fish, dugong, turtle, and stingray supplemented by coastal plants. Less reliance on inland hunting than desert groups.",
+        "genetic_legacy": "Low AMY1 copy number consistent with protein-dominant marine diet; efficient omega-3 metabolism from sustained fish consumption; thrifty metabolic patterns from variable coastal resource availability."
+      }
+    },
+    {
+      "id": "bengal",
+      "ancient_roots": {
+        "peoples": ["Ganges Delta agriculturalists", "Austroasiatic predecessors"],
+        "era": "~3,000 BCE – present",
+        "environment": "Monsoon-fed delta with annual flooding, extremely fertile alluvial soils, abundant freshwater fish, and tropical humidity.",
+        "subsistence": "Rice cultivation dominated from the Bronze Age; fish from rivers, ponds, and paddies provided protein year-round. Lentils, vegetables, and mustard oil supplemented the starch-heavy diet.",
+        "genetic_legacy": "High AMY1 copy number from intensive rice agriculture; efficient carbohydrate metabolism adapted to high-glycemic staple; FADS variants optimized for freshwater fish consumption."
+      }
+    },
+    {
+      "id": "brazilian_coastal",
+      "ancient_roots": {
+        "peoples": ["Sambaqui shell-mound builders", "Tupi-Guarani ancestors"],
+        "era": "~8,000 BCE – 1500 CE",
+        "environment": "Atlantic coastal forests with abundant shellfish, fish, and tropical plant resources; warm humid climate year-round.",
+        "subsistence": "Massive shell middens document intensive shellfish harvesting; fish, sea mammals, and forest game provided protein. Manioc cultivation spread along the coast from ~2,000 BCE, requiring detoxification processing.",
+        "genetic_legacy": "Moderate AMY1 reflecting mixed marine-protein and processed-starch diet; efficient fatty acid metabolism from marine resources; possible cyanide detoxification adaptations from cassava processing."
+      }
+    },
+    {
+      "id": "california_coast",
+      "ancient_roots": {
+        "peoples": ["Chumash", "Ohlone", "Pomo ancestors"],
+        "era": "~10,000 BCE – 1769 CE",
+        "environment": "Mediterranean climate with kelp forests, salmon runs, and oak woodlands; seasonal abundance followed by lean periods.",
+        "subsistence": "Acorns were the primary carbohydrate source, requiring extensive leaching to remove tannins. Salmon, shellfish, and sea mammals provided protein. Seeds, berries, and small game supplemented the diet.",
+        "genetic_legacy": "Moderate AMY1 adaptation from acorn-dependent starch consumption; efficient tannin processing; seasonal feast-famine metabolic patterns."
+      }
+    },
+    {
+      "id": "canadian_prairies",
+      "ancient_roots": {
+        "peoples": ["Clovis descendants", "Plains-Woodland peoples"],
+        "era": "~11,000 BCE – 1700 CE",
+        "environment": "Vast grasslands with extreme continental climate; bison herds provided the primary resource base; long harsh winters required fat storage.",
+        "subsistence": "Bison hunting dominated, with nearly every part utilized. Pemmican (dried meat with fat and berries) enabled winter survival. Wild rice in eastern areas, roots and berries supplemented meat.",
+        "genetic_legacy": "Low AMY1 copy number from meat-dominant diet; efficient fat metabolism and storage for winter survival; possible thrifty genotype from seasonal scarcity."
+      }
+    },
+    {
+      "id": "caribbean_taino",
+      "ancient_roots": {
+        "peoples": ["Taíno", "Saladoid ancestors"],
+        "era": "~500 BCE – 1500 CE",
+        "environment": "Tropical islands with marine resources, fertile volcanic soils, and year-round growing seasons; hurricane risk created periodic food stress.",
+        "subsistence": "Manioc (cassava) and maize cultivation; extensive fishing and shellfish harvesting. Hutía (rodent) and iguana provided terrestrial protein. Pepper, sweet potato, and tropical fruits supplemented the diet.",
+        "genetic_legacy": "Moderate AMY1 from tuber-based carbohydrate diet; efficient processing of cassava toxins; island-adapted metabolism with possible founder effects from small colonizing populations."
+      }
+    },
+    {
+      "id": "caucasus",
+      "ancient_roots": {
+        "peoples": ["Shulaveri-Shomu culture", "Proto-Kartvelians"],
+        "era": "~6,000 BCE – 500 BCE",
+        "environment": "Mountainous terrain between Black and Caspian seas with diverse microclimates; fertile valleys supported early viticulture and agriculture.",
+        "subsistence": "Wheat, barley, and millet cultivation; sheep and cattle herding with early cheese-making traditions. Wild boar and deer from forested slopes. Wine production documented from ~6,000 BCE.",
+        "genetic_legacy": "Moderate lactase persistence from ancient pastoral traditions; moderate-to-high AMY1 from grain agriculture; possible alcohol dehydrogenase variants from early wine culture."
+      }
+    },
+    {
+      "id": "central_africa",
+      "ancient_roots": {
+        "peoples": ["Mbuti", "Aka", "Baka (forest foragers)"],
+        "era": "~50,000 BCE – present",
+        "environment": "Dense equatorial rainforest with year-round humidity, limited sunlight penetration, and scattered resources requiring extensive foraging ranges.",
+        "subsistence": "Honey, wild yams, and gathered plants provided carbohydrates; forest game (duiker, monkeys), fish, and insects provided protein. Trade with neighboring farmers added cultivated foods. Low starch intake overall.",
+        "genetic_legacy": "Very low AMY1 copy number from protein-dominant foraging diet; efficient vitamin D metabolism despite limited sunlight; short stature adaptation to forest mobility and resource efficiency."
+      }
+    },
+    {
+      "id": "central_asia",
+      "ancient_roots": {
+        "peoples": ["Scythians", "Andronovo culture", "Proto-Turkic/Mongolic peoples"],
+        "era": "~3,000 BCE – 500 CE",
+        "environment": "Vast semi-arid steppe with extreme temperature ranges; grasslands supported horse and sheep herding but limited agriculture.",
+        "subsistence": "Horse, sheep, and cattle herding dominated; mare's milk fermented into kumis was a dietary staple. Meat (fresh and preserved) and dairy provided most calories. Minimal grain consumption.",
+        "genetic_legacy": "High lactase persistence rates from millennia of dairy dependence; low AMY1 from meat-and-dairy diet; efficient cold-adaptation and fat metabolism for harsh winters."
+      }
+    },
+    {
+      "id": "maasai",
+      "ancient_roots": {
+        "peoples": ["Nilotic pastoralist ancestors", "Proto-Maasai"],
+        "era": "~3,000 BCE – present",
+        "environment": "East African savanna with seasonal rains; grasslands ideal for cattle herding but periodic droughts created food stress.",
+        "subsistence": "Cattle provided nearly everything: milk, blood, and occasionally meat. The traditional diet was ~60% milk, ~30% blood and meat. Minimal plant foods; honey and wild fruits only supplemented.",
+        "genetic_legacy": "C-14010 lactase persistence variant at very high frequency (~90%); among the strongest signatures of positive selection in the human genome at LCT locus; very low AMY1 from near-zero starch diet."
+      }
+    },
+    {
+      "id": "eastern_europe",
+      "ancient_roots": {
+        "peoples": ["Cucuteni-Trypillian culture", "Corded Ware", "Early Slavs"],
+        "era": "~5,500 BCE – 500 CE",
+        "environment": "Temperate forests and fertile plains with cold winters; river systems supported fishing and agriculture.",
+        "subsistence": "Wheat, barley, millet, and rye cultivation; cattle, pigs, and sheep provided meat. Forest hunting (boar, deer) and fishing supplemented. Fermented dairy preserved for winter.",
+        "genetic_legacy": "Moderate-to-high lactase persistence from Steppe ancestry influx; high AMY1 from grain agriculture; vitamin D synthesis adaptations to northern latitudes with low sunlight."
+      }
+    },
+    {
+      "id": "eastern_woodlands",
+      "ancient_roots": {
+        "peoples": ["Adena", "Hopewell", "Iroquoian/Algonquian ancestors"],
+        "era": "~3,000 BCE – 1600 CE",
+        "environment": "Temperate deciduous forests with seasonal variation; rivers and lakes provided fish; deer abundant in forest-edge habitats.",
+        "subsistence": "The 'Three Sisters' (maize, beans, squash) became dominant after ~1,000 CE. Earlier periods relied on nuts (acorns, hickory), wild rice, deer, turkey, and fish. Maple syrup added seasonal calories.",
+        "genetic_legacy": "Moderate AMY1 expansion after maize adoption; efficient nitrogen metabolism from bean-maize complementary proteins; seasonal metabolic flexibility."
+      }
+    },
+    {
+      "id": "ethiopia",
+      "ancient_roots": {
+        "peoples": ["Pre-Aksumite peoples", "Cushitic and Semitic ancestors"],
+        "era": "~5,000 BCE – present",
+        "environment": "High plateaus (1,500–3,000m) with thin air, distinct wet/dry seasons, and diverse ecological zones from tropical lowlands to alpine peaks.",
+        "subsistence": "Teff and finger millet were domesticated locally; ensete (false banana) in the south. Cattle, goats, and sheep kept for meat and milk. Injera (fermented teff flatbread) became the cultural staple.",
+        "genetic_legacy": "Moderate lactase persistence reflecting pastoral traditions; possible altitude adaptations distinct from Tibetan EPAS1; high AMY1 from grain dependence; independent origin of several metabolic variants."
+      }
+    },
+    {
+      "id": "gaucho",
+      "ancient_roots": {
+        "peoples": ["Querandí", "Charrúa", "Tehuelche"],
+        "era": "~10,000 BCE – 1600 CE",
+        "environment": "Temperate grasslands (pampas) with seasonal rainfall; large herbivores (guanaco, rhea) supported hunting before cattle introduction.",
+        "subsistence": "Guanaco and rhea hunting dominated; later rhea eggs, armadillo, and wild plants supplemented. Carbohydrates were minimal. Post-contact cattle replaced wild game.",
+        "genetic_legacy": "Low AMY1 from meat-dominant pre-contact diet; efficient protein metabolism; possible thrifty genotype from seasonal hunting success variation."
+      }
+    },
+    {
+      "id": "great_plains",
+      "ancient_roots": {
+        "peoples": ["Folsom/Clovis descendants", "Proto-Siouan/Algonquian peoples"],
+        "era": "~11,000 BCE – 1800 CE",
+        "environment": "Semi-arid grasslands with extreme seasonal temperatures; massive bison herds migrated across the plains.",
+        "subsistence": "Bison hunting was central — meat, fat, hides, bones all utilized. Pemmican enabled winter survival. Prairie turnip, chokecherries, and wild plums provided limited plant foods.",
+        "genetic_legacy": "Very low AMY1 from extremely meat-heavy diet; efficient fat storage and metabolism for lean seasons; possible selection for vitamin D synthesis in sun-exposed environment."
+      }
+    },
+    {
+      "id": "highland_se_asia",
+      "ancient_roots": {
+        "peoples": ["Proto-Hmong-Mien", "Tibeto-Burman highland groups"],
+        "era": "~5,000 BCE – present",
+        "environment": "Mountainous terrain (1,000–2,500m) with monsoon climate; steep slopes limited rice paddies, favoring swidden agriculture.",
+        "subsistence": "Upland rice, millet, buckwheat, and maize in slash-and-burn fields; pigs, chickens, and forest game provided protein. Wild vegetables and bamboo shoots gathered.",
+        "genetic_legacy": "Moderate AMY1 from mixed grain diet; possible mild altitude adaptations at intermediate elevations; efficient metabolism of diverse grain types."
+      }
+    },
+    {
+      "id": "horn_somalia",
+      "ancient_roots": {
+        "peoples": ["Cushitic pastoralists", "Proto-Somali"],
+        "era": "~5,000 BCE – present",
+        "environment": "Semi-arid to arid with coastal access; seasonal monsoons created variable grazing; periodic droughts frequent.",
+        "subsistence": "Camel, cattle, goat, and sheep herding; camel milk was critical for desert survival. Coastal communities added fish and shellfish. Sorghum and millet in wetter areas. Frankincense trade provided exchange for grain.",
+        "genetic_legacy": "Multiple lactase persistence variants at moderate-to-high frequency; low AMY1 from pastoral economy; efficient water conservation and fat metabolism for arid conditions."
+      }
+    },
+    {
+      "id": "se_asia_island",
+      "ancient_roots": {
+        "peoples": ["Austronesian settlers", "Hoabinhian foragers"],
+        "era": "~40,000 BCE (foragers); ~4,000 BCE (Austronesian expansion)",
+        "environment": "Tropical archipelagos with marine resources, volcanic soils, and monsoon rainfall; ring of fire geology provided fertile land.",
+        "subsistence": "Taro, yams, and bananas initially; wet rice spread after ~2,000 BCE. Fish, shellfish, and pork provided protein. Coconut and sago palm added fats and carbohydrates. Spice trade developed later.",
+        "genetic_legacy": "High AMY1 from intensive rice/taro cultivation; efficient FADS variants for coastal fish consumption; possible founder effects from island colonization bottlenecks."
+      }
+    },
+    {
+      "id": "japan",
+      "ancient_roots": {
+        "peoples": ["Jōmon (pre-agricultural)", "Yayoi (rice farmers)"],
+        "era": "Jōmon ~14,000 – 300 BCE; Yayoi ~300 BCE – 300 CE",
+        "environment": "Island archipelago with cold northern forests and warm southern coastlines — exceptional marine resource access along thousands of kilometers of coastline.",
+        "subsistence": "Jōmon subsistence was primarily marine — fish, shellfish, and sea mammals — supplemented by gathered acorns, chestnuts, and wild game. The Yayoi migration introduced wet rice agriculture, rapidly shifting the dominant caloric source from fat and protein to starch.",
+        "genetic_legacy": "Among the highest AMY1 copy numbers globally, reflecting thousands of years of post-Yayoi rice dependence; strong FADS-variant omega-3 metabolism shaped by the prior millennia of coastal fish consumption."
+      }
+    },
+    {
+      "id": "korea",
+      "ancient_roots": {
+        "peoples": ["Jeulmun pottery culture", "Mumun rice cultivators"],
+        "era": "~8,000 BCE – 300 CE",
+        "environment": "Peninsula with cold winters, monsoon summers, extensive coastline, and mountainous interior; marine and agricultural resources both accessible.",
+        "subsistence": "Early period relied on shellfish, fish, and gathered plants. Rice cultivation arrived ~1,500 BCE. Soybean and millet supplemented rice. Fermented vegetables (proto-kimchi) preserved nutrition through winter.",
+        "genetic_legacy": "High AMY1 from rice agriculture transition; FADS variants reflecting historical fish consumption; efficient fermentation-based gut microbiome adaptation."
+      }
+    },
+    {
+      "id": "kurdish",
+      "ancient_roots": {
+        "peoples": ["Hurrians", "Zagros Mountain foragers/farmers"],
+        "era": "~10,000 BCE – present",
+        "environment": "Mountainous terrain at the Fertile Crescent's edge; varied elevations created diverse microclimates; early center of plant and animal domestication.",
+        "subsistence": "Among the earliest wheat, barley, and lentil cultivators. Sheep and goat herding developed simultaneously. Highland pastures supported transhumant herding patterns. Wild pistachio and acorns gathered.",
+        "genetic_legacy": "High AMY1 from being at the origin of Near Eastern agriculture; partial lactase persistence from ancient pastoral traditions; this region was a source population for agricultural expansion."
+      }
+    },
+    {
+      "id": "se_asia_main",
+      "ancient_roots": {
+        "peoples": ["Hoabinhian foragers", "Austroasiatic rice farmers"],
+        "era": "~40,000 BCE (foragers); ~2,500 BCE (rice agriculture)",
+        "environment": "Tropical monsoon climate with extensive river systems (Mekong, Irrawaddy, Chao Phraya); seasonal flooding enabled rice paddy cultivation.",
+        "subsistence": "Fish, shellfish, and gathered plants dominated early diet. Wet rice cultivation became dominant after ~2,500 BCE. Freshwater fish remained protein staple. Tropical fruits, coconut, and vegetables supplemented.",
+        "genetic_legacy": "High AMY1 from intensive rice agriculture; FADS variants reflecting freshwater fish consumption; efficient carbohydrate metabolism adapted to rice-dominant diet."
+      }
+    },
+    {
+      "id": "med_levant",
+      "ancient_roots": {
+        "peoples": ["Natufian foragers", "Pre-Pottery Neolithic farmers"],
+        "era": "~12,500 BCE – 3,000 BCE",
+        "environment": "Mediterranean climate with winter rains and dry summers; oak-pistachio woodlands and wild cereal stands; the original Fertile Crescent.",
+        "subsistence": "Natufians intensively harvested wild cereals before domestication (~10,000 BCE). Wheat, barley, lentils, and chickpeas were domesticated here. Sheep and goats followed. Olives and figs added fats and sugars.",
+        "genetic_legacy": "Very high AMY1 copy numbers — this is the source region for agricultural genetic adaptations that spread to Europe; early but incomplete lactase persistence; foundational population for Neolithic Europe."
+      }
+    },
+    {
+      "id": "med_southern",
+      "ancient_roots": {
+        "peoples": ["Cardial Ware farmers", "Neolithic Mediterranean peoples"],
+        "era": "~6,500 BCE – 500 BCE",
+        "environment": "Mediterranean climate with mild wet winters and hot dry summers; coastal access combined with fertile inland valleys.",
+        "subsistence": "Wheat, barley, olives, and grapes formed the Mediterranean triad. Sheep, goats, and pigs provided meat; fish and shellfish along coasts. Legumes (lentils, beans) added protein. Wine and olive oil became dietary staples.",
+        "genetic_legacy": "High AMY1 from wheat-dependent agriculture; moderate lactase persistence (lower than northern Europe); efficient olive oil fat metabolism; possible alcohol dehydrogenase variants from wine culture."
+      }
+    },
+    {
+      "id": "melanesia",
+      "ancient_roots": {
+        "peoples": ["Papuans", "Lapita seafarers"],
+        "era": "~50,000 BCE (Papua); ~3,500 BCE (Lapita)",
+        "environment": "Tropical islands with volcanic mountains, dense rainforest, coral reefs, and year-round warmth; extreme biodiversity but limited large fauna.",
+        "subsistence": "Papuan highlands: taro, yams, and sweet potato (post-contact); sago palm in lowlands; pigs and small game. Coastal: fish, shellfish, reef resources. Minimal grain; root crops dominated carbohydrates.",
+        "genetic_legacy": "Low-to-moderate AMY1 from root-crop rather than grain diet; high Denisovan ancestry (~3-5%) providing unknown metabolic adaptations; efficient tropical disease resistance."
+      }
+    },
+    {
+      "id": "mesoamerica",
+      "ancient_roots": {
+        "peoples": ["Olmec ancestors", "Early Maya", "Zapotec"],
+        "era": "~7,000 BCE – 1500 CE",
+        "environment": "Tropical lowlands to volcanic highlands; seasonal rainfall; diverse ecological zones from jungle to mountain valleys.",
+        "subsistence": "Maize domestication (~7,000 BCE) transformed the region. Nixtamalization (lime processing) made nutrients bioavailable. Beans, squash, chili peppers, and tomatoes complemented maize. Turkey, deer, and fish provided protein.",
+        "genetic_legacy": "Very high AMY1 copy numbers from maize dependence; efficient niacin metabolism through nixtamalization; adaptations to high-carbohydrate, moderate-protein diet."
+      }
+    },
+    {
+      "id": "micronesia",
+      "ancient_roots": {
+        "peoples": ["Lapita descendants", "Micronesian voyagers"],
+        "era": "~3,500 BCE – present",
+        "environment": "Small coral atolls and volcanic islands scattered across vast ocean; limited land area, extensive reef systems, typhoon exposure.",
+        "subsistence": "Breadfruit, taro, and coconut provided carbohydrates; fishing and shellfish gathering essential. Pigs and chickens kept on larger islands. Marine resources dominant on atolls. Preserved breadfruit for lean seasons.",
+        "genetic_legacy": "Moderate AMY1 from root-crop diet; efficient fish-based omega-3 metabolism; possible thrifty genotype from island resource limitations and voyaging stress."
+      }
+    },
+    {
+      "id": "mongolia",
+      "ancient_roots": {
+        "peoples": ["Bronze Age steppe peoples", "Xiongnu", "Proto-Mongolic tribes"],
+        "era": "~3,000 BCE – present",
+        "environment": "High-altitude steppe and desert with extreme continental climate; grasslands supported vast herds; winters severe and prolonged.",
+        "subsistence": "The 'five snouts' (horse, cattle, sheep, goat, camel) provided everything. Airag (fermented mare's milk) and hard cheese were staples. Meat dried or frozen for winter. Virtually no agriculture possible.",
+        "genetic_legacy": "Very high lactase persistence for fermented dairy (though fresh milk tolerance lower); very low AMY1 from near-zero grain diet; exceptional cold adaptation and fat metabolism."
+      }
+    },
+    {
+      "id": "maori",
+      "ancient_roots": {
+        "peoples": ["Polynesian settlers (Māori)"],
+        "era": "~1280 CE – present",
+        "environment": "Temperate to cold climate unlike tropical Polynesian homelands; forests, coasts, and limited tropical crops posed survival challenges.",
+        "subsistence": "Introduced kūmara (sweet potato) at northern limit of growth; fern root (aruhe) became carbohydrate staple. Moa (giant bird) hunted to extinction; shifted to fish, shellfish, and seal. Forest birds provided protein.",
+        "genetic_legacy": "PPARGC1A thrifty variant at high frequency from founder effect and voyaging selection; moderate AMY1; efficient fat storage selected during Pacific voyaging and cold-climate adaptation."
+      }
+    },
+    {
+      "id": "nepal",
+      "ancient_roots": {
+        "peoples": ["Tibeto-Burman highland groups", "Sherpa ancestors"],
+        "era": "~5,000 BCE – present",
+        "environment": "Extreme altitude gradient from tropical lowlands to Himalayan peaks; valleys supported terraced agriculture; high peaks required altitude adaptation.",
+        "subsistence": "Millet, barley, and buckwheat at high altitudes where rice cannot grow. Yak provided dairy and meat at elevation. Potatoes important post-contact. Limited resources at highest settlements.",
+        "genetic_legacy": "EPAS1 Denisovan-derived variants for altitude adaptation (shared with Tibetans); moderate AMY1 from grain agriculture; efficient hypoxic metabolism at extreme elevations."
+      }
+    },
+    {
+      "id": "nordic",
+      "ancient_roots": {
+        "peoples": ["Sami ancestors", "Funnel Beaker culture", "Norse"],
+        "era": "~9,000 BCE – 1000 CE",
+        "environment": "Subarctic to temperate; long dark winters with limited sunlight; extensive coastlines with rich marine resources; boreal forests.",
+        "subsistence": "Fish (especially herring, cod) and marine mammals along coasts; reindeer hunting/herding in the north. Barley and oats at southern limits. Dairy cattle important after ~4,000 BCE. Preserved fish (stockfish) for winter.",
+        "genetic_legacy": "Highest global lactase persistence rates (>90%) from intense dairy selection; vitamin D synthesis adaptations for low sunlight; moderate AMY1 from limited grain cultivation; omega-3 metabolism from fish dependence."
+      }
+    },
+    {
+      "id": "maghreb",
+      "ancient_roots": {
+        "peoples": ["Iberomaurusian", "Capsian", "Berber ancestors"],
+        "era": "~20,000 BCE – 500 CE",
+        "environment": "Mediterranean coast transitioning to Sahara Desert; Atlas Mountains created diverse microclimates; climate dried significantly over the Holocene.",
+        "subsistence": "Early period: wild cattle, Barbary sheep, gathered plants. After ~5,000 BCE: wheat, barley, olives, and dates. Sheep and goat herding in drier areas. Coastal fishing.",
+        "genetic_legacy": "Moderate-to-high AMY1 from grain agriculture; partial lactase persistence from pastoral traditions; efficient fat storage for desert margins; unique genetic structure distinct from sub-Saharan Africa."
+      }
+    },
+    {
+      "id": "north_china",
+      "ancient_roots": {
+        "peoples": ["Yangshao culture", "Longshan culture"],
+        "era": "~7,000 BCE – 1,000 BCE",
+        "environment": "Temperate continental with cold dry winters; loess plateau soils; Yellow River provided irrigation but also catastrophic floods.",
+        "subsistence": "Millet was the original domesticated grain; wheat and barley arrived later from the west. Pigs and dogs domesticated early. Soybeans added protein. Rice only in southern margins.",
+        "genetic_legacy": "High AMY1 from intensive millet/wheat agriculture; efficient carbohydrate metabolism; this region developed agricultural adaptations parallel to but separate from rice-based South China."
+      }
+    },
+    {
+      "id": "north_india",
+      "ancient_roots": {
+        "peoples": ["Indus Valley (Harappan)", "Indo-Aryan migrants"],
+        "era": "~7,000 BCE – 500 CE",
+        "environment": "Fertile Indo-Gangetic plain with monsoon rains; Indus and Ganges river systems enabled intensive irrigation agriculture.",
+        "subsistence": "Wheat and barley were primary Harappan crops; rice spread from the east. Lentils, peas, and chickpeas provided protein. Cattle central to economy; dairy important after Indo-Aryan arrival. Zebu cattle adapted to heat.",
+        "genetic_legacy": "High AMY1 from grain-dominant agriculture; partial lactase persistence from Steppe ancestry influx; strongest LP selection seen in pastoralist groups (Gujjar, Toda) rather than general population."
+      }
+    },
+    {
+      "id": "pacific_nw",
+      "ancient_roots": {
+        "peoples": ["Haida", "Tlingit", "Coast Salish ancestors"],
+        "era": "~12,000 BCE – present",
+        "environment": "Temperate rainforest with abundant salmon runs, shellfish beaches, and cedar forests; mild wet climate with food surplus potential.",
+        "subsistence": "Salmon was the dietary cornerstone — smoked and dried for winter. Halibut, herring, shellfish, and sea mammals supplemented. Cedar bark, berries, and camas bulbs provided plant foods. Eulachon oil (grease) was a fat source and trade item.",
+        "genetic_legacy": "Low AMY1 from protein-dominant diet; excellent omega-3 metabolism from salmon dependence; efficient fat storage for winter months when fresh fish unavailable."
+      }
+    },
+    {
+      "id": "patagonia",
+      "ancient_roots": {
+        "peoples": ["Tehuelche", "Selk'nam", "Yaghan"],
+        "era": "~12,000 BCE – 1900 CE",
+        "environment": "Cold windswept steppe and fjord coastlines; sub-Antarctic conditions in the south; limited plant resources.",
+        "subsistence": "Guanaco hunting dominated inland; coastal groups relied on shellfish, fish, and sea mammals. Rhea eggs and small game supplemented. Virtually no plant cultivation possible. Fat consumption essential for cold survival.",
+        "genetic_legacy": "Very low AMY1 from near-zero starch diet; efficient fat metabolism and cold adaptation; possible thrifty genotype from harsh seasonal resource variability."
+      }
+    },
+    {
+      "id": "persian",
+      "ancient_roots": {
+        "peoples": ["Elamites", "Medes", "Achaemenid Persians"],
+        "era": "~6,000 BCE – 500 BCE",
+        "environment": "High plateau surrounded by mountains; arid to semi-arid with qanat irrigation systems; varied from desert to temperate highlands.",
+        "subsistence": "Wheat and barley cultivation with sophisticated irrigation. Sheep and goat herding in highlands. Pomegranates, figs, and grapes cultivated. Rice in Caspian region. Dairy important.",
+        "genetic_legacy": "High AMY1 from intensive grain agriculture; moderate lactase persistence from pastoral component; efficient water-use metabolism for arid climate; sophisticated food preservation traditions."
+      }
+    },
+    {
+      "id": "polynesia",
+      "ancient_roots": {
+        "peoples": ["Lapita descendants", "Polynesian voyagers"],
+        "era": "~3,000 BCE – 1300 CE (expansion completed)",
+        "environment": "Tropical islands scattered across vast Pacific; volcanic high islands and coral atolls; long ocean voyages required between island groups.",
+        "subsistence": "Taro, breadfruit, sweet potato, and coconut provided carbohydrates; pig, chicken, and dog were transported animals. Fish and shellfish essential. Voyaging required preserved foods; periodic famines on smaller islands.",
+        "genetic_legacy": "PPARGC1A 'thrifty' variant at high frequency (>70%); efficient fat storage possibly selected during voyaging; moderate AMY1 from root-crop diet; founder effects from small colonizing populations."
+      }
+    },
+    {
+      "id": "sahel",
+      "ancient_roots": {
+        "peoples": ["Early Sahelian farmers", "Fulani ancestors"],
+        "era": "~5,000 BCE – present",
+        "environment": "Semi-arid transition zone between Sahara Desert and tropical savanna; seasonal rainfall; periodic severe droughts.",
+        "subsistence": "Pearl millet and sorghum domesticated locally; these crops tolerate drought. Cattle, sheep, and goats herded. Fish from Niger and Senegal rivers. Shea butter and baobab fruit provided fats and vitamins.",
+        "genetic_legacy": "High AMY1 from millet/sorghum dependence; T-13910 lactase persistence variant in Fulani pastoralists (unusual for Africa); efficient drought survival metabolism."
+      }
+    },
+    {
+      "id": "siberia",
+      "ancient_roots": {
+        "peoples": ["Mal'ta-Buret' culture", "Yakut/Evenki ancestors"],
+        "era": "~20,000 BCE – present",
+        "environment": "Extreme cold with permafrost; boreal forest (taiga) and tundra; some of the coldest inhabited places on Earth; very short growing season.",
+        "subsistence": "Reindeer herding/hunting central; horse meat and mare's milk in Yakut culture. Fish (especially salmon and whitefish) from rivers. Virtually no agriculture; wild berries and roots in brief summer.",
+        "genetic_legacy": "Very low AMY1 from meat-dominant diet; efficient fat metabolism and cold adaptation; CPT1A variants similar to Inuit; possible FADS adaptations from high-fat diet; enhanced thermogenesis."
+      }
+    },
+    {
+      "id": "sichuan_sw_china",
+      "ancient_roots": {
+        "peoples": ["Baodun culture", "Ba and Shu peoples"],
+        "era": "~5,000 BCE – 500 BCE",
+        "environment": "Fertile basin surrounded by mountains; humid subtropical climate; Yangtze tributaries enabled rice cultivation; diverse wild resources.",
+        "subsistence": "Rice cultivation in lowlands; foxtail millet in uplands. Pigs and water buffalo domesticated. Fish from rivers. Wild vegetables and bamboo shoots gathered. Later famous for Sichuan pepper and chili.",
+        "genetic_legacy": "High AMY1 from rice agriculture; this region shows intermediate patterns between North and South China genetic profiles; efficient processing of diverse plant compounds."
+      }
+    },
+    {
+      "id": "south_china",
+      "ancient_roots": {
+        "peoples": ["Hemudu culture", "Liangzhu culture"],
+        "era": "~10,000 BCE – 1,000 BCE",
+        "environment": "Subtropical to tropical; wet monsoon climate with river deltas; extensive wetlands ideal for wet-rice cultivation.",
+        "subsistence": "Rice domesticated here ~8,000 BCE; became overwhelming dietary staple. Fish from paddies, rivers, and coast. Pigs, water buffalo, and chickens. Tea cultivation ancient. Vegetables and fruits supplemented.",
+        "genetic_legacy": "Among the highest AMY1 copy numbers globally from extreme rice dependence; efficient carbohydrate metabolism; this is a source population for rice-adapted genetics spreading through Asia."
+      }
+    },
+    {
+      "id": "south_india",
+      "ancient_roots": {
+        "peoples": ["Dravidian ancestors", "Southern Neolithic cultures"],
+        "era": "~3,000 BCE – 500 CE",
+        "environment": "Tropical with monsoon rains; Deccan plateau and coastal plains; coconut palms and rice paddies defined the landscape.",
+        "subsistence": "Rice dominant in wetter areas; millets (ragi, jowar) on plateau. Coconut provided fat; fish and shellfish along extensive coastline. Lentils, vegetables, and tropical fruits. Less dairy than North India.",
+        "genetic_legacy": "High AMY1 from rice/millet agriculture; lower lactase persistence than North India (less Steppe ancestry); efficient metabolism of coconut fats; coastal omega-3 processing."
+      }
+    },
+    {
+      "id": "southeast_us",
+      "ancient_roots": {
+        "peoples": ["Poverty Point culture", "Mississippian ancestors", "Cherokee/Creek/Choctaw ancestors"],
+        "era": "~4,000 BCE – 1700 CE",
+        "environment": "Humid subtropical with mild winters; extensive river systems; forests and wetlands with abundant game and fish.",
+        "subsistence": "Early reliance on nuts (hickory, acorn), deer, turkey, and fish. Maize agriculture spread after ~800 CE, becoming dominant. Beans and squash completed the triad. Wild rice in wetlands.",
+        "genetic_legacy": "Moderate AMY1 expansion after maize adoption (later than Mesoamerica); efficient mixed-diet metabolism; adaptation to high-humidity, forest-edge ecology."
+      }
+    },
+    {
+      "id": "southern_africa",
+      "ancient_roots": {
+        "peoples": ["San (Bushmen)", "Khoikhoi herders", "Bantu migrants"],
+        "era": "San: ~100,000 BCE; Khoikhoi: ~2,000 BCE; Bantu: ~300 CE",
+        "environment": "Diverse from Kalahari Desert to savanna to temperate Cape; varied rainfall and vegetation zones.",
+        "subsistence": "San: quintessential hunter-gatherers eating game, mongongo nuts, and tubers. Khoikhoi: sheep and cattle herding with dairy. Bantu migrants brought sorghum, millet, and cattle. Three distinct food traditions coexisted.",
+        "genetic_legacy": "San have very low AMY1 and no lactase persistence (hunter-gatherer baseline); Khoikhoi developed partial lactase persistence; Bantu brought agricultural AMY1 variants. Region shows layered dietary adaptations."
+      }
+    },
+    {
+      "id": "southwest_us",
+      "ancient_roots": {
+        "peoples": ["Ancestral Puebloans (Anasazi)", "Hohokam", "Mogollon"],
+        "era": "~2,000 BCE – 1500 CE",
+        "environment": "Arid high desert with seasonal monsoons; limited water required sophisticated irrigation (Hohokam canals); dramatic temperature swings.",
+        "subsistence": "Maize, beans, and squash cultivated with irrigation. Wild mesquite pods, piñon nuts, and prickly pear supplemented. Deer, rabbit, and turkey provided protein. Drought cycles created periodic famine.",
+        "genetic_legacy": "Moderate-to-high AMY1 from maize agriculture; efficient water-use metabolism; drought-adapted thrifty metabolism from periodic crop failures."
+      }
+    },
+    {
+      "id": "subarctic",
+      "ancient_roots": {
+        "peoples": ["Dene (Athabascan)", "Cree", "Ojibwe ancestors"],
+        "era": "~10,000 BCE – present",
+        "environment": "Boreal forest (taiga) with long cold winters, short summers, and abundant lakes; caribou migration routes critical.",
+        "subsistence": "Caribou/moose hunting provided most calories; fish (lake trout, whitefish, pike) important. Wild rice in eastern areas. Berries and some roots in summer. Pemmican and dried fish for winter.",
+        "genetic_legacy": "Low AMY1 from meat-fish dominant diet; efficient fat metabolism for winter survival; possible cold-adaptation variants; wild rice gatherers (Ojibwe) may show slightly higher AMY1."
+      }
+    },
+    {
+      "id": "tibet",
+      "ancient_roots": {
+        "peoples": ["Tibetan Plateau settlers", "Zhang Zhung culture"],
+        "era": "~30,000 BCE (intermittent); ~3,600 BCE (permanent settlement)",
+        "environment": "World's highest plateau (average 4,500m); extreme cold, low oxygen, intense UV radiation; minimal agriculture possible.",
+        "subsistence": "Yak provided everything: meat, milk, butter, hair, and dung fuel. Barley (tsampa) was virtually the only viable grain. Butter tea added essential calories. Limited vegetables; wild game supplemented.",
+        "genetic_legacy": "EPAS1 variant from Denisovan introgression — strongest known example of adaptive introgression; prevents excessive hemoglobin production at altitude; very low AMY1 from minimal grain access."
+      }
+    },
+    {
+      "id": "west_africa",
+      "ancient_roots": {
+        "peoples": ["Nok culture", "Bantu ancestors", "Mandé peoples"],
+        "era": "~3,000 BCE – 1500 CE",
+        "environment": "Tropical forest to savanna gradient; West African monsoon provided seasonal rainfall; Niger River system enabled trade.",
+        "subsistence": "African rice domesticated independently; yams and palm oil in forest zones. Sorghum and millet in savanna. Fish from Niger River. Cattle in drier north; small livestock south of tsetse belt.",
+        "genetic_legacy": "High AMY1 from yam/grain agriculture; derived FADS alleles at very high frequency (efficient long-chain fatty acid synthesis from plant sources); sickle cell trait as malaria adaptation."
+      }
+    },
+    {
+      "id": "western_europe",
+      "ancient_roots": {
+        "peoples": ["Mesolithic hunter-gatherers", "LBK farmers", "Bell Beaker culture"],
+        "era": "~10,000 BCE – 500 BCE",
+        "environment": "Temperate maritime climate; deciduous forests, rich soils, abundant rainfall; Atlantic coast provided marine resources.",
+        "subsistence": "Neolithic farmers brought wheat, barley, cattle, and sheep from Anatolia (~6,000 BCE). Dairy became important after ~4,500 BCE. Forest game (deer, boar) supplemented. Coastal fishing continued.",
+        "genetic_legacy": "High lactase persistence (70-95%) from intense dairy selection over 7,000+ years; high AMY1 from grain agriculture; vitamin D synthesis adaptations; this population represents agricultural-pastoral transition well-documented by ancient DNA."
+      }
+    },
+    {
+      "id": "west_india",
+      "ancient_roots": {
+        "peoples": ["Indus Valley traders", "Gujarat Neolithic peoples"],
+        "era": "~5,000 BCE – 500 CE",
+        "environment": "Semi-arid to arid; Gujarat coast and Rajasthan interior; seasonal monsoon with frequent droughts; long coastline.",
+        "subsistence": "Millet (bajra, jowar) rather than wheat in drier areas; pulses (mung, chickpea) provided protein. Coastal fishing and salt production. Dairy important; many castes developed vegetarian traditions. Groundnuts later became important.",
+        "genetic_legacy": "Moderate-to-high AMY1 from millet/grain diet; moderate lactase persistence; vegetarian-adapted gut microbiome in some populations; efficient drought survival metabolism."
+      }
+    },
+    {
+      "id": "central_europe",
+      "ancient_roots": {
+        "peoples": ["Linear Pottery culture (LBK)", "Corded Ware", "Celtic ancestors"],
+        "era": "~5,500 BCE – 500 BCE",
+        "environment": "Temperate continental; cold winters requiring preserved food; fertile river valleys (Danube, Rhine); mixed forest.",
+        "subsistence": "Wheat, barley, and legumes cultivated; cattle, pigs, and sheep kept. Forest hunting (deer, boar) supplemented. Dairy cattle important after Steppe migrations. Beer brewing ancient.",
+        "genetic_legacy": "High lactase persistence from Steppe ancestry influx (~4,500 BCE); high AMY1 from grain agriculture; vitamin D synthesis adaptations for northern winters; well-documented genetic transition from hunter-gatherers to farmers to pastoralists."
+      }
+    },
+    {
+      "id": "nilotic",
+      "ancient_roots": {
+        "peoples": ["Nilotic pastoralists", "Interlacustrine Bantu"],
+        "era": "~3,000 BCE – present",
+        "environment": "Great Rift Valley lakes, highland plateaus, and Nile tributaries; seasonal savanna; some areas with two rainy seasons.",
+        "subsistence": "Cattle, goats, and sheep herding dominant among Nilotic peoples; milk and blood important. Sorghum, millet, and bananas among agricultural groups. Fish from Great Lakes. Mixed pastoral-agricultural economies common.",
+        "genetic_legacy": "C-14010 lactase persistence at high frequency in pastoral groups (Tutsi ~90%, similar to Maasai); lower in agricultural groups; moderate AMY1; this region shows strong selection for dairy adaptation."
+      }
+    },
+    {
+      "id": "sudanian",
+      "ancient_roots": {
+        "peoples": ["Nilo-Saharan peoples", "Niger-Congo agriculturalists"],
+        "era": "~5,000 BCE – present",
+        "environment": "Savanna woodland between Sahel and tropical forest; seasonal rainfall; diverse ecology from dry to wet savanna.",
+        "subsistence": "Sorghum and millet cultivation; yams in wetter areas. Cattle herding where tsetse fly absent. Shea nuts and locust beans for oils and protein. Guinea fowl and small game.",
+        "genetic_legacy": "High AMY1 from grain-based agriculture; some lactase persistence variants in pastoral communities; efficient metabolism of diverse savanna resources; transition zone genetics reflecting multiple population movements."
+      }
+    },
+    {
+      "id": "balkan",
+      "ancient_roots": {
+        "peoples": ["Thracians", "Dacians", "Illyrians"],
+        "era": "~1200 BCE – 500 CE",
+        "environment": "Rugged mountain ranges, forested highland valleys, and river plains along the Danube and Vardar — cold winters, fertile lowlands.",
+        "subsistence": "Millet, barley, and emmer wheat grown in river valleys; sheep, goat, and wild boar provided protein. Cattle were kept primarily as draft animals. Highland pastoral groups consumed fermented dairy — early yogurt-like products — as a winter staple.",
+        "genetic_legacy": "Partial lactase persistence selection from sustained fermented dairy reliance; moderate starch adaptation reflecting a mixed grain-and-meat economy rather than a grain-dominant one."
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+// === NEW GENE_META ENTRIES — add inside the GENE_META object ===
+pon1_antioxidant:       { icon: '🫒', title: 'Antioxidant Protection',     cssClass: 'pon1' },
+gckr_carb_sensitivity:  { icon: '🍞', title: 'Carb Sensitivity',           cssClass: 'gckr' },
+fgf21_carb_preference:  { icon: '🍬', title: 'Carb vs Fat Preference',     cssClass: 'fgf21' },
+apoa5_triglycerides:    { icon: '🥩', title: 'Fat & Triglycerides',        cssClass: 'apoa5' },
+slc6a4_serotonin:       { icon: '🧠', title: 'Serotonin & Cravings',       cssClass: 'slc6a4' },
+hnmt_histamine:         { icon: '🫙', title: 'Histamine Clearance (HNMT)', cssClass: 'hnmt' },
+cyp4f2_vitamin_e:       { icon: '🫑', title: 'Vitamin E Metabolism',       cssClass: 'cyp4f2' },
+apoc3_omega3_response:  { icon: '🐟', title: 'Omega-3 Response',           cssClass: 'apoc3' },
+cyp19a1_phytoestrogen:  { icon: '🌿', title: 'Phytoestrogen Metabolism',   cssClass: 'cyp19a1' },
