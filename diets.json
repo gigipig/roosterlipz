@@ -1,0 +1,3557 @@
+{
+  "version": "3.2",
+  "note": "Version 3.1: Anthropological verification applied. Corrected 17 anachronisms (post-Columbian foods mislabeled as ancestral), dating errors, and regional inaccuracies. Chili peppers, tomatoes, potatoes, cassava, peanuts, and maize flagged where introduced post-1492. Enhanced with 34 additional genetic variants from December 2025 research. Includes caffeine metabolism (CYP1A2), celiac risk (HLA-DQ), cholesterol (APOE, PCSK9), micronutrient variants, and bitter taste perception (TAS2R38). AMY1 copy numbers adjusted per Bolognini 2024 digital PCR methodology. Version 3.2: Added 5 new dietary regions (nile_valley, mesopotamian, caribbean_creole, mestizo_mesoamerican, malagasy) for improved geographic accuracy. Genetic adaptations placeholders included for future research.",
+  "cultures": [
+    {
+      "id": "aboriginal_aus",
+      "diet_signature": "Hunter-gatherer diet featuring native seeds, bush fruits, and game adapted to arid conditions. Emphasizes seasonal availability, fire-stick farming, and diverse protein from land and sea.",
+      "staples": [
+        "native tubers",
+        "native seeds",
+        "bush fruits"
+      ],
+      "common_foods": [
+        "kangaroo",
+        "emu",
+        "fish",
+        "witchetty_grubs"
+      ],
+      "proteins": [
+        "kangaroo",
+        "emu",
+        "fish",
+        "insects"
+      ],
+      "fats": [
+        "animal fats",
+        "nuts"
+      ],
+      "herbs_spices": [
+        "bush herbs"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "smoking",
+        "earth cooking"
+      ],
+      "typical_dishes": [
+        "roasted game and tubers",
+        "smoked fish"
+      ],
+      "modern_substitutes": {
+        "witchetty_grubs": "insect protein/nuts",
+        "native_seeds": "millet"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 25,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "amazon",
+      "diet_signature": "Rainforest diet featuring cassava, river fish, and wild game. Archaeological evidence shows maize agriculture from ~4850 BCE (6,850 years ago) based on phytolith analysis, alongside cassava cultivation. Emphasizes fermented beverages, insects, and diverse tropical fruits with slash-and-burn agriculture.",
+      "staples": [
+        "cassava",
+        "maize",
+        "plantains",
+        "roots"
+      ],
+      "common_foods": [
+        "fish",
+        "wild_game",
+        "insects",
+        "fermented_beverages"
+      ],
+      "proteins": [
+        "fish",
+        "game",
+        "insects"
+      ],
+      "fats": [
+        "palm nuts",
+        "fish",
+        "nuts"
+      ],
+      "herbs_spices": [
+        "tropical leaves",
+        "peppers"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "smoking",
+        "fermenting",
+        "boiling"
+      ],
+      "typical_dishes": [
+        "cassava flatbreads",
+        "fish stews"
+      ],
+      "modern_substitutes": {
+        "cassava": "tapioca"
+      },
+      "macros": {
+        "carbs_pct": 65,
+        "protein_pct": 12,
+        "fat_pct": 23
+      }
+    },
+    {
+      "id": "anatolian",
+      "diet_signature": "Bridge between Mediterranean and Central Asian cuisines featuring grilled meats, yogurt, and stuffed vegetables. Emphasizes olive oil, bulgur, and mezze traditions.",
+      "staples": [
+        "wheat",
+        "bulgur",
+        "rice"
+      ],
+      "common_foods": [
+        "lamb",
+        "eggplant",
+        "yogurt",
+        "olive oil",
+        "hazelnuts"
+      ],
+      "proteins": [
+        "lamb",
+        "chicken",
+        "fish",
+        "legumes"
+      ],
+      "fats": [
+        "olive oil",
+        "butter",
+        "hazelnuts"
+      ],
+      "herbs_spices": [
+        "mint",
+        "sumac",
+        "paprika",
+        "cumin"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "stuffing",
+        "slow cooking",
+        "baking"
+      ],
+      "typical_dishes": [
+        "kebabs",
+        "dolma",
+        "meze"
+      ],
+      "modern_substitutes": {
+        "bulgur": "couscous"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "andean",
+      "diet_signature": "High-altitude agriculture featuring diverse potato varieties, quinoa, and camelid herding. Includes freeze-dried chuño, guinea pig, and adaptations to low-oxygen conditions.",
+      "staples": [
+        "potatoes",
+        "quinoa",
+        "maize"
+      ],
+      "common_foods": [
+        "llama/alpaca",
+        "guinea_pig",
+        "beans",
+        "chuño"
+      ],
+      "proteins": [
+        "guinea pig",
+        "llama",
+        "beans"
+      ],
+      "fats": [
+        "animal fats",
+        "nuts"
+      ],
+      "herbs_spices": [
+        "aji peppers",
+        "huacatay"
+      ],
+      "cooking_methods": [
+        "boiling",
+        "roasting",
+        "freeze-drying",
+        "earth oven"
+      ],
+      "typical_dishes": [
+        "potato stews",
+        "quinoa soups",
+        "roasted cuy"
+      ],
+      "modern_substitutes": {
+        "quinoa": "amaranth",
+        "chuño": "dehydrated_potato"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 18,
+        "fat_pct": 22
+      }
+    },
+    {
+      "id": "arabian",
+      "diet_signature": "Desert-adapted diet centered on dates, camel products, and preserved foods. Features rice dishes with lamb, minimal vegetables, and hospitality-focused preparation.",
+      "staples": [
+        "dates",
+        "wheat",
+        "rice"
+      ],
+      "common_foods": [
+        "camel meat",
+        "goat",
+        "lamb",
+        "milk",
+        "dried fruits"
+      ],
+      "proteins": [
+        "camel",
+        "lamb",
+        "goat",
+        "dairy"
+      ],
+      "fats": [
+        "ghee",
+        "camel fat",
+        "olive oil"
+      ],
+      "herbs_spices": [
+        "cardamom",
+        "saffron",
+        "cumin",
+        "black lime"
+      ],
+      "cooking_methods": [
+        "slow cooking",
+        "grilling",
+        "baking"
+      ],
+      "typical_dishes": [
+        "flatbread with spreads",
+        "stews and rice with lamb"
+      ],
+      "modern_substitutes": {
+        "camel_milk": "goat/cow milk"
+      },
+      "macros": {
+        "carbs_pct": 45,
+        "protein_pct": 25,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "australian_coastal",
+      "diet_signature": "Australian coastal Aboriginal peoples developed sophisticated marine harvesting practices over 65,000 years. Rock oysters, fish, shellfish, and estuarine resources formed the protein base, complemented by coastal plants, seeds, and seasonal inland game. The diet was sustainable, seasonal, and highly nutritious with excellent omega-3 fatty acid profiles from marine foods.",
+      "macros": {
+        "carbs_pct": 35,
+        "protein_pct": 35,
+        "fat_pct": 30
+      },
+      "staples": [
+        "Rock oysters",
+        "Fish (various)",
+        "Shellfish",
+        "Yams",
+        "Seeds"
+      ],
+      "common_foods": [
+        "Abalone",
+        "Mussels",
+        "Pipis (clams)",
+        "Mud crabs",
+        "Mullet",
+        "Bream",
+        "Bush tomatoes",
+        "Warrigal greens",
+        "Lilli pilli"
+      ],
+      "proteins": [
+        "Fish (bream, snapper, mullet)",
+        "Oysters",
+        "Shellfish",
+        "Crab",
+        "Emu",
+        "Kangaroo",
+        "Wallaby"
+      ],
+      "fats": [
+        "Fish oils",
+        "Emu fat",
+        "Seeds",
+        "Nuts"
+      ],
+      "herbs_spices": [
+        "Lemon myrtle",
+        "Mountain pepper",
+        "Wattleseed",
+        "Sea salt",
+        "Bush tomato"
+      ],
+      "cooking_methods": [
+        "Cooking on hot stones",
+        "Steaming in paperbark",
+        "Smoking",
+        "Raw consumption",
+        "Underground ovens",
+        "Grilling over coals"
+      ],
+      "typical_dishes": [
+        "Grilled fish wrapped in paperbark",
+        "Steamed oysters",
+        "Mud crab",
+        "Seed cakes",
+        "Kangaroo grilled on coals",
+        "Emu eggs",
+        "Roasted yams"
+      ],
+      "modern_substitutes": {
+        "Bush tucker": "Available from specialty Australian suppliers",
+        "Kangaroo/Emu": "Grass-fed beef or lamb (though kangaroo is commercially available)"
+      }
+    },
+    {
+      "id": "balkan",
+      "diet_signature": "Ottoman-era (14th century+) fusion of Turkish, Mediterranean, and Slavic traditions. Signature dishes like ćevapi and burek arrived with Ottoman influence—ćevapi first documented in Belgrade in the 1860s, burek spread after the 1350s. Pre-Ottoman Balkan diet centered on wheat, barley, millet, pork, and sheep. Features grilled meats, yogurt, phyllo pastries, and fermented vegetables.",
+      "staples": [
+        "wheat",
+        "corn/maize (post-Columbian)",
+        "potatoes",
+        "rice"
+      ],
+      "common_foods": [
+        "yogurt",
+        "white cheese (sirene, feta)",
+        "grilled meats (ćevapi, kebabs)",
+        "phyllo pastry (burek)",
+        "ajvar (pepper spread)",
+        "kajmak (clotted cream)",
+        "olive oil (coastal)",
+        "seafood (coastal)"
+      ],
+      "proteins": [
+        "lamb",
+        "beef",
+        "pork",
+        "chicken",
+        "fish (coastal)",
+        "yogurt",
+        "cheese",
+        "beans"
+      ],
+      "fats": [
+        "olive oil",
+        "lard",
+        "butter",
+        "kajmak"
+      ],
+      "herbs_spices": [
+        "paprika",
+        "cumin",
+        "parsley",
+        "dill",
+        "oregano",
+        "bay leaf",
+        "garlic"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "slow-cooking",
+        "fermenting",
+        "baking (phyllo)",
+        "stewing",
+        "pickling"
+      ],
+      "typical_dishes": [
+        "ćevapi (grilled meat)",
+        "burek (phyllo pastry)",
+        "sarma (stuffed cabbage)",
+        "shopska salad",
+        "moussaka",
+        "kajmak with bread"
+      ],
+      "modern_substitutes": {
+        "kajmak": "clotted cream or cream cheese",
+        "ajvar": "roasted red pepper spread"
+      },
+      "macros": {
+        "carbs_pct": 45,
+        "protein_pct": 20,
+        "fat_pct": 35
+      }
+    },
+    {
+      "id": "bengal",
+      "diet_signature": "Delta cuisine centered on freshwater fish, rice, and mustard oil. Features five-spice blends, minimal heat spicing, and delicate fish preparations with mustard paste.",
+      "staples": [
+        "rice",
+        "mustard_greens"
+      ],
+      "common_foods": [
+        "hilsa (fish)",
+        "mustard_oil",
+        "lentils",
+        "eggplant"
+      ],
+      "proteins": [
+        "fish",
+        "lentils",
+        "eggs"
+      ],
+      "fats": [
+        "mustard oil",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "panch phoron",
+        "mustard seeds",
+        "nigella"
+      ],
+      "cooking_methods": [
+        "steaming",
+        "mustard paste preparations",
+        "light frying"
+      ],
+      "typical_dishes": [
+        "shorshe ilish"
+      ],
+      "modern_substitutes": {
+        "hilsa": "mackerel/sardine"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 20,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "brazilian_coastal",
+      "diet_signature": "Brazilian coastal cuisine, especially from Bahia, represents a vibrant fusion of African, Indigenous, and Portuguese influences. Characterized by dendê (red palm oil), coconut milk, cassava/manioc, and abundant seafood. The African influence is strong in cooking techniques and ingredient combinations, creating distinctive dishes unlike other South American cuisines.",
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 18,
+        "fat_pct": 27
+      },
+      "staples": [
+        "Cassava/manioc",
+        "Rice",
+        "Black beans",
+        "Coconut",
+        "Dendê oil"
+      ],
+      "common_foods": [
+        "Okra",
+        "Shrimp",
+        "Fish",
+        "Collard greens",
+        "Cashews",
+        "Plantains",
+        "Hearts of palm",
+        "Tapioca"
+      ],
+      "proteins": [
+        "Shrimp",
+        "Fish (various)",
+        "Black beans",
+        "Chicken",
+        "Dried shrimp",
+        "Codfish"
+      ],
+      "fats": [
+        "Dendê (red palm oil)",
+        "Coconut oil",
+        "Coconut milk"
+      ],
+      "herbs_spices": [
+        "Cilantro",
+        "Malagueta pepper",
+        "Garlic",
+        "Onion",
+        "Lime",
+        "Bay leaf",
+        "Cumin"
+      ],
+      "cooking_methods": [
+        "Slow stewing (moqueca)",
+        "Frying",
+        "Steaming in banana leaves",
+        "Grilling",
+        "Fermenting"
+      ],
+      "typical_dishes": [
+        "Moqueca (fish stew)",
+        "Acarajé (black-eyed pea fritters)",
+        "Vatapá",
+        "Feijoada",
+        "Bobó de camarão",
+        "Farofa",
+        "Tapioca crepes",
+        "Brigadeiro"
+      ],
+      "modern_substitutes": {
+        "Dendê oil": "Combination of palm oil and paprika for color",
+        "Malagueta pepper": "Cayenne or bird's eye chili"
+      }
+    },
+    {
+      "id": "california_coast",
+      "diet_signature": "California coastal indigenous peoples developed sophisticated food systems centered on acorn processing, salmon runs, and marine resources. Acorns were leached and ground into flour, complemented by abundant shellfish, salmon, seeds, and game. The diet was remarkably diverse with seasonal variation and included extensive use of native plant foods.",
+      "macros": {
+        "carbs_pct": 45,
+        "protein_pct": 25,
+        "fat_pct": 30
+      },
+      "staples": [
+        "Acorn flour",
+        "Salmon",
+        "Chia seeds",
+        "Pine nuts",
+        "Buckeye"
+      ],
+      "common_foods": [
+        "Mussels",
+        "Clams",
+        "Abalone",
+        "Sea urchin",
+        "Venison",
+        "Wild greens",
+        "Manzanita berries",
+        "Oak leaves"
+      ],
+      "proteins": [
+        "Salmon",
+        "Steelhead trout",
+        "Shellfish (various)",
+        "Venison",
+        "Elk",
+        "Rabbit",
+        "Waterfowl"
+      ],
+      "fats": [
+        "Salmon oil",
+        "Acorns",
+        "Pine nuts",
+        "Animal fats"
+      ],
+      "herbs_spices": [
+        "Bay laurel",
+        "White sage",
+        "Yerba buena",
+        "Wild onion",
+        "Sea salt"
+      ],
+      "cooking_methods": [
+        "Steaming in earth ovens",
+        "Stone boiling",
+        "Smoking",
+        "Drying",
+        "Roasting over coals",
+        "Raw preparation"
+      ],
+      "typical_dishes": [
+        "Acorn mush",
+        "Smoked salmon",
+        "Roasted shellfish",
+        "Seed cakes",
+        "Venison stew",
+        "Dried fish",
+        "Ground acorn bread"
+      ],
+      "modern_substitutes": {
+        "Acorn flour": "Chestnut flour or almond flour",
+        "Wild game": "Grass-fed beef or bison"
+      }
+    },
+    {
+      "id": "canadian_prairies",
+      "diet_signature": "The Canadian Prairies diet represents a fusion of Plains indigenous foodways and Subarctic influences. Bison was the primary protein source, preserved as pemmican for winter survival. Wild rice harvested from lakes, berries, and root vegetables supplemented the meat-heavy diet. The harsh climate required high-fat, nutrient-dense foods that could be stored long-term.",
+      "macros": {
+        "carbs_pct": 20,
+        "protein_pct": 40,
+        "fat_pct": 40
+      },
+      "staples": [
+        "Bison",
+        "Wild rice",
+        "Bannock",
+        "Pemmican",
+        "Berries"
+      ],
+      "common_foods": [
+        "Elk",
+        "Venison",
+        "Wild turnip",
+        "Saskatoon berries",
+        "Blueberries",
+        "Cranberries",
+        "Chokecherries",
+        "Wild onions"
+      ],
+      "proteins": [
+        "Bison",
+        "Elk",
+        "Venison",
+        "Moose",
+        "Whitefish",
+        "Pike",
+        "Waterfowl"
+      ],
+      "fats": [
+        "Bison fat",
+        "Bone marrow",
+        "Animal fats"
+      ],
+      "herbs_spices": [
+        "Wild sage",
+        "Wild mint",
+        "Cedar",
+        "Juniper berries",
+        "Wild onion"
+      ],
+      "cooking_methods": [
+        "Drying",
+        "Smoking",
+        "Pemmican making",
+        "Roasting over fire",
+        "Stone boiling",
+        "Frying (bannock)"
+      ],
+      "typical_dishes": [
+        "Pemmican",
+        "Bison roast",
+        "Bannock",
+        "Wild rice pilaf",
+        "Berry soup",
+        "Smoked fish",
+        "Bone marrow",
+        "Three Sisters (corn, beans, squash)"
+      ],
+      "modern_substitutes": {
+        "Bison": "Grass-fed beef or venison",
+        "Wild rice": "Long-grain brown rice"
+      }
+    },
+    {
+      "id": "caribbean_creole",
+      "diet_signature": "Afro-Caribbean fusion cuisine born from the colonial era (16th-19th century), blending West African, European, and Indigenous Taino foodways. Characterized by rice and peas, jerk seasonings, tropical fruits, and seafood. Distinct from indigenous Taino diet—incorporates African okra, plantains, and salted fish brought via the slave trade, plus European livestock and seasonings.",
+      "staples": [
+        "rice",
+        "beans/peas (kidney, pigeon peas)",
+        "plantains",
+        "cassava",
+        "breadfruit",
+        "cornmeal"
+      ],
+      "common_foods": [
+        "rice and peas",
+        "ackee (Jamaica)",
+        "callaloo",
+        "saltfish (bacalao)",
+        "coconut milk",
+        "scotch bonnet peppers",
+        "mango",
+        "papaya",
+        "yams",
+        "dasheen"
+      ],
+      "proteins": [
+        "fish (snapper, kingfish)",
+        "saltfish",
+        "chicken",
+        "goat",
+        "pork",
+        "beans",
+        "conch",
+        "crab",
+        "shrimp"
+      ],
+      "fats": [
+        "coconut oil",
+        "coconut milk",
+        "palm oil",
+        "lard (traditional)"
+      ],
+      "herbs_spices": [
+        "scotch bonnet",
+        "allspice (pimento)",
+        "thyme",
+        "scallion",
+        "garlic",
+        "ginger",
+        "curry powder (Trinidad)",
+        "cilantro (culantro)"
+      ],
+      "cooking_methods": [
+        "jerk (smoking/grilling)",
+        "stewing",
+        "frying",
+        "one-pot cooking",
+        "steaming (in banana leaves)",
+        "currying"
+      ],
+      "typical_dishes": [
+        "jerk chicken/pork",
+        "rice and peas",
+        "ackee and saltfish",
+        "callaloo",
+        "curry goat",
+        "oxtail stew",
+        "roti (Trinidad)",
+        "pelau",
+        "escovitch fish"
+      ],
+      "modern_substitutes": {
+        "ackee": "scrambled eggs (texture)",
+        "saltfish": "fresh cod or other white fish",
+        "breadfruit": "potato or plantain",
+        "dasheen": "taro or potato"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 25,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "caribbean_taino",
+      "diet_signature": "Island tropical diet centered on maize, cassava, and sweet potato with abundant seafood. Archaeological starch grain assemblages show maize was more prominent than previously assumed, with cassava showing minimal presence in some contexts. Features cassava bread, tropical fruits, and simple preparations adapted to island resources.",
+      "staples": [
+        "maize",
+        "cassava",
+        "sweet_potato"
+      ],
+      "common_foods": [
+        "fish",
+        "tropical_fruits",
+        "plantains"
+      ],
+      "proteins": [
+        "fish",
+        "seafood"
+      ],
+      "fats": [
+        "fish",
+        "nuts"
+      ],
+      "herbs_spices": [
+        "peppers",
+        "herbs"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "baking cassava",
+        "boiling"
+      ],
+      "typical_dishes": [
+        "cassava bread (casabe)",
+        "roasted fish and tubers"
+      ],
+      "modern_substitutes": {
+        "casabe": "cassava_flatbread",
+        "plantain": "banana/plantain"
+      },
+      "macros": {
+        "carbs_pct": 65,
+        "protein_pct": 15,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "caucasus",
+      "diet_signature": "Mountain cuisine featuring walnuts, herbs, fermented dairy, and grilled meats. Emphasizes fresh cheeses, wild greens, and stone-baked breads with liberal use of aromatic herbs.",
+      "staples": [
+        "wheat",
+        "corn",
+        "beans",
+        "walnuts"
+      ],
+      "common_foods": [
+        "lamb",
+        "beef",
+        "cheese",
+        "yogurt",
+        "walnut sauces"
+      ],
+      "proteins": [
+        "lamb",
+        "beef",
+        "chicken",
+        "cheese",
+        "beans"
+      ],
+      "fats": [
+        "walnuts",
+        "butter",
+        "sunflower oil"
+      ],
+      "herbs_spices": [
+        "coriander",
+        "fenugreek",
+        "dill",
+        "tarragon",
+        "garlic"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "baking",
+        "slow cooking",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "khachapuri",
+        "grilled kebabs"
+      ],
+      "modern_substitutes": {
+        "walnut sauce": "walnut pesto"
+      },
+      "macros": {
+        "carbs_pct": 45,
+        "protein_pct": 20,
+        "fat_pct": 35
+      }
+    },
+    {
+      "id": "central_africa",
+      "diet_signature": "Hunter-gatherer diet from rainforest resources including wild yams, fish, insects, and game. Seasonal variety with minimal processing and high biodiversity.",
+      "staples": [
+        "wild yams (Dioscorea spp.)",
+        "plantains",
+        "forest tubers"
+      ],
+      "common_foods": [
+        "fish",
+        "small game",
+        "insects",
+        "forest fruits"
+      ],
+      "proteins": [
+        "fish",
+        "game",
+        "insects"
+      ],
+      "fats": [
+        "palm nuts",
+        "animal fats"
+      ],
+      "herbs_spices": [
+        "forest leaves",
+        "wild ginger"
+      ],
+      "cooking_methods": [
+        "smoking",
+        "roasting",
+        "boiling"
+      ],
+      "typical_dishes": [
+        "roasted tubers",
+        "smoked fish"
+      ],
+      "modern_substitutes": {
+        "wild_yams": "yam/sweet potato"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "central_asia",
+      "diet_signature": "Nomadic pastoralist diet dominated by meat and dairy with minimal plant foods. Features fermented horse milk, boiled meats, and preserved dairy products for winter survival.",
+      "staples": [
+        "barley",
+        "wheat",
+        "dried dairy"
+      ],
+      "common_foods": [
+        "mutton",
+        "horse meat",
+        "kumis",
+        "dairy_cheeses"
+      ],
+      "proteins": [
+        "mutton",
+        "horse",
+        "beef",
+        "dairy"
+      ],
+      "fats": [
+        "animal fats",
+        "dairy fats"
+      ],
+      "herbs_spices": [
+        "minimal - onion, black pepper"
+      ],
+      "cooking_methods": [
+        "boiling",
+        "fermenting",
+        "smoking"
+      ],
+      "typical_dishes": [
+        "boiled meats",
+        "fermented dairy consumption"
+      ],
+      "modern_substitutes": {
+        "kumis": "kefir"
+      },
+      "macros": {
+        "carbs_pct": 10,
+        "protein_pct": 30,
+        "fat_pct": 60
+      }
+    },
+    {
+      "id": "central_europe",
+      "diet_signature": "Robust grain and dairy-based cuisine featuring rye bread, beer, pork, and preserved foods. Highest lactase persistence in Europe with intense dairy traditions including fresh milk, quark, and aged cheeses. Beer culture from grain fermentation.",
+      "staples": [
+        "rye",
+        "wheat",
+        "potatoes",
+        "barley"
+      ],
+      "common_foods": [
+        "fresh milk",
+        "quark",
+        "butter",
+        "pork",
+        "sausages",
+        "sauerkraut",
+        "beer"
+      ],
+      "proteins": [
+        "pork",
+        "beef",
+        "dairy",
+        "eggs",
+        "freshwater fish"
+      ],
+      "fats": [
+        "butter",
+        "lard",
+        "cream"
+      ],
+      "herbs_spices": [
+        "caraway",
+        "juniper",
+        "horseradish",
+        "mustard",
+        "dill"
+      ],
+      "cooking_methods": [
+        "baking",
+        "roasting",
+        "fermenting",
+        "smoking",
+        "pickling"
+      ],
+      "typical_dishes": [
+        "rye bread",
+        "sauerkraut",
+        "smoked meats",
+        "potato dishes"
+      ],
+      "modern_substitutes": {
+        "lard": "butter or ghee",
+        "fresh milk": "lactose-free milk for non-adapted individuals"
+      },
+      "macros": {
+        "carbs_pct": 45,
+        "protein_pct": 20,
+        "fat_pct": 35
+      }
+    },
+    {
+      "id": "eastern_europe",
+      "diet_signature": "Robust fermented foods, hearty root vegetables, and preserved preparations for long winters. Rich in sour cream, buckwheat, and wild mushrooms with minimal refined ingredients.",
+      "staples": [
+        "rye",
+        "wheat",
+        "buckwheat",
+        "beets",
+        "potatoes (post-Columbian)"
+      ],
+      "common_foods": [
+        "pork",
+        "sour cream",
+        "fermented vegetables",
+        "cabbage",
+        "mushrooms"
+      ],
+      "proteins": [
+        "pork",
+        "beef",
+        "eggs",
+        "dairy"
+      ],
+      "fats": [
+        "sour cream",
+        "lard",
+        "sunflower oil"
+      ],
+      "herbs_spices": [
+        "dill",
+        "caraway",
+        "horseradish",
+        "garlic"
+      ],
+      "cooking_methods": [
+        "fermenting",
+        "stewing",
+        "boiling",
+        "baking"
+      ],
+      "typical_dishes": [
+        "borscht",
+        "pierogi"
+      ],
+      "modern_substitutes": {
+        "buckwheat": "quinoa"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 18,
+        "fat_pct": 32
+      }
+    },
+    {
+      "id": "eastern_woodlands",
+      "diet_signature": "Three Sisters agriculture supplemented by hunting, fishing, and foraging. Features maize, beans, and squash with maple, wild rice, and abundant game in forested regions.",
+      "staples": [
+        "maize",
+        "beans",
+        "squash"
+      ],
+      "common_foods": [
+        "fish",
+        "deer",
+        "berries",
+        "maple"
+      ],
+      "proteins": [
+        "fish",
+        "deer",
+        "beans",
+        "turkey"
+      ],
+      "fats": [
+        "nuts",
+        "fish oils",
+        "animal fats"
+      ],
+      "herbs_spices": [
+        "herbs",
+        "maple"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "boiling",
+        "smoking",
+        "steaming"
+      ],
+      "typical_dishes": [
+        "corn porridge",
+        "bean soups",
+        "smoked venison"
+      ],
+      "modern_substitutes": {
+        "hominy": "masa_harina"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "ethiopia",
+      "diet_signature": "Injera-based meals featuring complex spice blends, lentils, and fermented preparations. Rich in teff, berbere spice, and communal eating traditions with substantial plant-based options.",
+      "staples": [
+        "teff",
+        "barley"
+      ],
+      "common_foods": [
+        "lentils",
+        "berbere",
+        "lamb",
+        "niter kibbeh",
+        "vegetables"
+      ],
+      "proteins": [
+        "lentils",
+        "lamb",
+        "beef",
+        "chickpeas"
+      ],
+      "fats": [
+        "niter kibbeh",
+        "oil"
+      ],
+      "herbs_spices": [
+        "berbere",
+        "mitmita",
+        "korarima",
+        "fenugreek"
+      ],
+      "cooking_methods": [
+        "stewing",
+        "fermenting",
+        "raw preparations"
+      ],
+      "typical_dishes": [
+        "injera with wot",
+        "kitfo"
+      ],
+      "modern_substitutes": {
+        "teff": "teff flour or rye",
+        "niter_kibbeh": "spiced ghee"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 18,
+        "fat_pct": 27
+      }
+    },
+    {
+      "id": "gaucho",
+      "diet_signature": "Post-colonial (16th century+) pastoral diet centered on cattle introduced by Spanish. Pre-contact Pampas indigenous diet featured guanaco, rhea, armadillo, and fish. The iconic beef-centered gaucho cuisine represents colonial-era synthesis, not deep ancestral tradition.",
+      "macros": {
+        "carbs_pct": 15,
+        "protein_pct": 45,
+        "fat_pct": 40
+      },
+      "staples": [
+        "Grass-fed beef",
+        "Yerba mate",
+        "Salt",
+        "Wheat bread (secondary)"
+      ],
+      "common_foods": [
+        "Beef offal",
+        "Chorizo",
+        "Morcilla (blood sausage)",
+        "Empanadas",
+        "Squash",
+        "Corn"
+      ],
+      "proteins": [
+        "Beef (all cuts)",
+        "Lamb",
+        "Goat",
+        "Chorizo",
+        "Blood sausage",
+        "Eggs"
+      ],
+      "fats": [
+        "Beef fat",
+        "Butter",
+        "Animal fats"
+      ],
+      "herbs_spices": [
+        "Coarse salt",
+        "Oregano",
+        "Garlic",
+        "Parsley",
+        "Chimichurri herbs"
+      ],
+      "cooking_methods": [
+        "Asado (slow grilling over wood)",
+        "Open fire cooking",
+        "Roasting",
+        "Minimal preparation"
+      ],
+      "typical_dishes": [
+        "Asado (grilled beef)",
+        "Bife de chorizo",
+        "Matambre",
+        "Empanadas de carne",
+        "Chimichurri sauce",
+        "Milanesa",
+        "Locro (stew)",
+        "Dulce de leche"
+      ],
+      "modern_substitutes": {
+        "Organ meats": "Grass-fed beef cuts for those unfamiliar"
+      }
+    },
+    {
+      "id": "great_plains",
+      "diet_signature": "Bison-centered nomadic diet with high fat content. Protein limited to ~35% of calories due to protein toxicity ceiling (rabbit starvation)—required substantial fat supplementation and plant foods (roots, berries, prairie turnips) for nutritional balance. Features pemmican (dried meat + fat) for preservation and complete utilization of buffalo.",
+      "staples": [
+        "bison",
+        "berries"
+      ],
+      "common_foods": [
+        "bison meat",
+        "bison fat/pemmican",
+        "prairie turnips",
+        "roots",
+        "berries",
+        "maize (post-contact)"
+      ],
+      "proteins": [
+        "bison",
+        "deer",
+        "small game"
+      ],
+      "fats": [
+        "bison fat",
+        "marrow"
+      ],
+      "herbs_spices": [
+        "wild herbs",
+        "berries"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "drying",
+        "pemmican preparation"
+      ],
+      "typical_dishes": [
+        "pemmican",
+        "dried meats"
+      ],
+      "modern_substitutes": {
+        "bison": "beef (lean)"
+      },
+      "macros": {
+        "carbs_pct": 15,
+        "protein_pct": 35,
+        "fat_pct": 50
+      }
+    },
+    {
+      "id": "highland_se_asia",
+      "diet_signature": "Mountain agricultural diet featuring upland rice, foraged greens, and simple preparations. Emphasizes sticky rice, fermented foods, and limited spicing with pork as primary meat.",
+      "staples": [
+        "upland_rice",
+        "maize"
+      ],
+      "common_foods": [
+        "pork",
+        "wild_greens",
+        "mushrooms"
+      ],
+      "proteins": [
+        "pork",
+        "fish",
+        "insects"
+      ],
+      "fats": [
+        "lard",
+        "oil"
+      ],
+      "herbs_spices": [
+        "chili",
+        "ginger",
+        "herbs"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "boiling",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "grilled meats with sticky rice"
+      ],
+      "modern_substitutes": {
+        "wild_greens": "spinach"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 18,
+        "fat_pct": 22
+      }
+    },
+    {
+      "id": "horn_somalia",
+      "diet_signature": "Nomadic and coastal diet featuring camel products, sorghum flatbreads, and fresh seafood. Incorporates dates, spices from trade routes, and minimal vegetable content.",
+      "staples": [
+        "sorghum",
+        "millet",
+        "rice"
+      ],
+      "common_foods": [
+        "camel milk",
+        "goat",
+        "fish",
+        "dates"
+      ],
+      "proteins": [
+        "camel",
+        "goat",
+        "fish"
+      ],
+      "fats": [
+        "camel milk",
+        "ghee"
+      ],
+      "herbs_spices": [
+        "cardamom",
+        "cumin",
+        "coriander"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "stewing",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "canjeero",
+        "stews with camel/goat"
+      ],
+      "modern_substitutes": {
+        "camel_milk": "goat milk/cow yogurt"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "inuit",
+      "diet_signature": "Extreme cold-adapted marine mammal-based diet with 50-75% fat from blubber. Contrary to popular belief, NOT ketogenic—marine glycogen, fermented foods, kelp, and seasonal plants provided 15-20% carbohydrates. Features raw and fermented preparations with protein limited to 25-35% to avoid protein toxicity (rabbit starvation). Vitamin C obtained from raw organ meats (muktuk/whale skin, liver) and kelp. Note: Marine mammals contain significant glycogen (8-30% carbs in blubber), providing 15-20% of calories as carbohydrates—diet was not ketogenic as sometimes claimed.",
+      "staples": [
+        "marine mammals",
+        "fish",
+        "caribou"
+      ],
+      "common_foods": [
+        "seal blubber",
+        "whale meat",
+        "oily fish",
+        "muktuk (whale skin)",
+        "fermented seal oil",
+        "kelp",
+        "seasonal berries",
+        "caribou"
+      ],
+      "proteins": [
+        "seal",
+        "whale",
+        "fish",
+        "caribou"
+      ],
+      "fats": [
+        "seal blubber",
+        "whale fat",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "minimal"
+      ],
+      "cooking_methods": [
+        "raw consumption",
+        "fermenting",
+        "boiling",
+        "drying"
+      ],
+      "typical_dishes": [
+        "raw/fermented marine foods",
+        "boiled meats",
+        "muktuk (whale skin/blubber)",
+        "igunaq (fermented meat)"
+      ],
+      "modern_substitutes": {
+        "oily_fish": "mackerel/salmon"
+      },
+      "macros": {
+        "carbs_pct": 18,
+        "protein_pct": 32,
+        "fat_pct": 50
+      }
+    },
+    {
+      "id": "japan",
+      "diet_signature": "Minimalist cuisine emphasizing seasonal ingredients, fermentation, and umami. Features rice, seafood, seaweed, and soy with meticulous preparation and presentation.",
+      "staples": [
+        "rice",
+        "buckwheat",
+        "seaweed"
+      ],
+      "common_foods": [
+        "fish",
+        "tofu",
+        "miso",
+        "green tea",
+        "pickles"
+      ],
+      "proteins": [
+        "fish",
+        "tofu",
+        "soybeans"
+      ],
+      "fats": [
+        "sesame oil",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "wasabi",
+        "shiso",
+        "yuzu"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "steaming",
+        "pickling",
+        "raw preparations"
+      ],
+      "typical_dishes": [
+        "sushi",
+        "miso soup",
+        "grilled fish"
+      ],
+      "modern_substitutes": {
+        "miso": "miso paste",
+        "fresh fish": "high-quality smoked fish"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "korea",
+      "diet_signature": "Fermentation-focused cuisine featuring kimchi, doenjang, and gochugaru. Emphasizes banchan diversity, communal eating, and balanced flavors with substantial seafood.",
+      "staples": [
+        "rice",
+        "barley"
+      ],
+      "common_foods": [
+        "kimchi",
+        "tofu",
+        "seafood",
+        "pork",
+        "sesame_oil"
+      ],
+      "proteins": [
+        "seafood",
+        "pork",
+        "tofu",
+        "beef"
+      ],
+      "fats": [
+        "sesame oil",
+        "perilla oil"
+      ],
+      "herbs_spices": [
+        "gochugaru",
+        "garlic",
+        "ginger",
+        "perilla"
+      ],
+      "cooking_methods": [
+        "fermenting",
+        "grilling",
+        "stewing",
+        "raw preparations"
+      ],
+      "typical_dishes": [
+        "bibimbap",
+        "kimchi jjigae"
+      ],
+      "modern_substitutes": {
+        "doenjang": "miso"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "kurdish",
+      "diet_signature": "Mountain cuisine featuring wild greens, yogurt, and grilled meats. Emphasizes simple preparations, bulgur, and seasonal foraging with pastoral dairy traditions.",
+      "staples": [
+        "wheat",
+        "barley"
+      ],
+      "common_foods": [
+        "lamb",
+        "yogurt",
+        "wild greens",
+        "bulgur"
+      ],
+      "proteins": [
+        "lamb",
+        "yogurt",
+        "legumes"
+      ],
+      "fats": [
+        "ghee",
+        "olive oil"
+      ],
+      "herbs_spices": [
+        "wild herbs",
+        "cumin",
+        "mint"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "boiling",
+        "baking flatbreads"
+      ],
+      "typical_dishes": [
+        "grilled meats with flatbreads",
+        "stews"
+      ],
+      "modern_substitutes": {
+        "wild_greens": "spinach/chard"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 22,
+        "fat_pct": 28
+      }
+    },
+    {
+      "id": "maasai",
+      "diet_signature": "Traditional pastoralist diet centered on meat, fat, and blood from cattle with fermented dairy. Archaeological ceramic analysis reveals LOW milk residues in pottery (milk was stored in gourds/wooden vessels that don't preserve); ceramics show meat, bones, marrow, and fat processing. Ancient DNA shows only 1 in 8 East African pastoralists carried lactase persistence, suggesting fermented dairy (yogurt) was primary form. Plant foods in stews/soups consistently present in archaeological record.",
+      "staples": [
+        "meat",
+        "blood",
+        "fermented milk"
+      ],
+      "common_foods": [
+        "meat stews",
+        "bone marrow",
+        "fat",
+        "blood",
+        "fermented milk (yogurt)",
+        "plant foods in stews"
+      ],
+      "proteins": [
+        "beef",
+        "goat",
+        "milk"
+      ],
+      "fats": [
+        "milk fat",
+        "meat fat"
+      ],
+      "herbs_spices": [
+        "herbs for flavoring milk"
+      ],
+      "cooking_methods": [
+        "fermenting",
+        "roasting",
+        "raw consumption"
+      ],
+      "typical_dishes": [
+        "fermented milk preparations"
+      ],
+      "modern_substitutes": {
+        "fermented_milk": "yogurt/kefir"
+      },
+      "macros": {
+        "carbs_pct": 5,
+        "protein_pct": 35,
+        "fat_pct": 60
+      }
+    },
+    {
+      "id": "maghreb",
+      "diet_signature": "Aromatic slow-cooked dishes featuring preserved ingredients, warming spices, and semolina-based staples. Balances sweet and savory with dates, nuts, and complex spice blends.",
+      "staples": [
+        "semolina",
+        "wheat",
+        "dates"
+      ],
+      "common_foods": [
+        "olive oil",
+        "lamb",
+        "chickpeas",
+        "eggplant",
+        "preserved lemon",
+        "coriander",
+        "cumin"
+      ],
+      "proteins": [
+        "lamb",
+        "chicken",
+        "fish",
+        "legumes"
+      ],
+      "fats": [
+        "olive oil",
+        "argan oil",
+        "almonds"
+      ],
+      "herbs_spices": [
+        "cumin",
+        "coriander",
+        "cinnamon",
+        "saffron",
+        "ras el hanout"
+      ],
+      "cooking_methods": [
+        "slow braising",
+        "tagine cooking",
+        "grilling",
+        "steaming"
+      ],
+      "typical_dishes": [
+        "couscous with vegetables",
+        "tagine"
+      ],
+      "modern_substitutes": {
+        "semolina": "couscous",
+        "preserved lemon": "lemon zest + salt"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 17,
+        "fat_pct": 33
+      }
+    },
+    {
+      "id": "malagasy",
+      "diet_signature": "Unique Austronesian-African fusion reflecting Madagascar's settlement history (~500 CE from Indonesia/Borneo, with later African migration). Rice dominates every meal—an Austronesian trait unusual in Africa. Features zebu cattle, seafood, and tropical produce. Vanilla and coconut are signature flavors. Distinct from both Southeast Asian and mainland African cuisines.",
+      "staples": [
+        "rice (vary)",
+        "cassava",
+        "sweet potato",
+        "taro"
+      ],
+      "common_foods": [
+        "rice (with every meal)",
+        "laoka (side dishes)",
+        "zebu beef",
+        "leafy greens (anamalao, anamamy)",
+        "tomatoes",
+        "onions",
+        "coconut",
+        "vanilla",
+        "litchi",
+        "mango"
+      ],
+      "proteins": [
+        "zebu beef",
+        "pork",
+        "chicken",
+        "fish",
+        "shrimp",
+        "crab",
+        "beans",
+        "lentils"
+      ],
+      "fats": [
+        "coconut oil",
+        "peanut oil",
+        "zebu fat"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "garlic",
+        "vanilla",
+        "turmeric",
+        "curry leaves",
+        "sakay (chile paste)",
+        "onion"
+      ],
+      "cooking_methods": [
+        "boiling (rice)",
+        "stewing",
+        "grilling",
+        "smoking",
+        "frying"
+      ],
+      "typical_dishes": [
+        "romazava (meat and greens stew)",
+        "ravitoto (cassava leaves with pork)",
+        "vary amin'anana (rice with greens)",
+        "henakisoa sy amalona (pork with eel)",
+        "akoho sy voanio (chicken with coconut)",
+        "koba (banana-peanut cake)"
+      ],
+      "modern_substitutes": {
+        "zebu": "beef",
+        "anamalao_greens": "spinach or chard",
+        "sakay": "sambal or chile paste"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 20,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "maori",
+      "diet_signature": "Temperate Polynesian diet adapted to cooler climate featuring kumara, fern root, and seafood. Moa hunting caused extinction within ~100 years of arrival (~1280-1320 CE); kumara agriculture intensified as compensation. Important: pigs and chickens were NOT prehistoric in New Zealand—ancient DNA dates all specimens to 18th century European introduction. Features traditional hangi (earth-oven) cooking.",
+      "staples": [
+        "kumara",
+        "fern_root"
+      ],
+      "common_foods": [
+        "fish",
+        "moa (extinct ~1320 CE)",
+        "eels",
+        "seafood",
+        "fern root",
+        "kumara",
+        "pork (18th c. European)",
+        "chicken (18th c. European)"
+      ],
+      "proteins": [
+        "fish",
+        "seafood",
+        "eels",
+        "birds"
+      ],
+      "fats": [
+        "fish oils",
+        "eel fats"
+      ],
+      "herbs_spices": [
+        "minimal"
+      ],
+      "cooking_methods": [
+        "hāngi (earth oven)",
+        "steaming",
+        "boiling"
+      ],
+      "typical_dishes": [
+        "hāngi cooked meats and roots"
+      ],
+      "modern_substitutes": {
+        "fern_root": "kumara/sweet potato"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 18,
+        "fat_pct": 22
+      }
+    },
+    {
+      "id": "med_levant",
+      "diet_signature": "A mezze-based tradition featuring tahini, yogurt, chickpeas, and abundant fresh herbs. Combines grains with vegetables and moderate amounts of lamb or fish.",
+      "staples": [
+        "wheat",
+        "rice",
+        "chickpeas"
+      ],
+      "common_foods": [
+        "olive oil",
+        "tahini",
+        "yogurt",
+        "eggplant",
+        "tomato",
+        "mint",
+        "parsley",
+        "lamb",
+        "fish"
+      ],
+      "proteins": [
+        "lamb",
+        "chicken",
+        "fish",
+        "chickpeas",
+        "lentils"
+      ],
+      "fats": [
+        "olive oil",
+        "tahini",
+        "nuts"
+      ],
+      "herbs_spices": [
+        "mint",
+        "parsley",
+        "sumac",
+        "za'atar",
+        "cumin"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "roasting",
+        "raw preparations",
+        "braising"
+      ],
+      "typical_dishes": [
+        "tabbouleh",
+        "hummus",
+        "baba ghanoush"
+      ],
+      "modern_substitutes": {
+        "bulgur": "couscous",
+        "tahini": "peanut butter (texture)"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 18,
+        "fat_pct": 32
+      }
+    },
+    {
+      "id": "med_southern",
+      "diet_signature": "A sun-drenched cuisine centered on olive oil, seasonal vegetables, fresh fish, and whole grains. Emphasizes fermented dairy, legumes, and minimal red meat with abundant herbs and aromatic plants.",
+      "staples": [
+        "wheat",
+        "barley",
+        "legumes",
+        "grapes"
+      ],
+      "common_foods": [
+        "olive oil",
+        "tomato",
+        "eggplant",
+        "zucchini",
+        "olives",
+        "garlic",
+        "fish",
+        "goat/sheep cheese",
+        "whole grain bread",
+        "beans"
+      ],
+      "proteins": [
+        "fish",
+        "goat",
+        "sheep",
+        "legumes",
+        "eggs"
+      ],
+      "fats": [
+        "olive oil",
+        "nuts",
+        "seeds"
+      ],
+      "herbs_spices": [
+        "oregano",
+        "basil",
+        "rosemary",
+        "thyme",
+        "garlic"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "roasting",
+        "slow cooking",
+        "raw/fresh"
+      ],
+      "typical_dishes": [
+        "grilled fish",
+        "minestra",
+        "pasta with olive oil and garlic"
+      ],
+      "modern_substitutes": {
+        "olive oil": "extra virgin olive oil",
+        "goat/sheep cheese": "feta or pecorino"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 15,
+        "fat_pct": 35
+      }
+    },
+    {
+      "id": "melanesia",
+      "diet_signature": "Tropical island diet featuring sago, root vegetables, and diverse seafood. Emphasizes earth-oven cooking, coconut preparations, and foraged greens with high carbohydrate content.",
+      "staples": [
+        "sago",
+        "taro",
+        "yams"
+      ],
+      "common_foods": [
+        "fish",
+        "coconut",
+        "wild greens"
+      ],
+      "proteins": [
+        "fish",
+        "pork",
+        "sago grubs"
+      ],
+      "fats": [
+        "coconut",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "minimal",
+        "ginger"
+      ],
+      "cooking_methods": [
+        "boiling",
+        "earth oven",
+        "grilling"
+      ],
+      "typical_dishes": [
+        "sago porridges",
+        "coconut-based stews"
+      ],
+      "modern_substitutes": {
+        "sago": "tapioca"
+      },
+      "macros": {
+        "carbs_pct": 65,
+        "protein_pct": 12,
+        "fat_pct": 23
+      }
+    },
+    {
+      "id": "mesoamerica",
+      "diet_signature": "Advanced agricultural civilization diet centered on nixtamalized corn, beans, and squash. Features sophisticated use of chiles, cacao, and amaranth with insect protein and minimal dairy. Stable isotope analysis confirms C4 maize consumption comprised 50-70% of dietary carbon (Î´13C values -13.4â€° to -6.9â€°). Recent ceramic residue analysis revolutionized understanding of cacao: 56% of ALL vessels (including commoner households) contained cacao residues, overturning the elite-only assumption.",
+      "staples": [
+        "maize",
+        "beans",
+        "squash"
+      ],
+      "common_foods": [
+        "chiles",
+        "tomatoes",
+        "amaranth",
+        "turkey",
+        "insects",
+        "cacao"
+      ],
+      "proteins": [
+        "beans",
+        "turkey",
+        "insects",
+        "fish"
+      ],
+      "fats": [
+        "avocado",
+        "cacao",
+        "seeds"
+      ],
+      "herbs_spices": [
+        "chili",
+        "vanilla",
+        "epazote",
+        "allspice"
+      ],
+      "cooking_methods": [
+        "nixtamalization",
+        "stone grinding",
+        "steaming",
+        "roasting"
+      ],
+      "typical_dishes": [
+        "tortillas",
+        "tamales",
+        "pozole",
+        "mole"
+      ],
+      "modern_substitutes": {
+        "nixtamalized_corn": "masa_harina"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "mesopotamian",
+      "diet_signature": "Fertile Crescent agricultural tradition—birthplace of wheat, barley, and legume cultivation (~10,000 BCE). Iraqi cuisine features slow-cooked stews, grilled meats, rice dishes, and abundant dates. Distinct from Kurdish highland cuisine—lowland river valley diet with more rice, fish, and date cultivation. Strong Persian and Arab influences.",
+      "staples": [
+        "rice (timman)",
+        "wheat bread (samoon, khubz)",
+        "barley",
+        "bulgur"
+      ],
+      "common_foods": [
+        "dates",
+        "chickpeas",
+        "lentils",
+        "eggplant",
+        "tomatoes",
+        "okra",
+        "yogurt",
+        "pickles (turshi)"
+      ],
+      "proteins": [
+        "lamb",
+        "chicken",
+        "beef",
+        "fish (mazgouf - Tigris carp)",
+        "chickpeas",
+        "lentils",
+        "eggs"
+      ],
+      "fats": [
+        "sheep tail fat (traditional)",
+        "ghee",
+        "sesame oil",
+        "olive oil"
+      ],
+      "herbs_spices": [
+        "baharat (7-spice blend)",
+        "dried lime (loomi)",
+        "sumac",
+        "cardamom",
+        "turmeric",
+        "cinnamon",
+        "cumin",
+        "parsley",
+        "mint"
+      ],
+      "cooking_methods": [
+        "slow-cooking (stews)",
+        "grilling (kebabs, mazgouf)",
+        "rice layering (timman)",
+        "stuffing (dolma)",
+        "baking"
+      ],
+      "typical_dishes": [
+        "mazgouf (grilled carp)",
+        "quzi (stuffed roast lamb)",
+        "dolma (stuffed vegetables)",
+        "timman bagilla (rice with dill and fava)",
+        "tashreeb (bread soaked in broth)",
+        "kubba (stuffed dumplings)"
+      ],
+      "modern_substitutes": {
+        "sheep_tail_fat": "ghee or butter",
+        "loomi": "lime zest with pinch of fermented flavor",
+        "mazgouf_carp": "sea bass or trout"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "mestizo_mesoamerican",
+      "diet_signature": "Spanish-Indigenous fusion cuisine developed after 1521 conquest. Blends ancient Mesoamerican staples (corn, beans, chiles, squash) with Spanish introductions (rice, wheat, pork, beef, cheese, dairy). The mestizo diet differs from indigenous Mesoamerican by incorporating Old World livestock, dairy, and wheat alongside the native three sisters agriculture.",
+      "staples": [
+        "corn tortillas",
+        "rice",
+        "beans (black, pinto)",
+        "wheat bread (bolillo)"
+      ],
+      "common_foods": [
+        "tortillas",
+        "salsa",
+        "queso fresco",
+        "crema",
+        "avocado",
+        "tomatoes",
+        "chiles",
+        "squash",
+        "nopales (cactus)"
+      ],
+      "proteins": [
+        "pork (carnitas, chorizo)",
+        "chicken",
+        "beef",
+        "beans",
+        "eggs",
+        "cheese",
+        "fish (coastal)"
+      ],
+      "fats": [
+        "lard (traditional)",
+        "vegetable oil",
+        "crema",
+        "cheese",
+        "avocado"
+      ],
+      "herbs_spices": [
+        "chile (ancho, guajillo, chipotle, jalapeno)",
+        "cumin",
+        "oregano (Mexican)",
+        "cilantro",
+        "epazote",
+        "cinnamon",
+        "garlic",
+        "onion"
+      ],
+      "cooking_methods": [
+        "nixtamalization (corn)",
+        "grilling (asada)",
+        "braising (carnitas, barbacoa)",
+        "frying",
+        "stewing (guisados)",
+        "roasting chiles"
+      ],
+      "typical_dishes": [
+        "tacos",
+        "enchiladas",
+        "tamales",
+        "pozole",
+        "mole",
+        "chiles rellenos",
+        "carnitas",
+        "arroz con pollo",
+        "frijoles refritos",
+        "huevos rancheros"
+      ],
+      "modern_substitutes": {
+        "lard": "vegetable oil (though less traditional)",
+        "epazote": "cilantro or oregano",
+        "nopales": "green beans or zucchini"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "micronesia",
+      "diet_signature": "Small-island diet relying on breadfruit, coconut, and marine resources. Features simple preparations adapted to limited agricultural land with heavy dependence on the sea.",
+      "staples": [
+        "breadfruit",
+        "taro",
+        "coconut"
+      ],
+      "common_foods": [
+        "fish",
+        "seaweed",
+        "pandanus"
+      ],
+      "proteins": [
+        "fish",
+        "seafood"
+      ],
+      "fats": [
+        "coconut"
+      ],
+      "herbs_spices": [
+        "minimal"
+      ],
+      "cooking_methods": [
+        "grilling",
+        "steaming",
+        "raw"
+      ],
+      "typical_dishes": [
+        "grilled fish and coconut dishes"
+      ],
+      "modern_substitutes": {
+        "pandanus": "banana"
+      },
+      "macros": {
+        "carbs_pct": 65,
+        "protein_pct": 15,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "mongolia",
+      "diet_signature": "Extreme climate adaptation with near-exclusive reliance on animal products. Features fermented dairy, boiled meats, and milk tea with minimal grain consumption.",
+      "staples": [
+        "dairy",
+        "barley"
+      ],
+      "common_foods": [
+        "mutton",
+        "yak",
+        "fermented_milk",
+        "dairy_curds"
+      ],
+      "proteins": [
+        "mutton",
+        "yak",
+        "goat",
+        "horse"
+      ],
+      "fats": [
+        "yak butter",
+        "dairy fats",
+        "animal fats"
+      ],
+      "herbs_spices": [
+        "minimal - wild onions"
+      ],
+      "cooking_methods": [
+        "boiling",
+        "fermenting",
+        "drying"
+      ],
+      "typical_dishes": [
+        "boiled meats",
+        "milk tea"
+      ],
+      "modern_substitutes": {
+        "yak_butter": "butter/ghee"
+      },
+      "macros": {
+        "carbs_pct": 5,
+        "protein_pct": 30,
+        "fat_pct": 65
+      }
+    },
+    {
+      "id": "nepal",
+      "diet_signature": "Mountain diet adapted across altitudes featuring millet, buckwheat, and dairy. Combines Tibetan and Indian influences with substantial yak products and hearty lentil preparations.",
+      "staples": [
+        "millet",
+        "buckwheat",
+        "maize",
+        "rice"
+      ],
+      "common_foods": [
+        "yak",
+        "goat",
+        "ghee",
+        "butter_tea",
+        "lentils"
+      ],
+      "proteins": [
+        "lentils",
+        "yak",
+        "goat",
+        "dairy"
+      ],
+      "fats": [
+        "ghee",
+        "yak butter"
+      ],
+      "herbs_spices": [
+        "timur pepper",
+        "turmeric",
+        "cumin"
+      ],
+      "cooking_methods": [
+        "steaming",
+        "roasting",
+        "boiling"
+      ],
+      "typical_dishes": [
+        "dal bhat",
+        "tsampa"
+      ],
+      "modern_substitutes": {
+        "tsampa": "roasted barley flour"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "nile_valley",
+      "diet_signature": "Ancient agricultural diet centered on the Nile River's fertile floodplain. One of humanity's oldest grain-based food systems, featuring ful medames (fava beans), bread, and river fish. Distinct from Maghreb/Berber cuisine—emphasizes legumes, alliums, and Nile fish rather than couscous and tagines. Archaeological evidence shows bread and beer production from ~4000 BCE.",
+      "staples": [
+        "wheat bread (aish baladi)",
+        "fava beans (ful)",
+        "rice",
+        "lentils",
+        "sorghum"
+      ],
+      "common_foods": [
+        "ful medames",
+        "molokhia (jute leaves)",
+        "feta-style cheese (gibna)",
+        "pickled vegetables (torshi)",
+        "dates",
+        "figs",
+        "onions",
+        "garlic"
+      ],
+      "proteins": [
+        "fava beans",
+        "lentils",
+        "Nile fish (tilapia, perch)",
+        "chicken",
+        "pigeon (hamam)",
+        "lamb",
+        "eggs"
+      ],
+      "fats": [
+        "ghee (samna)",
+        "sesame oil",
+        "olive oil",
+        "tahini"
+      ],
+      "herbs_spices": [
+        "cumin",
+        "coriander",
+        "dill",
+        "parsley",
+        "mint",
+        "garlic",
+        "dukkah (nut-spice blend)"
+      ],
+      "cooking_methods": [
+        "slow-simmering",
+        "baking (flatbreads)",
+        "grilling",
+        "stewing",
+        "frying"
+      ],
+      "typical_dishes": [
+        "ful medames (stewed fava beans)",
+        "koshari (lentils, rice, pasta, tomato)",
+        "molokhia soup",
+        "ta'ameya (Egyptian falafel)",
+        "mahshi (stuffed vegetables)",
+        "fattah (bread, rice, meat)"
+      ],
+      "modern_substitutes": {
+        "molokhia": "spinach or okra",
+        "gibna": "feta cheese",
+        "samna": "clarified butter or ghee"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "nilotic",
+      "diet_signature": "Highland agriculture and lake fishing traditions featuring plantains, millet, sorghum, and freshwater fish. Diverse diet from altitude gradients with cattle herding, fishing, and highland crops. Fermented beverages and limited dairy use.",
+      "staples": [
+        "plantains",
+        "millet",
+        "sorghum",
+        "cassava",
+        "sweet potatoes"
+      ],
+      "common_foods": [
+        "freshwater fish (Nile perch, tilapia)",
+        "cattle (meat and milk)",
+        "beans",
+        "groundnuts",
+        "vegetables"
+      ],
+      "proteins": [
+        "fish",
+        "beef",
+        "goat",
+        "beans",
+        "groundnuts"
+      ],
+      "fats": [
+        "fish oils",
+        "ghee",
+        "groundnuts",
+        "shea butter"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "chili",
+        "wild herbs",
+        "sesame"
+      ],
+      "cooking_methods": [
+        "steaming (plantains)",
+        "boiling",
+        "grilling",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "steamed plantains (matooke)",
+        "fish stews",
+        "millet porridge",
+        "fermented sorghum beer"
+      ],
+      "modern_substitutes": {
+        "plantains": "green bananas or starchy vegetables",
+        "Nile perch": "other freshwater fish"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 18,
+        "fat_pct": 22
+      }
+    },
+    {
+      "id": "nordic",
+      "diet_signature": "Cold-climate cuisine emphasizing preserved fish, dense rye breads, and foraged berries. Features fermented and pickled preparations with minimal processing and high omega-3 content.",
+      "staples": [
+        "rye",
+        "barley",
+        "oats",
+        "potatoes"
+      ],
+      "common_foods": [
+        "herring",
+        "salmon",
+        "berries",
+        "rapeseed oil",
+        "skyr"
+      ],
+      "proteins": [
+        "fish",
+        "game",
+        "dairy"
+      ],
+      "fats": [
+        "fish oils",
+        "rapeseed oil",
+        "butter"
+      ],
+      "herbs_spices": [
+        "dill",
+        "caraway",
+        "juniper",
+        "horseradish"
+      ],
+      "cooking_methods": [
+        "smoking",
+        "pickling",
+        "fermenting",
+        "poaching"
+      ],
+      "typical_dishes": [
+        "pickled herring",
+        "rye bread"
+      ],
+      "modern_substitutes": {
+        "skyr": "strained yogurt"
+      },
+      "macros": {
+        "carbs_pct": 40,
+        "protein_pct": 25,
+        "fat_pct": 35
+      }
+    },
+    {
+      "id": "north_china",
+      "diet_signature": "Wheat-based northern cuisine featuring noodles, dumplings, and preserved vegetables. Emphasizes lamb, cabbage, and hearty flavors adapted to cold winters.",
+      "staples": [
+        "wheat",
+        "millet"
+      ],
+      "common_foods": [
+        "pork",
+        "lamb",
+        "cabbage",
+        "soy_sauce"
+      ],
+      "proteins": [
+        "pork",
+        "lamb",
+        "tofu"
+      ],
+      "fats": [
+        "lard",
+        "sesame oil"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "garlic",
+        "star anise",
+        "Sichuan pepper"
+      ],
+      "cooking_methods": [
+        "steaming",
+        "boiling",
+        "stir-frying",
+        "pickling"
+      ],
+      "typical_dishes": [
+        "noodles",
+        "dumplings"
+      ],
+      "modern_substitutes": {
+        "handmade_noodles": "dried noodles"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "north_india",
+      "diet_signature": "Wheat-based cuisine with complex spice combinations, dairy, and legumes. Features tandoor cooking, ghee, and substantial vegetarian options with aromatic masalas.",
+      "staples": [
+        "wheat",
+        "lentils"
+      ],
+      "common_foods": [
+        "ghee",
+        "paneer",
+        "chickpeas",
+        "mustard_oil",
+        "spices",
+        "yogurt"
+      ],
+      "proteins": [
+        "lentils",
+        "paneer",
+        "chicken",
+        "chickpeas"
+      ],
+      "fats": [
+        "ghee",
+        "mustard oil"
+      ],
+      "herbs_spices": [
+        "garam masala",
+        "turmeric",
+        "cumin",
+        "coriander",
+        "fenugreek"
+      ],
+      "cooking_methods": [
+        "tandoor",
+        "slow cooking",
+        "tempering spices"
+      ],
+      "typical_dishes": [
+        "dal",
+        "tandoori",
+        "paneer curries"
+      ],
+      "modern_substitutes": {
+        "paneer": "tofu"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 18,
+        "fat_pct": 27
+      }
+    },
+    {
+      "id": "pacific_nw",
+      "diet_signature": "Salmon-rich coastal diet with abundant seafood, berries, and camas root. Features sophisticated smoking and preserving techniques with seasonal fishing traditions.",
+      "staples": [
+        "salmon",
+        "camas_root",
+        "berries"
+      ],
+      "common_foods": [
+        "smoked salmon",
+        "seaweed",
+        "clams",
+        "deer"
+      ],
+      "proteins": [
+        "salmon",
+        "seafood",
+        "game"
+      ],
+      "fats": [
+        "fish oils",
+        "animal fats"
+      ],
+      "herbs_spices": [
+        "seaweed",
+        "berries"
+      ],
+      "cooking_methods": [
+        "smoking",
+        "steaming",
+        "roasting"
+      ],
+      "typical_dishes": [
+        "smoked salmon",
+        "dried fish"
+      ],
+      "modern_substitutes": {
+        "smoked_salmon": "smoked_trout"
+      },
+      "macros": {
+        "carbs_pct": 30,
+        "protein_pct": 40,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "patagonia",
+      "diet_signature": "Temperate southern hemisphere diet featuring guanaco, potatoes, and coastal resources. Adapted to cool climate with seafood, wild game, and native berries.",
+      "staples": [
+        "potatoes",
+        "maize"
+      ],
+      "common_foods": [
+        "guanaco",
+        "fish",
+        "berries"
+      ],
+      "proteins": [
+        "guanaco",
+        "fish",
+        "seafood"
+      ],
+      "fats": [
+        "animal fats",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "native herbs"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "earth oven",
+        "smoking"
+      ],
+      "typical_dishes": [
+        "roasted game",
+        "stews with tubers"
+      ],
+      "modern_substitutes": {
+        "guanaco": "venison/lamb"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 25,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "persian",
+      "diet_signature": "Ancient Persian cuisine built on wheat and barley, with pomegranate, saffron, and walnuts. Rice was a 'relative newcomer'—no word appears in the Avesta, with major prominence only from the Safavid era (16th century). Features slow-cooked stews (khoresh), sweet-sour flavor profiles, and aromatic herbs.",
+      "staples": [
+        "wheat",
+        "barley",
+        "rice (modern, 20th century)"
+      ],
+      "common_foods": [
+        "lamb",
+        "yogurt",
+        "pomegranate",
+        "walnuts",
+        "herbs"
+      ],
+      "proteins": [
+        "lamb",
+        "chicken",
+        "beans"
+      ],
+      "fats": [
+        "ghee",
+        "olive oil",
+        "walnuts"
+      ],
+      "herbs_spices": [
+        "saffron",
+        "dried limes",
+        "turmeric",
+        "fresh herbs"
+      ],
+      "cooking_methods": [
+        "slow braising",
+        "steaming rice",
+        "grilling"
+      ],
+      "typical_dishes": [
+        "khoresh",
+        "pilaf",
+        "kebabs"
+      ],
+      "modern_substitutes": {
+        "pomegranate_molasses": "balsamic reduction (approx)"
+      },
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "polynesia",
+      "diet_signature": "Island cuisine centered on starchy tubers, coconut, and seafood. Features earth-oven cooking, raw fish preparations, and substantial carbohydrate content from root vegetables.",
+      "staples": [
+        "taro",
+        "breadfruit",
+        "yams"
+      ],
+      "common_foods": [
+        "coconut",
+        "fish",
+        "pig",
+        "banana"
+      ],
+      "proteins": [
+        "fish",
+        "pork",
+        "seafood"
+      ],
+      "fats": [
+        "coconut",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "sea salt",
+        "minimal spicing"
+      ],
+      "cooking_methods": [
+        "earth oven",
+        "raw preparations",
+        "grilling"
+      ],
+      "typical_dishes": [
+        "umu/imu roasted pig and taro",
+        "raw fish in coconut"
+      ],
+      "modern_substitutes": {
+        "breadfruit": "cassava/potato"
+      },
+      "macros": {
+        "carbs_pct": 65,
+        "protein_pct": 15,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "sahel",
+      "diet_signature": "Drought-adapted cuisine based on millet, sorghum, and groundnuts. Features shea butter, dried ingredients, and pastoralist elements with high carbohydrate content.",
+      "staples": [
+        "millet",
+        "sorghum",
+        "fonio"
+      ],
+      "common_foods": [
+        "goat",
+        "peanut",
+        "shea"
+      ],
+      "proteins": [
+        "goat",
+        "groundnuts",
+        "dairy"
+      ],
+      "fats": [
+        "shea butter",
+        "groundnut"
+      ],
+      "herbs_spices": [
+        "chili",
+        "ginger"
+      ],
+      "cooking_methods": [
+        "pounding",
+        "boiling",
+        "roasting"
+      ],
+      "typical_dishes": [
+        "millet porridges",
+        "peanut sauces"
+      ],
+      "modern_substitutes": {
+        "fonio": "millet/sorghum"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "se_asia_island",
+      "diet_signature": "Archipelago cuisine featuring coconut, tropical fruits, and seafood diversity. Emphasizes rice, fermented preparations, and regional spice variations across thousands of islands.",
+      "staples": [
+        "rice",
+        "sago",
+        "taro"
+      ],
+      "common_foods": [
+        "coconut",
+        "fish",
+        "banana",
+        "tamarind"
+      ],
+      "proteins": [
+        "fish",
+        "chicken",
+        "tempeh"
+      ],
+      "fats": [
+        "coconut oil",
+        "palm oil"
+      ],
+      "herbs_spices": [
+        "turmeric",
+        "galangal",
+        "shrimp paste",
+        "lemongrass"
+      ],
+      "cooking_methods": [
+        "frying",
+        "grilling",
+        "steaming",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "nasi goreng",
+        "fish stews with coconut"
+      ],
+      "modern_substitutes": {
+        "sago": "tapioca"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "se_asia_main",
+      "diet_signature": "Tropical cuisine balancing sweet, sour, salty, and spicy with fish sauce, lemongrass, and coconut. Features sticky rice, fresh herbs, and abundant seafood with complex flavor layering.",
+      "staples": [
+        "rice",
+        "rice_noodles"
+      ],
+      "common_foods": [
+        "fish",
+        "pork",
+        "coconut",
+        "lemongrass",
+        "fish_sauce"
+      ],
+      "proteins": [
+        "fish",
+        "pork",
+        "chicken",
+        "tofu"
+      ],
+      "fats": [
+        "coconut milk",
+        "peanut oil"
+      ],
+      "herbs_spices": [
+        "lemongrass",
+        "galangal",
+        "kaffir lime",
+        "Thai basil",
+        "chili"
+      ],
+      "cooking_methods": [
+        "stir-frying",
+        "grilling",
+        "pounding",
+        "raw preparations"
+      ],
+      "typical_dishes": [
+        "curries",
+        "som tam",
+        "sticky rice dishes"
+      ],
+      "modern_substitutes": {
+        "fermented_fish_paste": "fish_sauce"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "siberia",
+      "diet_signature": "Siberian diets evolved for extreme cold survival, featuring preserved and fermented foods that could last through brutal winters. Reindeer provides meat, fat, and organs while horse meat is prized. Fish is frozen raw (stroganina) or fermented. The diet is very high in fat and protein with minimal carbohydrates, supplemented by wild berries in summer.",
+      "macros": {
+        "carbs_pct": 5,
+        "protein_pct": 35,
+        "fat_pct": 60
+      },
+      "staples": [
+        "Reindeer meat",
+        "Horse meat",
+        "Frozen fish",
+        "Fermented milk",
+        "Pine nuts"
+      ],
+      "common_foods": [
+        "Reindeer organs",
+        "Bone marrow",
+        "Blood sausage",
+        "Cloudberries",
+        "Wild onions",
+        "Cedar nuts",
+        "Frozen liver"
+      ],
+      "proteins": [
+        "Reindeer",
+        "Horse",
+        "Elk",
+        "Wild boar",
+        "Salmon",
+        "Whitefish",
+        "Pike"
+      ],
+      "fats": [
+        "Reindeer fat",
+        "Horse fat",
+        "Fish oil",
+        "Bone marrow"
+      ],
+      "herbs_spices": [
+        "Wild garlic",
+        "Wild onion",
+        "Pine",
+        "Cedar",
+        "Sea salt",
+        "Siberian ginseng"
+      ],
+      "cooking_methods": [
+        "Freezing",
+        "Fermenting",
+        "Smoking",
+        "Boiling",
+        "Raw consumption",
+        "Drying"
+      ],
+      "typical_dishes": [
+        "Stroganina (frozen fish)",
+        "Reindeer stew",
+        "Horse meat soup",
+        "Fermented mare's milk",
+        "Blood pudding",
+        "Frozen raw liver",
+        "Boiled reindeer tongue"
+      ],
+      "modern_substitutes": {
+        "Reindeer": "Venison or grass-fed beef",
+        "Horse meat": "Lean beef or bison",
+        "Fermented milk": "Kefir or yogurt"
+      }
+    },
+    {
+      "id": "sichuan_sw_china",
+      "diet_signature": "Sichuan cuisine historically featured the numbing sensation (má) of indigenous Sichuan peppercorn. Chili peppers arrived in the 16th-17th century, adding spicy heat (là) to create the modern málà combination. Pre-chili Sichuan cooking emphasized fermented beans, ginger, and the unique tongue-numbing huājiāo.",
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 20,
+        "fat_pct": 25
+      },
+      "staples": [
+        "Rice",
+        "Wheat noodles",
+        "Bok choy",
+        "Pickled vegetables",
+        "Tofu"
+      ],
+      "common_foods": [
+        "Bamboo shoots",
+        "Wood ear mushrooms",
+        "Lotus root",
+        "Chinese cabbage",
+        "Daikon",
+        "Garlic shoots",
+        "Chili bean paste"
+      ],
+      "proteins": [
+        "Pork",
+        "Chicken",
+        "Duck",
+        "Freshwater fish",
+        "Tofu",
+        "Soybeans",
+        "Eggs"
+      ],
+      "fats": [
+        "Pork fat",
+        "Peanut oil",
+        "Chili oil",
+        "Sesame oil"
+      ],
+      "herbs_spices": [
+        "Sichuan peppercorn",
+        "Dried chilies",
+        "Ginger",
+        "Garlic",
+        "Star anise",
+        "Fennel seeds",
+        "White pepper",
+        "Fermented black beans"
+      ],
+      "cooking_methods": [
+        "Stir-frying",
+        "Dry frying",
+        "Braising",
+        "Steaming",
+        "Smoking",
+        "Pickling",
+        "Fermenting"
+      ],
+      "typical_dishes": [
+        "Mapo tofu",
+        "Kung pao chicken",
+        "Twice-cooked pork",
+        "Dan dan noodles",
+        "Hot pot",
+        "Fish-fragrant eggplant",
+        "Sichuan pickles",
+        "Water-boiled fish"
+      ],
+      "modern_substitutes": {}
+    },
+    {
+      "id": "south_china",
+      "diet_signature": "Rice-based southern cuisine with abundant seafood, vegetables, and stir-frying. Emphasizes fresh ingredients, quick cooking, and subtle seasoning with ginger and soy.",
+      "staples": [
+        "rice",
+        "rice_noodles"
+      ],
+      "common_foods": [
+        "seafood",
+        "tofu",
+        "leafy_greens",
+        "ginger"
+      ],
+      "proteins": [
+        "seafood",
+        "pork",
+        "tofu",
+        "duck"
+      ],
+      "fats": [
+        "peanut oil (post-Columbian)",
+        "lard"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "garlic",
+        "scallions"
+      ],
+      "cooking_methods": [
+        "stir-frying",
+        "steaming",
+        "braising"
+      ],
+      "typical_dishes": [
+        "stir-fries",
+        "steamed seafood"
+      ],
+      "modern_substitutes": {
+        "fresh_seafood": "frozen seafood"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 18,
+        "fat_pct": 22
+      }
+    },
+    {
+      "id": "south_india",
+      "diet_signature": "Rice-based cuisine with coconut, tamarind, and fermented preparations. Emphasizes seafood, lentils, and complex vegetarian dishes with distinctive spice blends and curry leaves.",
+      "staples": [
+        "rice",
+        "lentils",
+        "coconut"
+      ],
+      "common_foods": [
+        "coconut_milk",
+        "fish",
+        "tamarind",
+        "fermented_batter (idli/dosa)"
+      ],
+      "proteins": [
+        "fish",
+        "lentils",
+        "chickpeas"
+      ],
+      "fats": [
+        "coconut oil",
+        "coconut"
+      ],
+      "herbs_spices": [
+        "curry leaves",
+        "mustard seeds",
+        "tamarind",
+        "black pepper"
+      ],
+      "cooking_methods": [
+        "steaming",
+        "fermenting",
+        "tempering",
+        "grinding"
+      ],
+      "typical_dishes": [
+        "dosa/idli",
+        "fish curries"
+      ],
+      "modern_substitutes": {
+        "fresh_coconut": "canned coconut milk"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "southeast_us",
+      "diet_signature": "POST-COLONIAL FUSION (17th century+): The described cuisine emerged from African, Native American, and European synthesis after 1670s. Pre-contact Native American diet in this region featured maize, beans, squash, deer, turkey, and nuts. Rice cultivation arrived with enslaved Africans in the 1670s-1690s. This entry describes historical Southern cuisine, not deep ancestral tradition.",
+      "macros": {
+        "carbs_pct": 50,
+        "protein_pct": 20,
+        "fat_pct": 30
+      },
+      "staples": [
+        "Rice",
+        "Cornmeal",
+        "Sweet potatoes",
+        "Black-eyed peas",
+        "Okra"
+      ],
+      "common_foods": [
+        "Collard greens",
+        "Butter beans",
+        "Grits",
+        "Biscuits",
+        "Watermelon",
+        "Pecans",
+        "Catfish",
+        "Shrimp"
+      ],
+      "proteins": [
+        "Pork (all cuts)",
+        "Chicken",
+        "Catfish",
+        "Crawfish",
+        "Shrimp",
+        "Black-eyed peas",
+        "Pinto beans"
+      ],
+      "fats": [
+        "Pork fat/lard",
+        "Butter",
+        "Peanut oil"
+      ],
+      "herbs_spices": [
+        "Black pepper",
+        "Hot pepper/cayenne",
+        "Bay leaf",
+        "Thyme",
+        "Sage",
+        "Onion",
+        "Garlic"
+      ],
+      "cooking_methods": [
+        "Slow cooking",
+        "Frying",
+        "Smoking",
+        "Braising",
+        "Boiling",
+        "Baking"
+      ],
+      "typical_dishes": [
+        "Gumbo",
+        "Jambalaya",
+        "Fried chicken",
+        "Collard greens with ham hocks",
+        "Red beans and rice",
+        "Cornbread",
+        "Catfish fry",
+        "Shrimp and grits",
+        "Sweet potato pie"
+      ],
+      "modern_substitutes": {
+        "Lard": "Vegetable oil or butter",
+        "Salt pork": "Smoked turkey or vegetarian broth"
+      }
+    },
+    {
+      "id": "southern_africa",
+      "diet_signature": "Maize-based porridges with wild game, insects, and indigenous plants. Combines agricultural and hunter-gatherer traditions with fermented beverages.",
+      "staples": [
+        "sorghum",
+        "millet",
+        "maize (post-Columbian, now dominant)"
+      ],
+      "common_foods": [
+        "wild game",
+        "mopane worms",
+        "maize porridge"
+      ],
+      "proteins": [
+        "game",
+        "insects",
+        "legumes"
+      ],
+      "fats": [
+        "animal fats",
+        "nuts"
+      ],
+      "herbs_spices": [
+        "indigenous herbs"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "boiling",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "ugali/sadza with relish"
+      ],
+      "modern_substitutes": {
+        "mopane_worms": "dried shrimp or nuts",
+        "sadza": "polenta"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      }
+    },
+    {
+      "id": "southwest_us",
+      "diet_signature": "Desert-adapted Three Sisters agriculture with corn as centerpiece. Features blue corn, beans, squash, and chili peppers with minimal meat and sophisticated water management.",
+      "staples": [
+        "maize",
+        "beans",
+        "squash"
+      ],
+      "common_foods": [
+        "turkey",
+        "cornmeal",
+        "chili_peppers"
+      ],
+      "proteins": [
+        "beans",
+        "turkey",
+        "game"
+      ],
+      "fats": [
+        "nuts",
+        "seeds"
+      ],
+      "herbs_spices": [
+        "chili",
+        "herbs"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "stone grinding",
+        "baking"
+      ],
+      "typical_dishes": [
+        "blue corn tortillas",
+        "stews with beans and chilies"
+      ],
+      "modern_substitutes": {
+        "blue_corn": "blue_cornmeal"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 20,
+        "fat_pct": 20
+      }
+    },
+    {
+      "id": "subarctic",
+      "diet_signature": "Boreal forest hunter-gatherer diet featuring caribou, moose, and fish. Adapted to long winters with preserved meats, berries, and roots with high protein and fat content.",
+      "staples": [
+        "roots",
+        "berries"
+      ],
+      "common_foods": [
+        "caribou",
+        "moose",
+        "fish",
+        "berries"
+      ],
+      "proteins": [
+        "caribou",
+        "moose",
+        "fish"
+      ],
+      "fats": [
+        "animal fats",
+        "fish oils"
+      ],
+      "herbs_spices": [
+        "berries",
+        "roots"
+      ],
+      "cooking_methods": [
+        "drying",
+        "smoking",
+        "roasting",
+        "boiling"
+      ],
+      "typical_dishes": [
+        "dried meats",
+        "stews with roots"
+      ],
+      "modern_substitutes": {
+        "caribou": "venison"
+      },
+      "macros": {
+        "carbs_pct": 10,
+        "protein_pct": 45,
+        "fat_pct": 45
+      }
+    },
+    {
+      "id": "sudanian",
+      "diet_signature": "Savanna transition zone diet between Sahel and rainforest. Features sorghum, millet, cassava, and wild game with seasonal variation. Mix of pastoral and agricultural traditions with foraged foods.",
+      "staples": [
+        "sorghum",
+        "millet",
+        "cassava",
+        "yams"
+      ],
+      "common_foods": [
+        "wild game",
+        "fish",
+        "palm oil",
+        "groundnuts",
+        "okra",
+        "leafy greens"
+      ],
+      "proteins": [
+        "wild game",
+        "fish",
+        "goat",
+        "chicken",
+        "groundnuts"
+      ],
+      "fats": [
+        "palm oil",
+        "groundnut oil",
+        "shea butter"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "chili",
+        "wild herbs"
+      ],
+      "cooking_methods": [
+        "boiling",
+        "stewing",
+        "grilling",
+        "pounding"
+      ],
+      "typical_dishes": [
+        "millet porridge",
+        "cassava fufu",
+        "wild game stews"
+      ],
+      "modern_substitutes": {
+        "wild game": "goat or beef",
+        "cassava": "plantains or potatoes"
+      },
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 16,
+        "fat_pct": 24
+      }
+    },
+    {
+      "id": "tibet",
+      "diet_signature": "High-altitude diet centered on yak products and barley. Features butter tea, roasted flour, and preserved preparations for extreme climate with minimal vegetables.",
+      "staples": [
+        "barley",
+        "buckwheat"
+      ],
+      "common_foods": [
+        "yak",
+        "yak_butter",
+        "cheese",
+        "butter_tea"
+      ],
+      "proteins": [
+        "yak",
+        "dairy"
+      ],
+      "fats": [
+        "yak butter",
+        "butter"
+      ],
+      "herbs_spices": [
+        "salt",
+        "minimal spicing"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "boiling",
+        "fermenting"
+      ],
+      "typical_dishes": [
+        "tsampa",
+        "yak stew"
+      ],
+      "modern_substitutes": {
+        "yak_butter": "butter/ghee"
+      },
+      "macros": {
+        "carbs_pct": 30,
+        "protein_pct": 30,
+        "fat_pct": 40
+      }
+    },
+    {
+      "id": "west_africa",
+      "diet_signature": "Starchy tubers and grains paired with rich nut-based sauces and palm oil. Features fermented preparations, okra, and fish with minimal dairy and abundant plant diversity.",
+      "staples": [
+        "African yam (Dioscorea rotundata)",
+        "plantain",
+        "sorghum",
+        "millet",
+        "fonio"
+      ],
+      "common_foods": [
+        "palm oil",
+        "groundnut",
+        "okra",
+        "fish",
+        "goat",
+        "beans"
+      ],
+      "proteins": [
+        "fish",
+        "goat",
+        "chicken",
+        "beans",
+        "groundnuts"
+      ],
+      "fats": [
+        "palm oil",
+        "shea butter"
+      ],
+      "herbs_spices": [
+        "ginger",
+        "chili",
+        "grains of paradise",
+        "fermented locust beans"
+      ],
+      "cooking_methods": [
+        "pounding",
+        "boiling",
+        "stewing",
+        "frying"
+      ],
+      "typical_dishes": [
+        "fufu with soup",
+        "peanut stews"
+      ],
+      "modern_substitutes": {
+        "palm oil": "red palm or annatto oil",
+        "gari": "cassava flour"
+      },
+      "macros": {
+        "carbs_pct": 55,
+        "protein_pct": 15,
+        "fat_pct": 30
+      }
+    },
+    {
+      "id": "west_india",
+      "diet_signature": "Western Indian cuisine spans from the vegetarian Gujarati and Rajasthani traditions to coastal Goan and Maharashtrian influences. The diet emphasizes millet and lentil combinations, extensive use of yogurt and ghee, and distinctive sweet-savory flavor profiles. Coastal areas incorporate more seafood and coconut, while interior regions favor millet-based flatbreads and preserved foods.",
+      "macros": {
+        "carbs_pct": 60,
+        "protein_pct": 15,
+        "fat_pct": 25
+      },
+      "staples": [
+        "Bajra (pearl millet)",
+        "Jowar (sorghum)",
+        "Rice",
+        "Chickpea flour",
+        "Lentils (various)"
+      ],
+      "common_foods": [
+        "Yogurt",
+        "Coconut (coastal)",
+        "Jaggery",
+        "Peanuts",
+        "Sesame seeds",
+        "Fenugreek leaves",
+        "Bottle gourd",
+        "Okra"
+      ],
+      "proteins": [
+        "Lentils (toor, moong, masoor)",
+        "Chickpeas",
+        "Yogurt",
+        "Paneer",
+        "Fish (coastal)",
+        "Shrimp (coastal)"
+      ],
+      "fats": [
+        "Ghee",
+        "Peanut oil",
+        "Sesame oil",
+        "Coconut oil (coastal)"
+      ],
+      "herbs_spices": [
+        "Cumin",
+        "Coriander",
+        "Turmeric",
+        "Mustard seeds",
+        "Fenugreek",
+        "Asafoetida",
+        "Curry leaves",
+        "Kokum",
+        "Tamarind"
+      ],
+      "cooking_methods": [
+        "Steaming (dhokla)",
+        "Dry roasting",
+        "Tempering (tadka)",
+        "Slow cooking",
+        "Fermenting",
+        "Preserving in oil/brine"
+      ],
+      "typical_dishes": [
+        "Dhokla",
+        "Thepla",
+        "Dal dhokli",
+        "Undhiyu",
+        "Pav bhaji",
+        "Vada pav",
+        "Puran poli",
+        "Sol kadhi (coastal)",
+        "Fish curry (coastal)"
+      ],
+      "modern_substitutes": {
+        "Ghee": "Vegetable oil (for vegan)",
+        "Jaggery": "Brown sugar or coconut sugar"
+      }
+    },
+    {
+      "id": "western_europe",
+      "diet_signature": "Hearty fare built on dairy, root vegetables, and grains adapted to cool climates. Features slow-cooked stews, fermented dairy, and preserved meats with minimal spices.",
+      "staples": [
+        "wheat",
+        "barley",
+        "oats",
+        "potatoes"
+      ],
+      "common_foods": [
+        "butter",
+        "cheese",
+        "beef",
+        "pork",
+        "fish",
+        "root vegetables"
+      ],
+      "proteins": [
+        "beef",
+        "pork",
+        "lamb",
+        "fish",
+        "eggs"
+      ],
+      "fats": [
+        "butter",
+        "lard",
+        "cream"
+      ],
+      "herbs_spices": [
+        "parsley",
+        "sage",
+        "thyme",
+        "bay leaf",
+        "mustard"
+      ],
+      "cooking_methods": [
+        "roasting",
+        "stewing",
+        "boiling",
+        "baking"
+      ],
+      "typical_dishes": [
+        "stews and roasts",
+        "oat porridge"
+      ],
+      "modern_substitutes": {
+        "butter": "ghee",
+        "oat porridge": "rolled oats"
+      },
+      "macros": {
+        "carbs_pct": 45,
+        "protein_pct": 18,
+        "fat_pct": 37
+      }
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "version": "3.0",
+  "note": "Geographic/location data extracted from ancestral_diets_geo.json",
+  "cultures": [
+    {
+      "region": "Oceania",
+      "id": "aboriginal_aus",
+      "culture": "Aboriginal Australian (varied)",
+      "subregion": "Australian First Nations",
+      "name": "Aboriginal Australian"
+    },
+    {
+      "region": "The Americas",
+      "id": "amazon",
+      "culture": "Amazonian indigenous",
+      "subregion": "South America - Amazonian",
+      "name": "Amazonian"
+    },
+    {
+      "region": "Middle East",
+      "id": "anatolian",
+      "culture": "Turkey/Anatolia",
+      "subregion": "Anatolian/Turkish",
+      "name": "Anatolian/Turkish"
+    },
+    {
+      "region": "The Americas",
+      "id": "andean",
+      "culture": "Quechua/Aymara",
+      "subregion": "South America - Andean Highlands",
+      "name": "Andean"
+    },
+    {
+      "region": "Middle East",
+      "id": "arabian",
+      "culture": "Bedouin/Arabian Peninsula",
+      "subregion": "Arabian Peninsula",
+      "name": "Arabian Peninsula"
+    },
+    {
+      "region": "The Americas",
+      "id": "inuit",
+      "culture": "Inuit/Yupik",
+      "subregion": "North America - Arctic/Inuit",
+      "name": "Arctic Inuit"
+    },
+    {
+      "id": "australian_coastal",
+      "culture": "Coastal Aboriginal diet with oysters, fish, and estuarine resources",
+      "name": "Australian Coastal"
+    },
+    {
+      "region": "South Asia",
+      "id": "bengal",
+      "culture": "Bengal (Bangladesh/West Bengal)",
+      "subregion": "Bengali Delta",
+      "name": "Bengali"
+    },
+    {
+      "id": "brazilian_coastal",
+      "culture": "Afro-Brazilian fusion with dendê oil, cassava, and seafood",
+      "name": "Brazilian Coastal"
+    },
+    {
+      "id": "california_coast",
+      "culture": "Acorn-based indigenous diet with salmon, shellfish, and seeds",
+      "name": "California Coastal"
+    },
+    {
+      "id": "canadian_prairies",
+      "culture": "Plains and Subarctic fusion with bison, pemmican, and wild rice",
+      "name": "Canadian Prairies"
+    },
+    {
+      "region": "The Americas",
+      "id": "caribbean_taino",
+      "culture": "Taino",
+      "subregion": "Caribbean",
+      "name": "Caribbean Taíno"
+    },
+    {
+      "region": "Europe/Asia",
+      "id": "caucasus",
+      "culture": "Georgia/Armenia/Azerbaijan",
+      "subregion": "Caucasus",
+      "name": "Caucasian"
+    },
+    {
+      "region": "Africa",
+      "id": "central_africa",
+      "culture": "Mbuti/Aka/Baka",
+      "subregion": "Central African Rainforest",
+      "name": "Central African Rainforest"
+    },
+    {
+      "region": "Central Asia",
+      "id": "central_asia",
+      "culture": "Kazakh/Kyrgyz/Steppe",
+      "subregion": "Steppe Nomadic",
+      "name": "Central Asian Steppe"
+    },
+    {
+      "region": "Africa",
+      "id": "maasai",
+      "culture": "Maasai/Samburu",
+      "subregion": "East Africa Pastoralist",
+      "name": "East African Pastoralist"
+    },
+    {
+      "region": "Europe",
+      "id": "eastern_europe",
+      "culture": "Poland/Ukraine/Russia",
+      "subregion": "Eastern Europe",
+      "name": "Eastern European"
+    },
+    {
+      "region": "The Americas",
+      "id": "eastern_woodlands",
+      "culture": "Iroquois/Algonquin",
+      "subregion": "North America - Eastern Woodlands",
+      "name": "Eastern Woodlands"
+    },
+    {
+      "region": "Africa",
+      "id": "ethiopia",
+      "culture": "Ethiopia/Eritrea",
+      "subregion": "East Africa Highlands",
+      "name": "Ethiopian Highland"
+    },
+    {
+      "id": "gaucho",
+      "culture": "Grassland pastoralist diet centered on grass-fed beef and yerba mate",
+      "name": "Gaucho (Pampas)"
+    },
+    {
+      "region": "The Americas",
+      "id": "great_plains",
+      "culture": "Lakota/Cheyenne",
+      "subregion": "North America - Great Plains",
+      "name": "Great Plains"
+    },
+    {
+      "region": "Southeast Asia",
+      "id": "highland_se_asia",
+      "culture": "Hmong/Karen/Shan",
+      "subregion": "Highland SE Asia",
+      "name": "Highland Southeast Asian"
+    },
+    {
+      "region": "Africa",
+      "id": "horn_somalia",
+      "culture": "Somali",
+      "subregion": "Horn of Africa",
+      "name": "Horn of Africa"
+    },
+    {
+      "region": "Southeast Asia",
+      "id": "se_asia_island",
+      "culture": "Indonesia/Philippines",
+      "subregion": "Island SE Asia",
+      "name": "Island Southeast Asian"
+    },
+    {
+      "region": "East Asia",
+      "id": "japan",
+      "culture": "Japan (Washoku)",
+      "subregion": "Japan",
+      "name": "Japanese"
+    },
+    {
+      "region": "East Asia",
+      "id": "korea",
+      "culture": "Korea",
+      "subregion": "Korean",
+      "name": "Korean"
+    },
+    {
+      "region": "Middle East",
+      "id": "kurdish",
+      "culture": "Kurdistan regions",
+      "subregion": "Kurdish Highlands",
+      "name": "Kurdish Highland"
+    },
+    {
+      "region": "Southeast Asia",
+      "id": "se_asia_main",
+      "culture": "Thailand/Cambodia/Laos/Myanmar",
+      "subregion": "Mainland SE Asia",
+      "name": "Mainland Southeast Asian"
+    },
+    {
+      "region": "Europe",
+      "id": "med_levant",
+      "culture": "Levant (Lebanon, Palestine, Syria)",
+      "subregion": "Mediterranean - Levant",
+      "name": "Mediterranean - Levantine"
+    },
+    {
+      "region": "Europe",
+      "id": "med_southern",
+      "culture": "Italy/Greece/Spain",
+      "subregion": "Mediterranean - Southern European",
+      "name": "Mediterranean - Southern European"
+    },
+    {
+      "region": "Oceania",
+      "id": "melanesia",
+      "culture": "PNG/Fiji/Solomon Islands",
+      "subregion": "Melanesia",
+      "name": "Melanesian"
+    },
+    {
+      "region": "The Americas",
+      "id": "mesoamerica",
+      "culture": "Maya/Aztec",
+      "subregion": "Central America - Mesoamerican",
+      "name": "Mesoamerican"
+    },
+    {
+      "region": "Oceania",
+      "id": "micronesia",
+      "culture": "Micronesian Islands",
+      "subregion": "Micronesia",
+      "name": "Micronesian"
+    },
+    {
+      "region": "Central Asia",
+      "id": "mongolia",
+      "culture": "Mongolia",
+      "subregion": "Mongolian Steppe",
+      "name": "Mongolian Steppe"
+    },
+    {
+      "region": "Oceania",
+      "id": "maori",
+      "culture": "Māori (Aotearoa/New Zealand)",
+      "subregion": "Maori",
+      "name": "Māori"
+    },
+    {
+      "region": "South Asia",
+      "id": "nepal",
+      "culture": "Nepal/Himalayan",
+      "subregion": "Nepali Hill & Mountain",
+      "name": "Nepali Himalayan"
+    },
+    {
+      "region": "Europe",
+      "id": "nordic",
+      "culture": "Scandinavia",
+      "subregion": "Nordic",
+      "name": "Nordic - Scandinavian"
+    },
+    {
+      "region": "Europe",
+      "id": "maghreb",
+      "culture": "Maghreb (Morocco, Algeria, Tunisia)",
+      "subregion": "Mediterranean - North Africa",
+      "name": "North African - Maghreb"
+    },
+    {
+      "region": "East Asia",
+      "id": "north_china",
+      "culture": "Northern China/Manchuria",
+      "subregion": "North China",
+      "name": "North Chinese"
+    },
+    {
+      "region": "South Asia",
+      "id": "north_india",
+      "culture": "Punjab/Hindi belt",
+      "subregion": "North India",
+      "name": "North Indian"
+    },
+    {
+      "region": "The Americas",
+      "id": "pacific_nw",
+      "culture": "Haida/Tlingit/Salish",
+      "subregion": "North America - Pacific Northwest",
+      "name": "Pacific Northwest"
+    },
+    {
+      "region": "The Americas",
+      "id": "patagonia",
+      "culture": "Mapuche/Patagonian",
+      "subregion": "South America - Patagonia",
+      "name": "Patagonian"
+    },
+    {
+      "region": "Middle East",
+      "id": "persian",
+      "culture": "Iran/Persia",
+      "subregion": "Persian Plateau",
+      "name": "Persian"
+    },
+    {
+      "region": "Oceania",
+      "id": "polynesia",
+      "culture": "Samoa/Tonga/Hawaii",
+      "subregion": "Polynesia",
+      "name": "Polynesian"
+    },
+    {
+      "region": "Africa",
+      "id": "sahel",
+      "culture": "Sahel belt (Mali, Niger, Chad)",
+      "subregion": "Sahel",
+      "name": "Sahel"
+    },
+    {
+      "id": "siberia",
+      "culture": "Extreme cold-adapted diet with reindeer, horse, and preserved foods",
+      "name": "Siberian"
+    },
+    {
+      "id": "sichuan_sw_china",
+      "culture": "Bold, numbing flavors with Sichuan peppercorn, chili, and preserved vegetables",
+      "name": "Sichuan/Southwest China"
+    },
+    {
+      "region": "East Asia",
+      "id": "south_china",
+      "culture": "Southern China (Cantonese/Fujian)",
+      "subregion": "South China",
+      "name": "South Chinese"
+    },
+    {
+      "region": "South Asia",
+      "id": "south_india",
+      "culture": "Tamil Nadu/Kerala",
+      "subregion": "South India",
+      "name": "South Indian"
+    },
+    {
+      "id": "southeast_us",
+      "culture": "African-influenced Southern cooking with rice cultivation, pork, and okra",
+      "name": "Southeastern US"
+    },
+    {
+      "region": "Africa",
+      "id": "southern_africa",
+      "culture": "Bantu/Khoisan influenced",
+      "subregion": "Southern Africa",
+      "name": "Southern African"
+    },
+    {
+      "region": "The Americas",
+      "id": "southwest_us",
+      "culture": "Pueblo/Navajo",
+      "subregion": "North America - Southwest",
+      "name": "Southwest US"
+    },
+    {
+      "region": "The Americas",
+      "id": "subarctic",
+      "culture": "Dene/Cree",
+      "subregion": "North America - Subarctic",
+      "name": "Subarctic"
+    },
+    {
+      "region": "East Asia",
+      "id": "tibet",
+      "culture": "Tibet",
+      "subregion": "Tibetan Plateau",
+      "name": "Tibetan Plateau"
+    },
+    {
+      "region": "Africa",
+      "id": "west_africa",
+      "culture": "Nigeria/Ghana/Senegal",
+      "subregion": "West Africa",
+      "name": "West African"
+    },
+    {
+      "region": "Europe",
+      "id": "western_europe",
+      "culture": "UK/Ireland/France North/Benelux",
+      "subregion": "Western Europe",
+      "name": "Western European"
+    },
+    {
+      "id": "west_india",
+      "culture": "Vegetarian traditions with millet, lentils, and coastal coconut influences",
+      "name": "Western Indian"
+    },
+    {
+      "region": "Europe",
+      "id": "central_europe",
+      "culture": "Germany/Austria/Switzerland/Czech",
+      "subregion": "Central Europe",
+      "name": "Central European"
+    },
+    {
+      "region": "Africa",
+      "id": "nilotic",
+      "culture": "Nilotic/Interlacustrine/Great Lakes",
+      "subregion": "East African Highlands & Lakes",
+      "name": "Nilotic & Great Lakes"
+    },
+    {
+      "region": "Africa",
+      "id": "sudanian",
+      "culture": "Sudanian transition zone",
+      "subregion": "Central African Savanna",
+      "name": "Sudanian Savanna"
+    },
+    {
+      "region": "Europe",
+      "id": "balkan",
+      "culture": "Balkan Peninsula - Slavic/Ottoman/Mediterranean fusion",
+      "subregion": "Balkans",
+      "name": "Balkan"
+    }
+  ]
+}
