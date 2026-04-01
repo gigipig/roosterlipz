@@ -1,6 +1,11 @@
 /**
  * Data module - handles loading and lookup of culture/diet data
  * TRIMMED VERSION: ~220 nationalities (down from ~467)
+ *
+ * GENETICS DATA STRUCTURE (v6.0-split):
+ * - genetics-reference.json: Static gene metadata (same for all populations)
+ * - genetics-frequencies.json: Population-specific frequencies only
+ * - Merged at load time into geneticsData for backward compatibility
  */
 
 // Global data stores
@@ -8,16 +13,141 @@ let geoData = null;
 let dietData = null;
 let geneticsData = null;
 
+// Split genetics data stores (internal)
+let geneticsReference = null;
+let geneticsFrequencies = null;
+
+// Key expansion map (reverse of compression in migration script)
+const FREQ_KEY_EXPANSION = {
+  'f': 'allele_frequency_percent',
+  'p': 'phenotype_probability',
+  'cn': 'average_copy_number',
+  'nf': 'null_frequency_percent',
+  't': 'inferred_phenotype',
+  'pc': 'phenotype_confidence',
+  'af1': 'african_allele_gc14010',
+  'me': 'middle_eastern_allele_tg13915',
+  'af2': 'african_allele_cg13907'
+};
+
+/**
+ * Build a complete trait object from reference + frequency data
+ * @param {Object} ref - Reference trait data (static)
+ * @param {Object} freq - Frequency data (population-specific)
+ * @returns {Object} Complete trait object matching old genetics.json structure
+ */
+function buildTraitObject(ref, freq) {
+  if (!ref) return null;
+
+  const trait = {};
+
+  // Copy static properties from reference
+  if (ref.gene) trait.gene = ref.gene;
+  if (ref.genes) trait.genes = ref.genes;
+  if (ref.variant) trait.variant = ref.variant;
+  if (ref.inheritance) trait.inheritance = ref.inheritance;
+  if (ref.risk_allele) trait.risk_allele = ref.risk_allele;
+
+  // Expand compressed frequency keys
+  for (const [compressedKey, value] of Object.entries(freq)) {
+    if (value === undefined || value === null) continue;
+
+    const expandedKey = FREQ_KEY_EXPANSION[compressedKey];
+    if (expandedKey) {
+      trait[expandedKey] = value;
+    }
+  }
+
+  // Handle nested structures
+  if (freq.ADH1B) {
+    trait.ADH1B = {
+      allele_frequency_percent: freq.ADH1B.f,
+      variant: freq.ADH1B.v || ref.ADH1B?.variant
+    };
+  }
+  if (freq.ALDH2) {
+    trait.ALDH2 = {
+      allele_frequency_percent: freq.ALDH2.f,
+      variant: freq.ALDH2.v || ref.ALDH2?.variant
+    };
+  }
+  if (freq.snps) {
+    trait.snps = {};
+    for (const [snpId, snpData] of Object.entries(freq.snps)) {
+      trait.snps[snpId] = {
+        allele_frequency_percent: snpData.f,
+        risk_allele: snpData.r
+      };
+    }
+  }
+
+  // Build phenotype_details from template + custom description
+  const phenotypeKey = trait.inferred_phenotype || 'unknown';
+  const template = ref.phenotype_templates?.[phenotypeKey] || ref.phenotype_details || {};
+
+  trait.phenotype_details = {
+    name: template.name || phenotypeKey,
+    description: freq.desc || template.description || '',
+    dietary_impact: template.dietary_impact || ''
+  };
+
+  // Build dietary_recommendation from template + custom notes
+  if (ref.dietary_recommendation) {
+    trait.dietary_recommendation = { ...ref.dietary_recommendation };
+    if (freq.notes) {
+      trait.dietary_recommendation.notes = freq.notes;
+    }
+  } else {
+    trait.dietary_recommendation = {
+      notes: freq.notes || ''
+    };
+  }
+
+  return trait;
+}
+
+/**
+ * Merge reference and frequencies into geneticsData format
+ * Creates backward-compatible structure matching old genetics.json
+ * @param {Object} reference - Static gene metadata
+ * @param {Object} frequencies - Population-specific frequencies
+ * @returns {Object} Merged genetics data
+ */
+function mergeGeneticsData(reference, frequencies) {
+  const cultures = [];
+
+  for (const [populationId, popFreqs] of Object.entries(frequencies.populations)) {
+    const genetic_adaptations = {};
+
+    for (const [traitKey, freqData] of Object.entries(popFreqs)) {
+      const refTrait = reference.traits[traitKey];
+      const mergedTrait = buildTraitObject(refTrait, freqData);
+      if (mergedTrait) {
+        genetic_adaptations[traitKey] = mergedTrait;
+      }
+    }
+
+    cultures.push({ id: populationId, genetic_adaptations });
+  }
+
+  return { version: reference.version, cultures };
+}
+
 /**
  * Load all data files
  * @returns {Promise<void>}
  */
 async function loadData() {
-  [geoData, dietData, geneticsData] = await Promise.all([
+  // Load all data files in parallel
+  [geoData, dietData, geneticsReference, geneticsFrequencies] = await Promise.all([
     fetch('./cultures.json').then(r => r.json()),
     fetch('./diets.json').then(r => r.json()),
-    fetch('./genetics.json').then(r => r.json())
+    fetch('./genetics-reference.json').then(r => r.json()),
+    fetch('./genetics-frequencies.json').then(r => r.json())
   ]);
+
+  // Merge genetics data for backward compatibility
+  geneticsData = mergeGeneticsData(geneticsReference, geneticsFrequencies);
 }
 
 /**

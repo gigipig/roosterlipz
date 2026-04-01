@@ -262,7 +262,272 @@ const FOOD_GENETICS_MAP = {
   'blood sausage': ['iron_metabolism'],
   'dried meat': ['iron_metabolism', 'salt_sensitivity'],
   jerky: ['iron_metabolism', 'salt_sensitivity'],
-  pemmican: ['iron_metabolism', 'saturated_fat_response']
+  pemmican: ['iron_metabolism', 'saturated_fat_response'],
+
+  // Batch 7: New gene food mappings
+  // MTHFR/Folate foods
+  'leafy greens': ['folate_metabolism', 'mthfr_folate', 'beta_carotene_conversion'],
+  spinach: ['folate_metabolism', 'mthfr_folate', 'iron_metabolism'],
+  kale: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1', 'bitter_taste_perception', 'tas2r38_bitter', 'mthfr_folate'],
+  asparagus: ['mthfr_folate', 'folate_metabolism'],
+  'fortified cereals': ['mthfr_folate', 'folate_metabolism'],
+
+  // FTO/Satiety foods - high protein
+  'lean protein': ['fto_obesity'],
+  'greek yogurt': ['lactase_persistence', 'fto_obesity'],
+  'cottage cheese': ['lactase_persistence', 'fto_obesity'],
+  'protein foods': ['fto_obesity'],
+
+  // HFE/Iron overload foods
+  'red meat': ['iron_metabolism', 'hfe_iron_overload', 'saturated_fat_response'],
+  liver: ['iron_metabolism', 'hfe_iron_overload', 'vitamin_b12_absorption', 'beta_carotene_conversion', 'bco1_vitamin_a'],
+  'organ meats': ['iron_metabolism', 'hfe_iron_overload', 'vitamin_b12_absorption'],
+  'iron supplements': ['hfe_iron_overload'],
+
+  // TAS2R38/Bitter taste foods
+  broccoli: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1', 'bitter_taste_perception', 'tas2r38_bitter'],
+  'brussels sprouts': ['cruciferous_metabolism_gstm1', 'bitter_taste_perception', 'tas2r38_bitter'],
+  cabbage: ['cruciferous_metabolism_gstm1', 'cruciferous_metabolism_gstt1', 'bitter_taste_perception', 'tas2r38_bitter'],
+  arugula: ['bitter_taste_perception', 'tas2r38_bitter'],
+  radicchio: ['bitter_taste_perception', 'tas2r38_bitter'],
+  grapefruit: ['bitter_taste_perception', 'tas2r38_bitter'],
+  'dark chocolate': ['bitter_taste_perception', 'tas2r38_bitter', 'antioxidant_capacity'],
+
+  // TCF7L2/Diabetes foods
+  nuts: ['pufa_metabolism', 'tcf7l2_diabetes'],
+  almonds: ['vitamin_d_transport', 'tcf7l2_diabetes'],
+  walnuts: ['pufa_metabolism', 'tcf7l2_diabetes'],
+  'whole grains': ['starch_digestion', 'tcf7l2_diabetes'],
+  'refined carbs': ['tcf7l2_diabetes', 'glucose_metabolism'],
+  'white bread': ['starch_digestion', 'tcf7l2_diabetes'],
+  'sugary foods': ['tcf7l2_diabetes', 'glucose_metabolism'],
+
+  // BCO1/Vitamin A foods
+  carrots: ['beta_carotene_conversion', 'bco1_vitamin_a'],
+  'sweet potato': ['beta_carotene_conversion', 'bco1_vitamin_a', 'starch_digestion'],
+  pumpkin: ['beta_carotene_conversion', 'bco1_vitamin_a'],
+  butternut: ['beta_carotene_conversion', 'bco1_vitamin_a'],
+  mango: ['beta_carotene_conversion', 'bco1_vitamin_a'],
+  papaya: ['beta_carotene_conversion', 'bco1_vitamin_a'],
+  eggs: ['vitamin_d_metabolism', 'vitamin_b12_absorption', 'beta_carotene_conversion', 'bco1_vitamin_a'],
+
+  // MC4R/Appetite foods
+  'ultra-processed foods': ['fto_obesity', 'mc4r_appetite'],
+  'processed snacks': ['fto_obesity', 'mc4r_appetite'],
+  chips: ['fto_obesity', 'mc4r_appetite'],
+  candy: ['fto_obesity', 'mc4r_appetite', 'tcf7l2_diabetes'],
+  'fast food': ['fto_obesity', 'mc4r_appetite'],
+
+  // ACE/Salt sensitivity foods
+  'salty foods': ['salt_sensitivity', 'ace_salt_sensitivity'],
+  'processed meats': ['salt_sensitivity', 'ace_salt_sensitivity', 'nat2_acetylator'],
+  bacon: ['salt_sensitivity', 'ace_salt_sensitivity', 'nat2_acetylator'],
+  ham: ['salt_sensitivity', 'ace_salt_sensitivity'],
+  sausage: ['salt_sensitivity', 'ace_salt_sensitivity', 'nat2_acetylator'],
+  'canned foods': ['salt_sensitivity', 'ace_salt_sensitivity'],
+  'soy sauce': ['salt_sensitivity', 'ace_salt_sensitivity'],
+  pickles: ['salt_sensitivity', 'ace_salt_sensitivity'],
+  bananas: ['ace_salt_sensitivity'],
+  'potassium foods': ['ace_salt_sensitivity'],
+
+  // NAT2/Acetylator foods
+  'grilled meat': ['nat2_acetylator'],
+  'charred meat': ['nat2_acetylator'],
+  'well-done meat': ['nat2_acetylator'],
+  'barbecue': ['nat2_acetylator'],
+  'smoked meat': ['nat2_acetylator'],
+  steak: ['iron_metabolism', 'hfe_iron_overload', 'nat2_acetylator'],
+
+  // Tier 2 gene food mappings
+  // LIPC/HDL foods
+  'olive oil': ['saturated_fat_response', 'hdl_metabolism', 'lipc_hdl'],
+  'healthy fats': ['lipc_hdl', 'pufa_metabolism'],
+  avocado: ['lipc_hdl', 'pufa_metabolism'],
+
+  // PPARA/PUFA foods
+  'fatty fish': ['pufa_metabolism', 'vitamin_d_metabolism', 'ppara_pufa'],
+  salmon: ['pufa_metabolism', 'vitamin_d_metabolism', 'ppara_pufa'],
+  flaxseed: ['pufa_metabolism', 'ppara_pufa'],
+  'fish oil': ['pufa_metabolism', 'ppara_pufa'],
+
+  // DRD2/Food reward
+  'comfort food': ['drd2_food_reward', 'fto_obesity'],
+  desserts: ['drd2_food_reward', 'tcf7l2_diabetes'],
+  'ice cream': ['lactase_persistence', 'drd2_food_reward'],
+
+  // FUT2/B12 foods
+  'b12 foods': ['vitamin_b12_absorption', 'fut2_b12'],
+  'fortified foods': ['mthfr_folate', 'fut2_b12'],
+  'nutritional yeast': ['fut2_b12', 'vitamin_b12_absorption'],
+
+  // GC/Vitamin D foods
+  'vitamin d foods': ['vitamin_d_metabolism', 'gc_vitamin_d'],
+  'fortified milk': ['lactase_persistence', 'gc_vitamin_d', 'vitamin_d_metabolism'],
+  mushrooms: ['gc_vitamin_d', 'vitamin_d_metabolism'],
+
+  // PEMT/Choline foods
+  'egg yolks': ['pemt_choline', 'bco1_vitamin_a', 'vitamin_d_metabolism'],
+  soybeans: ['pemt_choline', 'mthfr_folate'],
+  'beef liver': ['pemt_choline', 'hfe_iron_overload', 'bco1_vitamin_a', 'iron_metabolism'],
+
+  // FABP2/Fat absorption
+  'high-fat meals': ['fabp2_fat_absorption', 'saturated_fat_response'],
+  'fried foods': ['fabp2_fat_absorption', 'drd2_food_reward'],
+  'fatty meats': ['fabp2_fat_absorption', 'saturated_fat_response', 'iron_metabolism'],
+
+  // TMPRSS6/Iron foods
+  'iron-rich foods': ['iron_metabolism', 'hfe_iron_overload', 'tmprss6_iron'],
+  'fortified cereals': ['mthfr_folate', 'tmprss6_iron', 'iron_metabolism'],
+  'vitamin c foods': ['tmprss6_iron'],
+
+  // Tier 3 gene food mappings
+  // AGT salt sensitivity (complements ACE)
+  'high sodium foods': ['salt_sensitivity', 'ace_salt_sensitivity', 'agt_salt'],
+  'restaurant food': ['salt_sensitivity', 'ace_salt_sensitivity', 'agt_salt'],
+  'canned soup': ['salt_sensitivity', 'ace_salt_sensitivity', 'agt_salt'],
+
+  // ADRB2/Weight loss
+  'calorie-restricted diet': ['adrb2_weight_loss'],
+  'diet foods': ['adrb2_weight_loss'],
+
+  // TAS1R2/Sweet taste
+  'sweet foods': ['tas1r2_sweet', 'tcf7l2_diabetes'],
+  'sugary drinks': ['tas1r2_sweet', 'tcf7l2_diabetes'],
+  'fruit juice': ['tas1r2_sweet'],
+  'sweetened beverages': ['tas1r2_sweet'],
+
+  // OPRM1/Food reward (complements DRD2)
+  'palatable foods': ['oprm1_food_reward', 'drd2_food_reward'],
+  'comfort foods': ['oprm1_food_reward', 'drd2_food_reward', 'fto_obesity'],
+  'rich desserts': ['oprm1_food_reward', 'drd2_food_reward'],
+
+  // ADRB3/Thermogenesis
+  'spicy foods': ['adrb3_thermogenesis'],
+  'capsaicin': ['adrb3_thermogenesis'],
+  'hot peppers': ['adrb3_thermogenesis'],
+  'green tea': ['adrb3_thermogenesis', 'caffeine_metabolism'],
+  'chili': ['adrb3_thermogenesis'],
+
+  // IRS1/Insulin - carb foods
+  'complex carbs': ['irs1_insulin', 'starch_digestion'],
+  'whole grain bread': ['irs1_insulin', 'starch_digestion'],
+  'brown rice': ['irs1_insulin', 'starch_digestion'],
+  'oatmeal': ['irs1_insulin', 'starch_digestion'],
+
+  // PPARG/MUFA foods
+  'mufa foods': ['pparg_adipocyte', 'lipc_hdl'],
+  'olives': ['pparg_adipocyte', 'lipc_hdl'],
+  'avocados': ['pparg_adipocyte', 'lipc_hdl', 'pufa_metabolism'],
+  'macadamia nuts': ['pparg_adipocyte'],
+
+  // UGT1A1/Fasting
+  'intermittent fasting': ['ugt1a1_fasting'],
+  'extended fasting': ['ugt1a1_fasting'],
+
+  // ── Mediterranean herbs & aromatics ─────────────────────────────────────
+  garlic: ['antioxidant_capacity', 'hdl_metabolism', 'ace_salt_sensitivity'],
+  onion: ['antioxidant_capacity', 'hdl_metabolism'],
+  oregano: ['antioxidant_capacity'],
+  basil: ['antioxidant_capacity'],
+  rosemary: ['antioxidant_capacity'],
+  thyme: ['antioxidant_capacity'],
+  parsley: ['folate_metabolism', 'antioxidant_capacity'],
+  dill: ['antioxidant_capacity'],
+  mint: ['antioxidant_capacity'],
+  'bay leaf': ['antioxidant_capacity'],
+  sage: ['antioxidant_capacity'],
+  cumin: ['antioxidant_capacity', 'adrb3_thermogenesis'],
+  sumac: ['antioxidant_capacity'],
+  "za'atar": ['antioxidant_capacity'],
+  paprika: ['beta_carotene_conversion', 'antioxidant_capacity'],
+  saffron: ['antioxidant_capacity'],
+  turmeric: ['antioxidant_capacity'],
+  ginger: ['antioxidant_capacity', 'adrb3_thermogenesis'],
+  cinnamon: ['glucose_metabolism', 'tcf7l2_diabetes'],
+  'black pepper': ['antioxidant_capacity'],
+  fennel: ['antioxidant_capacity'],
+  cardamom: ['antioxidant_capacity'],
+  'black cumin': ['antioxidant_capacity'],
+
+  // ── Mediterranean & Balkan proteins ─────────────────────────────────────
+  pork: ['iron_metabolism', 'saturated_fat_response'],
+  'pork belly': ['iron_metabolism', 'saturated_fat_response', 'nat2_acetylator'],
+  prosciutto: ['salt_sensitivity', 'ace_salt_sensitivity', 'iron_metabolism', 'nat2_acetylator'],
+  halloumi: ['lactase_persistence', 'saturated_fat_response'],
+  mozzarella: ['lactase_persistence'],
+  labneh: ['lactase_persistence'],
+  tzatziki: ['lactase_persistence'],
+  octopus: ['pufa_metabolism', 'vitamin_b12_absorption'],
+  squid: ['pufa_metabolism', 'vitamin_b12_absorption'],
+  calamari: ['pufa_metabolism', 'vitamin_b12_absorption'],
+  'sea bass': ['pufa_metabolism', 'vitamin_d_metabolism'],
+  'sea bream': ['pufa_metabolism', 'vitamin_d_metabolism'],
+  prawn: ['pufa_metabolism', 'vitamin_b12_absorption'],
+  lobster: ['pufa_metabolism', 'vitamin_b12_absorption'],
+
+  // ── Mediterranean produce & condiments ──────────────────────────────────
+  ajvar: ['beta_carotene_conversion', 'antioxidant_capacity'],
+  tahini: ['iron_metabolism', 'pufa_metabolism'],
+  hummus: ['folate_metabolism', 'starch_digestion'],
+  falafel: ['folate_metabolism', 'starch_digestion'],
+  zucchini: ['antioxidant_capacity'],
+  courgette: ['antioxidant_capacity'],
+  aubergine: ['antioxidant_capacity'],
+  'grape leaves': ['folate_metabolism'],
+  grapes: ['antioxidant_capacity', 'alcohol_metabolism'],
+  pomegranate: ['antioxidant_capacity'],
+  lemon: ['antioxidant_capacity', 'tmprss6_iron'],
+  artichoke: ['antioxidant_capacity', 'lipc_hdl'],
+  leek: ['folate_metabolism', 'antioxidant_capacity'],
+  'pine nuts': ['pufa_metabolism', 'iron_metabolism'],
+  pistachios: ['pufa_metabolism', 'tcf7l2_diabetes'],
+  honey: ['glucose_metabolism', 'tas1r2_sweet'],
+
+  // ── Mediterranean bread & pastry ────────────────────────────────────────
+  phyllo: ['starch_digestion'],
+  burek: ['starch_digestion', 'saturated_fat_response'],
+  polenta: ['starch_digestion'],
+
+  // ── Northern & Eastern European produce ─────────────────────────────────
+  beetroot: ['folate_metabolism', 'antioxidant_capacity'],
+  beets: ['folate_metabolism', 'antioxidant_capacity'],
+  horseradish: ['cruciferous_metabolism_gstm1', 'bitter_taste_perception'],
+  turnip: ['cruciferous_metabolism_gstm1'],
+  radish: ['cruciferous_metabolism_gstm1', 'bitter_taste_perception'],
+  watercress: ['cruciferous_metabolism_gstm1', 'folate_metabolism'],
+  'root vegetables': ['starch_digestion', 'beta_carotene_conversion'],
+  celeriac: ['antioxidant_capacity'],
+  mustard: ['cruciferous_metabolism_gstm1', 'bitter_taste_perception'],
+  lingonberry: ['antioxidant_capacity'],
+  cloudberry: ['antioxidant_capacity'],
+  bilberry: ['antioxidant_capacity'],
+
+  // ── Nordic & Arctic proteins ─────────────────────────────────────────────
+  reindeer: ['iron_metabolism'],
+  'smoked salmon': ['pufa_metabolism', 'vitamin_d_metabolism', 'salt_sensitivity'],
+  lutefisk: ['pufa_metabolism', 'vitamin_d_metabolism'],
+
+  // ── South & East Asian foods ─────────────────────────────────────────────
+  tofu: ['pemt_choline', 'folate_metabolism'],
+  edamame: ['folate_metabolism', 'pemt_choline'],
+  matcha: ['caffeine_metabolism', 'antioxidant_capacity'],
+  'soy milk': ['pemt_choline'],
+  paneer: ['lactase_persistence'],
+  dal: ['folate_metabolism', 'iron_metabolism'],
+  dahl: ['folate_metabolism', 'iron_metabolism'],
+  gochujang: ['adrb3_thermogenesis', 'salt_sensitivity'],
+  wakame: ['iron_metabolism', 'vitamin_b12_absorption'],
+  sake: ['alcohol_metabolism'],
+
+  // ── African & Caribbean foods ─────────────────────────────────────────────
+  peanuts: ['pufa_metabolism', 'tcf7l2_diabetes'],
+  groundnuts: ['pufa_metabolism', 'tcf7l2_diabetes'],
+  fufu: ['starch_digestion'],
+  ugali: ['starch_digestion'],
+  injera: ['starch_digestion'],
+  berbere: ['antioxidant_capacity', 'adrb3_thermogenesis'],
+  suya: ['nat2_acetylator', 'iron_metabolism'],
+  'palm nuts': ['saturated_fat_response']
 };
 
 /**
@@ -396,10 +661,45 @@ function getShortReason(traitKey, trait) {
       : 'Tastes milder for you',
     cruciferous_metabolism_gstm1: 'Detox enzyme support',
     cruciferous_metabolism_gstt1: 'Detox enzyme support',
-    hdl_metabolism: 'Heart-healthy fats',
+    hdl_metabolism: 'Supports healthy cholesterol',
     vitamin_b12_absorption: 'B12 source',
     antioxidant_capacity: 'Antioxidant support',
-    salt_sensitivity: 'Watch sodium intake'
+    salt_sensitivity: 'Watch sodium intake',
+    saturated_fat_response: 'Matches ancestral fat metabolism',
+    glucose_metabolism: 'Monitor blood sugar impact',
+    vitamin_d_transport: 'Supports vitamin D transport',
+    // Batch 7
+    mthfr_folate: 'Active folate source',
+    hfe_iron_overload: 'Watch iron intake',
+    tas2r38_bitter: trait.phenotype?.includes('Taster')
+      ? 'May taste bitter to you'
+      : 'Mild bitter taste for you',
+    tcf7l2_diabetes: 'Monitor blood sugar impact',
+    bco1_vitamin_a: 'Vitamin A conversion support',
+    mc4r_appetite: 'Watch portion size',
+    ace_salt_sensitivity: 'Watch sodium intake',
+    nat2_acetylator: trait.phenotype?.includes('Slow')
+      ? 'Limit charred or well-done cooking'
+      : 'Normal carcinogen processing',
+    // Batch 8
+    lipc_hdl: 'Supports healthy cholesterol',
+    ppara_pufa: 'Boosts omega-3 benefits',
+    fut2_b12: 'Supports B12 absorption',
+    gc_vitamin_d: 'Supports vitamin D binding',
+    pemt_choline: 'Choline source',
+    fabp2_fat_absorption: 'Watch fat absorption rate',
+    tmprss6_iron: 'Supports iron regulation',
+    drd2_food_reward: 'Watch reward-driven eating',
+    // Batch 9
+    agt_salt: 'Watch sodium intake',
+    tas1r2_sweet: 'Heightened sweet preference',
+    adrb3_thermogenesis: 'Metabolism boost',
+    irs1_insulin: 'Supports insulin sensitivity',
+    pparg_adipocyte: 'Supports healthy fat storage',
+    ugt1a1_fasting: 'Fasting metabolic support',
+    abcg2_gout: 'Watch uric acid foods',
+    slc2a9_urate: 'Watch uric acid foods',
+    oprm1_food_reward: 'Watch reward-driven eating'
   };
 
   return reasons[traitKey] || 'Genetically relevant';
@@ -905,24 +1205,27 @@ function getGlossaryEntry(geneKey) {
 }
 
 /**
- * Render a glossary info icon with click-to-open popover
+ * Render a glossary info icon with click-to-open popover.
+ * Falls back to traitData when no GENE_GLOSSARY entry exists,
+ * so every gene always shows an info button.
  * @param {string} geneKey - The gene key
+ * @param {Object} [fallback] - { term, definition, gene, inheritance } used when no glossary entry
  * @returns {string} HTML for the info icon
  */
-function renderGlossaryIcon(geneKey) {
+function renderGlossaryIcon(geneKey, fallback) {
   const entry = getGlossaryEntry(geneKey);
-  if (!entry) return '';
+  const data = entry || fallback;
+  if (!data) return '';
 
-  // Escape quotes for data attributes
-  const escapedDef = entry.definition.replace(/"/g, '&quot;');
-  const escapedTerm = entry.term.replace(/"/g, '&quot;');
+  const escapedDef = (data.definition || '').replace(/"/g, '&quot;');
+  const escapedTerm = (data.term || '').replace(/"/g, '&quot;');
 
   return `<span class="glossary-icon"
     data-gene-key="${geneKey}"
     data-term="${escapedTerm}"
     data-definition="${escapedDef}"
-    data-gene="${entry.gene}"
-    data-inheritance="${entry.inheritance}"
+    data-gene="${data.gene || ''}"
+    data-inheritance="${data.inheritance || ''}"
     onclick="showGenePopover(event, this)">ℹ️</span>`;
 }
 
@@ -1094,7 +1397,212 @@ const GENE_META = {
   // Batch 6: Founder/Regional Variants
   abcg2_gout: { icon: '🦶', title: 'Uric Acid Transport (Gout)', cssClass: 'abcg2' },
   slc2a9_urate: { icon: '🦶', title: 'Urate Metabolism', cssClass: 'slc2a9' },
-  ashkenazi_ldlr_fh: { icon: '❤️', title: 'Familial Hypercholesterolemia', cssClass: 'ldlr-fh' }
+  ashkenazi_ldlr_fh: { icon: '❤️', title: 'Familial Hypercholesterolemia', cssClass: 'ldlr-fh' },
+
+  // Batch 7: High-Priority Nutrigenomic Genes
+  mthfr_folate: { icon: '🧬', title: 'Folate Metabolism (MTHFR)', cssClass: 'mthfr' },
+  fto_obesity: { icon: '🍽️', title: 'Satiety & Appetite (FTO)', cssClass: 'fto' },
+  hfe_iron_overload: { icon: '🩸', title: 'Iron Overload Risk (HFE)', cssClass: 'hfe' },
+  tas2r38_bitter: { icon: '😝', title: 'Bitter Taste (TAS2R38)', cssClass: 'tas2r38' },
+  tcf7l2_diabetes: { icon: '🍬', title: 'Diabetes Risk (TCF7L2)', cssClass: 'tcf7l2' },
+  bco1_vitamin_a: { icon: '🥕', title: 'Vitamin A Conversion (BCO1)', cssClass: 'bco1' },
+  mc4r_appetite: { icon: '🧠', title: 'Appetite Regulation (MC4R)', cssClass: 'mc4r' },
+  ace_salt_sensitivity: { icon: '🧂', title: 'Salt Sensitivity (ACE)', cssClass: 'ace' },
+  nat2_acetylator: { icon: '🥩', title: 'Meat Carcinogen Metabolism (NAT2)', cssClass: 'nat2' },
+
+  // Batch 8: Tier 2 Nutrigenomic Genes
+  lipc_hdl: { icon: '💗', title: 'HDL & Fat Response (LIPC)', cssClass: 'lipc' },
+  ppara_pufa: { icon: '🐟', title: 'PUFA Metabolism (PPARA)', cssClass: 'ppara' },
+  drd2_food_reward: { icon: '🎰', title: 'Food Reward (DRD2)', cssClass: 'drd2' },
+  fut2_b12: { icon: '🔴', title: 'B12 Absorption (FUT2)', cssClass: 'fut2' },
+  gc_vitamin_d: { icon: '☀️', title: 'Vitamin D Binding (GC)', cssClass: 'gc' },
+  pemt_choline: { icon: '🥚', title: 'Choline Synthesis (PEMT)', cssClass: 'pemt' },
+  fabp2_fat_absorption: { icon: '🧈', title: 'Fat Absorption (FABP2)', cssClass: 'fabp2' },
+  tmprss6_iron: { icon: '🩸', title: 'Iron Absorption (TMPRSS6)', cssClass: 'tmprss6' },
+
+  // Batch 9: Tier 3 Nutrigenomic Genes
+  agt_salt: { icon: '🧂', title: 'Salt & BP Response (AGT)', cssClass: 'agt' },
+  adrb2_weight_loss: { icon: '⚖️', title: 'Weight Loss Response (ADRB2)', cssClass: 'adrb2' },
+  tas1r2_sweet: { icon: '🍭', title: 'Sweet Taste (TAS1R2)', cssClass: 'tas1r2' },
+  oprm1_food_reward: { icon: '🎯', title: 'Food Pleasure (OPRM1)', cssClass: 'oprm1' },
+  adrb3_thermogenesis: { icon: '🔥', title: 'Thermogenesis (ADRB3)', cssClass: 'adrb3' },
+  irs1_insulin: { icon: '💉', title: 'Insulin Signaling (IRS1)', cssClass: 'irs1' },
+  pparg_adipocyte: { icon: '🫒', title: 'Fat Cell Response (PPARG)', cssClass: 'pparg' },
+  ugt1a1_fasting: { icon: '⏰', title: 'Fasting Response (UGT1A1)', cssClass: 'ugt1a1' },
+
+  // ============================================================================
+  // BATCH 10: POSITIVE TRAIT CATEGORIES (Scaffolded for future research)
+  // These categories emphasize genetic STRENGTHS rather than risks
+  // ============================================================================
+
+  // --- Fasting & Metabolic Flexibility ---
+  // Genes that indicate ability to thrive on intermittent fasting or time-restricted eating
+  sirt1_fasting: { icon: '🧘', title: 'Fasting Adaptation (SIRT1)', cssClass: 'sirt1' },
+  ppargc1a_metabolic_flex: { icon: '⚡', title: 'Metabolic Flexibility (PGC-1α)', cssClass: 'ppargc1a' },
+  foxo3_longevity_fasting: { icon: '🌿', title: 'Fasting Longevity Response (FOXO3)', cssClass: 'foxo3' },
+  ampk_energy_sensing: { icon: '🔋', title: 'Energy Sensing Efficiency (AMPK)', cssClass: 'ampk' },
+
+  // --- Gut Microbiome Interaction ---
+  // Genes affecting prebiotic utilization, fiber fermentation, and gut health
+  fut2_secretor: { icon: '🦠', title: 'Secretor Status (FUT2)', cssClass: 'fut2-secretor' },
+  lct_microbiome: { icon: '🥛', title: 'Lactose & Microbiome (LCT)', cssClass: 'lct-microbiome' },
+  muc2_gut_barrier: { icon: '🛡️', title: 'Gut Barrier Function (MUC2)', cssClass: 'muc2' },
+  tlr4_gut_immunity: { icon: '🦠', title: 'Gut Immune Response (TLR4)', cssClass: 'tlr4' },
+
+  // --- Antioxidant & Cellular Protection ---
+  // Genes indicating strong endogenous antioxidant capacity
+  sod2_antioxidant: { icon: '🛡️', title: 'Superoxide Defense (SOD2)', cssClass: 'sod2' },
+  cat_antioxidant: { icon: '🫐', title: 'Catalase Activity (CAT)', cssClass: 'cat' },
+  gpx1_selenium: { icon: '🥜', title: 'Selenium Utilization (GPX1)', cssClass: 'gpx1' },
+  nrf2_detox: { icon: '🥦', title: 'Detox Pathway Activation (NRF2)', cssClass: 'nrf2' },
+  gstm1_detox_capacity: { icon: '🧬', title: 'Phase II Detox (GSTM1)', cssClass: 'gstm1' },
+  gstp1_antioxidant: { icon: '🍇', title: 'Glutathione S-Transferase (GSTP1)', cssClass: 'gstp1' },
+
+  // --- Thermic Effect & Metabolism Boost ---
+  // Genes affecting calorie burn, brown fat activity, and metabolic rate
+  ucp1_brown_fat: { icon: '🔥', title: 'Brown Fat Activity (UCP1)', cssClass: 'ucp1' },
+  ucp2_metabolic_rate: { icon: '⚡', title: 'Metabolic Rate (UCP2)', cssClass: 'ucp2' },
+  ucp3_muscle_thermogenesis: { icon: '💪', title: 'Muscle Thermogenesis (UCP3)', cssClass: 'ucp3' },
+  dio2_thyroid: { icon: '🦋', title: 'Thyroid Hormone Activation (DIO2)', cssClass: 'dio2' },
+  trpm8_cold_tolerance: { icon: '❄️', title: 'Cold Tolerance (TRPM8)', cssClass: 'trpm8' },
+
+  // --- Protein Utilization & Muscle ---
+  // Genes affecting protein synthesis, muscle building, and recovery
+  actn3_power: { icon: '🏋️', title: 'Power/Endurance Balance (ACTN3)', cssClass: 'actn3' },
+  mstn_muscle: { icon: '💪', title: 'Muscle Growth Potential (MSTN)', cssClass: 'mstn' },
+  il6_recovery: { icon: '🔄', title: 'Exercise Recovery (IL-6)', cssClass: 'il6' },
+  igf1_growth: { icon: '📈', title: 'Growth Factor Response (IGF-1)', cssClass: 'igf1' },
+  vegf_circulation: { icon: '🩸', title: 'Circulation & Oxygen Delivery (VEGF)', cssClass: 'vegf' },
+
+  // --- Longevity & Cellular Health ---
+  // Genes associated with healthy aging and cellular maintenance
+  tert_telomere: { icon: '🧬', title: 'Telomere Maintenance (TERT)', cssClass: 'tert' },
+  klotho_aging: { icon: '🌳', title: 'Healthy Aging (Klotho)', cssClass: 'klotho' },
+  cetp_longevity: { icon: '❤️', title: 'Longevity Lipids (CETP)', cssClass: 'cetp' },
+  apoe_brain_health: { icon: '🧠', title: 'Brain Health & Lipids (APOE)', cssClass: 'apoe' },
+
+  // --- Nutrient Absorption Efficiency ---
+  // Genes indicating superior absorption of key nutrients
+  slc23a1_vitamin_c: { icon: '🍊', title: 'Vitamin C Absorption (SLC23A1)', cssClass: 'slc23a1' },
+  slc30a8_zinc: { icon: '🦪', title: 'Zinc Transport (SLC30A8)', cssClass: 'slc30a8' },
+  tcn2_b12_transport: { icon: '🔴', title: 'B12 Transport Efficiency (TCN2)', cssClass: 'tcn2' },
+  atp7a_copper: { icon: '🥩', title: 'Copper Metabolism (ATP7A)', cssClass: 'atp7a' },
+  slc11a2_iron_absorption: { icon: '🥬', title: 'Iron Absorption (SLC11A2)', cssClass: 'slc11a2' },
+
+  // --- Cholesterol & Lipid Optimization ---
+  // Genes affecting healthy lipid profiles and dietary cholesterol response
+  pcsk9_ldl: { icon: '💚', title: 'LDL Clearance (PCSK9)', cssClass: 'pcsk9' },
+  apoa1_hdl: { icon: '💛', title: 'HDL Production (APOA1)', cssClass: 'apoa1' },
+  ldlr_cholesterol: { icon: '❤️', title: 'Cholesterol Receptor (LDLR)', cssClass: 'ldlr' },
+  lpl_triglycerides: { icon: '🫒', title: 'Triglyceride Clearance (LPL)', cssClass: 'lpl' },
+
+  // --- Taste & Food Preference (Positive framing) ---
+  // Genes that may enhance dietary compliance through taste preferences
+  tas1r3_umami: { icon: '🍲', title: 'Umami Taste (TAS1R3)', cssClass: 'tas1r3' },
+  or7d4_savory: { icon: '🥘', title: 'Savory Preference (OR7D4)', cssClass: 'or7d4' },
+  trpv1_spice: { icon: '🌶️', title: 'Spice Tolerance (TRPV1)', cssClass: 'trpv1' },
+
+  // --- Stress Resilience & Appetite Regulation ---
+  // Genes affecting emotional eating, stress response, and food-mood connection
+  crhr1_stress_eating: { icon: '🧘', title: 'Stress Eating Resilience (CRHR1)', cssClass: 'crhr1' },
+  npy_appetite: { icon: '😊', title: 'Appetite Balance (NPY)', cssClass: 'npy' },
+  agrp_hunger: { icon: '🍽️', title: 'Hunger Signaling (AgRP)', cssClass: 'agrp' },
+  pomc_satiety: { icon: '✅', title: 'Satiety Signaling (POMC)', cssClass: 'pomc' },
+
+  // --- New Dietary Phenotype Genes ---
+  pon1_antioxidant:      { icon: '🫒', title: 'Antioxidant Protection',     cssClass: 'pon1' },
+  gckr_carb_sensitivity: { icon: '🍞', title: 'Carb Sensitivity',           cssClass: 'gckr' },
+  fgf21_carb_preference: { icon: '🍬', title: 'Carb vs Fat Preference',     cssClass: 'fgf21' },
+  apoa5_triglycerides:   { icon: '🥩', title: 'Fat & Triglycerides',        cssClass: 'apoa5' },
+  slc6a4_serotonin:      { icon: '🧠', title: 'Serotonin & Cravings',       cssClass: 'slc6a4' },
+  hnmt_histamine:        { icon: '🫙', title: 'Histamine Clearance (HNMT)', cssClass: 'hnmt' },
+  cyp4f2_vitamin_e:      { icon: '🫑', title: 'Vitamin E Metabolism',       cssClass: 'cyp4f2' },
+  apoc3_omega3_response: { icon: '🐟', title: 'Omega-3 Response',           cssClass: 'apoc3' },
+  cyp19a1_phytoestrogen: { icon: '🌿', title: 'Phytoestrogen Metabolism',   cssClass: 'cyp19a1' }
+};
+
+/**
+ * Maps GENE_META display keys → category ID for grouping in the Genetics tab.
+ * Raw genetics keys use legacyKeyMap first before looking up here.
+ */
+const GENE_CATEGORY_MAP = {
+  // Macronutrient Processing
+  lactase_persistence: 'macro', starch_digestion: 'macro', pufa_metabolism: 'macro',
+  saturated_fat_response: 'macro', glucose_metabolism: 'macro', insulin_sensitivity: 'macro',
+  beta_carotene_conversion: 'macro', fads2_vegetarian: 'macro', ppara_pufa: 'macro',
+  fabp2_fat_absorption: 'macro', irs1_insulin: 'macro', pparg_adipocyte: 'macro',
+  celiac_susceptibility: 'macro',
+
+  // Vitamins & Minerals
+  vitamin_d_metabolism: 'vitamins', vitamin_d_transport: 'vitamins', folate_metabolism: 'vitamins',
+  iron_metabolism: 'vitamins', vitamin_b12_absorption: 'vitamins', cyp2r1_vitamin_d: 'vitamins',
+  vdr_response: 'vitamins', mtr_b12_methylation: 'vitamins', mtrr_methylation: 'vitamins',
+  bco1_vitamin_a: 'vitamins', fut2_b12: 'vitamins', gc_vitamin_d: 'vitamins',
+  pemt_choline: 'vitamins', tmprss6_iron: 'vitamins', slc23a1_vitamin_c: 'vitamins',
+  slc30a8_zinc: 'vitamins', tcn2_b12_transport: 'vitamins', atp7a_copper: 'vitamins',
+  slc11a2_iron_absorption: 'vitamins', mthfr_folate: 'vitamins', hfe_iron_overload: 'vitamins',
+  comt_methylation: 'vitamins',
+
+  // Cardiovascular & Blood Pressure
+  hdl_metabolism: 'cardio', salt_sensitivity: 'cardio', salt_sensitive_hypertension: 'cardio',
+  cyp11b2_hypertension: 'cardio', agtr1_hypertension: 'cardio', lipc_hdl: 'cardio',
+  pcsk9_ldl: 'cardio', apoa1_hdl: 'cardio', ldlr_cholesterol: 'cardio',
+  lpl_triglycerides: 'cardio', apoe_brain_health: 'cardio', ashkenazi_ldlr_fh: 'cardio',
+  cetp_longevity: 'cardio', ace_salt_sensitivity: 'cardio', agt_salt: 'cardio',
+  abcg2_gout: 'cardio', slc2a9_urate: 'cardio',
+
+  // Appetite, Taste & Behavior
+  obesity_risk: 'appetite', appetite_regulation: 'appetite', bitter_taste_perception: 'appetite',
+  caffeine_metabolism: 'appetite', lepr_satiety: 'appetite', bdnf_fat_appetite: 'appetite',
+  cd36_fat_taste: 'appetite', drd2_food_reward: 'appetite', oprm1_food_reward: 'appetite',
+  fto_obesity: 'appetite', mc4r_appetite: 'appetite', npy_appetite: 'appetite',
+  agrp_hunger: 'appetite', pomc_satiety: 'appetite', crhr1_stress_eating: 'appetite',
+  adrb2_weight_loss: 'appetite', tas2r38_bitter: 'appetite', tas1r2_sweet: 'appetite',
+  tas1r3_umami: 'appetite', or7d4_savory: 'appetite', trpv1_spice: 'appetite',
+  dao_histamine: 'appetite', adora2a_caffeine_anxiety: 'appetite', nat2_acetylator: 'appetite',
+
+  // Population-Specific Adaptations
+  alcohol_metabolism: 'population', arctic_fat_metabolism: 'population',
+  polynesian_energy_storage: 'population', altitude_adaptation_epas1: 'population',
+  edar_adaptation: 'population', g6pd_deficiency: 'population', abca1_r230c: 'population',
+  slc16a11_diabetes: 'population', tbc1d4_diabetes: 'population',
+
+  // Detox & Cellular Defense
+  antioxidant_capacity: 'detox', cruciferous_metabolism_gstm1: 'detox',
+  cruciferous_metabolism_gstt1: 'detox', sod2_antioxidant: 'detox', cat_antioxidant: 'detox',
+  gpx1_selenium: 'detox', nrf2_detox: 'detox', gstm1_detox_capacity: 'detox',
+  gstp1_antioxidant: 'detox',
+
+  // Metabolic Flexibility, Longevity & Performance
+  sirt1_fasting: 'metabolic', ppargc1a_metabolic_flex: 'metabolic',
+  foxo3_longevity_fasting: 'metabolic', ampk_energy_sensing: 'metabolic',
+  ucp1_brown_fat: 'metabolic', ucp2_metabolic_rate: 'metabolic',
+  ucp3_muscle_thermogenesis: 'metabolic', dio2_thyroid: 'metabolic',
+  trpm8_cold_tolerance: 'metabolic', adrb3_thermogenesis: 'metabolic',
+  ugt1a1_fasting: 'metabolic', clock_chronotype: 'metabolic', per1_meal_timing: 'metabolic',
+  actn3_power: 'metabolic', mstn_muscle: 'metabolic', il6_recovery: 'metabolic',
+  igf1_growth: 'metabolic', vegf_circulation: 'metabolic', tert_telomere: 'metabolic',
+  klotho_aging: 'metabolic', fut2_secretor: 'metabolic', lct_microbiome: 'metabolic',
+  muc2_gut_barrier: 'metabolic', tlr4_gut_immunity: 'metabolic',
+
+  // New dietary phenotype genes
+  gckr_carb_sensitivity: 'macro', fgf21_carb_preference: 'macro', apoc3_omega3_response: 'macro',
+  apoa5_triglycerides: 'cardio',
+  cyp4f2_vitamin_e: 'vitamins',
+  slc6a4_serotonin: 'appetite', hnmt_histamine: 'appetite',
+  pon1_antioxidant: 'detox',
+  cyp19a1_phytoestrogen: 'metabolic',
+};
+
+const GENE_CATEGORY_INFO = {
+  macro:      { label: 'Macronutrient Processing',           icon: '🍽️' },
+  vitamins:   { label: 'Vitamins & Minerals',                icon: '💊' },
+  cardio:     { label: 'Cardiovascular & Blood Pressure',    icon: '🫀' },
+  appetite:   { label: 'Appetite, Taste & Behavior',         icon: '🧠' },
+  population: { label: 'Population-Specific Adaptations',   icon: '🌍' },
+  detox:      { label: 'Detox & Cellular Defense',           icon: '🛡️' },
+  metabolic:  { label: 'Metabolic Flexibility & Longevity',  icon: '⚡' },
+  other:      { label: 'Other Traits',                       icon: '🧬' },
 };
 
 /**
@@ -1134,8 +1642,8 @@ const GENERIC_GENE_CONFIG = {
     freqPath: 'allele_frequency_percent',
     inheritance: 'additive',
     thresholds: [
-      { min: 8, phenotype: 'Elevated Iron Storage Risk', rec: '🩸 <strong>Hemochromatosis risk:</strong> Monitor ferritin levels, avoid iron supplements unless deficient, limit red meat' },
-      { min: 3, phenotype: 'Moderate Iron Storage Risk', rec: '🩸 <strong>Moderate iron risk:</strong> Standard iron intake, periodic ferritin monitoring recommended' },
+      { min: 15, phenotype: 'Elevated Iron Storage Risk', rec: '🩸 <strong>Hemochromatosis risk:</strong> Monitor ferritin levels, avoid iron supplements unless deficient, limit red meat' },
+      { min: 8, phenotype: 'Moderate Iron Storage Risk', rec: '🩸 <strong>Moderate iron risk:</strong> Standard iron intake, periodic ferritin monitoring recommended' },
       { min: 0, phenotype: 'Normal Iron Metabolism', rec: '🩸 <strong>Standard iron metabolism:</strong> Normal dietary iron guidelines apply' }
     ]
   },
@@ -1487,6 +1995,236 @@ const GENERIC_GENE_CONFIG = {
       { min: 0.1, phenotype: 'Population Carrier Rate', rec: '❤️ <strong>General carrier rate:</strong> Standard lipid screening, earlier if family history of early heart disease' },
       { min: 0, phenotype: 'Minimal FH Risk', rec: '❤️ <strong>Low risk:</strong> This LDLR variant rare in this population, standard cardiovascular screening' }
     ]
+  },
+
+  // Batch 7: High-Priority Nutrigenomic Genes
+  mthfr_folate: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'High MTHFR Variant Frequency', rec: '🧬 <strong>Higher folate needs:</strong> TT genotype common. Use methylfolate (5-MTHF), not folic acid. Emphasize leafy greens, legumes, methylated B vitamins.' },
+      { min: 25, phenotype: 'Moderate MTHFR Variant Frequency', rec: '🧬 <strong>Moderate folate needs:</strong> Consider methylfolate supplements. Ensure adequate leafy greens and B vitamins.' },
+      { min: 0, phenotype: 'Lower MTHFR Variant Frequency', rec: '🧬 <strong>Standard folate needs:</strong> Standard folic acid and dietary folate typically sufficient.' }
+    ]
+  },
+  fto_obesity: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Higher Satiety Challenge', rec: '🍽️ <strong>Satiety support needed:</strong> High-protein meals (≥25% calories) improve fullness. Structured eating times, avoid energy-dense snacks.' },
+      { min: 25, phenotype: 'Moderate Satiety Response', rec: '🍽️ <strong>Moderate satiety:</strong> Protein-rich meals beneficial. Regular meal patterns recommended.' },
+      { min: 0, phenotype: 'Standard Satiety Response', rec: '🍽️ <strong>Standard satiety:</strong> Normal appetite regulation. Standard dietary guidelines apply.' }
+    ]
+  },
+  hfe_iron_overload: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'recessive',
+    thresholds: [
+      { min: 3, phenotype: 'Hemochromatosis Risk Population', rec: '🩸 <strong>Iron overload risk:</strong> Avoid iron supplements unless deficient. Limit red meat and organ meats. Avoid vitamin C with iron-rich meals. Monitor ferritin.' },
+      { min: 0.5, phenotype: 'Low Hemochromatosis Carrier Rate', rec: '🩸 <strong>Low carrier rate:</strong> Standard iron intake. Family history of iron overload warrants testing.' },
+      { min: 0, phenotype: 'Minimal Hemochromatosis Risk', rec: '🩸 <strong>Minimal HFE risk:</strong> C282Y variant virtually absent. Standard iron recommendations apply.' }
+    ]
+  },
+  tas2r38_bitter: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 55, phenotype: 'High Supertaster Population', rec: '😝 <strong>High bitter sensitivity:</strong> Many find cruciferous vegetables intensely bitter. Try roasting, sautéing with fat/garlic, or pairing with cheese.' },
+      { min: 40, phenotype: 'Mixed Taster Distribution', rec: '😝 <strong>Mixed taster population:</strong> Varied bitter sensitivity. Cooking methods can improve vegetable palatability for sensitive individuals.' },
+      { min: 0, phenotype: 'Higher Non-Taster Frequency', rec: '😝 <strong>More non-tasters:</strong> Cruciferous vegetables taste milder. May need to monitor vegetable variety for nutrition.' }
+    ]
+  },
+  tcf7l2_diabetes: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 28, phenotype: 'Higher T2DM Genetic Risk', rec: '🍬 <strong>Elevated diabetes risk:</strong> Limit refined carbs. Emphasize nuts, legumes, Mediterranean diet. Nut consumption reduces metabolic syndrome risk 34% in T carriers.' },
+      { min: 15, phenotype: 'Moderate T2DM Genetic Risk', rec: '🍬 <strong>Moderate diabetes risk:</strong> Low glycemic index carbs preferred. Regular activity important.' },
+      { min: 0, phenotype: 'Lower T2DM Genetic Risk', rec: '🍬 <strong>Lower genetic risk:</strong> TCF7L2 risk variant uncommon. Standard carbohydrate guidelines apply.' }
+    ]
+  },
+  bco1_vitamin_a: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 42, phenotype: 'Higher Poor Converter Frequency', rec: '🥕 <strong>Poor vitamin A converters common:</strong> Don\'t rely solely on beta-carotene. Include preformed vitamin A from eggs, dairy, or liver. Critical for vegetarians.' },
+      { min: 32, phenotype: 'Mixed Converter Distribution', rec: '🥕 <strong>Mixed converter efficiency:</strong> Include both beta-carotene and preformed vitamin A sources for optimal status.' },
+      { min: 0, phenotype: 'Better Converter Population', rec: '🥕 <strong>Better converters:</strong> Beta-carotene from orange/yellow vegetables converts efficiently. Plant sources adequate for most.' }
+    ]
+  },
+  mc4r_appetite: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 25, phenotype: 'Higher Appetite Drive', rec: '🧠 <strong>Increased appetite drive:</strong> MC4R variants reduce satiety signaling. Use portion control, high-protein meals, and avoid ultra-processed snacks.' },
+      { min: 18, phenotype: 'Moderate Appetite Drive', rec: '🧠 <strong>Moderate appetite:</strong> Some appetite-affecting variants present. Structured meals and protein emphasis helpful.' },
+      { min: 0, phenotype: 'Lower Appetite Drive Risk', rec: '🧠 <strong>Standard appetite regulation:</strong> MC4R risk variants less common. Standard dietary guidelines apply.' }
+    ]
+  },
+  ace_salt_sensitivity: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 55, phenotype: 'Higher DD Genotype (Less Salt-Sensitive)', rec: '🧂 <strong>Mixed salt sensitivity:</strong> DD genotype common but II individuals (~20%) are highly salt-sensitive. Monitor BP response to sodium.' },
+      { min: 45, phenotype: 'Balanced I/D Distribution', rec: '🧂 <strong>Moderate salt sensitivity:</strong> Significant II genotype frequency. Sodium moderation (<2300mg/day) recommended.' },
+      { min: 0, phenotype: 'Higher II Genotype (More Salt-Sensitive)', rec: '🧂 <strong>High salt sensitivity population:</strong> More II genotypes. Strict sodium limits (<1500mg/day), DASH diet, potassium-rich foods critical.' }
+    ]
+  },
+  nat2_acetylator: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'recessive',
+    thresholds: [
+      { min: 50, phenotype: 'High Slow Acetylator Population', rec: '🥩 <strong>Many slow acetylators:</strong> Limit charred/well-done meat. Use lower-temp cooking (braising, steaming). Marinate before grilling to reduce carcinogens.' },
+      { min: 30, phenotype: 'Mixed Acetylator Distribution', rec: '🥩 <strong>Mixed acetylator status:</strong> Moderate slow acetylator frequency. Limit heavily charred meats as precaution.' },
+      { min: 0, phenotype: 'Mostly Rapid Acetylators', rec: '🥩 <strong>Rapid acetylators common:</strong> Most metabolize meat carcinogens efficiently. Standard grilling guidelines apply.' }
+    ]
+  },
+
+  // Batch 8: Tier 2 Nutrigenomic Genes
+  lipc_hdl: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'High T Allele (Lower Lipase)', rec: '💗 <strong>Lower hepatic lipase:</strong> Many TT genotypes. CC individuals benefit from moderate fat for HDL; TT should limit saturated fat.' },
+      { min: 25, phenotype: 'Mixed LIPC Genotypes', rec: '💗 <strong>Mixed lipase activity:</strong> Variable HDL response to dietary fat. Monitor lipids and adjust fat intake accordingly.' },
+      { min: 0, phenotype: 'Lower T Allele (Higher Lipase)', rec: '💗 <strong>Higher hepatic lipase:</strong> TT rare. Most can include moderate healthy fats. Saturated fat still limited for cardiovascular health.' }
+    ]
+  },
+  ppara_pufa: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 5, phenotype: 'Val162 Carriers Present', rec: '🐟 <strong>PPARA Val162 carriers:</strong> Some individuals need ≥8% calories from PUFAs for normal lipids. Emphasize fatty fish, flaxseed, walnuts.' },
+      { min: 0, phenotype: 'Val162 Rare', rec: '🐟 <strong>Val162 rare:</strong> Standard fat guidelines apply. PUFA intake still beneficial for general health.' }
+    ]
+  },
+  drd2_food_reward: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 35, phenotype: 'High A1 Allele Frequency', rec: '🎰 <strong>Food reward genetics:</strong> Many have reduced D2 receptors. Structured eating, whole foods over processed, mindful eating practices recommended.' },
+      { min: 22, phenotype: 'Moderate A1 Frequency', rec: '🎰 <strong>Moderate reward-seeking:</strong> Some vulnerability to palatable food overconsumption. Avoid ultra-processed food environments.' },
+      { min: 0, phenotype: 'Lower A1 Frequency', rec: '🎰 <strong>Standard reward response:</strong> Most have normal dopamine receptor density. Standard dietary guidelines apply.' }
+    ]
+  },
+  fut2_b12: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'recessive',
+    thresholds: [
+      { min: 45, phenotype: 'Mixed Secretor Status', rec: '🔴 <strong>B12 absorption varies:</strong> Secretors (~50%) have lower B12. Vegetarians should monitor B12 and consider supplementation.' },
+      { min: 35, phenotype: 'More Secretors', rec: '🔴 <strong>More secretors:</strong> Higher proportion with lower B12 absorption. B12-rich foods or supplements important, especially for plant-based diets.' },
+      { min: 0, phenotype: 'Fewer Secretors', rec: '🔴 <strong>More non-secretors:</strong> Generally better B12 status. Standard dietary B12 usually adequate.' }
+    ]
+  },
+  gc_vitamin_d: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 25, phenotype: 'Higher Risk Allele Frequency', rec: '☀️ <strong>Vitamin D binding affected:</strong> Many may need higher vitamin D intake (2000-4000 IU/day). Monitor 25(OH)D levels.' },
+      { min: 15, phenotype: 'Moderate Risk Frequency', rec: '☀️ <strong>Moderate vitamin D genetics:</strong> Some may need above-standard vitamin D intake. Consider testing levels.' },
+      { min: 0, phenotype: 'Lower Risk Frequency', rec: '☀️ <strong>Efficient vitamin D binding:</strong> Standard vitamin D recommendations typically adequate.' }
+    ]
+  },
+  pemt_choline: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 70, phenotype: 'High C Allele (Very Common)', rec: '🥚 <strong>Choline needs elevated:</strong> Most carry C allele. Women especially need dietary choline (eggs, liver, soy). Critical during pregnancy.' },
+      { min: 50, phenotype: 'Moderate C Allele', rec: '🥚 <strong>Moderate choline genetics:</strong> Many need dietary choline. Include eggs, liver, soybeans regularly.' },
+      { min: 0, phenotype: 'Lower C Allele', rec: '🥚 <strong>Better endogenous synthesis:</strong> Less dependent on dietary choline, but adequate intake still recommended.' }
+    ]
+  },
+  fabp2_fat_absorption: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 35, phenotype: 'Higher Thr54 Frequency', rec: '🧈 <strong>Enhanced fat absorption:</strong> Many absorb fat efficiently. Moderate-fat, PUFA-rich, high-fiber diet recommended to manage postprandial lipids.' },
+      { min: 27, phenotype: 'Moderate Thr54 Frequency', rec: '🧈 <strong>Mixed fat absorption:</strong> Some have enhanced absorption. Emphasize healthy fats, avoid high-saturated-fat meals.' },
+      { min: 0, phenotype: 'Lower Thr54 Frequency', rec: '🧈 <strong>Standard fat absorption:</strong> Standard fat handling. General healthy fat guidelines apply.' }
+    ]
+  },
+  tmprss6_iron: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 55, phenotype: 'High T Allele (Lower Absorption)', rec: '🩸 <strong>Lower iron absorption:</strong> Many TT genotypes absorb ~30% less iron. Pair iron foods with vitamin C. Important for menstruating women.' },
+      { min: 40, phenotype: 'Moderate T Allele Frequency', rec: '🩸 <strong>Mixed iron absorption:</strong> Variable iron uptake genetics. Monitor iron status, especially in at-risk groups.' },
+      { min: 0, phenotype: 'Lower T Allele (Better Absorption)', rec: '🩸 <strong>Better iron absorption:</strong> Most absorb iron efficiently. Standard dietary iron guidelines apply.' }
+    ]
+  },
+
+  // Batch 9: Tier 3 Nutrigenomic Genes
+  agt_salt: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 70, phenotype: 'Very High Salt Sensitivity', rec: '🧂 <strong>High salt sensitivity:</strong> Most carry T allele. Sodium restriction (<2000mg/day) strongly recommended. DASH diet highly beneficial.' },
+      { min: 50, phenotype: 'Elevated Salt Sensitivity', rec: '🧂 <strong>Elevated salt response:</strong> Many salt-sensitive. Moderate sodium (<2300mg/day), emphasize potassium-rich foods.' },
+      { min: 0, phenotype: 'Lower Salt Sensitivity', rec: '🧂 <strong>Lower salt response:</strong> AGT T allele less common. Standard sodium guidelines apply, though moderation still wise.' }
+    ]
+  },
+  adrb2_weight_loss: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 40, phenotype: 'Good Weight Loss Responders', rec: '⚖️ <strong>Enhanced diet response:</strong> Many Glu27 carriers respond well to energy restriction. Caloric deficit diets effective.' },
+      { min: 25, phenotype: 'Mixed Weight Loss Response', rec: '⚖️ <strong>Variable diet response:</strong> Mixed ADRB2 genetics. Standard weight loss approaches recommended.' },
+      { min: 0, phenotype: 'Lower Glu27 Frequency', rec: '⚖️ <strong>Standard response:</strong> Gln27 predominates. Weight loss may require more intensive approaches.' }
+    ]
+  },
+  tas1r2_sweet: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 60, phenotype: 'Reduced Sweet Discrimination Common', rec: '🍭 <strong>Sugar awareness needed:</strong> Many TT genotypes may overconsume sugar. Label reading and portion awareness helpful, especially if overweight.' },
+      { min: 50, phenotype: 'Mixed Sweet Sensitivity', rec: '🍭 <strong>Variable sweet taste:</strong> Mixed genetics. General sugar moderation recommended.' },
+      { min: 0, phenotype: 'Better Sweet Discrimination', rec: '🍭 <strong>Better sweet sensing:</strong> Most discriminate sugar levels well. Standard sugar guidelines apply.' }
+    ]
+  },
+  oprm1_food_reward: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 30, phenotype: 'Higher Hedonic Response', rec: '🎯 <strong>Enhanced food pleasure:</strong> Many G carriers experience heightened food reward. Mindful eating, distinguishing hunger from craving important.' },
+      { min: 15, phenotype: 'Moderate Hedonic Response', rec: '🎯 <strong>Some enhanced reward:</strong> Some G carriers present. Awareness of hedonic eating patterns helpful.' },
+      { min: 0, phenotype: 'Standard Hedonic Response', rec: '🎯 <strong>Standard food pleasure:</strong> G allele rare. Normal food reward response predominates.' }
+    ]
+  },
+  adrb3_thermogenesis: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 18, phenotype: 'Reduced Thermogenesis Risk', rec: '🔥 <strong>Lower thermogenesis:</strong> Arg64 affects brown fat function. Thermogenic foods (capsaicin, green tea), physical activity, avoiding prolonged sitting help.' },
+      { min: 10, phenotype: 'Some Thermogenesis Reduction', rec: '🔥 <strong>Some reduced thermogenesis:</strong> Arg64 present in some. General activity and avoiding sedentary time beneficial.' },
+      { min: 0, phenotype: 'Normal Thermogenesis', rec: '🔥 <strong>Normal thermogenesis:</strong> Arg64 rare. Standard metabolic function predominates.' }
+    ]
+  },
+  irs1_insulin: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 65, phenotype: 'High CC Genotype', rec: '💉 <strong>Good carb responders:</strong> Many CC genotypes respond well to high-complex-carb, low-saturated-fat diets for insulin sensitivity.' },
+      { min: 55, phenotype: 'Moderate C Allele', rec: '💉 <strong>Mixed insulin genetics:</strong> Variable IRS1 status. Balanced macros with emphasis on complex carbs recommended.' },
+      { min: 0, phenotype: 'Lower C Allele', rec: '💉 <strong>Consider lower carb:</strong> More T allele carriers. May benefit from moderate carb rather than high-carb approaches.' }
+    ]
+  },
+  pparg_adipocyte: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'additive',
+    thresholds: [
+      { min: 10, phenotype: 'Ala12 Carriers Present', rec: '🫒 <strong>MUFA responders:</strong> Some Ala12 carriers with T2DM protection. MUFA-rich Mediterranean diet pattern beneficial.' },
+      { min: 5, phenotype: 'Low Ala12 Frequency', rec: '🫒 <strong>Few Ala12 carriers:</strong> Variant uncommon. Standard dietary fat guidelines apply; MUFA still beneficial for all.' },
+      { min: 0, phenotype: 'Ala12 Rare', rec: '🫒 <strong>Ala12 very rare:</strong> Pro12 predominates. Standard metabolic recommendations apply.' }
+    ]
+  },
+  ugt1a1_fasting: {
+    freqPath: 'allele_frequency_percent',
+    inheritance: 'recessive',
+    thresholds: [
+      { min: 35, phenotype: 'Higher Gilbert\'s Frequency', rec: '⏰ <strong>Fasting caution:</strong> ~10%+ may have Gilbert\'s syndrome. *28/*28 individuals should avoid prolonged fasting to prevent jaundice episodes.' },
+      { min: 25, phenotype: 'Moderate *28 Frequency', rec: '⏰ <strong>Some Gilbert\'s risk:</strong> Some *28/*28 homozygotes. Those with history of fasting-induced jaundice should eat regular meals.' },
+      { min: 0, phenotype: 'Lower *28 Frequency', rec: '⏰ <strong>Lower Gilbert\'s risk:</strong> *28 allele less common. Standard fasting/intermittent fasting typically fine.' }
+    ]
   }
 };
 
@@ -1495,150 +2233,165 @@ const GENERIC_GENE_CONFIG = {
 // ============================================================================
 
 const TRAIT_ANALYSIS_CONFIG = {
-  // Legacy genes with custom value getters
+  // ============================================================================
+  // CORE METABOLIC TRAITS (custom value getters)
+  // Thresholds adjusted: lower strength thresholds, "absence of risk = strength"
+  // ============================================================================
   lactase: {
     valueGetter: t => (t.probability || 0) * 100,
-    strengthMin: 70, strengthTitle: 'Strong Dairy Tolerance',
+    strengthMin: 55, strengthTitle: 'Strong Dairy Tolerance',
     strengthDetail: v => `${v.toFixed(0)}% lactase persistence — dairy is well-suited to your genetics`,
     strengthIcon: '🥛',
-    watchMax: 40, watchTitle: 'Dairy Sensitivity Likely',
+    watchMax: 30, watchTitle: 'Dairy Sensitivity Likely',
     watchDetail: () => 'Consider fermented dairy (yogurt, kefir) or lactose-free options',
     watchIcon: '🥛'
   },
   amy1: {
     valueGetter: t => (t.copies || 0),
-    strengthMin: 8, strengthTitle: 'Excellent Starch Digestion',
+    strengthMin: 6, strengthTitle: 'Excellent Starch Digestion',
     strengthDetail: v => `${v.toFixed(0)} AMY1 copies — you digest starches efficiently`,
     strengthIcon: '🌾',
-    watchMax: 5, watchTitle: 'Lower Starch Tolerance',
+    watchMax: 4, watchTitle: 'Lower Starch Tolerance',
     watchDetail: () => 'Consider moderating refined carbohydrates and grains',
     watchIcon: '🌾'
   },
   fads: {
     valueGetter: t => (t.efficiency || 0),
-    strengthMin: 70, strengthTitle: 'Efficient Omega-3 Conversion',
+    strengthMin: 55, strengthTitle: 'Efficient Omega-3 Conversion',
     strengthDetail: () => 'Plant omega-3s (flax, chia, walnuts) convert well for you',
     strengthIcon: '🐟',
-    watchMax: 40, watchTitle: 'Limited Omega-3 Conversion',
+    watchMax: 35, watchTitle: 'Limited Omega-3 Conversion',
     watchDetail: () => 'Prioritize direct marine sources (fatty fish, fish oil) over plant sources',
     watchIcon: '🐟'
   },
 
-  // Generic frequency-based genes (use .frequency or .allele_frequency_percent)
+  // ============================================================================
+  // NUTRIENT METABOLISM (frequency-based)
+  // Added strengthMax entries: low risk allele frequency = genetic advantage
+  // ============================================================================
   caffeine_metabolism: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 30, strengthTitle: 'Fast Caffeine Metabolizer',
+    strengthMax: 35, strengthTitle: 'Fast Caffeine Metabolizer',
     strengthDetail: () => 'You clear caffeine quickly — moderate coffee intake is fine',
     strengthIcon: '☕',
-    watchMin: 50, watchTitle: 'Slow Caffeine Metabolizer',
+    watchMin: 55, watchTitle: 'Slow Caffeine Metabolizer',
     watchDetail: () => 'Limit caffeine to mornings; may affect sleep and blood pressure',
     watchIcon: '☕'
   },
   saturated_fat_response: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 20, strengthTitle: 'Resilient to Saturated Fat',
-    strengthDetail: () => 'Lower genetic sensitivity — standard saturated fat guidelines are fine for you',
-    strengthIcon: '🥓',
-    watchMin: 35, watchTitle: 'Saturated Fat Sensitivity',
+    strengthMax: 20, strengthTitle: 'Healthy Fat Processing',
+    strengthDetail: () => 'Your genetics handle saturated fats well — enjoy traditional fats in moderation',
+    strengthIcon: '🥑',
+    watchMin: 45, watchTitle: 'Saturated Fat Sensitivity',
     watchDetail: () => 'Your genetics suggest keeping saturated fat below 22g/day',
     watchIcon: '🥓'
   },
   folate_metabolism: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 20, strengthTitle: 'Efficient Folate Processing',
-    strengthDetail: () => 'Your MTHFR variants are low-risk — standard folate from diet is sufficient',
+    strengthMax: 25, strengthTitle: 'Efficient Folate Metabolism',
+    strengthDetail: () => 'Your body processes folate efficiently — leafy greens work well for you',
     strengthIcon: '🥬',
-    watchMin: 40, watchTitle: 'Reduced Folate Processing',
+    watchMin: 50, watchTitle: 'Reduced Folate Processing',
     watchDetail: () => 'Consider methylfolate supplements and folate-rich foods (leafy greens, legumes)',
     watchIcon: '🥬'
   },
   iron_metabolism: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 5, watchTitle: 'Iron Accumulation Risk',
+    strengthMax: 3, strengthTitle: 'Balanced Iron Metabolism',
+    strengthDetail: () => 'Your iron absorption is well-regulated — red meat and leafy greens are beneficial',
+    strengthIcon: '💪',
+    watchMin: 12, watchTitle: 'Iron Accumulation Risk',
     watchDetail: () => 'Monitor iron intake; limit red meat and avoid iron supplements unless prescribed',
     watchIcon: '🩸'
   },
   glucose_metabolism: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Stable Blood Sugar Genetics',
-    strengthDetail: () => 'Lower genetic risk for type 2 diabetes — standard carbohydrate guidelines apply',
-    strengthIcon: '🍬',
-    watchMin: 25, watchTitle: 'Blood Sugar Sensitivity',
+    strengthMax: 18, strengthTitle: 'Stable Blood Sugar Genetics',
+    strengthDetail: () => 'Your genetics support healthy glucose regulation — a balanced diet works well',
+    strengthIcon: '⚡',
+    watchMin: 40, watchTitle: 'Blood Sugar Sensitivity',
     watchDetail: () => 'Focus on weight management and Mediterranean-style eating',
     watchIcon: '🍬'
   },
   obesity_risk: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 25, strengthTitle: 'Lower Obesity Risk',
-    strengthDetail: () => 'Your FTO variants suggest lower genetic predisposition to weight gain',
-    strengthIcon: '⚖️',
-    watchMin: 40, watchTitle: 'Higher Obesity Risk',
+    strengthMax: 22, strengthTitle: 'Healthy Weight Tendency',
+    strengthDetail: () => 'Your genetics favor weight maintenance — intuitive eating works well for you',
+    strengthIcon: '🏃',
+    watchMin: 50, watchTitle: 'Higher Obesity Risk',
     watchDetail: () => 'Physical activity is especially important for your genetics',
     watchIcon: '⚖️'
   },
   salt_sensitivity: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 30, strengthTitle: 'Salt Tolerant',
-    strengthDetail: () => 'Lower genetic salt sensitivity — standard sodium guidelines apply',
+    strengthMax: 40, strengthTitle: 'Salt Resilient',
+    strengthDetail: () => 'Your blood pressure is less affected by sodium — enjoy traditional salted foods',
     strengthIcon: '🧂',
-    watchMin: 60, watchTitle: 'Salt Sensitive',
+    watchMin: 70, watchTitle: 'Salt Sensitive',
     watchDetail: () => 'Keep sodium under 2,000mg/day; increase potassium-rich foods',
     watchIcon: '🧂'
   },
   salt_sensitive_hypertension: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 60, watchTitle: 'Salt Sensitive Hypertension',
+    strengthMax: 40, strengthTitle: 'Blood Pressure Resilience',
+    strengthDetail: () => 'Your cardiovascular genetics are favorable — maintain healthy habits',
+    strengthIcon: '💚',
+    watchMin: 70, watchTitle: 'Salt Sensitive Hypertension',
     watchDetail: () => 'Keep sodium under 2,000mg/day; increase potassium-rich foods',
     watchIcon: '🧂'
   },
   beta_carotene_conversion: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 20, strengthTitle: 'Good Vitamin A Conversion',
-    strengthDetail: () => 'Your BCO1 gene converts beta-carotene efficiently — plant sources of vitamin A work well',
+    strengthMax: 25, strengthTitle: 'Efficient Vitamin A Conversion',
+    strengthDetail: () => 'You convert plant carotenoids to vitamin A well — colorful vegetables benefit you',
     strengthIcon: '🥕',
-    watchMin: 40, watchTitle: 'Poor Vitamin A Conversion',
+    watchMin: 50, watchTitle: 'Poor Vitamin A Conversion',
     watchDetail: () => "Don't rely solely on carrots/sweet potatoes; include eggs, fish, or liver",
     watchIcon: '🥕'
   },
   bitter_taste_perception: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 55, watchTitle: 'Supertaster',
+    strengthMax: 35, strengthTitle: 'Broad Vegetable Palate',
+    strengthDetail: () => 'Bitter vegetables taste milder to you — cruciferous veggies are easy to enjoy',
+    strengthIcon: '🥗',
+    watchMin: 65, watchTitle: 'Supertaster',
     watchDetail: () => 'Bitter vegetables (broccoli, kale) may taste intense — try roasting or adding fats',
     watchIcon: '🥦'
   },
   celiac_susceptibility: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 5, strengthTitle: 'Low Celiac Risk',
-    strengthDetail: () => 'Very low HLA-DQ2/DQ8 frequency — gluten is unlikely to be a problem',
-    strengthIcon: '🌾',
-    watchMin: 15, watchTitle: 'Celiac Susceptibility',
+    strengthMax: 8, strengthTitle: 'Low Gluten Sensitivity Risk',
+    strengthDetail: () => 'Your genetics show low celiac risk — whole grains can be part of your diet',
+    strengthIcon: '🍞',
+    watchMin: 20, watchTitle: 'Celiac Susceptibility',
     watchDetail: () => 'If you have GI symptoms, consider celiac testing',
     watchIcon: '🌾'
   },
   alcohol_metabolism: {
     valueGetter: t => t.probability !== undefined ? (1 - t.probability) * 100 : 0,
-    strengthMax: 15, strengthTitle: 'Efficient Alcohol Metabolism',
-    strengthDetail: () => 'Low ALDH2 deficiency risk — your body clears alcohol normally',
-    strengthIcon: '🍺',
+    strengthMax: 20, strengthTitle: 'Efficient Alcohol Processing',
+    strengthDetail: () => 'Your body processes alcohol normally — moderate consumption is lower risk',
+    strengthIcon: '🍷',
     watchMin: 50, watchTitle: 'Alcohol Flush Response',
     watchDetail: () => 'Likely to experience facial flushing with alcohol; increased health risks with heavy drinking',
     watchIcon: '🍺'
   },
   aldh2: {
     valueGetter: t => t.probability !== undefined ? (1 - t.probability) * 100 : 0,
-    strengthMax: 15, strengthTitle: 'Efficient Alcohol Metabolism',
-    strengthDetail: () => 'Low ALDH2 deficiency risk — your body clears alcohol normally',
-    strengthIcon: '🍺',
+    strengthMax: 20, strengthTitle: 'Efficient Alcohol Processing',
+    strengthDetail: () => 'Your body processes alcohol normally — moderate consumption is lower risk',
+    strengthIcon: '🍷',
     watchMin: 50, watchTitle: 'Alcohol Flush Response',
     watchDetail: () => 'Likely to experience facial flushing with alcohol; increased health risks with heavy drinking',
     watchIcon: '🍺'
   },
   vitamin_d_transport: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 10, strengthTitle: 'Good Vitamin D Transport',
-    strengthDetail: () => 'Your GC gene transports vitamin D effectively — standard supplementation works well',
-    strengthIcon: '💊',
-    watchMin: 25, watchTitle: 'Vitamin D Non-Responder Risk',
+    strengthMax: 18, strengthTitle: 'Efficient Vitamin D Transport',
+    strengthDetail: () => 'Your body transports vitamin D effectively — sun exposure and diet work well',
+    strengthIcon: '☀️',
+    watchMin: 40, watchTitle: 'Vitamin D Non-Responder Risk',
     watchDetail: () => 'May need higher vitamin D doses; monitor levels when supplementing',
     watchIcon: '💊'
   },
@@ -1667,178 +2420,399 @@ const TRAIT_ANALYSIS_CONFIG = {
     strengthIcon: '🏔️'
   },
 
-  // Batch 2: Population-specific
+  // ============================================================================
+  // BATCH 2: Population-specific variants
+  // Added positive framing for absence of risk variants
+  // ============================================================================
   g6pd_deficiency: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 10, watchTitle: 'G6PD Deficiency Risk',
+    strengthMax: 3, strengthTitle: 'Normal Oxidative Stress Response',
+    strengthDetail: () => 'No G6PD concerns — fava beans and legumes are great protein sources for you',
+    strengthIcon: '🫘',
+    watchMin: 15, watchTitle: 'G6PD Deficiency Risk',
     watchDetail: () => 'Avoid fava beans and oxidative foods; monitor with your doctor',
     watchIcon: '🫘'
   },
   abca1_r230c: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 5, watchTitle: 'Reversed Diet Advice (ABCA1)',
+    strengthMax: 2, strengthTitle: 'Standard Cholesterol Metabolism',
+    strengthDetail: () => 'Your cholesterol efflux follows typical patterns — standard dietary advice applies',
+    strengthIcon: '💚',
+    watchMin: 8, watchTitle: 'Reversed Diet Advice (ABCA1)',
     watchDetail: () => 'Lower-carb, higher-fat diet may improve your metabolic markers — opposite of typical advice',
     watchIcon: '🫀'
   },
   slc16a11_diabetes: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 15, watchTitle: 'SLC16A11 Diabetes Risk',
+    strengthMax: 5, strengthTitle: 'Low SLC16A11 Diabetes Risk',
+    strengthDetail: () => 'Your genetics show lower risk for this diabetes pathway',
+    strengthIcon: '💪',
+    watchMin: 20, watchTitle: 'SLC16A11 Diabetes Risk',
     watchDetail: () => 'Prioritize weight management; monitor fasting glucose early in life',
     watchIcon: '🩸'
   },
   tbc1d4_diabetes: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 5, watchTitle: 'Arctic Diabetes Variant',
+    strengthMax: 2, strengthTitle: 'Normal Glucose Uptake',
+    strengthDetail: () => 'Your muscle glucose uptake genetics are typical — standard exercise benefits apply',
+    strengthIcon: '🏃',
+    watchMin: 8, watchTitle: 'Arctic Diabetes Variant',
     watchDetail: () => 'Exercise is critical for glucose uptake; request oral glucose tolerance test',
     watchIcon: '🏔️'
   },
 
-  // Batch 3: Vitamin D & Methylation
+  // ============================================================================
+  // BATCH 3: Vitamin D & Methylation Panel
+  // Added positive framing for efficient vitamin processing
+  // ============================================================================
   cyp2r1_vitamin_d: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 20, strengthTitle: 'Good Vitamin D Activation',
-    strengthDetail: () => 'Your CYP2R1 enzyme activates vitamin D efficiently — standard doses work well',
+    strengthMax: 25, strengthTitle: 'Efficient Vitamin D Activation',
+    strengthDetail: () => 'Your body activates vitamin D efficiently — standard sun exposure and diet work well',
     strengthIcon: '☀️',
-    watchMin: 40, watchTitle: 'Needs Higher Vitamin D',
+    watchMin: 50, watchTitle: 'Needs Higher Vitamin D',
     watchDetail: () => 'Impaired vitamin D activation — may need 2000-4000 IU/day',
     watchIcon: '☀️'
   },
   vdr_response: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Strong Vitamin D Response',
-    strengthDetail: () => 'Your vitamin D receptors respond well — bones and immunity benefit efficiently',
+    strengthMax: 22, strengthTitle: 'Strong Vitamin D Response',
+    strengthDetail: () => 'Your vitamin D receptors work efficiently — bones and immunity benefit from moderate intake',
     strengthIcon: '🦴',
-    watchMin: 35, watchTitle: 'Reduced Vitamin D Response',
+    watchMin: 45, watchTitle: 'Reduced Vitamin D Response',
     watchDetail: () => 'May need >2000 IU/day vitamin D; prioritize calcium-rich foods',
     watchIcon: '🦴'
   },
   mtr_b12_methylation: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Efficient B12 Recycling',
-    strengthDetail: () => 'Your MTR gene recycles B12 well — standard dietary intake is sufficient',
+    strengthMax: 18, strengthTitle: 'Efficient B12 Recycling',
+    strengthDetail: () => 'Your B12 methylation cycle works well — standard B12 sources are effective',
     strengthIcon: '🔄',
-    watchMin: 30, watchTitle: 'B12 Recycling Impaired',
+    watchMin: 40, watchTitle: 'B12 Recycling Impaired',
     watchDetail: () => 'Consider methylcobalamin form of B12; monitor homocysteine',
     watchIcon: '🔄'
   },
   mtrr_methylation: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 35, watchTitle: 'Methylation Support Needed',
+    strengthMax: 22, strengthTitle: 'Good Methylation Support',
+    strengthDetail: () => 'Your methylation enzymes function well — balanced diet supports cellular health',
+    strengthIcon: '✨',
+    watchMin: 45, watchTitle: 'Methylation Support Needed',
     watchDetail: () => 'Recommend methylcobalamin + methylfolate supplementation',
     watchIcon: '🔄'
   },
   comt_methylation: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Fast COMT Activity',
-    strengthDetail: () => 'Efficient catechol metabolism — good estrogen clearance and stress resilience',
-    strengthIcon: '🥦',
-    watchMin: 35, watchTitle: 'Slow COMT — Eat Cruciferous',
+    strengthMax: 22, strengthTitle: 'Balanced COMT Activity',
+    strengthDetail: () => 'Your stress hormone clearance is well-regulated — caffeine tolerance is typical',
+    strengthIcon: '🧘',
+    watchMin: 45, watchTitle: 'Slow COMT — Eat Cruciferous',
     watchDetail: () => 'Increase cruciferous vegetables for estrogen clearance; may be caffeine-sensitive',
     watchIcon: '🥦'
   },
 
-  // Batch 3: Salt Panel
+  // ============================================================================
+  // BATCH 3: Salt Panel
+  // Added positive framing for cardiovascular resilience
+  // ============================================================================
   cyp11b2_hypertension: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 50, watchTitle: 'Sodium Restriction Needed',
+    strengthMax: 30, strengthTitle: 'Balanced Aldosterone Response',
+    strengthDetail: () => 'Your salt-hormone balance is well-regulated — enjoy traditional seasoning in moderation',
+    strengthIcon: '💚',
+    watchMin: 60, watchTitle: 'Sodium Restriction Needed',
     watchDetail: () => 'Elevated aldosterone response — limit sodium to <1500mg/day',
     watchIcon: '💓'
   },
   agtr1_hypertension: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 50, watchTitle: 'Sodium + Potassium Focus',
+    strengthMax: 30, strengthTitle: 'Healthy Angiotensin Response',
+    strengthDetail: () => 'Your blood pressure regulation genetics are favorable — maintain healthy habits',
+    strengthIcon: '💚',
+    watchMin: 60, watchTitle: 'Sodium + Potassium Focus',
     watchDetail: () => 'Elevated angiotensin response — DASH diet pattern strongly recommended',
     watchIcon: '💓'
   },
 
-  // Batch 4: Appetite/Behavior
+  // ============================================================================
+  // BATCH 4: Appetite/Behavior Genes
+  // Added positive framing for appetite regulation strengths
+  // ============================================================================
   lepr_satiety: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Good Satiety Signaling',
-    strengthDetail: () => 'Your leptin receptors signal fullness effectively — natural appetite regulation works well',
-    strengthIcon: '🍽️',
-    watchMin: 35, watchTitle: 'Structured Eating Needed',
+    strengthMax: 20, strengthTitle: 'Strong Satiety Signals',
+    strengthDetail: () => 'Your leptin signaling works well — you feel full appropriately after meals',
+    strengthIcon: '😊',
+    watchMin: 45, watchTitle: 'Structured Eating Needed',
     watchDetail: () => 'Reduced leptin sensitivity — strict portion control and protein-rich meals help',
     watchIcon: '🍽️'
   },
   bdnf_fat_appetite: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Balanced Fat Appetite',
-    strengthDetail: () => 'Normal BDNF signaling — you regulate fat cravings well without special effort',
+    strengthMax: 18, strengthTitle: 'Balanced Fat Appetite',
+    strengthDetail: () => 'Your brain-fat signaling is well-regulated — healthy fats satisfy appropriately',
     strengthIcon: '🧠',
-    watchMin: 30, watchTitle: 'Limit Dietary Fat',
+    watchMin: 40, watchTitle: 'Limit Dietary Fat',
     watchDetail: () => 'Fat-specific hyperphagia risk — low-fat diet more effective than general calorie restriction',
     watchIcon: '🧠'
   },
   cd36_fat_taste: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Sensitive Fat Taste',
-    strengthDetail: () => 'Good CD36 fat taste perception — you naturally detect and moderate fat intake',
+    strengthMax: 20, strengthTitle: 'Good Fat Taste Sensitivity',
+    strengthDetail: () => 'You detect dietary fat easily — helps with natural portion control',
     strengthIcon: '👅',
-    watchMin: 35, watchTitle: 'Mindful Eating for Fat',
+    watchMin: 45, watchTitle: 'Mindful Eating for Fat',
     watchDetail: () => 'Reduced fat taste sensitivity — track fat intake, use texture cues for satiety',
     watchIcon: '👅'
   },
   fads2_vegetarian: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMin: 45, strengthTitle: 'Efficient Plant Fat Conversion',
+    strengthMin: 35, strengthTitle: 'Efficient Plant Fat Conversion',
     strengthDetail: () => 'Good EPA/DHA synthesis from plants — reduce omega-6 oils, favor olive oil',
     strengthIcon: '🌱'
   },
 
-  // Batch 5: Chrononutrition & Sensitivity
+  // ============================================================================
+  // BATCH 5: Chrononutrition & Sensitivity
+  // Added positive framing for circadian alignment
+  // ============================================================================
   clock_chronotype: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 12, strengthTitle: 'Morning Chronotype',
-    strengthDetail: () => 'Your CLOCK gene favors morning activity — natural meal timing aligns with circadian rhythm',
+    strengthMax: 15, strengthTitle: 'Flexible Meal Timing',
+    strengthDetail: () => 'Your circadian genes are adaptable — meal timing is less critical for you',
     strengthIcon: '🕐',
-    watchMin: 25, watchTitle: 'Eat Earlier in the Day',
+    watchMin: 35, watchTitle: 'Eat Earlier in the Day',
     watchDetail: () => 'Evening chronotype risk — front-load calories to morning/afternoon',
     watchIcon: '🕐'
   },
   per1_meal_timing: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMin: 30, strengthTitle: 'Regular Timing Helps Weight',
+    strengthMin: 25, strengthTitle: 'Regular Timing Helps Weight',
     strengthDetail: () => 'Consistent meal timing especially beneficial — up to 11.6% decrease in weight gain',
     strengthIcon: '⏰'
   },
   dao_histamine: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 10, strengthTitle: 'Good Histamine Tolerance',
-    strengthDetail: () => 'Your DAO enzyme clears histamine well — aged cheese, wine, and fermented foods are fine',
+    strengthMax: 15, strengthTitle: 'Good Histamine Tolerance',
+    strengthDetail: () => 'Your DAO enzyme works well — enjoy aged cheeses and fermented foods freely',
     strengthIcon: '🧀',
-    watchMin: 25, watchTitle: 'Histamine Sensitivity',
+    watchMin: 35, watchTitle: 'Histamine Sensitivity',
     watchDetail: () => 'Avoid aged cheese, wine, cured meats; consider DAO supplements',
     watchIcon: '🧀'
   },
   adora2a_caffeine_anxiety: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    strengthMax: 15, strengthTitle: 'Caffeine-Resilient',
-    strengthDetail: () => 'Low adenosine receptor sensitivity — caffeine is unlikely to cause anxiety for you',
+    strengthMax: 20, strengthTitle: 'Caffeine Well-Tolerated',
+    strengthDetail: () => 'Low caffeine anxiety risk — coffee can be part of your daily routine',
     strengthIcon: '☕',
-    watchMin: 35, watchTitle: 'Caffeine Anxiety Risk',
+    watchMin: 45, watchTitle: 'Caffeine Anxiety Risk',
     watchDetail: () => 'Limit caffeine to <100mg/day or consider decaf — sensitivity is separate from metabolism speed',
     watchIcon: '😰'
   },
 
-  // Batch 6: Gout & Founder
+  // ============================================================================
+  // BATCH 6: Gout & Founder Variants
+  // Added positive framing for low uric acid risk
+  // ============================================================================
   abcg2_gout: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 20, watchTitle: 'Gout Risk — Limit Purines',
+    strengthMax: 12, strengthTitle: 'Efficient Uric Acid Clearance',
+    strengthDetail: () => 'Your urate transport works well — enjoy shellfish and organ meats in moderation',
+    strengthIcon: '🦪',
+    watchMin: 28, watchTitle: 'Gout Risk — Limit Purines',
     watchDetail: () => 'Restrict organ meats, shellfish, beer; hydrate 2-3L/day',
     watchIcon: '🦶'
   },
   slc2a9_urate: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 85, watchTitle: 'Population-Wide Gout Concern',
+    strengthMax: 70, strengthTitle: 'Good Urate Metabolism',
+    strengthDetail: () => 'Your uric acid metabolism is efficient — standard hydration and diet work well',
+    strengthIcon: '💧',
+    watchMin: 90, watchTitle: 'Population-Wide Gout Concern',
     watchDetail: () => 'Gout prevention is baseline lifestyle — prioritize hydration and purine restriction',
     watchIcon: '🦶'
   },
   ashkenazi_ldlr_fh: {
     valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
-    watchMin: 0.5, watchTitle: 'Screen LDL Early',
+    strengthMax: 0.2, strengthTitle: 'Low FH Carrier Risk',
+    strengthDetail: () => 'Low familial hypercholesterolemia risk — standard lipid monitoring is adequate',
+    strengthIcon: '❤️',
+    watchMin: 0.8, watchTitle: 'Screen LDL Early',
     watchDetail: () => 'Elevated familial hypercholesterolemia carrier frequency — early lipid screening recommended',
     watchIcon: '❤️'
+  },
+
+  // ============================================================================
+  // BATCH 10: POSITIVE TRAIT ANALYSIS (Scaffolded for future research)
+  // These traits emphasize genetic STRENGTHS — ready for data population
+  // ============================================================================
+
+  // --- Fasting & Metabolic Flexibility ---
+  sirt1_fasting: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 30, strengthTitle: 'Fasting Adaptation',
+    strengthDetail: () => 'Your SIRT1 genetics support intermittent fasting — time-restricted eating may be especially beneficial',
+    strengthIcon: '🧘'
+  },
+  ppargc1a_metabolic_flex: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 35, strengthTitle: 'Metabolic Flexibility',
+    strengthDetail: () => 'You efficiently switch between burning carbs and fats — varied diets work well for you',
+    strengthIcon: '⚡'
+  },
+  foxo3_longevity_fasting: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 25, strengthTitle: 'Longevity Fasting Response',
+    strengthDetail: () => 'FOXO3 variant associated with longevity — fasting may activate protective pathways',
+    strengthIcon: '🌿'
+  },
+
+  // --- Gut Microbiome Interaction ---
+  fut2_secretor: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 70, strengthTitle: 'Secretor Status (Gut Health)',
+    strengthDetail: () => 'You secrete blood type antigens in gut — supports beneficial Bifidobacteria growth',
+    strengthIcon: '🦠',
+    watchMax: 25, watchTitle: 'Non-Secretor',
+    watchDetail: () => 'May have lower Bifidobacteria — prioritize prebiotic fiber and fermented foods',
+    watchIcon: '🦠'
+  },
+
+  // --- Antioxidant & Cellular Protection ---
+  sod2_antioxidant: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 40, strengthTitle: 'Strong Superoxide Defense',
+    strengthDetail: () => 'Your SOD2 enzyme efficiently neutralizes free radicals — cellular protection is robust',
+    strengthIcon: '🛡️',
+    watchMax: 20, watchTitle: 'Antioxidant Support Needed',
+    watchDetail: () => 'Consider extra antioxidant-rich foods: berries, dark chocolate, green tea',
+    watchIcon: '🫐'
+  },
+  gpx1_selenium: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 35, strengthTitle: 'Efficient Selenium Utilization',
+    strengthDetail: () => 'Your GPX1 enzyme uses selenium efficiently — Brazil nuts and seafood support antioxidant capacity',
+    strengthIcon: '🥜'
+  },
+  nrf2_detox: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 30, strengthTitle: 'Strong Detox Pathway',
+    strengthDetail: () => 'Your NRF2 pathway is robust — cruciferous vegetables enhance natural detoxification',
+    strengthIcon: '🥦'
+  },
+
+  // --- Thermic Effect & Metabolism ---
+  ucp1_brown_fat: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 35, strengthTitle: 'Active Brown Fat',
+    strengthDetail: () => 'Your brown fat is metabolically active — cold exposure may enhance calorie burn',
+    strengthIcon: '🔥'
+  },
+  ucp3_muscle_thermogenesis: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 30, strengthTitle: 'Efficient Muscle Thermogenesis',
+    strengthDetail: () => 'Your muscles burn calories efficiently — high-protein diet supports metabolic rate',
+    strengthIcon: '💪'
+  },
+  dio2_thyroid: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 25, strengthTitle: 'Optimal Thyroid Conversion',
+    strengthDetail: () => 'Your body converts T4 to active T3 efficiently — metabolism is well-supported',
+    strengthIcon: '🦋',
+    watchMin: 45, watchTitle: 'Thyroid Conversion Slower',
+    watchDetail: () => 'May benefit from selenium and zinc for thyroid hormone conversion',
+    watchIcon: '🦋'
+  },
+
+  // --- Protein Utilization & Muscle ---
+  actn3_power: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 40, strengthTitle: 'Power Muscle Fiber Type',
+    strengthDetail: () => 'You have more fast-twitch muscle fibers — protein timing around workouts is beneficial',
+    strengthIcon: '🏋️'
+  },
+  // Note: ACTN3 is special - both variants have advantages (power vs endurance)
+  actn3_endurance: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 30, strengthTitle: 'Endurance Muscle Fiber Type',
+    strengthDetail: () => 'You have more slow-twitch muscle fibers — steady-state cardio and complex carbs support performance',
+    strengthIcon: '🏃'
+  },
+  il6_recovery: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 25, strengthTitle: 'Efficient Exercise Recovery',
+    strengthDetail: () => 'Your inflammatory response to exercise is well-regulated — supports faster recovery',
+    strengthIcon: '🔄'
+  },
+
+  // --- Longevity & Cellular Health ---
+  klotho_aging: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 20, strengthTitle: 'Longevity Variant',
+    strengthDetail: () => 'Klotho variant associated with healthy aging — supports cognitive function and metabolism',
+    strengthIcon: '🌳'
+  },
+  cetp_longevity: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 25, strengthTitle: 'Favorable HDL Profile',
+    strengthDetail: () => 'Your CETP genetics favor high HDL — cardiovascular protection is enhanced',
+    strengthIcon: '❤️'
+  },
+
+  // --- Nutrient Absorption Efficiency ---
+  slc23a1_vitamin_c: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 40, strengthTitle: 'Efficient Vitamin C Absorption',
+    strengthDetail: () => 'You absorb vitamin C efficiently — citrus fruits and vegetables are highly effective',
+    strengthIcon: '🍊'
+  },
+  tcn2_b12_transport: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 35, strengthTitle: 'Efficient B12 Transport',
+    strengthDetail: () => 'Your B12 reaches cells efficiently — meat, fish, and eggs are well-utilized',
+    strengthIcon: '🔴'
+  },
+
+  // --- Cholesterol & Lipid Optimization ---
+  pcsk9_ldl: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 15, strengthTitle: 'Enhanced LDL Clearance',
+    strengthDetail: () => 'Your PCSK9 genetics favor efficient LDL removal — heart-protective',
+    strengthIcon: '💚'
+  },
+  apoa1_hdl: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 30, strengthTitle: 'Strong HDL Production',
+    strengthDetail: () => 'Your genetics support high HDL cholesterol — olive oil and fish enhance this',
+    strengthIcon: '💛'
+  },
+  lpl_triglycerides: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 35, strengthTitle: 'Efficient Triglyceride Clearance',
+    strengthDetail: () => 'You clear dietary fats efficiently — healthy fats are well-metabolized',
+    strengthIcon: '🫒'
+  },
+
+  // --- Taste & Food Preference ---
+  trpv1_spice: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 40, strengthTitle: 'Spice Tolerance',
+    strengthDetail: () => 'You tolerate capsaicin well — spicy foods may boost metabolism and aid digestion',
+    strengthIcon: '🌶️'
+  },
+
+  // --- Stress Resilience & Appetite ---
+  crhr1_stress_eating: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMax: 25, strengthTitle: 'Stress Eating Resilience',
+    strengthDetail: () => 'Your genetics protect against stress-driven eating — appetite stays stable under pressure',
+    strengthIcon: '🧘'
+  },
+  pomc_satiety: {
+    valueGetter: t => t.frequency || t.allele_frequency_percent || 0,
+    strengthMin: 35, strengthTitle: 'Strong Satiety Signals',
+    strengthDetail: () => 'Your POMC pathway signals fullness effectively — natural appetite regulation is strong',
+    strengthIcon: '✅'
   }
 };
 
@@ -2552,6 +3526,198 @@ function renderGeneticAdaptations(diet) {
 }
 
 /**
+ * Config for composite category score cards.
+ * Each category averages getTraitMeterInfo().value across listed traits.
+ * invert: true → high value = bad outcome (score = 100 - value).
+ * altKey: try genetics[altKey] if genetics[key] is not found.
+ */
+const CATEGORY_SCORE_CONFIG = [
+  {
+    id: 'carb_metabolism',
+    title: 'Carb Metabolism',
+    icon: '🌾',
+    description: 'How efficiently you digest and regulate carbohydrates',
+    traits: [
+      { key: 'amy1',                invert: false },
+      { key: 'glucose_metabolism',  invert: true  },
+      { key: 'insulin_sensitivity', invert: true  },
+      { key: 'celiac_susceptibility', invert: true }
+    ]
+  },
+  {
+    id: 'fat_metabolism',
+    title: 'Fat Metabolism',
+    icon: '🐟',
+    description: 'Your ability to process and convert dietary fats',
+    traits: [
+      { key: 'fads',                  invert: false },
+      { key: 'saturated_fat_response', invert: true  },
+      { key: 'hdl_metabolism',         invert: false }
+    ]
+  },
+  {
+    id: 'vitamin_absorption',
+    title: 'Vitamin Absorption',
+    icon: '☀️',
+    description: 'How well you absorb and utilize key micronutrients',
+    traits: [
+      { key: 'vitamin_d_metabolism',    altKey: 'slc24a5', invert: false },
+      { key: 'vitamin_d_transport',     invert: false },
+      { key: 'folate_metabolism',       invert: true  },
+      { key: 'iron_metabolism',         invert: false },
+      { key: 'beta_carotene_conversion', invert: false },
+      { key: 'vitamin_b12_absorption',  invert: true  }
+    ]
+  },
+  {
+    id: 'food_tolerance',
+    title: 'Food Tolerance',
+    icon: '🎯',
+    description: 'Sensitivity to common dietary compounds',
+    traits: [
+      { key: 'lactase',               invert: false },
+      { key: 'bitter_taste_perception', invert: true  },
+      { key: 'aldh2',                 invert: false },
+      { key: 'caffeine_metabolism',    invert: true  }
+    ]
+  }
+];
+
+/**
+ * Calculate composite category scores from genetics results.
+ * @param {Object} genetics - Mendelian genetics result object
+ * @returns {Array} Array of category score objects (nulls filtered out)
+ */
+function calculateCategoryScores(genetics) {
+  if (!genetics) return [];
+
+  return CATEGORY_SCORE_CONFIG.map(category => {
+    const values = [];
+
+    category.traits.forEach(traitCfg => {
+      const trait = genetics[traitCfg.key] || (traitCfg.altKey && genetics[traitCfg.altKey]);
+      if (!trait) return;
+
+      const resolvedKey = genetics[traitCfg.key] ? traitCfg.key : (traitCfg.altKey || traitCfg.key);
+      const { value } = getTraitMeterInfo(resolvedKey, trait);
+      values.push(traitCfg.invert ? (100 - value) : value);
+    });
+
+    if (values.length === 0) return null;
+
+    const score = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+    let statusClass, statusLabel;
+    if (score >= 65) {
+      statusClass = 'high';
+      statusLabel = 'Well Adapted';
+    } else if (score >= 40) {
+      statusClass = 'moderate';
+      statusLabel = 'Mixed Signals';
+    } else {
+      statusClass = 'low';
+      statusLabel = 'Needs Attention';
+    }
+
+    return {
+      id: category.id,
+      title: category.title,
+      icon: category.icon,
+      description: category.description,
+      score,
+      statusClass,
+      statusLabel,
+      traitCount: values.length
+    };
+  }).filter(Boolean);
+}
+
+/**
+ * Render a single-sentence genetic identity headline for the top of the Genetics tab.
+ * Leads with the user's strongest category + flags their lowest if it needs attention.
+ * @param {Object} genetics - Mendelian genetics result object
+ * @returns {string} HTML
+ */
+function renderGeneticHeadline(genetics) {
+  const categories = calculateCategoryScores(genetics);
+  if (categories.length === 0) return '';
+
+  const sorted = [...categories].sort((a, b) => b.score - a.score);
+  const best = sorted[0];
+  const worst = sorted[sorted.length - 1];
+
+  let headline;
+  if (best.score >= 65) {
+    headline = `Your ancestry suggests <strong>${best.title.toLowerCase()}</strong> as a natural strength`;
+    if (worst && worst.score < 45 && worst.id !== best.id) {
+      headline += ` — with <strong>${worst.title.toLowerCase()}</strong> worth keeping an eye on`;
+    }
+    headline += '.';
+  } else {
+    headline = `Your ancestry shows a balanced genetic profile — no single area dominates, which means your diet has room to flex.`;
+  }
+
+  const { strengths } = analyzeGeneticTraits(genetics);
+  const topStrength = strengths[0];
+
+  return `
+    <div class="genetic-headline">
+      <div class="genetic-headline-icon">🧬</div>
+      <div class="genetic-headline-body">
+        <p class="genetic-headline-copy">${headline}</p>
+        ${topStrength ? `<p class="genetic-headline-detail">${topStrength.icon} ${topStrength.title}: ${topStrength.detail}</p>` : ''}
+      </div>
+    </div>`;
+}
+
+/**
+ * Render category score cards.
+ * @param {Object} genetics - Mendelian genetics result object
+ * @param {boolean} compact - true for Overview tab strip, false for full Genetics tab cards
+ * @returns {string} HTML
+ */
+function renderCategoryScores(genetics, compact = false) {
+  const categories = calculateCategoryScores(genetics);
+  if (categories.length === 0) return '';
+
+  if (compact) {
+    const cards = categories.map(cat => `
+      <div class="category-score-card category-score-card--compact">
+        <div class="category-score-num ${cat.statusClass}">${cat.score}</div>
+        <div class="category-score-bar-wrap">
+          <div class="category-score-bar meter-fill ${cat.statusClass}" style="width:${cat.score}%"></div>
+        </div>
+        <div class="category-score-title">${cat.icon} ${cat.title}</div>
+        <span class="category-score-badge--${cat.statusClass}">${cat.statusLabel}</span>
+      </div>`).join('');
+
+    return `
+      <div class="category-scores-section category-scores-section--compact">
+        <div class="category-scores-grid category-scores-grid--compact">${cards}</div>
+      </div>`;
+  }
+
+  const cards = categories.map(cat => `
+    <div class="category-score-card">
+      <div class="category-score-top">
+        <div class="category-score-num ${cat.statusClass}">${cat.score}</div>
+        <span class="category-score-badge--${cat.statusClass}">${cat.statusLabel}</span>
+      </div>
+      <div class="category-score-title">${cat.icon} ${cat.title}</div>
+      <div class="category-score-desc">${cat.description}</div>
+      <div class="category-score-bar-wrap">
+        <div class="category-score-bar meter-fill ${cat.statusClass}" style="width:${cat.score}%"></div>
+      </div>
+      <div class="category-score-trait-count">${cat.traitCount} trait${cat.traitCount !== 1 ? 's' : ''} analyzed</div>
+    </div>`).join('');
+
+  return `
+    <div class="category-scores-section">
+      <h3>Genetic Category Scores</h3>
+      <div class="category-scores-grid">${cards}</div>
+    </div>`;
+}
+
+/**
  * Analyze genetic traits and categorize as strengths or things to watch
  * @param {Object} genetics - The Mendelian genetics results
  * @returns {Object} { strengths: [], watchItems: [] }
@@ -2673,6 +3839,47 @@ function renderKeyTakeaways(genetics) {
 }
 
 /**
+ * Render Top Priorities banner for the Diet tab.
+ * Shows up to 2 watch items + 1 strength from analyzeGeneticTraits().
+ * These are the highest-impact dietary signals for this user.
+ * @param {Object} genetics
+ * @returns {string} HTML
+ */
+function renderTopPriorities(genetics) {
+  if (!genetics) return '';
+
+  const { strengths, watchItems } = analyzeGeneticTraits(genetics);
+  if (strengths.length === 0 && watchItems.length === 0) return '';
+
+  const items = [];
+  watchItems.slice(0, 2).forEach(item => items.push({ ...item, type: 'watch' }));
+  if (items.length < 3 && strengths.length > 0) {
+    items.push({ ...strengths[0], type: 'strength' });
+  }
+  if (items.length === 0) return '';
+
+  const cards = items.map(item => {
+    const isWatch = item.type === 'watch';
+    return `
+      <div class="priority-card priority-card--${isWatch ? 'watch' : 'strength'}">
+        <div class="priority-card-header">
+          <span class="priority-icon">${item.icon}</span>
+          <span class="priority-title">${item.title}</span>
+          <span class="priority-badge priority-badge--${isWatch ? 'watch' : 'strength'}">${isWatch ? '⚠ Watch' : '✓ Strength'}</span>
+        </div>
+        <p class="priority-detail">${item.detail}</p>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="top-priorities-section">
+      <h3>🎯 Your Dietary Priorities</h3>
+      <p class="top-priorities-subtitle">Highest-impact changes based on your genetic profile</p>
+      <div class="priorities-grid">${cards}</div>
+    </div>`;
+}
+
+/**
  * Render the Nutrient Gap Analysis section
  * @param {Object} genetics - The Mendelian genetics results
  * @returns {string} HTML for the nutrient gap section
@@ -2747,129 +3954,135 @@ function renderNutrientGapAnalysis(genetics) {
 }
 
 /**
- * Render Daily Guidelines section with morning/afternoon/evening cards
- * @param {Object} genetics - The Mendelian genetics results
- * @param {Object} blended - The blended diet data (optional, for cross-referencing foods)
- * @returns {string} HTML for the daily guidelines section
+ * Render Daily Guidelines section.
+ * 2.3: Each rule renders as its own block with a GENE_META driver badge.
+ * 2.4: Rules with period:'all' are pulled into a dedicated "All Day" strip
+ *      above the morning/afternoon/evening grid, eliminating triple-repetition.
+ * @param {Object} genetics
+ * @param {Object} blended - optional, for bold-highlighting foods in user's diet
+ * @returns {string} HTML
  */
 function renderDailyGuidelines(genetics, blended) {
   if (!genetics) return '';
+
+  // Legacy key map needed to resolve GENE_META for rules using short keys
+  const ruleKeyMap = {
+    lactase: 'lactase_persistence',
+    amy1: 'starch_digestion',
+    fads: 'pufa_metabolism',
+    aldh2: 'alcohol_metabolism',
+    crebrf: 'polynesian_energy_storage',
+    cpt1a: 'arctic_fat_metabolism'
+  };
 
   const triggered = [];
 
   DAILY_GUIDELINE_RULES.forEach(rule => {
     const trait = genetics[rule.gene];
     if (!trait) return;
-
     let value;
     if (rule.useProbability) {
       value = (trait.probability || 0) * 100;
-      // For lactase, low probability means trigger
       if (rule.triggerMax !== undefined && value > rule.triggerMax) return;
       if (rule.triggerMin !== undefined && value < rule.triggerMin) return;
     } else {
       value = trait.frequency || trait.allele_frequency_percent || 0;
       if (value < rule.triggerMin) return;
     }
-
     triggered.push(rule);
   });
 
   if (triggered.length === 0) return '';
 
-  // Group by period
-  const periods = {
-    morning: { emoji: '🌅', label: 'Morning', rules: [] },
-    afternoon: { emoji: '☀️', label: 'Afternoon', rules: [] },
-    evening: { emoji: '🌙', label: 'Evening', rules: [] }
-  };
-
-  triggered.forEach(rule => {
-    if (rule.period === 'all') {
-      periods.morning.rules.push(rule);
-      periods.afternoon.rules.push(rule);
-      periods.evening.rules.push(rule);
-    } else if (periods[rule.period]) {
-      periods[rule.period].rules.push(rule);
-    }
-  });
-
-  // Cross-reference foods against blended diet
+  // Cross-reference foods against blended diet for bold highlight
   const allBlendedFoods = blended
     ? [...(blended.commonFoods || []), ...(blended.allProteins || []), ...(blended.allFats || []), ...(blended.allHerbs || [])].map(f => f.toLowerCase())
     : [];
 
+  // Helper: resolve GENE_META for a rule's gene key
+  function getRuleMeta(geneKey) {
+    const metaKey = ruleKeyMap[geneKey] || geneKey;
+    return GENE_META[metaKey] || { icon: '🧬', title: geneKey };
+  }
+
+  // Helper: render a single rule as a self-contained block with gene badge
+  function renderRuleBlock(rule, compact) {
+    const meta = getRuleMeta(rule.gene);
+    const typePillClass = rule.type === 'prefer' ? 'rule-type-prefer' : rule.type === 'limit' ? 'rule-type-limit' : 'rule-type-timing';
+    const typeLabel = rule.type === 'prefer' ? 'Prefer' : rule.type === 'limit' ? 'Limit' : 'Timing';
+
+    let foodsHtml = '';
+    if (rule.foods && rule.foods.length > 0) {
+      const foodClass = rule.type === 'prefer' ? 'prefer' : 'limit';
+      foodsHtml = `<div class="period-rule-foods">` +
+        rule.foods.map(f => {
+          const inDiet = allBlendedFoods.some(bf => bf.includes(f.toLowerCase()) || f.toLowerCase().includes(bf));
+          return `<span class="guideline-food ${foodClass}${inDiet ? ' in-diet' : ''}">${f}</span>`;
+        }).join('') +
+      `</div>`;
+    }
+
+    return `
+      <div class="period-rule${compact ? ' period-rule--compact' : ''}">
+        <div class="period-rule-header">
+          <span class="guideline-gene-badge">${meta.icon} ${meta.title}</span>
+          <span class="rule-type-pill ${typePillClass}">${typeLabel}</span>
+        </div>
+        ${foodsHtml}
+        ${rule.note ? `<div class="guideline-note">${rule.note}</div>` : ''}
+      </div>`;
+  }
+
+  // Separate 'all' rules from period-specific rules
+  const allDayRules = triggered.filter(r => r.period === 'all');
+  const periodRules = triggered.filter(r => r.period !== 'all');
+
+  // Group period-specific rules
+  const periods = {
+    morning:   { emoji: '🌅', label: 'Morning',   rules: [] },
+    afternoon: { emoji: '☀️', label: 'Afternoon', rules: [] },
+    evening:   { emoji: '🌙', label: 'Evening',   rules: [] }
+  };
+  periodRules.forEach(rule => {
+    if (periods[rule.period]) periods[rule.period].rules.push(rule);
+  });
+
+  const hasPeriodicRules = Object.values(periods).some(p => p.rules.length > 0);
+
   let html = `
     <div class="daily-guidelines">
       <h3>📅 Daily Guidelines</h3>
-      <p class="daily-guidelines-intro">Personalized timing and food recommendations based on your genetic profile.</p>
-      <div class="daily-guidelines-grid">
-  `;
+      <p class="daily-guidelines-intro">Personalized timing and food recommendations based on your genetic profile.</p>`;
 
-  Object.entries(periods).forEach(([periodKey, period]) => {
-    if (period.rules.length === 0) return;
-
-    const preferRules = period.rules.filter(r => r.type === 'prefer');
-    const limitRules = period.rules.filter(r => r.type === 'limit');
-    const timingRules = period.rules.filter(r => r.type === 'timing');
-
+  // ── All Day strip ──────────────────────────────────────────────────
+  if (allDayRules.length > 0) {
     html += `
+      <div class="all-day-strip">
+        <div class="all-day-header">
+          <span class="all-day-label">All Day</span>
+          <span class="all-day-count">${allDayRules.length} rule${allDayRules.length > 1 ? 's' : ''}</span>
+        </div>
+        <div class="all-day-rules">
+          ${allDayRules.map(r => renderRuleBlock(r, true)).join('')}
+        </div>
+      </div>`;
+  }
+
+  // ── Period grid ───────────────────────────────────────────────────
+  if (hasPeriodicRules) {
+    html += `<div class="daily-guidelines-grid">`;
+    Object.entries(periods).forEach(([, period]) => {
+      if (period.rules.length === 0) return;
+      html += `
         <div class="meal-period-card">
           <h4>${period.emoji} ${period.label}</h4>
-    `;
-
-    if (timingRules.length > 0) {
-      html += `<div class="timing-notes">`;
-      timingRules.forEach(r => {
-        html += `<div class="guideline-note"><span class="timing-icon">⏰</span> ${r.note}</div>`;
-      });
-      html += `</div>`;
-    }
-
-    if (preferRules.length > 0) {
-      html += `<div class="prefer-section"><span class="section-label prefer-label">Prefer</span><div class="prefer-list">`;
-      const preferFoods = new Set();
-      const preferNotes = [];
-      preferRules.forEach(r => {
-        r.foods.forEach(f => {
-          // Highlight if this food appears in blended diet
-          const inDiet = allBlendedFoods.some(bf => bf.includes(f.toLowerCase()) || f.toLowerCase().includes(bf));
-          preferFoods.add(inDiet ? `<strong>${f}</strong>` : f);
-        });
-        preferNotes.push(r.note);
-      });
-      html += Array.from(preferFoods).map(f => `<span class="guideline-food prefer">${f}</span>`).join('');
-      html += `</div>`;
-      preferNotes.forEach(n => {
-        html += `<div class="guideline-note">${n}</div>`;
-      });
-      html += `</div>`;
-    }
-
-    if (limitRules.length > 0) {
-      html += `<div class="limit-section"><span class="section-label limit-label">Limit</span><div class="limit-list">`;
-      const limitFoods = new Set();
-      const limitNotes = [];
-      limitRules.forEach(r => {
-        r.foods.forEach(f => limitFoods.add(f));
-        limitNotes.push(r.note);
-      });
-      html += Array.from(limitFoods).map(f => `<span class="guideline-food limit">${f}</span>`).join('');
-      html += `</div>`;
-      limitNotes.forEach(n => {
-        html += `<div class="guideline-note">${n}</div>`;
-      });
-      html += `</div>`;
-    }
-
+          ${period.rules.map(r => renderRuleBlock(r, false)).join('')}
+        </div>`;
+    });
     html += `</div>`;
-  });
+  }
 
-  html += `
-      </div>
-    </div>
-  `;
-
+  html += `</div>`;
   return html;
 }
 
@@ -2947,13 +4160,7 @@ function getTraitMeterInfo(key, trait) {
 function renderMendelianGenetics(genetics) {
   if (!genetics || Object.keys(genetics).length === 0) return '';
 
-  let html = '<div class="genetic-section">';
-  html += '<h3>Your Predicted Genetic Profile</h3>';
-  html += '<p style="font-size: 12px; color: #7f8c8d; margin-bottom: 16px; line-height: 1.5;">Based on Mendelian inheritance from your grandparents\' populations. Click any trait to see details.</p>';
-
-  html += '<div class="genetic-meters">';
-
-  // Legacy key mappings for custom-calculated traits (key in results -> key in GENE_META)
+  // Legacy key mappings for custom-calculated traits (raw key in results -> GENE_META key)
   const legacyKeyMap = {
     lactase: 'lactase_persistence',
     amy1: 'starch_digestion',
@@ -2966,31 +4173,50 @@ function renderMendelianGenetics(genetics) {
     altitude: 'altitude_adaptation_epas1'
   };
 
+  // Group traits by category
+  const categoryOrder = ['macro', 'vitamins', 'cardio', 'appetite', 'population', 'detox', 'metabolic', 'other'];
+  const groups = {};
+  categoryOrder.forEach(c => { groups[c] = []; });
+
   Object.keys(genetics).forEach((key, index) => {
     const trait = genetics[key];
-
-    // Get metadata: check trait._meta first (from generic calc), then GENE_META, then legacy mapping
     let meta = trait._meta;
     if (!meta) {
       const metaKey = legacyKeyMap[key] || key;
       meta = GENE_META[metaKey];
     }
     if (!meta) {
-      meta = { icon: '🧬', title: key.replace(/_/g, ' ').toUpperCase(), cssClass: 'generic' };
+      meta = { icon: '🧬', title: key.replace(/_/g, ' '), cssClass: 'generic' };
     }
 
+    const metaKey = legacyKeyMap[key] || key;
+    const catId = GENE_CATEGORY_MAP[metaKey] || 'other';
+    groups[catId].push({ key, trait, meta, index });
+  });
+
+  const traitCount = Object.keys(genetics).length;
+
+  // Build the trait card HTML
+  function buildTraitCard({ key, trait, meta, index }) {
     const { value, statusLabel, statusClass } = getTraitMeterInfo(key, trait);
     const cssClass = meta.cssClass || meta.class || 'generic';
-    const glossaryIcon = renderGlossaryIcon(key);
 
-    // Build detailed probability text for expanded view
+    // Build info icon — always shown, falls back to trait's own data
+    const glossaryIcon = renderGlossaryIcon(key, {
+      term: meta.title,
+      definition: trait.explanation || '',
+      gene: key.toUpperCase().replace(/_/g, '/'),
+      inheritance: trait.inheritance || ''
+    });
+
+    // Probability / detail text
     let probabilityText = '';
     if (key === 'amy1') {
       const range = trait.copy_range ?
-        `(likely range: ${trait.copy_range.min.toFixed(1)}-${trait.copy_range.max.toFixed(1)})` : '';
-      probabilityText = `${trait.copies.toFixed(1)} copies ${range}`;
+        ` (likely range: ${trait.copy_range.min.toFixed(1)}–${trait.copy_range.max.toFixed(1)})` : '';
+      probabilityText = `${trait.copies.toFixed(1)} copies${range}`;
     } else if (key === 'lactase' && trait.prob_range) {
-      const rangeText = `${(trait.prob_range.min * 100).toFixed(0)}-${(trait.prob_range.max * 100).toFixed(0)}%`;
+      const rangeText = `${(trait.prob_range.min * 100).toFixed(0)}–${(trait.prob_range.max * 100).toFixed(0)}%`;
       probabilityText = `${(trait.probability * 100).toFixed(0)}% likely (range: ${rangeText})`;
     } else if (trait.probability !== null && trait.probability !== undefined) {
       probabilityText = `${(trait.probability * 100).toFixed(0)}% probability`;
@@ -3000,12 +4226,15 @@ function renderMendelianGenetics(genetics) {
       probabilityText = `${trait.frequency.toFixed(0)}% allele frequency`;
     }
 
-    html += `
+    return `
       <div class="genetic-meter-item ${cssClass}" data-trait-index="${index}">
         <div class="meter-header" onclick="toggleTraitDetails(this)">
           <div class="meter-info">
             <span class="meter-icon">${meta.icon}</span>
-            <span class="meter-title">${meta.title}</span>
+            <div class="meter-title-group">
+              <span class="meter-title">${meta.title}</span>
+            </div>
+            ${glossaryIcon}
           </div>
           <div class="meter-visual">
             <div class="meter-bar">
@@ -3024,22 +4253,41 @@ function renderMendelianGenetics(genetics) {
           <div class="detail-row">
             <span class="detail-label">Probability:</span>
             <span class="detail-value">${probabilityText}</span>
-          </div>
-          ` : ''}
+          </div>` : ''}
           <div class="detail-row">
             <span class="detail-label">Inheritance:</span>
-            <span class="detail-value">${trait.inheritance} ${glossaryIcon}</span>
+            <span class="detail-value">${trait.inheritance}</span>
           </div>
           <div class="detail-explanation">${trait.explanation}</div>
           <div class="detail-recommendation">
             <strong>Recommendation:</strong> ${trait.recommendation}
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
+  }
+
+  let html = `<div class="genetic-section">`;
+  html += `<div class="genetic-section-header"><span>Genetic Trait Analysis</span><span class="trait-count-badge">${traitCount} traits</span></div>`;
+
+  categoryOrder.forEach(catId => {
+    const items = groups[catId];
+    if (!items || items.length === 0) return;
+
+    const catInfo = GENE_CATEGORY_INFO[catId];
+    html += `
+      <details class="genetic-category-details" open>
+        <summary class="genetic-category-summary">
+          <span class="genetic-category-icon">${catInfo.icon}</span>
+          <span class="genetic-category-label">${catInfo.label}</span>
+          <span class="genetic-category-count">${items.length}</span>
+          <span class="genetic-category-chevron">▼</span>
+        </summary>
+        <div class="genetic-meters">
+          ${items.map(buildTraitCard).join('')}
+        </div>
+      </details>`;
   });
 
-  html += '</div>'; // .genetic-meters
   html += '</div>'; // .genetic-section
   return html;
 }

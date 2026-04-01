@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ancestral Diet Explorer</title>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- App Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- html2canvas for results export -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <!-- jsPDF for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js" defer></script>
 </head>
 <body>
   <!-- Landing Page -->
@@ -192,6 +197,7 @@
             <button class="footer-link" data-modal="methodology">How We Calculate</button>
             <button class="footer-link" data-modal="about">About</button>
             <button class="footer-link" data-modal="privacy">Privacy</button>
+            <button class="footer-link" data-modal="settings">Contact Us</button>
           </div>
           <div class="footer-col">
             <h4>Disclaimer</h4>
@@ -237,6 +243,11 @@
           <span class="dropdown-icon">🔒</span>
           Privacy
         </button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item" data-modal="settings">
+          <span class="dropdown-icon">⚙️</span>
+          Settings
+        </button>
       </div>
     </div>
   </header>
@@ -256,6 +267,11 @@
 
       <!-- Sidebar Content -->
       <div class="sidebar-content">
+        <!-- Why This Matters -->
+        <div class="why-matters-panel">
+          <p>Your grandparents' origins shaped the genes that determine how you digest food. Dairy, starches, fats — your body handles each one differently based on where your family came from.</p>
+        </div>
+
         <!-- Mode Toggle -->
         <div class="mode-toggle">
           <button id="family-mode-btn" class="active">Family Tree</button>
@@ -415,6 +431,38 @@
                 <button class="btn btn-secondary btn-small" id="clear-profile-btn" style="display: none;">
                   Clear Profile
                 </button>
+
+                <div class="health-concerns-section" id="health-concerns-section" style="display:none">
+                  <div class="health-concerns-label">Health Concerns</div>
+                  <p class="health-concerns-hint">Flag foods that conflict with your health goals.</p>
+                  <div class="health-concerns-list">
+                    <label class="concern-item">
+                      <input type="checkbox" name="health-concern" value="heart_health">
+                      <span>🫀 Heart Health</span>
+                      <span class="concern-desc">Saturated fat &amp; cholesterol</span>
+                    </label>
+                    <label class="concern-item">
+                      <input type="checkbox" name="health-concern" value="blood_pressure">
+                      <span>🧂 Blood Pressure</span>
+                      <span class="concern-desc">Sodium &amp; salt-heavy foods</span>
+                    </label>
+                    <label class="concern-item">
+                      <input type="checkbox" name="health-concern" value="blood_sugar">
+                      <span>🍬 Blood Sugar</span>
+                      <span class="concern-desc">Refined carbs &amp; sugars</span>
+                    </label>
+                    <label class="concern-item">
+                      <input type="checkbox" name="health-concern" value="weight">
+                      <span>⚖️ Weight Management</span>
+                      <span class="concern-desc">High-calorie dense foods</span>
+                    </label>
+                    <label class="concern-item">
+                      <input type="checkbox" name="health-concern" value="digestive">
+                      <span>🫁 Digestive Issues</span>
+                      <span class="concern-desc">Gut-sensitive foods</span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -750,14 +798,72 @@
     </div>
   </div>
 
-  <!-- Recipe Modal -->
-  <div class="modal-overlay" id="recipe-modal">
-    <div class="modal-container">
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-container modal-container-narrow">
       <div class="modal-header">
-        <h2>Recipe</h2>
-        <button class="modal-close" onclick="hideModal('recipe-modal')">&times;</button>
+        <h2>⚙️ Settings</h2>
+        <button class="modal-close" onclick="hideModal('settings-modal')">&times;</button>
       </div>
-      <div class="modal-content" id="recipe-modal-body"></div>
+      <div class="modal-content">
+
+        <!-- Contact Us -->
+        <section class="settings-section">
+          <h3>Contact Us</h3>
+          <p>Questions, feedback, or data requests? Send us a message and we'll get back to you.</p>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Name</label>
+              <input class="form-input" type="text" id="contact-name" placeholder="Your name" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email</label>
+              <input class="form-input" type="email" id="contact-email" placeholder="your@email.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-subject">Topic</label>
+              <select class="form-input" id="contact-subject">
+                <option value="">Select a topic...</option>
+                <option value="feedback">General Feedback</option>
+                <option value="bug">Report a Bug</option>
+                <option value="data">Missing Ancestry / Data Request</option>
+                <option value="science">Question About the Science</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message</label>
+              <textarea class="form-textarea" id="contact-message" rows="4" placeholder="Tell us what's on your mind..."></textarea>
+            </div>
+            <div class="contact-status" id="contact-status"></div>
+            <button type="submit" class="btn btn-primary contact-submit" id="contact-submit">Send Message</button>
+          </form>
+        </section>
+
+        <div class="settings-divider"></div>
+
+        <!-- Data & Privacy -->
+        <section class="settings-section">
+          <h3>Data &amp; Privacy</h3>
+          <p>Your data lives only on your device — nothing is transmitted to any server.</p>
+          <div class="settings-actions">
+            <button class="btn btn-secondary btn-small" onclick="hideModal('settings-modal'); showModal('privacy-modal')">Privacy Policy</button>
+            <button class="btn-danger" id="settings-clear-btn">Clear All Data</button>
+          </div>
+        </section>
+
+        <div class="settings-divider"></div>
+
+        <!-- App Info -->
+        <section class="settings-section settings-section-last">
+          <h3>About</h3>
+          <div class="settings-meta">
+            <span class="meta-item">Ancestral Diet Explorer</span>
+            <span class="meta-item muted">60+ ancestral regions &nbsp;·&nbsp; 34+ genetic traits &nbsp;·&nbsp; 100% private</span>
+          </div>
+        </section>
+
+      </div>
     </div>
   </div>
 
@@ -767,7 +873,6 @@
   <script src="js/diet.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/user.js"></script>
-  <script src="js/recipes.js"></script>
   <script src="js/onboarding.js"></script>
   <script src="js/app.js"></script>
 </body>

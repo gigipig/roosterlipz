@@ -71,7 +71,10 @@ function createDefaultUser() {
     savedDiet: null,
 
     // Bookmarked recipes
-    bookmarkedRecipes: []
+    bookmarkedRecipes: [],
+
+    // Health concern flags
+    healthConcerns: []
   };
 }
 
@@ -405,6 +408,24 @@ function saveRecipeBookmark(recipeId) {
 }
 
 /**
+ * Get user's active health concern IDs
+ * @returns {string[]} Array of concern IDs
+ */
+function getUserHealthConcerns() {
+  return getUser().healthConcerns || [];
+}
+
+/**
+ * Save user's health concern selections
+ * @param {string[]} concerns - Array of concern IDs
+ */
+function saveHealthConcerns(concerns) {
+  const user = getUser();
+  user.healthConcerns = concerns;
+  saveUser(user);
+}
+
+/**
  * Remove a recipe bookmark
  * @param {string} recipeId - Recipe ID to remove
  */
@@ -424,6 +445,19 @@ function setupProfileEventHandlers() {
 
   if (viewBtn) {
     viewBtn.addEventListener('click', displaySavedDiet);
+  }
+
+  // Health concern checkboxes — live re-render on toggle
+  const profileSection = document.getElementById('user-profile-section');
+  if (profileSection) {
+    profileSection.addEventListener('change', e => {
+      if (e.target.name === 'health-concern') {
+        const checked = [...document.querySelectorAll('input[name="health-concern"]:checked')]
+          .map(cb => cb.value);
+        saveHealthConcerns(checked);
+        if (typeof refreshFoodsTab === 'function') refreshFoodsTab();
+      }
+    });
   }
 
   if (clearBtn) {

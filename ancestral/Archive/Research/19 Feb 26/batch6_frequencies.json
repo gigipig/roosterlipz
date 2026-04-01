@@ -1,0 +1,407 @@
+{
+  "batch": "6-longevity",
+  "genes_added": ["tert_telomere", "klotho_aging", "cetp_longevity", "apoe_brain_health"],
+  "notes": {
+    "klotho_aging": "KL-VS ABSENT in East Asians (0/874 Koreans) - confirmed. Present ~15% Europeans, ~10% South Asians, 0% Iranians",
+    "cetp_longevity": "CRITICAL: VV genotype is PROTECTIVE in Western populations but RISK factor in East Asians - opposite effect",
+    "apoe_brain_health": "f_e2 and f_e4 are separate frequencies. ε2 absent in Native Americans. ε4 highest in hunter-gatherers"
+  },
+  "populations": {
+    "aboriginal_aus": {
+      "tert_telomere": { "f": 45, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 26, "t": "efficient_absorption", "notes": "High ε4 reflects hunter-gatherer ancestry" }
+    },
+    "amazon": {
+      "tert_telomere": { "f": 40, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 10, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 18, "t": "efficient_absorption", "notes": "ε2 absent in Native Americans" }
+    },
+    "anatolian": {
+      "tert_telomere": { "f": 50, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 12, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "andean": {
+      "tert_telomere": { "f": 42, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 15, "t": "efficient_absorption" }
+    },
+    "arabian": {
+      "tert_telomere": { "f": 48, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 10, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 7, "t": "balanced_metabolism" }
+    },
+    "australian_coastal": {
+      "tert_telomere": { "f": 52, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 15, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 15, "t": "balanced_metabolism" }
+    },
+    "balkan": {
+      "tert_telomere": { "f": 51, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 14, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 7, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "bengal": {
+      "tert_telomere": { "f": 46, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "brazilian_coastal": {
+      "tert_telomere": { "f": 49, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 11, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 14, "t": "balanced_metabolism" }
+    },
+    "california_coast": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 20, "t": "efficient_absorption" }
+    },
+    "canadian_prairies": {
+      "tert_telomere": { "f": 50, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 14, "t": "balanced_metabolism" }
+    },
+    "caribbean_creole": {
+      "tert_telomere": { "f": 50, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 12, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 9, "f_e4": 18, "t": "balanced_metabolism" }
+    },
+    "caribbean_taino": {
+      "tert_telomere": { "f": 42, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 2, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 16, "t": "efficient_absorption" }
+    },
+    "caucasus": {
+      "tert_telomere": { "f": 51, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 13, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 11, "t": "balanced_metabolism" }
+    },
+    "central_africa": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 13, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 11, "f_e4": 25, "t": "efficient_absorption", "notes": "Pygmies 41% ε4" }
+    },
+    "central_asia": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 6, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 10, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "central_europe": {
+      "tert_telomere": { "f": 52, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 15, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 14, "t": "balanced_metabolism" }
+    },
+    "eastern_europe": {
+      "tert_telomere": { "f": 51, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 14, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 7, "f_e4": 13, "t": "balanced_metabolism" }
+    },
+    "eastern_woodlands": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 18, "t": "efficient_absorption" }
+    },
+    "ethiopia": {
+      "tert_telomere": { "f": 48, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 18, "t": "efficient_absorption" }
+    },
+    "gaucho": {
+      "tert_telomere": { "f": 50, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 12, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "great_plains": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 20, "t": "efficient_absorption" }
+    },
+    "highland_se_asia": {
+      "tert_telomere": { "f": 44, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids", "notes": "VV is risk in East Asians" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "horn_somalia": {
+      "tert_telomere": { "f": 48, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 9, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 17, "t": "efficient_absorption" }
+    },
+    "inuit": {
+      "tert_telomere": { "f": 40, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 7, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 22, "t": "efficient_absorption", "notes": "ε4 beneficial for high-fat Arctic diet" }
+    },
+    "japan": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance", "notes": "Direct: 42.6% C allele" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho", "notes": "ABSENT in East Asians" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids", "notes": "VV is RISK genotype" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "korea": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho", "notes": "0/874 Koreans tested" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "kurdish": {
+      "tert_telomere": { "f": 49, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 10, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 9, "t": "balanced_metabolism" }
+    },
+    "maasai": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 10, "f_e4": 22, "t": "efficient_absorption" }
+    },
+    "maghreb": {
+      "tert_telomere": { "f": 49, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 11, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "malagasy": {
+      "tert_telomere": { "f": 45, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 4, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 10, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 7, "f_e4": 16, "t": "balanced_metabolism" }
+    },
+    "maori": {
+      "tert_telomere": { "f": 44, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 1, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 3, "f_e4": 15, "t": "efficient_absorption" }
+    },
+    "med_levant": {
+      "tert_telomere": { "f": 50, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 12, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 9, "t": "balanced_metabolism" }
+    },
+    "med_southern": {
+      "tert_telomere": { "f": 51, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 14, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 7, "f_e4": 8, "t": "balanced_metabolism", "notes": "Lowest ε4 globally" }
+    },
+    "melanesia": {
+      "tert_telomere": { "f": 44, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 1, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 25, "t": "efficient_absorption" }
+    },
+    "mesoamerica": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 15, "t": "efficient_absorption" }
+    },
+    "mesopotamian": {
+      "tert_telomere": { "f": 49, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 10, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 9, "t": "balanced_metabolism" }
+    },
+    "mestizo_mesoamerican": {
+      "tert_telomere": { "f": 46, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 6, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 10, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 3, "f_e4": 11, "t": "balanced_metabolism" }
+    },
+    "micronesia": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 1, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 3, "f_e4": 18, "t": "efficient_absorption" }
+    },
+    "mongolia": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "nepal": {
+      "tert_telomere": { "f": 45, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 5, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 11, "t": "balanced_metabolism" }
+    },
+    "nile_valley": {
+      "tert_telomere": { "f": 48, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 9, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 16, "t": "balanced_metabolism" }
+    },
+    "nilotic": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 10, "f_e4": 23, "t": "efficient_absorption" }
+    },
+    "nordic": {
+      "tert_telomere": { "f": 53, "t": "enhanced_maintenance", "notes": "Swedish direct: 53%" },
+      "klotho_aging": { "f": 15, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 19, "t": "efficient_absorption", "notes": "Finnish highest ε4 in Europe" }
+    },
+    "north_china": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids", "notes": "VV is RISK in Chinese" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "north_india": {
+      "tert_telomere": { "f": 46, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant", "notes": "Present in Indians" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "pacific_nw": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 19, "t": "efficient_absorption" }
+    },
+    "patagonia": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 16, "t": "efficient_absorption" }
+    },
+    "persian": {
+      "tert_telomere": { "f": 49, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho", "notes": "Absent in Iranians" },
+      "cetp_longevity": { "f": 10, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 9, "t": "balanced_metabolism" }
+    },
+    "polynesia": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 1, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 3, "f_e4": 16, "t": "efficient_absorption" }
+    },
+    "sahel": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 10, "f_e4": 24, "t": "efficient_absorption" }
+    },
+    "se_asia_island": {
+      "tert_telomere": { "f": 44, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 1, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "se_asia_main": {
+      "tert_telomere": { "f": 44, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 11, "t": "balanced_metabolism" }
+    },
+    "siberia": {
+      "tert_telomere": { "f": 45, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 2, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 3, "f_e4": 18, "t": "efficient_absorption" }
+    },
+    "sichuan_sw_china": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 5, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "south_china": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 9, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 6, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "south_india": {
+      "tert_telomere": { "f": 46, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "southeast_us": {
+      "tert_telomere": { "f": 50, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 13, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 16, "t": "balanced_metabolism" }
+    },
+    "southern_africa": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 13, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 11, "f_e4": 30, "t": "efficient_absorption", "notes": "Khoi San 37% ε4" }
+    },
+    "southwest_us": {
+      "tert_telomere": { "f": 48, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 10, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 12, "t": "balanced_metabolism" }
+    },
+    "subarctic": {
+      "tert_telomere": { "f": 41, "t": "standard_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 0, "f_e4": 20, "t": "efficient_absorption" }
+    },
+    "sudanian": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 10, "f_e4": 23, "t": "efficient_absorption" }
+    },
+    "tibet": {
+      "tert_telomere": { "f": 43, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 0, "t": "standard_klotho" },
+      "cetp_longevity": { "f": 8, "t": "standard_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 11, "t": "balanced_metabolism" }
+    },
+    "west_africa": {
+      "tert_telomere": { "f": 47, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 8, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 13, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 11, "f_e4": 22, "t": "efficient_absorption", "notes": "High both ε2 and ε4" }
+    },
+    "west_india": {
+      "tert_telomere": { "f": 46, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 10, "t": "longevity_variant" },
+      "cetp_longevity": { "f": 11, "t": "longevity_lipids" },
+      "apoe_brain_health": { "f_e2": 4, "f_e4": 10, "t": "balanced_metabolism" }
+    },
+    "western_europe": {
+      "tert_telomere": { "f": 52, "t": "enhanced_maintenance" },
+      "klotho_aging": { "f": 15, "t": "longevity_variant", "notes": "~25% heterozygotes" },
+      "cetp_longevity": { "f": 12, "t": "longevity_lipids", "notes": "VV protective; Ashkenazi studies" },
+      "apoe_brain_health": { "f_e2": 8, "f_e4": 15, "t": "balanced_metabolism" }
+    }
+  }
+}

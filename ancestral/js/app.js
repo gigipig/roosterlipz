@@ -225,50 +225,599 @@ function initHeaderMenu() {
   }
 }
 
-/**
- * Export results as an image
- */
-async function exportResultsAsImage() {
-  const btn = document.getElementById('export-results-btn');
-  const content = document.getElementById('diet-content');
+// ---------------------------------------------------------------------------
+// Settings Modal — Contact Form + Data Management
+// ---------------------------------------------------------------------------
 
-  if (!content || !window.html2canvas) {
-    showToast('Export not available. Please try again.', 'error');
+/**
+ * Formspree endpoint for contact form submissions.
+ * Sign up at formspree.io, create a form, and paste your endpoint here.
+ * Leave as null to fall back to opening the user's email client.
+ *
+ * @example 'https://formspree.io/f/abcdefgh'
+ */
+const FORMSPREE_ENDPOINT = null;
+
+/**
+ * Initialize settings modal — contact form + clear data button.
+ */
+function initSettingsModal() {
+  const form = document.getElementById('contact-form');
+  const clearBtn = document.getElementById('settings-clear-btn');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name    = document.getElementById('contact-name').value.trim();
+      const email   = document.getElementById('contact-email').value.trim();
+      const subject = document.getElementById('contact-subject').value;
+      const message = document.getElementById('contact-message').value.trim();
+      const submitBtn = document.getElementById('contact-submit');
+
+      // Basic validation
+      if (!name || !email || !message) {
+        showContactStatus('error', 'Please fill in your name, email, and message.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showContactStatus('error', 'Please enter a valid email address.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      if (FORMSPREE_ENDPOINT) {
+        try {
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message })
+          });
+          if (res.ok) {
+            showContactStatus('success', '✓ Message sent! We\'ll get back to you soon.');
+            form.reset();
+          } else {
+            const data = await res.json();
+            showContactStatus('error', data.error || 'Something went wrong — please try again.');
+          }
+        } catch (_) {
+          showContactStatus('error', 'Could not send message. Check your connection and try again.');
+        }
+      } else {
+        // Fallback: open the user's email client
+        const subjectLine = subject ? `[${subject}] Feedback` : 'Feedback';
+        const body = `Name: ${name}\n\n${message}`;
+        window.location.href = `mailto:hello@ancestraldietexplorer.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+        showContactStatus('success', 'Your email client should have opened. If not, email hello@ancestraldietexplorer.com directly.');
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (!confirm('Clear all saved data? This will reset your profile, ancestry selections, and saved diet.')) return;
+      hideModal('settings-modal');
+      clearUserData();
+      document.querySelectorAll('select').forEach(s => s.value = '');
+      document.querySelectorAll('input[type="number"]').forEach(i => i.value = '0');
+      updateProfileUI();
+      hideResults();
+      updatePercentageTotal();
+      showToast('Profile cleared.', 'info');
+    });
+  }
+}
+
+/**
+ * Show a status message inside the contact form.
+ * @param {'success'|'error'} type
+ * @param {string} message
+ */
+function showContactStatus(type, message) {
+  const el = document.getElementById('contact-status');
+  if (!el) return;
+  el.className = `contact-status ${type}`;
+  el.textContent = message;
+}
+
+// ---------------------------------------------------------------------------
+
+/**
+ * Export results as a bespoke multi-page PDF using jsPDF directly.
+ * No html2canvas — all content is drawn programmatically.
+ */
+function exportResultsAsImage() {
+  const btn = document.getElementById('export-results-btn');
+  const saved = getUserSavedDiet();
+
+  if (!saved || !saved.data || !window.jspdf) {
+    showToast('Export not available. Calculate a diet first.', 'error');
     return;
   }
 
-  // Update button state
   btn.classList.add('exporting');
   const originalText = btn.querySelector('.export-text').textContent;
   btn.querySelector('.export-text').textContent = 'Saving...';
 
   try {
-    // Create canvas from content
-    const canvas = await html2canvas(content, {
-      backgroundColor: '#000000',
-      scale: 2, // Higher quality
-      logging: false,
-      useCORS: true,
-      allowTaint: true
-    });
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-    // Convert to blob and download
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.download = `ancestral-diet-${new Date().toISOString().slice(0, 10)}.png`;
-      link.href = url;
-      link.click();
-      URL.revokeObjectURL(url);
+    const user = getUser();
+    const blended = saved.data.blended;
+    const genetics = saved.data.mendelianGenetics || null;
+    const isMendelian = saved.mode === 'family' && !!genetics;
 
-      // Reset button
-      btn.classList.remove('exporting');
-      btn.querySelector('.export-text').textContent = originalText;
-      showToast('Image saved to downloads!', 'success');
-    }, 'image/png');
+    // ── Layout constants ──
+    const PAGE_W = 210, PAGE_H = 297;
+    const MARGIN = 15;
+    const CONTENT_W = PAGE_W - MARGIN * 2;
+    const ACCENT = [29, 185, 84];       // #1db954
+    const BG = [0, 0, 0];
+    const WHITE = [255, 255, 255];
+    const MUTED = [140, 140, 140];
+    const AMBER = [255, 183, 77];
+    const RED = [229, 57, 53];
+    const YELLOW = [255, 214, 10];
+
+    let curY = 0;
+    let pageNum = 0;
+
+    // ── Helpers ──
+
+    function fillPage() {
+      doc.setFillColor(...BG);
+      doc.rect(0, 0, PAGE_W, PAGE_H, 'F');
+    }
+
+    function newPage() {
+      doc.addPage();
+      pageNum++;
+      fillPage();
+      curY = MARGIN;
+    }
+
+    function checkPageBreak(needed) {
+      if (curY + needed > PAGE_H - 18) {
+        newPage();
+        return true;
+      }
+      return false;
+    }
+
+    function setFont(size, color, style) {
+      doc.setFontSize(size);
+      doc.setTextColor(...(color || WHITE));
+      if (style === 'bold') {
+        doc.setFont('helvetica', 'bold');
+      } else {
+        doc.setFont('helvetica', 'normal');
+      }
+    }
+
+    function drawRect(x, y, w, h, color) {
+      doc.setFillColor(...color);
+      doc.rect(x, y, w, h, 'F');
+    }
+
+    function stripHtml(str) {
+      return (str || '').replace(/<[^>]+>/g, '');
+    }
+
+    /** Word-wrap text, return array of lines */
+    function wrapText(text, maxWidth, fontSize) {
+      doc.setFontSize(fontSize);
+      return doc.splitTextToSize(text, maxWidth);
+    }
+
+    function drawSectionHeader(title) {
+      checkPageBreak(14);
+      setFont(13, ACCENT, 'bold');
+      doc.text(title, MARGIN, curY);
+      curY += 2;
+      drawRect(MARGIN, curY, CONTENT_W, 0.5, ACCENT);
+      curY += 6;
+    }
+
+    /** Draw a colored pill/tag at (x, y). Returns the width consumed. */
+    function drawTag(text, x, y, bgColor) {
+      setFont(8, null, 'normal');
+      const tw = doc.getTextWidth(text) + 5;
+      const th = 5.5;
+      doc.setFillColor(...bgColor);
+      doc.roundedRect(x, y, tw, th, 1.5, 1.5, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.text(text, x + 2.5, y + 3.9);
+      return tw + 2;
+    }
+
+    /** Draw a horizontal macro bar + percentage labels */
+    function drawMacroBar(x, y, w, macros) {
+      const h = 7;
+      const carbsW = (macros.carbs_pct / 100) * w;
+      const protW = (macros.protein_pct / 100) * w;
+      const fatW = (macros.fat_pct / 100) * w;
+
+      // Background
+      drawRect(x, y, w, h, [30, 30, 30]);
+      // Segments
+      drawRect(x, y, carbsW, h, ACCENT);
+      drawRect(x + carbsW, y, protW, h, RED);
+      drawRect(x + carbsW + protW, y, fatW, h, YELLOW);
+
+      // Labels below
+      setFont(9, ACCENT, 'bold');
+      doc.text(`${macros.carbs_pct}% Carbs`, x, y + h + 5);
+      setFont(9, RED, 'bold');
+      doc.text(`${macros.protein_pct}% Protein`, x + w * 0.35, y + h + 5);
+      setFont(9, YELLOW, 'bold');
+      doc.text(`${macros.fat_pct}% Fat`, x + w * 0.7, y + h + 5);
+    }
+
+    /** Draw flow-wrapped tags. Returns new curY after all tags. */
+    function drawTagsFlow(items, startY, bgColor) {
+      if (!items || items.length === 0) return startY;
+      let tx = MARGIN;
+      let ty = startY;
+      const tagH = 5.5;
+      const rowGap = 2;
+
+      items.forEach(item => {
+        setFont(8, null, 'normal');
+        const tw = doc.getTextWidth(item) + 5 + 2; // pill + gap
+        if (tx + tw > MARGIN + CONTENT_W) {
+          tx = MARGIN;
+          ty += tagH + rowGap;
+          if (ty + tagH > PAGE_H - 18) {
+            newPage();
+            ty = curY;
+          }
+        }
+        drawTag(item, tx, ty, bgColor);
+        tx += tw;
+      });
+      return ty + tagH + 4;
+    }
+
+    /** Draw a compact trait row for the genetics page */
+    function drawTraitRow(title, statusLabel, statusClass, value) {
+      checkPageBreak(10);
+      const rowY = curY;
+
+      // Title
+      setFont(9, WHITE, 'normal');
+      doc.text(title, MARGIN, rowY + 4);
+
+      // Status pill
+      const pillColors = {
+        high: ACCENT,
+        moderate: AMBER,
+        low: [120, 120, 120]
+      };
+      const pillColor = pillColors[statusClass] || MUTED;
+      const pillX = MARGIN + 85;
+      setFont(7.5, null, 'normal');
+      const pw = doc.getTextWidth(statusLabel) + 5;
+      doc.setFillColor(...pillColor);
+      doc.roundedRect(pillX, rowY, pw, 5.5, 1.5, 1.5, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.text(statusLabel, pillX + 2.5, rowY + 3.9);
+
+      // Progress bar
+      const barX = MARGIN + 120;
+      const barW = CONTENT_W - 120;
+      const barH = 3;
+      const barY = rowY + 1.5;
+      drawRect(barX, barY, barW, barH, [40, 40, 40]);
+      const fillW = Math.max(0, (value / 100) * barW);
+      drawRect(barX, barY, fillW, barH, pillColor);
+
+      curY = rowY + 8;
+    }
+
+    // ── Legacy key map (duplicated from genetics.js) ──
+    const legacyKeyMap = {
+      lactase: 'lactase_persistence',
+      amy1: 'starch_digestion',
+      fads: 'pufa_metabolism',
+      slc24a5: 'vitamin_d_metabolism',
+      aldh2: 'alcohol_metabolism',
+      crebrf: 'polynesian_energy_storage',
+      cpt1a: 'arctic_fat_metabolism',
+      edar: 'edar_adaptation',
+      altitude: 'altitude_adaptation_epas1'
+    };
+
+    // ── Page Builders ──
+
+    function buildCoverPage() {
+      fillPage();
+      pageNum = 1;
+
+      // Top accent strip
+      drawRect(0, 0, PAGE_W, 4, ACCENT);
+
+      // Title
+      curY = 30;
+      setFont(24, ACCENT, 'bold');
+      doc.text('ANCESTRAL DIET EXPLORER', PAGE_W / 2, curY, { align: 'center' });
+      curY += 9;
+      setFont(12, MUTED, 'normal');
+      doc.text('Personalized Diet Report', PAGE_W / 2, curY, { align: 'center' });
+
+      // User card
+      curY += 14;
+      drawRect(MARGIN, curY, CONTENT_W, 56, [18, 18, 18]);
+      const cardX = MARGIN + 8;
+      let cardY = curY + 9;
+
+      setFont(14, WHITE, 'bold');
+      doc.text(user.username || 'User', cardX, cardY);
+      cardY += 7;
+
+      // Mode badge
+      const modeText = isMendelian ? 'MENDELIAN MODE' : 'DNA / BLENDED MODE';
+      setFont(7.5, null, 'normal');
+      const badgeW = doc.getTextWidth(modeText) + 6;
+      doc.setFillColor(...ACCENT);
+      doc.roundedRect(cardX, cardY - 3.5, badgeW, 5.5, 1.5, 1.5, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.text(modeText, cardX + 3, cardY);
+      cardY += 9;
+
+      // Ancestry list
+      if (blended && blended.geos) {
+        setFont(9, MUTED, 'normal');
+        doc.text('Ancestry:', cardX, cardY);
+        setFont(9, WHITE, 'normal');
+        blended.geos.forEach((g, idx) => {
+          const pct = Math.round(blended.weights[idx] * 100);
+          cardY += 5;
+          doc.text(`${g.name}  ${pct}%`, cardX + 2, cardY);
+        });
+        cardY += 6;
+      }
+
+      // Generated date
+      setFont(8, MUTED, 'normal');
+      const dateStr = saved.calculatedAt
+        ? new Date(saved.calculatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+        : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      doc.text('Generated: ' + dateStr, cardX, cardY);
+
+      curY += 60;
+
+      // Macro preview
+      if (blended && blended.blendedMacros) {
+        curY += 8;
+        drawSectionHeader('Macronutrient Profile');
+        drawMacroBar(MARGIN, curY, CONTENT_W, blended.blendedMacros);
+        curY += 22;
+      }
+
+      // Disclaimer
+      curY = PAGE_H - 28;
+      setFont(7, MUTED, 'normal');
+      const disc = wrapText(
+        'Disclaimer: This report is for educational and informational purposes only. It does not constitute medical or dietary advice. Genetic predictions are statistical estimates based on population-level data and Mendelian inheritance models. Consult a healthcare professional before making significant dietary changes.',
+        CONTENT_W, 7
+      );
+      disc.forEach(line => {
+        doc.text(line, MARGIN, curY);
+        curY += 3.5;
+      });
+    }
+
+    function buildTakeawaysPage() {
+      if (!isMendelian) return;
+      newPage();
+
+      const { strengths, watchItems } = analyzeGeneticTraits(genetics);
+
+      setFont(16, WHITE, 'bold');
+      doc.text('Key Takeaways', MARGIN, curY);
+      curY += 10;
+
+      const colW = (CONTENT_W - 6) / 2;
+
+      // Strengths column
+      const leftX = MARGIN;
+      let leftY = curY;
+      setFont(11, ACCENT, 'bold');
+      doc.text('Genetic Strengths', leftX, leftY);
+      leftY += 7;
+
+      strengths.forEach(s => {
+        setFont(9, ACCENT, 'bold');
+        // Green dot
+        doc.setFillColor(...ACCENT);
+        doc.circle(leftX + 1.5, leftY - 1, 1.2, 'F');
+        doc.text(stripHtml(s.title), leftX + 5, leftY);
+        leftY += 4.5;
+        setFont(7.5, MUTED, 'normal');
+        const lines = wrapText(stripHtml(s.detail), colW - 5, 7.5);
+        lines.forEach(l => {
+          doc.text(l, leftX + 5, leftY);
+          leftY += 3.5;
+        });
+        leftY += 3;
+      });
+
+      // Watch items column
+      const rightX = MARGIN + colW + 6;
+      let rightY = curY;
+      setFont(11, AMBER, 'bold');
+      doc.text('Things to Watch', rightX, rightY);
+      rightY += 7;
+
+      watchItems.forEach(w => {
+        setFont(9, AMBER, 'bold');
+        doc.setFillColor(...AMBER);
+        doc.circle(rightX + 1.5, rightY - 1, 1.2, 'F');
+        doc.text(stripHtml(w.title), rightX + 5, rightY);
+        rightY += 4.5;
+        setFont(7.5, MUTED, 'normal');
+        const lines = wrapText(stripHtml(w.detail), colW - 5, 7.5);
+        lines.forEach(l => {
+          doc.text(l, rightX + 5, rightY);
+          rightY += 3.5;
+        });
+        rightY += 3;
+      });
+
+      curY = Math.max(leftY, rightY) + 4;
+    }
+
+    function buildGeneticsPages() {
+      if (!isMendelian) return;
+      newPage();
+
+      setFont(16, WHITE, 'bold');
+      doc.text('Genetic Profile', MARGIN, curY);
+      curY += 10;
+
+      Object.keys(genetics).forEach(key => {
+        const trait = genetics[key];
+        let meta = trait._meta;
+        if (!meta) {
+          const metaKey = legacyKeyMap[key] || key;
+          meta = (typeof GENE_META !== 'undefined') ? GENE_META[metaKey] : null;
+        }
+        if (!meta) {
+          meta = { title: key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) };
+        }
+
+        const { value, statusLabel, statusClass } = getTraitMeterInfo(key, trait);
+        drawTraitRow(meta.title, statusLabel, statusClass, value);
+      });
+    }
+
+    function buildFoodsPage() {
+      if (!blended) return;
+      newPage();
+
+      setFont(16, WHITE, 'bold');
+      doc.text('Recommended Foods', MARGIN, curY);
+      curY += 10;
+
+      const sections = [
+        { title: 'Common Foods', items: blended.commonFoods, color: ACCENT },
+        { title: 'Proteins', items: blended.allProteins, color: RED },
+        { title: 'Healthy Fats', items: blended.allFats, color: YELLOW },
+        { title: 'Herbs & Spices', items: blended.allHerbs, color: [156, 110, 255] },
+        { title: 'Cooking Methods', items: blended.allCooking, color: [100, 160, 200] }
+      ];
+
+      sections.forEach(sec => {
+        if (!sec.items || sec.items.length === 0) return;
+        checkPageBreak(16);
+        drawSectionHeader(sec.title);
+        curY = drawTagsFlow(sec.items, curY, sec.color);
+        curY += 2;
+      });
+    }
+
+    function buildAncestryPages() {
+      if (!blended || !blended.geos) return;
+
+      blended.geos.forEach((geo, idx) => {
+        const diet = blended.diets[idx];
+        if (!diet) return;
+
+        // Always start a new page (or check break for large sets)
+        newPage();
+
+        const pct = Math.round(blended.weights[idx] * 100);
+
+        // Card background
+        const cardTop = curY;
+        drawRect(MARGIN, cardTop, CONTENT_W, 12, [18, 18, 18]);
+        setFont(13, WHITE, 'bold');
+        doc.text(geo.name, MARGIN + 4, cardTop + 8);
+
+        // Weight badge
+        const badgeText = `${pct}%`;
+        setFont(9, null, 'normal');
+        const bw = doc.getTextWidth(badgeText) + 5;
+        doc.setFillColor(...ACCENT);
+        doc.roundedRect(MARGIN + CONTENT_W - bw - 4, cardTop + 3, bw, 6, 1.5, 1.5, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.text(badgeText, MARGIN + CONTENT_W - bw - 1.5, cardTop + 7.5);
+
+        curY = cardTop + 16;
+
+        // Culture
+        if (geo.culture) {
+          setFont(8, MUTED, 'normal');
+          doc.text(geo.culture, MARGIN, curY);
+          curY += 5;
+        }
+
+        // Diet signature
+        if (diet.diet_signature) {
+          setFont(9, WHITE, 'normal');
+          const sigLines = wrapText(stripHtml(diet.diet_signature), CONTENT_W, 9);
+          sigLines.forEach(l => {
+            checkPageBreak(5);
+            doc.text(l, MARGIN, curY);
+            curY += 4.5;
+          });
+          curY += 3;
+        }
+
+        // Staple foods as tags
+        const staples = [...(diet.staples || []), ...(diet.common_foods || [])];
+        if (staples.length > 0) {
+          checkPageBreak(12);
+          setFont(10, ACCENT, 'bold');
+          doc.text('Staple Foods', MARGIN, curY);
+          curY += 5;
+          curY = drawTagsFlow(staples.slice(0, 20), curY, ACCENT);
+          curY += 2;
+        }
+
+        // Individual macro bar
+        if (diet.macros) {
+          checkPageBreak(22);
+          setFont(10, ACCENT, 'bold');
+          doc.text('Macronutrient Profile', MARGIN, curY);
+          curY += 5;
+          drawMacroBar(MARGIN, curY, CONTENT_W * 0.75, diet.macros);
+          curY += 22;
+        }
+      });
+    }
+
+    function addFooters() {
+      const total = doc.getNumberOfPages();
+      for (let i = 1; i <= total; i++) {
+        doc.setPage(i);
+        setFont(7, MUTED, 'normal');
+        doc.text(`Ancestral Diet Explorer  |  Page ${i} of ${total}`, PAGE_W / 2, PAGE_H - 8, { align: 'center' });
+      }
+    }
+
+    // ── Build the PDF ──
+    buildCoverPage();
+    buildTakeawaysPage();
+    buildGeneticsPages();
+    buildFoodsPage();
+    buildAncestryPages();
+    addFooters();
+
+    doc.save(`ancestral-diet-${new Date().toISOString().slice(0, 10)}.pdf`);
+
+    btn.classList.remove('exporting');
+    btn.querySelector('.export-text').textContent = originalText;
+    showToast('PDF saved to downloads!', 'success');
   } catch (error) {
     console.error('Export failed:', error);
-    showToast('Failed to export results. Please try again.', 'error');
+    showToast('Failed to export PDF. Please try again.', 'error');
     btn.classList.remove('exporting');
     btn.querySelector('.export-text').textContent = originalText;
   }
@@ -289,6 +838,9 @@ async function init() {
 
   // Setup header menu dropdown
   initHeaderMenu();
+
+  // Setup settings modal (contact form + clear data)
+  initSettingsModal();
 
   // Setup modal close handlers
   initModalHandlers();
@@ -409,15 +961,33 @@ function setupEventHandlers() {
 
   // Results tab switching (event delegation)
   document.getElementById('diet-content').addEventListener('click', (e) => {
-    const btn = e.target.closest('.results-tabs button[data-tab]');
-    if (!btn) return;
-    const container = document.getElementById('diet-content');
-    const tabName = btn.dataset.tab;
-    container.querySelectorAll('.results-tabs button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    container.querySelectorAll('.results-tab-panel').forEach(p => p.classList.remove('active'));
-    const panel = container.querySelector(`.results-tab-panel[data-tab-panel="${tabName}"]`);
-    if (panel) panel.classList.add('active');
+    // Top-level results tabs (Overview / Genetics / Diet / Foods)
+    const topBtn = e.target.closest('.results-tabs button[data-tab]');
+    if (topBtn) {
+      const container = document.getElementById('diet-content');
+      const tabName = topBtn.dataset.tab;
+      container.querySelectorAll('.results-tabs button').forEach(b => b.classList.remove('active'));
+      topBtn.classList.add('active');
+      container.querySelectorAll('.results-tab-panel').forEach(p => p.classList.remove('active'));
+      const panel = container.querySelector(`.results-tab-panel[data-tab-panel="${tabName}"]`);
+      if (panel) panel.classList.add('active');
+      return;
+    }
+
+    // Foods sub-filter tabs (All / Proteins / Fats / Herbs)
+    const filterBtn = e.target.closest('.foods-filter-tabs button[data-filter]');
+    if (filterBtn) {
+      const tabsContainer = filterBtn.closest('.foods-filter-tabs');
+      const browseSection = filterBtn.closest('.browse-foods-section');
+      if (!tabsContainer || !browseSection) return;
+
+      const filter = filterBtn.dataset.filter;
+      tabsContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      filterBtn.classList.add('active');
+      browseSection.querySelectorAll('.food-filter-group').forEach(g => {
+        g.classList.toggle('food-filter-group--active', g.dataset.filterGroup === filter);
+      });
+    }
   });
 
   // Methodology modal buttons

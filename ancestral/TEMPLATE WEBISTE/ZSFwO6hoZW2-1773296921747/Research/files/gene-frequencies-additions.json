@@ -1,0 +1,5039 @@
+{
+  "aboriginal_aus": {
+    "pon1_antioxidant": {
+      "f": 55,
+      "p": 0.55,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 55%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 18,
+      "p": 0.18,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 18%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoa5_triglycerides": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 20%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "slc6a4_serotonin": {
+      "f": 50,
+      "p": 0.5,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 50%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 5,
+      "p": 0.05,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 5%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoc3_omega3_response": {
+      "f": 15,
+      "p": 0.15,
+      "t": "responsive",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 15%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "snps": {
+        "rs2854116": {
+          "f": 22
+        },
+        "rs2854117": {
+          "f": 18
+        }
+      },
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Traditional diet rich in native animal fats, bush tucker, and seasonal plant foods with limited processed fat exposure.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    }
+  },
+  "amazon": {
+    "pon1_antioxidant": {
+      "f": 50,
+      "p": 0.5,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 50%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 19,
+      "p": 0.19,
+      "t": "normal",
+      "desc": "T allele (P446L): 19%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Traditional diet based on cassava, fish, game, and tropical fruits with minimal dairy or fermented foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "anatolian": {
+    "pon1_antioxidant": {
+      "f": 35,
+      "p": 0.35,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 35%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 40%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "andean": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 20%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 42,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 42%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Traditional high-altitude diet of quinoa, potatoes, llama meat, and guinea pig with coca leaf use.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "arabian": {
+    "pon1_antioxidant": {
+      "f": 38,
+      "p": 0.38,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 38%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 38,
+      "p": 0.38,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 38%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "australian_coastal": {
+    "pon1_antioxidant": {
+      "f": 55,
+      "p": 0.55,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 55%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 18,
+      "p": 0.18,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 18%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoa5_triglycerides": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 20%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "slc6a4_serotonin": {
+      "f": 50,
+      "p": 0.5,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 50%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 5,
+      "p": 0.05,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 5%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoc3_omega3_response": {
+      "f": 15,
+      "p": 0.15,
+      "t": "responsive",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 15%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "snps": {
+        "rs2854116": {
+          "f": 22
+        },
+        "rs2854117": {
+          "f": 18
+        }
+      },
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Coastal foraging tradition with seafood, shellfish, native plants, and marine resources.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    }
+  },
+  "balkan": {
+    "pon1_antioxidant": {
+      "f": 33,
+      "p": 0.33,
+      "t": "slow",
+      "desc": "R allele (rs662): 33%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 40%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "fgf21_carb_preference": {
+      "f": 55,
+      "p": 0.55,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 55%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "slc6a4_serotonin": {
+      "f": 43,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 43%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "hnmt_histamine": {
+      "f": 12,
+      "p": 0.12,
+      "t": "reduced",
+      "desc": "T allele (Ile105): 12%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoc3_omega3_response": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 28%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "snps": {
+        "rs2854116": {
+          "f": 38
+        },
+        "rs2854117": {
+          "f": 32
+        }
+      },
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 50,
+      "p": 0.5,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 50%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    }
+  },
+  "bengal": {
+    "pon1_antioxidant": {
+      "f": 37,
+      "p": 0.37,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 37%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 32,
+      "p": 0.32,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 32%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 30,
+      "p": 0.3,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 30%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 52,
+      "p": 0.5,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 52%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 23%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 35,
+      "p": 0.35,
+      "t": "blunted",
+      "desc": "C2 haplotype: 35%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "snps": {
+        "rs2854116": {
+          "f": 45
+        },
+        "rs2854117": {
+          "f": 40
+        }
+      },
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 45,
+      "p": 0.45,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 45%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
+      "notes": "gnomAD v3.1.2 SAS"
+    }
+  },
+  "brazilian_coastal": {
+    "pon1_antioxidant": {
+      "f": 44,
+      "p": 0.44,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 44%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 28%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 59,
+      "p": 0.59,
+      "t": "carb_preferring",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 59%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 10%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 37%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 10%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 20%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 24,
+      "p": 0.24,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 24%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 29
+        }
+      },
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 45,
+      "p": 0.45,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 45%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
+      "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
+    }
+  },
+  "california_coast": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Coastal foraging tradition with shellfish, acorns, salmon, and seasonal plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "canadian_prairies": {
+    "pon1_antioxidant": {
+      "f": 35,
+      "p": 0.35,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 35%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 33,
+      "p": 0.33,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 33%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 56,
+      "p": 0.56,
+      "t": "carb_preferring",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 56%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 11,
+      "p": 0.11,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 11%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 41,
+      "p": 0.48,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 41%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 11,
+      "p": 0.11,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 11%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 23%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 24,
+      "p": 0.24,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 24%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "snps": {
+        "rs2854116": {
+          "f": 34
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 47,
+      "p": 0.47,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 47%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
+      "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
+    }
+  },
+  "caribbean_creole": {
+    "pon1_antioxidant": {
+      "f": 54,
+      "p": 0.54,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 54%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 20%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 62,
+      "p": 0.62,
+      "t": "carb_preferring",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 62%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 11,
+      "p": 0.11,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 11%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 33,
+      "p": 0.45,
+      "t": "efficient",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 33%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 9%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 23%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 41,
+      "p": 0.41,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 41%. Creole cuisine blending African, European, and Indigenous traditions with tropical produce, seafood, and root vegetables",
+      "notes": "Admixed: ~65% AFR, ~25% EUR, ~10% AMR weighted average"
+    }
+  },
+  "caribbean_taino": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Pre-Columbian diet of cassava, maize, fish, hutia, and tropical fruits.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "caucasus": {
+    "pon1_antioxidant": {
+      "f": 33,
+      "p": 0.33,
+      "t": "slow",
+      "desc": "R allele (rs662): 33%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 41,
+      "p": 0.41,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 41%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "central_africa": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 12,
+      "p": 0.12,
+      "t": "normal",
+      "desc": "T allele (P446L): 12%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Traditional diet of starchy staples (cassava, plantain), bushmeat, leafy greens, and palm oil.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "central_asia": {
+    "pon1_antioxidant": {
+      "f": 42,
+      "p": 0.42,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 42%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 35,
+      "p": 0.35,
+      "t": "sensitive",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 35%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "apoa5_triglycerides": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 22%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "slc6a4_serotonin": {
+      "f": 48,
+      "p": 0.5,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 48%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 9%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 25,
+      "p": 0.25,
+      "t": "reduced_catabolism",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 25%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "apoc3_omega3_response": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 28%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "snps": {
+        "rs2854116": {
+          "f": 38
+        },
+        "rs2854117": {
+          "f": 32
+        }
+      },
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 42%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
+      "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
+    }
+  },
+  "central_europe": {
+    "pon1_antioxidant": {
+      "f": 28,
+      "p": 0.28,
+      "t": "slow",
+      "desc": "R allele (rs662): 28%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 40%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "fgf21_carb_preference": {
+      "f": 55,
+      "p": 0.55,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 55%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoa5_triglycerides": {
+      "f": 8,
+      "p": 0.08,
+      "t": "normal",
+      "desc": "C allele (-1131C): 8%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "slc6a4_serotonin": {
+      "f": 43,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 43%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "hnmt_histamine": {
+      "f": 12,
+      "p": 0.12,
+      "t": "reduced",
+      "desc": "T allele (Ile105): 12%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoc3_omega3_response": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 28%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 38
+        },
+        "rs2854117": {
+          "f": 32
+        }
+      },
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 50,
+      "p": 0.5,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 50%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    }
+  },
+  "eastern_europe": {
+    "pon1_antioxidant": {
+      "f": 31,
+      "p": 0.31,
+      "t": "slow",
+      "desc": "R allele (rs662): 31%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 40%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "fgf21_carb_preference": {
+      "f": 55,
+      "p": 0.55,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 55%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoa5_triglycerides": {
+      "f": 8,
+      "p": 0.08,
+      "t": "normal",
+      "desc": "C allele (-1131C): 8%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "slc6a4_serotonin": {
+      "f": 43,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 43%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "hnmt_histamine": {
+      "f": 12,
+      "p": 0.12,
+      "t": "reduced",
+      "desc": "T allele (Ile105): 12%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoc3_omega3_response": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 28%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "snps": {
+        "rs2854116": {
+          "f": 38
+        },
+        "rs2854117": {
+          "f": 32
+        }
+      },
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 50,
+      "p": 0.5,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 50%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    }
+  },
+  "eastern_woodlands": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Traditional diet of maize, beans, squash (Three Sisters), deer, fish, and wild plants.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "ethiopia": {
+    "pon1_antioxidant": {
+      "f": 61,
+      "p": 0.61,
+      "t": "fast",
+      "desc": "R allele (rs662): 61%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 15,
+      "p": 0.15,
+      "t": "normal",
+      "desc": "T allele (P446L): 15%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "gaucho": {
+    "pon1_antioxidant": {
+      "f": 37,
+      "p": 0.37,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 37%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 32,
+      "p": 0.32,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 32%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 57,
+      "p": 0.57,
+      "t": "carb_preferring",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 57%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 10%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 40%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 11,
+      "p": 0.11,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 11%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 23%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 24,
+      "p": 0.24,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 24%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 29
+        }
+      },
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 46,
+      "p": 0.46,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 46%. Meat-heavy pastoral diet (asado) with yerba mate, wheat, and European dairy traditions.",
+      "notes": "Admixed: ~60% EUR, ~30% AMR, ~10% AFR weighted average"
+    }
+  },
+  "great_plains": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Bison-centred nomadic diet with wild prairie plants, berries, and pemmican.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "highland_se_asia": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 43,
+      "p": 0.43,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 43%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 76,
+      "p": 0.58,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 76%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "horn_somalia": {
+    "pon1_antioxidant": {
+      "f": 61,
+      "p": 0.61,
+      "t": "fast",
+      "desc": "R allele (rs662): 61%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 15,
+      "p": 0.15,
+      "t": "normal",
+      "desc": "T allele (P446L): 15%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "inuit": {
+    "pon1_antioxidant": {
+      "f": 58,
+      "p": 0.58,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 58%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 35,
+      "p": 0.35,
+      "t": "sensitive",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 35%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "fgf21_carb_preference": {
+      "f": 45,
+      "p": 0.45,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 45%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "apoa5_triglycerides": {
+      "f": 28,
+      "p": 0.28,
+      "t": "elevated",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 28%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "slc6a4_serotonin": {
+      "f": 68,
+      "p": 0.46,
+      "t": "reduced",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 68%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 8%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 24,
+      "p": 0.24,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 24%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 22%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 26
+        }
+      },
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 38%. Marine mammal and fish-based diet extremely high in omega-3 fats with minimal plant foods.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    }
+  },
+  "japan": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 48,
+      "p": 0.48,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 48%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 80,
+      "p": 0.64,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 80%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "korea": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 49,
+      "p": 0.49,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 49%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 80,
+      "p": 0.64,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 80%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "kurdish": {
+    "pon1_antioxidant": {
+      "f": 40,
+      "p": 0.4,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 40%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 38,
+      "p": 0.38,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 38%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "maasai": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 12,
+      "p": 0.12,
+      "t": "normal",
+      "desc": "T allele (P446L): 12%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 25,
+      "p": 0.56,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 25%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "maghreb": {
+    "pon1_antioxidant": {
+      "f": 51,
+      "p": 0.51,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 51%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 30,
+      "p": 0.3,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 30%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 36,
+      "p": 0.41,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 36%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Mediterranean-influenced North African diet with couscous, olive oil, harissa, dates, and mint tea.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "malagasy": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 66%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 29,
+      "p": 0.29,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 29%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 54,
+      "p": 0.54,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 54%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 23%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 53,
+      "p": 0.5,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 53%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 7,
+      "p": 0.07,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 7%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 16,
+      "p": 0.16,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 16%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 21,
+      "p": 0.21,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 21%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "snps": {
+        "rs2854116": {
+          "f": 32
+        },
+        "rs2854117": {
+          "f": 26
+        }
+      },
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Dual Austronesian-African dietary heritage with rice, zebu, vanilla, and tropical fruits.",
+      "notes": "Admixed: ~50% EAS (Austronesian), ~50% AFR (Bantu) weighted average"
+    }
+  },
+  "maori": {
+    "pon1_antioxidant": {
+      "f": 55,
+      "p": 0.55,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 55%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 16,
+      "p": 0.16,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 16%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoa5_triglycerides": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 20%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "slc6a4_serotonin": {
+      "f": 58,
+      "p": 0.34,
+      "t": "reduced",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 58%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 5,
+      "p": 0.05,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 5%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoc3_omega3_response": {
+      "f": 15,
+      "p": 0.15,
+      "t": "responsive",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 15%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "snps": {
+        "rs2854116": {
+          "f": 22
+        },
+        "rs2854117": {
+          "f": 18
+        }
+      },
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Polynesian diet of kumara (sweet potato), seafood, fern root, and earth-oven cooking (hangi).",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    }
+  },
+  "med_levant": {
+    "pon1_antioxidant": {
+      "f": 36,
+      "p": 0.36,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 36%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 38,
+      "p": 0.38,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 38%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "med_southern": {
+    "pon1_antioxidant": {
+      "f": 33,
+      "p": 0.33,
+      "t": "slow",
+      "desc": "R allele (rs662): 33%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 40%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "fgf21_carb_preference": {
+      "f": 55,
+      "p": 0.55,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 55%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "slc6a4_serotonin": {
+      "f": 43,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 43%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "hnmt_histamine": {
+      "f": 12,
+      "p": 0.12,
+      "t": "reduced",
+      "desc": "T allele (Ile105): 12%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoc3_omega3_response": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 28%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 38
+        },
+        "rs2854117": {
+          "f": 32
+        }
+      },
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 50,
+      "p": 0.5,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 50%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    }
+  },
+  "melanesia": {
+    "pon1_antioxidant": {
+      "f": 60,
+      "p": 0.6,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 60%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 18,
+      "p": 0.18,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 18%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoa5_triglycerides": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 20%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "slc6a4_serotonin": {
+      "f": 45,
+      "p": 0.5,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 45%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 5,
+      "p": 0.05,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 5%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoc3_omega3_response": {
+      "f": 15,
+      "p": 0.15,
+      "t": "responsive",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 15%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "snps": {
+        "rs2854116": {
+          "f": 22
+        },
+        "rs2854117": {
+          "f": 18
+        }
+      },
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Root-crop diet (yam, taro, sweet potato) with coconut, fish, and minimal animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    }
+  },
+  "mesoamerica": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 20%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Pre-Columbian nixtamalised maize, beans, squash, chili, chocolate, and turkey.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "mesopotamian": {
+    "pon1_antioxidant": {
+      "f": 38,
+      "p": 0.38,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 38%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 38,
+      "p": 0.38,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 38%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Ancient grain-based diet of wheat, barley, dates, and sesame with fish from Tigris-Euphrates.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "mestizo_mesoamerican": {
+    "pon1_antioxidant": {
+      "f": 41,
+      "p": 0.41,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 41%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 27,
+      "p": 0.27,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 27%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 58%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 12%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 38,
+      "p": 0.47,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 38%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 10%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 20%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 22%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "snps": {
+        "rs2854116": {
+          "f": 32
+        },
+        "rs2854117": {
+          "f": 26
+        }
+      },
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 44,
+      "p": 0.44,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 44%. Blended Indigenous and Spanish dietary traditions with maize, beans, chili, pork, and dairy.",
+      "notes": "Admixed: ~55% AMR, ~35% EUR, ~10% AFR weighted average"
+    }
+  },
+  "micronesia": {
+    "pon1_antioxidant": {
+      "f": 55,
+      "p": 0.55,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 55%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 18,
+      "p": 0.18,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 18%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoa5_triglycerides": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 20%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "slc6a4_serotonin": {
+      "f": 53,
+      "p": 0.5,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 53%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 5,
+      "p": 0.05,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 5%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoc3_omega3_response": {
+      "f": 15,
+      "p": 0.15,
+      "t": "responsive",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 15%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "snps": {
+        "rs2854116": {
+          "f": 22
+        },
+        "rs2854117": {
+          "f": 18
+        }
+      },
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Island diet of breadfruit, taro, coconut, and reef fish with limited terrestrial animal protein.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    }
+  },
+  "mongolia": {
+    "pon1_antioxidant": {
+      "f": 60,
+      "p": 0.6,
+      "t": "fast",
+      "desc": "R allele (rs662): 60%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 44,
+      "p": 0.44,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 44%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 73,
+      "p": 0.53,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 73%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "nepal": {
+    "pon1_antioxidant": {
+      "f": 37,
+      "p": 0.37,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 37%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 35,
+      "p": 0.35,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 35%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 33,
+      "p": 0.33,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 33%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 60,
+      "p": 0.36,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 60%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 23%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 35,
+      "p": 0.35,
+      "t": "blunted",
+      "desc": "C2 haplotype: 35%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "snps": {
+        "rs2854116": {
+          "f": 45
+        },
+        "rs2854117": {
+          "f": 40
+        }
+      },
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 45,
+      "p": 0.45,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 45%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
+      "notes": "gnomAD v3.1.2 SAS"
+    }
+  },
+  "nile_valley": {
+    "pon1_antioxidant": {
+      "f": 61,
+      "p": 0.61,
+      "t": "fast",
+      "desc": "R allele (rs662): 61%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 17,
+      "p": 0.17,
+      "t": "normal",
+      "desc": "T allele (P446L): 17%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 14,
+      "p": 0.14,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 14%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Ancient agricultural diet of emmer wheat, fava beans, fish from the Nile, and dates.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "nilotic": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 12,
+      "p": 0.12,
+      "t": "normal",
+      "desc": "T allele (P446L): 12%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Pastoral diet of cattle milk and blood, sorghum, and fish along the White Nile.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "nordic": {
+    "pon1_antioxidant": {
+      "f": 25,
+      "p": 0.25,
+      "t": "slow",
+      "desc": "R allele (rs662): 25%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 39,
+      "p": 0.39,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 39%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "apoa5_triglycerides": {
+      "f": 7,
+      "p": 0.07,
+      "t": "normal",
+      "desc": "C allele (-1131C): 7%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "slc6a4_serotonin": {
+      "f": 42,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 42%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "hnmt_histamine": {
+      "f": 14,
+      "p": 0.14,
+      "t": "reduced",
+      "desc": "T allele (Ile105): 14%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 29,
+      "p": 0.29,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 29%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "apoc3_omega3_response": {
+      "f": 25,
+      "p": 0.25,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 25%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 30
+        }
+      },
+      "notes": "gnomAD v3.1.2 FIN"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 52,
+      "p": 0.52,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 52%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
+      "notes": "gnomAD v3.1.2 FIN"
+    }
+  },
+  "north_china": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 46,
+      "p": 0.46,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 46%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 78,
+      "p": 0.61,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 78%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "north_india": {
+    "pon1_antioxidant": {
+      "f": 37,
+      "p": 0.37,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 37%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 30,
+      "p": 0.3,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 30%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 28,
+      "p": 0.28,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 28%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 52,
+      "p": 0.5,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 52%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 23%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 35,
+      "p": 0.35,
+      "t": "blunted",
+      "desc": "C2 haplotype: 35%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 45
+        },
+        "rs2854117": {
+          "f": 40
+        }
+      },
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 45,
+      "p": 0.45,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 45%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
+      "notes": "gnomAD v3.1.2 SAS"
+    }
+  },
+  "pacific_nw": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 42,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 42%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Salmon-centred Indigenous diet with shellfish, berries, roots, and cedar-smoked fish.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "patagonia": {
+    "pon1_antioxidant": {
+      "f": 48,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 48%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. End-of-range foraging diet of guanaco, rhea, marine resources, and wild plant foods.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "persian": {
+    "pon1_antioxidant": {
+      "f": 40,
+      "p": 0.4,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 40%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 38,
+      "p": 0.38,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 38%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "fgf21_carb_preference": {
+      "f": 52,
+      "p": 0.52,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 52%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "C allele (-1131C): 10%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "slc6a4_serotonin": {
+      "f": 40,
+      "p": 0.48,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 40%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "apoc3_omega3_response": {
+      "f": 30,
+      "p": 0.3,
+      "t": "blunted",
+      "desc": "C2 haplotype: 30%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "snps": {
+        "rs2854116": {
+          "f": 40
+        },
+        "rs2854117": {
+          "f": 35
+        }
+      },
+      "notes": "gnomAD v3.1.2 MID"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 48,
+      "p": 0.48,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 48%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
+      "notes": "gnomAD v3.1.2 MID"
+    }
+  },
+  "polynesia": {
+    "pon1_antioxidant": {
+      "f": 55,
+      "p": 0.55,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 55%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 15,
+      "p": 0.15,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 15%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "fgf21_carb_preference": {
+      "f": 50,
+      "p": 0.5,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 50%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoa5_triglycerides": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 20%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "slc6a4_serotonin": {
+      "f": 55,
+      "p": 0.3,
+      "t": "reduced",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 55%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 5,
+      "p": 0.05,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 5%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 15%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "apoc3_omega3_response": {
+      "f": 15,
+      "p": 0.15,
+      "t": "responsive",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 15%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "snps": {
+        "rs2854116": {
+          "f": 22
+        },
+        "rs2854117": {
+          "f": 18
+        }
+      },
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 35,
+      "p": 0.35,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 35%. Oceanic diet of taro, breadfruit, coconut, and marine resources adapted to island settlement.",
+      "notes": "Proxy: Oceanian populations from literature; limited gnomAD coverage"
+    }
+  },
+  "sahel": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 14,
+      "p": 0.14,
+      "t": "normal",
+      "desc": "T allele (P446L): 14%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "se_asia_island": {
+    "pon1_antioxidant": {
+      "f": 60,
+      "p": 0.6,
+      "t": "fast",
+      "desc": "R allele (rs662): 60%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 38,
+      "p": 0.38,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 38%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 73,
+      "p": 0.53,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 73%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "se_asia_main": {
+    "pon1_antioxidant": {
+      "f": 62,
+      "p": 0.62,
+      "t": "fast",
+      "desc": "R allele (rs662): 62%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 41,
+      "p": 0.41,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 41%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 34,
+      "p": 0.34,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 34%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 75,
+      "p": 0.56,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 75%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "siberia": {
+    "pon1_antioxidant": {
+      "f": 58,
+      "p": 0.58,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 58%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 40%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "fgf21_carb_preference": {
+      "f": 45,
+      "p": 0.45,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 45%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "apoa5_triglycerides": {
+      "f": 28,
+      "p": 0.28,
+      "t": "elevated",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 28%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "slc6a4_serotonin": {
+      "f": 60,
+      "p": 0.36,
+      "t": "reduced",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 60%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 8%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 24,
+      "p": 0.24,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 24%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 22%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 26
+        }
+      },
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 38%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    }
+  },
+  "sichuan_sw_china": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 46,
+      "p": 0.46,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 46%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 37,
+      "p": 0.37,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 37%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 78,
+      "p": 0.61,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 78%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "south_china": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 46,
+      "p": 0.46,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 46%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 36,
+      "p": 0.36,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 36%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 78,
+      "p": 0.61,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 78%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "south_india": {
+    "pon1_antioxidant": {
+      "f": 40,
+      "p": 0.4,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 40%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 30,
+      "p": 0.3,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 30%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 31,
+      "p": 0.31,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 31%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 52,
+      "p": 0.5,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 52%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 23%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 35,
+      "p": 0.35,
+      "t": "blunted",
+      "desc": "C2 haplotype: 35%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "snps": {
+        "rs2854116": {
+          "f": 45
+        },
+        "rs2854117": {
+          "f": 40
+        }
+      },
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 45,
+      "p": 0.45,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 45%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
+      "notes": "gnomAD v3.1.2 SAS"
+    }
+  },
+  "southeast_us": {
+    "pon1_antioxidant": {
+      "f": 37,
+      "p": 0.37,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 37%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 33,
+      "p": 0.33,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 33%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "fgf21_carb_preference": {
+      "f": 57,
+      "p": 0.57,
+      "t": "carb_preferring",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 57%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "apoa5_triglycerides": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 10%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "slc6a4_serotonin": {
+      "f": 39,
+      "p": 0.48,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 39%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "method": "HTTLPR_HWE",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 11,
+      "p": 0.11,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 11%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 23%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "apoc3_omega3_response": {
+      "f": 26,
+      "p": 0.26,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 26%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "snps": {
+        "rs2854116": {
+          "f": 36
+        },
+        "rs2854117": {
+          "f": 30
+        }
+      },
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 47,
+      "p": 0.47,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 47%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
+      "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
+    }
+  },
+  "southern_africa": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 12,
+      "p": 0.12,
+      "t": "normal",
+      "desc": "T allele (P446L): 12%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Khoisan and Bantu dietary traditions of game, roots, wild melons, and maize porridge.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "southwest_us": {
+    "pon1_antioxidant": {
+      "f": 45,
+      "p": 0.45,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 45%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 22%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoa5_triglycerides": {
+      "f": 15,
+      "p": 0.15,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 15%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "slc6a4_serotonin": {
+      "f": 37,
+      "p": 0.4,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 37%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "hnmt_histamine": {
+      "f": 9,
+      "p": 0.09,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 9%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 18,
+      "p": 0.18,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 18%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "apoc3_omega3_response": {
+      "f": 18,
+      "p": 0.18,
+      "t": "responsive",
+      "desc": "C2 haplotype: 18%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "snps": {
+        "rs2854116": {
+          "f": 28
+        },
+        "rs2854117": {
+          "f": 22
+        }
+      },
+      "notes": "gnomAD v3.1.2 AMR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 42,
+      "p": 0.42,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 42%. Pueblo and desert-adapted diet of maize, beans, squash, prickly pear, and wild game.",
+      "notes": "gnomAD v3.1.2 AMR"
+    }
+  },
+  "subarctic": {
+    "pon1_antioxidant": {
+      "f": 58,
+      "p": 0.58,
+      "t": "fast",
+      "pc": 0.5,
+      "desc": "R allele (rs662): 58%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "pc": 0.5,
+      "desc": "T allele (P446L): 40%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "fgf21_carb_preference": {
+      "f": 45,
+      "p": 0.45,
+      "t": "balanced",
+      "pc": 0.5,
+      "desc": "A allele (rs838133): 45%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "apoa5_triglycerides": {
+      "f": 28,
+      "p": 0.28,
+      "t": "elevated",
+      "pc": 0.5,
+      "desc": "C allele (-1131C): 28%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "slc6a4_serotonin": {
+      "f": 65,
+      "p": 0.42,
+      "t": "reduced",
+      "pc": 0.5,
+      "desc": "S allele (5-HTTLPR): 65%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "method": "HTTLPR_HWE",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations; 5-HTTLPR from Chiao & Blizinsky 2010 meta-analysis"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "T allele (Ile105): 8%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 24,
+      "p": 0.24,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "M allele (V433M): 24%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "pc": 0.5,
+      "desc": "C2 haplotype: 22%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 26
+        }
+      },
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "pc": 0.5,
+      "desc": "T allele (rs10046): 38%. Boreal forest diet of moose, caribou, freshwater fish, and wild berries with long winter storage.",
+      "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
+    }
+  },
+  "sudanian": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 12,
+      "p": 0.12,
+      "t": "normal",
+      "desc": "T allele (P446L): 12%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Savanna agricultural diet of yams, millet, shea butter, and baobab with pastoral elements.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "tibet": {
+    "pon1_antioxidant": {
+      "f": 65,
+      "p": 0.65,
+      "t": "fast",
+      "desc": "R allele (rs662): 65%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 41,
+      "p": 0.41,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 41%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 42,
+      "p": 0.42,
+      "t": "balanced",
+      "desc": "A allele (rs838133): 42%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 39,
+      "p": 0.39,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 39%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 70,
+      "p": 0.49,
+      "t": "reduced",
+      "desc": "S allele (5-HTTLPR): 70%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "hnmt_histamine": {
+      "f": 6,
+      "p": 0.06,
+      "t": "normal",
+      "desc": "T allele (Ile105): 6%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 22%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 20,
+      "p": 0.2,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 20%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "snps": {
+        "rs2854116": {
+          "f": 30
+        },
+        "rs2854117": {
+          "f": 25
+        }
+      },
+      "notes": "gnomAD v3.1.2 EAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 32,
+      "p": 0.32,
+      "t": "low_aromatase",
+      "desc": "T allele (rs10046): 32%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
+      "notes": "gnomAD v3.1.2 EAS"
+    }
+  },
+  "west_africa": {
+    "pon1_antioxidant": {
+      "f": 66,
+      "p": 0.66,
+      "t": "fast",
+      "desc": "R allele (rs662): 66%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 12,
+      "p": 0.12,
+      "t": "normal",
+      "desc": "T allele (P446L): 12%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "fgf21_carb_preference": {
+      "f": 65,
+      "p": 0.65,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 65%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoa5_triglycerides": {
+      "f": 12,
+      "p": 0.12,
+      "t": "intermediate",
+      "desc": "C allele (-1131C): 12%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "slc6a4_serotonin": {
+      "f": 28,
+      "p": 0.52,
+      "t": "efficient",
+      "desc": "S allele (5-HTTLPR): 28%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "hnmt_histamine": {
+      "f": 8,
+      "p": 0.08,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 8%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 10,
+      "p": 0.1,
+      "t": "normal",
+      "desc": "M allele (V433M): 10%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "apoc3_omega3_response": {
+      "f": 22,
+      "p": 0.22,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 22%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "snps": {
+        "rs2854116": {
+          "f": 35
+        },
+        "rs2854117": {
+          "f": 28
+        }
+      },
+      "notes": "gnomAD v3.1.2 AFR"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 38,
+      "p": 0.38,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 38%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
+      "notes": "gnomAD v3.1.2 AFR"
+    }
+  },
+  "west_india": {
+    "pon1_antioxidant": {
+      "f": 37,
+      "p": 0.37,
+      "t": "intermediate",
+      "desc": "R allele (rs662): 37%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 30,
+      "p": 0.3,
+      "t": "intermediate",
+      "desc": "T allele (P446L): 30%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "fgf21_carb_preference": {
+      "f": 58,
+      "p": 0.58,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 58%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoa5_triglycerides": {
+      "f": 28,
+      "p": 0.28,
+      "t": "elevated",
+      "desc": "C allele (-1131C): 28%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "slc6a4_serotonin": {
+      "f": 52,
+      "p": 0.5,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 52%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "hnmt_histamine": {
+      "f": 10,
+      "p": 0.1,
+      "t": "intermediate",
+      "desc": "T allele (Ile105): 10%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 23,
+      "p": 0.23,
+      "t": "intermediate",
+      "desc": "M allele (V433M): 23%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "apoc3_omega3_response": {
+      "f": 35,
+      "p": 0.35,
+      "t": "blunted",
+      "desc": "C2 haplotype: 35%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "snps": {
+        "rs2854116": {
+          "f": 45
+        },
+        "rs2854117": {
+          "f": 40
+        }
+      },
+      "notes": "gnomAD v3.1.2 SAS"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 45,
+      "p": 0.45,
+      "t": "moderate",
+      "desc": "T allele (rs10046): 45%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
+      "notes": "gnomAD v3.1.2 SAS"
+    }
+  },
+  "western_europe": {
+    "pon1_antioxidant": {
+      "f": 28,
+      "p": 0.28,
+      "t": "slow",
+      "desc": "R allele (rs662): 28%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "gckr_carb_sensitivity": {
+      "f": 40,
+      "p": 0.4,
+      "t": "sensitive",
+      "desc": "T allele (P446L): 40%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "fgf21_carb_preference": {
+      "f": 55,
+      "p": 0.55,
+      "t": "carb_preferring",
+      "desc": "A allele (rs838133): 55%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoa5_triglycerides": {
+      "f": 8,
+      "p": 0.08,
+      "t": "normal",
+      "desc": "C allele (-1131C): 8%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "slc6a4_serotonin": {
+      "f": 43,
+      "p": 0.49,
+      "t": "intermediate",
+      "desc": "S allele (5-HTTLPR): 43%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "method": "HTTLPR_HWE",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "hnmt_histamine": {
+      "f": 12,
+      "p": 0.12,
+      "t": "reduced",
+      "desc": "T allele (Ile105): 12%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp4f2_vitamin_e": {
+      "f": 27,
+      "p": 0.27,
+      "t": "reduced_catabolism",
+      "desc": "M allele (V433M): 27%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "apoc3_omega3_response": {
+      "f": 28,
+      "p": 0.28,
+      "t": "intermediate",
+      "desc": "C2 haplotype: 28%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "snps": {
+        "rs2854116": {
+          "f": 38
+        },
+        "rs2854117": {
+          "f": 32
+        }
+      },
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    },
+    "cyp19a1_phytoestrogen": {
+      "f": 50,
+      "p": 0.5,
+      "t": "high_aromatase",
+      "desc": "T allele (rs10046): 50%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
+      "notes": "gnomAD v3.1.2 EUR/NFE"
+    }
+  }
+}
