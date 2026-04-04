@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ChronoGrid">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>ChronoGrid</title>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-nebula"></div>
+  <div id="stars"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-title">
+      <span class="title-chrono">CHRONO</span><span class="title-grid">GRID</span>
+    </div>
+    <button id="settingsBtn" class="icon-btn" aria-label="Settings">⚙</button>
+  </header>
+
+  <!-- Main content -->
+  <main class="app-main">
+
+    <!-- Stream View -->
+    <section id="view-stream" class="view active">
+      <div class="stream-container">
+        <div class="stream-label future">◈ FUTURE</div>
+        <div class="stream-track">
+          <div class="stream-line"></div>
+          <div class="stream-particles" id="streamParticles"></div>
+          <div id="orbsContainer"></div>
+        </div>
+        <div class="stream-label now">◉ NOW</div>
+      </div>
+    </section>
+
+    <!-- Grid View -->
+    <section id="view-grid" class="view">
+      <div class="grid-header">
+        <input type="text" id="quickAddInput" placeholder="Type your event/thought here..." autocomplete="off">
+        <button id="quickAddBtn" class="quick-add-btn" aria-label="Add">+</button>
+      </div>
+      <div class="topo-canvas">
+        <div class="gems-container" id="gemsContainer"></div>
+      </div>
+      <div class="grid-dock">
+        <button class="dock-btn urgent" data-cat="urgent">⚡ Urgent</button>
+        <button class="dock-btn recurring" data-cat="recurring">↻ Recurring</button>
+        <button class="dock-btn longterm" data-cat="longterm">◎ Long-term</button>
+        <button class="dock-btn someday" data-cat="someday">◇ Someday</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Tab bar -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-view="stream">⟁ Stream</button>
+    <button class="tab-btn" data-view="grid">⊞ Grid</button>
+  </nav>
+
+  <!-- FAB -->
+  <button class="fab" id="fabBtn" aria-label="Add event">+</button>
+
+  <!-- Event Modal -->
+  <div class="modal-backdrop" id="eventModalBackdrop">
+    <div class="modal glass-panel" id="eventModal">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">NEW EVENT</span>
+        <button class="icon-btn modal-close" id="eventModalClose" aria-label="Close">✕</button>
+      </div>
+      <form id="eventForm">
+        <div class="form-group">
+          <input type="text" id="eventTitle" placeholder="Event title" required autocomplete="off">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <input type="date" id="eventDate">
+          </div>
+          <div class="form-group">
+            <input type="time" id="eventTime">
+          </div>
+        </div>
+        <div class="category-pills">
+          <label class="cat-pill urgent">
+            <input type="radio" name="category" value="urgent">
+            <span>⚡ Urgent</span>
+          </label>
+          <label class="cat-pill recurring">
+            <input type="radio" name="category" value="recurring">
+            <span>↻ Recurring</span>
+          </label>
+          <label class="cat-pill longterm">
+            <input type="radio" name="category" value="longterm">
+            <span>◎ Long-term</span>
+          </label>
+          <label class="cat-pill someday">
+            <input type="radio" name="category" value="someday">
+            <span>◇ Someday</span>
+          </label>
+        </div>
+        <div class="recurrence-row" id="recurrenceRow">
+          <span class="recurrence-label">Repeat:</span>
+          <button type="button" class="recur-btn" id="recurWeekly" data-val="weekly">Weekly</button>
+          <button type="button" class="recur-btn" id="recurMonthly" data-val="monthly">Monthly</button>
+        </div>
+        <div class="form-group">
+          <textarea id="eventNotes" placeholder="Notes (optional)" rows="3"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-delete" id="deleteBtn">Delete</button>
+          <button type="submit" class="btn-save" id="saveBtn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-backdrop" id="settingsModalBackdrop">
+    <div class="modal glass-panel" id="settingsModal">
+      <div class="modal-header">
+        <span class="modal-title">SETTINGS</span>
+        <button class="icon-btn modal-close" id="settingsModalClose" aria-label="Close">✕</button>
+      </div>
+      <div class="settings-body">
+        <p class="settings-info">ChronoGrid stores all data locally on your device. Export regularly to back up your events.</p>
+        <button class="btn-settings" id="exportBtn">⬇ Export JSON</button>
+        <label class="btn-settings import-label" for="importFile">⬆ Import JSON</label>
+        <input type="file" id="importFile" accept=".json" style="display:none">
+        <div id="settingsStats" class="settings-stats"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
