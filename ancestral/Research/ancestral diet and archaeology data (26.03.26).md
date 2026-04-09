@@ -1,1 +1,0 @@
-Complete ancestral diet database compiled below with all regions.
