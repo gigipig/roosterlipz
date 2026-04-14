@@ -1,166 +1,417 @@
-# Ancestral Diet Explorer — Product Roadmap
+# Ancestral Diet Explorer — Next.js Port Roadmap
 
-## Current State (as of Mar 2026)
-
-The core app is functional end-to-end:
-
-- Landing page with hero, how-it-works, features, FAQ, footer ✓
-- Family Tree (Mendelian) and DNA percentage modes ✓
-- 60+ ancestral regions, 34+ genetic traits ✓
-- Tabbed results: Overview → Genetics → Diet → Foods ✓
-- Genetic profile summary card + trait meters ✓
-- Key Takeaways, Nutrient Gap Analysis ✓
-- Daily Guidelines (morning/afternoon/evening cards) ✓
-- Food chips with genetic tooltips (hover) ✓
-- Recipe section ✓
-- PDF/image export (jsPDF) ✓
-- Sources & citations section ✓
-- 100% local — no server, no tracking ✓
-- Settings modal with Contact Us form ✓ (Formspree endpoint: set `FORMSPREE_ENDPOINT` in `js/app.js`)
+**Working directory:** `C:\Users\samsa\Documents\ancestral\TEMPLATE WEBISTE\ZSFwO6hoZW2-1773296921747\`
+**Source (vanilla JS):** `C:\Users\samsa\Documents\ancestral\`
+**Run:** `npm run dev` → http://localhost:3000
+**Build:** `npm run build` ✓ (passes clean as of last session)
 
 ---
 
+## What Is Built (Completed)
+
+### Infrastructure
+- [x] Dependencies installed (`npm install` + `jspdf@^2.5.2`)
+- [x] `app/globals.css` — ancestral palette: `#13110e` bg, `#1db954` green, `#c8a96e` amber, force-dark
+- [x] `app/layout.tsx` — title "Ancestral Diet Explorer", `<html className="dark">`, font: **Plus Jakarta Sans** (wider, more legible than Inter)
+- [x] `public/` — 5 JSON data files copied (cultures, diets, genetics-reference, genetics-frequencies, recipes)
+
+### Data & Logic Layer (`lib/` + `hooks/`)
+- [x] `lib/types.ts` — TypeScript interfaces (User, BlendedDiet, GeneticTrait, Recipe, etc.)
+- [x] `lib/data.ts` — `loadData()`, `getDietById()`, `getGeoById()`, `getGeneticsById()`, full `NATIONALITY_TO_REGION` (220+ nationalities), `getNationalitiesGrouped()`, `getRegionIdFromNationality()`
+- [x] `lib/user.ts` — localStorage CRUD, SSR-safe (`typeof window` guards)
+- [x] `lib/diet.ts` — `blendDiets()` pure calculation, `generateDietArchetype()`, `scoreFoodForUser()`, `tieredFoodGroups()`, `getSignatureFoods()`
+- [x] `lib/genetics.ts` — entire genetics.js (4173 lines) with `// @ts-nocheck`, exports: `calculateMendelianGenetics`, `analyzeGeneticTraits`, `getTraitMeterInfo`, `calculateCategoryScores`, `GENE_META`, `legacyKeyMap`, `getFoodExplanations`, `blendGeneticAdaptations`
+- [x] `lib/recipes.ts` — `loadRecipes()`, `getRecipesForUser()`, `calculateRecipeGeneticScore()`, `getScoreLevel()`
+- [x] `lib/pdf-export.ts` — `exportResultsAsPDF()` with dynamic jsPDF import
+- [x] `lib/unlock.ts` — `isUnlocked()`, `setUnlocked()`, `redeemCode()` — localStorage unlock state
+- [x] `hooks/use-data.ts` — singleton data load hook, loading/error states
+- [x] `hooks/use-user.ts` — React hook wrapping lib/user.ts
+- [x] `hooks/use-unlock.ts` — React hook for unlock state
+
+### Landing Page (`/`)
+- [x] `components/header.tsx` — "Ancestral" brand, nav links, "Get Started" → opens onboarding wizard
+- [x] `components/hero.tsx` — "Unlock Your Ancestral Diet", trust stats bar, "Discover Your Diet" → opens onboarding wizard
+- [x] `components/how-it-works.tsx` — 3-step cards
+- [x] `components/features.tsx` — 6 feature cards (genetics, food tiers, macros, research, privacy, recipes)
+- [x] `components/faq.tsx` — 6 Q&A in shadcn Accordion
+- [x] `components/footer.tsx` — "A" watermark, disclaimer, educational notice
+- [x] `app/page.tsx` — composes: Header → Hero → HowItWorks → Features → FAQ → Footer
+
+### Onboarding Wizard (`components/onboarding/`)
+- [x] `components/onboarding/onboarding-wizard.tsx` — full 3-step wizard
+  - Step 1: Mode selection (Family Tree / DNA) as large tactile choice cards with auto-advance
+  - Step 2: Ancestry input — 2-column maternal/paternal layout (family) or 4-row percentage input (DNA) with custom searchable combobox
+  - Step 3: Confirmation summary + optional email capture + "Calculate My Ancestral Diet" CTA
+  - CSS slide animations between steps (`wizardSlideInRight` / `wizardSlideInLeft`)
+  - Atmospheric radial gradient background, Cormorant italic headings
+  - Escape key to close, body scroll lock, progress bars in header
+  - Saves to localStorage on finish, routes to `/app`
+- [x] ✏ pencil icon in sidebar header reopens wizard from within `/app`
+
+### App Interface (`/app`)
+- [x] `components/providers/data-provider.tsx` — loading screen during 1.4MB data fetch, error state
+- [x] `components/providers/app-state-provider.tsx` — central state: mode, familyTree, dnaTest, blended, genetics, activeTab, isCalculating, sidebarCollapsed, **isUnlocked**, unlockApp(), tryUnlockCode()
+- [x] `app/app/layout.tsx` — DataProvider + AppStateProvider + Toaster
+- [x] `app/app/page.tsx` — fixed header + desktop sidebar (w-80) + main content + wizard mount
+- [x] `components/app/app-header.tsx` — hamburger (mobile Sheet), logo → `/`, disclaimer badge
+- [x] `components/app/app-sidebar.tsx` — mode toggle, searchable NationalitySelect, FamilyTreePanel (4 grandparents), DNATestPanel (4 × region + %), percentage validation, Calculate button, ✏ wizard trigger
+- [x] `components/app/calculating-overlay.tsx` — fullscreen spinner
+- [x] `components/app/results-area.tsx` — "Free preview" badge, PDF lock, locked tab intercept, `UnlockModal` mount, tab shell
+- [x] `components/app/unlock-modal.tsx` — £9.99 pricing dialog, 6-feature list, disabled Stripe CTA placeholder, unlock code input
+- [x] `components/app/paywall-overlay.tsx` — reusable in-tab lock screen with feature checklist + CTA
+
+### Results Tabs
+- [x] `components/app/tabs/overview-tab.tsx` — disclaimer, ancestry mix bar, macro profile, category scores, key insights, upgrade teaser (when locked)
+- [x] `components/app/tabs/genetics-tab.tsx` — **free preview: 3 traits shown**, blurred ghost cards for remainder with lock overlay + CTA; full 34+ trait profile when unlocked; badge legend; category sections; gene glossary popovers
+- [x] `components/app/tabs/diet-tab.tsx` — **PaywallOverlay when locked**; daily guidelines (All Day + Morning/Afternoon/Evening), dietary priorities, per-ancestry breakdown
+- [x] `components/app/tabs/foods-tab.tsx` — **PaywallOverlay when locked**; full redesign (Phase 1):
+  - **Signature Foods** — prominent feature cards with genetic one-liner + ancestry badges + expandable reasons
+  - **By Ancestry** — per-ancestry food cards with `diet_signature` text + colored-dot food chips
+  - **Browse Foods** — filter tabs (All / Ancestral / Proteins / Fats / Herbs) + tiered sections
+  - **Colored dots** on every chip (green/amber/grey — always visible, no hover required)
+  - **Click-to-expand chips** — tap any chip to show inline genetic reasons panel (mobile-friendly)
+  - **Ancestral Recipes** — scored cards + bookmarks + recipe detail dialog
+
+### Diet Tab — Phase 2 ✅ DONE
+- [x] **Top Priorities banner** — numbered action cards (#1/#2/#3) from `analyzeGeneticTraits()` watch items; amber accent; strength items in sage below
+- [x] **Macro Range Bar** — `MacroRangeSection` + `MacroRangeBar`; blended value as dot, ancestral min–max as shaded band, WHO average as tick; all three macros
+- [x] **Gene code badges** — `GENE_CODE_MAP` (15 genes: CLOCK, PER1, CYP1A2, ADORA2A, DAO, SLC2A2, LEPR, BDNF, LCT, HFE, COMT, ABCG2, G6PD, ACE, CYP2R1); `🧬 GENE` badge on each RuleCard header
+- [x] **`period:'all'` dedup** — already correct in prior implementation; confirmed no change needed
+
 ---
 
-## Phase 0 — Monetisation Foundation ✅ COMPLETE (Next.js port)
+## Paywall System
 
-### 0.1 Paywall UI ✅ DONE
-- Genetics tab: 3 traits free + blurred ghost cards + lock overlay for remainder
-- Diet + Foods tabs: fully locked behind `PaywallOverlay` component
-- PDF export button locked; opens `UnlockModal`
-- Overview tab: fully free + upgrade teaser card at bottom
-- `lib/unlock.ts` + `hooks/use-unlock.ts` + `AppStateProvider.isUnlocked`
-- `UnlockModal`: £9.99 one-time, feature list, disabled Stripe CTA (placeholder), unlock code input
-- Demo code: `ANCESTRAL2026` (remove before production)
+| Free | Paid (£9.99 one-time) |
+|---|---|
+| Overview tab + ancestry breakdown | Full 34+ trait genetic profile |
+| Top 3 genetic traits (preview) | Daily Guidelines + meal timing |
+| Blended macro profile | Full Foods section |
+| Upgrade teaser card in Overview | PDF report export |
+| | Recipe scoring + bookmarks |
+| | Nutrient Gap Analysis |
 
-### 0.2 Onboarding Wizard ✅ DONE
-- `components/onboarding/onboarding-wizard.tsx` — full-screen 3-step overlay
-- Step 1: Mode cards (Family Tree / DNA) with auto-advance on selection
-- Step 2: Searchable combobox (220+ nationalities), 2-column maternal/paternal layout (family) or percentage rows (DNA)
-- Step 3: Confirmation summary + optional email + "Calculate My Ancestral Diet" CTA
-- CSS slide animations, atmospheric background, Cormorant italic headings
-- Triggered from Hero + Header "Get Started"; re-enterable via ✏ in sidebar
-- Saves to localStorage → routes to `/app` → sidebar auto-restores
+- Unlock state: `localStorage.getItem('ancestral_unlocked') === 'true'`
+- Demo unlock code: `ANCESTRAL2026` (for testing — remove before production)
+- Stripe CTA: visible but disabled — ready for Phase 0.3 wiring
+- `lib/unlock.ts`: `isUnlocked()`, `setUnlocked()`, `redeemCode()`
+- `AppStateProvider` hydrates `isUnlocked` from localStorage on mount
 
-### 0.3 Server + Stripe _(next — required for live payments)_
+---
+
+## Known Issues _(found in 2026-03-22 codebase scan)_
+
+### Bugs (things that are broken)
+
+| Issue | File | Line | Detail |
+|---|---|---|---|
+| Bookmarks not persisted | `foods-tab.tsx` | ~562 | `setBookmarks` is local state only — `user.bookmarkedRecipes` in localStorage is never written to. Resets on every reload. |
+| Tab unlock click handling | `results-area.tsx` | ~103, 133, 143 | Diet & Foods tabs use `e.preventDefault()` + `onClick` inconsistently vs `onValueChange` — unlock flow fires unreliably. |
+| `onOpenUnlock` dead prop | `results-area.tsx` | ~157, 162, 166 | Passed to GeneticsTab, DietTab, FoodsTab but none use it — they render `PaywallOverlay` directly. Remove the prop. |
+
+### Structural / Maintenance
+
+| Issue | File(s) | Detail |
+|---|---|---|
+| Price hardcoded in 4 places | `unlock-modal.tsx`, `overview-tab.tsx`, `genetics-tab.tsx`, `paywall-overlay.tsx` | `£9.99` hardcoded each time. Extract a single `UNLOCK_PRICE` constant to `lib/unlock.ts`. |
+| Health concern logic in 3 places | `diet.ts`, `diet-tab.tsx`, `foods-tab.tsx` | `scoreFoodForUser()`, `isInDiet()`, and `getSignatureFoods()` all independently check health concern keywords. Consolidate. |
+| `ruleKeyMap` duplicates `legacyKeyMap` | `diet-tab.tsx` | Local `ruleKeyMap` defined at top of file overlaps with `legacyKeyMap` from `genetics.ts`. One source of truth needed. |
+| Recipe loading has no timeout | `foods-tab.tsx` | ~707 If `getRecipesForUser()` hangs, the loading spinner never resolves. |
+| `GENE_SOURCES` / `GENE_GLOSSARY` barely used | `genetics-tab.tsx` | Imported but only touched as deep fallbacks; consider removing imports or surfacing the data visibly. |
+
+### Missing Wiring (features built but not connected)
+
+| Issue | Detail |
+|---|---|
+| `generateDietArchetype()` never called | Exported from `lib/diet.ts`, included in Phase 4 scope, but not called anywhere in the UI. Should surface as a subtitle or label under results. |
+| Error boundaries absent | No error boundary wraps any tab — one crash takes down the whole app. Tracked in Phase 4. |
+
+---
+
+## Next Steps
+
+### Phase 1.5 — Data Enrichment ✅ COMPLETE _(2026-03-29)_
+
+#### 1a — Region Granularity
+- ~~Split `balkan` into sub-regions~~ **Deferred** — `balkan` is intentionally one Ottoman-era culinary tradition; splitting would be large data work for marginal gain. Better lever is richer food data within existing regions.
+
+#### 1b — Expand Food Genetics Map ✅
+- Added ~90 new entries to `FOOD_GENETICS_MAP` in both `js/genetics.js` and `lib/genetics.ts`
+- Mediterranean herbs & aromatics: `garlic`, `oregano`, `basil`, `rosemary`, `thyme`, `parsley`, `dill`, `mint`, `cumin`, `paprika`, `saffron`, `turmeric`, `ginger`, `cinnamon`, `fennel`, `cardamom` + more
+- Mediterranean & Balkan proteins: `pork` (was missing), `halloumi`, `mozzarella`, `tzatziki`, `octopus`, `squid`, `calamari`, `sea bass`, `sea bream`, `prawn`, `prosciutto`
+- Mediterranean produce: `ajvar`, `tahini`, `zucchini`, `aubergine`, `grape leaves`, `pomegranate`, `lemon`, `artichoke`, `pine nuts`, `pistachios`, `honey`, `phyllo`, `burek`, `polenta`
+- Northern/Eastern European: `beetroot`, `horseradish`, `turnip`, `radish`, `watercress`, `mustard`, `lingonberry`, `cloudberry`, `bilberry`
+- Nordic & Arctic: `reindeer`, `smoked salmon`, `lutefisk`
+- South & East Asian: `tofu`, `edamame`, `matcha`, `paneer`, `dal`, `gochujang`, `wakame`
+- African & Caribbean: `peanuts`, `groundnuts`, `fufu`, `ugali`, `injera`, `berbere`, `suya`
+
+#### 1c — Signature Foods improvement
+- ~~Deferred~~ — still pending; `getSignatureFoods()` still derives from tier system. Consider adding explicit `signature_foods` field to `diets.json` entries as a future improvement.
+
+#### 1d — Ancestral Recipes Expansion ✅
+- Added 12 Greek/Balkan recipes to `public/recipes.json` (45 → 57 total)
+- New recipes: Moussaka, Spanakopita, Souvlaki with Tzatziki, Fasolada, Avgolemono, Grilled Octopus, Tavče Gravče, Shopska Salata, Sarma, Ćevapi with Ajvar, Pastitsio, Horiatiki
+- Each recipe has full `ingredients`, `instructions`, `geneticRelevance` (2–3 traits), `nutritionalHighlights`, and `culturalContext`
+
+#### 1e — Diet Tab: Genetic Notes on Protein/Fat/Herb Chips ✅
+- `DietFoodSection` component added to `diet-tab.tsx` — section-level `selectedFood` state, expansion panel renders below chip cloud (matching Foods tab pattern)
+- `DietChip` shows coloured dot: green (positive notes), amber (watch notes), grey (none)
+- `DietExpansionPanel` shows up to 3 positive + 2 watch reasons with icons
+- Bug fix: initial implementation rendered panel inside flex container (pushing chips sideways) — fixed to match Foods tab pattern
+
+---
+
+### Phase 5 — Deep Dive Articles _(next up)_
+- `/articles` index listing all articles; `/articles/[slug]` individual pages
+- MDX content files in `content/articles/` (8–10 launch articles)
+- Articles are **free** (SEO, educational credibility)
+- Trait cards in Genetics tab link to relevant article ("Read the science →")
+- Launch articles: Lactase Persistence, FADS1/2, AMY1 Starch Digestion, Caffeine (CYP1A2), Alcohol Metabolism, Vitamin D, Iron (HFE), APOE Fat Transport
+- See implementation plan below ↓
+
+### Phase 6 — Ancestral Archetype + Biomes
+- Define 6–8 archetypes: Hunter-Gatherer, Pastoralist, Maritime, Agrarian, Highland Forager, Arctic Nomad, etc.
+- Map blended region combinations → archetype via scoring logic
+- Biome illustration cards with short description + typical foods
+- Lives in Overview tab (free tier) — surfaces `generateDietArchetype()` already in `lib/diet.ts`
+- Separate "Ancestral Biomes" card shows the environment your ancestors lived in
+
+### Phase 7 — Interactive Genetic Network Visualization
+- Force-directed node graph (react-force-graph / d3)
+- Nodes = genetic traits; coloured by user's predicted outcome (high/moderate/low)
+- Edges = metabolic/functional relationships between traits (fat metabolism cluster, carb digestion cluster, etc.)
+- Hover/click a node to expand trait detail inline
+- Lives in Genetics tab (paid) as an alternative "Network" view alongside the trait list
+- Trait relationship data derived from existing `GENE_META` + `legacyKeyMap` in `genetics.ts`
+
+---
+
+### Phase 0.3 — Server + Stripe _(required for live payments)_
 - Lightweight Express.js server
 - `POST /api/checkout` → Stripe one-off payment session (~£9.99)
 - Stripe webhook → server generates signed JWT unlock token
 - Server emails token to user; user pastes into UnlockModal code field
-- `POST /api/contact` → receives form submissions (remove Formspree dependency)
+- `POST /api/contact` → replace Formspree dependency
 - All genetic calculation stays client-side (privacy claim preserved)
 - Remove demo code `ANCESTRAL2026` once live
 
----
+### Phase 2 — Diet Tab Improvements ✅ COMPLETE
+_(See session log 2026-03-21 and "What Is Built" above)_
 
-## Phase 1 — Foods Section Redesign ✅ COMPLETE (Next.js port)
+### Phase 3 — PDF Report Polish
+- Apply Signature Foods tier to PDF "Recommended Foods" page
+- "Your Top 3 Priorities" as prominent boxed section on page 1
+- Macro range bar in PDF
+- Ensure trait meters render correctly in html2canvas capture
 
-### 1.1 Signature Foods Tier ✅ DONE
-- `SignatureFoodCard` component: prominent feature cards with sage gradient border, food name in Cormorant serif, "Signature" badge, ancestry source pills, primary genetic reason always visible, expandable "+N more reasons" toggle
+### Phase 4 — Bug Fixes, Polish & Technical Debt
 
-### 1.2 Always-visible Genetic Dots ✅ DONE
-- Every food chip has a 1.5px colored dot (green/amber/grey) — no hover required
-- Green = positive genetic match, Amber = watch/limit, Grey = neutral
-- `getDotClass(score)` helper used across chip and ancestry card components
+**Bug fixes (from 2026-03-22 scan — fix before adding new features):**
+- Fix bookmark persistence: wire `foods-tab.tsx` bookmark state through `useUser` → `user.bookmarkedRecipes` in localStorage
+- Extract `UNLOCK_PRICE = '£9.99'` constant to `lib/unlock.ts`; replace all 4 hardcoded occurrences
+- Clean up dead `onOpenUnlock` prop from `results-area.tsx` and all tab components
+- Fix tab unlock click handling inconsistency in `results-area.tsx` (standardise on `onValueChange`)
+- Add recipe loading timeout in `foods-tab.tsx`
 
-### 1.3 Click-to-expand Chips ✅ DONE
-- `FoodChip` is now a button; clicking toggles `FoodExpansionPanel` below the chip cloud
-- Panel shows icon + reason text (sage/amber/red per type), works on mobile
-- Replaces hover-only `<Tooltip>` dependency entirely
+**Structural:**
+- Consolidate health concern keyword logic into a single utility (currently split across `diet.ts`, `diet-tab.tsx`, `foods-tab.tsx`)
+- Remove local `ruleKeyMap` in `diet-tab.tsx`; use `legacyKeyMap` from `genetics.ts` directly
 
-### 1.4 Per-Ancestry Food Cards ✅ DONE
-- New "By Ancestry" section using `blended.diets[i]` + `blended.geos[i]`
-- `AncestryFoodCard`: ancestry name, `diet_signature` italic text, 6 staple/common foods with colored dots
-- Horizontal scroll on mobile, 2–4 column grid on desktop
+**Missing wiring:**
+- Archetype label: surface `generateDietArchetype(blended)` as a subtitle under results (function exists in `lib/diet.ts`, never called)
+- Error boundaries around each tab
 
-### 1.5 Filter Tabs ✅ DONE
-- Tabs: All | Ancestral | Proteins | Fats | Herbs
-- "Ancestral" = `blended.commonFoods` only (core ancestral staples)
-- Active tab description swaps dynamically in Browse Foods subtitle
-
----
-
-## Phase 2 — Diet Tab Improvements
-
-### 2.1 "Your Top Priorities" Banner
-
-Insert 2–3 high-contrast action cards at the top of the Diet tab, directly tied to the user's strongest genetic signals. Each card:
-
-- Icon + trait name
-- Plain-English consequence ("You likely produce less amylase — complex carbs are harder to break down")
-- Single clear action ("Build meals around proteins and fats rather than grains")
-
-These are derived from the existing `analyzeGeneticTraits()` watch items — the logic exists, it just needs a prominent UI home.
-
-### 2.2 Macro Bar with Context
-
-Replace the raw `X% Carbs / Y% Protein / Z% Fat` bar with:
-
-- A **range band** showing the ancestral variation (e.g. "35–55% carbs" across the blended regions)
-- A **population average** reference marker
-- A short label explaining the shift: _"Lower than average — your Nordic/Arctic ancestry adapted to high-fat diets"_
-
-Data available from individual diet objects before blending.
-
-### 2.3 Genetic Driver Labels on Guideline Cards
-
-Each "Prefer" and "Limit" chip on the morning/afternoon/evening cards should show which trait drives it:
-
-- Small inline badge: `🧬 AMY1` or `🥛 Lactase`
-- Tapping the badge expands the trait's meter detail inline (reuse `toggleTraitDetails` pattern)
-- Makes the science feel connected to the output rather than decorative
-
-### 2.4 Daily Guidelines — Reduce Repetition
-
-Rules assigned to `period: 'all'` currently repeat in all three columns, creating visual noise. Options:
-
-- Show "all-day" rules in a dedicated "All Day" strip above the three cards
-- Or deduplicate by only showing each rule in its most relevant period
+**General polish:**
+- Loading skeleton (replace spinner in `data-provider.tsx`)
+- DNA Test mode mixed ancestry defaults (`MIXED_ANCESTRY_DEFAULTS` from `lib/data.ts`)
+- Accessibility audit: ARIA labels on tabs, trait meters, collapsible sections
+- Print CSS `@media print` as lightweight PDF alternative
 
 ---
 
-## Phase 3 — PDF Report Polish
+## Architecture Notes
 
-The export exists but the output quality could match the in-app redesign above.
+- **genetics.ts is `// @ts-nocheck`** — never add types to it; 4173 lines verbatim from source. Only touch exports at the bottom.
+- **calculateMendelianGenetics()** takes exactly **4 diet objects** (each with `genetic_adaptations`). Pass `getDietById(regionId)` results.
+- **legacyKeyMap** maps raw calc keys (`lactase`, `amy1`, `fads`) → `GENE_META` keys (`lactase_persistence`, `starch_digestion`, `pufa_metabolism`)
+- **AppStateProvider** is the single source of truth for `blended`, `genetics`, and `isUnlocked`. Don't put results in component-local state.
+- **SSR safety:** all `localStorage` access must be inside `useEffect` or guarded by `typeof window !== 'undefined'`. `lib/user.ts` and `lib/unlock.ts` are already guarded.
+- **jsPDF** must only be imported dynamically (`await import('jspdf')`) — never at module top level.
+- **Data loads once** via the `dataLoadPromise` singleton in `hooks/use-data.ts`. Don't call `loadData()` directly from components.
+- **Tailwind color tokens:** `text-sage` = green (#1db954), `text-amber`/`bg-amber` = amber (#c8a96e). Both `text-terracotta` and `text-amber` map to the same value.
+- **Onboarding wizard** saves to localStorage then routes to `/app`; sidebar's `useEffect` restores on mount — no need to pass state through router.
 
-- Apply Signature Foods tier to the PDF "Recommended Foods" page
-- Add "Your Top 3 Priorities" as a prominent boxed section on page 1 of the report
-- Include macro range bar (not just a number)
-- Ensure genetic trait meters render correctly in html2canvas capture
+## File Map
+
+```
+app/
+  page.tsx                          ← landing page
+  layout.tsx                        ← dark mode, metadata, fonts
+  globals.css                       ← ancestral palette + wizard keyframes
+  app/
+    layout.tsx                      ← DataProvider + AppStateProvider
+    page.tsx                        ← app shell + wizard mount
+
+lib/
+  types.ts                          ← TypeScript interfaces
+  data.ts                           ← data loading + NATIONALITY_TO_REGION
+  user.ts                           ← localStorage user CRUD
+  diet.ts                           ← blendDiets() + food scoring
+  genetics.ts                       ← full genetics.js (@ts-nocheck)
+  recipes.ts                        ← recipe scoring/loading
+  pdf-export.ts                     ← jsPDF export (dynamic import)
+  unlock.ts                         ← paywall unlock state (localStorage)
+  utils.ts                          ← (pre-existing)
+
+hooks/
+  use-data.ts                       ← singleton data load hook
+  use-user.ts                       ← React hook for user state
+  use-unlock.ts                     ← React hook for unlock state
+
+components/
+  header.tsx                        ← landing nav + wizard trigger
+  hero.tsx                          ← landing hero + wizard trigger
+  features.tsx                      ← 6 feature cards
+  footer.tsx                        ← "A" watermark
+  how-it-works.tsx                  ← 3-step section
+  faq.tsx                           ← 6-item FAQ accordion
+  onboarding/
+    onboarding-wizard.tsx           ← 3-step guided intake wizard
+  providers/
+    data-provider.tsx               ← loading screen + data context
+    app-state-provider.tsx          ← central app state
+  app/
+    app-header.tsx                  ← fixed 70px header + mobile Sheet
+    app-sidebar.tsx                 ← ancestry selects + calculate + wizard trigger
+    calculating-overlay.tsx         ← fullscreen spinner
+    results-area.tsx                ← tab shell + PDF button + UnlockModal
+    unlock-modal.tsx                ← £9.99 pricing dialog
+    paywall-overlay.tsx             ← reusable in-tab lock screen
+    tabs/
+      overview-tab.tsx              ← ancestry mix, macros, categories, insights
+      genetics-tab.tsx              ← 3 free traits + locked remainder
+      diet-tab.tsx                  ← daily guidelines (locked)
+      foods-tab.tsx                 ← signature foods + ancestry cards + browse
+
+public/
+  cultures.json
+  diets.json
+  genetics-reference.json
+  genetics-frequencies.json
+  recipes.json
+```
 
 ---
 
-## Phase 4 — Genetic Data Completion & Batch Integration
+## Phase 5 — Deep Dive Articles: Implementation Plan
 
-_(In progress — user currently researching final batch)_
+### Dependencies to install
+```
+npm install next-mdx-remote gray-matter
+```
+- `next-mdx-remote` — renders MDX files in Next.js static export (RSC-compatible)
+- `gray-matter` — parses frontmatter from MDX files
 
-- Complete remaining genetic trait data and integrate into `genetics-frequencies.json`
-- Run `scripts/validate-migration.js` after each batch
-- Ensure all new traits have corresponding `GENE_META` entries and `DAILY_GUIDELINE_RULES` entries where appropriate
-- Audit `getFoodExplanations()` to cover new traits
+### File structure
+```
+content/
+  articles/
+    lactase-persistence.mdx
+    fads-omega-metabolism.mdx
+    starch-digestion-amy1.mdx
+    caffeine-metabolism.mdx
+    alcohol-metabolism.mdx
+    vitamin-d-cyp2r1.mdx
+    iron-absorption-hfe.mdx
+    apoe-fat-transport.mdx
+
+app/
+  articles/
+    page.tsx                  ← article index (listing all articles)
+    [slug]/
+      page.tsx                ← individual article page
+
+components/
+  articles/
+    article-card.tsx          ← preview card used on index page
+    article-layout.tsx        ← wrapper with back link, gene badge, reading time
+```
+
+### MDX frontmatter schema
+```mdx
+---
+title: "Lactase Persistence: Why Some Humans Evolved to Drink Milk"
+slug: "lactase-persistence"
+gene: "LCT"
+traitKey: "lactase_persistence"       ← matches GENE_META key in genetics.ts
+summary: "How a mutation that emerged ~7,500 years ago reshaped dairy cultures worldwide."
+tags: ["dairy", "digestion", "European", "East African"]
+readingTime: 8
+publishedAt: "2026-04-02"
+---
+```
+
+### Static export compatibility
+- `app/articles/[slug]/page.tsx` exports `generateStaticParams()` — reads all MDX files from `content/articles/` at build time using Node.js `fs`
+- No API routes needed; everything pre-rendered at `npm run build`
+
+### Integration with Genetics tab
+- Add `TRAIT_ARTICLE_MAP` constant: `{ lactase_persistence: 'lactase-persistence', starch_digestion: 'starch-digestion-amy1', ... }`
+- Each trait card in `genetics-tab.tsx` shows a small "Read the science →" link if the trait has a matching article
+- Link goes to `/articles/[slug]` (or `/ancestral/articles/[slug]` in production via basePath)
+
+### Paywall
+- All articles are **free** — no paywall
+- Good SEO signal; positions the site as authoritative
+- Articles can mention "your personal result for this trait is in the app" to drive conversions
+
+### Launch article list (8 articles)
+| Slug | Gene(s) | traitKey |
+|---|---|---|
+| `lactase-persistence` | LCT | `lactase_persistence` |
+| `fads-omega-metabolism` | FADS1, FADS2 | `pufa_metabolism` |
+| `starch-digestion-amy1` | AMY1 | `starch_digestion` |
+| `caffeine-metabolism` | CYP1A2 | `caffeine_metabolism` |
+| `alcohol-metabolism` | ADH1B, ALDH2 | `alcohol_metabolism` |
+| `vitamin-d-synthesis` | CYP2R1 | `vitamin_d` |
+| `iron-absorption` | HFE | `iron_absorption` |
+| `apoe-fat-transport` | APOE | `fat_sensitivity` |
+
+### Build steps (in order)
+1. `npm install next-mdx-remote gray-matter`
+2. Create `content/articles/` and write 8 MDX files
+3. Create `components/articles/article-card.tsx` + `article-layout.tsx`
+4. Create `app/articles/page.tsx` (reads all MDX frontmatter, renders grid of ArticleCards)
+5. Create `app/articles/[slug]/page.tsx` (reads single MDX, renders with ArticleLayout)
+6. Add `TRAIT_ARTICLE_MAP` to `lib/genetics.ts` (or a new `lib/articles.ts`)
+7. Wire "Read the science →" links into `genetics-tab.tsx` trait cards
+8. Add "Articles" link to landing nav (`components/header.tsx`) and app header
 
 ---
 
-## Phase 5 — Polish & Technical Debt
+## Session Log
 
-- **Disclaimer consolidation**: currently appears in banner, footer, and modals — reduce to one well-placed instance + methodology modal
-- **Accessibility**: ARIA labels on tabs, trait meters, and collapsible sections; keyboard navigation for the Foods filter tabs
-- **Print CSS**: style the results content for `@media print` as a lightweight alternative to PDF export
-- **Mobile layout audit**: Daily Guidelines 3-column grid collapses to 1 column on mobile — verify Foods card layout does the same gracefully
-- **Remove unused code**: `blendGeneticAdaptations()` in `genetics.js` (legacy DNA mode path, superseded by Mendelian) — verify and remove if safe
-- **`package.json` cleanup**: remove Express/Mapbox legacy entries that no longer apply to the static app
+### Session — 2026-03-19
+- **Font swap:** `Inter` → `Plus Jakarta Sans` (400/500/600/700).
+- **Genetics badge legend:** Added colour-coded key panel to `GeneticsTab`.
 
----
+### Session — 2026-03-21
+- **Phase 0.1 — Paywall UI:** `lib/unlock.ts`, `hooks/use-unlock.ts`, `UnlockModal`, `PaywallOverlay`; `isUnlocked` added to `AppStateProvider`; Genetics tab shows 3 free traits + blurred lock; Diet + Foods fully locked; PDF button locked; Overview shows upgrade teaser.
+- **Phase 0.2 — Onboarding Wizard:** Full 3-step wizard with CSS slide animations, custom searchable combobox (220+ nationalities), maternal/paternal layout, DNA percentage input; replaces direct `/app` link from Hero + Header; ✏ wizard re-entry from sidebar.
+- **Phase 1 — Foods Section Redesign:** Signature Foods feature cards; per-ancestry food cards with `diet_signature`; always-visible colored genetic dots; click-to-expand chip panels (mobile-friendly); "Ancestral" filter tab added; filter tab description swaps dynamically; recipe section minor polish.
 
-## Out of Scope (Removed)
+### Session — 2026-03-29
+- **Planning — Phase 1.5 Data Enrichment:** Identified root cause of sparse Signature Foods (Macedonian/Greek/Italian all resolve to single `balkan` region). Decided against region split (Ottoman synthesis is intentionally unified). Planned 1b–1e instead.
+- **Phase 1.5 — FOOD_GENETICS_MAP expansion:** ~90 new food entries across 7 cuisine groups added to both `js/genetics.js` and `lib/genetics.ts`. Covers Mediterranean herbs, Balkan proteins (incl. pork which was missing), Nordic, South/East Asian, African/Caribbean.
+- **Phase 1.5 — Recipes expansion:** 12 new Greek/Balkan recipes added to `public/recipes.json` (45 → 57). Moussaka, Spanakopita, Souvlaki, Fasolada, Avgolemono, Grilled Octopus, Tavče Gravče, Shopska Salata, Sarma, Ćevapi, Pastitsio, Horiatiki.
+- **Phase 1.5 — Diet tab genetic chip notes:** `DietFoodSection` + `DietChip` + `DietExpansionPanel` components added to `diet-tab.tsx`. Coloured dots + click-to-expand panel below chip cloud for Protein Sources, Healthy Fats, and Herbs & Spices. Fixed layout bug where panel was inside flex container.
 
-- **Mapbox / Leaflet / Turf** — fully removed, no longer relevant
-- **Design/ folder** — deleted
+### Session — 2026-03-22
+- **Codebase scan:** Full review of all lib/, hooks/, and components/app/ files. Found 3 bugs, 5 structural issues, 2 missing wiring gaps. Logged in "Known Issues" section above. Phase 2 marked complete in roadmap. Phase 4 expanded with prioritised bug fix list.
 
----
-
-## Active Next.js Port
-
-The Next.js app at `TEMPLATE WEBISTE/ZSFwO6hoZW2-1773296921747/` is the primary development target. See `ROADMAP.md` in that directory for its own detailed status and next steps.
-
-_Note: Stripe + email capture previously marked out of scope. Now in scope as Phase 0.3 — the app needs a revenue layer and a minimal server is the correct path._
+### Session — 2026-03-21 (Phase 2)
+- **Phase 2 — Diet Tab Improvements:** `diet-tab.tsx` rewritten with three enhancements:
+  - **Top Priorities banner** — numbered action cards (#1 #2 #3) from `analyzeGeneticTraits()` watch items with amber accent treatment; strength items shown below in sage; replaces the old mixed grid.
+  - **Macro Range Bar** — new `MacroRangeSection` + `MacroRangeBar` components; shows blended value as colored dot, ancestral min–max as shaded band, WHO population average as tick mark, across all three macros (Carbs/Protein/Fat).
+  - **Gene code badges** — `GENE_CODE_MAP` lookup table (15 genes: CLOCK, PER1, CYP1A2, ADORA2A, DAO, SLC2A2, LEPR, BDNF, LCT, HFE, COMT, ABCG2, G6PD, ACE, CYP2R1); each `RuleCard` header now shows a `🧬 GENE` monospace badge.
+  - **`period:'all'` dedup confirmed** — already correct in prior implementation; no change needed.
