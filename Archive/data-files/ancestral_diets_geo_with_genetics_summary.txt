@@ -1,0 +1,426 @@
+================================================================================
+GENETIC ADAPTATION INTEGRATION SUMMARY
+================================================================================
+
+
+Aboriginal Australian (aboriginal_aus)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 96.0%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Low Starch Tolerance
+    AMY1 Copies: 5
+    Recommendation: Lower amylase production (AMY1 copies: 5); higher protein/fat diet may be better
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+  Alcohol Metabolism:
+    Phenotype: Fast Alcohol Metabolism
+    Recommendation: Can tolerate fermented foods and moderate alcohol
+
+
+Amazonian (amazon)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 96.0%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Low Starch Tolerance
+    AMY1 Copies: 5.5
+    Recommendation: Lower amylase production (AMY1 copies: 5.5); higher protein/fat diet may be better
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+  Alcohol Metabolism:
+    Phenotype: Standard Alcohol Metabolism
+    Recommendation: Standard alcohol tolerance; moderation advised
+
+
+Anatolian/Turkish (anatolian)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Persistent
+    Probability: 57.7%
+    Recommendation: Full dairy tolerance; all forms of dairy well-tolerated
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 10
+    Recommendation: Excellent starch digestion (AMY1 copies: 10); high-carb diet well-suited
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Andean (andean)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 90.2%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 10
+    Recommendation: Excellent starch digestion (AMY1 copies: 10); high-carb diet well-suited
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Arabian Peninsula (arabian)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Persistent
+    Probability: 91.0%
+    Recommendation: Full dairy tolerance; all forms of dairy well-tolerated
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 7
+    Recommendation: Good starch tolerance (AMY1 copies: 7); balanced macros optimal
+
+  Omega-3 Metabolism:
+    Phenotype: Moderate PUFA Metabolism
+    Recommendation: Moderate conversion efficiency; mix of plant and marine sources optimal
+
+
+Arctic Inuit (inuit)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Low Starch Tolerance
+    AMY1 Copies: 5
+    Recommendation: Lower amylase production (AMY1 copies: 5); higher protein/fat diet may be better
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Australian Coastal (australian_coastal)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 96.0%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+  Alcohol Metabolism:
+    Phenotype: Fast Alcohol Metabolism
+    Recommendation: Can tolerate fermented foods and moderate alcohol
+
+
+Bengali (bengal)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 81.0%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 10
+    Recommendation: Excellent starch digestion (AMY1 copies: 10); high-carb diet well-suited
+
+  Omega-3 Metabolism:
+    Phenotype: Moderate PUFA Metabolism
+    Recommendation: Moderate conversion efficiency; mix of plant and marine sources optimal
+
+
+Brazilian Coastal (brazilian_coastal)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 96.0%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Low Starch Tolerance
+    AMY1 Copies: 5
+    Recommendation: Lower amylase production (AMY1 copies: 5); higher protein/fat diet may be better
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+California Coastal (california_coast)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 7
+    Recommendation: Good starch tolerance (AMY1 copies: 7); balanced macros optimal
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+East African Pastoralist (maasai)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Persistent
+    Probability: 82.4%
+    Recommendation: Full dairy tolerance; all forms of dairy well-tolerated
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Eastern European (eastern_europe)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Persistent
+    Probability: 94.2%
+    Recommendation: Full dairy tolerance; all forms of dairy well-tolerated
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 6.5
+    Recommendation: Good starch tolerance (AMY1 copies: 6.5); balanced macros optimal
+
+
+Eastern Woodlands (eastern_woodlands)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 7
+    Recommendation: Good starch tolerance (AMY1 copies: 7); balanced macros optimal
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Great Plains (great_plains)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 6
+    Recommendation: Good starch tolerance (AMY1 copies: 6); balanced macros optimal
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+MÄori (maori)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 84.6%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Omega-3 Metabolism:
+    Phenotype: Moderate PUFA Metabolism
+    Recommendation: Moderate conversion efficiency; mix of plant and marine sources optimal
+
+
+North African - Maghreb (maghreb)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 67.2%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+
+North Chinese (north_china)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 90.2%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 8
+    Recommendation: Excellent starch digestion (AMY1 copies: 8); high-carb diet well-suited
+
+  Alcohol Metabolism:
+    Phenotype: ALDH2 Deficiency (Asian Flush)
+    Recommendation: Avoid alcohol and minimize fermented products
+
+
+North Indian (north_india)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 54.8%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 10
+    Recommendation: Excellent starch digestion (AMY1 copies: 10); high-carb diet well-suited
+
+  Omega-3 Metabolism:
+    Phenotype: Moderate PUFA Metabolism
+    Recommendation: Moderate conversion efficiency; mix of plant and marine sources optimal
+
+
+Pacific Northwest (pacific_nw)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Low Starch Tolerance
+    AMY1 Copies: 5
+    Recommendation: Lower amylase production (AMY1 copies: 5); higher protein/fat diet may be better
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Persian (persian)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 51.8%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 9
+    Recommendation: Excellent starch digestion (AMY1 copies: 9); high-carb diet well-suited
+
+
+South Indian (south_india)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 84.6%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 10
+    Recommendation: Excellent starch digestion (AMY1 copies: 10); high-carb diet well-suited
+
+  Omega-3 Metabolism:
+    Phenotype: Moderate PUFA Metabolism
+    Recommendation: Moderate conversion efficiency; mix of plant and marine sources optimal
+
+
+Southeastern US (southeast_us)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 7
+    Recommendation: Good starch tolerance (AMY1 copies: 7); balanced macros optimal
+
+
+Southwest US (southwest_us)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 90.2%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: High Starch Tolerance
+    AMY1 Copies: 8
+    Recommendation: Excellent starch digestion (AMY1 copies: 8); high-carb diet well-suited
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Subarctic (subarctic)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Non-Persistent
+    Probability: 94.1%
+    Recommendation: Better tolerance with fermented dairy; lactose-free alternatives preferred
+
+  Starch Digestion:
+    Phenotype: Low Starch Tolerance
+    AMY1 Copies: 4
+    Recommendation: Lower amylase production (AMY1 copies: 4); higher protein/fat diet may be better
+
+  Omega-3 Metabolism:
+    Phenotype: Efficient PUFA Converter
+    Recommendation: Efficient ALA→EPA/DHA conversion; plant-based omega-3 sources adequate
+
+
+Western European (western_europe)
+------------------------------------------------------------
+
+  Lactase Persistence:
+    Phenotype: Lactase Persistent
+    Probability: 92.2%
+    Recommendation: Full dairy tolerance; all forms of dairy well-tolerated
+
+  Starch Digestion:
+    Phenotype: Moderate Starch Tolerance
+    AMY1 Copies: 6.5
+    Recommendation: Good starch tolerance (AMY1 copies: 6.5); balanced macros optimal
+

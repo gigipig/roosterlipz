@@ -1,0 +1,259 @@
+{
+  "INSTRUCTIONS": {
+    "task": "AUDIT AND FIX ALL GENETIC VARIANTS IN DIETS.JSON",
+    "overview": "Many regions are using incorrect variants (e.g., European rs4988235 for Indigenous Americans who never had lactase persistence). You need to research and fix the variants for ALL regions, not just new ones.",
+
+    "workflow": [
+      "1. Review the 'variant_lookup' section to understand which variants apply to which ancestries",
+      "2. Review 'all_regions_audit' to see current state and issues for each region",
+      "3. Research correct allele frequencies using 1000 Genomes, gnomAD, ALFRED, and published papers",
+      "4. Output corrected genetic_adaptations JSON for each region that needs fixing",
+      "5. For admixed populations, calculate weighted frequencies based on ancestry proportions"
+    ],
+
+    "key_principles": [
+      "Different populations evolved lactase persistence INDEPENDENTLY with DIFFERENT variants",
+      "Indigenous Americans, Australians, and Pacific Islanders had NO lactase persistence pre-contact",
+      "East Asians have near-zero lactase persistence - this is NOT the same variant as Europeans",
+      "ALDH2 deficiency (Asian flush) exists ONLY in East Asians - never add it to other populations",
+      "African populations have EFFICIENT PUFA conversion, East Asians have REDUCED conversion",
+      "AMY1 copy number correlates with historical starch consumption, not with a specific variant"
+    ],
+
+    "output_format": "For each region needing fixes, output the complete genetic_adaptations object as valid JSON"
+  },
+
+  "variant_lookup": {
+    "lactase_persistence_LCT": {
+      "european_variant": {
+        "rsid": "rs4988235",
+        "derived_allele": "T (-13910*T)",
+        "applies_to": ["Northern Europe", "Western Europe", "Eastern Europe", "South Asian (via migration)"],
+        "origin": "Central Europe ~7,500 years ago",
+        "do_NOT_use_for": ["Indigenous Americans", "Australians", "Pacific Islanders", "East Asians", "Sub-Saharan Africans"]
+      },
+      "east_african_variant": {
+        "rsid": "rs145946881",
+        "derived_allele": "G (-14010*G)",
+        "applies_to": ["East African pastoralists", "Maasai", "Tutsi", "Some Central/Southern African"],
+        "origin": "East Africa ~7,000 years ago (independent)",
+        "frequency": "50-60% in pastoralist groups"
+      },
+      "arab_variant": {
+        "rsid": "rs41380347",
+        "derived_allele": "G (-13915*G)",
+        "applies_to": ["Arabian Peninsula", "Bedouin", "Middle Eastern", "North African (partial)"],
+        "origin": "Arabian Peninsula (independent)"
+      },
+      "sudanese_variant": {
+        "rsid": "rs41525747",
+        "derived_allele": "G (-13907*G)",
+        "applies_to": ["Sudanese", "Ethiopian", "Nile Valley", "Beja", "Afar"],
+        "origin": "Northeast Africa (independent)"
+      },
+      "LP_absent_populations": {
+        "note": "These populations did NOT evolve lactase persistence. Do not assign a 'variant' - instead note LP is absent.",
+        "populations": [
+          "Indigenous American (all regions)",
+          "Aboriginal Australian",
+          "Pacific Islander (Polynesian, Melanesian, Micronesian)",
+          "East Asian (Japanese, Chinese, Korean)",
+          "Southeast Asian",
+          "West African (non-pastoralist)",
+          "Central African Pygmy"
+        ],
+        "how_to_record": "Use rs4988235 with frequency 0-5% to indicate absence, OR note 'LP absent - no indigenous variant'"
+      }
+    },
+
+    "starch_digestion_AMY1": {
+      "type": "Copy Number Variation (not SNP)",
+      "interpretation": {
+        "high_copies_8_plus": {
+          "populations": ["Japanese", "European agricultural", "West African (yam)", "Mesoamerican (maize)", "Middle Eastern (wheat)"],
+          "diet_history": "Long agricultural history with starch staples"
+        },
+        "moderate_copies_6_7": {
+          "populations": ["Most global populations"],
+          "diet_history": "Mixed diet history"
+        },
+        "low_copies_4_5": {
+          "populations": ["Inuit/Arctic", "Maasai/pastoralists", "Pygmy", "San/Khoisan", "Some hunter-gatherers"],
+          "diet_history": "Low-starch traditional diet"
+        }
+      },
+      "data_source": "Bolognini et al. 2024, Perry et al. 2007"
+    },
+
+    "pufa_metabolism_FADS1": {
+      "rsid": "rs174537 (primary), also rs174546, rs174556",
+      "african_ancestry": {
+        "derived_frequency": "85-95%",
+        "phenotype": "EFFICIENT converter",
+        "note": "Can convert plant ALA to EPA/DHA efficiently. Modern diet warning: may over-convert omega-6."
+      },
+      "european_ancestry": {
+        "derived_frequency": "50-65%",
+        "phenotype": "MODERATE converter"
+      },
+      "east_asian_ancestry": {
+        "derived_frequency": "25-40%",
+        "phenotype": "REDUCED converter",
+        "note": "Benefits from direct EPA/DHA from fish"
+      },
+      "indigenous_american": {
+        "derived_frequency": "75-85%",
+        "phenotype": "EFFICIENT converter",
+        "note": "Similar to African pattern"
+      },
+      "inuit_special": {
+        "rsid": "rs7115739",
+        "frequency": "98%",
+        "phenotype": "SUPPRESSED",
+        "note": "Unique Arctic adaptation - REQUIRES marine omega-3 sources"
+      }
+    },
+
+    "alcohol_metabolism": {
+      "ADH1B": {
+        "rs1229984_european_african": {
+          "allele": "A (ADH1B*1)",
+          "frequency": "90%+ in Europeans/Africans",
+          "effect": "Standard/slow metabolism"
+        },
+        "rs1229984_east_asian": {
+          "allele": "G (ADH1B*2)",
+          "frequency": "70-90% in East Asians",
+          "effect": "Fast metabolism, protective against alcoholism"
+        },
+        "rs2066702_african": {
+          "allele": "ADH1B*3",
+          "frequency": "10-25% in some African populations",
+          "effect": "Fast metabolism (African-specific variant)"
+        }
+      },
+      "ALDH2": {
+        "rs671_deficiency": {
+          "allele": "A (ALDH2*2)",
+          "ONLY_IN": ["East Asian - Chinese, Japanese, Korean, Vietnamese"],
+          "frequency": "30-50% heterozygotes in East Asia",
+          "effect": "Asian flush, alcohol intolerance",
+          "CRITICAL": "This variant is 0% outside East Asia. NEVER add ALDH2 deficiency to African, European, Middle Eastern, South Asian, Indigenous American, or Pacific Islander populations."
+        }
+      }
+    },
+
+    "vitamin_d_SLC24A5": {
+      "rs1426654": {
+        "A_allele_light": {
+          "frequency": "98-100% in Europeans, 50-70% in South Asians",
+          "phenotype": "Light skin, efficient vitamin D synthesis"
+        },
+        "G_allele_dark": {
+          "frequency": "95-100% in sub-Saharan Africa",
+          "phenotype": "Dark skin, UV protection, needs dietary vitamin D at high latitudes"
+        }
+      },
+      "east_asian_note": "East Asian skin color has different genetic architecture - OCA2 rs1800414 more relevant"
+    },
+
+    "cholesterol_APOE": {
+      "e4_ancestral": {
+        "high_frequency": ["Pygmy (41%)", "Khoisan (37%)", "Aboriginal Australian (26%)", "African average (25-30%)"],
+        "low_frequency": ["European (15%)", "East Asian (10%)"],
+        "note": "Ancestral variant, may be protective in traditional diet context"
+      }
+    }
+  },
+
+  "ancestry_groups": {
+    "european": {
+      "regions": ["nordic", "western_europe", "eastern_europe", "central_europe", "med_southern", "balkan", "caucasus"],
+      "lactase": "rs4988235 (CORRECT)",
+      "status": "MOSTLY CORRECT - verify frequencies"
+    },
+    "middle_eastern": {
+      "regions": ["arabian", "persian", "kurdish", "med_levant", "anatolian", "mesopotamian"],
+      "lactase": "Should use rs41380347 (Arab) and/or rs4988235",
+      "status": "NEEDS REVIEW - add Arab variant where missing"
+    },
+    "south_asian": {
+      "regions": ["north_india", "south_india", "west_india", "bengal", "nepal"],
+      "lactase": "rs4988235 (correct - spread via Indo-European migration)",
+      "status": "CORRECT"
+    },
+    "east_asian": {
+      "regions": ["japan", "korea", "north_china", "south_china", "sichuan_sw_china"],
+      "lactase": "LP absent (0-5%), rs4988235 OK to measure absence",
+      "aldh2": "MUST include ALDH2 deficiency rs671",
+      "status": "CHECK - ensure ALDH2 is present, LP frequency near 0%"
+    },
+    "southeast_asian": {
+      "regions": ["se_asia_main", "se_asia_island", "highland_se_asia"],
+      "lactase": "LP absent (0-5%)",
+      "aldh2": "ALDH2 deficiency present but lower than East Asia (15-25%)",
+      "status": "NEEDS REVIEW"
+    },
+    "central_asian": {
+      "regions": ["central_asia", "mongolia", "siberia", "tibet"],
+      "lactase": "Variable - steppe populations had dairy traditions",
+      "status": "NEEDS RESEARCH"
+    },
+    "sub_saharan_african": {
+      "regions": ["west_africa", "central_africa", "southern_africa", "nilotic", "sudanian", "sahel"],
+      "lactase": "Use rs145946881 (East African variant) for pastoralists, LP absent for non-pastoralists",
+      "pufa": "HIGH efficiency (85-95%)",
+      "aldh2": "NO ALDH2 deficiency - do not include",
+      "status": "NEEDS FIXES - many using wrong European variant"
+    },
+    "northeast_african": {
+      "regions": ["ethiopia", "horn_somalia", "nile_valley"],
+      "lactase": "Multiple variants: rs145946881, rs41525747, rs41380347",
+      "status": "ethiopia/horn_somalia CORRECT, nile_valley NEEDS GENETICS"
+    },
+    "north_african": {
+      "regions": ["maghreb"],
+      "lactase": "Mixed European rs4988235 + Arab rs41380347",
+      "status": "NEEDS EXPANSION"
+    },
+    "indigenous_american": {
+      "regions": ["amazon", "andean", "mesoamerica", "caribbean_taino", "california_coast", "eastern_woodlands", "great_plains", "pacific_nw", "patagonia", "southwest_us", "subarctic", "gaucho", "inuit"],
+      "lactase": "LP ABSENT pre-contact. Do NOT use European variant as if they have LP.",
+      "pufa": "HIGH efficiency (75-85%) similar to African",
+      "aldh2": "NO ALDH2 deficiency",
+      "status": "NEEDS FIXES - incorrectly using rs4988235"
+    },
+    "australian_pacific": {
+      "regions": ["aboriginal_aus", "australian_coastal", "polynesia", "melanesia", "micronesia", "maori"],
+      "lactase": "LP ABSENT. No indigenous variant exists.",
+      "status": "NEEDS FIXES - incorrectly using rs4988235"
+    },
+    "admixed_colonial": {
+      "regions": ["caribbean_creole", "mestizo_mesoamerican", "brazilian_coastal", "southeast_us", "canadian_prairies", "malagasy"],
+      "lactase": "Calculate weighted average based on ancestry proportions",
+      "status": "NEEDS CALCULATION based on admixture"
+    }
+  },
+
+  "regions_priority": {
+    "priority_1_missing_genetics": [
+      "caribbean_creole",
+      "malagasy",
+      "mesopotamian",
+      "mestizo_mesoamerican",
+      "nile_valley"
+    ],
+    "priority_2_wrong_variants": [
+      "amazon", "andean", "mesoamerica", "caribbean_taino", "california_coast",
+      "eastern_woodlands", "great_plains", "pacific_nw", "patagonia", "southwest_us",
+      "subarctic", "gaucho", "aboriginal_aus", "australian_coastal", "polynesia",
+      "melanesia", "micronesia", "maori", "nilotic", "sudanian", "maghreb"
+    ],
+    "priority_3_verify_and_expand": [
+      "All East Asian regions (verify ALDH2 present)",
+      "All Southeast Asian regions",
+      "All Middle Eastern regions (add Arab LP variant)",
+      "All Central Asian regions"
+    ]
+  }
+}

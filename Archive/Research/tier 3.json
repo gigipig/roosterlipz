@@ -1,0 +1,308 @@
+{
+  "tier": 3,
+  "research_date": "2026-01-19",
+  "sources": ["gnomAD v4", "1000 Genomes Phase 3", "peer-reviewed literature", "meta-analyses"],
+  "genes": [
+    {
+      "gene": "FUT2",
+      "snp": "rs601338",
+      "trait": "vitamin_b12_absorption",
+      "risk_allele": "G",
+      "risk_phenotype": "secretor - lower circulating B12, susceptible to norovirus/rotavirus",
+      "reference_allele": "A",
+      "reference_phenotype": "non-secretor - resistant to certain GI infections",
+      "clinical_note": "In East Asians, rs1047781 determines secretor status, not rs601338. rs601338-A is nearly absent in East Asians.",
+      "populations": {
+        "european_north": {"freq": 49, "source": "gnomAD NFE, literature"},
+        "european_south": {"freq": 48, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 50, "source": "literature"},
+        "north_african": {"freq": 50, "source": "literature"},
+        "west_african": {"freq": 50, "source": "gnomAD AFR, Rwanda study"},
+        "east_african": {"freq": 48, "source": "gnomAD AFR"},
+        "south_african": {"freq": 50, "source": "literature South Africa"},
+        "south_asian": {"freq": 60, "source": "Bangladesh 1000G - 40% nonsecretor"},
+        "east_asian": {"freq": 99.8, "source": "gnomAD EAS - A allele 0.2%"},
+        "southeast_asian": {"freq": 99, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 70, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 85, "source": "literature - low nonsecretor"}
+      }
+    },
+    {
+      "gene": "MC4R",
+      "snp": "rs17782313",
+      "trait": "appetite_regulation",
+      "risk_allele": "C",
+      "risk_phenotype": "increased appetite and snacking, obesity risk",
+      "reference_allele": "T",
+      "populations": {
+        "european_north": {"freq": 26, "source": "GWAS meta-analysis"},
+        "european_south": {"freq": 24, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 22, "source": "literature"},
+        "north_african": {"freq": 23, "source": "extrapolated"},
+        "west_african": {"freq": 29, "source": "gnomAD AFR"},
+        "east_african": {"freq": 28, "source": "gnomAD AFR"},
+        "south_african": {"freq": 27, "source": "gnomAD AFR"},
+        "south_asian": {"freq": 20, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 18, "source": "gnomAD EAS"},
+        "southeast_asian": {"freq": 17, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 20, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 10, "source": "Mexican studies - 9.8%"}
+      }
+    },
+    {
+      "gene": "HLA-DQ2",
+      "snp": "rs2187668",
+      "trait": "celiac_susceptibility",
+      "risk_allele": "T",
+      "risk_phenotype": "celiac disease risk (encodes DQ2.5 haplotype)",
+      "reference_allele": "G",
+      "clinical_note": "Tags HLA-DQ2.5cis with r²=0.97. ~90% of celiac patients carry DQ2.5.",
+      "populations": {
+        "european_north": {"freq": 20, "source": "UK GWAS, gnomAD"},
+        "european_south": {"freq": 15, "source": "Spanish/Italian studies"},
+        "middle_eastern": {"freq": 10, "source": "Saudi study - 10%"},
+        "north_african": {"freq": 18, "source": "high celiac prevalence region"},
+        "west_african": {"freq": 10, "source": "Ethiopian study reference"},
+        "east_african": {"freq": 10, "source": "Ethiopian HLA study"},
+        "south_african": {"freq": 8, "source": "extrapolated"},
+        "south_asian": {"freq": 8, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 2, "source": "gnomAD EAS - very rare"},
+        "southeast_asian": {"freq": 3, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 12, "source": "literature"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 5, "source": "gnomAD AMR"}
+      }
+    },
+    {
+      "gene": "HLA-DQ8",
+      "snp": "rs7454108",
+      "trait": "celiac_susceptibility",
+      "risk_allele": "C",
+      "risk_phenotype": "celiac disease risk (DQ8 haplotype)",
+      "reference_allele": "T",
+      "clinical_note": "DQ8 has wider global distribution than DQ2.5, especially high in Americas",
+      "populations": {
+        "european_north": {"freq": 13, "source": "Swedish reference"},
+        "european_south": {"freq": 12, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 10, "source": "literature"},
+        "north_african": {"freq": 10, "source": "extrapolated"},
+        "west_african": {"freq": 8, "source": "gnomAD AFR"},
+        "east_african": {"freq": 7, "source": "Ethiopian study"},
+        "south_african": {"freq": 7, "source": "extrapolated"},
+        "south_asian": {"freq": 8, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 5, "source": "literature"},
+        "southeast_asian": {"freq": 5, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 10, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 25, "source": "high in South/Central America"}
+      }
+    },
+    {
+      "gene": "LIPC",
+      "snp": "rs1800588",
+      "trait": "hdl_metabolism",
+      "risk_allele": "T",
+      "risk_phenotype": "altered HDL levels - higher HDL, benefits from lower saturated fat",
+      "reference_allele": "C",
+      "clinical_note": "T allele associated with higher HDL-C. Effect stronger in women.",
+      "populations": {
+        "european_north": {"freq": 22, "source": "Young Finns study, gnomAD NFE"},
+        "european_south": {"freq": 20, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 20, "source": "literature"},
+        "north_african": {"freq": 18, "source": "extrapolated"},
+        "west_african": {"freq": 35, "source": "South African Xhosa study"},
+        "east_african": {"freq": 32, "source": "gnomAD AFR"},
+        "south_african": {"freq": 35, "source": "South African study"},
+        "south_asian": {"freq": 25, "source": "Indian studies"},
+        "east_asian": {"freq": 45, "source": "gnomAD EAS, Taiwan study"},
+        "southeast_asian": {"freq": 42, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 28, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 20, "source": "gnomAD AMR"}
+      }
+    },
+    {
+      "gene": "PPARG",
+      "snp": "rs1801282",
+      "trait": "insulin_sensitivity",
+      "risk_allele": "C",
+      "risk_phenotype": "Pro12 - reduced insulin sensitivity, T2DM risk",
+      "reference_allele": "G",
+      "reference_phenotype": "Ala12 - protective against T2DM",
+      "clinical_note": "G allele (Ala12) is protective. C allele (Pro12) is more common.",
+      "populations": {
+        "european_north": {"freq": 88, "source": "meta-analysis - 12% Ala12"},
+        "european_south": {"freq": 87, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 90, "source": "literature"},
+        "north_african": {"freq": 88, "source": "extrapolated"},
+        "west_african": {"freq": 97, "source": "gnomAD AFR - very rare Ala12"},
+        "east_african": {"freq": 96, "source": "gnomAD AFR"},
+        "south_african": {"freq": 96, "source": "South African mixed ancestry"},
+        "south_asian": {"freq": 92, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 96, "source": "gnomAD EAS - ~4% Ala12"},
+        "southeast_asian": {"freq": 95, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 90, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 85, "source": "gnomAD AMR"}
+      }
+    },
+    {
+      "gene": "SOD2",
+      "snp": "rs4880",
+      "trait": "antioxidant_capacity",
+      "risk_allele": "C",
+      "risk_phenotype": "Ala16 - altered mitochondrial antioxidant transport",
+      "reference_allele": "T",
+      "reference_phenotype": "Val16 - efficient mitochondrial import",
+      "clinical_note": "Both alleles have context-dependent effects. Ala16 more efficient transport but may increase oxidative stress in some contexts.",
+      "populations": {
+        "european_north": {"freq": 47, "source": "gnomAD NFE, Caucasian 0.53"},
+        "european_south": {"freq": 48, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 45, "source": "literature"},
+        "north_african": {"freq": 44, "source": "extrapolated"},
+        "west_african": {"freq": 35, "source": "gnomAD AFR"},
+        "east_african": {"freq": 36, "source": "gnomAD AFR"},
+        "south_african": {"freq": 35, "source": "gnomAD AFR"},
+        "south_asian": {"freq": 42, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 15, "source": "gnomAD EAS, Chinese study"},
+        "southeast_asian": {"freq": 18, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 35, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 40, "source": "gnomAD AMR"}
+      }
+    },
+    {
+      "gene": "APOE",
+      "snp": "rs429358",
+      "trait": "cholesterol_metabolism",
+      "risk_allele": "C",
+      "risk_phenotype": "contributes to ε4 isoform - Alzheimer's/CVD risk",
+      "reference_allele": "T",
+      "clinical_note": "Must combine with rs7412 for isoform determination. ε4=C/C at both SNPs.",
+      "populations": {
+        "european_north": {"freq": 15, "source": "gnomAD NFE, ADNI"},
+        "european_south": {"freq": 13, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 12, "source": "literature"},
+        "north_african": {"freq": 14, "source": "literature"},
+        "west_african": {"freq": 22, "source": "gnomAD AFR - higher ε4"},
+        "east_african": {"freq": 20, "source": "gnomAD AFR"},
+        "south_african": {"freq": 21, "source": "gnomAD AFR"},
+        "south_asian": {"freq": 10, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 9, "source": "gnomAD EAS, Chinese GWAS"},
+        "southeast_asian": {"freq": 10, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 12, "source": "extrapolated"},
+        "oceanian": {"freq": 20, "source": "literature - high ε4 in some Oceanian"},
+        "indigenous_american": {"freq": 11, "source": "gnomAD AMR"}
+      }
+    },
+    {
+      "gene": "APOE",
+      "snp": "rs7412",
+      "trait": "cholesterol_metabolism",
+      "risk_allele": "T",
+      "risk_phenotype": "contributes to ε2 isoform - protective Alzheimer's, type III hyperlipoproteinemia risk",
+      "reference_allele": "C",
+      "clinical_note": "ε2=T/T at rs429358 + T at rs7412. ε3=T/C. ε4=C/C.",
+      "populations": {
+        "european_north": {"freq": 8, "source": "gnomAD NFE"},
+        "european_south": {"freq": 7, "source": "gnomAD NFE"},
+        "middle_eastern": {"freq": 6, "source": "literature"},
+        "north_african": {"freq": 7, "source": "literature"},
+        "west_african": {"freq": 9, "source": "gnomAD AFR"},
+        "east_african": {"freq": 8, "source": "gnomAD AFR"},
+        "south_african": {"freq": 9, "source": "gnomAD AFR, Saudi study 8.9%"},
+        "south_asian": {"freq": 5, "source": "gnomAD SAS"},
+        "east_asian": {"freq": 8, "source": "gnomAD EAS"},
+        "southeast_asian": {"freq": 7, "source": "gnomAD EAS"},
+        "central_asian": {"freq": 6, "source": "extrapolated"},
+        "oceanian": {"freq": null, "source": "no data"},
+        "indigenous_american": {"freq": 5, "source": "gnomAD AMR"}
+      }
+    }
+  ],
+  "deletion_polymorphisms": {
+    "GSTM1": {
+      "trait": "cruciferous_vegetable_metabolism",
+      "effect": "null genotype lacks GST-μ enzyme - reduced xenobiotic detoxification",
+      "clinical_note": "Associated with cancer susceptibility. Null frequency varies by latitude (higher in high latitudes).",
+      "populations": {
+        "european_north": {"null_freq": 55, "source": "meta-analysis"},
+        "european_south": {"null_freq": 50, "source": "Spain/Italy studies"},
+        "middle_eastern": {"null_freq": 45, "source": "literature"},
+        "north_african": {"null_freq": 48, "source": "extrapolated"},
+        "west_african": {"null_freq": 30, "source": "Cameroon/Ethiopia study"},
+        "east_african": {"null_freq": 35, "source": "Ethiopia study"},
+        "south_african": {"null_freq": 28, "source": "literature"},
+        "south_asian": {"null_freq": 33, "source": "Indian studies"},
+        "east_asian": {"null_freq": 60, "source": "meta-analysis - up to 75%"},
+        "southeast_asian": {"null_freq": 55, "source": "literature"},
+        "central_asian": {"null_freq": 50, "source": "extrapolated"},
+        "oceanian": {"null_freq": null, "source": "no data"},
+        "indigenous_american": {"null_freq": 45, "source": "Amerindian studies"}
+      }
+    },
+    "GSTT1": {
+      "trait": "cruciferous_vegetable_metabolism",
+      "effect": "null genotype lacks GST-θ enzyme - reduced xenobiotic detoxification",
+      "clinical_note": "Null frequency inversely correlated with latitude (higher in low latitudes/Asians).",
+      "populations": {
+        "european_north": {"null_freq": 18, "source": "meta-analysis"},
+        "european_south": {"null_freq": 22, "source": "Spain/Italy studies"},
+        "middle_eastern": {"null_freq": 25, "source": "literature"},
+        "north_african": {"null_freq": 30, "source": "extrapolated"},
+        "west_african": {"null_freq": 26, "source": "Cameroon/Ethiopia study"},
+        "east_african": {"null_freq": 28, "source": "Ethiopia study"},
+        "south_african": {"null_freq": 25, "source": "literature"},
+        "south_asian": {"null_freq": 35, "source": "Indian studies"},
+        "east_asian": {"null_freq": 50, "source": "meta-analysis - 40-60%"},
+        "southeast_asian": {"null_freq": 45, "source": "literature"},
+        "central_asian": {"null_freq": 35, "source": "extrapolated"},
+        "oceanian": {"null_freq": null, "source": "no data"},
+        "indigenous_american": {"null_freq": 12, "source": "Hispanic studies 10-12%"}
+      }
+    }
+  },
+  "apoe_isoform_notes": {
+    "determination": "Use rs429358 + rs7412 together",
+    "epsilon2": "rs429358-T + rs7412-T (protective Alzheimer's, CVD)",
+    "epsilon3": "rs429358-T + rs7412-C (reference/common)",
+    "epsilon4": "rs429358-C + rs7412-C (risk Alzheimer's, CVD)",
+    "global_frequencies": {
+      "epsilon2": "5-10% globally",
+      "epsilon3": "75-85% globally",
+      "epsilon4": "10-20% globally (higher in Africa/Oceania)"
+    }
+  },
+  "data_gaps": [
+    "Oceanian populations (Aboriginal Australian, Melanesian, Polynesian) - minimal data for all Tier 3 SNPs",
+    "Central Asian populations - limited direct data, mostly extrapolated",
+    "Indigenous American - only admixed Latino (gnomAD AMR) data available",
+    "North African - limited specific data, often grouped with Middle Eastern",
+    "FUT2 rs601338 in East Asia - different nonsecretor variant (rs1047781) is relevant",
+    "HLA variants highly population-specific - tag SNPs may not capture all haplotype diversity"
+  ],
+  "methodology_notes": {
+    "gnomAD_populations": {
+      "NFE": "Non-Finnish European",
+      "AFR": "African/African American (~84% AFR + ~14% EUR admixture)",
+      "EAS": "East Asian",
+      "SAS": "South Asian",
+      "AMR": "Admixed American (~43% EUR + ~46% Indigenous + ~5% EAS + ~4% AFR)"
+    },
+    "frequency_interpretation": "Frequencies represent risk/effect allele as percentage (0-100)",
+    "extrapolation_notes": "Populations marked 'extrapolated' use nearby population data with similar ancestry",
+    "clinical_implementation": "For FUT2 in East Asians, consider also testing rs1047781"
+  },
+  "key_findings": {
+    "FUT2": "rs601338 determines secretor status in Europeans/Africans but NOT East Asians (use rs1047781)",
+    "MC4R": "C allele lowest in Mexican/Indigenous American (~10%) vs highest in African (~29%)",
+    "HLA_celiac": "DQ2.5 very rare in East Asia (<3%), explains low celiac prevalence. DQ8 high in Indigenous Americas",
+    "LIPC": "T allele highest in East Asians (~45%), significant ethnic differences in HDL response",
+    "PPARG": "Ala12 (G) protective allele rare in Africans (~3-4%), common in Europeans (~12%)",
+    "SOD2": "C allele (Ala16) much lower in East Asians (~15%) vs Europeans (~47%)",
+    "APOE_e4": "Highest in sub-Saharan Africa (~20-22%) and some Oceanian, lowest in East Asia (~9%)",
+    "GST_deletions": "GSTM1 null highest in East Asia (up to 75%), GSTT1 null highest in East Asia (~50%)"
+  }
+}

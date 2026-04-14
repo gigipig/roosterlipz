@@ -1,0 +1,5666 @@
+/* Ancestral Diet Explorer - Main Stylesheet */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-amber: #c8a96e;
+  --accent-green: #1db954;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  background-color: #13110e;
+  color: #ffffff;
+}
+
+h1, .section-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+}
+
+/* When app is active (landing hidden), lock body for app layout */
+body.app-active {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Toast Notification System */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: auto;
+  max-width: 400px;
+}
+
+.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-hiding {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.toast-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.toast-message {
+  line-height: 1.4;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #1a3a1a 0%, #0d2a0d 100%);
+  border: 1px solid #1db954;
+  color: #1db954;
+}
+
+.toast-success .toast-icon {
+  color: #1db954;
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #3a1a1a 0%, #2a0d0d 100%);
+  border: 1px solid #e74c3c;
+  color: #ff6b6b;
+}
+
+.toast-error .toast-icon {
+  color: #e74c3c;
+}
+
+.toast-warning {
+  background: linear-gradient(135deg, #3a2a1a 0%, #2a1d0d 100%);
+  border: 1px solid #f0ad4e;
+  color: #f5c778;
+}
+
+.toast-warning .toast-icon {
+  color: #f0ad4e;
+}
+
+.toast-info {
+  background: linear-gradient(135deg, #1a2a3a 0%, #0d1d2a 100%);
+  border: 1px solid #4facfe;
+  color: #7fc4ff;
+}
+
+.toast-info .toast-icon {
+  color: #4facfe;
+}
+
+@media (max-width: 600px) {
+  #toast-container {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    transform: none;
+  }
+
+  .toast {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Header */
+.header {
+  height: 70px;
+  background: #13110e;
+  border-bottom: 1px solid #252018;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 16px;
+  color: #d3d3d3;
+  border-radius: 6px;
+  transition: color 0.2s;
+}
+
+.sidebar-toggle:hover {
+  color: #ffffff;
+}
+
+/* Desktop sidebar collapse button */
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #d3d3d3;
+  font-size: 14px;
+  transition: all 0.2s;
+  margin-left: auto;
+}
+
+.sidebar-collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.header-content h1 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.header-content p {
+  font-size: 13px;
+  color: #b3b3b3;
+}
+
+/* Header Menu Dropdown */
+.header-menu {
+  position: relative;
+  margin-left: auto;
+}
+
+.header-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #3a3228;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #444;
+}
+
+.header-menu-btn.active {
+  background: rgba(29, 185, 84, 0.1);
+  border-color: #1db954;
+}
+
+.menu-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.header-menu-btn.active .menu-arrow {
+  transform: rotate(180deg);
+}
+
+.header-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #252018;
+  border: 1px solid #3a3228;
+  border-radius: 10px;
+  padding: 6px;
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.header-dropdown.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.dropdown-item:active {
+  background: rgba(29, 185, 84, 0.15);
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #3a3228;
+  margin: 4px 6px;
+}
+
+@media (max-width: 600px) {
+  .header-menu-btn span:first-child {
+    font-size: 18px;
+  }
+
+  .header-menu-btn .menu-arrow {
+    display: none;
+  }
+
+  .header-menu-btn {
+    padding: 8px 10px;
+  }
+}
+
+/* Main Content Layout */
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sidebar Overlay (mobile) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: #13110e;
+  border-right: 1px solid #252018;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+  transition: width 0.3s ease, padding 0.3s ease;
+  color: #d3d3d3;
+}
+
+.sidebar.collapsed {
+  width: 48px;
+  padding: 12px 8px;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #252018;
+}
+
+.sidebar-header h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-header h2 {
+  display: none;
+}
+
+.sidebar-content {
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Content Area */
+.content-area {
+  flex: 1;
+  display: flex;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #1e3a5f 0%, #13110e 100%);
+}
+
+/* Results Container (no-map version) */
+.results-container {
+  flex: 1;
+  border-radius: 12px;
+  overflow-y: auto;
+  background: transparent;
+  padding: 40px;
+  color: #ffffff;
+}
+
+.results-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #b3b3b3;
+}
+
+.results-placeholder .placeholder-icon {
+  font-size: 72px;
+  margin-bottom: 24px;
+}
+
+.results-placeholder h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.results-placeholder p {
+  font-size: 16px;
+  max-width: 400px;
+  line-height: 1.6;
+  color: #b3b3b3;
+}
+
+.results-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Mode Toggle */
+.mode-toggle {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  background: #252018;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.mode-toggle button {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #d3d3d3;
+  transition: all 0.2s;
+}
+
+.mode-toggle button:hover {
+  color: #ffffff;
+}
+
+.mode-toggle button.active {
+  background: #252018;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Mode Panels */
+.mode-panel {
+  display: none;
+}
+
+.mode-panel.active {
+  display: block;
+}
+
+/* Ancestry Search */
+.ancestry-search-container {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.ancestry-search {
+  width: 100%;
+  padding: 10px 32px 10px 12px;
+  border: 1px solid #3a3228;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #252018;
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.ancestry-search:focus {
+  outline: none;
+  border-color: #1db954;
+  background: #1e1a14;
+}
+
+.ancestry-search::placeholder {
+  color: #666666;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #d3d3d3;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s;
+  border-radius: 4px;
+}
+
+.search-clear-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+  border: 1px solid #252018;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  background: #1e1a14;
+}
+
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.collapsible-header:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.collapsible-header h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.collapsible-header h3::before {
+  font-size: 14px;
+}
+
+.collapsible-icon {
+  font-size: 10px;
+  color: #d3d3d3;
+  transition: transform 0.2s;
+}
+
+.collapsible-section.open .collapsible-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.collapsible-section.open .collapsible-content {
+  max-height: 500px;
+}
+
+.collapsible-inner {
+  padding: 10px 12px;
+  background: #1e1a14;
+}
+
+/* Instructions */
+.instructions {
+  background: #e8f4f8;
+  border-left: 3px solid #3498db;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #2c3e50;
+}
+
+/* Family Section */
+.family-section {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.family-section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.family-section h3::before {
+  font-size: 14px;
+}
+
+.family-section.maternal h3::before {
+  content: '\1F469';
+}
+
+.family-section.paternal h3::before {
+  content: '\1F468';
+}
+
+/* Grandparent Input */
+.grandparent-input {
+  margin-bottom: 8px;
+}
+
+.grandparent-input:last-child {
+  margin-bottom: 0;
+}
+
+.grandparent-input label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #d3d3d3;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.grandparent-input select {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid #3a3228;
+  border-radius: 5px;
+  font-size: 12px;
+  background: #252018;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.grandparent-input select:hover {
+  border-color: #555555;
+}
+
+.grandparent-input select:focus {
+  outline: none;
+  border-color: #1db954;
+}
+
+/* Genetics Info */
+.genetics-info {
+  background: #e8f4f8;
+  border-left: 3px solid #3498db;
+  padding: 8px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.genetics-info::before {
+  content: '\2139\FE0F';
+  font-size: 12px;
+}
+
+/* Ancestry Input */
+.ancestry-input {
+  margin-bottom: 10px;
+}
+
+.ancestry-input label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #d3d3d3;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.ancestry-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.ancestry-input select {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid #3a3228;
+  border-radius: 5px;
+  font-size: 12px;
+  background: #252018;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ancestry-input select:hover {
+  border-color: #555555;
+}
+
+.ancestry-input select:focus {
+  outline: none;
+  border-color: #1db954;
+}
+
+.ancestry-input input[type="number"] {
+  flex: 0 0 45px;
+  width: 45px;
+  min-width: 45px;
+  padding: 7px 2px;
+  border: 1px solid #3a3228;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
+  background: #252018;
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+.ancestry-input input[type="number"]:hover {
+  border-color: #555555;
+}
+
+.ancestry-input input[type="number"]:focus {
+  outline: none;
+  border-color: #1db954;
+}
+
+.percent-label {
+  font-weight: 600;
+  color: #d3d3d3;
+  font-size: 12px;
+}
+
+/* Percentage Total */
+.percentage-total {
+  background: #252018;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border: 2px solid #3a3228;
+  color: #d3d3d3;
+}
+
+.percentage-total.valid {
+  background: rgba(29, 185, 84, 0.1);
+  border-color: #1db954;
+  color: #1db954;
+}
+
+.percentage-total.invalid {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: #1db954;
+  color: #13110e;
+}
+
+.btn-primary:hover {
+  background: #1ed760;
+  transform: scale(1.02);
+}
+
+.btn-primary:disabled {
+  background: #3a3228;
+  color: #666666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #d3d3d3;
+  border: 1px solid #3a3228;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #555555;
+}
+
+/* Selected Regions */
+.selected-regions {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.selected-regions h3 {
+  font-size: 11px;
+  color: #ffffff;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.region-tag {
+  display: inline-block;
+  background: #252018;
+  padding: 4px 12px;
+  margin: 2px;
+  border-radius: 12px;
+  font-size: 10px;
+  color: #d3d3d3;
+  border: 1px solid #3a3228;
+  transition: all 0.2s;
+}
+
+.region-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* Diet Panel */
+.diet-panel {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  width: 380px;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  z-index: 500;
+}
+
+.diet-panel.visible {
+  display: flex;
+  flex-direction: column;
+}
+
+.diet-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e1e4e8;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.diet-panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.diet-panel-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.diet-collapse-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #7f8c8d;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.diet-collapse-btn:hover {
+  background: #ecf0f1;
+  color: #2c3e50;
+}
+
+.diet-panel.collapsed .diet-collapse-btn {
+  transform: rotate(-90deg);
+}
+
+.diet-panel-content {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  transition: flex 0.3s ease, padding 0.3s ease;
+}
+
+.diet-panel.collapsed .diet-panel-content {
+  flex: 0;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.diet-panel.collapsed .diet-panel-header {
+  border-bottom: none;
+}
+
+.diet-panel.collapsed {
+  bottom: auto;
+  height: auto;
+}
+
+.diet-panel h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.diet-panel .subtitle {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-bottom: 14px;
+}
+
+.diet-section {
+  margin-bottom: 24px;
+}
+
+.diet-section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.diet-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d3d3d3;
+}
+
+.food-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.food-item {
+  background: #252018;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #ffffff;
+  border: 1px solid #3a3228;
+  transition: all 0.2s;
+}
+
+.food-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #555555;
+}
+
+/* Food items with genetic information */
+.food-item.has-genetic-info {
+  background: linear-gradient(135deg, #252018 0%, #252525 100%);
+  border-color: #1db954;
+  cursor: help;
+  position: relative;
+}
+
+.food-item.has-genetic-info:hover {
+  background: linear-gradient(135deg, #252525 0%, #1db954 100%);
+  border-color: #1ed760;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.food-genetic-indicator {
+  margin-right: 4px;
+  font-size: 11px;
+}
+
+/* Tooltip hint text */
+.food-tooltip-hint {
+  font-size: 11px;
+  color: #888888;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+/* Custom tooltip for food items */
+.food-item.has-genetic-info[data-tooltip] {
+  position: relative;
+}
+
+.food-item.has-genetic-info[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #252018;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.6;
+  white-space: pre-line;
+  min-width: 220px;
+  max-width: 300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid #3a3228;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.food-item.has-genetic-info[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #3a3228;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 1001;
+}
+
+.food-item.has-genetic-info[data-tooltip]:hover::after,
+.food-item.has-genetic-info[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Adjust tooltip position for items near edges */
+.food-list .food-item.has-genetic-info:first-child[data-tooltip]::after {
+  left: 0;
+  transform: translateX(0);
+}
+
+.food-list .food-item.has-genetic-info:last-child[data-tooltip]::after {
+  left: auto;
+  right: 0;
+  transform: translateX(0);
+}
+
+/* ============================================================================
+   FOODS REDESIGN — Tiered System (Viome-inspired)
+   ============================================================================ */
+
+/* ── Base food chip (replaces .food-item for the new Foods tab) ── */
+.food-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #252018;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #ccc;
+  border: 1px solid #2e2e2e;
+  transition: border-color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.food-chip--positive {
+  background: rgba(29, 185, 84, 0.06);
+  border-color: rgba(29, 185, 84, 0.35);
+  padding: 6px 12px 6px 8px;
+  align-items: flex-start;
+  white-space: normal;
+}
+
+.food-chip--watch {
+  background: rgba(240, 173, 78, 0.06);
+  border-color: rgba(240, 173, 78, 0.35);
+  padding: 6px 12px 6px 8px;
+  align-items: flex-start;
+  white-space: normal;
+}
+
+/* ── Always-visible colored dot ── */
+.food-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+  margin-right: 6px;
+}
+
+.food-dot--green { background: #1db954; }
+.food-dot--amber { background: #f0ad4e; }
+.food-dot--grey  { background: #555; }
+
+/* ── Chip text content (name + reason stacked) ── */
+.food-chip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.food-chip-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.food-chip-reason {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.food-chip--positive .food-chip-reason { color: #1db954; }
+.food-chip--watch    .food-chip-reason { color: #f0ad4e; }
+
+/* ── Chip list container ── */
+.food-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Tier section (Recommended / Use with Awareness / Cooking) ── */
+.food-tier-section {
+  margin-bottom: 20px;
+}
+
+.food-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.food-tier-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.food-tier-section--recommended .food-tier-label { color: #1db954; }
+.food-tier-section--watch    .food-tier-label { color: #f0ad4e; }
+
+.tier-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tier-dot--green { background: #1db954; }
+.tier-dot--amber { background: #f0ad4e; }
+
+.food-tier-empty {
+  font-size: 12px;
+  color: #555;
+  font-style: italic;
+}
+
+/* ── Minimize & Avoid collapsible ── */
+.avoid-foods-details {
+  margin-top: 8px;
+}
+
+.avoid-foods-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  list-style: none;
+  user-select: none;
+}
+
+.avoid-foods-summary::-webkit-details-marker { display: none; }
+
+.avoid-foods-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f0ad4e;
+}
+
+.avoid-foods-hint {
+  font-size: 11px;
+  color: #555;
+}
+
+.avoid-foods-details[open] .avoid-foods-summary {
+  border-radius: 6px 6px 0 0;
+  border-bottom-color: transparent;
+}
+
+.avoid-foods-details[open] > .food-tier-section {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: none;
+  padding-top: 8px;
+}
+
+/* ── Tier legend ── */
+.food-tier-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: #1a1510;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #777;
+}
+
+/* ── Foods filter tabs (sub-tabs within Foods panel) ── */
+.foods-filter-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  background: #13110e;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #282219;
+}
+
+.foods-filter-tabs button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.foods-filter-tabs button:hover {
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.foods-filter-tabs button.active {
+  background: #282219;
+  color: #fff;
+}
+
+/* ── Food filter group visibility ── */
+.food-filter-group {
+  display: none;
+}
+
+.food-filter-group--active {
+  display: block;
+}
+
+/* ── Browse foods section wrapper ── */
+.browse-foods-section {
+  margin: 24px 0;
+}
+
+/* ── Why This Matters sidebar panel ── */
+.why-matters-panel {
+  background: rgba(29, 185, 84, 0.06);
+  border-left: 2px solid rgba(29, 185, 84, 0.4);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.why-matters-panel p {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Genetic headline card ── */
+.genetic-headline {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(29, 185, 84, 0.06);
+  border: 1px solid rgba(29, 185, 84, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.genetic-headline-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.genetic-headline-body {
+  flex: 1;
+}
+
+.genetic-headline-copy {
+  font-size: 14px;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin: 0 0 6px;
+}
+
+.genetic-headline-copy strong {
+  color: #1db954;
+}
+
+.genetic-headline-detail {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Collapsible trait meters ── */
+.trait-meters-details {
+  margin-top: 4px;
+}
+
+.trait-meters-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  list-style: none;
+  user-select: none;
+}
+
+.trait-meters-summary::-webkit-details-marker { display: none; }
+
+.trait-meters-summary-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1db954;
+}
+
+.trait-meters-hint {
+  font-size: 11px;
+  color: #555;
+}
+
+.trait-meters-details[open] .trait-meters-summary {
+  border-radius: 6px 6px 0 0;
+  border-bottom-color: transparent;
+}
+
+.trait-meters-details[open] .genetic-meters {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 8px 0 4px;
+}
+
+/* ── Genetic section header ── */
+.genetic-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #666;
+  margin-bottom: 0.75rem;
+  padding: 0 2px;
+}
+
+.trait-count-badge {
+  background: rgba(255,255,255,0.06);
+  color: #888;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── Gene category collapsible sections ── */
+.genetic-category-details {
+  margin-bottom: 8px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.genetic-category-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.genetic-category-summary::-webkit-details-marker { display: none; }
+.genetic-category-summary:hover { background: rgba(255,255,255,0.055); }
+
+.genetic-category-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.genetic-category-label {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ccc;
+  letter-spacing: 0.01em;
+}
+
+.genetic-category-count {
+  font-size: 11px;
+  color: #666;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 1px 7px;
+  font-weight: 600;
+}
+
+.genetic-category-chevron {
+  font-size: 10px;
+  color: #555;
+  transition: transform 0.2s;
+  margin-left: 4px;
+}
+
+.genetic-category-details[open] .genetic-category-chevron {
+  transform: rotate(180deg);
+}
+
+.genetic-category-details .genetic-meters {
+  padding: 4px 0 2px;
+}
+
+/* ── Info icon in meter header ── */
+.meter-info .glossary-icon {
+  flex-shrink: 0;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+/* ── Signature Foods section ── */
+.signature-foods-section {
+  margin-bottom: 28px;
+  padding: 20px;
+  background: linear-gradient(135deg, #0d1f0d 0%, #111a11 100%);
+  border: 1px solid rgba(29, 185, 84, 0.25);
+  border-radius: 12px;
+}
+
+.signature-foods-header {
+  margin-bottom: 16px;
+}
+
+.signature-foods-header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.signature-foods-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1db954;
+  background: rgba(29, 185, 84, 0.12);
+  border: 1px solid rgba(29, 185, 84, 0.25);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.signature-foods-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1db954;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.02em;
+}
+
+.signature-foods-subtitle {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+/* ── Signature food card grid ── */
+.signature-foods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .signature-foods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .signature-foods-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Individual signature food card ── */
+.signature-food-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(29, 185, 84, 0.2);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.signature-food-card:hover {
+  border-color: rgba(29, 185, 84, 0.5);
+  background: rgba(29, 185, 84, 0.04);
+}
+
+.signature-food-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.signature-food-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.signature-star-badge {
+  background: rgba(29, 185, 84, 0.15);
+  color: #1db954;
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Ancestry badges on signature card ── */
+.signature-food-ancestry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ancestry-badge {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: #888;
+}
+
+/* ── Genetic trait items on signature card ── */
+.signature-food-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.signature-trait-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #999;
+  line-height: 1.3;
+}
+
+.signature-trait-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1db954;
+  flex-shrink: 0;
+}
+
+/* ── Ancestral food tradition cards ── */
+.ancestral-food-traditions {
+  margin-top: 28px;
+}
+
+.ancestral-food-traditions h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px 0;
+}
+
+.ancestral-traditions-subtitle {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 16px 0;
+}
+
+.ancestral-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .ancestral-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ancestral-card {
+  background: #1a1510;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ancestral-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ancestral-card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.ancestral-card-pct {
+  font-size: 11px;
+  color: #555;
+  font-weight: 500;
+}
+
+.ancestral-card-signature {
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+  border-left: 2px solid #222;
+  padding-left: 8px;
+}
+
+.ancestral-card-foods {
+  /* inherits .food-chip-list flex-wrap */
+}
+
+.macro-bar {
+  display: flex;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.macro-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #13110e;
+}
+
+.macro-carbs {
+  background: #1db954;
+}
+
+.macro-protein {
+  background: #ff6b6b;
+}
+
+.macro-fat {
+  background: #ffd93d;
+  color: #13110e;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #7f8c8d;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #fadbd8;
+  color: #e74c3c;
+}
+
+/* Tooltip styling for hover */
+.region-tooltip {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 8px 12px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  pointer-events: none;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+.region-tooltip::before {
+  border-top-color: white;
+}
+
+.leaflet-tooltip {
+  transition: none !important;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar,
+.content-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.content-area::-webkit-scrollbar-track {
+  background: #252018;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.content-area::-webkit-scrollbar-thumb {
+  background: #3a3228;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.content-area::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Genetic Adaptations Styling */
+.genetic-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px solid #252018;
+}
+
+.genetic-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.genetic-section h3::before {
+  content: '\1F9EC';
+  font-size: 20px;
+}
+
+.genetic-trait {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  color: #13110e;
+  box-shadow: 0 2px 8px rgba(29, 185, 84, 0.3);
+}
+
+.genetic-trait h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.genetic-trait .phenotype {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.95;
+}
+
+.genetic-trait .probability {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.genetic-trait .recommendation {
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.9;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.genetic-trait .gene-info {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 8px;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.genetic-trait .gene-details {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 6px;
+}
+
+/* Different colors for different traits */
+.genetic-trait.dairy {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  color: #13110e;
+}
+
+.genetic-trait.starch {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.omega3 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #13110e;
+}
+
+.genetic-trait.alcohol {
+  background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+  color: #13110e;
+}
+
+.genetic-trait.arctic {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #13110e;
+}
+
+.genetic-trait.arctic .recommendation {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.genetic-trait.vitamind {
+  background: linear-gradient(135deg, #ffd93d 0%, #ffed4e 100%);
+  color: #13110e;
+}
+
+.genetic-trait.vitamind .recommendation {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.genetic-trait.energy {
+  background: linear-gradient(135deg, #30cfd0 0%, #00f2fe 100%);
+  color: #13110e;
+}
+
+.genetic-trait.edar {
+  background: linear-gradient(135deg, #ff8787 0%, #ff6b6b 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.edar .recommendation {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.genetic-trait.altitude {
+  background: linear-gradient(135deg, #c471f5 0%, #fa71cd 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.generic {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  color: #13110e;
+}
+
+/* New nutrient metabolism traits */
+.genetic-trait.caffeine {
+  background: linear-gradient(135deg, #6f4e37 0%, #a67b5b 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.folate {
+  background: linear-gradient(135deg, #228b22 0%, #32cd32 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.iron {
+  background: linear-gradient(135deg, #8b0000 0%, #b22222 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.glucose {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.obesity {
+  background: linear-gradient(135deg, #708090 0%, #778899 100%);
+  color: #ffffff;
+}
+
+.genetic-trait.celiac {
+  background: linear-gradient(135deg, #daa520 0%, #ffd700 100%);
+  color: #13110e;
+}
+
+.genetic-trait.salt {
+  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+  color: #13110e;
+}
+
+.genetic-trait.bitter {
+  background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+  color: #ffffff;
+}
+
+.no-genetic-data {
+  background: #252018;
+  border: 1px dashed #3a3228;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 13px;
+}
+
+/* Genetic Meters - Compact Visual Display */
+.genetic-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.genetic-meter-item {
+  background: #252018;
+  border-radius: 10px;
+  border: 1px solid #332d24;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.genetic-meter-item:hover {
+  border-color: #3a3a3a;
+}
+
+.genetic-meter-item.expanded {
+  border-color: #4a4a4a;
+}
+
+.meter-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  gap: 12px;
+  transition: background 0.2s;
+}
+
+.meter-header:hover {
+  background: #2e2820;
+}
+
+.meter-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.meter-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.meter-icon {
+  font-size: 18px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.meter-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meter-diet-note {
+  display: block;
+  font-size: 11px;
+  color: #777;
+  line-height: 1.4;
+  margin-top: 2px;
+  white-space: normal;
+  overflow: visible;
+}
+
+.meter-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.meter-bar {
+  flex: 1;
+  height: 8px;
+  background: #332d24;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 150px;
+}
+
+.meter-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.meter-fill.high {
+  background: linear-gradient(90deg, #1db954, #1ed760);
+}
+
+.meter-fill.moderate {
+  background: linear-gradient(90deg, #f0ad4e, #f5c778);
+}
+
+.meter-fill.low {
+  background: linear-gradient(90deg, #6c757d, #8a9299);
+}
+
+.meter-status {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 70px;
+  text-align: right;
+}
+
+.meter-status.high {
+  color: #1db954;
+}
+
+.meter-status.moderate {
+  color: #f0ad4e;
+}
+
+.meter-status.low {
+  color: #8a9299;
+}
+
+.meter-expand-icon {
+  font-size: 10px;
+  color: #666;
+  transition: transform 0.2s;
+}
+
+.genetic-meter-item.expanded .meter-expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Expanded Details */
+.meter-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: #1a1510;
+  border-top: 1px solid transparent;
+}
+
+.genetic-meter-item.expanded .meter-details {
+  max-height: 500px;
+  padding: 16px;
+  border-top-color: #332d24;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.detail-label {
+  color: #888;
+  min-width: 100px;
+}
+
+.detail-value {
+  color: #fff;
+  text-align: right;
+  flex: 1;
+}
+
+.detail-explanation {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.5;
+  margin: 12px 0;
+  padding: 10px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  font-style: italic;
+}
+
+.detail-recommendation {
+  font-size: 13px;
+  color: #1db954;
+  line-height: 1.5;
+  padding: 12px;
+  background: rgba(29, 185, 84, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid #1db954;
+}
+
+.detail-recommendation strong {
+  color: #1ed760;
+}
+
+/* Trait-specific accent colors for meter items */
+.genetic-meter-item.dairy .meter-fill.high,
+.genetic-meter-item.dairy .meter-fill.moderate {
+  background: linear-gradient(90deg, #1db954, #1ed760);
+}
+
+.genetic-meter-item.starch .meter-fill.high,
+.genetic-meter-item.starch .meter-fill.moderate {
+  background: linear-gradient(90deg, #ff6b6b, #ff8787);
+}
+
+.genetic-meter-item.omega3 .meter-fill.high,
+.genetic-meter-item.omega3 .meter-fill.moderate {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+.genetic-meter-item.caffeine .meter-fill.high,
+.genetic-meter-item.caffeine .meter-fill.moderate {
+  background: linear-gradient(90deg, #8B4513, #A0522D);
+}
+
+.genetic-meter-item.alcohol .meter-fill.high,
+.genetic-meter-item.alcohol .meter-fill.moderate {
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+}
+
+.genetic-meter-item.vitamind .meter-fill.high,
+.genetic-meter-item.vitamind .meter-fill.moderate {
+  background: linear-gradient(90deg, #f1c40f, #f39c12);
+}
+
+.genetic-meter-item.folate .meter-fill.high,
+.genetic-meter-item.folate .meter-fill.moderate {
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+}
+
+.genetic-meter-item.celiac .meter-fill.high,
+.genetic-meter-item.celiac .meter-fill.moderate {
+  background: linear-gradient(90deg, #d4a574, #c9a067);
+}
+
+.genetic-meter-item.altitude .meter-fill.high,
+.genetic-meter-item.altitude .meter-fill.moderate {
+  background: linear-gradient(90deg, #9b59b6, #8e44ad);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .meter-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .meter-info {
+    min-width: 140px;
+  }
+
+  .meter-visual {
+    order: 3;
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .meter-bar {
+    max-width: none;
+  }
+
+  .meter-expand-icon {
+    order: 2;
+  }
+}
+
+/* Glossary info icon */
+.glossary-icon {
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.glossary-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.glossary-icon.active {
+  opacity: 1;
+  background: #1db954;
+}
+
+/* Gene Info Popover */
+.gene-popover {
+  position: absolute;
+  z-index: 10000;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid #3a3a5a;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  min-width: 280px;
+  max-width: 360px;
+  animation: popoverFadeIn 0.2s ease;
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gene-popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #3a3a5a;
+  background: rgba(29, 185, 84, 0.1);
+  border-radius: 12px 12px 0 0;
+}
+
+.gene-popover-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1db954;
+}
+
+.gene-popover-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.gene-popover-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gene-popover-body {
+  padding: 16px;
+}
+
+.gene-popover-definition {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin: 0 0 16px 0;
+}
+
+.gene-popover-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #2a2a4a;
+}
+
+.gene-popover-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.gene-popover-detail .detail-label {
+  color: #888;
+}
+
+.gene-popover-detail .detail-value {
+  color: #fff;
+  font-weight: 500;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* Methodology Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-overlay.visible {
+  display: flex;
+}
+
+.modal-container {
+  background: #1e1a14;
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid #3a3228;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #3a3228;
+  position: sticky;
+  top: 0;
+  background: #1e1a14;
+  z-index: 1;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #666666;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.modal-content {
+  padding: 24px;
+}
+
+/* Settings Modal */
+.modal-container-narrow {
+  max-width: 520px;
+}
+
+.settings-section {
+  margin-bottom: 28px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section h3 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1db954;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.settings-section > p {
+  font-size: 14px;
+  color: #b3b3b3;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.settings-divider {
+  height: 1px;
+  background: #3a3228;
+  margin: 4px 0 28px;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.settings-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta-item {
+  font-size: 14px;
+  color: #d3d3d3;
+}
+
+.meta-item.muted {
+  font-size: 12px;
+  color: #555555;
+}
+
+/* Contact Form */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d3d3d3;
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: #252018;
+  border: 1px solid #3a3228;
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 14px;
+  transition: border-color 0.2s;
+  outline: none;
+  appearance: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #1db954;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #555555;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+/* Select arrow */
+select.form-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+select.form-input option {
+  background: #252018;
+  color: #ffffff;
+}
+
+.contact-status {
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: none;
+  line-height: 1.5;
+}
+
+.contact-status.success {
+  display: block;
+  background: rgba(29, 185, 84, 0.1);
+  border: 1px solid rgba(29, 185, 84, 0.35);
+  color: #1db954;
+}
+
+.contact-status.error {
+  display: block;
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.35);
+  color: #ff6b6b;
+}
+
+.contact-submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.contact-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Danger button */
+.btn-danger {
+  background: transparent;
+  border: 1px solid rgba(231, 76, 60, 0.45);
+  color: #ff6b6b;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger:hover {
+  background: rgba(231, 76, 60, 0.12);
+  border-color: #e74c3c;
+}
+
+.methodology-section {
+  margin-bottom: 28px;
+}
+
+.methodology-section:last-child {
+  margin-bottom: 0;
+}
+
+.methodology-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1db954;
+  margin-bottom: 12px;
+}
+
+.methodology-section p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #b3b3b3;
+  margin-bottom: 12px;
+}
+
+.methodology-section p:last-child {
+  margin-bottom: 0;
+}
+
+.methodology-formula {
+  background: #252018;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.methodology-formula p {
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.methodology-formula ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.methodology-formula li {
+  font-size: 13px;
+  color: #b3b3b3;
+  padding: 4px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.methodology-formula li strong {
+  color: #1db954;
+}
+
+.methodology-steps {
+  margin: 16px 0;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.step:last-child {
+  margin-bottom: 0;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background: #1db954;
+  color: #13110e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.inheritance-types {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.inheritance-type {
+  background: #252018;
+  border-radius: 8px;
+  padding: 14px 16px;
+  border-left: 3px solid #1db954;
+}
+
+.inheritance-type strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.inheritance-type p {
+  margin: 0;
+  font-size: 13px;
+  color: #888888;
+}
+
+.limitations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.limitations-list li {
+  font-size: 13px;
+  color: #b3b3b3;
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  border-bottom: 1px solid #252018;
+}
+
+.limitations-list li:last-child {
+  border-bottom: none;
+}
+
+.limitations-list li::before {
+  content: '⚠️';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+
+.limitations-list li strong {
+  color: #ffffff;
+}
+
+/* User Profile Section */
+.user-profile-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #252018;
+}
+
+.profile-username {
+  background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.username-label {
+  display: block;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2px;
+}
+
+.username-value {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.profile-summary {
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  background: #252018;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.profile-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid #252018;
+}
+
+.profile-stat:last-child {
+  border-bottom: none;
+}
+
+.profile-ancestry {
+  padding-top: 6px;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.stat-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.ancestry-list {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #d3d3d3;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.no-saved-data {
+  font-size: 11px;
+  color: #b3b3b3;
+  text-align: center;
+  padding: 8px;
+  font-style: italic;
+}
+
+.btn-profile {
+  background: #1db954;
+  color: #13110e;
+}
+
+.btn-profile:hover {
+  background: #1ed760;
+  transform: scale(1.02);
+}
+
+.btn-small {
+  padding: 6px 10px;
+  font-size: 10px;
+}
+
+/* Onboarding Wizard */
+.onboarding {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom, #1e3a5f 0%, #13110e 100%);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.onboarding.hidden {
+  display: none;
+}
+
+.onboarding-container {
+  background: #1e1a14;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid #252018;
+}
+
+.onboarding-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.onboarding-header h1 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.onboarding-header p {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+/* Progress indicator */
+.onboarding-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.progress-step {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #252018;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #666666;
+  transition: all 0.3s;
+  border: 2px solid #3a3228;
+}
+
+.progress-step.active {
+  background: #1db954;
+  color: #13110e;
+  transform: scale(1.1);
+  border-color: #1db954;
+}
+
+.progress-step.completed {
+  background: #1db954;
+  color: #13110e;
+  border-color: #1db954;
+}
+
+.progress-line {
+  width: 40px;
+  height: 3px;
+  background: #252018;
+  margin: 0 4px;
+}
+
+/* Step content */
+.onboarding-step {
+  display: none;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.onboarding-step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.onboarding-step h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.onboarding-step p {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin-bottom: 24px;
+}
+
+.onboard-select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #3a3228;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #252018;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.onboard-select:focus {
+  outline: none;
+  border-color: #1db954;
+}
+
+.onboard-select:hover {
+  border-color: #555555;
+}
+
+/* Navigation buttons */
+.onboarding-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.onboard-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.onboard-btn-back {
+  background: #252018;
+  color: #d3d3d3;
+  border: 1px solid #3a3228;
+}
+
+.onboard-btn-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.onboard-btn-back:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.onboard-btn-skip {
+  background: transparent;
+  color: #d3d3d3;
+  border: 2px solid #3a3228;
+}
+
+.onboard-btn-skip:hover {
+  border-color: #555555;
+  color: #ffffff;
+}
+
+.onboard-btn-next {
+  background: #1db954;
+  color: #13110e;
+}
+
+.onboard-btn-next:hover {
+  background: #1ed760;
+  transform: scale(1.02);
+}
+
+.onboard-btn-next.finish {
+  background: #1db954;
+}
+
+.onboard-btn-next.finish:hover {
+  background: #1ed760;
+}
+
+/* Footer link */
+.onboarding-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.onboard-link {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.onboard-link:hover {
+  color: #1db954;
+}
+
+/* Disclaimer Banner */
+.disclaimer-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.1) 0%, rgba(29, 185, 84, 0.05) 100%);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.disclaimer-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.disclaimer-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #b3b3b3;
+}
+
+.disclaimer-text strong {
+  color: #1db954;
+}
+
+/* Key Takeaways Section */
+.key-takeaways {
+  margin: 24px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #1a2a1a 0%, #0d1f0d 100%);
+  border-radius: 12px;
+  border: 1px solid #2d5a2d;
+}
+
+.key-takeaways h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2d5a2d;
+}
+
+.takeaways-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .takeaways-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.takeaways-column {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.takeaways-column.strengths {
+  border-left: 3px solid #1db954;
+}
+
+.takeaways-column.watch-items {
+  border-left: 3px solid #f0ad4e;
+}
+
+.takeaways-column h4 {
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  color: #fff;
+}
+
+.takeaways-column.strengths h4 {
+  color: #1db954;
+}
+
+.takeaways-column.watch-items h4 {
+  color: #f0ad4e;
+}
+
+.takeaways-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.takeaways-column li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.takeaways-column li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.takeaway-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.takeaway-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.takeaway-content strong {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.takeaway-content span {
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Sources & References Section */
+.sources-section {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid #3a3228;
+  overflow: hidden;
+}
+
+.sources-section.collapsible .sources-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sources-section.collapsible .sources-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sources-section.collapsible .sources-header h3 {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.sources-count {
+  font-size: 12px;
+  color: #666;
+  margin-right: 12px;
+}
+
+.sources-expand-icon {
+  font-size: 10px;
+  color: #666;
+  transition: transform 0.2s;
+}
+
+.sources-section.expanded .sources-expand-icon {
+  transform: rotate(180deg);
+}
+
+.sources-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.sources-section.expanded .sources-content {
+  max-height: 2000px;
+  padding: 0 20px 20px 20px;
+}
+
+.sources-section h3 {
+  color: #1db954;
+  font-size: 16px;
+  margin: 0 0 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #3a3228;
+}
+
+.sources-intro {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.sources-list {
+  margin-bottom: 20px;
+}
+
+.sources-list h4,
+.sources-databases h4 {
+  color: #ccc;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.citation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.citation-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #252525;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.citation-list li:last-child {
+  border-bottom: none;
+}
+
+.citation-gene {
+  color: #1db954;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.sources-databases {
+  margin-bottom: 16px;
+}
+
+.sources-databases p {
+  color: #888;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.sources-note {
+  color: #666;
+  font-size: 11px;
+  font-style: italic;
+  margin: 16px 0 0 0;
+  padding-top: 12px;
+  border-top: 1px solid #252525;
+  line-height: 1.6;
+}
+
+/* Results Footer */
+.results-footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #3a3228;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 16px;
+}
+
+.footer-links {
+  margin: 0;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #1db954;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.link-btn:hover {
+  color: #1ed760;
+}
+
+/* Results Actions (Export button) */
+.results-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+/* Methodology Button */
+.btn-methodology {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #3a3228;
+  color: #b3b3b3;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-methodology:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #555555;
+  color: #ffffff;
+}
+
+.btn-methodology .methodology-icon {
+  font-size: 16px;
+}
+
+.btn-export {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #252018 0%, #252525 100%);
+  border: 1px solid #3a3228;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-export:hover {
+  background: linear-gradient(135deg, #252525 0%, #1db954 100%);
+  border-color: #1db954;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.btn-export:active {
+  transform: translateY(0);
+}
+
+.btn-export.exporting {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.btn-export .export-icon {
+  font-size: 16px;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  backdrop-filter: blur(4px);
+}
+
+.loading-overlay.visible {
+  display: flex;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.spinner-ring {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #3a3228;
+  border-top-color: #1db954;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.loading-subtitle {
+  font-size: 13px;
+  color: #888888;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .sidebar-collapse-btn {
+    display: none;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 70px;
+    left: -260px;
+    width: 260px;
+    height: calc(100vh - 70px);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .sidebar.collapsed {
+    width: 260px;
+    left: -260px;
+  }
+
+  .sidebar.collapsed.open {
+    left: 0;
+  }
+
+  .sidebar.collapsed .sidebar-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .sidebar-overlay.visible {
+    display: block;
+  }
+
+  .content-area {
+    padding: 12px;
+  }
+
+  .diet-panel {
+    top: auto;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    max-height: 50vh;
+  }
+
+  .diet-panel.collapsed {
+    max-height: none;
+  }
+
+  .diet-panel-content {
+    padding: 16px;
+  }
+
+  /* Onboarding mobile adjustments */
+  .onboarding-container {
+    padding: 24px;
+    margin: 0 10px;
+  }
+
+  .onboarding-header h1 {
+    font-size: 22px;
+  }
+
+  .onboarding-progress {
+    margin-bottom: 24px;
+  }
+
+  .progress-step {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .progress-line {
+    width: 24px;
+  }
+
+  .step-icon {
+    font-size: 36px;
+  }
+
+  .onboarding-step h2 {
+    font-size: 18px;
+  }
+
+  .onboarding-nav {
+    flex-wrap: wrap;
+  }
+
+  .onboard-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================================================
+   Nutrient Gap Analysis Section
+   ============================================================================ */
+.nutrient-gap-section {
+  margin: 24px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid #2a3a5a;
+}
+
+.nutrient-gap-section h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.nutrient-gap-intro {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.nutrient-gap-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nutrient-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.nutrient-row-header {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  color: #888;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nutrient-name {
+  flex: 0 0 180px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nutrient-row-header .nutrient-name {
+  color: #888;
+  font-weight: 600;
+}
+
+.nutrient-standard {
+  flex: 0 0 90px;
+  color: #888;
+  text-align: center;
+}
+
+.nutrient-arrow-col {
+  flex: 0 0 30px;
+  text-align: center;
+}
+
+.nutrient-arrow {
+  flex: 0 0 30px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.nutrient-arrow.increase {
+  color: #1db954;
+}
+
+.nutrient-arrow.decrease {
+  color: #ff6b6b;
+}
+
+.nutrient-arrow.change {
+  color: #ffd93d;
+}
+
+.nutrient-modified {
+  flex: 0 0 120px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.nutrient-arrow.increase + .nutrient-modified,
+.nutrient-row:has(.nutrient-arrow.increase) .nutrient-modified {
+  color: #1db954;
+}
+
+.nutrient-row:has(.nutrient-arrow.decrease) .nutrient-modified {
+  color: #ff6b6b;
+}
+
+.nutrient-row:has(.nutrient-arrow.change) .nutrient-modified {
+  color: #ffd93d;
+}
+
+.nutrient-reason {
+  flex: 1;
+  color: #999;
+  font-size: 12px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .nutrient-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nutrient-name {
+    flex: 1 1 100%;
+  }
+
+  .nutrient-standard,
+  .nutrient-modified {
+    flex: 0 0 auto;
+  }
+
+  .nutrient-reason {
+    flex: 1 1 100%;
+    margin-top: 4px;
+  }
+}
+
+/* ============================================================================
+   Daily Guidelines Section
+   ============================================================================ */
+.daily-guidelines {
+  margin: 24px 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #1a2a1a 0%, #162316 100%);
+  border-radius: 12px;
+  border: 1px solid #2d5a2d;
+}
+
+.daily-guidelines h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.daily-guidelines-intro {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.daily-guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .daily-guidelines-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.meal-period-card {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.meal-period-card h4 {
+  font-size: 15px;
+  color: #fff;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timing-notes {
+  margin-bottom: 10px;
+}
+
+.timing-icon {
+  margin-right: 4px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+.prefer-label {
+  background: rgba(29, 185, 84, 0.2);
+  color: #1db954;
+}
+
+.limit-label {
+  background: rgba(240, 173, 78, 0.2);
+  color: #f0ad4e;
+}
+
+.prefer-section,
+.limit-section {
+  margin-bottom: 10px;
+}
+
+.prefer-list,
+.limit-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.guideline-food {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.guideline-food.prefer {
+  background: rgba(29, 185, 84, 0.15);
+  color: #1db954;
+  border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+.guideline-food.limit {
+  background: rgba(240, 173, 78, 0.15);
+  color: #f0ad4e;
+  border: 1px solid rgba(240, 173, 78, 0.3);
+}
+
+.guideline-note {
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* ============================================================================
+   Phase 2 — Diet Tab: Top Priorities, Macro Profile, Guidelines Redesign
+   ============================================================================ */
+
+/* ── Top Priorities section (2.1) ── */
+.top-priorities-section {
+  margin-bottom: 20px;
+  padding: 18px;
+  background: #13110e;
+  border: 1px solid #282219;
+  border-radius: 12px;
+}
+
+.top-priorities-section h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px 0;
+}
+
+.top-priorities-subtitle {
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 14px 0;
+}
+
+.priorities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.priority-card {
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priority-card--watch {
+  background: rgba(240, 173, 78, 0.06);
+  border: 1px solid rgba(240, 173, 78, 0.25);
+}
+
+.priority-card--strength {
+  background: rgba(29, 185, 84, 0.06);
+  border: 1px solid rgba(29, 185, 84, 0.25);
+}
+
+.priority-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priority-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.priority-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+}
+
+.priority-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.priority-badge--watch {
+  background: rgba(240, 173, 78, 0.15);
+  color: #f0ad4e;
+  border: 1px solid rgba(240, 173, 78, 0.3);
+}
+
+.priority-badge--strength {
+  background: rgba(29, 185, 84, 0.15);
+  color: #1db954;
+  border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+.priority-detail {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Macro Profile with context (2.2) ── */
+.macro-profile-section {
+  /* extends .diet-section */
+}
+
+.macro-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.macro-context-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.macro-context-label {
+  font-weight: 600;
+  color: #888;
+  min-width: 44px;
+}
+
+.macro-context-pct {
+  color: #ccc;
+  font-weight: 600;
+}
+
+.macro-context-range {
+  color: #555;
+}
+
+.macro-delta {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.macro-delta--above {
+  background: rgba(240, 173, 78, 0.12);
+  color: #f0ad4e;
+}
+
+.macro-delta--below {
+  background: rgba(100, 149, 237, 0.12);
+  color: #6495ed;
+}
+
+.macro-narrative {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+  margin: 4px 0 2px 0;
+}
+
+.macro-reference {
+  font-size: 11px;
+  color: #444;
+  margin: 0;
+}
+
+/* ── All Day strip (2.4) ── */
+.all-day-strip {
+  margin-bottom: 20px;
+  background: #13110e;
+  border: 1px solid #282219;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.all-day-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid #252018;
+}
+
+.all-day-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.all-day-count {
+  font-size: 10px;
+  color: #444;
+  background: #211d17;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.all-day-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.all-day-rules .period-rule--compact {
+  padding: 8px 14px;
+  border-bottom: 1px solid #1e1b15;
+}
+
+.all-day-rules .period-rule--compact:last-child {
+  border-bottom: none;
+}
+
+/* ── Period rule blocks (2.3) ── */
+.period-rule {
+  padding: 10px 0;
+  border-bottom: 1px solid #282219;
+}
+
+.period-rule:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.period-rule-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.guideline-gene-badge {
+  font-size: 11px;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #332d24;
+  border-radius: 5px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.rule-type-pill {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.rule-type-prefer {
+  background: rgba(29, 185, 84, 0.12);
+  color: #1db954;
+  border: 1px solid rgba(29, 185, 84, 0.25);
+}
+
+.rule-type-limit {
+  background: rgba(240, 173, 78, 0.12);
+  color: #f0ad4e;
+  border: 1px solid rgba(240, 173, 78, 0.25);
+}
+
+.rule-type-timing {
+  background: rgba(100, 149, 237, 0.12);
+  color: #6495ed;
+  border: 1px solid rgba(100, 149, 237, 0.25);
+}
+
+.period-rule-foods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+/* Highlight foods that appear in the user's ancestral diet */
+.guideline-food.in-diet {
+  font-weight: 700;
+  border-width: 1.5px;
+}
+
+/* ── Compact period rule (inside All Day strip) ── */
+.period-rule--compact {
+  padding: 8px 0;
+  margin: 0;
+}
+
+.period-rule--compact .period-rule-header {
+  margin-bottom: 4px;
+}
+
+.period-rule--compact .period-rule-foods {
+  margin-bottom: 3px;
+}
+
+/* ============================================================================
+   Landing Page
+   ============================================================================ */
+
+.landing-page {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #13110e;
+  color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+.landing-page.hidden {
+  display: none;
+}
+
+/* App container when visible */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- Landing Nav --- */
+.landing-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.landing-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-logo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.landing-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.landing-nav-links a {
+  color: #888;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.landing-nav-links a:hover {
+  color: #fff;
+}
+
+.landing-nav-cta {
+  background: #1db954;
+  color: #000;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.landing-nav-cta:hover {
+  background: #1ed760;
+  transform: translateY(-1px);
+}
+
+/* --- Hero --- */
+.landing-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 32px 80px;
+  background: linear-gradient(180deg, #13110e 0%, #1a1208 40%, #1e1608 60%, #13110e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(29, 185, 84, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 720px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  background: rgba(29, 185, 84, 0.08);
+  color: #1db954;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.hero-accent {
+  background: linear-gradient(135deg, #1db954 0%, #c8a96e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #999;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 56px;
+}
+
+.hero-cta {
+  background: #1db954;
+  color: #000;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.hero-cta:hover {
+  background: #1ed760;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 185, 84, 0.3);
+}
+
+.hero-secondary {
+  color: #888;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+}
+
+.hero-secondary:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* Trust bar */
+.hero-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.trust-number {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.trust-label {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 32px;
+  background: #333;
+}
+
+/* --- Sections --- */
+.landing-section {
+  padding: 100px 32px;
+}
+
+.landing-section-alt {
+  background: #14120f;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-inner-narrow {
+  max-width: 720px;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+/* --- How It Works Steps --- */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.step-card {
+  background: #1a1510;
+  border: 1px solid #252018;
+  border-radius: 12px;
+  padding: 32px 28px;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.step-card:hover {
+  border-color: #333;
+  transform: translateY(-4px);
+}
+
+.step-card-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: #1db954;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.step-card-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.step-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* --- Features Grid --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: #1a1510;
+  border: 1px solid #252018;
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.feature-card:hover {
+  border-color: #1db954;
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+.feature-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* --- FAQ --- */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq-item-landing {
+  border: 1px solid #252018;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.faq-question {
+  width: 100%;
+  background: #1a1510;
+  border: none;
+  padding: 18px 48px 18px 20px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.faq-question::after {
+  content: '+';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #666;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.faq-item-landing.open .faq-question::after {
+  content: '-';
+  color: #1db954;
+}
+
+.faq-question:hover {
+  background: #1c1914;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item-landing.open .faq-answer {
+  max-height: 300px;
+  padding: 0 20px 18px;
+}
+
+.faq-answer p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.7;
+}
+
+/* --- Landing Footer --- */
+.landing-footer {
+  padding: 64px 32px 32px;
+  border-top: 1px solid #252018;
+  background: #000;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.footer-link {
+  display: block;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #1db954;
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid #252018;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #444;
+}
+
+/* --- Landing Responsive --- */
+@media (max-width: 768px) {
+  .landing-nav-links a {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+    letter-spacing: -1px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-trust {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .trust-divider {
+    display: none;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .landing-section {
+    padding: 64px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ── Results Tabs ── */
+.results-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: #1a1510;
+  padding: 4px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.results-tabs button {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #999;
+  transition: background 0.2s, color 0.2s;
+}
+
+.results-tabs button:hover {
+  color: #fff;
+}
+
+.results-tabs button.active {
+  background: #282219;
+  color: #fff;
+  font-weight: 700;
+}
+
+.results-tab-panel {
+  display: none;
+}
+
+.results-tab-panel.active {
+  display: block;
+}
+
+/* ── Diet Archetype Label ── */
+.diet-archetype-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1db954;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(29, 185, 84, 0.1);
+  border: 1px solid rgba(29, 185, 84, 0.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 8px;
+}
+
+/* ── Profile Summary Card ── */
+.profile-summary-card {
+  background: linear-gradient(135deg, #111 0%, #252018 100%);
+  border: 1px solid #332d24;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.profile-summary-card .subtitle {
+  margin-bottom: 14px;
+}
+
+.profile-stat-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.profile-stat-badge.high {
+  background: rgba(46, 204, 113, 0.12);
+  color: #2ecc71;
+  border-color: rgba(46, 204, 113, 0.2);
+}
+
+.profile-stat-badge.moderate {
+  background: rgba(241, 196, 15, 0.12);
+  color: #f1c40f;
+  border-color: rgba(241, 196, 15, 0.2);
+}
+
+.profile-stat-badge.low {
+  background: rgba(231, 76, 60, 0.12);
+  color: #e74c3c;
+  border-color: rgba(231, 76, 60, 0.2);
+}
+
+@media (max-width: 600px) {
+  .results-tabs {
+    gap: 2px;
+    padding: 3px;
+  }
+  .results-tabs button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .profile-summary-card {
+    padding: 16px;
+  }
+}
+
+/* ============================================================================
+   RECIPE SECTION STYLES
+   ============================================================================ */
+
+/* Section header */
+.recipe-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recipe-section-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.recipe-section-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* Card grid - responsive */
+.recipe-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .recipe-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .recipe-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Recipe card */
+.recipe-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recipe-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.recipe-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  flex: 1;
+}
+
+/* Bookmark button */
+.bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 2px;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.bookmark-btn:hover {
+  color: #f59e0b;
+  transform: scale(1.2);
+}
+
+.bookmark-btn.bookmarked {
+  color: #f59e0b;
+}
+
+.bookmark-btn-large {
+  font-size: 24px;
+}
+
+/* Card meta (time, difficulty, servings) */
+.recipe-card-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.recipe-meta-item {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Card score */
+.recipe-card-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.recipe-score-high {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.recipe-score-moderate {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.recipe-score-low {
+  background: rgba(156, 163, 175, 0.15);
+  color: #9ca3af;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+}
+
+.score-value {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.score-label {
+  font-weight: 500;
+}
+
+/* Genetic badges on card */
+.recipe-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.recipe-genetic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.recipe-genetic-badge.badge-high {
+  background: rgba(34, 197, 94, 0.12);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.recipe-genetic-badge.badge-moderate {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fde68a;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.recipe-genetic-badge.badge-low {
+  background: rgba(156, 163, 175, 0.12);
+  color: #d1d5db;
+  border: 1px solid rgba(156, 163, 175, 0.25);
+}
+
+/* View action */
+.recipe-card-action {
+  font-size: 13px;
+  color: #60a5fa;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.recipe-card:hover .recipe-card-action {
+  color: #93bbfd;
+}
+
+/* ============================================================================
+   RECIPE MODAL STYLES
+   ============================================================================ */
+
+.recipe-modal-header {
+  margin-bottom: 24px;
+}
+
+.recipe-modal-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.recipe-modal-title-row h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.recipe-modal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+}
+
+.recipe-modal-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.recipe-modal-section {
+  margin-bottom: 24px;
+}
+
+.recipe-modal-section h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Trait explanation items */
+.recipe-traits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recipe-trait-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.recipe-trait-item .recipe-genetic-badge {
+  margin-bottom: 4px;
+}
+
+.recipe-trait-relevance {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+}
+
+.relevance-high { color: #4ade80; }
+.relevance-moderate { color: #fbbf24; }
+.relevance-low { color: #9ca3af; }
+
+.recipe-trait-note {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Ingredients list */
+.recipe-ingredients-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 16px;
+}
+
+@media (max-width: 600px) {
+  .recipe-ingredients-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recipe-ingredients-list li {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.recipe-ingredients-list li::before {
+  content: '•';
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 8px;
+}
+
+/* Instructions list */
+.recipe-instructions-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recipe-instructions-list li {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  padding-left: 36px;
+  position: relative;
+}
+
+.recipe-instructions-list li .step-num {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Nutrition badges */
+.recipe-nutrition-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.nutrition-highlight {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  background: rgba(96, 165, 250, 0.1);
+  color: #93bbfd;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+/* Cultural context */
+.recipe-cultural-context {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-style: italic;
+  padding: 12px 16px;
+  border-left: 3px solid rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Print styles for recipe modal */
+@media print {
+  .modal-overlay {
+    position: static;
+    background: white;
+  }
+  .modal-container {
+    max-width: 100%;
+    box-shadow: none;
+  }
+  .modal-close,
+  .bookmark-btn {
+    display: none;
+  }
+  .recipe-modal-title-row h2,
+  .recipe-modal-section h4 {
+    color: #000;
+  }
+  .recipe-trait-note,
+  .recipe-ingredients-list li,
+  .recipe-instructions-list li,
+  .recipe-cultural-context {
+    color: #333;
+  }
+}
+
+/* ============================================================================
+   VIOME-INSPIRED RESULTS DASHBOARD — new components
+   ============================================================================ */
+
+/* --- Category Score Cards --- */
+.category-scores-section {
+  margin: 1.5rem 0;
+}
+
+.category-scores-section h3 {
+  font-size: 1rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 1rem;
+}
+
+.category-scores-section--compact {
+  margin: 0 0 1.25rem;
+}
+
+.category-scores-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .category-scores-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.category-scores-grid--compact {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 700px) {
+  .category-scores-grid--compact {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.category-score-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.category-score-card--compact {
+  background: #0d0d0d;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.category-score-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.category-score-num {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.category-score-num.high    { color: #1db954; }
+.category-score-num.moderate { color: #c8a96e; }
+.category-score-num.low     { color: #888; }
+
+.category-score-card--compact .category-score-num {
+  font-size: 1.75rem;
+}
+
+.category-score-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.category-score-desc {
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.4;
+}
+
+.category-score-bar-wrap {
+  background: #222;
+  border-radius: 3px;
+  height: 5px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.category-score-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.category-score-trait-count {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.category-score-badge--high,
+.category-score-badge--moderate,
+.category-score-badge--low {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.2em 0.55em;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.category-score-badge--high     { background: rgba(29,185,84,0.15); color: #1db954; }
+.category-score-badge--moderate { background: rgba(200,169,110,0.15); color: #c8a96e; }
+.category-score-badge--low      { background: rgba(136,136,136,0.15); color: #888; }
+
+/* --- Key Insights (Overview tab) --- */
+.key-insights-section {
+  margin: 1.25rem 0;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.insights-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.insights-column-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #222;
+  margin-bottom: 0.25rem;
+}
+
+.insights-column-label--strength { color: #1db954; }
+.insights-column-label--watch    { color: #c8a96e; }
+
+.insight-card {
+  background: #111;
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.insight-card--strength {
+  border-left-color: #1db954;
+  background: rgba(29,185,84,0.05);
+}
+
+.insight-card--watch {
+  border-left-color: #c8a96e;
+  background: rgba(200,169,110,0.05);
+}
+
+.insight-card-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.insight-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.insight-card-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #eee;
+  margin-bottom: 0.2rem;
+}
+
+.insight-card-detail {
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.4;
+}
+
+.insight-badge--strength,
+.insight-badge--watch {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2em 0.5em;
+  border-radius: 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.insight-badge--strength { background: rgba(29,185,84,0.2); color: #1db954; }
+.insight-badge--watch    { background: rgba(200,169,110,0.2); color: #c8a96e; }
+
+/* --- Ancestry Blend — Segmented Bar (Overview tab) --- */
+.ancestry-blend-section {
+  margin: 1.25rem 0;
+}
+
+.ancestry-blend-section h4 {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+}
+
+.ancestry-segment-bar {
+  display: flex;
+  width: 100%;
+  height: 18px;
+  border-radius: 9px;
+  overflow: hidden;
+  gap: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.ancestry-segment {
+  height: 100%;
+  flex-shrink: 0;
+  transition: flex 0.4s ease;
+}
+
+.ancestry-segment:first-child { border-radius: 9px 0 0 9px; }
+.ancestry-segment:last-child  { border-radius: 0 9px 9px 0; }
+.ancestry-segment:only-child  { border-radius: 9px; }
+
+.ancestry-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+.ancestry-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ancestry-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ancestry-legend-name {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.ancestry-legend-pct {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 600;
+}
+
+/* --- Tier 4 Food Chips (Limit) --- */
+.food-dot--red {
+  background: #e74c3c;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.food-chip--limit {
+  background: rgba(231,76,60,0.1);
+  border: 1px solid rgba(231,76,60,0.3);
+}
+
+.food-chip--limit .food-chip-reason {
+  color: #e74c3c;
+}
+
+.food-tier-section--limit .food-tier-label {
+  color: #e74c3c;
+}
+
+.tier-dot--red {
+  background: #e74c3c;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Health Concern Follow-Up
+   ============================================================ */
+.health-concerns-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #222;
+}
+.health-concerns-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+.health-concerns-hint {
+  font-size: 0.72rem;
+  color: #666;
+  margin: 0 0 0.6rem;
+}
+.health-concerns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.concern-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #ccc;
+  padding: 0.3rem 0;
+}
+.concern-item input[type="checkbox"] {
+  accent-color: #1db954;
+  flex-shrink: 0;
+}
+.concern-desc {
+  font-size: 0.7rem;
+  color: #666;
+  margin-left: auto;
+}
+
+/* Health flag badge on food chips */
+.health-flag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15em 0.45em;
+  border-radius: 8px;
+  background: rgba(200, 169, 110, 0.18);
+  color: #c8a96e;
+  margin-top: 0.2rem;
+  white-space: nowrap;
+}

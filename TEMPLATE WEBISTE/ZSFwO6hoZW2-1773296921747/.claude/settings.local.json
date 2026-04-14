@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e:*)",
+      "Bash(npx tsc:*)",
+      "Bash(awk:*)",
+      "Bash(find:*)",
+      "Bash(python3:*)",
+      "Bash(npm run build:*)",
+      "Bash(node -p:*)",
+      "Bash(node:*)",
+      "WebFetch(domain:clank.cz)",
+      "Bash(npm install:*)",
+      "WebSearch",
+      "WebFetch(domain:www.joinzoe.com)",
+      "WebFetch(domain:www.insidetracker.com)",
+      "WebFetch(domain:zoe.com)",
+      "WebFetch(domain:www.genopalate.com)",
+      "WebFetch(domain:www.viome.com)",
+      "Bash(git -C \"C:\\\\Users\\\\samsa\\\\Documents\\\\ancestral\\\\TEMPLATE WEBISTE\\\\ZSFwO6hoZW2-1773296921747\" remote -v)",
+      "Bash(git -C \"C:\\\\Users\\\\samsa\\\\Documents\\\\GitHub\\\\roosterlipz\" branch -a)",
+      "Bash(git -C \"C:\\\\Users\\\\samsa\\\\Documents\\\\GitHub\\\\roosterlipz\" log --oneline -5 AncestralTW)",
+      "Bash(git -C \"C:\\\\Users\\\\samsa\\\\Documents\\\\ancestral\\\\TEMPLATE WEBISTE\\\\ZSFwO6hoZW2-1773296921747\" remote add:*)",
+      "Bash(git -C \"C:\\\\Users\\\\samsa\\\\Documents\\\\ancestral\\\\TEMPLATE WEBISTE\\\\ZSFwO6hoZW2-1773296921747\" push roosterlipz main:AncestralTW --force)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
