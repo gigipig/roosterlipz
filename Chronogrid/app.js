@@ -169,9 +169,33 @@ function renderStream() {
   const trackH = Math.max(500, count * 130);
   document.querySelector('.stream-track').style.minHeight = trackH + 'px';
 
+  // Map each event to a proportional position based on actual days remaining
+  const daysArr = visible.map(e => getDaysUntil(e.date));
+  const finiteDays = daysArr.filter(d => isFinite(d));
+  const minDays = finiteDays.length ? Math.min(...finiteDays) : 0;
+  const maxDays = finiteDays.length ? Math.max(...finiteDays) : 0;
+  const range = maxDays - minDays;
+
+  // top (5%) = furthest future, bottom (93%) = soonest / now
+  const pcts = daysArr.map(days => {
+    if (!isFinite(days)) return 5;          // someday → top
+    if (range === 0) return 47;             // all same date → center
+    return 5 + ((maxDays - days) / range) * 88;
+  });
+
+  // Enforce a minimum pixel gap so orbs never overlap.
+  // Same-day events alternate sides so need much less separation.
+  for (let i = 1; i < pcts.length; i++) {
+    const sameDay = isFinite(daysArr[i]) && isFinite(daysArr[i - 1]) && daysArr[i] === daysArr[i - 1];
+    const minGapPct = ((sameDay ? 40 : 110) / trackH) * 100;
+    if (pcts[i] < pcts[i - 1] + minGapPct) {
+      pcts[i] = pcts[i - 1] + minGapPct;
+    }
+  }
+
   visible.forEach((evt, i) => {
-    const pct = count === 1 ? 50 : 5 + (i / (count - 1)) * 88;
-    const days = getDaysUntil(evt.date);
+    const pct  = pcts[i];
+    const days = daysArr[i];
     const size = orbSize(days);
     const side = i % 2 === 0 ? 'left' : 'right';
 
