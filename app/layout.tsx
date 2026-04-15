@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { DM_Sans, Fraunces } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const dmSans = DM_Sans({
@@ -29,7 +28,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${dmSans.variable} ${fraunces.variable} font-sans antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )
