@@ -11,7 +11,7 @@ let recipesCache: Recipe[] | null = null;
 export async function loadRecipes(): Promise<Recipe[]> {
   if (recipesCache) return recipesCache;
   try {
-    const response = await fetch('/recipes.json');
+    const response = await fetch('/ancestral/recipes.json');
     if (!response.ok) throw new Error('Failed to load recipes');
     const data = await response.json();
     recipesCache = data.recipes || [];

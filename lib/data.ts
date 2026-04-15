@@ -120,7 +120,7 @@ function mergeGeneticsData(
 // ============================================================================
 
 export async function loadData(): Promise<void> {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+  const base = '/ancestral';
   const [geo, diet, geneticsRef, geneticsFreq, ancientRoots] = await Promise.all([
     fetch(`${base}/cultures.json`).then(r => r.json()),
     fetch(`${base}/diets.json`).then(r => r.json()),
