@@ -39,21 +39,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. Adequate UV across most of Australia. Dark skin provides UV protection."
       },
-      "cholesterol_metabolism": {
-        "f": 26,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": null,
-            "r": "T"
-          }
-        },
-        "notes": "ELEVATED - among highest globally after Pygmy/Khoisan. Ancestral hunter-gatherer pattern. Traditional diet context may be protective."
-      },
       "caffeine_metabolism": {
         "f": 22,
         "p": 0.22,
@@ -62,30 +47,12 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 17,
-        "p": 0.17,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
-        "t": "unknown"
-      },
-      "vitamin_d_transport": {
         "t": "unknown"
       },
       "salt_sensitivity": {
@@ -97,16 +64,7 @@
       "bitter_taste_perception": {
         "t": "unknown"
       },
-      "vitamin_b12_absorption": {
-        "t": "unknown"
-      },
-      "appetite_regulation": {
-        "t": "unknown"
-      },
       "celiac_susceptibility": {
-        "t": "unknown"
-      },
-      "hdl_metabolism": {
         "t": "unknown"
       },
       "insulin_sensitivity": {
@@ -368,13 +326,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 42%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 42%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 12,
@@ -695,11 +646,6 @@
       "bitter_taste": {
         "f": 55,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "amazon": {
@@ -741,21 +687,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low in non-admixed populations. Equatorial location provides adequate UV for vitamin D synthesis despite darker skin."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "E2 allele absent in Indigenous Americans. Only e3 and e4 present."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -766,35 +697,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -811,25 +722,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -1106,13 +1002,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -1421,11 +1310,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "anatolian": {
@@ -1466,35 +1350,15 @@
         "p": 0.36,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 2.5,
-        "p": 0.025,
-        "t": "carrier_risk"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
-        "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 41,
-        "p": 0.41,
         "t": "elevated_risk"
       },
       "beta_carotene_conversion": {
         "f": 44,
         "p": 0.44,
         "t": "poor_converter"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 46,
@@ -1511,25 +1375,10 @@
         "p": 0.52,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 24,
-        "p": 0.24,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 15,
         "p": 0.15,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 87,
@@ -1798,13 +1647,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -2112,21 +1954,6 @@
         "desc": "T allele (rs10046): 48%. Ancient agricultural tradition with wheat, lentils, yogurt, and olive oil as dietary staples.",
         "notes": "gnomAD v3.1.2 MID"
       },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4; similar to Southern European baseline. Traditional Anatolian diet rich in olive oil, legumes, and vegetables."
-      },
       "alcohol_metabolism": {
         "p": 0.9,
         "t": "standard",
@@ -2139,11 +1966,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "andean": {
@@ -2183,21 +2005,6 @@
         "t": "medium",
         "notes": "Higher than lowland Indigenous due to historical Spanish admixture. High-altitude UV exposure significant - vitamin D synthesis adequate."
       },
-      "cholesterol_metabolism": {
-        "f": 15,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "E2 absent. Traditional high-carbohydrate diet (potatoes, quinoa) with moderate protein."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -2208,35 +2015,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -2253,25 +2040,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -2548,13 +2320,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -2870,12 +2635,6 @@
         "desc": "SENP1/ANP32D pathway — independent evolution from Tibetan",
         "notes": "Andean adaptation operates via SENP1 and ANP32D variants rather than EPAS1/EGLN1; independently evolved high-altitude response."
       },
-      "altitude_adaptation_egln1": {
-        "f": 18,
-        "t": "present",
-        "desc": "Andean EGLN1 variant; independent from Tibetan PHD2 variant",
-        "notes": "Andean EGLN1 variant at 15-20% contributes to altitude adaptation alongside SENP1/ANP32D; independently evolved."
-      },
       "altitude_egln1": {
         "f": 18,
         "p": 0.18,
@@ -2885,11 +2644,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "arabian": {
@@ -2930,34 +2684,14 @@
         "p": 0.34,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 26,
-        "p": 0.26,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.25,
-        "p": 0.0025,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 40,
         "p": 0.4,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 38,
         "p": 0.38,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -2975,25 +2709,10 @@
         "p": 0.55,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 22,
-        "p": 0.22,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 90,
@@ -3262,13 +2981,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -3580,21 +3292,6 @@
         "desc": "T allele (rs10046): 48%. Traditional Bedouin diet of dates, camel milk, lamb, and whole grains adapted to arid conditions.",
         "notes": "gnomAD v3.1.2 MID"
       },
-      "cholesterol_metabolism": {
-        "f": 12,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Lower ε4 in Arabian Peninsula populations. Traditional date, lean meat, and legume diet."
-      },
       "alcohol_metabolism": {
         "p": 0.94,
         "t": "standard",
@@ -3607,11 +3304,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "australian_coastal": {
@@ -3643,20 +3335,6 @@
         "t": "dark",
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes"
       },
-      "cholesterol_metabolism": {
-        "f": 26,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": null,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 22,
         "p": 0.22,
@@ -3665,30 +3343,12 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 17,
-        "p": 0.17,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
-        "t": "unknown"
-      },
-      "vitamin_d_transport": {
         "t": "unknown"
       },
       "salt_sensitivity": {
@@ -3700,16 +3360,7 @@
       "bitter_taste_perception": {
         "t": "unknown"
       },
-      "vitamin_b12_absorption": {
-        "t": "unknown"
-      },
-      "appetite_regulation": {
-        "t": "unknown"
-      },
       "celiac_susceptibility": {
-        "t": "unknown"
-      },
-      "hdl_metabolism": {
         "t": "unknown"
       },
       "insulin_sensitivity": {
@@ -3971,13 +3622,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 42%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 42%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 12,
@@ -4300,11 +3944,6 @@
       "bitter_taste": {
         "f": 55,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "balkan": {
@@ -4354,37 +3993,17 @@
         "p": 0.4,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 30,
-        "p": 0.3,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "elevated_risk"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk",
         "desc": "Higher T allele (30%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 40,
-        "p": 0.4,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 22,
         "p": 0.22,
         "t": "reduced",
         "desc": "Higher T allele (22%). May benefit from preformed vitamin A (retinol) sources."
-      },
-      "vitamin_d_transport": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 41,
@@ -4401,25 +4020,10 @@
         "p": 0.49,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 49,
-        "p": 0.49,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 26,
-        "p": 0.26,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 20,
         "p": 0.2,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -4688,13 +4292,6 @@
         "t": "lower_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
         "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 45,
-        "p": 0.45,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 27,
@@ -5000,29 +4597,9 @@
         "desc": "T allele (rs10046): 50%. Mixed agricultural and pastoral diet with fermented dairy, grains, vegetables, and moderate wine.",
         "notes": "gnomAD v3.1.2 EUR/NFE"
       },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Standard Southern European range. Mediterranean-influenced diet patterns may offer protection."
-      },
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "bengal": {
@@ -5062,34 +4639,14 @@
         "p": 0.22,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 14,
-        "p": 0.14,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.2,
-        "p": 0.002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 33,
-        "p": 0.33,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 35,
         "p": 0.35,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 26,
-        "p": 0.26,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -5107,25 +4664,10 @@
         "p": 0.58,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 60,
-        "p": 0.6,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 25,
-        "p": 0.25,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 92,
@@ -5394,13 +4936,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 42,
-        "p": 0.42,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~58% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 42%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -5714,21 +5249,6 @@
         "desc": "T allele (rs10046): 45%. Rice-based diet with fish, lentils, mustard oil, and seasonal vegetables; strong fish-eating tradition.",
         "notes": "gnomAD v3.1.2 SAS"
       },
-      "cholesterol_metabolism": {
-        "f": 12,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "South Asian average; ε2 slightly lower than European. Plant-rich traditional diet may mitigate risk."
-      },
       "alcohol_metabolism": {
         "p": 0.82,
         "t": "standard",
@@ -5741,11 +5261,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "brazilian_coastal": {
@@ -5781,35 +5296,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -5826,25 +5321,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -6113,13 +5593,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 28%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 28%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 22,
@@ -6436,21 +5909,6 @@
         "desc": "T allele (rs10046): 45%. Admixed dietary heritage blending Portuguese, African, and Indigenous traditions with seafood and tropical produce.",
         "notes": "Admixed: ~50% EUR, ~35% AFR, ~15% AMR weighted average"
       },
-      "cholesterol_metabolism": {
-        "f": 16,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 9,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Slightly elevated due to African admixture in this mixed population."
-      },
       "alcohol_metabolism": {
         "p": 0.92,
         "t": "standard",
@@ -6468,11 +5926,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "california_coast": {
@@ -6512,20 +5965,6 @@
         "t": "dark",
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes"
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -6536,35 +5975,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -6581,25 +6000,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -6869,13 +6273,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -7183,11 +6580,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "canadian_prairies": {
@@ -7224,35 +6616,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -7269,25 +6641,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -7558,13 +6915,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -7878,21 +7228,6 @@
         "desc": "T allele (rs10046): 47%. Mixed heritage diet; Indigenous traditions of bison, wild rice, and berries with European agricultural influence.",
         "notes": "Admixed: ~60% EUR, ~40% AMR weighted average"
       },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Standard European-derived frequency. High-fat prairie diet may have metabolic implications."
-      },
       "alcohol_metabolism": {
         "p": 0.95,
         "t": "standard",
@@ -7911,11 +7246,6 @@
       "bitter_taste": {
         "f": 48,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "caribbean_creole": {
@@ -7951,21 +7281,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Variable by island. Higher European ancestry = higher A allele. Important for vitamin D: darker skin requires more sun exposure or dietary vitamin D at higher latitudes."
       },
-      "cholesterol_metabolism": {
-        "f": 20,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated due to African ancestry. Traditional diet patterns may be protective."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -7976,35 +7291,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -8021,25 +7316,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -8308,13 +7588,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 28%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 28%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 22,
@@ -8643,11 +7916,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "caribbean_taino": {
@@ -8688,20 +7956,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. Tropical Caribbean provides adequate UV year-round."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -8712,35 +7966,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -8757,25 +7991,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -9045,13 +8264,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -9359,11 +8571,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "caucasus": {
@@ -9413,35 +8620,15 @@
         "p": 0.36,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 2.5,
-        "p": 0.025,
-        "t": "carrier_risk"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
-        "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 41,
-        "p": 0.41,
         "t": "elevated_risk"
       },
       "beta_carotene_conversion": {
         "f": 44,
         "p": 0.44,
         "t": "poor_converter"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 46,
@@ -9458,25 +8645,10 @@
         "p": 0.52,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 24,
-        "p": 0.24,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 15,
         "p": 0.15,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 87,
@@ -9745,13 +8917,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -10059,29 +9224,9 @@
         "desc": "T allele (rs10046): 48%. Traditional mountain diet emphasising fermented dairy (kefir), walnuts, herbs, pomegranate, and lamb.",
         "notes": "gnomAD v3.1.2 MID"
       },
-      "cholesterol_metabolism": {
-        "f": 13,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Intermediate between European and Middle Eastern; moderate ε4 frequency."
-      },
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "central_africa": {
@@ -10121,22 +9266,6 @@
         "t": "dark",
         "notes": "Dark skin reduces vitamin D synthesis; higher dietary intake important"
       },
-      "cholesterol_metabolism": {
-        "f": 41,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 21,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 9,
-            "r": "T"
-          }
-        },
-        "desc": "Pygmy populations show highest Îµ4 globally at 40.7%",
-        "notes": "Highest Îµ4 frequency globally; traditional diet context important"
-      },
       "caffeine_metabolism": {
         "f": 42,
         "p": 0.42,
@@ -10145,37 +9274,16 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 3,
-        "p": 0.03,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 24,
         "p": 0.24,
         "t": "unknown"
-      },
-      "obesity_risk": {
-        "f": 50,
-        "p": 0.5,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 50% (among highest globally). Focus on satiety strategies."
       },
       "beta_carotene_conversion": {
         "f": 3,
         "p": 0.03,
         "t": "efficient",
         "desc": "Low T allele (3%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 6,
-        "p": 0.06,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 90,
@@ -10192,25 +9300,10 @@
         "p": 0.38,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 27,
-        "p": 0.27,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 35,
-        "p": 0.35,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -10479,13 +9572,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -10807,11 +9893,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "High TAS2R38 haplotype diversity typical of Central African populations."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "central_asia": {
@@ -10846,31 +9927,11 @@
         "p": 0.2,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 26,
-        "p": 0.26,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.6,
-        "p": 0.006,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "t": "unknown"
       },
-      "obesity_risk": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "t": "unknown"
-      },
-      "vitamin_d_transport": {
-        "f": 15,
-        "p": 0.15,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 70,
@@ -10885,25 +9946,10 @@
         "p": 0.55,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 70,
-        "p": 0.7,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 12,
         "p": 0.12,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 28,
-        "p": 0.28,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 90,
@@ -11172,13 +10218,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 22,
@@ -11494,21 +10533,6 @@
         "desc": "T allele (rs10046): 42%. Nomadic pastoral tradition of fermented mare's milk, mutton, and limited grain; seasonal wild plants.",
         "notes": "Proxy: Central Asian interpolated from EAS/SAS/EUR gnomAD data"
       },
-      "cholesterol_metabolism": {
-        "f": 11,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 6,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 reflecting partial East Asian ancestry. Traditional nomadic diet high in animal products."
-      },
       "alcohol_metabolism": {
         "p": 0.8,
         "t": "standard",
@@ -11526,11 +10550,6 @@
       "bitter_taste": {
         "f": 60,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "central_europe": {
@@ -11572,37 +10591,17 @@
         "p": 0.4,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 30,
-        "p": 0.3,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "elevated_risk"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk",
         "desc": "Higher T allele (30%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 42,
-        "p": 0.42,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 24,
         "p": 0.24,
         "t": "reduced",
         "desc": "Higher T allele (24%). May benefit from preformed vitamin A (retinol) sources."
-      },
-      "vitamin_d_transport": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 41,
@@ -11619,25 +10618,10 @@
         "p": 0.49,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 49,
-        "p": 0.49,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 26,
-        "p": 0.26,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 20,
         "p": 0.2,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -11906,13 +10890,6 @@
         "t": "lower_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
         "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 45,
-        "p": 0.45,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 27,
@@ -12222,21 +11199,6 @@
         "desc": "T allele (rs10046): 50%. Agricultural diet of rye, potatoes, pork, sauerkraut, and dairy with seasonal root vegetables.",
         "notes": "gnomAD v3.1.2 EUR/NFE"
       },
-      "cholesterol_metabolism": {
-        "f": 15,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Standard European level; ε2 carrier rate ~8%. Central European diet high in dairy and pork."
-      },
       "alcohol_metabolism": {
         "p": 0.95,
         "t": "standard",
@@ -12249,11 +11211,6 @@
       "bitter_taste": {
         "f": 48,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "eastern_europe": {
@@ -12288,37 +11245,17 @@
         "p": 0.4,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 30,
-        "p": 0.3,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "elevated_risk"
-      },
       "glucose_metabolism": {
         "f": 29,
         "p": 0.29,
         "t": "elevated_risk",
         "desc": "Higher T allele (29%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 40,
-        "p": 0.4,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 22,
         "p": 0.22,
         "t": "reduced",
         "desc": "Higher T allele (22%). May benefit from preformed vitamin A (retinol) sources."
-      },
-      "vitamin_d_transport": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 41,
@@ -12335,25 +11272,10 @@
         "p": 0.49,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 49,
-        "p": 0.49,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 26,
-        "p": 0.26,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 20,
         "p": 0.2,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -12622,13 +11544,6 @@
         "t": "lower_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
         "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 45,
-        "p": 0.45,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 27,
@@ -12941,21 +11856,6 @@
         "desc": "T allele (rs10046): 50%. Grain-based diet with borscht, fermented vegetables, dairy, and seasonal foraging.",
         "notes": "gnomAD v3.1.2 EUR/NFE"
       },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Standard Slavic/Eastern European range."
-      },
       "alcohol_metabolism": {
         "p": 0.95,
         "t": "standard",
@@ -12974,11 +11874,6 @@
       "bitter_taste": {
         "f": 48,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "eastern_woodlands": {
@@ -13017,20 +11912,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. Northern populations may benefit from vitamin D supplementation in winter."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -13041,35 +11922,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -13086,25 +11947,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -13374,13 +12220,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -13690,11 +12529,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "ethiopia": {
@@ -13744,38 +12578,17 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.1,
-        "p": 0.001,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 25,
         "p": 0.25,
         "t": "elevated_risk",
         "desc": "Higher T allele (25%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 48,
-        "p": 0.48,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 48% (among highest globally). Focus on satiety strategies."
-      },
       "beta_carotene_conversion": {
         "f": 5,
         "p": 0.05,
         "t": "efficient",
         "desc": "Low T allele (5%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 10,
-        "p": 0.1,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 85,
@@ -13792,25 +12605,10 @@
         "p": 0.42,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 28,
-        "p": 0.28,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 32,
-        "p": 0.32,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -14079,13 +12877,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -14393,31 +13184,11 @@
         "desc": "T allele (rs10046): 38%. Teff-based diet with injera, lentil/bean stews, spiced preparations, and some coffee cultivation.",
         "notes": "gnomAD v3.1.2 AFR"
       },
-      "cholesterol_metabolism": {
-        "f": 22,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 12,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated ε4 consistent with East African gradient. Traditional high-fibre injera-based diet may be protective."
-      },
       "altitude_adaptation": {
         "f": 18,
         "t": "partial",
         "desc": "Partial altitude adaptation in highland Ethiopian populations",
         "notes": "Ethiopian highland populations (Amhara, Oromo) show limited altitude adaptation; BRINP3 variant contributes. Less pronounced than Andean/Tibetan."
-      },
-      "altitude_adaptation_egln1": {
-        "f": 12,
-        "t": "present",
-        "notes": "EGLN1 variant in Ethiopian highland populations; partial altitude adaptation mechanism."
       },
       "altitude_egln1": {
         "f": 12,
@@ -14429,11 +13200,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "Sub-Saharan African TAS2R38 diversity pattern."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "gaucho": {
@@ -14474,21 +13240,6 @@
         "t": "medium",
         "notes": "Intermediate due to admixture. Adequate UV in Pampas region."
       },
-      "cholesterol_metabolism": {
-        "f": 15,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Intermediate between European (~15%) and Indigenous American (~18%) frequencies."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -14499,35 +13250,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -14544,25 +13275,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -14832,13 +13548,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 28%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 28%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 22,
@@ -15156,11 +13865,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "great_plains": {
@@ -15200,20 +13904,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. High UV exposure on open plains historically adequate."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -15224,35 +13914,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -15269,25 +13939,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -15557,13 +14212,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -15872,11 +14520,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "highland_se_asia": {
@@ -15924,35 +14567,15 @@
         "p": 0.09,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.15,
-        "p": 0.0015,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 5,
         "p": 0.05,
         "t": "normal"
       },
-      "obesity_risk": {
-        "f": 20,
-        "p": 0.2,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 24,
         "p": 0.24,
         "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 24,
-        "p": 0.24,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 78,
@@ -15969,25 +14592,10 @@
         "p": 0.6,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99,
-        "p": 0.99,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 17,
-        "p": 0.17,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 3,
         "p": 0.03,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 95,
@@ -16256,13 +14864,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -16574,21 +15175,6 @@
         "desc": "T allele (rs10046): 32%. Hill-tribe diet of upland rice, foraged greens, fermented foods, and game with limited dairy.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 10,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 6,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Lower ε4 reflecting East/SE Asian baseline."
-      },
       "vitamin_d_metabolism": {
         "f": 38,
         "t": "dark",
@@ -16597,11 +15183,6 @@
       "bitter_taste": {
         "f": 60,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "horn_somalia": {
@@ -16651,37 +15232,16 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.1,
-        "p": 0.001,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 48,
-        "p": 0.48,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 48% (among highest globally). Focus on satiety strategies."
       },
       "beta_carotene_conversion": {
         "f": 5,
         "p": 0.05,
         "t": "efficient",
         "desc": "Low T allele (5%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 10,
-        "p": 0.1,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 85,
@@ -16698,25 +15258,10 @@
         "p": 0.42,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 28,
-        "p": 0.28,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 32,
-        "p": 0.32,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -16985,13 +15530,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -17297,21 +15835,6 @@
         "desc": "T allele (rs10046): 38%. Pastoral diet of camel milk, goat meat, sorghum, and ghee with frankincense tradition.",
         "notes": "gnomAD v3.1.2 AFR"
       },
-      "cholesterol_metabolism": {
-        "f": 22,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 12,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated ε4 consistent with Horn of Africa populations. Traditional camel milk and lean meat diet."
-      },
       "pcsk9_protective": {
         "f": 1,
         "p": 0.01,
@@ -17326,11 +15849,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "Horn of Africa TAS2R38 diversity pattern."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "inuit": {
@@ -17372,21 +15890,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low-moderate. Arctic has extreme UV variation. Traditional diet very high in vitamin D from marine mammal fat and fish liver - critical dietary source in low-UV environment."
       },
-      "cholesterol_metabolism": {
-        "f": 24,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated e4, absent e2. High-fat diet context. Traditional diet was 50-75% fat from marine mammals."
-      },
       "arctic_fat_metabolism": {
         "f": 76,
         "p": 0.76,
@@ -17403,35 +15906,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -17448,25 +15931,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -17730,13 +16198,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -18060,11 +16521,6 @@
       "bitter_taste": {
         "f": 55,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "japan": {
@@ -18131,35 +16587,15 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 3,
         "p": 0.03,
         "t": "lower_risk",
         "desc": "Very low T allele (3%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 18,
         "p": 0.18,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -18177,25 +16613,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -18464,13 +16885,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -18785,31 +17199,11 @@
         "desc": "T allele (rs10046): 32%. Traditional washoku diet of rice, fish, soy, seaweed, and fermented foods with minimal dairy.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 9,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Low ε4 frequency; among lowest globally. Traditional Japanese diet rich in fish and vegetables may further reduce cardiovascular risk."
-      },
       "vitamin_d_metabolism": {
         "f": 55,
         "t": "medium",
         "notes": "Moderate vitamin D synthesis capacity; traditional Japanese diet rich in oily fish (salmon, mackerel, sardines) provides substantial dietary vitamin D.",
         "desc": "Moderate skin pigmentation; adequate UV at Japanese latitudes"
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "korea": {
@@ -18872,35 +17266,15 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 4,
         "p": 0.04,
         "t": "lower_risk",
         "desc": "Very low T allele (4%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 17,
         "p": 0.17,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -18918,25 +17292,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -19205,13 +17564,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -19524,30 +17876,10 @@
         "desc": "T allele (rs10046): 32%. Fermented-food-rich diet (kimchi, doenjang) with rice, vegetables, and seafood.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 9,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Low ε4 consistent with East Asian range. High-vegetable and fermented food diet characteristic."
-      },
       "vitamin_d_metabolism": {
         "f": 52,
         "t": "medium",
         "notes": "Moderate skin pigmentation; adequate UV at most Korean latitudes. Fermented foods and fish provide some dietary vitamin D."
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "kurdish": {
@@ -19582,34 +17914,14 @@
         "p": 0.34,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 26,
-        "p": 0.26,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.25,
-        "p": 0.0025,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 40,
         "p": 0.4,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 38,
         "p": 0.38,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -19627,25 +17939,10 @@
         "p": 0.55,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 22,
-        "p": 0.22,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 90,
@@ -19914,13 +18211,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -20225,21 +18515,6 @@
         "desc": "T allele (rs10046): 48%. Pastoral and agricultural diet of wheat, dairy, lamb, and mountain herbs.",
         "notes": "gnomAD v3.1.2 MID"
       },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Standard Middle Eastern/Iranian Plateau range."
-      },
       "alcohol_metabolism": {
         "p": 0.9,
         "t": "standard",
@@ -20257,11 +18532,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "maasai": {
@@ -20296,37 +18566,16 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.1,
-        "p": 0.001,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 46,
-        "p": 0.46,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 46% (among highest globally). Focus on satiety strategies."
       },
       "beta_carotene_conversion": {
         "f": 4,
         "p": 0.04,
         "t": "efficient",
         "desc": "Low T allele (4%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 10,
-        "p": 0.1,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 85,
@@ -20343,25 +18592,10 @@
         "p": 0.42,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 28,
-        "p": 0.28,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 32,
-        "p": 0.32,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -20637,13 +18871,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -20952,21 +19179,6 @@
         "desc": "T allele (rs10046): 38%. Pastoral diet traditionally centred on cattle blood, milk, and meat with minimal plant foods.",
         "notes": "gnomAD v3.1.2 AFR"
       },
-      "cholesterol_metabolism": {
-        "f": 28,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 15,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated ε4 consistent with East African pastoralist heritage. Traditional Maasai diet of blood, milk, and meat."
-      },
       "alcohol_metabolism": {
         "p": 0.88,
         "t": "standard",
@@ -20980,11 +19192,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "East African TAS2R38 diversity consistent with Sub-Saharan African pattern."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "maghreb": {
@@ -21019,21 +19226,6 @@
         "desc": "Efficient vitamin D synthesis with moderate sun exposure",
         "notes": "Moderate-high. Mediterranean/Middle Eastern genetic influence. Lighter skin common in northern coastal areas."
       },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 14,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate. Lower than sub-Saharan African due to Middle Eastern/European ancestry."
-      },
       "caffeine_metabolism": {
         "f": 37,
         "p": 0.37,
@@ -21044,33 +19236,13 @@
         "p": 0.32,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.5,
-        "p": 0.005,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 32,
         "p": 0.32,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 45,
-        "p": 0.45,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "t": "unknown"
-      },
-      "vitamin_d_transport": {
-        "f": 22,
-        "p": 0.22,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 70,
@@ -21085,25 +19257,10 @@
         "p": 0.48,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 23,
-        "p": 0.23,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 18,
         "p": 0.18,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 18,
-        "p": 0.18,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -21372,13 +19529,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -21694,11 +19844,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "malagasy": {
@@ -21738,21 +19883,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low frequency. Both ancestral components (African, Southeast Asian) have low A allele. Adequate sun exposure in Madagascar latitude."
       },
-      "cholesterol_metabolism": {
-        "f": 24,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 21,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 9,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated due to both African ancestry and possible founder effects. Traditional rice-fish diet may be protective."
-      },
       "caffeine_metabolism": {
         "f": 42,
         "p": 0.42,
@@ -21761,31 +19891,11 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 3,
-        "p": 0.03,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "t": "unknown"
       },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "t": "unknown"
-      },
-      "vitamin_d_transport": {
-        "f": 6,
-        "p": 0.06,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 90,
@@ -21802,25 +19912,10 @@
         "p": 0.38,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 27,
-        "p": 0.27,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 35,
-        "p": 0.35,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -22089,13 +20184,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -22422,11 +20510,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "maori": {
@@ -22471,20 +20554,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Variable based on European admixture. New Zealand has moderate UV - vitamin D status should be monitored in winter."
       },
-      "cholesterol_metabolism": {
-        "f": 26,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": null,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 22,
         "p": 0.22,
@@ -22493,30 +20562,12 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 17,
-        "p": 0.17,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
-        "t": "unknown"
-      },
-      "vitamin_d_transport": {
         "t": "unknown"
       },
       "salt_sensitivity": {
@@ -22528,16 +20579,7 @@
       "bitter_taste_perception": {
         "t": "unknown"
       },
-      "vitamin_b12_absorption": {
-        "t": "unknown"
-      },
-      "appetite_regulation": {
-        "t": "unknown"
-      },
       "celiac_susceptibility": {
-        "t": "unknown"
-      },
-      "hdl_metabolism": {
         "t": "unknown"
       },
       "insulin_sensitivity": {
@@ -22800,13 +20842,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 42%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 42%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 12,
@@ -23127,11 +21162,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "med_levant": {
@@ -23181,35 +21211,15 @@
         "p": 0.36,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 2.5,
-        "p": 0.025,
-        "t": "carrier_risk"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
-        "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 41,
-        "p": 0.41,
         "t": "elevated_risk"
       },
       "beta_carotene_conversion": {
         "f": 44,
         "p": 0.44,
         "t": "poor_converter"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 46,
@@ -23226,25 +21236,10 @@
         "p": 0.52,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 24,
-        "p": 0.24,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 15,
         "p": 0.15,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 87,
@@ -23513,13 +21508,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -23825,29 +21813,9 @@
         "desc": "T allele (rs10046): 48%. Ancient Levantine diet of olive oil, wheat, lentils, figs, and dairy with abundant herbs.",
         "notes": "gnomAD v3.1.2 MID"
       },
-      "cholesterol_metabolism": {
-        "f": 13,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 frequency. Mediterranean Levantine diet rich in olive oil, legumes, and vegetables."
-      },
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "med_southern": {
@@ -23898,37 +21866,17 @@
         "p": 0.36,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 2.5,
-        "p": 0.025,
-        "t": "carrier_risk"
-      },
       "glucose_metabolism": {
         "f": 32,
         "p": 0.32,
         "t": "elevated_risk",
         "desc": "Higher T allele (32%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 38,
-        "p": 0.38,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 20,
         "p": 0.2,
         "t": "reduced",
         "desc": "Higher T allele (20%). May benefit from preformed vitamin A (retinol) sources."
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 46,
@@ -23945,25 +21893,10 @@
         "p": 0.52,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 24,
-        "p": 0.24,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 15,
         "p": 0.15,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 87,
@@ -24232,13 +22165,6 @@
         "t": "lower_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
         "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 45,
-        "p": 0.45,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 27,
@@ -24551,29 +22477,9 @@
         "desc": "T allele (rs10046): 50%. Mediterranean diet rich in olive oil, fish, legumes, wine, and seasonal vegetables.",
         "notes": "gnomAD v3.1.2 EUR/NFE"
       },
-      "cholesterol_metabolism": {
-        "f": 13,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4; Mediterranean diet historically protective against cardiovascular risk."
-      },
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "melanesia": {
@@ -24605,21 +22511,6 @@
         "t": "dark",
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes"
       },
-      "cholesterol_metabolism": {
-        "f": 42,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": null,
-            "r": "T"
-          }
-        },
-        "notes": "VERY HIGH - among highest globally. Hui (PNG) 49%, Papuans 37%. Hunter-gatherer/horticultural pattern. Modern diet transition may pose metabolic risks."
-      },
       "caffeine_metabolism": {
         "f": 22,
         "p": 0.22,
@@ -24628,30 +22519,12 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 17,
-        "p": 0.17,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
-        "t": "unknown"
-      },
-      "vitamin_d_transport": {
         "t": "unknown"
       },
       "salt_sensitivity": {
@@ -24663,16 +22536,7 @@
       "bitter_taste_perception": {
         "t": "unknown"
       },
-      "vitamin_b12_absorption": {
-        "t": "unknown"
-      },
-      "appetite_regulation": {
-        "t": "unknown"
-      },
       "celiac_susceptibility": {
-        "t": "unknown"
-      },
-      "hdl_metabolism": {
         "t": "unknown"
       },
       "insulin_sensitivity": {
@@ -24935,13 +22799,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 42%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 42%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 12,
@@ -25264,11 +23121,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "mesoamerica": {
@@ -25309,21 +23161,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low in non-admixed Indigenous populations. Tropical/subtropical UV adequate for vitamin D."
       },
-      "cholesterol_metabolism": {
-        "f": 15,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "E2 absent. High-carbohydrate traditional diet (maize, beans, squash)."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -25334,35 +23171,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -25379,25 +23196,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -25674,13 +23476,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -25991,11 +23786,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "mesopotamian": {
@@ -26031,21 +23821,6 @@
         "desc": "Efficient vitamin D synthesis with moderate sun exposure",
         "notes": "High frequency similar to other Middle Eastern populations. Efficient vitamin D synthesis."
       },
-      "cholesterol_metabolism": {
-        "f": 12,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 12,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate frequency typical of agricultural Middle Eastern populations."
-      },
       "caffeine_metabolism": {
         "f": 31,
         "p": 0.31,
@@ -26056,34 +23831,14 @@
         "p": 0.34,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 26,
-        "p": 0.26,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.25,
-        "p": 0.0025,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 40,
         "p": 0.4,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 38,
         "p": 0.38,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -26101,25 +23856,10 @@
         "p": 0.55,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 22,
-        "p": 0.22,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 90,
@@ -26388,13 +24128,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -26709,11 +24442,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "mestizo_mesoamerican": {
@@ -26754,21 +24482,6 @@
         "t": "medium",
         "notes": "Intermediate. Indigenous component ~70%, European component ~99%. Variable by region and individual ancestry proportions."
       },
-      "cholesterol_metabolism": {
-        "f": 12,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Indigenous Americans lack e2 allele entirely. E4 moderate. E3 predominant."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -26779,35 +24492,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -26824,25 +24517,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -27119,13 +24797,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 28%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 28%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 22,
@@ -27451,11 +25122,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "micronesia": {
@@ -27491,20 +25157,6 @@
         "t": "dark",
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes"
       },
-      "cholesterol_metabolism": {
-        "f": 24,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": null,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 22,
         "p": 0.22,
@@ -27513,30 +25165,12 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 17,
-        "p": 0.17,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
-        "t": "unknown"
-      },
-      "vitamin_d_transport": {
         "t": "unknown"
       },
       "salt_sensitivity": {
@@ -27548,16 +25182,7 @@
       "bitter_taste_perception": {
         "t": "unknown"
       },
-      "vitamin_b12_absorption": {
-        "t": "unknown"
-      },
-      "appetite_regulation": {
-        "t": "unknown"
-      },
       "celiac_susceptibility": {
-        "t": "unknown"
-      },
-      "hdl_metabolism": {
         "t": "unknown"
       },
       "insulin_sensitivity": {
@@ -27820,13 +25445,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 42%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 42%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 12,
@@ -28148,11 +25766,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "mongolia": {
@@ -28202,34 +25815,14 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 3.5,
         "p": 0.035,
         "t": "normal"
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 22,
         "p": 0.22,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -28247,25 +25840,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -28534,13 +26112,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -28848,21 +26419,6 @@
         "desc": "T allele (rs10046): 32%. Nomadic pastoral diet of fermented mare's milk (airag), mutton, and dairy with minimal vegetables.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 9,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Lower ε4 in Mongolian steppe populations despite high-fat nomadic diet."
-      },
       "vitamin_d_metabolism": {
         "f": 50,
         "t": "medium",
@@ -28871,11 +26427,6 @@
       "bitter_taste": {
         "f": 62,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "nepal": {
@@ -28916,34 +26467,14 @@
         "p": 0.22,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 14,
-        "p": 0.14,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.2,
-        "p": 0.002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 33,
-        "p": 0.33,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 35,
         "p": 0.35,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 26,
-        "p": 0.26,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -28961,25 +26492,10 @@
         "p": 0.58,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 60,
-        "p": 0.6,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 25,
-        "p": 0.25,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 92,
@@ -29248,13 +26764,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 42,
-        "p": 0.42,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~58% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 42%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -29562,21 +27071,6 @@
         "desc": "T allele (rs10046): 45%. Highland diet spanning Tibetan (barley, yak butter tea) and Indo-Gangetic (rice, dal) traditions.",
         "notes": "gnomAD v3.1.2 SAS"
       },
-      "cholesterol_metabolism": {
-        "f": 11,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 6,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 reflecting South/East Asian blend. High-altitude traditional diet."
-      },
       "alcohol_metabolism": {
         "p": 0.78,
         "t": "standard",
@@ -29602,20 +27096,9 @@
         "t": "present",
         "notes": "Partial EPAS1 Denisovan-derived variant shared with Sherpa populations; less prevalent than Tibet (76%)."
       },
-      "altitude_adaptation_egln1": {
-        "f": 60,
-        "t": "present",
-        "desc": "EGLN1 PHD2 variant in highland Nepalese",
-        "notes": "EGLN1 altitude adaptation at 60% in Sherpa/highland Nepalese; works in concert with EPAS1."
-      },
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "nile_valley": {
@@ -29649,21 +27132,6 @@
         "t": "medium",
         "notes": "Intermediate frequency reflecting ancient admixture between Sub-Saharan African and Middle Eastern/Mediterranean populations. Higher in northern Egypt, lower in southern Sudan."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 14,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate-elevated frequency. Gradient from north (lower) to south (higher, approaching sub-Saharan levels)."
-      },
       "caffeine_metabolism": {
         "f": 37,
         "p": 0.37,
@@ -29674,37 +27142,16 @@
         "p": 0.32,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.5,
-        "p": 0.005,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 32,
         "p": 0.32,
         "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 47% (among highest globally). Focus on satiety strategies."
       },
       "beta_carotene_conversion": {
         "f": 6,
         "p": 0.06,
         "t": "efficient",
         "desc": "Low T allele (6%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 22,
-        "p": 0.22,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 70,
@@ -29719,25 +27166,10 @@
         "p": 0.48,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 23,
-        "p": 0.23,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 18,
         "p": 0.18,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 18,
-        "p": 0.18,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -30006,13 +27438,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -30327,11 +27752,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "nilotic": {
@@ -30365,21 +27785,6 @@
         "t": "dark",
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes"
       },
-      "cholesterol_metabolism": {
-        "f": 30,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated. Tutsi show 39%. Traditional pastoral diet context."
-      },
       "caffeine_metabolism": {
         "f": 47,
         "p": 0.47,
@@ -30390,37 +27795,16 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 7,
-        "p": 0.07,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.1,
-        "p": 0.001,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 47% (among highest globally). Focus on satiety strategies."
       },
       "beta_carotene_conversion": {
         "f": 4,
         "p": 0.04,
         "t": "efficient",
         "desc": "Low T allele (4%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 10,
-        "p": 0.1,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 85,
@@ -30437,25 +27821,10 @@
         "p": 0.42,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 48,
-        "p": 0.48,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 28,
-        "p": 0.28,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 32,
-        "p": 0.32,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -30724,13 +28093,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -31056,11 +28418,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "East African/Nilotic TAS2R38 diversity pattern."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "nordic": {
@@ -31100,12 +28457,6 @@
         "desc": "Light skin pigmentation for high-latitude adaptation",
         "notes": "Light skin maximizes vitamin D production; dietary needs lower in adequate sun"
       },
-      "iron_metabolism": {
-        "f": 8,
-        "p": 0.07,
-        "t": "elevated_risk",
-        "desc": "C282Y allele: 8% (elevated in Celtic populations). Monitor ferritin."
-      },
       "caffeine_metabolism": {
         "f": 30,
         "p": 0.3,
@@ -31116,32 +28467,17 @@
         "p": 0.4,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 30,
-        "p": 0.3,
-        "t": "reduced"
-      },
       "glucose_metabolism": {
         "f": 28,
         "p": 0.28,
         "t": "elevated_risk",
         "desc": "Higher T allele (28%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 41,
-        "p": 0.41,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 26,
         "p": 0.26,
         "t": "reduced",
         "desc": "Higher T allele (26%). May benefit from preformed vitamin A (retinol) sources."
-      },
-      "vitamin_d_transport": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 41,
@@ -31158,25 +28494,10 @@
         "p": 0.49,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 49,
-        "p": 0.49,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 26,
-        "p": 0.26,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 20,
         "p": 0.2,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -31445,13 +28766,6 @@
         "t": "lower_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
         "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 45,
-        "p": 0.45,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 27,
@@ -31766,29 +29080,9 @@
         "desc": "T allele (rs10046): 52%. Traditional Scandinavian diet of fatty fish, rye bread, root vegetables, berries, and fermented dairy.",
         "notes": "gnomAD v3.1.2 FIN"
       },
-      "cholesterol_metabolism": {
-        "f": 16,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 9,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Slightly elevated Northern European ε4. Traditional high-fat diet from fish and dairy."
-      },
       "bitter_taste": {
         "f": 48,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "north_china": {
@@ -31841,35 +29135,15 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 3,
         "p": 0.03,
         "t": "lower_risk",
         "desc": "Very low T allele (3%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 15,
         "p": 0.15,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -31887,25 +29161,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -32174,13 +29433,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -32494,21 +29746,6 @@
         "desc": "T allele (rs10046): 32%. Wheat and millet-based northern Chinese diet with noodles, dumplings, lamb, and fermented vegetables.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 8,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Very low ε4; among lowest globally. Northern Chinese agricultural diet rich in millet and wheat."
-      },
       "vitamin_d_metabolism": {
         "f": 55,
         "t": "medium",
@@ -32519,11 +29756,6 @@
         "p": 0.48,
         "t": "moderate",
         "notes": "Moderate conversion efficiency; traditional northern Chinese diet benefits from direct marine omega-3 sources."
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "north_india": {
@@ -32564,34 +29796,14 @@
         "p": 0.22,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 14,
-        "p": 0.14,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.2,
-        "p": 0.002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 33,
-        "p": 0.33,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 35,
         "p": 0.35,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 26,
-        "p": 0.26,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -32609,25 +29821,10 @@
         "p": 0.58,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 60,
-        "p": 0.6,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 25,
-        "p": 0.25,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 92,
@@ -32896,13 +30093,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 42,
-        "p": 0.42,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~58% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 42%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -33216,21 +30406,6 @@
         "desc": "T allele (rs10046): 45%. Wheat-based Punjabi/Indo-Gangetic diet with ghee, dairy, lentils (dal), and seasonal vegetables.",
         "notes": "gnomAD v3.1.2 SAS"
       },
-      "cholesterol_metabolism": {
-        "f": 12,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Standard South Asian; Indo-Aryan heritage. Traditional vegetarian-heavy diet may be protective."
-      },
       "alcohol_metabolism": {
         "p": 0.84,
         "t": "standard",
@@ -33243,11 +30418,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "pacific_nw": {
@@ -33287,20 +30457,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. Cloudy Pacific Northwest climate - traditional high fish intake provided dietary vitamin D compensating for limited UV."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -33311,35 +30467,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -33356,25 +30492,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -33645,13 +30766,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -33959,11 +31073,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "patagonia": {
@@ -34005,20 +31114,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. High-latitude location with reduced UV - vitamin D supplementation may be beneficial."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -34029,35 +31124,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -34074,25 +31149,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -34362,13 +31422,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -34676,11 +31729,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "persian": {
@@ -34715,34 +31763,14 @@
         "p": 0.34,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 26,
-        "p": 0.26,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.25,
-        "p": 0.0025,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 40,
         "p": 0.4,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 47,
-        "p": 0.47,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 38,
         "p": 0.38,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 25,
-        "p": 0.25,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -34760,25 +31788,10 @@
         "p": 0.55,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 22,
-        "p": 0.22,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 90,
@@ -35047,13 +32060,6 @@
         "t": "moderate_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 25%. Mixed food reward genetics.",
         "notes": "DRD2 A1 allele: 25%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 43,
-        "p": 0.43,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~57% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 43%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 25,
@@ -35359,21 +32365,6 @@
         "desc": "T allele (rs10046): 48%. Ancient cuisine of rice, saffron, dried fruits, nuts, lamb, and yogurt with herbal infusions.",
         "notes": "gnomAD v3.1.2 MID"
       },
-      "cholesterol_metabolism": {
-        "f": 13,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Standard Middle Eastern Iranian range. Traditional Persian diet rich in herbs and grains."
-      },
       "alcohol_metabolism": {
         "p": 0.88,
         "t": "standard",
@@ -35392,11 +32383,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "polynesia": {
@@ -35442,21 +32428,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. Tropical Pacific provides adequate UV. Some variation based on post-contact admixture."
       },
-      "cholesterol_metabolism": {
-        "f": 26,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 20,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": null,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated. Islander/Pacific pattern. Traditional diet may be protective context."
-      },
       "caffeine_metabolism": {
         "f": 22,
         "p": 0.22,
@@ -35465,30 +32436,12 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 17,
-        "p": 0.17,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
-        "t": "unknown"
-      },
-      "vitamin_d_transport": {
         "t": "unknown"
       },
       "salt_sensitivity": {
@@ -35500,16 +32453,7 @@
       "bitter_taste_perception": {
         "t": "unknown"
       },
-      "vitamin_b12_absorption": {
-        "t": "unknown"
-      },
-      "appetite_regulation": {
-        "t": "unknown"
-      },
       "celiac_susceptibility": {
-        "t": "unknown"
-      },
-      "hdl_metabolism": {
         "t": "unknown"
       },
       "insulin_sensitivity": {
@@ -35772,13 +32716,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 42%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 42%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 12,
@@ -36099,11 +33036,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "sahel": {
@@ -36153,38 +33085,17 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.5,
-        "p": 0.005,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 26,
         "p": 0.26,
         "t": "elevated_risk",
         "desc": "Higher T allele (26%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 49,
-        "p": 0.49,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 49% (among highest globally). Focus on satiety strategies."
-      },
       "beta_carotene_conversion": {
         "f": 4,
         "p": 0.04,
         "t": "efficient",
         "desc": "Low T allele (4%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 8,
-        "p": 0.08,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 88,
@@ -36201,25 +33112,10 @@
         "p": 0.4,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 29,
-        "p": 0.29,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 35,
-        "p": 0.35,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 97,
@@ -36488,13 +33384,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -36803,21 +33692,6 @@
         "desc": "T allele (rs10046): 38%. Semi-arid diet of millet, sorghum, cowpeas, baobab fruit, and pastoral dairy.",
         "notes": "gnomAD v3.1.2 AFR"
       },
-      "cholesterol_metabolism": {
-        "f": 26,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 14,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Elevated ε4 consistent with Sahelian West African populations. Traditional millet and sorghum diet."
-      },
       "pcsk9_protective": {
         "f": 2,
         "p": 0.02,
@@ -36832,11 +33706,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "Sahelian/West African TAS2R38 diversity pattern."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "se_asia_island": {
@@ -36885,36 +33754,16 @@
         "p": 0.09,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.15,
-        "p": 0.0015,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 5,
         "p": 0.05,
         "t": "lower_risk",
         "desc": "Very low T allele (5%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 20,
-        "p": 0.2,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 24,
         "p": 0.24,
         "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 24,
-        "p": 0.24,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 78,
@@ -36931,25 +33780,10 @@
         "p": 0.6,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99,
-        "p": 0.99,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 17,
-        "p": 0.17,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 3,
         "p": 0.03,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 95,
@@ -37218,13 +34052,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -37532,21 +34359,6 @@
         "desc": "T allele (rs10046): 32%. Island Southeast Asian diet of rice, coconut, fish sauce, tropical fruits, and palm sugar.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 10,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 6,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 in Austronesian island populations."
-      },
       "vitamin_d_metabolism": {
         "f": 35,
         "t": "dark",
@@ -37555,11 +34367,6 @@
       "bitter_taste": {
         "f": 60,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "se_asia_main": {
@@ -37608,36 +34415,16 @@
         "p": 0.09,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.15,
-        "p": 0.0015,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 5,
         "p": 0.05,
         "t": "lower_risk",
         "desc": "Very low T allele (5%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 20,
-        "p": 0.2,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 24,
         "p": 0.24,
         "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 24,
-        "p": 0.24,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 78,
@@ -37654,25 +34441,10 @@
         "p": 0.6,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99,
-        "p": 0.99,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 17,
-        "p": 0.17,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 3,
         "p": 0.03,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 42,
-        "p": 0.42,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 95,
@@ -37941,13 +34713,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -38262,21 +35027,6 @@
         "desc": "T allele (rs10046): 32%. Mainland SE Asian diet of rice, fish sauce, fresh herbs, tropical vegetables, and fermented pastes.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 10,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 6,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 in mainland Southeast Asian populations."
-      },
       "vitamin_d_metabolism": {
         "f": 40,
         "t": "dark",
@@ -38285,11 +35035,6 @@
       "bitter_taste": {
         "f": 60,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 50,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "siberia": {
@@ -38331,31 +35076,11 @@
         "p": 0.2,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 26,
-        "p": 0.26,
-        "t": "reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.6,
-        "p": 0.006,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "t": "unknown"
       },
-      "obesity_risk": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "t": "unknown"
-      },
-      "vitamin_d_transport": {
-        "f": 15,
-        "p": 0.15,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 70,
@@ -38370,25 +35095,10 @@
         "p": 0.55,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 70,
-        "p": 0.7,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 12,
         "p": 0.12,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 28,
-        "p": 0.28,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 90,
@@ -38652,13 +35362,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -38977,21 +35680,6 @@
         "desc": "T allele (rs10046): 38%. Subarctic diet of reindeer, fish, berries, and fermented dairy adapted to extreme cold.",
         "notes": "Proxy: Siberian from 1KGP and Pugach et al. 2016 Siberian populations"
       },
-      "cholesterol_metabolism": {
-        "f": 13,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 in Siberian indigenous populations. Traditional high-fat reindeer-based diet."
-      },
       "alcohol_metabolism": {
         "p": 0.7,
         "t": "standard",
@@ -39009,11 +35697,6 @@
       "bitter_taste": {
         "f": 62,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "sichuan_sw_china": {
@@ -39067,35 +35750,15 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 3,
         "p": 0.03,
         "t": "lower_risk",
         "desc": "Very low T allele (3%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 22,
         "p": 0.22,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -39113,25 +35776,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -39400,13 +36048,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -39715,21 +36356,6 @@
         "desc": "T allele (rs10046): 32%. Spice-rich southwestern Chinese diet with rice, pork, chili, Sichuan pepper, and preserved vegetables.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 8,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Low ε4 consistent with Chinese populations. Traditional Sichuan diet rich in vegetables and legumes."
-      },
       "vitamin_d_metabolism": {
         "f": 52,
         "t": "medium",
@@ -39738,11 +36364,6 @@
       "bitter_taste": {
         "f": 62,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "south_china": {
@@ -39801,35 +36422,15 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 3,
         "p": 0.03,
         "t": "lower_risk",
         "desc": "Very low T allele (3%). Lower genetic T2DM risk from this variant."
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 16,
         "p": 0.16,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -39847,25 +36448,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -40134,13 +36720,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 15,
@@ -40452,21 +37031,6 @@
         "desc": "T allele (rs10046): 32%. Cantonese-influenced diet of rice, dim sum, seafood, and diverse vegetables with tea culture.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 8,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Low ε4; similar to other Chinese populations."
-      },
       "vitamin_d_metabolism": {
         "f": 45,
         "t": "dark",
@@ -40475,11 +37039,6 @@
       "bitter_taste": {
         "f": 62,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "south_india": {
@@ -40519,34 +37078,14 @@
         "p": 0.22,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 14,
-        "p": 0.14,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.2,
-        "p": 0.002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 33,
-        "p": 0.33,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 35,
         "p": 0.35,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 26,
-        "p": 0.26,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -40564,25 +37103,10 @@
         "p": 0.58,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 60,
-        "p": 0.6,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 25,
-        "p": 0.25,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 92,
@@ -40851,13 +37375,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 42,
-        "p": 0.42,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~58% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 42%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -41170,21 +37687,6 @@
         "desc": "T allele (rs10046): 45%. Rice, coconut, and lentil-based diet with curry leaf, tamarind, and fermented rice preparations.",
         "notes": "gnomAD v3.1.2 SAS"
       },
-      "cholesterol_metabolism": {
-        "f": 11,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 6,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 in Dravidian South Indian populations. Traditional rice and legume diet."
-      },
       "alcohol_metabolism": {
         "p": 0.88,
         "t": "standard",
@@ -41197,11 +37699,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "southeast_us": {
@@ -41230,35 +37727,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -41275,25 +37752,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -41562,13 +38024,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -41882,21 +38337,6 @@
         "desc": "T allele (rs10046): 47%. Blended Southern US heritage with European, African, and Indigenous food traditions.",
         "notes": "Admixed: ~70% EUR, ~20% AFR, ~10% AMR weighted average"
       },
-      "cholesterol_metabolism": {
-        "f": 15,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 7,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 reflecting mixed European/African heritage in Southeast US."
-      },
       "alcohol_metabolism": {
         "p": 0.95,
         "t": "standard",
@@ -41921,11 +38361,6 @@
       "bitter_taste": {
         "f": 50,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "southern_africa": {
@@ -41965,20 +38400,6 @@
         "t": "dark",
         "notes": "Dark skin reduces vitamin D synthesis; higher dietary intake important"
       },
-      "cholesterol_metabolism": {
-        "f": 37,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 21,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 9,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 42,
         "p": 0.42,
@@ -41987,37 +38408,16 @@
       "saturated_fat_response": {
         "t": "unknown"
       },
-      "folate_metabolism": {
-        "f": 3,
-        "p": 0.03,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 23,
         "p": 0.23,
         "t": "unknown"
-      },
-      "obesity_risk": {
-        "f": 48,
-        "p": 0.48,
-        "t": "elevated_risk",
-        "desc": "A allele frequency: 48% (among highest globally). Focus on satiety strategies."
       },
       "beta_carotene_conversion": {
         "f": 4,
         "p": 0.04,
         "t": "efficient",
         "desc": "Low T allele (4%). Good beta-carotene to vitamin A conversion."
-      },
-      "vitamin_d_transport": {
-        "f": 6,
-        "p": 0.06,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 90,
@@ -42034,25 +38434,10 @@
         "p": 0.38,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 27,
-        "p": 0.27,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 35,
-        "p": 0.35,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -42321,13 +38706,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -42647,11 +39025,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "Southern African TAS2R38 diversity pattern; Khoisan show highest global diversity."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "southwest_us": {
@@ -42692,20 +39065,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. Desert Southwest has high UV - adequate vitamin D synthesis."
       },
-      "cholesterol_metabolism": {
-        "f": 18,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -42716,35 +39075,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -42761,25 +39100,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -43049,13 +39373,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 45%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 45%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 38,
-        "p": 0.38,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~62% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 38%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 18,
@@ -43363,11 +39680,6 @@
       "bitter_taste": {
         "f": 52,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "subarctic": {
@@ -43408,21 +39720,6 @@
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes",
         "notes": "Low. High latitude with limited winter UV - vitamin D supplementation important. Traditional consumption of organ meats and fish provided dietary vitamin D."
       },
-      "cholesterol_metabolism": {
-        "f": 22,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 11,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 5,
-            "r": "T"
-          }
-        },
-        "notes": "E2 absent. Elevated e4 may relate to traditional high-fat diet adaptation."
-      },
       "caffeine_metabolism": {
         "f": 26,
         "p": 0.26,
@@ -43433,35 +39730,15 @@
         "p": 0.24,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 54,
-        "p": 0.54,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0,
-        "p": 0,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 17,
         "p": 0.17,
         "t": "moderate_risk"
       },
-      "obesity_risk": {
-        "f": 8,
-        "p": 0.08,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 32,
         "p": 0.32,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 18,
-        "p": 0.18,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 60,
@@ -43478,25 +39755,10 @@
         "p": 0.5,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 85,
-        "p": 0.85,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
       "celiac_susceptibility": {
         "f": 5,
         "p": 0.05,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 20,
-        "p": 0.2,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 85,
@@ -43766,13 +40028,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 40%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 40%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 35,
-        "p": 0.35,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~65% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 35%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -44088,11 +40343,6 @@
       "bitter_taste": {
         "f": 55,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 44,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "sudanian": {
@@ -44124,20 +40374,6 @@
         "t": "dark",
         "desc": "UV protection; higher dietary vitamin D needs at high latitudes"
       },
-      "cholesterol_metabolism": {
-        "f": 24,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 22,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 9,
-            "r": "T"
-          }
-        }
-      },
       "caffeine_metabolism": {
         "f": 46,
         "p": 0.46,
@@ -44148,35 +40384,15 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.5,
-        "p": 0.005,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
-        "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 50,
-        "p": 0.5,
         "t": "elevated_risk"
       },
       "beta_carotene_conversion": {
         "f": 28,
         "p": 0.28,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 8,
-        "p": 0.08,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 88,
@@ -44193,25 +40409,10 @@
         "p": 0.4,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 29,
-        "p": 0.29,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 35,
-        "p": 0.35,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 97,
@@ -44480,13 +40681,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -44801,11 +40995,6 @@
         "f": 48,
         "t": "diverse",
         "notes": "Sudanian/West African TAS2R38 diversity pattern."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "tibet": {
@@ -44849,12 +41038,6 @@
         "desc": "Denisovan-derived adaptation preventing polycythemia at altitude",
         "notes": "Tibetan-specific Denisovan introgression; supports barley and dairy-based high-altitude diet"
       },
-      "altitude_adaptation_egln1": {
-        "f": 70,
-        "t": "present",
-        "desc": "PHD2 variant preventing excessive hemoglobin at altitude",
-        "notes": "Complementary to EPAS1; Tibetan-specific adaptation"
-      },
       "altitude_egln1": {
         "f": 71,
         "p": 0.71,
@@ -44872,34 +41055,14 @@
         "p": 0.07,
         "t": "normal_response"
       },
-      "folate_metabolism": {
-        "f": 36,
-        "p": 0.36,
-        "t": "significantly_reduced"
-      },
-      "iron_metabolism": {
-        "f": 0.02,
-        "p": 0.0002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 3.5,
         "p": 0.035,
         "t": "normal"
       },
-      "obesity_risk": {
-        "f": 16,
-        "p": 0.16,
-        "t": "normal"
-      },
       "beta_carotene_conversion": {
         "f": 22,
         "p": 0.22,
-        "t": "efficient"
-      },
-      "vitamin_d_transport": {
-        "f": 12,
-        "p": 0.12,
         "t": "efficient"
       },
       "salt_sensitivity": {
@@ -44917,25 +41080,10 @@
         "p": 0.66,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 99.8,
-        "p": 0.998,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 18,
-        "p": 0.18,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 2,
         "p": 0.02,
         "t": "low_risk"
-      },
-      "hdl_metabolism": {
-        "f": 45,
-        "p": 0.45,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 96,
@@ -45204,13 +41352,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 40,
-        "p": 0.4,
-        "t": "high_secretor_population",
-        "desc": "FUT2 rs601338: ~60% secretors. Many have lower B12 absorption.",
-        "notes": "FUT2 non-secretor allele: 40%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 22,
@@ -45518,21 +41659,6 @@
         "desc": "T allele (rs10046): 32%. High-altitude diet of barley (tsampa), yak butter tea, dried meat, and minimal vegetables.",
         "notes": "gnomAD v3.1.2 EAS"
       },
-      "cholesterol_metabolism": {
-        "f": 9,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 5,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 4,
-            "r": "T"
-          }
-        },
-        "notes": "Low ε4 consistent with East Asian/Tibetan ancestry. Traditional high-fat barley and yak butter diet."
-      },
       "altitude_adaptation": {
         "f": 74,
         "t": "present",
@@ -45547,11 +41673,6 @@
       "bitter_taste": {
         "f": 62,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 52,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "west_africa": {
@@ -45597,22 +41718,6 @@
         "desc": "Loss-of-function variants providing 40% LDL reduction and 88% CHD risk reduction",
         "notes": "2-2.3% combined frequency in African Americans; virtually absent in Europeans"
       },
-      "cholesterol_metabolism": {
-        "f": 25,
-        "t": "elevated_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 22,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 9,
-            "r": "T"
-          }
-        },
-        "desc": "Higher Îµ4 frequency but with dietary-dependent Alzheimer's risk",
-        "notes": "Higher Îµ4 but low Alzheimer's in traditional diet contexts"
-      },
       "bitter_taste": {
         "f": 45,
         "t": "diverse",
@@ -45632,35 +41737,15 @@
         "p": 0.17,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 10,
-        "p": 0.1,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.5,
-        "p": 0.005,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
-        "t": "elevated_risk"
-      },
-      "obesity_risk": {
-        "f": 50,
-        "p": 0.5,
         "t": "elevated_risk"
       },
       "beta_carotene_conversion": {
         "f": 28,
         "p": 0.28,
         "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 8,
-        "p": 0.08,
-        "t": "efficient"
       },
       "salt_sensitivity": {
         "f": 88,
@@ -45677,25 +41762,10 @@
         "p": 0.4,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 50,
-        "p": 0.5,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 29,
-        "p": 0.29,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 10,
         "p": 0.1,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 35,
-        "p": 0.35,
-        "t": "enhanced_response"
       },
       "insulin_sensitivity": {
         "f": 97,
@@ -45964,13 +42034,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 38%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 38%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 48,
-        "p": 0.48,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~52% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 48%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 8,
@@ -46283,11 +42346,6 @@
         "t": "moderate",
         "desc": "T allele (rs10046): 38%. Yam, cassava, palm oil-based diet with okra, leafy greens, fish, and fermented locust beans.",
         "notes": "gnomAD v3.1.2 AFR"
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "west_india": {
@@ -46331,34 +42389,14 @@
         "p": 0.22,
         "t": "moderate_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 14,
-        "p": 0.14,
-        "t": "normal"
-      },
-      "iron_metabolism": {
-        "f": 0.2,
-        "p": 0.002,
-        "t": "normal"
-      },
       "glucose_metabolism": {
         "f": 30,
         "p": 0.3,
         "t": "elevated_risk"
       },
-      "obesity_risk": {
-        "f": 33,
-        "p": 0.33,
-        "t": "moderate_risk"
-      },
       "beta_carotene_conversion": {
         "f": 35,
         "p": 0.35,
-        "t": "moderate"
-      },
-      "vitamin_d_transport": {
-        "f": 26,
-        "p": 0.26,
         "t": "moderate"
       },
       "salt_sensitivity": {
@@ -46376,25 +42414,10 @@
         "p": 0.58,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 60,
-        "p": 0.6,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 20,
-        "p": 0.2,
-        "t": "elevated_appetite"
-      },
       "celiac_susceptibility": {
         "f": 8,
         "p": 0.08,
         "t": "moderate_risk"
-      },
-      "hdl_metabolism": {
-        "f": 25,
-        "p": 0.25,
-        "t": "variable"
       },
       "insulin_sensitivity": {
         "f": 92,
@@ -46663,13 +42686,6 @@
         "t": "high_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 35%. Reduced dopamine receptor density common.",
         "notes": "DRD2 A1 allele: 35%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 42,
-        "p": 0.42,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~58% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 42%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 20,
@@ -46980,21 +42996,6 @@
         "desc": "T allele (rs10046): 45%. Gujarati/Rajasthani diet mixing vegetarian traditions (millet, legumes, ghee) with coastal seafood.",
         "notes": "gnomAD v3.1.2 SAS"
       },
-      "cholesterol_metabolism": {
-        "f": 12,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 7,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 6,
-            "r": "T"
-          }
-        },
-        "notes": "Standard South Asian range. Traditional vegetarian diet may be protective."
-      },
       "vitamin_d_metabolism": {
         "f": 68,
         "t": "medium",
@@ -47003,11 +43004,6 @@
       "bitter_taste": {
         "f": 58,
         "t": "taster"
-      },
-      "b12_metabolism": {
-        "f": 46,
-        "t": "secretor_status",
-        "notes": "FUT2 secretor allele frequency; affects vitamin B12 absorption and gut microbiome composition"
       }
     },
     "western_europe": {
@@ -47032,17 +43028,6 @@
         "desc": "Light skin pigmentation for high-latitude adaptation",
         "notes": "Light skin maximizes vitamin D production; dietary needs lower in adequate sun"
       },
-      "iron_metabolism": {
-        "f": 10,
-        "p": 0.07,
-        "t": "elevated_risk",
-        "desc": "C282Y allele: 10% (elevated in Celtic populations). Monitor ferritin."
-      },
-      "b12_metabolism": {
-        "f": 48,
-        "t": "secretor_status",
-        "notes": "46-50% secretor frequency in European/African populations"
-      },
       "caffeine_metabolism": {
         "f": 30,
         "p": 0.3,
@@ -47053,32 +43038,17 @@
         "p": 0.4,
         "t": "high_sensitivity"
       },
-      "folate_metabolism": {
-        "f": 30,
-        "p": 0.3,
-        "t": "reduced"
-      },
       "glucose_metabolism": {
         "f": 31,
         "p": 0.31,
         "t": "elevated_risk",
         "desc": "Higher T allele (31%). Elevated genetic T2DM risk. Prioritize glycemic control."
       },
-      "obesity_risk": {
-        "f": 41,
-        "p": 0.41,
-        "t": "elevated_risk"
-      },
       "beta_carotene_conversion": {
         "f": 25,
         "p": 0.25,
         "t": "reduced",
         "desc": "Higher T allele (25%). May benefit from preformed vitamin A (retinol) sources."
-      },
-      "vitamin_d_transport": {
-        "f": 28,
-        "p": 0.28,
-        "t": "moderate"
       },
       "salt_sensitivity": {
         "f": 41,
@@ -47095,25 +43065,10 @@
         "p": 0.49,
         "t": "standard"
       },
-      "vitamin_b12_absorption": {
-        "f": 49,
-        "p": 0.49,
-        "t": "standard"
-      },
-      "appetite_regulation": {
-        "f": 26,
-        "p": 0.26,
-        "t": "high_appetite_drive"
-      },
       "celiac_susceptibility": {
         "f": 20,
         "p": 0.2,
         "t": "elevated_risk"
-      },
-      "hdl_metabolism": {
-        "f": 22,
-        "p": 0.22,
-        "t": "standard"
       },
       "insulin_sensitivity": {
         "f": 88,
@@ -47382,13 +43337,6 @@
         "t": "lower_a1_frequency",
         "desc": "DRD2 rs1800497 A1 allele: 19%. Most have normal D2 receptor density.",
         "notes": "DRD2 A1 allele: 19%. Associated with food addiction patterns and preference for fried/sugary foods."
-      },
-      "fut2_b12": {
-        "f": 45,
-        "p": 0.45,
-        "t": "moderate_secretor_population",
-        "desc": "FUT2 rs601338: ~55% secretors. Mixed B12 absorption genetics.",
-        "notes": "FUT2 non-secretor allele: 45%. Secretor status affects gut microbiome and B12 absorption."
       },
       "gc_vitamin_d": {
         "f": 27,
@@ -47702,21 +43650,6 @@
         "t": "high_aromatase",
         "desc": "T allele (rs10046): 50%. Post-agricultural European diet of wheat, dairy, wine, olive oil, and diverse animal proteins.",
         "notes": "gnomAD v3.1.2 EUR/NFE"
-      },
-      "cholesterol_metabolism": {
-        "f": 14,
-        "t": "moderate_apoe4",
-        "snps": {
-          "rs429358": {
-            "f": 8,
-            "r": "C"
-          },
-          "rs7412": {
-            "f": 8,
-            "r": "T"
-          }
-        },
-        "notes": "Moderate ε4 frequency typical of Western European populations. Standard European baseline."
       },
       "alcohol_metabolism": {
         "p": 0.96,
