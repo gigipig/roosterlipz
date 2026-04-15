@@ -1,3 +1,0 @@
-module.exports=[28530,(a,b,c)=>{"use strict";b.exports=a.r(10468).vendored["react-ssr"].ReactServerDOMTurbopackClient},73517,a=>{a.v(a=>Promise.resolve().then(()=>a(47049)))},36896,a=>{a.v(a=>Promise.resolve().then(()=>a(4436)))},89754,a=>{a.v(b=>Promise.all(["server/chunks/ssr/fe211_1b415989._.js","server/chunks/ssr/[root-of-the-server]__9e2a4ff3._.js"].map(b=>a.l(b))).then(()=>b(39027)))}];
-
-//# sourceMappingURL=Documents_GitHub_roosterlipz_95e1a87a._.js.map
