@@ -1,7 +1,9 @@
 'use strict';
 
 /* ─── Constants ──────────────────────────────────────────────── */
-const STORAGE_KEY = 'chronogrid_events';
+const STORAGE_KEY   = 'chronogrid_events';
+const COMPLETED_KEY = 'chronogrid_completed';
+const NOTE_KEY      = 'chronogrid_daily_note';
 
 const CAT_ICONS = {
   urgent:    '⚡',
@@ -18,8 +20,9 @@ const CAT_LABELS = {
 };
 
 /* ─── State ───────────────────────────────────────────────────── */
-let events = [];
-let editingId = null;
+let events        = [];
+let completedLog  = [];
+let editingId     = null;
 let selectedRecurrence = null;
 
 /* ─── Utilities ───────────────────────────────────────────────── */
@@ -61,14 +64,18 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
-function orbSize(days) {
-  if (days === Infinity) return 56; // someday
-  if (days <= 0)  return 88;
-  if (days <= 3)  return 80;
-  if (days <= 7)  return 68;
-  if (days <= 30) return 56;
-  if (days <= 90) return 44;
-  return 36;
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ─── Toast ───────────────────────────────────────────────────── */
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
 /* ─── Recurring Advancement ───────────────────────────────────── */
@@ -81,11 +88,9 @@ function advanceRecurring(evts) {
     const t = new Date(today + 'T00:00:00');
     if (d < t) {
       while (d < t) {
-        if (evt.recurrence === 'weekly') {
-          d.setDate(d.getDate() + 7);
-        } else if (evt.recurrence === 'monthly') {
-          d.setMonth(d.getMonth() + 1);
-        } else break;
+        if (evt.recurrence === 'weekly') d.setDate(d.getDate() + 7);
+        else if (evt.recurrence === 'monthly') d.setMonth(d.getMonth() + 1);
+        else break;
       }
       evt.date = d.toISOString().slice(0, 10);
       changed = true;
@@ -110,15 +115,20 @@ function loadEvents() {
       }
     } catch (e) { /* fall through */ }
   }
-  // First-time sample events
   const samples = [
-    { id: uuid(), title: 'Project Deadline',     date: offsetDate(3),  time: '17:00', category: 'urgent',    recurrence: null,     notes: '' },
-    { id: uuid(), title: 'Weekly Gym Session',   date: offsetDate(2),  time: '08:00', category: 'recurring', recurrence: 'weekly', notes: '' },
-    { id: uuid(), title: 'Italy Trip Planning',  date: offsetDate(60), time: '',      category: 'longterm',  recurrence: null,     notes: 'Research flights and accommodation' },
-    { id: uuid(), title: 'Write Blog Post',      date: '',             time: '',      category: 'someday',   recurrence: null,     notes: '' }
+    { id: uuid(), title: 'Project Deadline',    date: offsetDate(3),  time: '17:00', category: 'urgent',    recurrence: null,     notes: '', streak: 0 },
+    { id: uuid(), title: 'Weekly Gym Session',  date: offsetDate(2),  time: '08:00', category: 'recurring', recurrence: 'weekly', notes: '', streak: 3 },
+    { id: uuid(), title: 'Italy Trip Planning', date: offsetDate(60), time: '',      category: 'longterm',  recurrence: null,     notes: 'Research flights and accommodation', streak: 0 },
+    { id: uuid(), title: 'Write Blog Post',     date: '',             time: '',      category: 'someday',   recurrence: null,     notes: '', streak: 0 }
   ];
   saveEventsToStorage(samples);
   return samples;
+}
+
+function loadCompleted() {
+  const raw = localStorage.getItem(COMPLETED_KEY);
+  if (raw) { try { return JSON.parse(raw); } catch(e) {} }
+  return [];
 }
 
 function addEvent(evt) {
@@ -142,6 +152,67 @@ function deleteEvent(id) {
   renderAll();
 }
 
+/* ─── Complete Event ──────────────────────────────────────────── */
+function markComplete(id) {
+  const evt = events.find(e => e.id === id);
+  if (!evt) return;
+
+  // Log it
+  completedLog.push({
+    id: uuid(),
+    eventId: evt.id,
+    title: evt.title,
+    category: evt.category,
+    completedAt: new Date().toISOString()
+  });
+  localStorage.setItem(COMPLETED_KEY, JSON.stringify(completedLog));
+
+  showToast(`✓  ${evt.title}`);
+
+  // Animate out then mutate
+  const row = document.querySelector(`.today-row[data-id="${id}"]`);
+
+  const doMutate = () => {
+    if (evt.category === 'recurring' && evt.recurrence) {
+      let d = new Date((evt.date || todayISO()) + 'T00:00:00');
+      if (evt.recurrence === 'weekly') d.setDate(d.getDate() + 7);
+      else if (evt.recurrence === 'monthly') d.setMonth(d.getMonth() + 1);
+      updateEvent(id, { date: d.toISOString().slice(0, 10), streak: (evt.streak || 0) + 1 });
+    } else {
+      deleteEvent(id);
+    }
+  };
+
+  if (row) {
+    row.classList.add('completing');
+    setTimeout(doMutate, 380);
+  } else {
+    doMutate();
+  }
+}
+
+/* ─── Daily Note ──────────────────────────────────────────────── */
+function loadNote() {
+  const raw = localStorage.getItem(NOTE_KEY);
+  if (!raw) return '';
+  try {
+    const obj = JSON.parse(raw);
+    return obj.date === todayISO() ? (obj.text || '') : '';
+  } catch(e) { return ''; }
+}
+
+let noteTimer;
+function initNote() {
+  const el = document.getElementById('todayNote');
+  el.value = loadNote();
+  el.addEventListener('input', () => {
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(() => {
+      localStorage.setItem(NOTE_KEY, JSON.stringify({ date: todayISO(), text: el.value }));
+    }, 400);
+  });
+}
+
 /* ─── Filtering ───────────────────────────────────────────────── */
 function visibleEvents() {
   return events.filter(evt => {
@@ -150,6 +221,90 @@ function visibleEvents() {
     if (!evt.date) return true;
     return getDaysUntil(evt.date) >= 0;
   });
+}
+
+/* ─── Render: Today ───────────────────────────────────────────── */
+function renderToday() {
+  // Date display
+  const now = new Date();
+  const dayNames  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const monNames  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('todayDateDisplay').textContent =
+    `${dayNames[now.getDay()]}, ${monNames[now.getMonth()]} ${now.getDate()}`;
+
+  // Progress count
+  const todayStr  = todayISO();
+  const doneToday = completedLog.filter(c => c.completedAt.startsWith(todayStr)).length;
+  document.getElementById('todaySubtitle').textContent =
+    doneToday > 0 ? `${doneToday} completed today` : 'what needs doing today';
+
+  const container = document.getElementById('todayContent');
+  container.innerHTML = '';
+
+  // Categorise events
+  const overdue  = [];
+  const todayEvts = [];
+  const upcoming = [];
+  const someday  = [];
+
+  events.forEach(evt => {
+    if (!evt.date) {
+      if (evt.category !== 'recurring') someday.push(evt);
+      return;
+    }
+    const d = getDaysUntil(evt.date);
+    if (d < 0)      overdue.push(evt);
+    else if (d === 0) todayEvts.push(evt);
+    else if (d <= 7)  upcoming.push(evt);
+  });
+
+  overdue.sort((a, b)   => getDaysUntil(a.date) - getDaysUntil(b.date));
+  todayEvts.sort((a, b) => (a.time || '99:99').localeCompare(b.time || '99:99'));
+  upcoming.sort((a, b)  => getDaysUntil(a.date) - getDaysUntil(b.date));
+
+  const total = overdue.length + todayEvts.length + upcoming.length + someday.length;
+  if (total === 0) {
+    container.innerHTML = '<div class="today-empty">All clear — nothing on the horizon.<br>Tap + to add something.</div>';
+    return;
+  }
+
+  function buildSection(label, icon, list, variant) {
+    if (list.length === 0) return;
+
+    const sec = document.createElement('div');
+    sec.className = 'today-section';
+
+    const hdr = document.createElement('div');
+    hdr.className = `today-section-hdr ${variant}`;
+    hdr.innerHTML = `<span>${icon} ${label}</span><span class="today-sec-count">${list.length}</span>`;
+    sec.appendChild(hdr);
+
+    list.forEach(evt => {
+      const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? ` · ↻${evt.streak}` : '';
+      const timePart   = evt.time ? ` · ${evt.time}` : '';
+      const meta       = formatDate(evt.date) + timePart + streakPart;
+
+      const row = document.createElement('div');
+      row.className = `today-row ${evt.category}`;
+      row.dataset.id = evt.id;
+      row.innerHTML = `
+        <div class="today-dot ${evt.category}"></div>
+        <div class="today-row-body">
+          <div class="today-row-title">${escHtml(evt.title)}</div>
+          <div class="today-row-meta">${escHtml(meta)}</div>
+        </div>
+        <button class="today-complete-btn" data-id="${evt.id}" aria-label="Mark complete">✓</button>
+      `;
+      sec.appendChild(row);
+    });
+
+    container.appendChild(sec);
+  }
+
+  buildSection('OVERDUE',     '⚠',  overdue,   'overdue');
+  buildSection('TODAY',       '◉',  todayEvts, 'today');
+  buildSection('NEXT 7 DAYS', '◈',  upcoming,  'upcoming');
+  buildSection('SOMEDAY',     '◇',  someday,   'someday');
 }
 
 /* ─── Render: Stream ──────────────────────────────────────────── */
@@ -165,39 +320,35 @@ function renderStream() {
     return;
   }
 
-  const count = visible.length;
-  const trackH = Math.max(500, count * 130);
+  const count  = visible.length;
+  const trackH = Math.max(500, count * 140);
   document.querySelector('.stream-track').style.minHeight = trackH + 'px';
 
-  // Map each event to a proportional position based on actual days remaining
-  const daysArr = visible.map(e => getDaysUntil(e.date));
+  const daysArr   = visible.map(e => getDaysUntil(e.date));
   const finiteDays = daysArr.filter(d => isFinite(d));
-  const minDays = finiteDays.length ? Math.min(...finiteDays) : 0;
-  const maxDays = finiteDays.length ? Math.max(...finiteDays) : 0;
-  const range = maxDays - minDays;
+  const minDays   = finiteDays.length ? Math.min(...finiteDays) : 0;
+  const maxDays   = finiteDays.length ? Math.max(...finiteDays) : 0;
+  const range     = maxDays - minDays;
 
-  // top (5%) = furthest future, bottom (93%) = soonest / now
   const pcts = daysArr.map(days => {
-    if (!isFinite(days)) return 5;          // someday → top
-    if (range === 0) return 47;             // all same date → center
+    if (!isFinite(days)) return 5;
+    if (range === 0) return 47;
     return 5 + ((maxDays - days) / range) * 88;
   });
 
-  // Enforce a minimum pixel gap so orbs never overlap.
-  // Same-day events alternate sides so need much less separation.
   for (let i = 1; i < pcts.length; i++) {
-    const sameDay = isFinite(daysArr[i]) && isFinite(daysArr[i - 1]) && daysArr[i] === daysArr[i - 1];
-    const minGapPct = ((sameDay ? 40 : 110) / trackH) * 100;
-    if (pcts[i] < pcts[i - 1] + minGapPct) {
-      pcts[i] = pcts[i - 1] + minGapPct;
-    }
+    const sameDay   = isFinite(daysArr[i]) && isFinite(daysArr[i-1]) && daysArr[i] === daysArr[i-1];
+    const minGapPct = ((sameDay ? 40 : 120) / trackH) * 100;
+    if (pcts[i] < pcts[i-1] + minGapPct) pcts[i] = pcts[i-1] + minGapPct;
   }
 
   visible.forEach((evt, i) => {
     const pct  = pcts[i];
     const days = daysArr[i];
-    const size = orbSize(days);
     const side = i % 2 === 0 ? 'left' : 'right';
+
+    const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? `↻${evt.streak}` : '';
+    const metaParts  = [evt.time, streakPart, CAT_LABELS[evt.category]].filter(Boolean);
 
     const wrapper = document.createElement('div');
     wrapper.className = `orb-wrapper ${side}`;
@@ -205,27 +356,22 @@ function renderStream() {
 
     const connector = document.createElement('div');
     connector.className = 'orb-connector';
-    connector.style.color = getComputedStyle(document.documentElement).getPropertyValue(
-      evt.category === 'urgent' ? '--urgent' :
-      evt.category === 'recurring' ? '--recurring' :
-      evt.category === 'longterm' ? '--longterm' : '--someday'
-    );
 
-    const orb = document.createElement('div');
-    orb.className = `orb ${evt.category}`;
-    orb.setAttribute('data-size', size);
-    orb.style.animationDelay = (i * 0.4) + 's';
-
-    orb.innerHTML = `
-      <span class="orb-title">${escHtml(evt.title)}</span>
-      <span class="orb-date">${formatDate(evt.date)}</span>
-      ${evt.time ? `<span class="orb-time">${evt.time}</span>` : ''}
-      <span class="orb-cat">${CAT_LABELS[evt.category]}</span>
+    const card = document.createElement('div');
+    card.className = `stream-card ${evt.category}`;
+    card.style.animationDelay = (i * 0.35) + 's';
+    card.innerHTML = `
+      <div class="sc-top">
+        <span class="sc-icon">${CAT_ICONS[evt.category]}</span>
+        <span class="sc-date">${formatDate(evt.date)}</span>
+      </div>
+      <div class="sc-title">${escHtml(evt.title)}</div>
+      ${metaParts.length ? `<div class="sc-meta">${escHtml(metaParts.join(' · '))}</div>` : ''}
     `;
-    orb.addEventListener('click', () => openEventModal(evt));
+    card.addEventListener('click', () => openEventModal(evt));
 
     wrapper.appendChild(connector);
-    wrapper.appendChild(orb);
+    wrapper.appendChild(card);
     container.appendChild(wrapper);
   });
 }
@@ -235,43 +381,58 @@ function renderGrid() {
   const container = document.getElementById('gemsContainer');
   container.innerHTML = '';
 
-  const catOrder = { urgent: 0, recurring: 1, longterm: 2, someday: 3 };
-  const visible = visibleEvents().sort((a, b) => {
-    const co = catOrder[a.category] - catOrder[b.category];
-    if (co !== 0) return co;
-    return getDaysUntil(a.date) - getDaysUntil(b.date);
-  });
+  const catOrder = ['urgent', 'recurring', 'longterm', 'someday'];
+  const grouped  = { urgent: [], recurring: [], longterm: [], someday: [] };
 
-  if (visible.length === 0) {
-    container.innerHTML = '<div class="grid-empty">No upcoming events.<br>Tap + or use the dock below.</div>';
+  visibleEvents().forEach(evt => { if (grouped[evt.category]) grouped[evt.category].push(evt); });
+  catOrder.forEach(cat => grouped[cat].sort((a, b) => getDaysUntil(a.date) - getDaysUntil(b.date)));
+
+  const hasAny = catOrder.some(cat => grouped[cat].length > 0);
+  if (!hasAny) {
+    container.innerHTML = '<div class="list-empty">No upcoming events.<br>Tap + or use the dock below.</div>';
     return;
   }
 
-  visible.forEach((evt, i) => {
-    const card = document.createElement('div');
-    card.className = `gem-card ${evt.category}`;
-    card.style.animationDelay = (i * 0.04) + 's';
+  let delay = 0;
+  catOrder.forEach(cat => {
+    if (grouped[cat].length === 0) return;
 
-    card.innerHTML = `
-      <span class="gem-icon">${CAT_ICONS[evt.category]}</span>
-      <div class="gem-title">${escHtml(evt.title)}</div>
-      <div class="gem-date">${formatDate(evt.date)}</div>
-      ${evt.time ? `<div class="gem-time">${evt.time}</div>` : ''}
-      <div class="gem-cat">${CAT_LABELS[evt.category]}</div>
-    `;
-    card.addEventListener('click', () => openEventModal(evt));
-    container.appendChild(card);
+    const group = document.createElement('div');
+    group.className = 'cat-group';
+
+    const hdr = document.createElement('div');
+    hdr.className = `cat-group-hdr ${cat}`;
+    hdr.innerHTML = `${CAT_ICONS[cat]} ${CAT_LABELS[cat]}`;
+    group.appendChild(hdr);
+
+    grouped[cat].forEach(evt => {
+      const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? ` · ↻${evt.streak}` : '';
+      const timePart   = evt.time ? ` · ${evt.time}` : '';
+      const meta       = formatDate(evt.date) + timePart + streakPart;
+
+      const card = document.createElement('div');
+      card.className = `event-card ${cat}`;
+      card.style.animationDelay = (delay * 0.04) + 's';
+      card.innerHTML = `
+        <div class="ec-body">
+          <div class="ec-title">${escHtml(evt.title)}</div>
+          <div class="ec-meta">${escHtml(meta)}</div>
+        </div>
+        <span class="ec-date-badge">${formatDate(evt.date)}</span>
+      `;
+      card.addEventListener('click', () => openEventModal(evt));
+      group.appendChild(card);
+      delay++;
+    });
+
+    container.appendChild(group);
   });
 }
 
 function renderAll() {
+  renderToday();
   renderStream();
   renderGrid();
-}
-
-/* ─── XSS Protection ─────────────────────────────────────────── */
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 /* ─── Modal: Event ────────────────────────────────────────────── */
@@ -283,14 +444,12 @@ function openEventModal(evt = null, prefillCategory = null) {
   const title    = document.getElementById('modalTitle');
   const form     = document.getElementById('eventForm');
 
-  // Reset
   form.reset();
   document.getElementById('deleteBtn').classList.remove('visible');
   document.getElementById('recurrenceRow').classList.remove('visible');
   document.querySelectorAll('.recur-btn').forEach(b => b.classList.remove('active'));
 
   if (evt) {
-    // Edit mode
     editingId = evt.id;
     title.textContent = 'EDIT EVENT';
     document.getElementById('eventTitle').value = evt.title;
@@ -314,12 +473,9 @@ function openEventModal(evt = null, prefillCategory = null) {
       const radio = form.querySelector(`input[name="category"][value="${prefillCategory}"]`);
       if (radio) {
         radio.checked = true;
-        if (prefillCategory === 'recurring') {
-          document.getElementById('recurrenceRow').classList.add('visible');
-        }
+        if (prefillCategory === 'recurring') document.getElementById('recurrenceRow').classList.add('visible');
       }
     }
-    // Pre-fill title from quick-add input
     const quickVal = document.getElementById('quickAddInput').value.trim();
     if (quickVal) document.getElementById('eventTitle').value = quickVal;
   }
@@ -352,7 +508,8 @@ function handleEventSubmit(e) {
     time:       time || '',
     category,
     recurrence: category === 'recurring' ? selectedRecurrence : null,
-    notes
+    notes,
+    streak:     editingId ? (events.find(e => e.id === editingId)?.streak || 0) : 0
   };
 
   if (editingId) {
@@ -374,14 +531,20 @@ function closeSettingsModal() {
 }
 
 function updateSettingsStats() {
-  const counts = { urgent: 0, recurring: 0, longterm: 0, someday: 0 };
+  const counts   = { urgent: 0, recurring: 0, longterm: 0, someday: 0 };
   events.forEach(e => { if (counts[e.category] !== undefined) counts[e.category]++; });
+
+  const todayStr  = todayISO();
+  const doneToday = completedLog.filter(c => c.completedAt.startsWith(todayStr)).length;
+
   document.getElementById('settingsStats').innerHTML = `
     <span class="stat-urgent">⚡ Urgent: ${counts.urgent}</span><br>
     <span class="stat-recurring">↻ Recurring: ${counts.recurring}</span><br>
     <span class="stat-longterm">◎ Long-term: ${counts.longterm}</span><br>
     <span class="stat-someday">◇ Someday: ${counts.someday}</span><br>
-    <br>Total: ${events.length} events
+    <br>Total: ${events.length} events<br>
+    <br><span style="color:var(--recurring)">✓ Done today: ${doneToday}</span><br>
+    <span style="color:rgba(224,232,255,0.4)">✓ All-time: ${completedLog.length}</span>
   `;
 }
 
@@ -416,7 +579,7 @@ function importJSON(file) {
       saveEventsToStorage(events);
       renderAll();
       updateSettingsStats();
-      alert(`Import complete: ${added} new event(s) added.`);
+      showToast(`Imported ${added} event(s)`);
     } catch (err) {
       alert('Import failed: invalid JSON file.');
     }
@@ -432,10 +595,8 @@ function generateStars() {
     star.className = 'star';
     const size = (Math.random() * 2 + 0.5).toFixed(1);
     star.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${Math.random() * 100}%;
-      top: ${Math.random() * 100}%;
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%; top: ${Math.random() * 100}%;
       --dur: ${(Math.random() * 3 + 2).toFixed(1)}s;
       --delay: ${(Math.random() * 4).toFixed(1)}s;
       opacity: ${(Math.random() * 0.4 + 0.2).toFixed(2)};
@@ -449,10 +610,7 @@ function generateParticles() {
   for (let i = 0; i < 8; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    p.style.cssText = `
-      --dur: ${(Math.random() * 3 + 3).toFixed(1)}s;
-      --delay: ${(Math.random() * 5).toFixed(1)}s;
-    `;
+    p.style.cssText = `--dur: ${(Math.random() * 3 + 3).toFixed(1)}s; --delay: ${(Math.random() * 5).toFixed(1)}s;`;
     container.appendChild(p);
   }
 }
@@ -467,10 +625,12 @@ function switchView(name) {
 
 /* ─── Init ────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  events = loadEvents();
+  events       = loadEvents();
+  completedLog = loadCompleted();
 
   generateStars();
   generateParticles();
+  initNote();
   renderAll();
 
   // Tab switching
@@ -480,6 +640,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // FAB
   document.getElementById('fabBtn').addEventListener('click', () => openEventModal());
+
+  // Today view: event delegation for rows and complete buttons
+  document.getElementById('todayContent').addEventListener('click', e => {
+    const completeBtn = e.target.closest('.today-complete-btn');
+    if (completeBtn) {
+      markComplete(completeBtn.dataset.id);
+      return;
+    }
+    const row = e.target.closest('.today-row');
+    if (row) {
+      const evt = events.find(ev => ev.id === row.dataset.id);
+      if (evt) openEventModal(evt);
+    }
+  });
 
   // Event form submit
   document.getElementById('eventForm').addEventListener('submit', handleEventSubmit);
@@ -517,7 +691,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const val = btn.dataset.val;
       if (selectedRecurrence === val) {
-        // Toggle off
         selectedRecurrence = null;
         btn.classList.remove('active');
       } else {
@@ -535,6 +708,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === e.currentTarget) closeSettingsModal();
   });
 
+  // Clear completed history
+  document.getElementById('clearCompletedBtn').addEventListener('click', () => {
+    if (confirm('Clear all completion history?')) {
+      completedLog = [];
+      localStorage.removeItem(COMPLETED_KEY);
+      updateSettingsStats();
+      showToast('History cleared');
+    }
+  });
+
   // Export / Import
   document.getElementById('exportBtn').addEventListener('click', exportJSON);
   document.getElementById('importFile').addEventListener('change', e => {
@@ -542,12 +725,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (file) { importJSON(file); e.target.value = ''; }
   });
 
-  // Quick-add: Enter key
+  // Quick-add
   document.getElementById('quickAddInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      openEventModal(null, null);
-    }
+    if (e.key === 'Enter') { e.preventDefault(); openEventModal(null, null); }
   });
   document.getElementById('quickAddBtn').addEventListener('click', () => openEventModal(null, null));
 
@@ -558,8 +738,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Service Worker
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(err => {
-      console.warn('SW registration failed:', err);
-    });
+    navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW registration failed:', err));
   }
 });

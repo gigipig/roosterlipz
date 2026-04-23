@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chronogrid-v1';
+const CACHE_NAME = 'chronogrid-v2';
 const ASSETS = [
   './',
   './index.html',
