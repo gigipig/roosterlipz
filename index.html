@@ -835,7 +835,15 @@
                     }]
                 });
                 analyser.load(music);
-                webvs.start();
+                // Webvs reroutes the <audio> element into its Web Audio graph via
+                // createMediaElementSource, which detaches it from the default speaker
+                // output. Make sure the graph reaches the speakers and the context is
+                // running (it's often created suspended, esp. on file://), otherwise
+                // playback succeeds silently. Duplicate connections are ignored, so this
+                // is safe even if Webvs already wired it up.
+                const actx = analyser.analyser.context;
+                analyser.analyser.connect(actx.destination);
+                if (actx.state === 'suspended') actx.resume();
                 initialized = true;
             } catch(e) { console.warn('Webvs init failed:', e); }
         }
