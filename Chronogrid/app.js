@@ -1,14 +1,16 @@
 'use strict';
 
 /* ─── Constants ──────────────────────────────────────────────── */
-const STORAGE_KEY   = 'chronogrid_events';
-const COMPLETED_KEY = 'chronogrid_completed';
-const NOTE_KEY      = 'chronogrid_daily_note';
+const STORAGE_KEY    = 'chronogrid_events';
+const COMPLETED_KEY  = 'chronogrid_completed';
+const NOTE_KEY       = 'chronogrid_daily_note';
+const NOTIFY_LOG_KEY = 'chronogrid_notify_log';
 
 const CAT_ICONS = {
   urgent:    '⚡',
   recurring: '↻',
   longterm:  '◎',
+  neutral:   '○',
   someday:   '◇'
 };
 
@@ -16,6 +18,7 @@ const CAT_LABELS = {
   urgent:    'URGENT',
   recurring: 'RECURRING',
   longterm:  'LONG-TERM',
+  neutral:   'NEUTRAL',
   someday:   'SOMEDAY'
 };
 
@@ -62,6 +65,13 @@ function formatDate(dateStr) {
   if (days < -1)  return `${Math.abs(days)}d ago`;
   const d = new Date(dateStr + 'T00:00:00');
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function formatChipDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  const monNames = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  return `${monNames[d.getMonth()]} ${d.getDate()}`;
 }
 
 function escHtml(str) {
@@ -167,6 +177,7 @@ function markComplete(id) {
   });
   localStorage.setItem(COMPLETED_KEY, JSON.stringify(completedLog));
 
+  if (navigator.vibrate) navigator.vibrate(10);
   showToast(`✓  ${evt.title}`);
 
   // Animate out then mutate
@@ -191,24 +202,65 @@ function markComplete(id) {
   }
 }
 
-/* ─── Daily Note ──────────────────────────────────────────────── */
-function loadNote() {
+/* ─── Snooze ──────────────────────────────────────────────────── */
+function snoozeEvent(id) {
+  const evt = events.find(e => e.id === id);
+  if (!evt) return;
+
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const tomorrow = new Date(today.getTime() + 86400000);
+
+  let target;
+  if (evt.date) {
+    const current = new Date(evt.date + 'T00:00:00');
+    target = current < tomorrow ? tomorrow : new Date(current.getTime() + 86400000);
+  } else {
+    target = tomorrow;
+  }
+
+  const iso = target.toISOString().slice(0, 10);
+  if (navigator.vibrate) navigator.vibrate(10);
+  showToast(`⏰  ${evt.title} → ${formatDate(iso)}`);
+  updateEvent(id, { date: iso });
+}
+
+/* ─── Daily Note (journal) ────────────────────────────────────── */
+function loadNotes() {
   const raw = localStorage.getItem(NOTE_KEY);
-  if (!raw) return '';
+  if (!raw) return {};
   try {
-    const obj = JSON.parse(raw);
-    return obj.date === todayISO() ? (obj.text || '') : '';
-  } catch(e) { return ''; }
+    const parsed = JSON.parse(raw);
+    // Migrate legacy single-note format { date, text } → { [date]: text }
+    if (parsed && typeof parsed === 'object' && typeof parsed.date === 'string' && typeof parsed.text === 'string') {
+      const map = {};
+      if (parsed.text.trim()) map[parsed.date] = parsed.text;
+      localStorage.setItem(NOTE_KEY, JSON.stringify(map));
+      return map;
+    }
+    return (parsed && typeof parsed === 'object') ? parsed : {};
+  } catch (e) { return {}; }
+}
+
+function saveNotes(notes) {
+  localStorage.setItem(NOTE_KEY, JSON.stringify(notes));
 }
 
 let noteTimer;
 function initNote() {
   const el = document.getElementById('todayNote');
-  el.value = loadNote();
+  const today = todayISO();
+  const notes = loadNotes();
+  el.value = notes[today] || '';
   el.addEventListener('input', () => {
     clearTimeout(noteTimer);
     noteTimer = setTimeout(() => {
-      localStorage.setItem(NOTE_KEY, JSON.stringify({ date: todayISO(), text: el.value }));
+      const current = loadNotes();
+      if (el.value.trim()) {
+        current[today] = el.value;
+      } else {
+        delete current[today];
+      }
+      saveNotes(current);
     }, 400);
   });
 }
@@ -284,26 +336,29 @@ function renderToday() {
       const timePart   = evt.time ? ` · ${evt.time}` : '';
       const meta       = formatDate(evt.date) + timePart + streakPart;
 
-      const row = document.createElement('div');
-      row.className = `today-row ${evt.category}`;
-      row.dataset.id = evt.id;
-      row.innerHTML = `
-        <div class="today-dot ${evt.category}"></div>
-        <div class="today-row-body">
-          <div class="today-row-title">${escHtml(evt.title)}</div>
-          <div class="today-row-meta">${escHtml(meta)}</div>
+      const wrap = document.createElement('div');
+      wrap.className = 'today-row-wrap';
+      wrap.innerHTML = `
+        <div class="row-action complete"><span>✓</span></div>
+        <div class="row-action snooze"><span>⏰</span></div>
+        <div class="today-row ${evt.category}" data-id="${evt.id}">
+          <div class="today-dot ${evt.category}"></div>
+          <div class="today-row-body">
+            <div class="today-row-title">${escHtml(evt.title)}</div>
+            <div class="today-row-meta">${escHtml(meta)}</div>
+          </div>
+          <button class="today-complete-btn" data-id="${evt.id}" aria-label="Mark complete">✓</button>
         </div>
-        <button class="today-complete-btn" data-id="${evt.id}" aria-label="Mark complete">✓</button>
       `;
-      sec.appendChild(row);
+      sec.appendChild(wrap);
     });
 
     container.appendChild(sec);
   }
 
   buildSection('OVERDUE',     '⚠',  overdue,   'overdue');
-  buildSection('TODAY',       '◉',  todayEvts, 'today');
   buildSection('NEXT 7 DAYS', '◈',  upcoming,  'upcoming');
+  buildSection('TODAY',       '◉',  todayEvts, 'today');
   buildSection('SOMEDAY',     '◇',  someday,   'someday');
 }
 
@@ -338,7 +393,7 @@ function renderStream() {
 
   for (let i = 1; i < pcts.length; i++) {
     const sameDay   = isFinite(daysArr[i]) && isFinite(daysArr[i-1]) && daysArr[i] === daysArr[i-1];
-    const minGapPct = ((sameDay ? 40 : 120) / trackH) * 100;
+    const minGapPct = ((sameDay ? 40 : 200) / trackH) * 100;
     if (pcts[i] < pcts[i-1] + minGapPct) pcts[i] = pcts[i-1] + minGapPct;
   }
 
@@ -346,6 +401,17 @@ function renderStream() {
     const pct  = pcts[i];
     const days = daysArr[i];
     const side = i % 2 === 0 ? 'left' : 'right';
+
+    if (i > 0 && isFinite(daysArr[i]) && isFinite(daysArr[i-1]) && daysArr[i] !== daysArr[i-1]) {
+      const chipText = formatChipDate(evt.date);
+      if (chipText) {
+        const chip = document.createElement('div');
+        chip.className = 'stream-date-chip';
+        chip.style.top = ((pcts[i] + pcts[i-1]) / 2) + '%';
+        chip.textContent = chipText;
+        container.appendChild(chip);
+      }
+    }
 
     const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? `↻${evt.streak}` : '';
     const metaParts  = [evt.time, streakPart, CAT_LABELS[evt.category]].filter(Boolean);
@@ -381,8 +447,8 @@ function renderGrid() {
   const container = document.getElementById('gemsContainer');
   container.innerHTML = '';
 
-  const catOrder = ['urgent', 'recurring', 'longterm', 'someday'];
-  const grouped  = { urgent: [], recurring: [], longterm: [], someday: [] };
+  const catOrder = ['urgent', 'recurring', 'longterm', 'neutral', 'someday'];
+  const grouped  = { urgent: [], recurring: [], longterm: [], neutral: [], someday: [] };
 
   visibleEvents().forEach(evt => { if (grouped[evt.category]) grouped[evt.category].push(evt); });
   catOrder.forEach(cat => grouped[cat].sort((a, b) => getDaysUntil(a.date) - getDaysUntil(b.date)));
@@ -433,6 +499,7 @@ function renderAll() {
   renderToday();
   renderStream();
   renderGrid();
+  updateAppBadge();
 }
 
 /* ─── Modal: Event ────────────────────────────────────────────── */
@@ -523,7 +590,37 @@ function handleEventSubmit(e) {
 /* ─── Modal: Settings ─────────────────────────────────────────── */
 function openSettingsModal() {
   updateSettingsStats();
+  renderSettingsNotes();
+  updateNotifyButton();
   document.getElementById('settingsModalBackdrop').classList.add('open');
+}
+
+function renderSettingsNotes() {
+  const container = document.getElementById('settingsNotes');
+  if (!container) return;
+  const notes = loadNotes();
+  const today = todayISO();
+  const dates = Object.keys(notes)
+    .filter(d => notes[d] && notes[d].trim())
+    .sort((a, b) => b.localeCompare(a))
+    .slice(0, 14);
+
+  if (dates.length === 0) {
+    container.innerHTML = '<div class="notes-empty">No notes yet. Write today’s focus on the Today page.</div>';
+    return;
+  }
+
+  container.innerHTML = dates.map(d => {
+    const day = new Date(d + 'T00:00:00');
+    const isToday = d === today;
+    const label = isToday
+      ? 'TODAY'
+      : day.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
+    return `<div class="note-entry${isToday ? ' is-today' : ''}">
+      <div class="note-date">${label}</div>
+      <div class="note-text">${escHtml(notes[d])}</div>
+    </div>`;
+  }).join('');
 }
 
 function closeSettingsModal() {
@@ -531,7 +628,7 @@ function closeSettingsModal() {
 }
 
 function updateSettingsStats() {
-  const counts   = { urgent: 0, recurring: 0, longterm: 0, someday: 0 };
+  const counts   = { urgent: 0, recurring: 0, longterm: 0, neutral: 0, someday: 0 };
   events.forEach(e => { if (counts[e.category] !== undefined) counts[e.category]++; });
 
   const todayStr  = todayISO();
@@ -541,11 +638,116 @@ function updateSettingsStats() {
     <span class="stat-urgent">⚡ Urgent: ${counts.urgent}</span><br>
     <span class="stat-recurring">↻ Recurring: ${counts.recurring}</span><br>
     <span class="stat-longterm">◎ Long-term: ${counts.longterm}</span><br>
+    <span class="stat-neutral">○ Neutral: ${counts.neutral}</span><br>
     <span class="stat-someday">◇ Someday: ${counts.someday}</span><br>
     <br>Total: ${events.length} events<br>
     <br><span style="color:var(--recurring)">✓ Done today: ${doneToday}</span><br>
     <span style="color:rgba(224,232,255,0.4)">✓ All-time: ${completedLog.length}</span>
   `;
+}
+
+/* ─── App Badge + Notifications ───────────────────────────────── */
+function countDueAndOverdue() {
+  let overdue = 0, today = 0;
+  events.forEach(evt => {
+    if (!evt.date) return;
+    const d = getDaysUntil(evt.date);
+    if (d < 0) overdue++;
+    else if (d === 0) today++;
+  });
+  return { overdue, today };
+}
+
+function updateAppBadge() {
+  if (!('setAppBadge' in navigator)) return;
+  const { overdue, today } = countDueAndOverdue();
+  const total = overdue + today;
+  if (total > 0) {
+    navigator.setAppBadge(total).catch(() => {});
+  } else if ('clearAppBadge' in navigator) {
+    navigator.clearAppBadge().catch(() => {});
+  }
+}
+
+function maybeNotifyOnLaunch() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  if (!('serviceWorker' in navigator)) return;
+
+  const today = todayISO();
+  let log = {};
+  try { log = JSON.parse(localStorage.getItem(NOTIFY_LOG_KEY) || '{}'); } catch (e) {}
+  if (log.lastNotifiedDate === today) return;
+
+  const { overdue, today: todayCount } = countDueAndOverdue();
+  if (overdue === 0 && todayCount === 0) return;
+
+  const parts = [];
+  if (todayCount > 0) parts.push(`${todayCount} due today`);
+  if (overdue > 0)    parts.push(`${overdue} overdue`);
+
+  navigator.serviceWorker.ready.then(reg => {
+    reg.showNotification('ChronoGrid', {
+      body: parts.join(' · '),
+      icon: './icon.svg',
+      badge: './icon.svg',
+      tag: 'chronogrid-daily',
+      renotify: true
+    }).catch(() => {});
+  });
+
+  log.lastNotifiedDate = today;
+  localStorage.setItem(NOTIFY_LOG_KEY, JSON.stringify(log));
+}
+
+async function enableNotifications() {
+  if (!('Notification' in window)) {
+    showToast('Notifications not supported');
+    return;
+  }
+  if (Notification.permission === 'granted') {
+    showToast('Notifications already enabled');
+    return;
+  }
+  if (Notification.permission === 'denied') {
+    showToast('Blocked in browser settings');
+    return;
+  }
+  const result = await Notification.requestPermission();
+  if (result === 'granted') {
+    showToast('🔔 Notifications enabled');
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.showNotification('ChronoGrid', {
+          body: 'You will be reminded of due and overdue events when you open the app.',
+          icon: './icon.svg',
+          tag: 'chronogrid-welcome'
+        }).catch(() => {});
+      });
+    }
+  } else {
+    showToast('Notifications declined');
+  }
+  updateNotifyButton();
+}
+
+function updateNotifyButton() {
+  const btn = document.getElementById('notifyBtn');
+  if (!btn) return;
+  if (!('Notification' in window)) {
+    btn.textContent = '🔕 Notifications unsupported';
+    btn.disabled = true;
+    return;
+  }
+  if (Notification.permission === 'granted') {
+    btn.textContent = '🔔 Notifications enabled';
+    btn.disabled = true;
+  } else if (Notification.permission === 'denied') {
+    btn.textContent = '🔕 Blocked in browser';
+    btn.disabled = true;
+  } else {
+    btn.textContent = '🔔 Enable notifications';
+    btn.disabled = false;
+  }
 }
 
 /* ─── Export / Import ─────────────────────────────────────────── */
@@ -615,6 +817,93 @@ function generateParticles() {
   }
 }
 
+/* ─── Today swipe gestures ────────────────────────────────────── */
+let suppressNextClick = false;
+
+function initTodaySwipe() {
+  const container = document.getElementById('todayContent');
+  if (!container) return;
+
+  let state = null;
+  const ACTION_THRESHOLD  = 90;
+  const DIRECTION_LOCK_PX = 8;
+
+  container.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    const row = e.target.closest('.today-row');
+    if (!row) return;
+    if (e.target.closest('.today-complete-btn')) return;
+
+    state = {
+      row,
+      wrap: row.parentElement,
+      startX: e.touches[0].clientX,
+      startY: e.touches[0].clientY,
+      dx: 0,
+      direction: null
+    };
+    row.style.transition = 'none';
+  }, { passive: true });
+
+  container.addEventListener('touchmove', e => {
+    if (!state) return;
+    const t = e.touches[0];
+    const dx = t.clientX - state.startX;
+    const dy = t.clientY - state.startY;
+
+    if (!state.direction) {
+      if (Math.abs(dx) < DIRECTION_LOCK_PX && Math.abs(dy) < DIRECTION_LOCK_PX) return;
+      if (Math.abs(dy) > Math.abs(dx)) {
+        // vertical scroll — release control
+        state.row.style.transition = '';
+        state = null;
+        return;
+      }
+      state.direction = 'horizontal';
+    }
+
+    if (state.direction === 'horizontal') {
+      if (e.cancelable) e.preventDefault();
+      state.dx = dx;
+      state.row.style.transform = `translateX(${dx}px)`;
+      state.wrap.classList.toggle('swiping-right', dx > 20);
+      state.wrap.classList.toggle('swiping-left',  dx < -20);
+    }
+  }, { passive: false });
+
+  const endHandler = () => {
+    if (!state) return;
+    const { row, wrap, dx, direction } = state;
+    state = null;
+
+    if (direction !== 'horizontal') return;
+
+    suppressNextClick = true;
+    row.style.transition = 'transform 0.22s ease-out';
+    const id = row.dataset.id;
+
+    if (dx > ACTION_THRESHOLD) {
+      row.style.transform = 'translateX(120%)';
+      setTimeout(() => {
+        wrap.classList.remove('swiping-right', 'swiping-left');
+        markComplete(id);
+      }, 220);
+    } else if (dx < -ACTION_THRESHOLD) {
+      row.style.transform = 'translateX(-120%)';
+      setTimeout(() => {
+        wrap.classList.remove('swiping-right', 'swiping-left');
+        snoozeEvent(id);
+      }, 220);
+    } else {
+      row.style.transform = '';
+      wrap.classList.remove('swiping-right', 'swiping-left');
+    }
+  };
+
+  container.addEventListener('touchend',    endHandler, { passive: true });
+  container.addEventListener('touchcancel', endHandler, { passive: true });
+}
+
 /* ─── View Switching ──────────────────────────────────────────── */
 function switchView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -643,6 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Today view: event delegation for rows and complete buttons
   document.getElementById('todayContent').addEventListener('click', e => {
+    if (suppressNextClick) { suppressNextClick = false; e.stopPropagation(); e.preventDefault(); return; }
     const completeBtn = e.target.closest('.today-complete-btn');
     if (completeBtn) {
       markComplete(completeBtn.dataset.id);
@@ -654,6 +944,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (evt) openEventModal(evt);
     }
   });
+
+  // Today view: swipe gestures (→ complete, ← snooze)
+  initTodaySwipe();
 
   // Event form submit
   document.getElementById('eventForm').addEventListener('submit', handleEventSubmit);
@@ -701,6 +994,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Notifications opt-in
+  document.getElementById('notifyBtn').addEventListener('click', enableNotifications);
+
   // Settings
   document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
   document.getElementById('settingsModalClose').addEventListener('click', closeSettingsModal);
@@ -738,6 +1034,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Service Worker
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW registration failed:', err));
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => maybeNotifyOnLaunch())
+      .catch(err => console.warn('SW registration failed:', err));
   }
+
+  // Refresh badge / notification when tab regains focus (handles next-day rollover)
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      updateAppBadge();
+      maybeNotifyOnLaunch();
+    }
+  });
 });

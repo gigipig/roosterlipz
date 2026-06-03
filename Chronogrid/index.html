@@ -71,6 +71,7 @@
         <button class="dock-btn urgent" data-cat="urgent">⚡ Urgent</button>
         <button class="dock-btn recurring" data-cat="recurring">↻ Recurring</button>
         <button class="dock-btn longterm" data-cat="longterm">◎ Long-term</button>
+        <button class="dock-btn neutral" data-cat="neutral">○ Neutral</button>
         <button class="dock-btn someday" data-cat="someday">◇ Someday</button>
       </div>
     </section>
@@ -122,6 +123,10 @@
             <input type="radio" name="category" value="longterm">
             <span>◎ Long-term</span>
           </label>
+          <label class="cat-pill neutral">
+            <input type="radio" name="category" value="neutral">
+            <span>○ Neutral</span>
+          </label>
           <label class="cat-pill someday">
             <input type="radio" name="category" value="someday">
             <span>◇ Someday</span>
@@ -155,8 +160,11 @@
         <button class="btn-settings" id="exportBtn">⬇ Export JSON</button>
         <label class="btn-settings import-label" for="importFile">⬆ Import JSON</label>
         <input type="file" id="importFile" accept=".json" style="display:none">
+        <button class="btn-settings" id="notifyBtn">🔔 Enable notifications</button>
         <button class="btn-settings btn-danger" id="clearCompletedBtn">✕ Clear Completion History</button>
         <div id="settingsStats" class="settings-stats"></div>
+        <div class="settings-section-title">RECENT NOTES</div>
+        <div id="settingsNotes" class="settings-notes"></div>
       </div>
     </div>
   </div>

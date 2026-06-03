@@ -158,6 +158,33 @@
     .alienmode.show {
       opacity: 1;
     }
+
+    /* ── BG Audio Toggle ── */
+    #bgAudioToggle {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(135, 206, 250, 0.45);
+      border-radius: 5px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-family: "Comic Sans MS", "Comic Sans", Arial, sans-serif;
+      font-size: 11px;
+      color: #87CEFA;
+      letter-spacing: 1px;
+      user-select: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    #bgAudioToggle:hover {
+      background: rgba(135, 206, 250, 0.15);
+      border-color: #87CEFA;
+    }
+    #bgAudioToggle.muted {
+      color: #555;
+      border-color: rgba(135, 206, 250, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -194,6 +221,11 @@
   </div>
 
   <div class="alienmode" id="alienmode"></div>
+
+  <!-- BG music tracks — add more <audio> elements here as needed -->
+  <audio id="bgT0" preload="none"><source src="sounds/bg_track_fixed.webm" type="audio/webm"></audio>
+  <audio id="bgT1" preload="none"><source src="sounds/bg_track2_fixed.webm" type="audio/webm"></audio>
+  <button id="bgAudioToggle" title="Toggle background music">♪ BG</button>
 
   <script>
     (function () {
@@ -626,6 +658,152 @@
         makePlayer([]);
       }
     })();
+  </script>
+
+  <script>
+  (function () {
+    var TARGET  = 0.4;
+    var FADE_MS = 7000;
+    var XFADE_S = 1.2;
+
+    var tracks = [];
+    for (var i = 0; ; i++) {
+      var el = document.getElementById('bgT' + i);
+      if (!el) break;
+      tracks.push(el);
+    }
+    if (!tracks.length) return;
+
+    var btn       = document.getElementById('bgAudioToggle');
+    var cur       = 0;
+    var playing   = false;
+    var userMuted = false;
+    var fadeRaf   = null;
+
+    tracks.forEach(function (t) { t.volume = 0; t.loop = false; });
+
+    function fadeTo(track, toVol, ms) {
+      cancelAnimationFrame(fadeRaf);
+      var t0 = performance.now(), v0 = track.volume;
+      (function step(now) {
+        var p = Math.min((now - t0) / ms, 1);
+        track.volume = v0 + (toVol - v0) * p;
+        if (p < 1) fadeRaf = requestAnimationFrame(step);
+      })(performance.now());
+    }
+
+    // Fade out near end of each track, then hand off to the next
+    tracks.forEach(function (t, idx) {
+      t.addEventListener('timeupdate', function () {
+        if (userMuted || !t.duration || idx !== cur) return;
+        var rem = t.duration - t.currentTime;
+        if (rem > 0 && rem < XFADE_S) t.volume = TARGET * (rem / XFADE_S);
+      });
+      t.addEventListener('ended', function () {
+        if (idx !== cur) return;
+        t.pause(); t.currentTime = 0; t.volume = 0;
+        cur = (cur + 1) % tracks.length;
+        tracks[cur].currentTime = 0; tracks[cur].volume = 0;
+        tracks[cur].play().catch(function () {});
+        fadeTo(tracks[cur], TARGET, FADE_MS);
+      });
+    });
+
+    // Pick a uniformly random position across the combined timeline of all tracks
+    function applyRandomSeek() {
+      var durs = tracks.map(function (t) { return t.duration; });
+      if (durs.some(function (d) { return !isFinite(d) || d <= 0; })) {
+        console.warn('[bgAudio] duration not finite, skipping seek:', durs);
+        return;
+      }
+      var total = durs.reduce(function (a, b) { return a + b; }, 0);
+      var rand = Math.random() * total, acc = 0;
+      for (var j = 0; j < durs.length; j++) {
+        acc += durs[j];
+        if (rand < acc) {
+          var seekTo = rand - (acc - durs[j]);
+          console.log('[bgAudio] → track ' + j + ' at ' + seekTo.toFixed(1) + 's / ' + durs[j].toFixed(1) + 's');
+          if (j !== cur) {
+            tracks[cur].pause(); tracks[cur].volume = 0;
+            cur = j; tracks[cur].volume = 0;
+            tracks[cur].play().catch(function () {});
+            fadeTo(tracks[cur], TARGET, FADE_MS);
+          }
+          tracks[cur].currentTime = seekTo;
+          return;
+        }
+      }
+    }
+
+    // Call cb once every track has a real finite duration
+    function onAllDurations(cb) {
+      var done = false;
+      var ready = tracks.map(function () { return false; });
+      tracks.forEach(function (t, idx) {
+        function check() {
+          if (done || ready[idx]) return;
+          if (isFinite(t.duration) && t.duration > 0) {
+            ready[idx] = true;
+            if (ready.every(Boolean)) { done = true; cb(); }
+          }
+        }
+        t.addEventListener('loadedmetadata', check);
+        t.addEventListener('durationchange', check);
+        check(); // already ready?
+      });
+    }
+
+    function startPlayback() {
+      if (playing) return;
+      playing = true;
+      tracks[0].volume = 0;
+      tracks[0].play().catch(function (e) {
+        console.warn('[bgAudio] play failed:', e.message);
+        playing = false; // allow retry
+      });
+      fadeTo(tracks[0], TARGET, FADE_MS);
+      onAllDurations(applyRandomSeek);
+    }
+
+    // Start on any first interaction (click, key, scroll)
+    function onInteract() {
+      startPlayback();
+      ['click','keydown','touchstart'].forEach(function (ev) {
+        document.removeEventListener(ev, onInteract);
+      });
+    }
+    ['click','keydown','touchstart'].forEach(function (ev) {
+      document.addEventListener(ev, onInteract);
+    });
+
+    // Also attempt autoplay (succeeds on repeat visits where the site has media permission)
+    tracks[0].play().then(function () {
+      if (!playing) {
+        playing = true;
+        fadeTo(tracks[0], TARGET, FADE_MS);
+        onAllDurations(applyRandomSeek);
+      }
+    }).catch(function () { /* blocked — onInteract handles it */ });
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      startPlayback();
+      var t = tracks[cur];
+      if (!t.paused) {
+        userMuted = true;
+        cancelAnimationFrame(fadeRaf);
+        t.pause(); t.volume = 0;
+        btn.textContent = '♪ OFF';
+        btn.classList.add('muted');
+      } else {
+        userMuted = false;
+        t.play().catch(function () {});
+        fadeTo(t, TARGET, FADE_MS);
+        btn.textContent = '♪ BG';
+        btn.classList.remove('muted');
+      }
+    });
+  })();
   </script>
 </body>
 </html>

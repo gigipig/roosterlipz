@@ -419,6 +419,34 @@
         .terminal-input { flex: 1; background: transparent; border: none; color: #4ecdc4; font-family: "Courier New", monospace; font-size: 14px; outline: none; cursor: text; }
         .terminal-error   { color: #ff6b6b; }
         .terminal-success { color: #95e1d3; }
+
+        /* ── BG Audio Toggle ── */
+        #bgAudioToggle {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            z-index: 9999;
+            background: rgba(10, 10, 20, 0.75);
+            border: 1px solid rgba(78, 205, 196, 0.5);
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            color: #4ecdc4;
+            letter-spacing: 1px;
+            user-select: none;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        #bgAudioToggle:hover {
+            background: rgba(78, 205, 196, 0.15);
+            border-color: #4ecdc4;
+        }
+        #bgAudioToggle.muted {
+            color: #555;
+            border-color: rgba(78, 205, 196, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -458,6 +486,10 @@
     <audio id="bgMusic" autoplay crossorigin="anonymous">
         <source src="sounds/index music/ambience2.mp3" type="audio/mpeg">
     </audio>
+    <audio id="bgTrack" loop>
+        <source src="sounds/bg_track.webm" type="audio/webm">
+    </audio>
+    <button id="bgAudioToggle" title="Toggle background audio">♪ BG</button>
 
     <!-- ── Winamp AVS Visualizer (draggable) ── -->
     <div class="visualizer-container" id="visualizerContainer">
@@ -767,7 +799,8 @@
         const music = document.getElementById('bgMusic');
         const playlist = [
             'sounds/index music/ambience2.mp3',
-            'sounds/index music/spyro.mp3'
+            'sounds/index music/spyro.mp3',
+            'sounds/Deep Forest.mp3'
         ];
         let track = 0;
         music.volume = 0.75;
@@ -1148,6 +1181,85 @@
             el.textContent=rows.join('\n');
         }
         setInterval(render, 120);
+    })();
+    </script>
+
+    <script>
+    (function() {
+        const track   = document.getElementById('bgTrack');
+        const btn     = document.getElementById('bgAudioToggle');
+        const TARGET  = 0.35;
+        const FADE_MS = 5000;
+        let started   = false;
+        let fadeRaf   = null;
+
+        track.volume = 0;
+
+        function fadeIn() {
+            cancelAnimationFrame(fadeRaf);
+            const startTime = performance.now();
+            const startVol  = track.volume;
+            function step(now) {
+                const t = Math.min((now - startTime) / FADE_MS, 1);
+                track.volume = startVol + (TARGET - startVol) * t;
+                if (t < 1) fadeRaf = requestAnimationFrame(step);
+            }
+            fadeRaf = requestAnimationFrame(step);
+        }
+
+        // Smooth loop: crossfade the last second back to the start
+        track.addEventListener('timeupdate', function() {
+            if (!track.duration) return;
+            const remaining = track.duration - track.currentTime;
+            if (remaining < 1 && remaining > 0) {
+                // fade out as we approach end, then jump and fade back in
+                track.volume = TARGET * (remaining / 1);
+            }
+        });
+        track.addEventListener('ended', function() {
+            track.currentTime = 0;
+            track.volume = 0;
+            track.play().catch(() => {});
+            fadeIn();
+        });
+        // disable the native loop so our ended handler fires
+        track.loop = false;
+
+        function startTrack() {
+            if (started) return;
+            started = true;
+            // jump to a random position once duration is known
+            function doStart() {
+                track.currentTime = Math.random() * track.duration;
+                track.play().catch(() => {});
+                fadeIn();
+            }
+            if (track.readyState >= 1) {
+                doStart();
+            } else {
+                track.addEventListener('loadedmetadata', doStart, { once: true });
+            }
+        }
+
+        document.addEventListener('click',   startTrack, { once: true });
+        document.addEventListener('keydown', startTrack, { once: true });
+
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            startTrack();
+            if (track.paused) {
+                track.play().catch(() => {});
+                fadeIn();
+                btn.textContent = '♪ BG';
+                btn.classList.remove('muted');
+            } else {
+                cancelAnimationFrame(fadeRaf);
+                track.pause();
+                track.volume = 0;
+                btn.textContent = '♪ OFF';
+                btn.classList.add('muted');
+            }
+        });
     })();
     </script>
 
