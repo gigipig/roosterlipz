@@ -167,12 +167,16 @@ function markComplete(id) {
   const evt = events.find(e => e.id === id);
   if (!evt) return;
 
-  // Log it
+  // Log it — keep a full snapshot so a completed task can be restored later.
   completedLog.push({
     id: uuid(),
     eventId: evt.id,
     title: evt.title,
     category: evt.category,
+    date: evt.date || '',
+    time: evt.time || '',
+    notes: evt.notes || '',
+    recurrence: evt.recurrence || null,
     completedAt: new Date().toISOString()
   });
   localStorage.setItem(COMPLETED_KEY, JSON.stringify(completedLog));
@@ -591,6 +595,7 @@ function handleEventSubmit(e) {
 function openSettingsModal() {
   updateSettingsStats();
   renderSettingsNotes();
+  renderSettingsCompleted();
   updateNotifyButton();
   document.getElementById('settingsModalBackdrop').classList.add('open');
 }
@@ -621,6 +626,63 @@ function renderSettingsNotes() {
       <div class="note-text">${escHtml(notes[d])}</div>
     </div>`;
   }).join('');
+}
+
+function renderSettingsCompleted() {
+  const container = document.getElementById('settingsCompleted');
+  if (!container) return;
+
+  const recent = completedLog.slice().reverse().slice(0, 30);
+
+  if (recent.length === 0) {
+    container.innerHTML = '<div class="notes-empty">No completed tasks yet. Tick a task to log it here.</div>';
+    return;
+  }
+
+  const today = todayISO();
+  container.innerHTML = recent.map(c => {
+    const when = new Date(c.completedAt);
+    const wIso = c.completedAt.slice(0, 10);
+    const label = wIso === today
+      ? 'TODAY'
+      : when.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
+    const icon = CAT_ICONS[c.category] || '○';
+    return `<div class="done-entry">
+      <div class="done-dot ${c.category}"></div>
+      <div class="done-body">
+        <div class="done-title">${escHtml(c.title)}</div>
+        <div class="done-date">${icon} ${label}</div>
+      </div>
+      <button class="done-restore" data-id="${c.id}" aria-label="Restore task">↺</button>
+    </div>`;
+  }).join('');
+}
+
+function restoreCompleted(logId) {
+  const idx = completedLog.findIndex(c => c.id === logId);
+  if (idx === -1) return;
+  const c = completedLog[idx];
+
+  // Re-create the event from the stored snapshot.
+  addEvent({
+    id:         uuid(),
+    title:      c.title,
+    date:       c.date || '',
+    time:       c.time || '',
+    category:   c.category,
+    recurrence: c.recurrence || null,
+    notes:      c.notes || '',
+    streak:     0
+  });
+
+  // Remove it from the completion log so it isn't double-counted.
+  completedLog.splice(idx, 1);
+  localStorage.setItem(COMPLETED_KEY, JSON.stringify(completedLog));
+
+  if (navigator.vibrate) navigator.vibrate(10);
+  showToast(`↺  ${c.title} restored`);
+  renderSettingsCompleted();
+  updateSettingsStats();
 }
 
 function closeSettingsModal() {
@@ -1010,8 +1072,15 @@ document.addEventListener('DOMContentLoaded', () => {
       completedLog = [];
       localStorage.removeItem(COMPLETED_KEY);
       updateSettingsStats();
+      renderSettingsCompleted();
       showToast('History cleared');
     }
+  });
+
+  // Restore a completed task
+  document.getElementById('settingsCompleted').addEventListener('click', e => {
+    const btn = e.target.closest('.done-restore');
+    if (btn) restoreCompleted(btn.dataset.id);
   });
 
   // Export / Import
@@ -1035,8 +1104,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Service Worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
-      .then(() => maybeNotifyOnLaunch())
+      .then(reg => {
+        reg.update();                       // check for a newer worker on launch
+        maybeNotifyOnLaunch();
+      })
       .catch(err => console.warn('SW registration failed:', err));
+
+    // When a new worker takes control (after skipWaiting), reload once so the
+    // app shows the latest code instead of staying on the old cached version.
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloading) return;
+      reloading = true;
+      window.location.reload();
+    });
   }
 
   // Refresh badge / notification when tab regains focus (handles next-day rollover)

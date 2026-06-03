@@ -631,12 +631,17 @@ body {
   border-radius: 20px 20px 0 0; border-bottom: none;
   padding: 0 0 env(safe-area-inset-bottom);
   animation: slide-up 0.3s ease-out;
-  max-height: 92vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  /* Keep the top (with its close button) below the status bar / notch so it
+     stays visible and tappable; fall back to vh where dvh is unsupported. */
+  max-height: calc(92vh - env(safe-area-inset-top));
+  max-height: calc(100dvh - env(safe-area-inset-top) - 12px);
+  overflow-y: auto; -webkit-overflow-scrolling: touch;
 }
 
 .modal-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 20px 16px; border-bottom: 1px solid var(--glass-border);
+  padding: max(20px, calc(env(safe-area-inset-top) + 8px)) 20px 16px;
+  border-bottom: 1px solid var(--glass-border);
   position: sticky; top: 0; background: rgba(12, 14, 22, 0.97); z-index: 10;
 }
 
@@ -823,6 +828,52 @@ textarea { resize: none; }
   background: var(--glass); border: 1px dashed var(--glass-border);
   border-radius: 10px;
 }
+
+/* Completed tasks list */
+.settings-completed {
+  display: flex; flex-direction: column; gap: 8px;
+  max-height: 240px; overflow-y: auto;
+  padding: 4px 2px;
+}
+.done-entry {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.done-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0; background: var(--someday);
+}
+.done-dot.urgent   { background: var(--urgent); }
+.done-dot.recurring{ background: var(--recurring); }
+.done-dot.longterm { background: var(--longterm); }
+.done-dot.neutral  { background: var(--neutral); }
+.done-dot.someday  { background: var(--someday); }
+.done-body { flex: 1; min-width: 0; }
+.done-title {
+  font-family: var(--font-mono); font-size: 13px;
+  color: rgba(224, 232, 255, 0.85);
+  text-decoration: line-through; text-decoration-color: rgba(224, 232, 255, 0.3);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.done-date {
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  color: rgba(224, 232, 255, 0.45);
+  margin-top: 3px;
+}
+.done-restore {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: 9px; color: rgba(224, 232, 255, 0.7);
+  font-size: 16px; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.done-restore:active { background: rgba(68, 136, 255, 0.18); color: #e0e8ff; }
 
 /* ─── Animations ──────────────────────────────────────────────── */
 @keyframes twinkle {

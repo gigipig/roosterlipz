@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chronogrid-v4';
+const CACHE_NAME = 'chronogrid-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -23,9 +23,21 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Network-first: always try the network so updates land immediately, fall
+// back to cache when offline. Successful responses refresh the cache so the
+// app still works without a connection.
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
+    fetch(event.request)
+      .then(response => {
+        if (response && response.status === 200 && response.type !== 'opaque') {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
 
