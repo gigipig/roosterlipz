@@ -28,6 +28,11 @@ let completedLog  = [];
 let editingId     = null;
 let selectedRecurrence = null;
 
+// Today view: far-horizon sections collapse by default; remember which the
+// user has opened so they stay open across re-renders within a session.
+const COLLAPSIBLE_SECTIONS = new Set(['month', 'year', 'later', 'someday']);
+const expandedSections = new Set();
+
 /* ─── Utilities ───────────────────────────────────────────────── */
 function uuid() {
   if (crypto && crypto.randomUUID) return crypto.randomUUID();
@@ -345,13 +350,22 @@ function renderToday() {
   function buildSection(label, icon, list, variant) {
     if (list.length === 0) return;
 
+    const collapsible = COLLAPSIBLE_SECTIONS.has(variant);
+    const expanded    = !collapsible || expandedSections.has(variant);
+
     const sec = document.createElement('div');
-    sec.className = 'today-section';
+    sec.className = 'today-section'
+      + (collapsible ? ' collapsible' : '')
+      + (expanded ? '' : ' collapsed');
 
     const hdr = document.createElement('div');
     hdr.className = `today-section-hdr ${variant}`;
-    hdr.innerHTML = `<span>${icon} ${label}</span><span class="today-sec-count">${list.length}</span>`;
+    const chevron = collapsible ? '<span class="sec-chevron">▸</span>' : '';
+    hdr.innerHTML = `<span class="today-sec-label">${chevron}${icon} ${label}</span><span class="today-sec-count">${list.length}</span>`;
     sec.appendChild(hdr);
+
+    const rows = document.createElement('div');
+    rows.className = 'today-sec-rows';
 
     list.forEach(evt => {
       const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? ` · ↻${evt.streak}` : '';
@@ -372,8 +386,18 @@ function renderToday() {
           <button class="today-complete-btn" data-id="${evt.id}" aria-label="Mark complete">✓</button>
         </div>
       `;
-      sec.appendChild(wrap);
+      rows.appendChild(wrap);
     });
+
+    sec.appendChild(rows);
+
+    if (collapsible) {
+      hdr.addEventListener('click', () => {
+        if (expandedSections.has(variant)) expandedSections.delete(variant);
+        else expandedSections.add(variant);
+        sec.classList.toggle('collapsed');
+      });
+    }
 
     container.appendChild(sec);
   }

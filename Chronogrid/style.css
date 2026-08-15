@@ -243,6 +243,25 @@ body {
   border-radius: 10px; padding: 1px 8px;
 }
 
+.today-sec-label { display: inline-flex; align-items: center; }
+
+/* Collapsible far-horizon sections */
+.today-section.collapsible .today-section-hdr {
+  cursor: pointer; user-select: none;
+  transition: opacity 0.15s;
+}
+.today-section.collapsible .today-section-hdr:active { opacity: 0.6; }
+
+.sec-chevron {
+  display: inline-block;
+  font-size: 8px;
+  margin-right: 6px;
+  transform: rotate(90deg);          /* points down when expanded */
+  transition: transform 0.2s ease;
+}
+.today-section.collapsed .sec-chevron { transform: rotate(0deg); } /* points right */
+.today-section.collapsed .today-sec-rows { display: none; }
+
 /* Row + swipe wrap */
 .today-row-wrap {
   position: relative;
