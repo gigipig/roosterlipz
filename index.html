@@ -175,80 +175,144 @@
         /* ── Maze portal tiles ── */
         .maze-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 14px;
-            padding: 6px 0;
+            grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+            gap: 16px;
+            padding: 8px 0;
         }
+        /* outer slot owns the idle float so the tile is free to lift on hover */
+        .maze-slot {
+            perspective: 800px;
+            animation: linkFloat 6s ease-in-out infinite;
+        }
+        .maze-slot:nth-child(1) { animation-delay: 0s; }
+        .maze-slot:nth-child(2) { animation-delay: -0.8s; }
+        .maze-slot:nth-child(3) { animation-delay: -1.6s; }
+        .maze-slot:nth-child(4) { animation-delay: -2.4s; }
+        .maze-slot:nth-child(5) { animation-delay: -3.2s; }
+        .maze-slot:nth-child(6) { animation-delay: -4s; }
+        .maze-slot:nth-child(7) { animation-delay: -4.8s; }
+        .maze-slot:nth-child(8) { animation-delay: -5.6s; }
+        /* per-tile neon accent (R,G,B triple) */
+        .maze-slot:nth-child(1) .maze-tile { --accent: 255, 107, 107; }
+        .maze-slot:nth-child(2) .maze-tile { --accent: 78, 205, 196; }
+        .maze-slot:nth-child(3) .maze-tile { --accent: 255, 230, 109; }
+        .maze-slot:nth-child(4) .maze-tile { --accent: 123, 237, 159; }
+        .maze-slot:nth-child(5) .maze-tile { --accent: 162, 155, 254; }
+        .maze-slot:nth-child(6) .maze-tile { --accent: 255, 159, 243; }
+        .maze-slot:nth-child(7) .maze-tile { --accent: 116, 185, 255; }
+        .maze-slot:nth-child(8) .maze-tile { --accent: 255, 165, 2; }
         .maze-tile {
+            --accent: 78, 205, 196;
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            min-height: 112px;
-            padding: 18px 12px;
-            background: linear-gradient(160deg, rgba(78, 205, 196, 0.06), rgba(26, 26, 46, 0.45));
-            border: 1px solid rgba(78, 205, 196, 0.35);
-            border-radius: 8px;
+            gap: 12px;
+            min-height: 124px;
+            padding: 24px 12px 18px;
             text-decoration: none;
-            color: #95e1d3;
+            color: #cfeee9;
+            border-radius: 10px;
             overflow: hidden;
-            animation: linkFloat 6s ease-in-out infinite;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-            box-shadow: 0 0 12px rgba(78, 205, 196, 0.08), inset 0 0 20px rgba(0, 0, 0, 0.35);
+            isolation: isolate;
+            transform-style: preserve-3d;
+            background:
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 3px),
+                linear-gradient(160deg, rgba(var(--accent), 0.16), rgba(8, 10, 20, 0.72));
+            border: 1px solid rgba(var(--accent), 0.5);
+            box-shadow:
+                inset 0 0 22px rgba(0, 0, 0, 0.5),
+                0 0 14px rgba(var(--accent), 0.16),
+                0 6px 18px rgba(0, 0, 0, 0.45);
+            transition: transform 0.3s cubic-bezier(.2, .7, .3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        /* HUD corner brackets */
+        .maze-tile::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            z-index: 3;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: opacity 0.3s ease, inset 0.3s ease;
+            background:
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat top left / 16px 2px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat top left / 2px 16px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat top right / 16px 2px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat top right / 2px 16px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat bottom left / 16px 2px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat bottom left / 2px 16px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat bottom right / 16px 2px,
+                linear-gradient(rgb(var(--accent)), rgb(var(--accent))) no-repeat bottom right / 2px 16px;
         }
         /* diagonal sheen that sweeps across on hover */
         .maze-tile::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg, transparent 40%, rgba(78, 205, 196, 0.14) 50%, transparent 60%);
-            transform: translateX(-120%);
-            transition: transform 0.55s ease;
+            z-index: 1;
             pointer-events: none;
+            background: linear-gradient(120deg, transparent 38%, rgba(255, 255, 255, 0.16) 50%, transparent 62%);
+            transform: translateX(-120%);
+            transition: transform 0.6s ease;
         }
-        .maze-tile:nth-child(1) { animation-delay: 0s; }
-        .maze-tile:nth-child(2) { animation-delay: -0.8s; }
-        .maze-tile:nth-child(3) { animation-delay: -1.6s; }
-        .maze-tile:nth-child(4) { animation-delay: -2.4s; }
-        .maze-tile:nth-child(5) { animation-delay: -3.2s; }
-        .maze-tile:nth-child(6) { animation-delay: -4s; }
-        .maze-tile:nth-child(7) { animation-delay: -4.8s; }
-        .maze-tile:nth-child(8) { animation-delay: -5.6s; }
         .maze-tile:hover {
-            transform: scale(1.06) translateY(-4px);
-            border-color: #4ecdc4;
-            box-shadow: 0 0 26px rgba(78, 205, 196, 0.45), inset 0 0 22px rgba(78, 205, 196, 0.08);
-            animation-play-state: paused;
-            z-index: 2;
+            transform: translateY(-6px) scale(1.05) rotateX(7deg);
+            border-color: rgb(var(--accent));
+            box-shadow:
+                inset 0 0 26px rgba(var(--accent), 0.12),
+                0 0 34px rgba(var(--accent), 0.55),
+                0 16px 30px rgba(0, 0, 0, 0.55);
+            color: #fff;
+            z-index: 5;
         }
-        .maze-tile:hover::after { transform: translateX(120%); }
-        .maze-tile:visited { color: #a0a0a0; }
+        .maze-tile:hover::before { inset: 5px; opacity: 1; }
+        .maze-tile:hover::after  { transform: translateX(120%); }
+        .maze-tile:visited { color: #cfeee9; }
+        .maze-num {
+            position: absolute;
+            top: 8px; left: 11px;
+            z-index: 2;
+            font-size: 9px; letter-spacing: 1.5px;
+            color: rgba(var(--accent), 0.85);
+            text-shadow: 0 0 6px rgba(var(--accent), 0.5);
+        }
         .maze-icon {
-            width: 46px; height: 46px;
+            position: relative; z-index: 2;
+            width: 48px; height: 48px;
             object-fit: contain;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-            filter: drop-shadow(0 0 6px rgba(78, 205, 196, 0.4));
+            filter: drop-shadow(0 0 8px rgba(var(--accent), 0.55));
+            transition: transform 0.3s ease;
         }
         .maze-glyph {
-            font-size: 30px; line-height: 1;
-            color: #4ecdc4;
-            text-shadow: 0 0 10px rgba(78, 205, 196, 0.6);
+            position: relative; z-index: 2;
+            font-size: 34px; line-height: 1;
+            color: rgb(var(--accent));
+            animation: glyphGlow 3.2s ease-in-out infinite;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
+        .maze-tile:hover .maze-glyph { transform: scale(1.22) rotate(-5deg) translateZ(24px); color: #fff; }
+        .maze-tile:hover .maze-icon  { transform: scale(1.15) translateZ(24px); }
         .maze-title {
-            font-size: 14px;
+            position: relative; z-index: 2;
+            font-size: 13px;
             letter-spacing: 2px;
             text-align: center;
             text-transform: uppercase;
-            transition: color 0.2s, letter-spacing 0.2s, text-shadow 0.2s;
+            transition: color 0.25s, letter-spacing 0.25s, text-shadow 0.25s;
         }
         .maze-tile:hover .maze-title {
-            color: #ffe66d;
+            color: #fff;
             letter-spacing: 3px;
-            text-shadow: 2px 0 #ff6b6b, -2px 0 #4ecdc4, 0 0 10px #ffe66d;
+            text-shadow: 2px 0 rgba(var(--accent), 0.9), -2px 0 rgba(var(--accent), 0.6), 0 0 12px rgb(var(--accent));
             animation: mazeGlitch 0.35s steps(2) infinite;
+        }
+        @keyframes glyphGlow {
+            0%, 100% { filter: drop-shadow(0 0 6px rgba(var(--accent), 0.6)); }
+            50%      { filter: drop-shadow(0 0 15px rgba(var(--accent), 0.95)); }
         }
         @keyframes mazeGlitch {
             0%   { transform: translate(0, 0); }
@@ -256,6 +320,9 @@
             50%  { transform: translate(1px, -1px); }
             75%  { transform: translate(-1px, 0); }
             100% { transform: translate(0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .maze-slot, .maze-glyph { animation: none; }
         }
 
         /* ── Section divider ── */
@@ -522,38 +589,46 @@
         <div class="links">
             <h2>ENTER THE MAZE</h2>
             <div class="maze-grid">
-                <a class="maze-tile" href="walnuts.html">
+                <div class="maze-slot"><a class="maze-tile" href="walnuts.html">
+                    <span class="maze-num">01</span>
                     <span class="maze-glyph">♫</span>
                     <span class="maze-title">ambience</span>
-                </a>
-                <a class="maze-tile" href="goose.html">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="goose.html">
+                    <span class="maze-num">02</span>
                     <span class="maze-glyph">⌘</span>
                     <span class="maze-title">The Labyrinth</span>
-                </a>
-                <a class="maze-tile" href="locker.html">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="locker.html">
+                    <span class="maze-num">03</span>
                     <span class="maze-glyph">▦</span>
                     <span class="maze-title">Locker</span>
-                </a>
-                <a class="maze-tile" href="snake.html">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="snake.html">
+                    <span class="maze-num">04</span>
                     <span class="maze-glyph">∿</span>
                     <span class="maze-title">Snake</span>
-                </a>
-                <a class="maze-tile" href="spaceraider2.html">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="spaceraider2.html">
+                    <span class="maze-num">05</span>
                     <span class="maze-glyph">✦</span>
                     <span class="maze-title">Space Raider 2</span>
-                </a>
-                <a class="maze-tile" href="toost.html">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="toost.html">
+                    <span class="maze-num">06</span>
                     <span class="maze-glyph">❧</span>
                     <span class="maze-title">birdville</span>
-                </a>
-                <a class="maze-tile" href="/ancestral/">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="/ancestral/">
+                    <span class="maze-num">07</span>
                     <img class="maze-icon" src="images/New 2025/AztecTemple.webp" alt="">
                     <span class="maze-title">ancestral diets</span>
-                </a>
-                <a class="maze-tile" href="/Chronogrid/">
+                </a></div>
+                <div class="maze-slot"><a class="maze-tile" href="/Chronogrid/">
+                    <span class="maze-num">08</span>
                     <img class="maze-icon" src="images/New 2025/Outpost.gif" alt="">
                     <span class="maze-title">Chronogrid</span>
-                </a>
+                </a></div>
             </div>
         </div>
 
