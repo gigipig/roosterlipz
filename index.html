@@ -32,6 +32,15 @@
             pointer-events: none;
         }
 
+        /* ── FX particle canvas (gravity playground + audio bursts) ── */
+        #fxCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 45;
+            pointer-events: none;
+        }
+
         /* ── Surreal orbs ── */
         .surreal-orb {
             position: fixed;
@@ -161,42 +170,92 @@
             animation: headerColor 6s ease-in-out infinite;
         }
         @keyframes headerColor { 0%, 100% { color: #ffe66d; } 33% { color: #ff6b6b; } 66% { color: #95e1d3; } }
-        .link-list { list-style: none; padding: 0; }
-        .link-list li {
-            margin: 10px 0;
-            padding: 8px 0;
-            border-left: 3px solid transparent;
-            padding-left: 15px;
-            transition: all 0.3s ease;
-            animation: linkFloat 6s ease-in-out infinite;
-        }
-        .link-list li:nth-child(1) { animation-delay: 0s; }
-        .link-list li:nth-child(2) { animation-delay: -0.8s; }
-        .link-list li:nth-child(3) { animation-delay: -1.6s; }
-        .link-list li:nth-child(4) { animation-delay: -2.4s; }
-        .link-list li:nth-child(5) { animation-delay: -3.2s; }
-        .link-list li:nth-child(6) { animation-delay: -4s; }
-        .link-list li:nth-child(7) { animation-delay: -4.8s; }
-        .link-list li:nth-child(8) { animation-delay: -5.6s; }
         @keyframes linkFloat { 0%, 100% { transform: translateX(0) translateY(0); } 25% { transform: translateX(8px) translateY(-2px); } 50% { transform: translateX(-5px) translateY(3px); } 75% { transform: translateX(3px) translateY(-1px); } }
-        .link-list li:hover { border-left-color: #4ecdc4; padding-left: 20px; animation-play-state: paused; }
-        .link-list a {
-            color: #95e1d3;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+
+        /* ── Maze portal tiles ── */
+        .maze-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+            padding: 6px 0;
         }
-        .link-list a:visited { color: #a0a0a0; }
-        .link-list a:hover { color: #ffe66d; text-shadow: 0 0 8px #ffe66d, 0 0 20px #ffe66d; transform: translateX(5px) scale(1.05); letter-spacing: 2px; }
-        .link-list a .link-icon {
-            width: 28px; height: 28px;
+        .maze-tile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 112px;
+            padding: 18px 12px;
+            background: linear-gradient(160deg, rgba(78, 205, 196, 0.06), rgba(26, 26, 46, 0.45));
+            border: 1px solid rgba(78, 205, 196, 0.35);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #95e1d3;
+            overflow: hidden;
+            animation: linkFloat 6s ease-in-out infinite;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 0 12px rgba(78, 205, 196, 0.08), inset 0 0 20px rgba(0, 0, 0, 0.35);
+        }
+        /* diagonal sheen that sweeps across on hover */
+        .maze-tile::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 40%, rgba(78, 205, 196, 0.14) 50%, transparent 60%);
+            transform: translateX(-120%);
+            transition: transform 0.55s ease;
+            pointer-events: none;
+        }
+        .maze-tile:nth-child(1) { animation-delay: 0s; }
+        .maze-tile:nth-child(2) { animation-delay: -0.8s; }
+        .maze-tile:nth-child(3) { animation-delay: -1.6s; }
+        .maze-tile:nth-child(4) { animation-delay: -2.4s; }
+        .maze-tile:nth-child(5) { animation-delay: -3.2s; }
+        .maze-tile:nth-child(6) { animation-delay: -4s; }
+        .maze-tile:nth-child(7) { animation-delay: -4.8s; }
+        .maze-tile:nth-child(8) { animation-delay: -5.6s; }
+        .maze-tile:hover {
+            transform: scale(1.06) translateY(-4px);
+            border-color: #4ecdc4;
+            box-shadow: 0 0 26px rgba(78, 205, 196, 0.45), inset 0 0 22px rgba(78, 205, 196, 0.08);
+            animation-play-state: paused;
+            z-index: 2;
+        }
+        .maze-tile:hover::after { transform: translateX(120%); }
+        .maze-tile:visited { color: #a0a0a0; }
+        .maze-icon {
+            width: 46px; height: 46px;
             object-fit: contain;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-            flex-shrink: 0;
+            filter: drop-shadow(0 0 6px rgba(78, 205, 196, 0.4));
+        }
+        .maze-glyph {
+            font-size: 30px; line-height: 1;
+            color: #4ecdc4;
+            text-shadow: 0 0 10px rgba(78, 205, 196, 0.6);
+        }
+        .maze-title {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: color 0.2s, letter-spacing 0.2s, text-shadow 0.2s;
+        }
+        .maze-tile:hover .maze-title {
+            color: #ffe66d;
+            letter-spacing: 3px;
+            text-shadow: 2px 0 #ff6b6b, -2px 0 #4ecdc4, 0 0 10px #ffe66d;
+            animation: mazeGlitch 0.35s steps(2) infinite;
+        }
+        @keyframes mazeGlitch {
+            0%   { transform: translate(0, 0); }
+            25%  { transform: translate(-1px, 1px); }
+            50%  { transform: translate(1px, -1px); }
+            75%  { transform: translate(-1px, 0); }
+            100% { transform: translate(0, 0); }
         }
 
         /* ── Section divider ── */
@@ -237,47 +296,6 @@
             image-rendering: pixelated;
         }
         .gif-marquee-track img:hover { transform: scale(1.2) translateY(-5px); border-color: #4ecdc4; }
-
-        /* ── AoE2 Unit Gallery ── */
-        .units-section { margin: 10px 0; }
-        .unit-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            padding: 25px 20px;
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 4px;
-        }
-        .unit-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            transition: transform 0.2s;
-            padding: 8px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            background: rgba(78, 205, 196, 0.04);
-        }
-        .unit-item:hover {
-            transform: scale(1.25) translateY(-4px);
-            border-color: rgba(78, 205, 196, 0.5);
-            background: rgba(78, 205, 196, 0.1);
-        }
-        .unit-item img {
-            width: 64px; height: 64px;
-            object-fit: contain;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-        }
-        .unit-item span {
-            font-size: 8px;
-            color: #4ecdc4;
-            letter-spacing: 1.5px;
-            text-align: center;
-        }
 
         /* ── Shrine ── */
         .shrine {
@@ -360,22 +378,7 @@
             image-rendering: pixelated;
             image-rendering: crisp-edges;
         }
-        #villager { width: 64px; height: 64px; pointer-events: auto; }
         .passive-unit { width: 48px; height: 48px; opacity: 0.75; }
-        .villager-hint {
-            position: fixed;
-            top: 10px; left: 10px;
-            background: rgba(0, 0, 0, 0.75);
-            color: #4ecdc4;
-            padding: 8px 14px;
-            font-family: "Courier New", monospace;
-            font-size: 11px;
-            z-index: 1001;
-            pointer-events: none;
-            border: 1px solid rgba(78, 205, 196, 0.35);
-            border-radius: 4px;
-            letter-spacing: 1px;
-        }
 
         /* ── Terminal ── */
         .terminal-overlay {
@@ -453,6 +456,7 @@
 
     <!-- ── Background ── -->
     <canvas id="rain"></canvas>
+    <canvas id="fxCanvas"></canvas>
     <div class="surreal-orb orb-1"></div>
     <div class="surreal-orb orb-2"></div>
     <div class="surreal-orb orb-3"></div>
@@ -475,19 +479,14 @@
 
     <!-- ── AoE2 Wandering Units Layer ── -->
     <div id="units-layer">
-        <img id="villager"      src="images/New 2025/New items/Villager_m_walkanim_aoe2.webp" alt="Villager">
         <img class="passive-unit" id="wolf-unit"    src="images/New 2025/wolf.webp"       alt="Wolf">
         <img class="passive-unit" id="cavalry-unit" src="images/New 2025/cavalry.gif"     alt="Cavalry">
         <img class="passive-unit" id="lancer-unit"  src="images/New 2025/lancer.gif"      alt="Lancer">
     </div>
-    <div class="villager-hint">[ click anywhere · command the villager ]</div>
 
     <!-- ── Audio ── -->
     <audio id="bgMusic" autoplay crossorigin="anonymous">
         <source src="sounds/index music/ambience2.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="bgTrack" loop>
-        <source src="sounds/bg_track.webm" type="audio/webm">
     </audio>
     <button id="bgAudioToggle" title="Toggle background audio">♪ BG</button>
 
@@ -522,22 +521,40 @@
         <!-- ── Navigation ── -->
         <div class="links">
             <h2>ENTER THE MAZE</h2>
-            <ul class="link-list">
-                <li>→ <a href="walnuts.html">ambience</a></li>
-                <li>→ <a href="goose.html">The Labyrinth</a></li>
-                <li>→ <a href="locker.html">LOCKER</a></li>
-                <li>→ <a href="snake.html">SNAKE</a></li>
-                <li>→ <a href="spaceraider2.html">SPACE RAIDER 2</a></li>
-                <li>→ <a href="toost.html">birdville</a></li>
-                <li>→ <a href="/ancestral/">
-                    <img class="link-icon" src="images/New 2025/AztecTemple.webp" alt="">
-                    ancestral diets
-                </a></li>
-                <li>→ <a href="/Chronogrid/">
-                    <img class="link-icon" src="images/New 2025/Outpost.gif" alt="">
-                    Chronogrid
-                </a></li>
-            </ul>
+            <div class="maze-grid">
+                <a class="maze-tile" href="walnuts.html">
+                    <span class="maze-glyph">♫</span>
+                    <span class="maze-title">ambience</span>
+                </a>
+                <a class="maze-tile" href="goose.html">
+                    <span class="maze-glyph">⌘</span>
+                    <span class="maze-title">The Labyrinth</span>
+                </a>
+                <a class="maze-tile" href="locker.html">
+                    <span class="maze-glyph">▦</span>
+                    <span class="maze-title">Locker</span>
+                </a>
+                <a class="maze-tile" href="snake.html">
+                    <span class="maze-glyph">∿</span>
+                    <span class="maze-title">Snake</span>
+                </a>
+                <a class="maze-tile" href="spaceraider2.html">
+                    <span class="maze-glyph">✦</span>
+                    <span class="maze-title">Space Raider 2</span>
+                </a>
+                <a class="maze-tile" href="toost.html">
+                    <span class="maze-glyph">❧</span>
+                    <span class="maze-title">birdville</span>
+                </a>
+                <a class="maze-tile" href="/ancestral/">
+                    <img class="maze-icon" src="images/New 2025/AztecTemple.webp" alt="">
+                    <span class="maze-title">ancestral diets</span>
+                </a>
+                <a class="maze-tile" href="/Chronogrid/">
+                    <img class="maze-icon" src="images/New 2025/Outpost.gif" alt="">
+                    <span class="maze-title">Chronogrid</span>
+                </a>
+            </div>
         </div>
 
         <div class="divider">═══════════════════════════════════</div>
@@ -572,75 +589,6 @@
                     <img src="images/New 2025/Frantic.gif"       alt="">
                     <img src="images/New 2025/Ocean.gif"         alt="">
                     <img src="images/tumblr_npdyka4rjY1u431g7o1_500.gif" alt="">
-                </div>
-            </div>
-        </div>
-
-        <div class="divider">═══════════════════════════════════</div>
-
-        <!-- ── AoE2 Unit Gallery ── -->
-        <p class="section-title">◇ UNITS OF THE REALM ◇</p>
-        <div class="units-section">
-            <div class="unit-gallery">
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/New items/Centurion_stab.webp" alt="Centurion">
-                    <span>CENTURION</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/New items/Hawk.webp" alt="Hawk">
-                    <span>HAWK</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/New items/Huskarl.webp" alt="Huskarl">
-                    <span>HUSKARL</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/New items/Petard.webp" alt="Petard">
-                    <span>PETARD</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/New items/Wolf_chase.webp" alt="Wolf">
-                    <span>WOLF</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/Paladin.webp" alt="Paladin">
-                    <span>PALADIN</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/Teutonic_Knight_cometh.gif" alt="Teutonic Knight">
-                    <span>TEUTONIC</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/camel.gif" alt="Camel Rider">
-                    <span>CAMEL</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/cavalry.gif" alt="Cavalry">
-                    <span>CAVALRY</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/lancer.gif" alt="Lancer">
-                    <span>LANCER</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/trebuchet.webp" alt="Trebuchet">
-                    <span>TREBUCHET</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/Catapault2.gif" alt="Catapult">
-                    <span>CATAPULT</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/stoic.gif" alt="Stoic">
-                    <span>STOIC</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/Villager.gif" alt="Villager">
-                    <span>VILLAGER</span>
-                </div>
-                <div class="unit-item" onclick="playUnitSound()">
-                    <img src="images/New 2025/roller.webp" alt="Roller">
-                    <span>ROLLER</span>
                 </div>
             </div>
         </div>
@@ -792,11 +740,14 @@
     })();
     </script>
 
-    <!-- Webvs visualizer -->
-    <script src="https://unpkg.com/webvs/dist/webvs.js"></script>
+    <!-- Winamp AVS visualizer — self-contained (Web Audio + canvas, no CDN) -->
     <script>
     (function() {
-        const music = document.getElementById('bgMusic');
+        const music  = document.getElementById('bgMusic');
+        const canvas = document.getElementById('vizCanvas');
+        const ctx    = canvas.getContext('2d');
+        const W = canvas.width, H = canvas.height;
+
         const playlist = [
             'sounds/index music/ambience2.mp3',
             'sounds/index music/spyro.mp3',
@@ -807,69 +758,97 @@
         music.addEventListener('ended', () => {
             track = (track + 1) % playlist.length;
             music.src = playlist[track];
-            music.play();
+            music.play().catch(() => {});
         });
 
-        let webvs = null, analyser = null, initialized = false;
+        let audioCtx = null, analyser = null, freq = null, wave = null, started = false;
 
-        function initWebvs() {
-            if (initialized) return;
+        // Build the Web Audio graph once, on a user gesture. Routing the media
+        // element through the analyser detaches it from the speakers, so we must
+        // reconnect analyser → destination for sound to come through.
+        function initAudio() {
+            if (audioCtx) { if (audioCtx.state === 'suspended') audioCtx.resume(); return; }
             try {
-                analyser = new Webvs.WebAudioAnalyser();
-                webvs = new Webvs.Main({
-                    canvas: document.getElementById('vizCanvas'),
-                    analyser,
-                    showStat: false
-                });
-                webvs.loadPreset({
-                    clearFrame: true,
-                    components: [{
-                        type: 'EffectList', input: 'REPLACE', output: 'REPLACE', clearFrame: true,
-                        components: [
-                            { type: 'SuperScope', code: { init: 'n=512;t=0;', perFrame: 't=t+0.1;', perPoint: 'x=i*2-1;y=v*1.8+sin(i*40+t*3)*v*0.4;' }, source: 'WAVEFORM', drawMode: 'LINES', colors: ['#FF6B6B','#FF3333','#FF0000'] },
-                            { type: 'SuperScope', code: { init: 'n=400;t=0;', perFrame: 't=t+0.15;', perPoint: 'x=i*2-1;y=-v*1.5+sin(t*2)*0.1;' }, source: 'WAVEFORM', drawMode: 'LINES', colors: ['#4ECDC4','#00FFFF'] },
-                            { type: 'SuperScope', code: { init: 'n=64;t=0;', perFrame: 't=t+0.05;', perPoint: 'x=i*2-1;y=v*2.2-0.3;' }, source: 'SPECTRUM', drawMode: 'LINES', colors: ['#FFE66D','#FF9900','#FF6600'] },
-                            { type: 'SuperScope', code: { init: 'n=150;t=0;', perFrame: 't=t+0.2;', perPoint: 'r=v*1.2;ang=i*3.14159*4+t;x=r*cos(ang);y=r*sin(ang);' }, source: 'WAVEFORM', drawMode: 'DOTS', colors: ['#FF6B6B','#4ECDC4','#FFE66D','#FF00FF'] },
-                            { type: 'FadeOut', speed: 0.82 }
-                        ]
-                    }]
-                });
-                analyser.load(music);
-                // Webvs reroutes the <audio> element into its Web Audio graph via
-                // createMediaElementSource, which detaches it from the default speaker
-                // output. Make sure the graph reaches the speakers and the context is
-                // running (it's often created suspended, esp. on file://), otherwise
-                // playback succeeds silently. Duplicate connections are ignored, so this
-                // is safe even if Webvs already wired it up.
-                const actx = analyser.analyser.context;
-                analyser.analyser.connect(actx.destination);
-                if (actx.state === 'suspended') actx.resume();
-                initialized = true;
-            } catch(e) { console.warn('Webvs init failed:', e); }
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const src = audioCtx.createMediaElementSource(music);
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 1024;
+                analyser.smoothingTimeConstant = 0.8;
+                src.connect(analyser);
+                analyser.connect(audioCtx.destination);
+                freq = new Uint8Array(analyser.frequencyBinCount);
+                wave = new Uint8Array(analyser.fftSize);
+                // Expose for the audio-reactive burst module (Part E).
+                window.__vizAnalyser = analyser;
+                window.__vizFreq = freq;
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+            } catch (e) { console.warn('Audio init failed:', e); }
         }
 
-        function tryPlay() {
-            music.play().then(initWebvs).catch(() => {
-                document.addEventListener('click', () => music.play().then(initWebvs), { once: true });
-            });
+        function start() {
+            if (started) return;
+            started = true;
+            initAudio();
+            music.play().catch(() => { started = false; });
         }
-        tryPlay();
+        // Autoplay may be allowed; if not, first gesture starts it.
+        music.play().then(initAudio).catch(() => {});
+        document.addEventListener('click',   start, { once: true });
+        document.addEventListener('keydown', start, { once: true });
+        canvas.parentElement.addEventListener('mousedown', start);
 
-        // Audio-reactive background
-        setTimeout(() => {
+        const PAL = ['#FF6B6B', '#4ECDC4', '#FFE66D'];
+
+        function draw() {
+            requestAnimationFrame(draw);
+            // Trailing fade for that AVS phosphor look.
+            ctx.fillStyle = 'rgba(6, 8, 14, 0.28)';
+            ctx.fillRect(0, 0, W, H);
+
             if (!analyser) return;
-            const buf = new Uint8Array(analyser.analyser.frequencyBinCount);
-            function tick() {
-                analyser.analyser.getByteFrequencyData(buf);
+            analyser.getByteFrequencyData(freq);
+            analyser.getByteTimeDomainData(wave);
+
+            // ── Spectrum bars (bottom) ──
+            const bars = 48;
+            const step = Math.floor(freq.length / bars);
+            const bw = W / bars;
+            let bass = 0;
+            for (let i = 0; i < bars; i++) {
                 let sum = 0;
-                for (let i = 0; i < 32; i++) sum += buf[i];
-                const p = (sum / 32 / 255) * 20;
-                document.body.style.background =
-                    `linear-gradient(to bottom,hsl(234,${20+p}%,${12+p}%) 0%,hsl(217,${30+p}%,${15+p}%) 50%,hsl(207,${60+p}%,${20+p}%) 100%)`;
-                requestAnimationFrame(tick);
+                for (let j = 0; j < step; j++) sum += freq[i * step + j];
+                const v = (sum / step) / 255;
+                if (i < 8) bass += v;
+                const bh = v * H * 0.7;
+                const g = ctx.createLinearGradient(0, H, 0, H - bh);
+                g.addColorStop(0, PAL[2]);
+                g.addColorStop(0.5, PAL[1]);
+                g.addColorStop(1, PAL[0]);
+                ctx.fillStyle = g;
+                ctx.fillRect(i * bw + 1, H - bh, bw - 2, bh);
             }
-            tick();
-        }, 2000);
+
+            // ── Oscilloscope (waveform overlay) ──
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = PAL[1];
+            ctx.shadowColor = PAL[1];
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            const slice = W / wave.length;
+            for (let i = 0; i < wave.length; i++) {
+                const y = (wave[i] / 255) * (H * 0.5) + H * 0.25;
+                const x = i * slice;
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // ── Audio-reactive page background ──
+            const p = Math.min((bass / 8) * 22, 22);
+            document.body.style.background =
+                `linear-gradient(to bottom,hsl(234,${20 + p}%,${12 + p}%) 0%,hsl(217,${30 + p}%,${15 + p}%) 50%,hsl(207,${60 + p}%,${20 + p}%) 100%)`;
+        }
+        draw();
     })();
     </script>
 
@@ -913,8 +892,8 @@
                 else          { m.pause(); return `<div class="terminal-success">♪ Music paused</div>`; }
             },
             units: () => `<div class="terminal-success">Units patrolling:</div>
-                <div>Villager (player-controlled) · Wolf · Cavalry · Lancer</div>
-                <div>Click anywhere on the page to command the Villager.</div>`,
+                <div>Wolf · Cavalry · Lancer wander the labyrinth.</div>
+                <div>Click anywhere to disturb the void.</div>`,
             clear: () => { body.innerHTML = ''; return ''; },
             exit:  () => { close(); return ''; }
         };
@@ -956,50 +935,6 @@
                 body.scrollTop = body.scrollHeight;
             });
         }
-    })();
-    </script>
-
-    <!-- Villager click-to-move -->
-    <script>
-    (function() {
-        function init() {
-            const villager = document.getElementById('villager');
-            if (!villager) { setTimeout(init, 10); return; }
-            let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
-            let cx = tx, cy = ty;
-            let moving = false;
-
-            villager.style.left = (cx - 32) + 'px';
-            villager.style.top  = (cy - 32) + 'px';
-
-            function move() {
-                const dx = tx - cx, dy = ty - cy;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                if (dist < 2) { moving = false; return; }
-                const spd = 5;
-                cx += (dx / dist) * spd;
-                cy += (dy / dist) * spd;
-                villager.style.left      = (cx - 32) + 'px';
-                villager.style.top       = (cy - 32) + 'px';
-                villager.style.transform = dx < 0 ? 'scaleX(-1)' : 'scaleX(1)';
-                if (moving) requestAnimationFrame(move);
-            }
-
-            document.addEventListener('click', e => {
-                // Ignore clicks on the unit gallery or links
-                if (e.target.closest('.unit-item') || e.target.closest('a') || e.target.closest('.terminal-overlay')) return;
-                tx = e.clientX; ty = e.clientY;
-                if (!moving) { moving = true; move(); }
-            });
-            document.addEventListener('touchstart', e => {
-                e.preventDefault();
-                tx = e.touches[0].clientX; ty = e.touches[0].clientY;
-                if (!moving) { moving = true; move(); }
-            }, { passive: false });
-        }
-        document.readyState === 'loading'
-            ? document.addEventListener('DOMContentLoaded', init)
-            : init();
     })();
     </script>
 
@@ -1061,18 +996,109 @@
     })();
     </script>
 
-    <!-- Unit sound player -->
+    <!-- Particle gravity playground (click to spawn; particles fall + chase cursor) -->
     <script>
-    function playUnitSound() {
-        const pool = [
-            'sounds/rooster1.mp3',
-            'sounds/rooster3.mp3',
-            'sounds/Magic_Tree.ogg'
-        ];
-        const a = new Audio(pool[Math.floor(Math.random() * pool.length)]);
-        a.volume = 0.6;
-        a.play().catch(() => {});
-    }
+    (function() {
+        const canvas = document.getElementById('fxCanvas');
+        const ctx    = canvas.getContext('2d');
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const mouse = { x: -9999, y: -9999, active: false };
+        document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
+        document.addEventListener('mouseleave', () => { mouse.active = false; });
+
+        const GRAVITY   = 0.12;
+        const ATTRACT   = 1400;   // cursor pull strength
+        const MAX       = 900;    // capped pool
+        const HUES      = [0, 174, 51];         // red / teal / yellow-ish (deg)
+        const particles = [];
+
+        function spawn(x, y, count, opts = {}) {
+            const speed = opts.speed != null ? opts.speed : 4;
+            for (let i = 0; i < count; i++) {
+                if (particles.length >= MAX) particles.shift();
+                const a = Math.random() * Math.PI * 2;
+                const s = Math.random() * speed + 1;
+                particles.push({
+                    x, y,
+                    vx: Math.cos(a) * s,
+                    vy: Math.sin(a) * s - (opts.lift || 0),
+                    life: 1,
+                    decay: Math.random() * 0.008 + 0.004,
+                    r: Math.random() * 2.5 + 1.5,
+                    hue: opts.hue != null ? opts.hue : HUES[(Math.random() * HUES.length) | 0]
+                });
+            }
+        }
+        // Shared spawn hook for the audio-reactive burst module.
+        window.__fxBurst = (x, y, n, hue) => spawn(x, y, n, { hue, speed: 6, lift: 0 });
+
+        // Click anywhere (except interactive elements) to spawn a fountain.
+        document.addEventListener('click', e => {
+            if (e.target.closest('a, button, input, .terminal-overlay, .visualizer-container, #bgAudioToggle')) return;
+            spawn(e.clientX, e.clientY, 40, { speed: 5, lift: 3 });
+        });
+
+        function tick() {
+            requestAnimationFrame(tick);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.vy += GRAVITY;
+                if (mouse.active) {
+                    const dx = mouse.x - p.x, dy = mouse.y - p.y;
+                    const d2 = dx * dx + dy * dy + 200;
+                    const f  = ATTRACT / d2;
+                    p.vx += dx * f * 0.02;
+                    p.vy += dy * f * 0.02;
+                }
+                p.vx *= 0.99;
+                p.x  += p.vx;
+                p.y  += p.vy;
+                if (p.y > canvas.height - 2) { p.y = canvas.height - 2; p.vy *= -0.5; p.vx *= 0.8; }
+                p.life -= p.decay;
+                if (p.life <= 0) { particles.splice(i, 1); continue; }
+                ctx.beginPath();
+                ctx.fillStyle = `hsla(${p.hue}, 90%, 62%, ${p.life})`;
+                ctx.shadowColor = `hsla(${p.hue}, 90%, 62%, ${p.life})`;
+                ctx.shadowBlur = 8;
+                ctx.arc(p.x, p.y, p.r * p.life + 0.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.shadowBlur = 0;
+        }
+        tick();
+    })();
+    </script>
+
+    <!-- Audio-reactive burst (fires particle bursts on bass beats via the visualizer analyser) -->
+    <script>
+    (function() {
+        let last = 0;          // rolling bass average
+        let cooldown = 0;
+        function tick() {
+            requestAnimationFrame(tick);
+            const analyser = window.__vizAnalyser, freq = window.__vizFreq;
+            if (!analyser || !freq || !window.__fxBurst) return;
+            analyser.getByteFrequencyData(freq);
+            let bass = 0;
+            for (let i = 0; i < 8; i++) bass += freq[i];
+            bass /= 8 * 255;                 // 0..1
+            last = last * 0.92 + bass * 0.08;
+            cooldown--;
+            // Beat = sudden jump above the rolling average.
+            if (bass > 0.55 && bass > last * 1.35 && cooldown <= 0) {
+                cooldown = 12;
+                const x = window.innerWidth  * (0.25 + Math.random() * 0.5);
+                const y = window.innerHeight * (0.25 + Math.random() * 0.4);
+                const hue = [0, 174, 51][(Math.random() * 3) | 0];
+                window.__fxBurst(x, y, Math.round(24 + bass * 40), hue);
+            }
+        }
+        tick();
+    })();
     </script>
 
     <!-- ASCII: Wandering Creatures -->
@@ -1192,78 +1218,20 @@
     })();
     </script>
 
+    <!-- BG audio toggle — controls the single #bgMusic source -->
     <script>
     (function() {
-        const track   = document.getElementById('bgTrack');
-        const btn     = document.getElementById('bgAudioToggle');
-        const TARGET  = 0.35;
-        const FADE_MS = 5000;
-        let started   = false;
-        let fadeRaf   = null;
-
-        track.volume = 0;
-
-        function fadeIn() {
-            cancelAnimationFrame(fadeRaf);
-            const startTime = performance.now();
-            const startVol  = track.volume;
-            function step(now) {
-                const t = Math.min((now - startTime) / FADE_MS, 1);
-                track.volume = startVol + (TARGET - startVol) * t;
-                if (t < 1) fadeRaf = requestAnimationFrame(step);
-            }
-            fadeRaf = requestAnimationFrame(step);
-        }
-
-        // Smooth loop: crossfade the last second back to the start
-        track.addEventListener('timeupdate', function() {
-            if (!track.duration) return;
-            const remaining = track.duration - track.currentTime;
-            if (remaining < 1 && remaining > 0) {
-                // fade out as we approach end, then jump and fade back in
-                track.volume = TARGET * (remaining / 1);
-            }
-        });
-        track.addEventListener('ended', function() {
-            track.currentTime = 0;
-            track.volume = 0;
-            track.play().catch(() => {});
-            fadeIn();
-        });
-        // disable the native loop so our ended handler fires
-        track.loop = false;
-
-        function startTrack() {
-            if (started) return;
-            started = true;
-            // jump to a random position once duration is known
-            function doStart() {
-                track.currentTime = Math.random() * track.duration;
-                track.play().catch(() => {});
-                fadeIn();
-            }
-            if (track.readyState >= 1) {
-                doStart();
-            } else {
-                track.addEventListener('loadedmetadata', doStart, { once: true });
-            }
-        }
-
-        document.addEventListener('click',   startTrack, { once: true });
-        document.addEventListener('keydown', startTrack, { once: true });
+        const music = document.getElementById('bgMusic');
+        const btn   = document.getElementById('bgAudioToggle');
 
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            startTrack();
-            if (track.paused) {
-                track.play().catch(() => {});
-                fadeIn();
+            if (music.paused) {
+                music.play().catch(() => {});
                 btn.textContent = '♪ BG';
                 btn.classList.remove('muted');
             } else {
-                cancelAnimationFrame(fadeRaf);
-                track.pause();
-                track.volume = 0;
+                music.pause();
                 btn.textContent = '♪ OFF';
                 btn.classList.add('muted');
             }

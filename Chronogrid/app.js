@@ -55,16 +55,23 @@ function getDaysUntil(dateStr) {
   return Math.round((target - today) / 86400000);
 }
 
+// Compact relative distance for any horizon: days → weeks → months → years.
+function relativeSpan(days) {
+  if (days < 7)   return `${days}d`;
+  if (days < 28)  return `${Math.round(days / 7)}w`;
+  if (days < 365) return `${Math.round(days / 30)}mo`;
+  const years = days / 365;
+  return years < 10 ? `${years.toFixed(years % 1 >= 0.1 ? 1 : 0)}y` : `${Math.round(years)}y`;
+}
+
 function formatDate(dateStr) {
   if (!dateStr) return 'No date';
   const days = getDaysUntil(dateStr);
   if (days === 0)  return 'TODAY';
   if (days === 1)  return 'TOMORROW';
   if (days === -1) return 'YESTERDAY';
-  if (days > 1 && days < 8)  return `in ${days}d`;
-  if (days < -1)  return `${Math.abs(days)}d ago`;
-  const d = new Date(dateStr + 'T00:00:00');
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  if (days > 1)    return `in ${relativeSpan(days)}`;
+  return `${relativeSpan(Math.abs(days))} ago`;
 }
 
 function formatChipDate(dateStr) {
@@ -297,11 +304,14 @@ function renderToday() {
   const container = document.getElementById('todayContent');
   container.innerHTML = '';
 
-  // Categorise events
-  const overdue  = [];
+  // Categorise events by horizon
+  const overdue   = [];
   const todayEvts = [];
-  const upcoming = [];
-  const someday  = [];
+  const week      = [];   // 1–7 days
+  const month     = [];   // 8–30 days
+  const year      = [];   // 31–365 days
+  const later     = [];   // 365+ days
+  const someday   = [];   // no date
 
   events.forEach(evt => {
     if (!evt.date) {
@@ -309,16 +319,24 @@ function renderToday() {
       return;
     }
     const d = getDaysUntil(evt.date);
-    if (d < 0)      overdue.push(evt);
-    else if (d === 0) todayEvts.push(evt);
-    else if (d <= 7)  upcoming.push(evt);
+    if (d < 0)         overdue.push(evt);
+    else if (d === 0)  todayEvts.push(evt);
+    else if (d <= 7)   week.push(evt);
+    else if (d <= 30)  month.push(evt);
+    else if (d <= 365) year.push(evt);
+    else               later.push(evt);
   });
 
-  overdue.sort((a, b)   => getDaysUntil(a.date) - getDaysUntil(b.date));
+  const byDate = (a, b) => getDaysUntil(a.date) - getDaysUntil(b.date);
+  overdue.sort(byDate);
   todayEvts.sort((a, b) => (a.time || '99:99').localeCompare(b.time || '99:99'));
-  upcoming.sort((a, b)  => getDaysUntil(a.date) - getDaysUntil(b.date));
+  week.sort(byDate);
+  month.sort(byDate);
+  year.sort(byDate);
+  later.sort(byDate);
 
-  const total = overdue.length + todayEvts.length + upcoming.length + someday.length;
+  const total = overdue.length + todayEvts.length + week.length +
+                month.length + year.length + later.length + someday.length;
   if (total === 0) {
     container.innerHTML = '<div class="today-empty">All clear — nothing on the horizon.<br>Tap + to add something.</div>';
     return;
@@ -361,8 +379,11 @@ function renderToday() {
   }
 
   buildSection('OVERDUE',     '⚠',  overdue,   'overdue');
-  buildSection('NEXT 7 DAYS', '◈',  upcoming,  'upcoming');
   buildSection('TODAY',       '◉',  todayEvts, 'today');
+  buildSection('NEXT 7 DAYS', '◈',  week,      'upcoming');
+  buildSection('THIS MONTH',  '◷',  month,     'month');
+  buildSection('THIS YEAR',   '◎',  year,      'year');
+  buildSection('LATER',       '∞',  later,     'later');
   buildSection('SOMEDAY',     '◇',  someday,   'someday');
 }
 

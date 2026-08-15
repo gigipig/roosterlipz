@@ -231,6 +231,9 @@ body {
 .today-section-hdr.overdue  { color: var(--urgent); }
 .today-section-hdr.today    { color: var(--recurring); }
 .today-section-hdr.upcoming { color: var(--longterm); }
+.today-section-hdr.month    { color: #4ec7c4; }
+.today-section-hdr.year     { color: var(--longterm); opacity: 0.75; }
+.today-section-hdr.later    { color: var(--neutral); }
 .today-section-hdr.neutral  { color: var(--neutral); }
 .today-section-hdr.someday  { color: var(--someday); }
 
