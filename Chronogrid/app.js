@@ -378,7 +378,6 @@ function renderToday() {
         <div class="row-action complete"><span>✓</span></div>
         <div class="row-action snooze"><span>⏰</span></div>
         <div class="today-row ${evt.category}" data-id="${evt.id}">
-          <div class="today-dot ${evt.category}"></div>
           <div class="today-row-body">
             <div class="today-row-title">${escHtml(evt.title)}</div>
             <div class="today-row-meta">${escHtml(meta)}</div>

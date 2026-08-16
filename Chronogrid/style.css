@@ -296,9 +296,10 @@ body {
 .today-row-wrap.swiping-left  .row-action.snooze   { opacity: 1; }
 
 .today-row {
-  display: flex; align-items: center; gap: 14px;
-  padding: 13px 20px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 16px 11px 15px;
   background: var(--bg);
+  border-left: 3px solid transparent;
   cursor: pointer;
   transition: background 0.15s, opacity 0.35s, transform 0.35s;
   position: relative;
@@ -307,19 +308,16 @@ body {
 }
 .today-row:active { background: #14141c; }
 
+.today-row.urgent    { border-left-color: var(--urgent); }
+.today-row.recurring { border-left-color: var(--recurring); }
+.today-row.longterm  { border-left-color: var(--longterm); }
+.today-row.neutral   { border-left-color: var(--neutral); }
+.today-row.someday   { border-left-color: var(--someday); }
+
 .today-row.completing {
   opacity: 0;
   transform: translateX(32px);
 }
-
-.today-dot {
-  width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
-}
-.today-dot.urgent    { background: var(--urgent);    box-shadow: 0 0 6px var(--urgent-glow); }
-.today-dot.recurring { background: var(--recurring); box-shadow: 0 0 6px var(--recurring-glow); }
-.today-dot.longterm  { background: var(--longterm);  box-shadow: 0 0 6px var(--longterm-glow); }
-.today-dot.neutral   { background: var(--neutral);   box-shadow: 0 0 6px var(--neutral-glow); }
-.today-dot.someday   { background: var(--someday); }
 
 .today-row-body { flex: 1; min-width: 0; }
 
@@ -334,15 +332,15 @@ body {
   font-family: var(--font-mono);
   font-size: 11px;
   color: rgba(224, 232, 255, 0.4);
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
-/* Complete button */
+/* Complete button — recessed until hovered/tapped */
 .today-complete-btn {
-  width: 34px; height: 34px; border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.12);
-  background: var(--glass);
-  color: rgba(255,255,255,0.3); font-size: 15px;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: rgba(255,255,255,0.22); font-size: 13px;
   cursor: pointer; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   transition: all 0.18s; line-height: 1;
