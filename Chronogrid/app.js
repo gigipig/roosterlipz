@@ -5,6 +5,7 @@ const STORAGE_KEY    = 'chronogrid_events';
 const COMPLETED_KEY  = 'chronogrid_completed';
 const NOTE_KEY       = 'chronogrid_daily_note';
 const NOTIFY_LOG_KEY = 'chronogrid_notify_log';
+const REMIND_LOG_KEY = 'chronogrid_remind_log';
 
 const CAT_ICONS = {
   urgent:    '⚡',
@@ -27,6 +28,7 @@ let events        = [];
 let completedLog  = [];
 let editingId     = null;
 let selectedRecurrence = null;
+let selectedRemind     = null;   // minutes before, or null
 
 // Today view: far-horizon sections collapse by default; remember which the
 // user has opened so they stay open across re-renders within a session.
@@ -104,12 +106,12 @@ function escHtml(str) {
 
 /* ─── Toast ───────────────────────────────────────────────────── */
 let toastTimer;
-function showToast(msg) {
+function showToast(msg, ms = 2200) {
   const toast = document.getElementById('toast');
   scrambleText(toast, '> ' + msg, 320);
   toast.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), ms);
 }
 
 /* ─── Recurring Advancement ───────────────────────────────────── */
@@ -201,6 +203,7 @@ function markComplete(id) {
     time: evt.time || '',
     notes: evt.notes || '',
     recurrence: evt.recurrence || null,
+    remind: hasReminder(evt) ? evt.remind : null,
     completedAt: new Date().toISOString()
   });
   localStorage.setItem(COMPLETED_KEY, JSON.stringify(completedLog));
@@ -399,7 +402,7 @@ function renderToday() {
     list.forEach(evt => {
       const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? ` · ↻${evt.streak}` : '';
       const timePart   = evt.time ? ` · ${evt.time}` : '';
-      const meta       = formatDate(evt.date) + timePart + streakPart;
+      const meta       = formatDate(evt.date) + timePart + streakPart + reminderSuffix(evt);
 
       const wrap = document.createElement('div');
       wrap.className = 'today-row-wrap';
@@ -553,7 +556,7 @@ function renderGrid() {
     grouped[cat].forEach(evt => {
       const streakPart = (evt.category === 'recurring' && evt.streak > 0) ? ` · ↻${evt.streak}` : '';
       const timePart   = evt.time ? ` · ${evt.time}` : '';
-      const meta       = formatDate(evt.date) + timePart + streakPart;
+      const meta       = formatDate(evt.date) + timePart + streakPart + reminderSuffix(evt);
 
       const card = document.createElement('div');
       card.className = `event-card ${cat}`;
@@ -579,6 +582,7 @@ function renderAll() {
   renderStream();
   renderGrid();
   updateAppBadge();
+  checkReminders();
 }
 
 /* ─── Modal: Event ────────────────────────────────────────────── */
@@ -594,6 +598,7 @@ function openEventModal(evt = null, prefillCategory = null) {
   document.getElementById('deleteBtn').classList.remove('visible');
   document.getElementById('recurrenceRow').classList.remove('visible');
   document.querySelectorAll('.recur-btn').forEach(b => b.classList.remove('active'));
+  setRemindSelection(evt && hasReminder(evt) ? evt.remind : null);
 
   if (evt) {
     editingId = evt.id;
@@ -626,6 +631,7 @@ function openEventModal(evt = null, prefillCategory = null) {
     if (quickVal) document.getElementById('eventTitle').value = quickVal;
   }
 
+  updateRemindHint();
   backdrop.classList.add('open');
   setTimeout(() => document.getElementById('eventTitle').focus(), 300);
 }
@@ -635,28 +641,55 @@ function closeEventModal() {
   document.getElementById('quickAddInput').value = '';
   editingId = null;
   selectedRecurrence = null;
+  selectedRemind = null;
+}
+
+function setRemindSelection(val) {
+  selectedRemind = val;
+  document.querySelectorAll('.remind-btn').forEach(b =>
+    b.classList.toggle('active', val !== null && Number(b.dataset.val) === val));
+}
+
+// One line under the reminder buttons explaining what will actually happen.
+function updateRemindHint() {
+  const hint = document.getElementById('remindHint');
+  const date = document.getElementById('eventDate').value;
+  const time = document.getElementById('eventTime').value;
+  hint.classList.remove('warn');
+  if (selectedRemind === null) { hint.textContent = ''; return; }
+  if (!date) {
+    hint.textContent = 'Set a date, or this reminder has nothing to fire on.';
+    hint.classList.add('warn');
+  } else if (!('Notification' in window) || Notification.permission === 'denied') {
+    hint.textContent = 'Notifications are blocked here, so you will only see this inside the app. Use + Calendar for a real alert.';
+    hint.classList.add('warn');
+  } else if (!time) {
+    hint.textContent = 'No time set — counted as 9:00. Fires while ChronoGrid is open; use + Calendar for alerts when it is closed.';
+  } else {
+    hint.textContent = 'Fires while ChronoGrid is open; use + Calendar for alerts when it is closed.';
+  }
+}
+
+// Current form contents as an event payload (shared by Save and + Calendar).
+function readEventForm() {
+  const catRadio = document.querySelector('input[name="category"]:checked');
+  const category = catRadio ? catRadio.value : 'someday';
+  return {
+    title:      document.getElementById('eventTitle').value.trim(),
+    date:       document.getElementById('eventDate').value || '',
+    time:       document.getElementById('eventTime').value || '',
+    category,
+    recurrence: category === 'recurring' ? selectedRecurrence : null,
+    notes:      document.getElementById('eventNotes').value.trim(),
+    streak:     editingId ? (events.find(e => e.id === editingId)?.streak || 0) : 0,
+    remind:     selectedRemind
+  };
 }
 
 function handleEventSubmit(e) {
   e.preventDefault();
-  const title    = document.getElementById('eventTitle').value.trim();
-  const date     = document.getElementById('eventDate').value;
-  const time     = document.getElementById('eventTime').value;
-  const notes    = document.getElementById('eventNotes').value.trim();
-  const catRadio = document.querySelector('input[name="category"]:checked');
-  const category = catRadio ? catRadio.value : 'someday';
-
-  if (!title) return;
-
-  const payload = {
-    title,
-    date:       date || '',
-    time:       time || '',
-    category,
-    recurrence: category === 'recurring' ? selectedRecurrence : null,
-    notes,
-    streak:     editingId ? (events.find(e => e.id === editingId)?.streak || 0) : 0
-  };
+  const payload = readEventForm();
+  if (!payload.title) return;
 
   if (editingId) {
     updateEvent(editingId, payload);
@@ -748,7 +781,8 @@ function restoreCompleted(logId) {
     category:   c.category,
     recurrence: c.recurrence || null,
     notes:      c.notes || '',
-    streak:     0
+    streak:     0,
+    remind:     (c.remind === undefined ? null : c.remind)
   });
 
   // Remove it from the completion log so it isn't double-counted.
@@ -888,40 +922,273 @@ function updateNotifyButton() {
   }
 }
 
-/* ─── Export / Import ─────────────────────────────────────────── */
-function exportJSON() {
-  const blob = new Blob([JSON.stringify(events, null, 2)], { type: 'application/json' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = `chronogrid-backup-${todayISO()}.json`;
+/* ─── Reminders ───────────────────────────────────────────────── */
+// evt.remind = minutes before the event (0, 10, 60, 1440) or null for none.
+// Fires while the app is open or backgrounded; a browser can't wake a closed
+// app, which is what the calendar (.ics) hand-off below is for.
+const REMIND_LABELS  = { 0: 'at time', 10: '10m', 60: '1h', 1440: '1d' };
+const DEFAULT_TIME   = '09:00';          // events with no time count as 9am
+const REMIND_GRACE   = 15 * 60000;       // still fire up to 15 min after the event
+
+function hasReminder(evt) {
+  return evt.remind !== null && evt.remind !== undefined && !!evt.date;
+}
+
+function eventDateTime(evt) {
+  return new Date(`${evt.date}T${evt.time || DEFAULT_TIME}:00`);
+}
+
+function reminderSuffix(evt) {
+  return hasReminder(evt) ? ` · 🔔${REMIND_LABELS[evt.remind] || ''}` : '';
+}
+
+function loadRemindLog() {
+  try { return JSON.parse(localStorage.getItem(REMIND_LOG_KEY) || '{}') || {}; } catch (e) { return {}; }
+}
+
+function checkReminders() {
+  const now = Date.now();
+  const log = loadRemindLog();
+  let dirty = false;
+
+  // Forget fired entries after 3 days
+  Object.keys(log).forEach(k => { if (now - log[k] > 3 * 86400000) { delete log[k]; dirty = true; } });
+
+  events.forEach(evt => {
+    if (!hasReminder(evt)) return;
+    const at = eventDateTime(evt).getTime();
+    if (isNaN(at)) return;
+    const fireAt = at - evt.remind * 60000;
+    if (now < fireAt || now > at + REMIND_GRACE) return;
+
+    const key = `${evt.id}|${fireAt}`;      // recurring events get a new key each cycle
+    if (log[key]) return;
+    log[key] = now;
+    dirty = true;
+    fireReminder(evt, at - now);
+  });
+
+  if (dirty) localStorage.setItem(REMIND_LOG_KEY, JSON.stringify(log));
+}
+
+function fireReminder(evt, msUntil) {
+  const mins = Math.round(msUntil / 60000);
+  let when;
+  if (mins <= 0)        when = 'now';
+  else if (mins < 60)   when = `in ${mins}m`;
+  else if (mins < 1440) when = `in ${Math.round(mins / 60)}h`;
+  else                  when = formatDate(evt.date).toLowerCase();
+  const body = evt.time ? `${when} · ${evt.time}` : when;
+
+  if (navigator.vibrate) navigator.vibrate([30, 60, 30]);
+  showToast(`🔔 ${evt.title} — ${when}`, 6000);
+
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const opts = { body, icon: './icon.svg', badge: './icon.svg', tag: `chronogrid-remind-${evt.id}`, renotify: true };
+  const direct = () => { try { new Notification(evt.title, opts); } catch (e) {} };
+  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.ready.then(reg => reg.showNotification(evt.title, opts)).catch(direct);
+  } else {
+    direct();
+  }
+}
+
+/* ─── Calendar hand-off (.ics) ────────────────────────────────── */
+function icsEscape(str) {
+  return String(str).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+}
+
+// RFC 5545: lines are at most 75 bytes; continuation lines start with a space.
+function icsFold(line) {
+  const enc = new TextEncoder();
+  let out = '', cur = '', bytes = 0;
+  for (const ch of line) {
+    const n = enc.encode(ch).length;
+    if (bytes + n > 73) { out += cur + '\r\n '; cur = ''; bytes = 1; }
+    cur += ch; bytes += n;
+  }
+  return out + cur;
+}
+
+function icsDuration(mins) {          // signed minutes → e.g. -PT10M, PT8H50M, -P1D
+  const sign = mins < 0 ? '-' : '';
+  let m = Math.abs(mins);
+  const d = Math.floor(m / 1440); m -= d * 1440;
+  const h = Math.floor(m / 60);   m -= h * 60;
+  const t = (h ? `${h}H` : '') + (m ? `${m}M` : '');
+  return `${sign}P${d ? d + 'D' : ''}${t ? 'T' + t : ''}` + (!d && !t ? 'T0M' : '');
+}
+
+function buildICS(list) {
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ChronoGrid//EN', 'CALSCALE:GREGORIAN'];
+
+  list.filter(e => e.date).forEach(evt => {
+    const ymd = evt.date.replace(/-/g, '');
+    lines.push('BEGIN:VEVENT', `UID:${evt.id}@chronogrid`, `DTSTAMP:${stamp}`);
+
+    if (evt.time) {
+      // Floating local time: shows at this wall-clock time on whatever device imports it
+      lines.push(`DTSTART:${ymd}T${evt.time.replace(':', '')}00`, 'DURATION:PT30M');
+    } else {
+      const next = new Date(evt.date + 'T00:00:00'); next.setDate(next.getDate() + 1);
+      lines.push(`DTSTART;VALUE=DATE:${ymd}`, `DTEND;VALUE=DATE:${localISO(next).replace(/-/g, '')}`);
+    }
+
+    lines.push(`SUMMARY:${icsEscape(evt.title)}`);
+    if (evt.notes) lines.push(`DESCRIPTION:${icsEscape(evt.notes)}`);
+    if (evt.category === 'recurring' && evt.recurrence) {
+      lines.push(`RRULE:FREQ=${evt.recurrence === 'weekly' ? 'WEEKLY' : 'MONTHLY'}`);
+    }
+
+    if (hasReminder(evt)) {
+      // All-day events start at midnight, so shift the alarm to our 9am convention
+      const [dh, dm] = DEFAULT_TIME.split(':').map(Number);
+      const offset = evt.time ? -evt.remind : (dh * 60 + dm) - evt.remind;
+      lines.push('BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${icsEscape(evt.title)}`,
+                 `TRIGGER:${icsDuration(offset)}`, 'END:VALARM');
+    }
+    lines.push('END:VEVENT');
+  });
+
+  lines.push('END:VCALENDAR');
+  return lines.map(icsFold).join('\r\n') + '\r\n';
+}
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a   = document.createElement('a');
+  a.href = url; a.download = filename;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function exportICS(list, filename) {
+  const dated = list.filter(e => e.date);
+  if (dated.length === 0) { showToast('Set a date first'); return; }
+
+  const ics  = buildICS(dated);
+  const file = new File([ics], filename, { type: 'text/calendar' });
+
+  // On phones the share sheet hands the file straight to the calendar app
+  const touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  if (touch && navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: 'ChronoGrid' }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; /* else fall through to download */ }
+  }
+  downloadBlob(file, filename);
+  showToast(dated.length === 1 ? 'Calendar file saved — open it to add' : `${dated.length} events saved to calendar file`, 3500);
+}
+
+/* ─── Export / Import ─────────────────────────────────────────── */
+// Backup format v2: { app, version, exportedAt, events, completed, notes }.
+// v1 backups were a bare array of events and are still accepted on import.
+const CATEGORIES = ['urgent', 'recurring', 'longterm', 'neutral', 'someday'];
+const cleanId  = id  => String(id).replace(/[^\w-]/g, '').slice(0, 64);
+const cleanCat = cat => CATEGORIES.includes(cat) ? cat : 'neutral';
+const cleanStr = (v, max) => (typeof v === 'string' ? v : '').slice(0, max);
+const isDate   = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v);
+const isTime   = v => typeof v === 'string' && /^\d{2}:\d{2}$/.test(v);
+
+function exportJSON() {
+  const backup = {
+    app: 'chronogrid',
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    events,
+    completed: completedLog,
+    notes: loadNotes()
+  };
+  downloadBlob(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }),
+               `chronogrid-backup-${todayISO()}.json`);
+  const noteCount = Object.keys(backup.notes).length;
+  showToast(`Backup: ${events.length} events · ${completedLog.length} done · ${noteCount} notes`, 3500);
 }
 
 function importJSON(file) {
   const reader = new FileReader();
   reader.onload = e => {
     try {
-      const imported = JSON.parse(e.target.result);
-      if (!Array.isArray(imported)) throw new Error('Not an array');
-      const existingIds = new Set(events.map(ev => ev.id));
-      let added = 0;
-      imported.forEach(ev => {
-        if (ev.id && !existingIds.has(ev.id) && ev.title) {
-          events.push(ev);
-          existingIds.add(ev.id);
-          added++;
-        }
+      const data = JSON.parse(e.target.result);
+      const inEvents    = Array.isArray(data) ? data : data && data.events;
+      const inCompleted = (!Array.isArray(data) && data && data.completed) || [];
+      const inNotes     = (!Array.isArray(data) && data && data.notes) || {};
+      if (!Array.isArray(inEvents)) throw new Error('No events array');
+
+      // Events — merge by id, never overwrite what's already here
+      const eventIds = new Set(events.map(ev => ev.id));
+      let addedEvents = 0;
+      inEvents.forEach(ev => {
+        if (!ev || typeof ev.title !== 'string' || !ev.title.trim()) return;
+        const id = cleanId(ev.id || uuid()) || uuid();
+        if (eventIds.has(id)) return;
+        const category = cleanCat(ev.category);
+        events.push({
+          id,
+          title:      cleanStr(ev.title, 500),
+          date:       isDate(ev.date) ? ev.date : '',
+          time:       isTime(ev.time) ? ev.time : '',
+          category,
+          recurrence: category === 'recurring' && ['weekly', 'monthly'].includes(ev.recurrence) ? ev.recurrence : null,
+          notes:      cleanStr(ev.notes, 5000),
+          streak:     Number.isFinite(ev.streak) ? ev.streak : 0,
+          remind:     [0, 10, 60, 1440].includes(ev.remind) ? ev.remind : null
+        });
+        eventIds.add(id);
+        addedEvents++;
       });
+
+      // Completion history — merge by id
+      const doneIds = new Set(completedLog.map(c => c.id));
+      let addedDone = 0;
+      if (Array.isArray(inCompleted)) inCompleted.forEach(c => {
+        if (!c || typeof c.title !== 'string' || isNaN(new Date(c.completedAt))) return;
+        const id = cleanId(c.id || uuid()) || uuid();
+        if (doneIds.has(id)) return;
+        completedLog.push({
+          id,
+          eventId:     cleanId(c.eventId || ''),
+          title:       cleanStr(c.title, 500),
+          category:    cleanCat(c.category),
+          date:        isDate(c.date) ? c.date : '',
+          time:        isTime(c.time) ? c.time : '',
+          notes:       cleanStr(c.notes, 5000),
+          recurrence:  ['weekly', 'monthly'].includes(c.recurrence) ? c.recurrence : null,
+          remind:      [0, 10, 60, 1440].includes(c.remind) ? c.remind : null,
+          completedAt: new Date(c.completedAt).toISOString()
+        });
+        doneIds.add(id);
+        addedDone++;
+      });
+      completedLog.sort((a, b) => a.completedAt.localeCompare(b.completedAt));
+
+      // Daily notes — only fill days that have no note here
+      const notes = loadNotes();
+      let addedNotes = 0;
+      if (inNotes && typeof inNotes === 'object') Object.keys(inNotes).forEach(d => {
+        if (!isDate(d) || typeof inNotes[d] !== 'string' || !inNotes[d].trim()) return;
+        if (notes[d] && notes[d].trim()) return;
+        notes[d] = cleanStr(inNotes[d], 20000);
+        addedNotes++;
+      });
+
       saveEventsToStorage(events);
+      localStorage.setItem(COMPLETED_KEY, JSON.stringify(completedLog));
+      saveNotes(notes);
+
+      const noteEl = document.getElementById('todayNote');
+      if (noteEl && !noteEl.value.trim() && notes[todayISO()]) noteEl.value = notes[todayISO()];
+
+      advanceRecurring(events);
       renderAll();
       updateSettingsStats();
-      showToast(`Imported ${added} event(s)`);
+      renderSettingsNotes();
+      renderSettingsCompleted();
+      showToast(`Imported ${addedEvents} events · ${addedDone} done · ${addedNotes} notes`, 3500);
     } catch (err) {
-      alert('Import failed: invalid JSON file.');
+      showToast('Import failed: not a ChronoGrid backup', 3500);
     }
   };
   reader.readAsText(file);
@@ -1354,6 +1621,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Reminder buttons (tap again to turn off). First use asks for permission.
+  document.querySelectorAll('.remind-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const val = Number(btn.dataset.val);
+      setRemindSelection(selectedRemind === val ? null : val);
+      if (selectedRemind !== null && 'Notification' in window && Notification.permission === 'default') {
+        try { await Notification.requestPermission(); } catch (e) {}
+      }
+      updateRemindHint();
+    });
+  });
+  ['eventDate', 'eventTime'].forEach(id =>
+    document.getElementById(id).addEventListener('input', updateRemindHint));
+
+  // + Calendar: hand the event as currently typed to the device calendar
+  document.getElementById('icsBtn').addEventListener('click', () => {
+    const payload = readEventForm();
+    if (!payload.title) { showToast('Give it a title first'); return; }
+    const safe = payload.title.replace(/[^\w]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'event';
+    exportICS([{ id: editingId || uuid(), ...payload }], `${safe}.ics`);
+  });
+  document.getElementById('exportIcsBtn').addEventListener('click', () =>
+    exportICS(events, `chronogrid-${todayISO()}.ics`));
+
+  // Check for due reminders twice a minute while the app is alive
+  setInterval(checkReminders, 30000);
+
   // Notifications opt-in
   document.getElementById('notifyBtn').addEventListener('click', enableNotifications);
 
@@ -1428,6 +1722,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.visibilityState === 'visible') {
       updateAppBadge();
       maybeNotifyOnLaunch();
+      checkReminders();
     }
   });
 });

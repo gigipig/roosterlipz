@@ -787,6 +787,44 @@ textarea { resize: none; }
   color: var(--recurring); box-shadow: 0 0 8px var(--recurring-glow);
 }
 
+/* Reminder Row */
+.remind-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  background: rgba(68, 136, 255, 0.05); border: 1px solid rgba(68, 136, 255, 0.2);
+  border-radius: 4px;
+}
+.remind-label {
+  font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  color: var(--longterm); opacity: 0.85; flex-shrink: 0;
+}
+.remind-btn {
+  background: var(--glass); border: 1px solid var(--glass-border); border-radius: 4px;
+  color: rgba(224, 232, 255, 0.5);
+  font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 7px 9px; cursor: pointer; transition: all 0.2s;
+  touch-action: manipulation;
+}
+.remind-btn.active {
+  background: rgba(68, 136, 255, 0.15); border-color: var(--longterm);
+  color: var(--longterm); box-shadow: 0 0 8px var(--longterm-glow);
+}
+.remind-hint {
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.5;
+  color: var(--text-dim); margin-top: -6px; padding: 0 2px;
+}
+.remind-hint:empty { display: none; }
+.remind-hint.warn { color: #ffb347; }
+
+.btn-ics {
+  background: rgba(68, 136, 255, 0.08); border: 1px solid rgba(68, 136, 255, 0.3);
+  border-radius: 4px; color: var(--longterm);
+  font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  padding: 14px 12px; cursor: pointer; transition: background 0.2s;
+  white-space: nowrap; touch-action: manipulation;
+}
+.btn-ics:active { background: rgba(68, 136, 255, 0.2); }
+
 /* Modal Actions */
 .modal-actions { display: flex; gap: 10px; margin-top: 4px; }
 

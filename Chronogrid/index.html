@@ -138,11 +138,20 @@
           <button type="button" class="recur-btn" id="recurWeekly" data-val="weekly">Weekly</button>
           <button type="button" class="recur-btn" id="recurMonthly" data-val="monthly">Monthly</button>
         </div>
+        <div class="remind-row" id="remindRow">
+          <span class="remind-label">Remind before:</span>
+          <button type="button" class="remind-btn" data-val="0">At time</button>
+          <button type="button" class="remind-btn" data-val="10" title="10 minutes before">10m</button>
+          <button type="button" class="remind-btn" data-val="60" title="1 hour before">1h</button>
+          <button type="button" class="remind-btn" data-val="1440" title="1 day before">1d</button>
+        </div>
+        <div class="remind-hint" id="remindHint"></div>
         <div class="form-group">
           <textarea id="eventNotes" placeholder="Notes (optional)" rows="3"></textarea>
         </div>
         <div class="modal-actions">
           <button type="button" class="btn-delete" id="deleteBtn">Delete</button>
+          <button type="button" class="btn-ics" id="icsBtn" title="Add to your phone or desktop calendar">+ Calendar</button>
           <button type="submit" class="btn-save" id="saveBtn">Save</button>
         </div>
       </form>
@@ -157,9 +166,10 @@
         <button class="icon-btn modal-close" id="settingsModalClose" aria-label="Close">✕</button>
       </div>
       <div class="settings-body">
-        <p class="settings-info">ChronoGrid stores all data locally on your device. Export regularly to back up your events.</p>
-        <button class="btn-settings" id="exportBtn">⬇ Export JSON</button>
-        <label class="btn-settings import-label" for="importFile">⬆ Import JSON</label>
+        <p class="settings-info">ChronoGrid stores all data locally on your device. Export a backup regularly — it includes your events, daily notes and completion history.</p>
+        <button class="btn-settings" id="exportBtn">⬇ Export backup</button>
+        <label class="btn-settings import-label" for="importFile">⬆ Import backup</label>
+        <button class="btn-settings" id="exportIcsBtn">▦ Send all to calendar (.ics)</button>
         <input type="file" id="importFile" accept=".json" style="display:none">
         <button class="btn-settings" id="fxBtn"></button>
         <button class="btn-settings" id="notifyBtn">🔔 Enable notifications</button>
