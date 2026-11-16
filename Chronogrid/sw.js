@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chronogrid-v9';
+const CACHE_NAME = 'chronogrid-v10';
 const ASSETS = [
   './',
   './index.html',
@@ -6,7 +6,7 @@ const ASSETS = [
   './app.js',
   './manifest.json',
   './icon.svg',
-  'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap'
+  'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap'
 ];
 
 self.addEventListener('install', event => {

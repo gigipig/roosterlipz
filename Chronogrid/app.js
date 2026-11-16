@@ -42,14 +42,26 @@ function uuid() {
   });
 }
 
+// YYYY-MM-DD in the user's own timezone. (toISOString() is UTC, which is a
+// day behind local midnight anywhere east of Greenwich, e.g. UK summer time.)
+function localISO(d) {
+  const p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
 function todayISO() {
-  return new Date().toISOString().slice(0, 10);
+  return localISO(new Date());
+}
+
+// Local calendar day on which a completion-log entry was ticked off.
+function completedDay(c) {
+  return localISO(new Date(c.completedAt));
 }
 
 function offsetDate(days) {
   const d = new Date();
   d.setDate(d.getDate() + days);
-  return d.toISOString().slice(0, 10);
+  return localISO(d);
 }
 
 function getDaysUntil(dateStr) {
@@ -94,7 +106,7 @@ function escHtml(str) {
 let toastTimer;
 function showToast(msg) {
   const toast = document.getElementById('toast');
-  toast.textContent = msg;
+  scrambleText(toast, '> ' + msg, 320);
   toast.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
@@ -114,7 +126,7 @@ function advanceRecurring(evts) {
         else if (evt.recurrence === 'monthly') d.setMonth(d.getMonth() + 1);
         else break;
       }
-      evt.date = d.toISOString().slice(0, 10);
+      evt.date = localISO(d);
       changed = true;
     }
   });
@@ -204,7 +216,7 @@ function markComplete(id) {
       let d = new Date((evt.date || todayISO()) + 'T00:00:00');
       if (evt.recurrence === 'weekly') d.setDate(d.getDate() + 7);
       else if (evt.recurrence === 'monthly') d.setMonth(d.getMonth() + 1);
-      updateEvent(id, { date: d.toISOString().slice(0, 10), streak: (evt.streak || 0) + 1 });
+      updateEvent(id, { date: localISO(d), streak: (evt.streak || 0) + 1 });
     } else {
       deleteEvent(id);
     }
@@ -224,17 +236,18 @@ function snoozeEvent(id) {
   if (!evt) return;
 
   const today = new Date(); today.setHours(0, 0, 0, 0);
-  const tomorrow = new Date(today.getTime() + 86400000);
+  const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
 
   let target;
   if (evt.date) {
     const current = new Date(evt.date + 'T00:00:00');
-    target = current < tomorrow ? tomorrow : new Date(current.getTime() + 86400000);
+    if (current < tomorrow) target = tomorrow;
+    else { target = current; target.setDate(target.getDate() + 1); }
   } else {
     target = tomorrow;
   }
 
-  const iso = target.toISOString().slice(0, 10);
+  const iso = localISO(target);
   if (navigator.vibrate) navigator.vibrate(10);
   showToast(`⏰  ${evt.title} → ${formatDate(iso)}`);
   updateEvent(id, { date: iso });
@@ -302,9 +315,25 @@ function renderToday() {
 
   // Progress count
   const todayStr  = todayISO();
-  const doneToday = completedLog.filter(c => c.completedAt.startsWith(todayStr)).length;
+  const doneToday = completedLog.filter(c => completedDay(c) === todayStr).length;
   document.getElementById('todaySubtitle').textContent =
     doneToday > 0 ? `${doneToday} completed today` : 'what needs doing today';
+
+  // ASCII progress bar: today's done vs. still due (today + overdue)
+  const dueNow   = events.filter(e => e.date && getDaysUntil(e.date) <= 0).length;
+  const progress = document.getElementById('todayProgress');
+  const totalDay = doneToday + dueNow;
+  if (totalDay === 0) {
+    progress.innerHTML = '';
+  } else {
+    const CELLS  = 20;
+    const filled = Math.round((doneToday / totalDay) * CELLS);
+    const pct    = Math.round((doneToday / totalDay) * 100);
+    progress.innerHTML =
+      `<span class="pb-bracket">[</span><span class="pb-fill">${'█'.repeat(filled)}</span>` +
+      `<span class="pb-empty">${'░'.repeat(CELLS - filled)}</span><span class="pb-bracket">]</span>` +
+      `<span class="pb-label">${doneToday}/${totalDay} · ${pct}%</span>`;
+  }
 
   const container = document.getElementById('todayContent');
   container.innerHTML = '';
@@ -343,7 +372,7 @@ function renderToday() {
   const total = overdue.length + todayEvts.length + week.length +
                 month.length + year.length + later.length + someday.length;
   if (total === 0) {
-    container.innerHTML = '<div class="today-empty">All clear — nothing on the horizon.<br>Tap + to add something.</div>';
+    container.innerHTML = `<div class="today-empty"><pre class="ascii-art">${ASCII_CLEAR}</pre>All clear — nothing on the horizon.<br>Tap + to add something.</div>`;
     return;
   }
 
@@ -361,7 +390,7 @@ function renderToday() {
     const hdr = document.createElement('div');
     hdr.className = `today-section-hdr ${variant}`;
     const chevron = collapsible ? '<span class="sec-chevron">▸</span>' : '';
-    hdr.innerHTML = `<span class="today-sec-label">${chevron}${icon} ${label}</span><span class="today-sec-count">${list.length}</span>`;
+    hdr.innerHTML = `<span class="today-sec-label">${chevron}${icon} ${label}</span><span class="sec-rule" aria-hidden="true"></span><span class="today-sec-count">${list.length}</span>`;
     sec.appendChild(hdr);
 
     const rows = document.createElement('div');
@@ -375,8 +404,8 @@ function renderToday() {
       const wrap = document.createElement('div');
       wrap.className = 'today-row-wrap';
       wrap.innerHTML = `
-        <div class="row-action complete"><span>✓</span></div>
-        <div class="row-action snooze"><span>⏰</span></div>
+        <div class="row-action complete"><span>&gt;&gt; DONE</span></div>
+        <div class="row-action snooze"><span>+1D &lt;&lt;</span></div>
         <div class="today-row ${evt.category}" data-id="${evt.id}">
           <div class="today-row-body">
             <div class="today-row-title">${escHtml(evt.title)}</div>
@@ -418,14 +447,16 @@ function renderStream() {
   const visible = visibleEvents().sort((a, b) => getDaysUntil(b.date) - getDaysUntil(a.date));
 
   if (visible.length === 0) {
-    container.innerHTML = '<div class="stream-empty">No upcoming events.<br>Tap + to add your first event.</div>';
+    container.innerHTML = `<div class="stream-empty"><pre class="ascii-art">${ASCII_VOID}</pre>No upcoming events.<br>Tap + to add your first event.</div>`;
     document.querySelector('.stream-track').style.minHeight = '400px';
+    StreamRail.resize();
     return;
   }
 
   const count  = visible.length;
   const trackH = Math.max(500, count * 140);
   document.querySelector('.stream-track').style.minHeight = trackH + 'px';
+  StreamRail.resize();
 
   const daysArr   = visible.map(e => getDaysUntil(e.date));
   const finiteDays = daysArr.filter(d => isFinite(d));
@@ -503,7 +534,7 @@ function renderGrid() {
 
   const hasAny = catOrder.some(cat => grouped[cat].length > 0);
   if (!hasAny) {
-    container.innerHTML = '<div class="list-empty">No upcoming events.<br>Tap + or use the dock below.</div>';
+    container.innerHTML = `<div class="list-empty"><pre class="ascii-art">${ASCII_VOID}</pre>No upcoming events.<br>Tap + or use the dock below.</div>`;
     return;
   }
 
@@ -516,7 +547,7 @@ function renderGrid() {
 
     const hdr = document.createElement('div');
     hdr.className = `cat-group-hdr ${cat}`;
-    hdr.innerHTML = `${CAT_ICONS[cat]} ${CAT_LABELS[cat]}`;
+    hdr.innerHTML = `<span>${CAT_ICONS[cat]} ${CAT_LABELS[cat]}</span><span class="sec-rule" aria-hidden="true"></span><span class="cat-count">${grouped[cat].length}</span>`;
     group.appendChild(hdr);
 
     grouped[cat].forEach(evt => {
@@ -641,6 +672,7 @@ function openSettingsModal() {
   renderSettingsNotes();
   renderSettingsCompleted();
   updateNotifyButton();
+  updateFxButton();
   document.getElementById('settingsModalBackdrop').classList.add('open');
 }
 
@@ -686,7 +718,7 @@ function renderSettingsCompleted() {
   const today = todayISO();
   container.innerHTML = recent.map(c => {
     const when = new Date(c.completedAt);
-    const wIso = c.completedAt.slice(0, 10);
+    const wIso = completedDay(c);
     const label = wIso === today
       ? 'TODAY'
       : when.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
@@ -738,7 +770,7 @@ function updateSettingsStats() {
   events.forEach(e => { if (counts[e.category] !== undefined) counts[e.category]++; });
 
   const todayStr  = todayISO();
-  const doneToday = completedLog.filter(c => c.completedAt.startsWith(todayStr)).length;
+  const doneToday = completedLog.filter(c => completedDay(c) === todayStr).length;
 
   document.getElementById('settingsStats').innerHTML = `
     <span class="stat-urgent">⚡ Urgent: ${counts.urgent}</span><br>
@@ -895,33 +927,246 @@ function importJSON(file) {
   reader.readAsText(file);
 }
 
-/* ─── Background FX ───────────────────────────────────────────── */
-function generateStars() {
-  const container = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    const size = (Math.random() * 2 + 0.5).toFixed(1);
-    star.style.cssText = `
-      width: ${size}px; height: ${size}px;
-      left: ${Math.random() * 100}%; top: ${Math.random() * 100}%;
-      --dur: ${(Math.random() * 3 + 2).toFixed(1)}s;
-      --delay: ${(Math.random() * 4).toFixed(1)}s;
-      opacity: ${(Math.random() * 0.4 + 0.2).toFixed(2)};
-    `;
-    container.appendChild(star);
-  }
+/* ─── ASCII FX ────────────────────────────────────────────────── */
+// Everything visual is drawn as text on two small canvases at ~12fps.
+// Motion pauses when the tab is hidden, and is off by default for users
+// who prefer reduced motion (overridable in Settings).
+const FX_KEY = 'chronogrid_fx';
+const reduceMotionMQ = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+const FX_FONT = "'JetBrains Mono', ui-monospace, monospace";
+const SCRAMBLE_GLYPHS = '!<>-_\\/[]{}=+*^?#%01';
+
+function fxEnabled() {
+  const v = localStorage.getItem(FX_KEY);
+  if (v === 'on')  return true;
+  if (v === 'off') return false;
+  return !reduceMotionMQ.matches;
 }
 
-function generateParticles() {
-  const container = document.getElementById('streamParticles');
-  for (let i = 0; i < 8; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.cssText = `--dur: ${(Math.random() * 3 + 3).toFixed(1)}s; --delay: ${(Math.random() * 5).toFixed(1)}s;`;
-    container.appendChild(p);
-  }
+function setFxEnabled(on) {
+  localStorage.setItem(FX_KEY, on ? 'on' : 'off');
+  applyFx();
 }
+
+function applyFx() {
+  const on = fxEnabled() && document.visibilityState === 'visible';
+  document.body.classList.toggle('fx-off', !fxEnabled());
+  AsciiField.setRunning(on);
+  StreamRail.setRunning(on && document.getElementById('view-stream').classList.contains('active'));
+  updateFxButton();
+}
+
+function updateFxButton() {
+  const btn = document.getElementById('fxBtn');
+  if (btn) btn.textContent = fxEnabled() ? '▒ Motion effects: ON' : '░ Motion effects: OFF';
+}
+
+// "Decrypt" text in: random glyphs resolve left-to-right into the real string.
+function scrambleText(el, text, duration = 550) {
+  if (el._scramble) cancelAnimationFrame(el._scramble);
+  if (!fxEnabled()) { el.textContent = text; return; }
+  const start = performance.now();
+  const tick = now => {
+    const p = Math.min(1, (now - start) / duration);
+    const shown = Math.floor(p * text.length);
+    let out = text.slice(0, shown);
+    for (let i = shown; i < text.length; i++) {
+      out += text[i] === ' ' ? ' ' : SCRAMBLE_GLYPHS[(Math.random() * SCRAMBLE_GLYPHS.length) | 0];
+    }
+    el.textContent = out;
+    el._scramble = p < 1 ? requestAnimationFrame(tick) : null;
+  };
+  el._scramble = requestAnimationFrame(tick);
+}
+
+function lerpColor(stops, t) {
+  // stops: [[pos, r, g, b], ...] sorted by pos
+  for (let i = 1; i < stops.length; i++) {
+    if (t <= stops[i][0]) {
+      const a = stops[i - 1], b = stops[i];
+      const k = (t - a[0]) / (b[0] - a[0] || 1);
+      return [0, 1, 2].map(j => Math.round(a[j + 1] + (b[j + 1] - a[j + 1]) * k));
+    }
+  }
+  return stops[stops.length - 1].slice(1);
+}
+
+// Full-screen drifting character field (replaces the star field).
+const AsciiField = (() => {
+  const RAMP   = '.·:-=+*#';
+  const CELL_W = 11, CELL_H = 17, FPS = 12;
+  const STOPS  = [[0, 68, 136, 255], [0.6, 78, 199, 196], [1, 68, 255, 136]];
+  let canvas, ctx, cols = 0, rows = 0, raf = null, last = 0, t = 0, running = false;
+
+  function init() {
+    canvas = document.getElementById('asciiBg');
+    if (!canvas) return;
+    ctx = canvas.getContext('2d');
+    resize();
+    window.addEventListener('resize', resize);
+  }
+
+  function resize() {
+    if (!canvas) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = window.innerWidth, h = window.innerHeight;
+    canvas.width  = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / CELL_W);
+    rows = Math.ceil(h / CELL_H);
+    draw();
+  }
+
+  // Cheap layered interference pattern; roughly in [-2.4, 2.4].
+  function field(x, y) {
+    return Math.sin(x * 0.11 + t) * Math.cos(y * 0.09 - t * 0.6)
+         + Math.sin((x - y) * 0.05 + t * 0.4) * 0.8
+         + Math.cos(Math.hypot(x - cols * 0.75, y - rows * 0.25) * 0.2 - t * 1.3) * 0.6;
+  }
+
+  function draw() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `11px ${FX_FONT}`;
+    ctx.textBaseline = 'top';
+    for (let y = 0; y < rows; y++) {
+      const [r, g, b] = lerpColor(STOPS, y / rows);
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      for (let x = 0; x < cols; x++) {
+        const v = field(x, y);
+        if (v < 0.95) continue;                       // keep it sparse
+        const k = Math.min(1, (v - 0.95) / 1.3);
+        ctx.globalAlpha = 0.06 + k * 0.16;
+        ctx.fillText(RAMP[Math.min(RAMP.length - 1, (k * RAMP.length) | 0)], x * CELL_W, y * CELL_H);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function loop(now) {
+    raf = requestAnimationFrame(loop);
+    if (now - last < 1000 / FPS) return;
+    last = now;
+    t += 0.05;
+    draw();
+  }
+
+  function setRunning(on) {
+    if (on === running) return;
+    running = on;
+    if (on) raf = requestAnimationFrame(loop);
+    else { cancelAnimationFrame(raf); draw(); }   // leave a static frame behind
+  }
+
+  return { init, setRunning, redraw: () => draw() };
+})();
+
+// Vertical character "data rail" for the Stream view (replaces line + particles).
+// Packets flow downward: from the future toward now.
+const StreamRail = (() => {
+  const CELL_H = 14, COL_W = 9, COLS = 3, FPS = 14;
+  const STOPS  = [[0, 68, 136, 255], [0.6, 68, 255, 136], [1, 255, 136, 68]];
+  const TRAIL  = ['█', '▓', '▒', '░', '·'];
+  let canvas, ctx, track, rows = 0, raf = null, last = 0, running = false;
+  let packets = [];
+
+  function init() {
+    canvas = document.getElementById('streamRail');
+    track  = document.querySelector('.stream-track');
+    if (!canvas || !track) return;
+    ctx = canvas.getContext('2d');
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(track);
+    resize();
+  }
+
+  function resize() {
+    if (!canvas) return;
+    const h = track.clientHeight;
+    if (!h) return;
+    const w = COL_W * COLS;
+    // Very tall tracks: drop to 1x so the canvas stays within browser limits.
+    const dpr = h * 2 > 16000 ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width  = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    canvas.style.width  = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    rows = Math.ceil(h / CELL_H);
+    const n = Math.max(3, Math.round(rows / 12));
+    packets = Array.from({ length: n }, () => ({ y: Math.random() * rows, v: 0.25 + Math.random() * 0.35 }));
+    draw();
+  }
+
+  function draw() {
+    if (!ctx || !rows) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `12px ${FX_FONT}`;
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    const cx = COL_W * 1.5;
+
+    // Spine
+    for (let y = 0; y < rows; y++) {
+      const [r, g, b] = lerpColor(STOPS, y / rows);
+      ctx.fillStyle = `rgba(${r},${g},${b},0.35)`;
+      ctx.fillText('│', cx, y * CELL_H);
+      // occasional binary flicker on the side columns
+      if (running && Math.random() < 0.025) {
+        ctx.fillStyle = `rgba(${r},${g},${b},0.3)`;
+        ctx.fillText(Math.random() < 0.5 ? '0' : '1', Math.random() < 0.5 ? COL_W * 0.5 : COL_W * 2.5, y * CELL_H);
+      }
+    }
+
+    // Packets with a fading trail above them
+    packets.forEach(p => {
+      const head = Math.floor(p.y);
+      TRAIL.forEach((ch, i) => {
+        const y = head - i;
+        if (y < 0 || y >= rows) return;
+        const [r, g, b] = lerpColor(STOPS, y / rows);
+        ctx.clearRect(cx - COL_W / 2, y * CELL_H, COL_W, CELL_H);
+        ctx.fillStyle = `rgba(${r},${g},${b},${1 - i * 0.18})`;
+        ctx.fillText(ch, cx, y * CELL_H);
+      });
+    });
+  }
+
+  function loop(now) {
+    raf = requestAnimationFrame(loop);
+    if (now - last < 1000 / FPS) return;
+    last = now;
+    packets.forEach(p => {
+      p.y += p.v;
+      if (p.y - TRAIL.length > rows) { p.y = -Math.random() * 6; p.v = 0.25 + Math.random() * 0.35; }
+    });
+    draw();
+  }
+
+  function setRunning(on) {
+    if (on === running) return;
+    running = on;
+    if (on) { resize(); raf = requestAnimationFrame(loop); }
+    else { cancelAnimationFrame(raf); draw(); }
+  }
+
+  return { init, resize, setRunning };
+})();
+
+// Small ASCII banners for empty states.
+const ASCII_CLEAR = [
+  '   \\   :   /   ',
+  ' -- ( ◉ ) --  ',
+  '   /   :   \\   ',
+  '_______________'
+].join('\n');
+
+const ASCII_VOID = [
+  '┌──────────────┐',
+  '│  . · : · .   │',
+  '│  NO SIGNAL   │',
+  '└──────────────┘'
+].join('\n');
 
 /* ─── Today swipe gestures ────────────────────────────────────── */
 let suppressNextClick = false;
@@ -1016,6 +1261,8 @@ function switchView(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(`view-${name}`).classList.add('active');
   document.querySelector(`.tab-btn[data-view="${name}"]`).classList.add('active');
+  if (name === 'stream') StreamRail.resize();   // size the rail now that it's visible
+  applyFx();
 }
 
 /* ─── Init ────────────────────────────────────────────────────── */
@@ -1023,10 +1270,17 @@ document.addEventListener('DOMContentLoaded', () => {
   events       = loadEvents();
   completedLog = loadCompleted();
 
-  generateStars();
-  generateParticles();
+  AsciiField.init();
+  StreamRail.init();
   initNote();
   renderAll();
+  applyFx();
+
+  // Boot-up "decrypt" of the title and date
+  document.querySelectorAll('.title-chrono, .title-grid').forEach((el, i) =>
+    setTimeout(() => scrambleText(el, el.textContent, 700), i * 180));
+  const dateEl = document.getElementById('todayDateDisplay');
+  scrambleText(dateEl, dateEl.textContent, 800);
 
   // Tab switching
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1103,6 +1357,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Notifications opt-in
   document.getElementById('notifyBtn').addEventListener('click', enableNotifications);
 
+  // Motion effects toggle
+  document.getElementById('fxBtn').addEventListener('click', () => setFxEnabled(!fxEnabled()));
+  if (reduceMotionMQ.addEventListener) reduceMotionMQ.addEventListener('change', applyFx);
+
   // Settings
   document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
   document.getElementById('settingsModalClose').addEventListener('click', closeSettingsModal);
@@ -1166,6 +1424,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Refresh badge / notification when tab regains focus (handles next-day rollover)
   document.addEventListener('visibilitychange', () => {
+    applyFx();                              // pause canvases while hidden
     if (document.visibilityState === 'visible') {
       updateAppBadge();
       maybeNotifyOnLaunch();
