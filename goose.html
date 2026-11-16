@@ -139,19 +139,92 @@
       image-rendering: crisp-edges;
     }
 
-    .villager-control-info {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      color: rgb(0, 255, 45);
-      padding: 10px;
-      border-radius: 5px;
-      font-family: "Comic Sans MS", "Comic Sans";
-      font-size: 14px;
-      z-index: 1001;
-      pointer-events: none;
+
+    /* Links box with ASCII rain behind it */
+    .rain-links {
+      position: relative;
+      box-sizing: border-box;
+      max-width: 820px;
+      margin: 30px auto;
+      padding: 28px 24px;
+      border: 2px solid #4ecdc4;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1a1a2e;
+      box-shadow: 0 0 25px rgba(78, 205, 196, 0.35);
     }
+    #rain { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+    .rain-links-grid {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    .rain-links a {
+      padding: 12px 20px;
+      font-family: "Courier New", monospace;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #cfeee9;
+      text-decoration: none;
+      background: rgba(10, 12, 28, 0.75);
+      border: 1px solid rgba(78, 205, 196, 0.6);
+      border-radius: 6px;
+      transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .rain-links a:hover {
+      color: #fff;
+      border-color: #4ecdc4;
+      box-shadow: 0 0 16px rgba(78, 205, 196, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Winamp AVS visualizer (draggable, floating) */
+    .visualizer-container {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid rgb(0, 255, 45);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 255, 45, 0.3);
+      cursor: move;
+      z-index: 1002;
+      transition: box-shadow 0.3s ease;
+    }
+    .visualizer-container:hover { box-shadow: 0 0 40px rgba(0, 255, 45, 0.5); }
+    .visualizer-container.dragging { box-shadow: 0 0 50px rgba(0, 255, 45, 0.7); opacity: 0.9; }
+    #vizCanvas { border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); display: block; }
+    .viz-label {
+      text-align: center;
+      color: rgb(0, 255, 45);
+      font-family: "Comic Sans MS", "Comic Sans";
+      font-size: 11px;
+      margin-top: 5px;
+      opacity: 0.8;
+    }
+
+    #bgAudioToggle {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(0, 255, 45, 0.5);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      color: rgb(0, 255, 45);
+      letter-spacing: 1px;
+      user-select: none;
+    }
+    #bgAudioToggle:hover { background: rgba(0, 255, 45, 0.15); border-color: rgb(0, 255, 45); }
+    #bgAudioToggle.muted { color: #555; border-color: rgba(0, 255, 45, 0.2); }
   </style>
 </head>
 <style>
@@ -186,14 +259,16 @@
       <img src="images/gifs/aniherb.gif" alt="GIF 7">
     </div>
 
-    <!-- Animated items from New 2025/New items -->
-    <div class="animated-items-container">
-      <img src="images/New 2025/New items/Centurion_stab.webp" alt="Centurion Stab">
-      <img src="images/New 2025/New items/Hawk.webp" alt="Hawk">
-      <img src="images/New 2025/New items/Huskarl.webp" alt="Huskarl">
-      <img src="images/New 2025/New items/Petard.webp" alt="Petard">
-      <img src="images/New 2025/New items/Villager_m_walkanim_aoe2.webp" alt="Villager">
-      <img src="images/New 2025/New items/Wolf_chase.webp" alt="Wolf Chase">
+    <!-- Links to pages not linked elsewhere on this page, over ASCII rain -->
+    <div class="rain-links">
+      <canvas id="rain"></canvas>
+      <div class="rain-links-grid">
+        <a href="index_maze.html">The Labyrinth</a>
+        <a href="spaceraider2.html">Space Raider 2</a>
+        <a href="toost.html">birdville</a>
+        <a href="/ancestral/">ancestral diets</a>
+        <a href="/Chronogrid/">Chronogrid</a>
+      </div>
     </div>
 
     <div id="dosbox"></div>
@@ -240,9 +315,6 @@
           }
         </script>
         <!-- Villager Control System -->
-        <div class="villager-control-info">
-          Click anywhere to move the villager!
-        </div>
         <div id="villager-container">
           <img id="villager" src="images/New 2025/New items/Villager_m_walkanim_aoe2.webp" alt="Controllable Villager">
         </div>
@@ -270,6 +342,7 @@
 
               // Handle click to move villager
               document.addEventListener('click', function(e) {
+                if (e.target.closest('.visualizer-container, #bgAudioToggle')) return;
                 targetX = e.clientX;
                 targetY = e.clientY;
                 isMoving = true;
@@ -404,6 +477,209 @@
           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
       </centre>
+
+    <!-- ASCII rain (mouse repels drops) -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('rain');
+        const ctx    = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width  = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const fontSize = 14;
+        const mouse = { x: -1000, y: -1000, radius: 80, repelStrength: 5 };
+        document.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+
+        const drops = [];
+        class Raindrop {
+            constructor() { this.reset(true); }
+            reset(init) {
+                this.x     = Math.random() * canvas.width;
+                this.y     = init ? Math.random() * -500 : Math.random() * -200;
+                this.speed = Math.random() * 3 + 2;
+                this.len   = Math.floor(Math.random() * 15) + 10;
+                this.alpha = Math.random() * 0.5 + 0.3;
+                this.vx    = 0;
+            }
+            update() {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < mouse.radius) {
+                    const f = (mouse.radius - dist) / mouse.radius;
+                    const a = Math.atan2(dy, dx);
+                    this.vx += Math.cos(a) * f * mouse.repelStrength;
+                    this.y  -= f * mouse.repelStrength * 0.5;
+                }
+                this.x  += this.vx;
+                this.vx *= 0.85;
+                this.y  += this.speed;
+                if (this.y > canvas.height) this.reset(false);
+                if (this.x < 0)             this.x = canvas.width;
+                if (this.x > canvas.width)  this.x = 0;
+            }
+            draw() {
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < this.len; i++) {
+                    const cy = this.y + i * fontSize * 0.8;
+                    if (cy < 0 || cy > canvas.height) continue;
+                    const fade = this.alpha * (1 - i / this.len);
+                    ctx.fillStyle = i === 0
+                        ? `rgba(200,230,255,${fade * 1.5})`
+                        : `rgba(100,150,255,${fade})`;
+                    ctx.fillText('|', this.x, cy);
+                }
+            }
+        }
+        for (let i = 0; i < 90; i++) drops.push(new Raindrop());
+
+        function animate() {
+            ctx.fillStyle = 'rgba(26,26,46,0.25)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            drops.forEach(d => { d.update(); d.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    })();
+    </script>
+
+    <!-- Winamp AVS visualizer + background music -->
+    <audio id="bgMusic" autoplay crossorigin="anonymous">
+      <source src="sounds/index music/ambience2.mp3" type="audio/mpeg">
+    </audio>
+    <button id="bgAudioToggle" title="Toggle background audio">♪ BG</button>
+    <div class="visualizer-container" id="visualizerContainer">
+      <canvas id="vizCanvas" width="360" height="130"></canvas>
+      <div class="viz-label">◇ WINAMP AVS ◇</div>
+    </div>
+    <script>
+    (function() {
+      const music  = document.getElementById('bgMusic');
+      const canvas = document.getElementById('vizCanvas');
+      const ctx    = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+
+      const playlist = [
+        'sounds/index music/ambience2.mp3',
+        'sounds/index music/spyro.mp3',
+        'sounds/Deep Forest.mp3'
+      ];
+      let track = 0;
+      music.volume = 0.75;
+      music.addEventListener('ended', () => {
+        track = (track + 1) % playlist.length;
+        music.src = playlist[track];
+        music.play().catch(() => {});
+      });
+
+      let audioCtx = null, analyser = null, freq = null, wave = null, started = false;
+
+      // Routing the media element through the analyser detaches it from the
+      // speakers, so analyser -> destination must be reconnected.
+      function initAudio() {
+        if (audioCtx) { if (audioCtx.state === 'suspended') audioCtx.resume(); return; }
+        try {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const src = audioCtx.createMediaElementSource(music);
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 1024;
+          analyser.smoothingTimeConstant = 0.8;
+          src.connect(analyser);
+          analyser.connect(audioCtx.destination);
+          freq = new Uint8Array(analyser.frequencyBinCount);
+          wave = new Uint8Array(analyser.fftSize);
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+        } catch (e) { console.warn('Audio init failed:', e); }
+      }
+
+      function start() {
+        if (started) return;
+        started = true;
+        initAudio();
+        music.play().catch(() => { started = false; });
+      }
+      // Autoplay may be allowed; if not, the first gesture starts it.
+      music.play().then(initAudio).catch(() => {});
+      document.addEventListener('click',   start, { once: true });
+      document.addEventListener('keydown', start, { once: true });
+      canvas.parentElement.addEventListener('mousedown', start);
+
+      const PAL = ['#FF6B6B', '#00FF2D', '#FFE66D'];
+
+      function draw() {
+        requestAnimationFrame(draw);
+        ctx.fillStyle = 'rgba(6, 8, 14, 0.28)';
+        ctx.fillRect(0, 0, W, H);
+        if (!analyser) return;
+        analyser.getByteFrequencyData(freq);
+        analyser.getByteTimeDomainData(wave);
+
+        // Spectrum bars
+        const bars = 48;
+        const step = Math.floor(freq.length / bars);
+        const bw = W / bars;
+        for (let i = 0; i < bars; i++) {
+          let sum = 0;
+          for (let j = 0; j < step; j++) sum += freq[i * step + j];
+          const bh = (sum / step) / 255 * H * 0.7;
+          const g = ctx.createLinearGradient(0, H, 0, H - bh);
+          g.addColorStop(0, PAL[2]);
+          g.addColorStop(0.5, PAL[1]);
+          g.addColorStop(1, PAL[0]);
+          ctx.fillStyle = g;
+          ctx.fillRect(i * bw + 1, H - bh, bw - 2, bh);
+        }
+
+        // Oscilloscope overlay
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = PAL[1];
+        ctx.shadowColor = PAL[1];
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        const slice = W / wave.length;
+        for (let i = 0; i < wave.length; i++) {
+          const y = (wave[i] / 255) * (H * 0.5) + H * 0.25;
+          i === 0 ? ctx.moveTo(0, y) : ctx.lineTo(i * slice, y);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      }
+      draw();
+
+      // Drag the visualizer around
+      const el = document.getElementById('visualizerContainer');
+      let dragging = false, ix = 0, iy = 0, ox = 0, oy = 0;
+      el.addEventListener('mousedown', e => { ix = e.clientX - ox; iy = e.clientY - oy; dragging = true; el.classList.add('dragging'); });
+      document.addEventListener('mousemove', e => {
+        if (!dragging) return;
+        e.preventDefault();
+        ox = e.clientX - ix;
+        oy = e.clientY - iy;
+        el.style.transform = `translate3d(${ox}px,${oy}px,0)`;
+      });
+      document.addEventListener('mouseup', () => { dragging = false; el.classList.remove('dragging'); });
+
+      // BG toggle
+      const btn = document.getElementById('bgAudioToggle');
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (music.paused) {
+          music.play().then(initAudio).catch(() => {});
+          btn.textContent = '♪ BG';
+          btn.classList.remove('muted');
+        } else {
+          music.pause();
+          btn.textContent = '♪ OFF';
+          btn.classList.add('muted');
+        }
+      });
+    })();
+    </script>
     </body>
 
 </html>
